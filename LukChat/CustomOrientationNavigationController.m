@@ -14,31 +14,17 @@
 
 @implementation CustomOrientationNavigationController
 
-
--(id)initWithSupportedOrientations:(UIInterfaceOrientationMask)supportedOrientations {
-    self = [super init];
-    
-    if (self) {
-        self.supportedOrientations = supportedOrientations;
-    }
-    
-    return self;
+- (NSUInteger)supportedInterfaceOrientations
+{
+    return [[self.viewControllers lastObject] supportedInterfaceOrientations];
 }
 
--(id)initWithRootViewController:(UIViewController *)rootViewController
-      withSupportedOrientations:(UIInterfaceOrientationMask)supportedOrientations {
-    self = [super initWithRootViewController:rootViewController];
-
-    if (self) {
-        self.supportedOrientations = supportedOrientations;
-    }
-    
-    return self;
+-(BOOL)shouldAutorotate {
+    return [[self.viewControllers lastObject] shouldAutorotate];
 }
 
-
--(NSUInteger)supportedInterfaceOrientations {
-    return self.supportedOrientations;
+- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation {
+    return [[self.viewControllers lastObject] preferredInterfaceOrientationForPresentation];
 }
 
 @end

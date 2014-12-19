@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "CameraEngine.h"
 
 @implementation AppDelegate
 
@@ -16,7 +17,7 @@
 {
     // Override point for customization after application launch.
     [self checkAndCreateDatabase];
-    
+
     // Resgister for push Notfn
     [[UIApplication sharedApplication] registerForRemoteNotificationTypes:
      (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];

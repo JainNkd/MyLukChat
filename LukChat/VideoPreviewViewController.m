@@ -8,9 +8,18 @@
 
 #import "VideoPreviewViewController.h"
 #import "VideoListViewController.h"
+#import "CameraEngine.h"
+#import <objc/message.h>
 
-@interface VideoPreviewViewController ()
-
+@interface VideoPreviewViewController ()<UIAlertViewDelegate>
+{
+    BOOL rearCameraMode;
+    
+    NSTimer *timer;
+    int totalSeconds;
+    
+    BOOL isStartVideo,isSavedVideo;
+}
 @end
 
 @implementation VideoPreviewViewController
@@ -20,236 +29,190 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        if ([[UIDevice currentDevice] respondsToSelector:@selector(setOrientation:)]) {
+            objc_msgSend([UIDevice currentDevice], @selector(setOrientation:),    UIInterfaceOrientationLandscapeRight);
+        }
     }
     return self;
 }
+-(BOOL)shouldAutorotate
+{
+    return YES;
+}
+
+- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation
+{
+    return UIInterfaceOrientationLandscapeRight;
+}
+
+- (NSUInteger)supportedInterfaceOrientations {
+    return UIInterfaceOrientationMaskLandscapeRight;
+}
+
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    if ([[UIDevice currentDevice] respondsToSelector:@selector(setOrientation:)]) {
+        objc_msgSend([UIDevice currentDevice], @selector(setOrientation:),    UIInterfaceOrientationLandscapeRight );
+    }
+    rearCameraMode = NO;
+    [CameraEngine engine].isFrontCamera = rearCameraMode;
+    [[CameraEngine engine] startup];
+    self.timerLabel.text = @"00:00:00";
+    totalSeconds = 0;
+
     self.navigationController.navigationBarHidden = YES;
-    
-     [self recordWith:isFrontCamaraON];
+    isStartVideo = NO;
+    isSavedVideo = NO;
+    [self.view bringSubviewToFront:self.previewView];
+    [self startPreview];
     // Do any additional setup after loading the view.
 }
 
-- (void)didReceiveMemoryWarning
+
+- (void) startPreview
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    AVCaptureVideoPreviewLayer* preview = [[CameraEngine engine] getPreviewLayer];
+    [preview removeFromSuperlayer];
+    preview.frame = self.previewView.bounds;
+    [[preview connection] setVideoOrientation:AVCaptureVideoOrientationLandscapeRight];
+    [self.previewView.layer insertSublayer:preview atIndex:0];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+-(void)viewDidAppear:(BOOL)animated
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    [super viewDidAppear:animated];
+    [UIApplication sharedApplication].statusBarHidden = YES;
 }
-*/
 
+-(void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    if ([self.navigationController.viewControllers indexOfObject:self]==NSNotFound) {
+        if ([[UIDevice currentDevice] respondsToSelector:@selector(setOrientation:)]) {
+            objc_msgSend([UIDevice currentDevice], @selector(setOrientation:),    UIInterfaceOrientationPortrait);
+        }
+    }
+    
+    [UIApplication sharedApplication].statusBarHidden = NO;
+}
 
 
 - (IBAction)cnacelButtonPressed:(UIButton *)sender {
-    [self.navigationController dismissViewControllerAnimated:NO completion:nil];
+    if (timer.isValid) {
+        [timer invalidate];
+        timer = nil;
+        [[CameraEngine engine] pauseCapture];
+        isStartVideo = NO;
+    }
+    if(![CameraEngine engine].isCapturing || ![CameraEngine engine].isPaused){
+        [[CameraEngine engine] shutdown];
+        [self.navigationController dismissViewControllerAnimated:NO completion:nil];    }
+    else{
+        
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"LUK" message:@"Do you want to save video" delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil];
+        [alert show];
+        alert.tag = 1;
+
+    }
 }
 
+
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (buttonIndex == 0 && alertView.tag == 1) {
+        [[CameraEngine engine] shutdown];
+        
+        [self.navigationController dismissViewControllerAnimated:NO completion:nil];
+    }
+    else if (buttonIndex == 1 && alertView.tag == 1){
+        isSavedVideo = YES;
+        [CameraEngine engine].fileURL = self.fileUrl;
+        [[CameraEngine engine] stopCapture];
+        [self.navigationController dismissViewControllerAnimated:NO completion:nil];
+    }
+}
 - (IBAction)frontCamaraButtonPressed:(UIButton *)sender {
-    
-    sender.selected = !sender.selected;
-    isFrontCamaraON = sender.selected;
-//    [self recordWith:isFrontCamaraON];
+    self.timerLabel.text = @"00:00:00";
+    totalSeconds = 0;
+    isStartVideo = NO;
+    isSavedVideo = NO;
+    self.startButton.enabled = YES;
+    self.startButton.alpha = 1;
+
+    rearCameraMode = [[CameraEngine engine] toggleFrontFacingCamera:rearCameraMode];
 }
 
 - (IBAction)saveVideoButtonPressed:(UIButton *)sender {
-    
-    if(fileURL.length>0)
-    {
-    NSLog(@"fileURL : %@", fileURL);
-    NSURL *videoURl = [NSURL fileURLWithPath:fileURL];
-    AVURLAsset *asset = [[AVURLAsset alloc] initWithURL:videoURl options:nil];
-    AVAssetImageGenerator *generate = [[AVAssetImageGenerator alloc] initWithAsset:asset];
-    generate.appliesPreferredTrackTransform = YES;
-    NSError *err = NULL;
-    CMTime time = CMTimeMake(1, 60);
-    
-    // extract an image as thumbnail
-    CGImageRef imgRef = [generate copyCGImageAtTime:time actualTime:NULL error:&err];
-    UIImage *image = [[UIImage alloc] initWithCGImage:imgRef];
-    
-    // store the thumbnail image in local directory
-    NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-    NSString *tempfile = [NSString stringWithFormat:@"%@/video%d.png", path, self.indexOfVideo];
-    [UIImagePNGRepresentation(image) writeToFile:tempfile atomically:YES];
-    
-    [[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationPortrait];
-    
-    // store the video into album
-    UISaveVideoAtPathToSavedPhotosAlbum(fileURL,nil,nil,nil);
-    
-    [self.navigationController dismissViewControllerAnimated:NO completion:nil];
+    if (totalSeconds > 0 ) {
+        [timer invalidate];
+        timer = nil;
+        isSavedVideo = YES;
+        [CameraEngine engine].fileURL = self.fileUrl;
+        [[CameraEngine engine] stopCapture];
+        [self.navigationController dismissViewControllerAnimated:NO completion:nil];
+    }
+    else{
+        
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"LUK" message:@"Please Record an Video" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+        [alert show];
     }
 }
 
 - (IBAction)startStopRecordingButtonPressed:(id)sender {
-    if (self.startButton.tag == 0) {
-        self.startButton.tag = 1;
-        [self.startButton setTitle:@"Stop" forState:UIControlStateNormal];
-//        [self recordWith:isFrontCamaraON];
-        [self startRecording];
-    }else {
-        self.startButton.tag = 0;
-        [self.startButton setTitle:@"Start" forState:UIControlStateNormal];
-        if (session) {
-            [session stopRunning];
-        }
+    
+    if (totalSeconds == 0 || !isStartVideo) {
+        [self setTimerTextWithTotalSeconds:totalSeconds];
+        timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(updateTimer:) userInfo:nil repeats:YES];
+        [[CameraEngine engine] startCapture];
+        isStartVideo = YES;
+        self.cameraModeButton.hidden = YES;
+    }
+    else if (totalSeconds > 0 && isStartVideo){
+        [timer invalidate];
+        timer = nil;
+        [[CameraEngine engine] pauseCapture];
+        isStartVideo = NO;
+        self.startButton.enabled = NO;
+        self.startButton.alpha = 0.7;
+        self.cameraModeButton.hidden = NO;
     }
 }
 
--(void)recordWith:(BOOL)frontCamera {
-    
-    if (session) {
-        session = nil;
-    }
-    
-    NSError *error;
-    session = [[AVCaptureSession alloc] init];
-    
-    [session beginConfiguration];
-    
-    if ([session canSetSessionPreset:AVCaptureSessionPresetHigh]) {
-        [session setSessionPreset:AVCaptureSessionPresetHigh];
-    } else {
-        [session setSessionPreset:AVCaptureSessionPresetMedium];
-    }
-    
-    AVCaptureDevice *inputDevice = nil;
-    if (frontCamera) {
-        inputDevice = [self cameraWithPosition:AVCaptureDevicePositionFront];
-    } else {
-        inputDevice = [self cameraWithPosition:AVCaptureDevicePositionBack];
-    }
-    
-    if ([inputDevice isFocusModeSupported:AVCaptureFocusModeLocked]) {
-        
-        NSError *error = nil;
-        if ([inputDevice lockForConfiguration:&error]) {
-            //            CGPoint autoFocusPoint = CGPointMake(0.5f, 0.5f);
-            //            [inputDevice setFocusPointOfInterest:autoFocusPoint];
-            [inputDevice setFocusMode:AVCaptureFocusModeAutoFocus];
-        } else {
-            NSLog(@"Error : %@", [error localizedDescription]);
-        }
-    }
-    AVCaptureDeviceInput *deviceInput = [AVCaptureDeviceInput deviceInputWithDevice:inputDevice error:&error];
-    if ( [session canAddInput:deviceInput] )
-        [session addInput:deviceInput];
-    
-    //    if (frontCameraEnabled.isOn) {
-    //
-    //    } else {
-    //
-    //    }
-    
-    AVCaptureDevice *audioDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeAudio];
-    AVCaptureDeviceInput *audioInput = [AVCaptureDeviceInput deviceInputWithDevice:audioDevice error:nil];
-    if ([session canAddInput:audioInput]) {
-        [session addInput:audioInput];
-    }
-    
-    [session commitConfiguration];
-    
-    previewLayer = [[AVCaptureVideoPreviewLayer alloc] initWithSession:session];
-    [previewLayer setVideoGravity:AVLayerVideoGravityResizeAspectFill];
-    
-    NSLog(@"preparing...");
-    
-    // prepare the layer to show the preview screen while recording the video
-    CALayer *rootLayer = [self.previewView layer];
-    [rootLayer setMasksToBounds:YES];
-    [previewLayer setFrame:CGRectMake(0, 0, rootLayer.frame.size.width-20, rootLayer.bounds.size.height-20
-                                      )];
-    [rootLayer insertSublayer:previewLayer atIndex:0];
-    [previewLayer1 addSublayer:previewLayer];
-    
-    NSLog(@"configured view for preview");
-    
-    // setup the file
-    movieFileOutput = [[AVCaptureMovieFileOutput alloc] init];
-    CMTime maxDuration = CMTimeMake(60, 1);
-    movieFileOutput.maxRecordedDuration = maxDuration;
-    [session addOutput:movieFileOutput];
-    
-    AVCaptureConnection *videoConnection = nil;
-    for (AVCaptureConnection *connection in [movieFileOutput connections]) {
-        NSLog(@"%@", connection);
-        for ( AVCaptureInputPort *port in [connection inputPorts] )
-        {
-            NSLog(@"%@", port);
-            if ( [[port mediaType] isEqual:AVMediaTypeVideo] )
-            {
-                videoConnection = connection;
-            }
-        }
-    }
-    
-    if([videoConnection isVideoOrientationSupported]) {
-        [videoConnection setVideoOrientation:AVCaptureVideoOrientationLandscapeRight];
-    }
-    
-    // get the path and set tthe file name to recrod
-    NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-    fileURL = [NSString stringWithFormat:@"%@/video%d.mov", path, self.indexOfVideo];
-    
-    if ([[NSFileManager defaultManager] fileExistsAtPath:fileURL isDirectory:NO]) {
-        [[NSFileManager defaultManager] removeItemAtPath:fileURL error:nil];
-    }
-    [session startRunning];
-}
-
-- (AVCaptureDevice *) cameraWithPosition:(AVCaptureDevicePosition) position
+-(void)setTimerTextWithTotalSeconds:(int)totalSecondss
 {
-    NSArray *devices = [AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo];
-    for (AVCaptureDevice *device in devices) {
-        if ([device position] == position) {
-            return device;
-        }
-    }
-    return nil;
-}
-
-#pragma mark - Capture video
-
--(void)captureOutput:(AVCaptureFileOutput *)captureOutput didFinishRecordingToOutputFileAtURL:(NSURL *)outputFileURL fromConnections:(NSArray *)connections error:(NSError *)error {
-    if ([error code] == noErr) {
-        //
-    } else {
-        id value = [[error userInfo] objectForKey:AVErrorRecordingSuccessfullyFinishedKey];
+    int remainder = 0;
+    
+    int hours = totalSecondss / 3600;
+    remainder = totalSecondss % 3600;
+    
+    int minutes = remainder / 60;
+    remainder = remainder % 60;
+    
+    int seconds = remainder;
+    
+    if (seconds > 10) {
         
-        if (value) {
-            
-            if ([value boolValue]) {
-                NSLog(@"Not successful.");
-            } else {
-                NSLog(@"Successful.");
-            }
-            
-        }
+        [timer invalidate];
+        timer = nil;
+        totalSeconds = 0;
+        isStartVideo = NO;
+        self.startButton.enabled = NO;
+        self.startButton.alpha = 0.7;
+        [[CameraEngine engine] pauseCapture];
+        return;
     }
+    
+    NSString *strTotalTime = [[NSString alloc] initWithFormat:@"%02d:%02d:%02d", hours, minutes, seconds];
+    
+    self.timerLabel.text = strTotalTime;
 }
 
--(UIView *)getPreviewView {
-    return self.previewView;
+-(void)updateTimer:(NSTimer *)timer
+{
+    totalSeconds += 1;
+    NSLog(@"updateTimer -- %d",totalSeconds);
+    [self setTimerTextWithTotalSeconds:totalSeconds];
 }
-
-
-
--(void)startRecording {
-    // start the recording..
-    [movieFileOutput startRecordingToOutputFileURL:[NSURL fileURLWithPath:fileURL] recordingDelegate:self];
-}
-
 
 @end

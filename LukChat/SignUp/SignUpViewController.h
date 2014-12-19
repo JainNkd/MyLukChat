@@ -18,9 +18,12 @@
     NSDate *birthDate;
     UIActionSheet *dateSheet;
     
+    UIView *pikerView;
+    
     NSString *cnCode;
     CountryPicker *myPickerView;
     UIToolbar *myToolbar;
+    UITapGestureRecognizer *pnTab;
 }
 @property (weak, nonatomic) IBOutlet UILabel *mobileCountryCode;
 

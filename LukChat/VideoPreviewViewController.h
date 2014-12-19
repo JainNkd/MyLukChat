@@ -7,35 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <AVFoundation/AVFoundation.h>
 
 @class VideoListViewController;
 
-@interface VideoPreviewViewController : UIViewController<AVCaptureFileOutputRecordingDelegate>
-{
-    // session for the video capture
-    AVCaptureSession *session;
-    AVCaptureMovieFileOutput *movieFileOutput;
-    AVCaptureVideoPreviewLayer *previewLayer;
-    AVCaptureVideoPreviewLayer *previewLayer1;
-    
-    BOOL isFrontCamaraON;
-    
-    // file path
-    NSString *fileURL;
-    
-    
-}
+@interface VideoPreviewViewController : UIViewController
 
-@property (nonatomic, assign) VideoListViewController *delegate;
+@property (nonatomic, copy) NSString *fileUrl;
 @property (nonatomic, assign) int indexOfVideo;
 
 @property (weak, nonatomic) IBOutlet UIView *previewView;
 
-@property (weak, nonatomic) IBOutlet UIButton *frontCamraButton;
-@property (weak, nonatomic) IBOutlet UIButton *saveButton;
-@property (weak, nonatomic) IBOutlet UIButton *startButton;
-@property (weak, nonatomic) IBOutlet UIButton *cancelButton;
+@property (weak, nonatomic) IBOutlet UIButton *startButton,*cameraModeButton;
+
+@property (weak, nonatomic) IBOutlet UILabel *timerLabel;
 
 
 - (IBAction)cnacelButtonPressed:(UIButton *)sender;

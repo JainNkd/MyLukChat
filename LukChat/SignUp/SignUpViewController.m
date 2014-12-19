@@ -49,8 +49,7 @@
     NSLocale *locale = [NSLocale currentLocale];
     NSString *countryCode = [locale objectForKey: NSLocaleCountryCode];
     
-    NSString *countryName = [locale displayNameForKey: NSLocaleCountryCode
-                                                value: countryCode];
+    NSString *countryName = [locale displayNameForKey: NSLocaleCountryCode value: countryCode];
     NSLog(@"country is %@", countryName);
     country.text = countryName;
     
@@ -58,13 +57,9 @@
     
     codeLabel.hidden = YES;
     nameLabel.hidden = YES;
+
     
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
-    
-    [dob addGestureRecognizer:tap];
-    
-    UITapGestureRecognizer *pnTab = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
-    
+    pnTab = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
     [self.view addGestureRecognizer:pnTab];
     
     [self.checkBoxButton setImage:[UIImage imageNamed:@"signup-terms-checkbox-normal-view.png"] forState:UIControlStateNormal];
@@ -90,21 +85,24 @@
 -(void)dismissKeyboard {
     [pno resignFirstResponder];
     [dob resignFirstResponder];
+    [self.view addGestureRecognizer:pnTab];
+    [pikerView removeFromSuperview];
+    pikerView = nil;
     
 }
 -(void)setBirth{
-    dateSheet = [[UIActionSheet alloc]initWithTitle:nil delegate:nil cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:nil];
     
-    [dateSheet setActionSheetStyle:UIActionSheetStyleBlackTranslucent];
+    [self.view removeGestureRecognizer:pnTab];
     
-    UIDatePicker *birthDayPicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(0, 44, 0, 0)];
-    [birthDayPicker setDatePickerMode:UIDatePickerModeDate];
-    [dateSheet addSubview:birthDayPicker];
+    [pno resignFirstResponder];
+    [pikerView removeFromSuperview];
+    pikerView = nil;
     
-    //[dateSheet addSubview:countryPicker];
+    pikerView = [[UIView alloc]initWithFrame:CGRectMake(0,534, 320,234)];
+    [pikerView setBackgroundColor:[UIColor clearColor]];
     
-    UIToolbar *controlToolBar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, dateSheet.bounds.size.width, 44)];
-    [controlToolBar setBarStyle:UIBarStyleBlack];
+    UIToolbar *controlToolBar = [[UIToolbar alloc]initWithFrame:CGRectMake(0,0, pikerView.bounds.size.width, 44)];
+
     [controlToolBar sizeToFit];
     
     UIBarButtonItem *spacer = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
@@ -115,18 +113,41 @@
     
     [controlToolBar setItems:[NSArray arrayWithObjects:spacer, cancelButton, setButton, nil] animated:NO];
     
-    [dateSheet addSubview:controlToolBar];
-    [dateSheet showInView:self.view];
-    [dateSheet setBounds:CGRectMake(0, 0, 320, 485)];
+    [pikerView addSubview:controlToolBar];
+
+    UIDatePicker *birthDayPicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(0,44, 320, 200)];
+    [birthDayPicker setBackgroundColor:[UIColor whiteColor] ];
+    [birthDayPicker setDatePickerMode:UIDatePickerModeDate];
+    [pikerView addSubview:birthDayPicker];
+    
+    [self.view addSubview:pikerView];
+    
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:.5];
+    
+    CGRect frame= pikerView.frame;
+    pikerView.frame = CGRectMake(0, 334, frame.size.width, frame.size.height);
+    
+    [UIView commitAnimations];
+
 }
 
 -(void)cancelDateSet{
-    [dateSheet dismissWithClickedButtonIndex:0 animated:YES];
+   
+    [self.view addGestureRecognizer:pnTab];
+    
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:.5];
+    
+    CGRect frame= pikerView.frame;
+    pikerView.frame = CGRectMake(0, 568, frame.size.width, frame.size.height);
+    
+    [UIView commitAnimations];
     [self.view endEditing:YES];
 }
 
 -(void)dismissDateSet{
-    NSArray *listOfViews = [dateSheet subviews];
+    NSArray *listOfViews = [pikerView subviews];
     
     for(UIView *subView in listOfViews){
         if([subView isKindOfClass:[UIDatePicker class]]){
@@ -134,12 +155,12 @@
         }
         
     }
+    
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
     [dateFormatter setDateFormat:@"dd/MM/YYYY"];
     [dob setText:[dateFormatter stringFromDate:self.birthDate]];
-    
-    [dateSheet dismissWithClickedButtonIndex:0 animated:YES];
-    [self.view endEditing:YES];
+
+    [self cancelDateSet];
 }
 
 - (void)countryPicker:(__unused CountryPicker *)picker didSelectCountryWithName:(NSString *)name code:(NSString *)code

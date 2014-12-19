@@ -9,8 +9,8 @@
 #import "VideoListViewController.h"
 #import "CustomOrientationNavigationController.h"
 #import <MediaPlayer/MediaPlayer.h>
-
-
+#import <objc/message.h>
+#import "CameraEngine.h"
 @interface VideoListViewController ()
 
 @end
@@ -26,6 +26,22 @@
     return self;
 }
 
+
+-(BOOL)shouldAutorotate
+{
+    return YES;
+}
+
+- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation
+{
+    return UIInterfaceOrientationPortrait;
+}
+
+- (NSUInteger)supportedInterfaceOrientations {
+    return UIInterfaceOrientationMaskPortrait;
+}
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -37,7 +53,9 @@
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    
+    if ([[UIDevice currentDevice] respondsToSelector:@selector(setOrientation:)]) {
+        objc_msgSend([UIDevice currentDevice], @selector(setOrientation:),    UIInterfaceOrientationPortrait);
+    }
     videoTitle =  [[NSUserDefaults standardUserDefaults] valueForKey:VIDEO_TITLE];
     
     NSMutableArray *titleWords = (NSMutableArray*)[videoTitle componentsSeparatedByString:@" "];
@@ -161,32 +179,37 @@
 - (IBAction)videoRecordButtonPressed:(UIButton *)sender {
     UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Option" delegate:self cancelButtonTitle:CANCEL_BUTTON destructiveButtonTitle:nil otherButtonTitles:@"Record", @"Play", nil];
     [actionSheet setTag:sender.tag];
-    [actionSheet showInView:self.view];
+    [actionSheet showFromRect:sender.frame inView:self.view animated:YES];
 }
 
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
+    
+    NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    fileURL = [NSString stringWithFormat:@"%@/video%ld.mov", path,(long)actionSheet.tag];
+    
     if(buttonIndex==0)
     {
+        [[CameraEngine engine] shutdown];
+
         VideoPreviewViewController *previewController = [self.storyboard instantiateViewControllerWithIdentifier:@"VideoPreviewViewController"];
         [previewController setIndexOfVideo:(int)actionSheet.tag];
-        [previewController setDelegate:self];
-        
-        UINavigationController *navBar=[[CustomOrientationNavigationController alloc] initWithRootViewController:previewController
-                                                                                       withSupportedOrientations:(UIInterfaceOrientationMaskLandscapeRight)];
+        previewController.fileUrl = fileURL;
+        UINavigationController *navBar=[[CustomOrientationNavigationController alloc] initWithRootViewController:previewController];
         
         [self.navigationController presentViewController:navBar animated:NO completion:nil];
     }
-    else
+    else if(buttonIndex == 1)
     {
-        NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-        fileURL = [NSString stringWithFormat:@"%@/video%ld.mov", path,(long)actionSheet.tag];
-        
-        [self playMovie:fileURL];
+        if ([[NSFileManager defaultManager] fileExistsAtPath:fileURL]) {
+            [self playMovie:fileURL];
+        }
         
         
 //        [self play:actionSheet.tag];
     }
+    
+    [actionSheet dismissWithClickedButtonIndex:buttonIndex animated:YES];
 }
 
 -(void)playMovie: (NSString *) path{
@@ -229,8 +252,7 @@
         CustomeVideoPlayViewController *customeVideoPlayObj = [self.storyboard instantiateViewControllerWithIdentifier:@"CustomeVideoPlayViewController"];
         [customeVideoPlayObj setVideoUrl:fileURL];
         
-        UINavigationController *navBar=[[CustomOrientationNavigationController alloc] initWithRootViewController:customeVideoPlayObj
-                                                                                       withSupportedOrientations:(UIInterfaceOrientationMaskLandscapeRight)];
+        UINavigationController *navBar=[[CustomOrientationNavigationController alloc] initWithRootViewController:customeVideoPlayObj];
         
         [self.navigationController presentViewController:navBar animated:NO completion:nil];
     }
