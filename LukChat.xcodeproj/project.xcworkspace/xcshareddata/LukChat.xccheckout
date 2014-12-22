@@ -10,31 +10,31 @@
 	<string>LukChat</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>E40B8E0D856656505872CC433244F6A40890E648</key>
-		<string>https://bitbucket.org/shaffiulla11/naveen</string>
+		<key>6CD04F3077014F1D24BBADE5A1E632D4E6CC55DD</key>
+		<string>https://github.com/JainNkd/MyLukChat.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>LukApp/LukChat.xcodeproj</string>
+	<string>LukChat.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>E40B8E0D856656505872CC433244F6A40890E648</key>
-		<string>../../..</string>
+		<key>6CD04F3077014F1D24BBADE5A1E632D4E6CC55DD</key>
+		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://bitbucket.org/shaffiulla11/naveen</string>
+	<string>https://github.com/JainNkd/MyLukChat.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>E40B8E0D856656505872CC433244F6A40890E648</string>
+	<string>6CD04F3077014F1D24BBADE5A1E632D4E6CC55DD</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>E40B8E0D856656505872CC433244F6A40890E648</string>
+			<string>6CD04F3077014F1D24BBADE5A1E632D4E6CC55DD</string>
 			<key>IDESourceControlWCCName</key>
-			<string>Code</string>
+			<string>MyLukChat</string>
 		</dict>
 	</array>
 </dict>

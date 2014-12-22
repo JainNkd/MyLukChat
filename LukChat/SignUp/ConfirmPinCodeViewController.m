@@ -40,6 +40,22 @@
     // Do any additional setup after loading the view.
 }
 
+
+-(BOOL)shouldAutorotate
+{
+    return NO;
+}
+
+- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation
+{
+    return UIInterfaceOrientationPortrait;
+}
+
+- (NSUInteger)supportedInterfaceOrientations {
+    return UIInterfaceOrientationMaskPortrait;
+}
+
+
 -(void)dismissKeyboard {
     [number resignFirstResponder];
     

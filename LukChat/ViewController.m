@@ -16,6 +16,21 @@
 
 @implementation ViewController
 
+-(BOOL)shouldAutorotate
+{
+    return NO;
+}
+
+- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation
+{
+    return UIInterfaceOrientationPortrait;
+}
+
+- (NSUInteger)supportedInterfaceOrientations {
+    return UIInterfaceOrientationMaskPortrait;
+}
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -28,11 +43,6 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-
--(NSUInteger)supportedInterfaceOrientations {
-    return (UIInterfaceOrientationMaskPortrait);
 }
 
 - (IBAction)tapPressedOnStartScreen:(id)sender {

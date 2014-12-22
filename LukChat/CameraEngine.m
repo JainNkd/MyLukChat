@@ -227,7 +227,11 @@ static CameraEngine* theEngine;
         {
             CMFormatDescriptionRef fmt = CMSampleBufferGetFormatDescription(sampleBuffer);
             [self setAudioFormat:fmt];
-            _encoder = [VideoEncoder encoderForPath:self.fileURL Height:_cy width:_cx channels:_channels samples:_samplerate];
+            if (self.fileURL) {
+                
+                _encoder = [VideoEncoder encoderForPath:self.fileURL Height:_cy width:_cx channels:_channels samples:_samplerate];
+                
+            }
         }
         if (_discont)
         {
