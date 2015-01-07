@@ -192,6 +192,7 @@
 		875BFD3B1A5735C300A83E35 /* start-screen-footer-icon-film@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 875BFD361A5735C300A83E35 /* start-screen-footer-icon-film@2x.png */; };
 		875BFD3C1A5735C300A83E35 /* start-screen-footer-icon-monkey@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 875BFD371A5735C300A83E35 /* start-screen-footer-icon-monkey@2x.png */; };
 		875BFD3D1A5735C300A83E35 /* start-screen-footer-icon-video@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 875BFD381A5735C300A83E35 /* start-screen-footer-icon-video@2x.png */; };
+		87AFE04C1A5C55E700DCA827 /* LukiesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87AFE04B1A5C55E700DCA827 /* LukiesViewController.m */; };
 		87CCBD671A5012280018D266 /* MergeVideosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87CCBD661A5012280018D266 /* MergeVideosViewController.m */; };
 		F016EB471A2BD04500506B75 /* Cam.png in Resources */ = {isa = PBXBuildFile; fileRef = F016EB451A2BD04500506B75 /* Cam.png */; };
 		F016EB481A2BD04500506B75 /* CameraMode.png in Resources */ = {isa = PBXBuildFile; fileRef = F016EB461A2BD04500506B75 /* CameraMode.png */; };
@@ -497,6 +498,8 @@
 		875BFD361A5735C300A83E35 /* start-screen-footer-icon-film@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "start-screen-footer-icon-film@2x.png"; sourceTree = "<group>"; };
 		875BFD371A5735C300A83E35 /* start-screen-footer-icon-monkey@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "start-screen-footer-icon-monkey@2x.png"; sourceTree = "<group>"; };
 		875BFD381A5735C300A83E35 /* start-screen-footer-icon-video@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "start-screen-footer-icon-video@2x.png"; sourceTree = "<group>"; };
+		87AFE04A1A5C55E700DCA827 /* LukiesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LukiesViewController.h; sourceTree = "<group>"; };
+		87AFE04B1A5C55E700DCA827 /* LukiesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LukiesViewController.m; sourceTree = "<group>"; };
 		87CCBD651A5012280018D266 /* MergeVideosViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MergeVideosViewController.h; sourceTree = "<group>"; };
 		87CCBD661A5012280018D266 /* MergeVideosViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MergeVideosViewController.m; sourceTree = "<group>"; };
 		F016EB451A2BD04500506B75 /* Cam.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Cam.png; sourceTree = "<group>"; };
@@ -549,6 +552,7 @@
 		6329BEEE19A8ABA300B6D8F5 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				87AFE0471A5C55BC00DCA827 /* Contacts */,
 				875BFD221A57305000A83E35 /* Send */,
 				875BFD211A57302300A83E35 /* Share */,
 				875BFD181A572E0B00A83E35 /* TabBar */,
@@ -1156,6 +1160,15 @@
 			path = "Tabbar-Icon";
 			sourceTree = "<group>";
 		};
+		87AFE0471A5C55BC00DCA827 /* Contacts */ = {
+			isa = PBXGroup;
+			children = (
+				87AFE04A1A5C55E700DCA827 /* LukiesViewController.h */,
+				87AFE04B1A5C55E700DCA827 /* LukiesViewController.m */,
+			);
+			name = Contacts;
+			sourceTree = "<group>";
+		};
 		87CCBD621A5012170018D266 /* Merge */ = {
 			isa = PBXGroup;
 			children = (
@@ -1422,6 +1435,7 @@
 				875BFD2E1A57310B00A83E35 /* SentVideosViewController.m in Sources */,
 				633850FC1983C9F400C3256A /* AFPropertyListRequestOperation.m in Sources */,
 				633850F51983C9F400C3256A /* ConnectionHandler.m in Sources */,
+				87AFE04C1A5C55E700DCA827 /* LukiesViewController.m in Sources */,
 				875BFD321A57317C00A83E35 /* User.m in Sources */,
 				6329BEEA19A8AAC400B6D8F5 /* VideoPreviewViewController.m in Sources */,
 				633850F81983C9F400C3256A /* AFImageCache.m in Sources */,

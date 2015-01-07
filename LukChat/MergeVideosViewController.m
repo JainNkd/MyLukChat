@@ -9,7 +9,7 @@
 #import "MergeVideosViewController.h"
 #import <MediaPlayer/MediaPlayer.h>
 #import <AVFoundation/AVFoundation.h>
-#import "Constants.h"
+#import "LukiesViewController.h"
  
 
 @interface MergeVideosViewController ()
@@ -45,7 +45,7 @@
 {
     [super viewDidLoad];
     NSString *videoTitle =  [[NSUserDefaults standardUserDefaults] valueForKey:VIDEO_TITLE];
-    NSString *filename = [[NSUserDefaults standardUserDefaults]valueForKey:kMyVideoToShare];
+    NSString *filename = [[NSUserDefaults standardUserDefaults]valueForKey:@"MERGE_FILE"];
     if ([[NSFileManager defaultManager] fileExistsAtPath:filename])
     {
         UIImage *image = [self generateThumbImage:filename];
@@ -113,7 +113,13 @@
 */
 
 - (IBAction)PlayVideoButtonAction:(UIButton *)sender {
-    NSString *filename = [[NSUserDefaults standardUserDefaults]valueForKey:kMyVideoToShare];
+    NSString *filename = [[NSUserDefaults standardUserDefaults]valueForKey:@"MERGE_FILE"];
     [self playMovie:filename];
+}
+
+- (IBAction)sendToLukiesButtonPressed:(UIButton *)sender {
+    
+    LukiesViewController *lukiesVC = [self.storyboard instantiateViewControllerWithIdentifier:@"LukiesViewController"];
+    [self.navigationController pushViewController:lukiesVC animated:YES];
 }
 @end

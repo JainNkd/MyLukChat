@@ -13,7 +13,6 @@
 #import "CameraEngine.h"
 #import "MergeVideosViewController.h"
 #import "SCRecorderViewController.h"
-#import "Constants.h"
 
 @interface VideoListViewController ()
 
@@ -358,10 +357,10 @@
     NSData *videoData = [NSData dataWithContentsOfURL:outputURL];
     [videoData writeToFile:outputVideoPath atomically:YES];
     
-    [[NSUserDefaults standardUserDefaults] setValue:outputVideoPath forKey:kMyVideoToShare];
-    
+    [[NSUserDefaults standardUserDefaults] setValue:outputVideoPath forKey:@"MERGE_FILE"];
      MergeVideosViewController *mergeVC = [self.storyboard instantiateViewControllerWithIdentifier:@"MergeVideosViewController"];
     
     [self.navigationController pushViewController:mergeVC animated:YES];
+//    [self playMovie:outputVideoPath];
 }
 @end

@@ -18,9 +18,9 @@
 -(long long int)getMyPhoneNumber ;
 -(BOOL)checkIfContactExists:(long long int)contactNum;
 
-//-(NSMutableArray *)getChatHistoryForUser:(long long int)userPhone ;
-//-(NSMutableArray *)getAllLukChatContacts;
-//-(NSMutableArray *)getAllOtherContacts;
+-(NSMutableArray *)getChatHistoryForUser:(long long int)userPhone ;
+-(NSMutableArray *)getAllLukChatContacts;
+-(NSMutableArray *)getAllOtherContacts;
 
 -(void)insertAccountInfoToDB:(Account *)accountObj ;
 -(void)updateAccountInfoToDB:(Account *)accountObj;

@@ -17,4 +17,5 @@
 
 - (IBAction)PlayVideoButtonAction:(UIButton *)sender;
 
+- (IBAction)sendToLukiesButtonPressed:(UIButton *)sender;
 @end

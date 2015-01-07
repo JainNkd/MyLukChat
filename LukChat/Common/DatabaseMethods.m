@@ -267,138 +267,138 @@
     return isContactExist;
 }
 
-//-(NSMutableArray *)getChatHistoryForUser:(long long int)userPhone {
-//    NSLog(@"Get Chat Info from DB for user: %lld", userPhone);
-//	// Setup the database object
-//	sqlite3 *database;
-//    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-//    NSString *documentsDirectory = [paths objectAtIndex:0];
-//    NSString *databasePath=  [documentsDirectory stringByAppendingPathComponent:kDatabaseName];
-//    
-//    NSMutableArray *chatArray = [[NSMutableArray alloc] init];
-//
-//	// Open the database from the users filessytem
-//	if(sqlite3_open([databasePath UTF8String], &database) == SQLITE_OK) {
-//		// Setup the SQL Statement and compile it for faster access
-//        NSString *quertyStr = [NSString stringWithFormat:@"SELECT * FROM tbl_chats where to_phone = %lld OR from_phone = %lld ORDER BY id;",userPhone,userPhone];
-//		sqlite3_stmt *compiledStatement;
-//		if(sqlite3_prepare_v2(database, [quertyStr UTF8String], -1, &compiledStatement, NULL) == SQLITE_OK) {
-//			// Loop through the results and add them to the feeds array
-//			while(sqlite3_step(compiledStatement) == SQLITE_ROW) {
-//				// Read the data from the result row
-//                Chat *chatObj = [Chat new];
-//                chatObj.chatId = sqlite3_column_int(compiledStatement, 0);
-//                chatObj.fromPhone = sqlite3_column_int64(compiledStatement, 1);
-//                chatObj.toPhone = sqlite3_column_int64(compiledStatement, 2);
-//                chatObj.contentType = sqlite3_column_int(compiledStatement, 3);
-//                chatObj.chatText = [NSString stringWithFormat:@"%s",(const char*)sqlite3_column_text(compiledStatement, 4)];
-//                chatObj.chatVideo = [NSString stringWithFormat:@"%s",(const char*)sqlite3_column_text(compiledStatement, 5)];
-//                chatObj.chatTime = [NSString stringWithFormat:@"%s",(const char*)sqlite3_column_text(compiledStatement, 6)];
-//                
-//                [chatArray addObject:chatObj];
-//                
-////                NSLog(@"chatObj.chatId: %d", chatObj.chatId);
-//			}
-//		}
-//		// Release the compiled statement from memory
-//		sqlite3_finalize(compiledStatement);
-//	}
-//	sqlite3_close(database);
-//    
-//    return chatArray;
-//}
+-(NSMutableArray *)getChatHistoryForUser:(long long int)userPhone {
+    NSLog(@"Get Chat Info from DB for user: %lld", userPhone);
+	// Setup the database object
+	sqlite3 *database;
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString *databasePath=  [documentsDirectory stringByAppendingPathComponent:kDatabaseName];
+    
+    NSMutableArray *chatArray = [[NSMutableArray alloc] init];
 
-//-(NSMutableArray *)getAllLukChatContacts {
-//    NSLog(@"getAllLukChatContacts");
-//	// Setup the database object
-//	sqlite3 *database;
-//    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-//    NSString *documentsDirectory = [paths objectAtIndex:0];
-//    NSString *databasePath=  [documentsDirectory stringByAppendingPathComponent:kDatabaseName];
-//    
-//    NSMutableArray *contactArray = [[NSMutableArray alloc] init];
-//    
-//	// Open the database from the users filessytem
-//	if(sqlite3_open([databasePath UTF8String], &database) == SQLITE_OK) {
-//		// Setup the SQL Statement and compile it for faster access
-//        NSString *quertyStr = @"SELECT * FROM tbl_contacts WHERE status = '1' ORDER BY user_fname ASC";
-//		sqlite3_stmt *compiledStatement;
-//		if(sqlite3_prepare_v2(database, [quertyStr UTF8String], -1, &compiledStatement, NULL) == SQLITE_OK) {
-//			// Loop through the results and add them to the feeds array
-//			while(sqlite3_step(compiledStatement) == SQLITE_ROW) {
-//				// Read the data from the result row
-//                Contact *contactObj = [Contact new];
-//
-//                contactObj.user_id = sqlite3_column_int(compiledStatement, 0);
-//                contactObj.user_phone = sqlite3_column_int64(compiledStatement, 1);
-//                contactObj.user_fname = [NSString stringWithFormat:@"%s",(const char*)sqlite3_column_text(compiledStatement, 2)];
-//                contactObj.user_lname = [NSString stringWithFormat:@"%s",(const char*)sqlite3_column_text(compiledStatement, 3)];
-//                contactObj.user_dob = [NSString stringWithFormat:@"%s",(const char*)sqlite3_column_text(compiledStatement, 4)];
-//                contactObj.user_status = sqlite3_column_int(compiledStatement, 5);
-//                
-//                if (!contactObj.user_fname)
-//                    contactObj.user_fname = @"";
-//                if (!contactObj.user_lname)
-//                    contactObj.user_lname = @"";
-//                if (!contactObj.user_dob)
-//                    contactObj.user_dob = @"";
-//
-//                [contactArray addObject:contactObj];
-//			}
-//		}
-//		// Release the compiled statement from memory
-//		sqlite3_finalize(compiledStatement);
-//	}
-//	sqlite3_close(database);
-//    
-//    return contactArray;
-//}
+	// Open the database from the users filessytem
+	if(sqlite3_open([databasePath UTF8String], &database) == SQLITE_OK) {
+		// Setup the SQL Statement and compile it for faster access
+        NSString *quertyStr = [NSString stringWithFormat:@"SELECT * FROM tbl_chats where to_phone = %lld OR from_phone = %lld ORDER BY id;",userPhone,userPhone];
+		sqlite3_stmt *compiledStatement;
+		if(sqlite3_prepare_v2(database, [quertyStr UTF8String], -1, &compiledStatement, NULL) == SQLITE_OK) {
+			// Loop through the results and add them to the feeds array
+			while(sqlite3_step(compiledStatement) == SQLITE_ROW) {
+				// Read the data from the result row
+                Chat *chatObj = [Chat new];
+                chatObj.chatId = sqlite3_column_int(compiledStatement, 0);
+                chatObj.fromPhone = sqlite3_column_int64(compiledStatement, 1);
+                chatObj.toPhone = sqlite3_column_int64(compiledStatement, 2);
+                chatObj.contentType = sqlite3_column_int(compiledStatement, 3);
+                chatObj.chatText = [NSString stringWithFormat:@"%s",(const char*)sqlite3_column_text(compiledStatement, 4)];
+                chatObj.chatVideo = [NSString stringWithFormat:@"%s",(const char*)sqlite3_column_text(compiledStatement, 5)];
+                chatObj.chatTime = [NSString stringWithFormat:@"%s",(const char*)sqlite3_column_text(compiledStatement, 6)];
+                
+                [chatArray addObject:chatObj];
+                
+//                NSLog(@"chatObj.chatId: %d", chatObj.chatId);
+			}
+		}
+		// Release the compiled statement from memory
+		sqlite3_finalize(compiledStatement);
+	}
+	sqlite3_close(database);
+    
+    return chatArray;
+}
 
-//-(NSMutableArray *)getAllOtherContacts {
-//    NSLog(@"getAllOtherContacts");
-//	// Setup the database object
-//	sqlite3 *database;
-//    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-//    NSString *documentsDirectory = [paths objectAtIndex:0];
-//    NSString *databasePath=  [documentsDirectory stringByAppendingPathComponent:kDatabaseName];
-//    
-//    NSMutableArray *contactArray = [[NSMutableArray alloc] init];
-//    
-//	// Open the database from the users filessytem
-//	if(sqlite3_open([databasePath UTF8String], &database) == SQLITE_OK) {
-//		// Setup the SQL Statement and compile it for faster access
-//        NSString *quertyStr = @"SELECT * FROM tbl_contacts WHERE status = '0' ORDER BY user_fname ASC";
-//		sqlite3_stmt *compiledStatement;
-//		if(sqlite3_prepare_v2(database, [quertyStr UTF8String], -1, &compiledStatement, NULL) == SQLITE_OK) {
-//			// Loop through the results and add them to the feeds array
-//			while(sqlite3_step(compiledStatement) == SQLITE_ROW) {
-//				// Read the data from the result row
-//                Contact *contactObj = [Contact new];
-//                
-//                contactObj.user_id = sqlite3_column_int(compiledStatement, 0);
-//                contactObj.user_phone = sqlite3_column_int64(compiledStatement, 1);
-//                contactObj.user_fname = [NSString stringWithFormat:@"%s",(const char*)sqlite3_column_text(compiledStatement, 2)];
-//                contactObj.user_lname = [NSString stringWithFormat:@"%s",(const char*)sqlite3_column_text(compiledStatement, 3)];
-//                contactObj.user_dob = [NSString stringWithFormat:@"%s",(const char*)sqlite3_column_text(compiledStatement, 4)];
-//                contactObj.user_status = sqlite3_column_int(compiledStatement, 5);
-//                
-//                if (!contactObj.user_fname)
-//                    contactObj.user_fname = @"";
-//                if (!contactObj.user_lname)
-//                    contactObj.user_lname = @"";
-//                if (!contactObj.user_dob)
-//                    contactObj.user_dob = @"";
-//                
-//                [contactArray addObject:contactObj];
-//			}
-//		}
-//		// Release the compiled statement from memory
-//		sqlite3_finalize(compiledStatement);
-//	}
-//	sqlite3_close(database);
-//    
-//    return contactArray;
-//}
+-(NSMutableArray *)getAllLukChatContacts {
+    NSLog(@"getAllLukChatContacts");
+	// Setup the database object
+	sqlite3 *database;
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString *databasePath=  [documentsDirectory stringByAppendingPathComponent:kDatabaseName];
+    
+    NSMutableArray *contactArray = [[NSMutableArray alloc] init];
+    
+	// Open the database from the users filessytem
+	if(sqlite3_open([databasePath UTF8String], &database) == SQLITE_OK) {
+		// Setup the SQL Statement and compile it for faster access
+        NSString *quertyStr = @"SELECT * FROM tbl_contacts WHERE status = '1' ORDER BY user_fname ASC";
+		sqlite3_stmt *compiledStatement;
+		if(sqlite3_prepare_v2(database, [quertyStr UTF8String], -1, &compiledStatement, NULL) == SQLITE_OK) {
+			// Loop through the results and add them to the feeds array
+			while(sqlite3_step(compiledStatement) == SQLITE_ROW) {
+				// Read the data from the result row
+                Contact *contactObj = [Contact new];
+
+                contactObj.user_id = sqlite3_column_int(compiledStatement, 0);
+                contactObj.user_phone = sqlite3_column_int64(compiledStatement, 1);
+                contactObj.user_fname = [NSString stringWithFormat:@"%s",(const char*)sqlite3_column_text(compiledStatement, 2)];
+                contactObj.user_lname = [NSString stringWithFormat:@"%s",(const char*)sqlite3_column_text(compiledStatement, 3)];
+                contactObj.user_dob = [NSString stringWithFormat:@"%s",(const char*)sqlite3_column_text(compiledStatement, 4)];
+                contactObj.user_status = sqlite3_column_int(compiledStatement, 5);
+                
+                if (!contactObj.user_fname)
+                    contactObj.user_fname = @"";
+                if (!contactObj.user_lname)
+                    contactObj.user_lname = @"";
+                if (!contactObj.user_dob)
+                    contactObj.user_dob = @"";
+
+                [contactArray addObject:contactObj];
+			}
+		}
+		// Release the compiled statement from memory
+		sqlite3_finalize(compiledStatement);
+	}
+	sqlite3_close(database);
+    
+    return contactArray;
+}
+
+-(NSMutableArray *)getAllOtherContacts {
+    NSLog(@"getAllOtherContacts");
+	// Setup the database object
+	sqlite3 *database;
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString *databasePath=  [documentsDirectory stringByAppendingPathComponent:kDatabaseName];
+    
+    NSMutableArray *contactArray = [[NSMutableArray alloc] init];
+    
+	// Open the database from the users filessytem
+	if(sqlite3_open([databasePath UTF8String], &database) == SQLITE_OK) {
+		// Setup the SQL Statement and compile it for faster access
+        NSString *quertyStr = @"SELECT * FROM tbl_contacts WHERE status = '0' ORDER BY user_fname ASC";
+		sqlite3_stmt *compiledStatement;
+		if(sqlite3_prepare_v2(database, [quertyStr UTF8String], -1, &compiledStatement, NULL) == SQLITE_OK) {
+			// Loop through the results and add them to the feeds array
+			while(sqlite3_step(compiledStatement) == SQLITE_ROW) {
+				// Read the data from the result row
+                Contact *contactObj = [Contact new];
+                
+                contactObj.user_id = sqlite3_column_int(compiledStatement, 0);
+                contactObj.user_phone = sqlite3_column_int64(compiledStatement, 1);
+                contactObj.user_fname = [NSString stringWithFormat:@"%s",(const char*)sqlite3_column_text(compiledStatement, 2)];
+                contactObj.user_lname = [NSString stringWithFormat:@"%s",(const char*)sqlite3_column_text(compiledStatement, 3)];
+                contactObj.user_dob = [NSString stringWithFormat:@"%s",(const char*)sqlite3_column_text(compiledStatement, 4)];
+                contactObj.user_status = sqlite3_column_int(compiledStatement, 5);
+                
+                if (!contactObj.user_fname)
+                    contactObj.user_fname = @"";
+                if (!contactObj.user_lname)
+                    contactObj.user_lname = @"";
+                if (!contactObj.user_dob)
+                    contactObj.user_dob = @"";
+                
+                [contactArray addObject:contactObj];
+			}
+		}
+		// Release the compiled statement from memory
+		sqlite3_finalize(compiledStatement);
+	}
+	sqlite3_close(database);
+    
+    return contactArray;
+}
 
 #pragma mark - Insert
 
