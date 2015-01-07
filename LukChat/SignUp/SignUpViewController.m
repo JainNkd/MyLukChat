@@ -931,6 +931,9 @@
     NSLog(@"random number is %@",string);
     app.pinValue = string;
     
+//    //india code
+//    cnCode = @"91";
+    
     [[NSUserDefaults standardUserDefaults] setValue:string forKey:kMY_VERIFICATION_CODE];
     [[NSUserDefaults standardUserDefaults] setValue:[NSString stringWithFormat:@"%@%@",cnCode,str] forKey:kMYPhoneNumber];
     [[NSUserDefaults standardUserDefaults] setValue:dob.text forKey:kMYDOB];

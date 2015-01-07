@@ -53,16 +53,23 @@
     NSString *saving = [defaults objectForKey:@"user"];
     [defaults synchronize];
     NSLog(@"savvvvvve is %@",saving);
-//    
-//    GetInputViewController *gitVC = [self.storyboard instantiateViewControllerWithIdentifier:@"GetInputViewController"];
-//    [self.navigationController pushViewController:gitVC animated:YES];
-    if([saving  isEqualToString: @"YES"]){
-        GetInputViewController *gitVC = [self.storyboard instantiateViewControllerWithIdentifier:@"GetInputViewController"];
-        [self.navigationController pushViewController:gitVC animated:YES];
 
+//    if([saving  isEqualToString: @"YES"]){
+//        GetInputViewController *gitVC = [self.storyboard instantiateViewControllerWithIdentifier:@"GetInputViewController"];
+//        [self.navigationController pushViewController:gitVC animated:YES];
+//
+//    }
+//    else{
+//       [self performSegueWithIdentifier:@"SignUp" sender:self];
+//    }
+    
+    
+    if([saving  isEqualToString: @"YES"]){
+        [self performSegueWithIdentifier:@"TabBarView" sender:self];
     }
     else{
-       [self performSegueWithIdentifier:@"SignUp" sender:self];
+        //sign screen
+        [self performSegueWithIdentifier:@"SignUp" sender:self];
     }
 }
 

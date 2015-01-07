@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="KRm-ul-vIt">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="KRm-ul-vIt">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -33,6 +33,7 @@
                                 </state>
                                 <connections>
                                     <action selector="tapPressedOnStartScreen:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="o5J-ix-FlB"/>
+                                    <segue destination="4Z4-ez-jN2" kind="custom" identifier="TabBarView" customClass="PushNoAnimationSegue" id="Q69-w8-5QU"/>
                                 </connections>
                             </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FkQ-en-J7t">
@@ -49,7 +50,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="hZ5-TB-8B8"/>
                     <connections>
-                        <segue destination="CHD-gy-CpZ" kind="push" identifier="SignUp" id="KRi-GP-6la"/>
+                        <segue destination="CHD-gy-CpZ" kind="custom" identifier="SignUp" customClass="PushNoAnimationSegue" id="KRi-GP-6la"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
@@ -226,7 +227,7 @@
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mn9-wM-MFb">
                                 <rect key="frame" x="0.0" y="496" width="320" height="72"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
                                 <state key="normal" title="Back">
                                     <color key="titleColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -254,7 +255,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xrm-as-yJy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="218" y="931"/>
+            <point key="canvasLocation" x="204" y="-551"/>
         </scene>
         <!--Confirm Pin Code View Controller-->
         <scene sceneID="aMd-sC-vhY">
@@ -304,12 +305,12 @@
                     <navigationItem key="navigationItem" id="51I-yh-ejM"/>
                     <connections>
                         <outlet property="number" destination="PD1-XY-QYM" id="oNi-h9-x7O"/>
-                        <segue destination="Ft1-Df-tqc" kind="push" identifier="GetInput" id="dEd-SU-NcM"/>
+                        <segue destination="4Z4-ez-jN2" kind="custom" identifier="TabBarView" customClass="PushNoAnimationSegue" id="kz9-Bu-m6X"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LFr-IL-pWh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="623" y="145"/>
+            <point key="canvasLocation" x="702" y="147"/>
         </scene>
         <!--Get Input View Controller-->
         <scene sceneID="aVT-zc-xqv">
@@ -349,24 +350,6 @@
                                     <action selector="recordVideoButtonPressed:" destination="Ft1-Df-tqc" eventType="touchUpInside" id="NgJ-4N-2b5"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="usg-7M-w2s">
-                                <rect key="frame" x="0.0" y="518" width="320" height="51"/>
-                                <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="start-screen-footer-bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="Lbi-8Y-ckj">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="129"/>
-                                    </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="start-screen-footer-icon-monkey.png" translatesAutoresizingMaskIntoConstraints="NO" id="fsK-rT-0Uu">
-                                        <rect key="frame" x="16" y="11" width="48" height="29"/>
-                                    </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="start-screen-footer-icon-video.png" translatesAutoresizingMaskIntoConstraints="NO" id="yK8-Bq-DQI">
-                                        <rect key="frame" x="131" y="13" width="59" height="27"/>
-                                    </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="start-screen-footer-icon-film.png" translatesAutoresizingMaskIntoConstraints="NO" id="wxl-ZV-pkY">
-                                        <rect key="frame" x="268" y="11" width="37" height="30"/>
-                                    </imageView>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -379,7 +362,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Ab-ws-vcF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1022" y="145"/>
+            <point key="canvasLocation" x="702" y="937"/>
         </scene>
         <!--Video List View Controller-->
         <scene sceneID="GBz-s2-n4f">
@@ -408,24 +391,6 @@
                                 <color key="textColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WCa-vn-oEh">
-                                <rect key="frame" x="0.0" y="518" width="320" height="51"/>
-                                <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="start-screen-footer-bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="sy0-DM-8Zb">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="51"/>
-                                    </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="footer-ping-monkey-icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="Di7-Kf-bjT">
-                                        <rect key="frame" x="16" y="11" width="48" height="29"/>
-                                    </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="start-screen-footer-icon-video.png" translatesAutoresizingMaskIntoConstraints="NO" id="o0x-3g-rGh">
-                                        <rect key="frame" x="131" y="13" width="59" height="27"/>
-                                    </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="start-screen-footer-icon-film.png" translatesAutoresizingMaskIntoConstraints="NO" id="LSj-8F-Odd">
-                                        <rect key="frame" x="268" y="11" width="37" height="30"/>
-                                    </imageView>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                            </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uvK-2W-6db">
                                 <rect key="frame" x="0.0" y="125" width="320" height="315"/>
                                 <subviews>
@@ -614,7 +579,7 @@
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6EZ-6b-YjC">
                                 <rect key="frame" x="0.0" y="446" width="320" height="72"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
                                 <state key="normal" title="Merge">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -666,121 +631,85 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fas-s2-y1l" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1408" y="147"/>
+            <point key="canvasLocation" x="1228" y="937"/>
         </scene>
-        <!--Custome Video Play View Controller-->
-        <scene sceneID="Wl1-wt-06W">
-            <objects>
-                <viewController storyboardIdentifier="CustomeVideoPlayViewController" id="zsk-nL-fNV" customClass="CustomeVideoPlayViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Pab-cT-x5y"/>
-                        <viewControllerLayoutGuide type="bottom" id="cOk-Gf-zGn"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="A1N-Id-3ts">
-                        <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eMO-yy-KDo">
-                                <rect key="frame" x="0.0" y="290" width="568" height="30"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <state key="normal" title="Close">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="closeButtonPressed:" destination="zsk-nL-fNV" eventType="touchUpInside" id="IFT-3h-d46"/>
-                                </connections>
-                            </button>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vJ2-kB-Ouc">
-                                <rect key="frame" x="0.0" y="0.0" width="568" height="290"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
-                    <connections>
-                        <outlet property="closeButton" destination="eMO-yy-KDo" id="mej-Qe-0YP"/>
-                        <outlet property="videoToPlayView" destination="vJ2-kB-Ouc" id="Y2I-gG-KAN"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="MuM-Zv-DGM" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1935" y="147"/>
-        </scene>
-        <!--Video Preview View Controller-->
+        <!--Recorder View Controller-->
         <scene sceneID="F19-MT-6Ez">
             <objects>
-                <viewController storyboardIdentifier="VideoPreviewViewController" id="fmM-A9-x20" customClass="VideoPreviewViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="VideoPreviewViewController" id="fmM-A9-x20" customClass="SCRecorderViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="cqk-Ih-UIX"/>
                         <viewControllerLayoutGuide type="bottom" id="zz7-rz-YXu"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="hX8-9V-MiG">
-                        <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6EQ-Za-41c">
-                                <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UJK-X1-2PH">
-                                        <rect key="frame" x="470" y="275" width="78" height="37"/>
-                                        <state key="normal" title="Save">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="saveVideoButtonPressed:" destination="fmM-A9-x20" eventType="touchUpInside" id="jim-TX-9l8"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FBP-K7-18g">
-                                        <rect key="frame" x="20" y="275" width="78" height="37"/>
-                                        <state key="normal" title="Cancel">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="cnacelButtonPressed:" destination="fmM-A9-x20" eventType="touchUpInside" id="SjY-MY-ge3"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HcW-yf-hCP">
-                                        <rect key="frame" x="263" y="0.0" width="43" height="42"/>
-                                        <state key="normal" image="CameraMode.png">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="frontCamaraButtonPressed:" destination="fmM-A9-x20" eventType="touchUpInside" id="A9q-2x-2Eo"/>
-                                        </connections>
-                                    </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="00:00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XrN-To-JaA">
-                                        <rect key="frame" x="8" y="8" width="96" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GaD-Z3-Soh">
-                                        <rect key="frame" x="235" y="262" width="99" height="58"/>
-                                        <state key="normal" image="Cam.png">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="startStopRecordingButtonPressed:" destination="fmM-A9-x20" eventType="touchUpInside" id="PCJ-HG-WE4"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
+                                <rect key="frame" x="0.0" y="110" width="320" height="320"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UJK-X1-2PH">
+                                <rect key="frame" x="240" y="510" width="70" height="40"/>
+                                <state key="normal" title="Save">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HcW-yf-hCP">
+                                <rect key="frame" x="263" y="10" width="43" height="42"/>
+                                <state key="normal" image="CameraMode.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FBP-K7-18g">
+                                <rect key="frame" x="10" y="510" width="70" height="40"/>
+                                <state key="normal" title="Cancel">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="00:00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XrN-To-JaA">
+                                <rect key="frame" x="8" y="18" width="96" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GaD-Z3-Soh" userLabel="start">
+                                <rect key="frame" x="130" y="505" width="70" height="50"/>
+                                <state key="normal" image="Cam.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="peD-7A-wkz" userLabel="push">
+                                <rect key="frame" x="130" y="505" width="70" height="50"/>
+                                <state key="normal" image="Cam.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eGB-xg-rV4">
+                                <rect key="frame" x="454" y="12" width="46" height="30"/>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <connections>
-                        <outlet property="cameraModeButton" destination="HcW-yf-hCP" id="opT-MP-cnj"/>
-                        <outlet property="previewView" destination="6EQ-Za-41c" id="Wec-11-pmf"/>
-                        <outlet property="startButton" destination="GaD-Z3-Soh" id="Kzg-Uf-N3y"/>
-                        <outlet property="timerLabel" destination="XrN-To-JaA" id="eYf-F9-1dB"/>
+                        <outlet property="cancelButton" destination="FBP-K7-18g" id="bO4-kD-74d"/>
+                        <outlet property="ghostModeButton" destination="eGB-xg-rV4" id="tKN-HI-b7a"/>
+                        <outlet property="pauseRecordButton" destination="peD-7A-wkz" id="dip-QQ-SOO"/>
+                        <outlet property="previewView" destination="6EQ-Za-41c" id="wEy-9e-PYC"/>
+                        <outlet property="reverseCamera" destination="HcW-yf-hCP" id="pRe-GF-2t4"/>
+                        <outlet property="saveButton" destination="UJK-X1-2PH" id="lMc-Xf-fJK"/>
+                        <outlet property="startRecordButtom" destination="GaD-Z3-Soh" id="5aS-Wc-9nC"/>
+                        <outlet property="timeRecordedLabel" destination="XrN-To-JaA" id="8Uf-R9-fCj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gc5-5p-sU8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1408" y="831"/>
+            <point key="canvasLocation" x="1228" y="142"/>
         </scene>
         <!--Custom Orientation Navigation Controller-->
         <scene sceneID="Gd4-AR-CF5">
@@ -799,20 +728,365 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CAF-mP-KwV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-777" y="130"/>
+            <point key="canvasLocation" x="-781" y="147"/>
+        </scene>
+        <!--Merge Videos View Controller-->
+        <scene sceneID="DqD-3I-C4M">
+            <objects>
+                <viewController storyboardIdentifier="MergeVideosViewController" id="14W-qH-SPe" customClass="MergeVideosViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="w9o-wf-h10"/>
+                        <viewControllerLayoutGuide type="bottom" id="Dbm-Gw-7Ni"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="caJ-9W-8O8">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="luk-iphone-final-merged-videos-main-bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="9el-Ue-GVI">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="merged-videos-logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="751-p5-kdj">
+                                <rect key="frame" x="10" y="10" width="168" height="40"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="merged-videos-pic.png" translatesAutoresizingMaskIntoConstraints="NO" id="vaI-IX-TFa">
+                                <rect key="frame" x="0.0" y="61" width="320" height="320"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="N9N-VO-AfM">
+                                <rect key="frame" x="0.0" y="380" width="320" height="54"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="merged-videos-pic-description-bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="ArA-Pa-gfB">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="54"/>
+                                    </imageView>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Happy Birthday " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SCH-3r-NLp">
+                                        <rect key="frame" x="10" y="8" width="300" height="20"/>
+                                        <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="20"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Markus" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oYL-DH-pvv">
+                                        <rect key="frame" x="10" y="30" width="300" height="20"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <color key="textColor" red="0.086274509799999996" green="0.086274509799999996" blue="0.086274509799999996" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Tp-Ny-Pbv">
+                                <rect key="frame" x="0.0" y="460" width="320" height="50"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                <state key="normal" title="Send to your lokies">
+                                    <color key="titleColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="verfication-bottom-line.png" translatesAutoresizingMaskIntoConstraints="NO" id="gaR-Cq-EQL">
+                                <rect key="frame" x="0.0" y="460" width="320" height="1"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JTE-ol-7JM">
+                                <rect key="frame" x="108" y="162" width="119" height="167"/>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="PlayVideoButtonAction:" destination="14W-qH-SPe" eventType="touchUpInside" id="755-Cz-ka6"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="mergeVideoImg" destination="vaI-IX-TFa" id="rDI-mt-e2a"/>
+                        <outlet property="userNameLBL" destination="oYL-DH-pvv" id="oEq-za-3i2"/>
+                        <outlet property="videoTitleLBL" destination="SCH-3r-NLp" id="eSH-TR-ePg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9BC-eK-Ikf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1768" y="937"/>
+        </scene>
+        <!--Sent Videos View Controller-->
+        <scene sceneID="OBd-Se-Ruf">
+            <objects>
+                <viewController storyboardIdentifier="SentVideosViewController" id="mkT-9U-X0P" customClass="SentVideosViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Kx6-OK-erJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="XpW-ke-r2X"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="X1V-CR-PPQ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="luk-iphone-final-terms&amp;condition-mainbg.png" translatesAutoresizingMaskIntoConstraints="NO" id="BZ2-4G-4CD">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="lukes-sent-logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="iCd-nc-bSi">
+                                <rect key="frame" x="10" y="10" width="266" height="40"/>
+                            </imageView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" bounces="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="52" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="K8t-B3-V5r">
+                                <rect key="frame" x="0.0" y="66" width="320" height="380"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" restorationIdentifier="Cell" selectionStyle="none" indentationWidth="10" reuseIdentifier="Cell" id="VGM-0n-8cX" customClass="SentVideoTableViewCell">
+                                        <rect key="frame" x="0.0" y="22" width="320" height="52"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VGM-0n-8cX" id="6AY-mK-HnU">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="52"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="pic-background.png" translatesAutoresizingMaskIntoConstraints="NO" id="HnA-Zd-ZCF">
+                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="52"/>
+                                                </imageView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="luk-iphone-final-lukes-sent-list-pic-dummy.png" translatesAutoresizingMaskIntoConstraints="NO" id="3bt-sU-ShK">
+                                                    <rect key="frame" x="0.0" y="0.0" width="52" height="51"/>
+                                                </imageView>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OZU-3v-yFE">
+                                                    <rect key="frame" x="60" y="8" width="150" height="18"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.1960784314" green="0.1960784314" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bhu-2G-OLl">
+                                                    <rect key="frame" x="60" y="29" width="150" height="12"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <color key="textColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="afo-IH-D2K">
+                                                    <rect key="frame" x="260" y="27" width="50" height="12"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <color key="textColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="si4-pt-Sx4">
+                                                    <rect key="frame" x="240" y="25" width="15" height="15"/>
+                                                </imageView>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="userImageViewObj" destination="3bt-sU-ShK" id="QUi-CW-bVU"/>
+                                            <outlet property="userNameLBLObj" destination="OZU-3v-yFE" id="g9n-ae-pKG"/>
+                                            <outlet property="videoTimeLBLObj" destination="afo-IH-D2K" id="JSR-HU-t5l"/>
+                                            <outlet property="videoTitleLBLObj" destination="Bhu-2G-OLl" id="jDa-Bd-HNf"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="mkT-9U-X0P" id="EtE-Dm-eEj"/>
+                                    <outlet property="delegate" destination="mkT-9U-X0P" id="yBK-fj-AVf"/>
+                                </connections>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ify-7l-ma9">
+                                <rect key="frame" x="0.0" y="446" width="320" height="72"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                <state key="normal" title="Back">
+                                    <color key="titleColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="kCI-zf-iOz"/>
+                    <connections>
+                        <outlet property="sentTableViewObj" destination="K8t-B3-V5r" id="FPy-q9-tKe"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Lyg-OO-OYe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="702" y="1657"/>
+        </scene>
+        <!--Share Videos View Controller-->
+        <scene sceneID="D6y-WE-iXP">
+            <objects>
+                <viewController storyboardIdentifier="ShareVideosViewController" id="2Ia-Mn-sBX" customClass="ShareVideosViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="722-9C-dLk"/>
+                        <viewControllerLayoutGuide type="bottom" id="cxs-6C-fYQ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="47G-ww-rEL">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="luk-iphone-final-merged-videos-main-bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="4dp-3W-kqr">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="terms-logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="lYM-jN-Jhj">
+                                <rect key="frame" x="10" y="10" width="126" height="40"/>
+                            </imageView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" bounces="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="181" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="jOP-g0-tpG">
+                                <rect key="frame" x="0.0" y="66" width="320" height="453"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" restorationIdentifier="Cell" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="yov-mb-UlA" customClass="ShareVideoTableViewCell">
+                                        <rect key="frame" x="0.0" y="1" width="320" height="181"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="yov-mb-UlA" id="SYa-yh-95l">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="181"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="share-videos-1st-pic.png" translatesAutoresizingMaskIntoConstraints="NO" id="DDj-OR-lBX">
+                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="180"/>
+                                                </imageView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="share-videos-pic-descripiton-shadow.png" translatesAutoresizingMaskIntoConstraints="NO" id="tNV-cf-Gyg">
+                                                    <rect key="frame" x="0.0" y="116" width="320" height="65"/>
+                                                </imageView>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="I love you so much dear" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d4M-xv-mYd">
+                                                    <rect key="frame" x="10" y="130" width="300" height="22"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Markus" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GMf-tK-Cbj">
+                                                    <rect key="frame" x="10" y="152" width="300" height="20"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x49-42-63Q">
+                                                    <rect key="frame" x="258" y="12" width="52" height="25"/>
+                                                    <state key="normal" backgroundImage="share-videos-back-icon.png">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5De-4a-76U">
+                                                    <rect key="frame" x="265" y="54" width="31" height="37"/>
+                                                    <state key="normal" backgroundImage="share-icon.png">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                </button>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="2Ia-Mn-sBX" id="t2O-xV-eFZ"/>
+                                    <outlet property="delegate" destination="2Ia-Mn-sBX" id="5s5-8l-c2g"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="vey-SZ-BTb"/>
+                    <connections>
+                        <outlet property="shareVideosTableViewObj" destination="jOP-g0-tpG" id="oK1-VM-6mx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3J6-Zv-mB4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="702" y="2361"/>
+        </scene>
+        <!--Tab Bar View Controller-->
+        <scene sceneID="9kn-tq-cEk">
+            <objects>
+                <tabBarController definesPresentationContext="YES" id="4Z4-ez-jN2" customClass="TabBarViewController" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="gvd-0p-CMq"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="stI-a7-gzy">
+                        <rect key="frame" x="129" y="330" width="163" height="49"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="Q3Q-Sf-QtQ" kind="relationship" relationship="viewControllers" id="qkp-zK-4i0"/>
+                        <segue destination="x0i-Bc-Y0Y" kind="relationship" relationship="viewControllers" id="OZn-zi-FM1"/>
+                        <segue destination="gmB-g1-CJm" kind="relationship" relationship="viewControllers" id="WwO-ts-dBp"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Esq-7j-DHk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-699" y="1599"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="1aw-xc-2Wn">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="x0i-Bc-Y0Y" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" tag="1" title="" id="TsB-Uc-pWV">
+                        <inset key="imageInsets" minX="0.0" minY="6" maxX="0.0" maxY="-6"/>
+                    </tabBarItem>
+                    <toolbarItems/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="85g-zP-fqa">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Ft1-Df-tqc" kind="relationship" relationship="rootViewController" id="adB-f0-lJV"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="z5d-cI-zAr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="197" y="959"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="okc-Ly-YFm">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="Q3Q-Sf-QtQ" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" id="GRX-5Z-07Y">
+                        <inset key="imageInsets" minX="-16" minY="6" maxX="16" maxY="-6"/>
+                    </tabBarItem>
+                    <toolbarItems/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="m0A-1l-vKl">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="mkT-9U-X0P" kind="relationship" relationship="rootViewController" id="iod-2p-nbN"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oz8-8b-ajv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="197" y="1651"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="cqe-wJ-xc7">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="gmB-g1-CJm" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" tag="2" title="" id="XdW-kj-oEC">
+                        <inset key="imageInsets" minX="16" minY="6" maxX="-16" maxY="-6"/>
+                    </tabBarItem>
+                    <toolbarItems/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="XxZ-Eo-wex">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="2Ia-Mn-sBX" kind="relationship" relationship="rootViewController" id="GbA-Lt-GJq"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5uP-NF-if9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="204" y="2363"/>
         </scene>
     </scenes>
     <resources>
         <image name="Cam.png" width="200" height="120"/>
         <image name="CameraMode.png" width="65" height="70"/>
         <image name="crowd-recording.png" width="283" height="127"/>
-        <image name="footer-ping-monkey-icon.png" width="85" height="63"/>
+        <image name="luk-iphone-final-lukes-sent-list-pic-dummy.png" width="105" height="102"/>
+        <image name="luk-iphone-final-merged-videos-main-bg.png" width="640" height="1136"/>
         <image name="luk-iphone-final-terms&amp;condition-mainbg.png" width="640" height="1136"/>
         <image name="luk-iphone-final-textenter-mainbg.png" width="640" height="1136"/>
         <image name="luk-logo-1.png" width="149" height="63"/>
         <image name="luk-main1-bg.png" width="320" height="568"/>
+        <image name="lukes-sent-logo.png" width="533" height="80"/>
+        <image name="merged-videos-logo.png" width="337" height="80"/>
+        <image name="merged-videos-pic-description-bg.png" width="640" height="108"/>
+        <image name="merged-videos-pic.png" width="640" height="431"/>
+        <image name="pic-background.png" width="640" height="103"/>
         <image name="pic-between-line.png" width="1" height="112"/>
         <image name="pic-you.png" width="159" height="112"/>
+        <image name="share-icon.png" width="62" height="74"/>
+        <image name="share-videos-1st-pic.png" width="640" height="362"/>
+        <image name="share-videos-back-icon.png" width="105" height="51"/>
+        <image name="share-videos-pic-descripiton-shadow.png" width="640" height="133"/>
         <image name="signup-background.png" width="640" height="1136"/>
         <image name="signup-bottom-line.png" width="640" height="1"/>
         <image name="signup-country-code-bg.png" width="132" height="122"/>
@@ -820,10 +1094,6 @@
         <image name="signup-logo.png" width="254" height="80"/>
         <image name="signup-terms-checkbox-normal-view.png" width="65" height="65"/>
         <image name="start-screen-button.png" width="640" height="74"/>
-        <image name="start-screen-footer-bg.png" width="640" height="103"/>
-        <image name="start-screen-footer-icon-film.png" width="80" height="64"/>
-        <image name="start-screen-footer-icon-monkey.png" width="97" height="62"/>
-        <image name="start-screen-footer-icon-video.png" width="122" height="58"/>
         <image name="start-screen-logo.png" width="220" height="248"/>
         <image name="start-screen-main-bg.png" width="640" height="1136"/>
         <image name="start-screen-text-field.png" width="640" height="84"/>
@@ -842,6 +1112,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="kz9-Bu-m6X"/>
         <segue reference="xHA-E1-qlW"/>
     </inferredMetricsTieBreakers>
 </document>

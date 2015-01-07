@@ -18,9 +18,9 @@
     // Override point for customization after application launch.
     [self checkAndCreateDatabase];
 
-    // Resgister for push Notfn
-    [[UIApplication sharedApplication] registerForRemoteNotificationTypes:
-     (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
+//    // Resgister for push Notfn
+//    [[UIApplication sharedApplication] registerForRemoteNotificationTypes:
+//     (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
     
     [[UIApplication sharedApplication] setStatusBarHidden:YES
                                             withAnimation:UIStatusBarAnimationFade];
@@ -79,34 +79,34 @@
     // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
 }
 
-- (void)applicationDidEnterBackground:(UIApplication *)application
-{
-    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
-    // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-    
-    __block UIBackgroundTaskIdentifier identifier = [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:^{
-        if (identifier != UIBackgroundTaskInvalid) {
-            [[UIApplication sharedApplication] endBackgroundTask:identifier];
-            identifier = UIBackgroundTaskInvalid;
-        }
-    }];
-    
-    dispatch_async(dispatch_get_main_queue(), ^{
-        for (int i=0; i < 20; i++) {
-//            NSLog(@"%d", i);
-            sleep(1);
-        }
-        if (identifier != UIBackgroundTaskInvalid) {
-            [[UIApplication sharedApplication] endBackgroundTask:identifier];
-            identifier = UIBackgroundTaskInvalid;
-        }
-    });
-    
-    
-    if ([[UIApplication sharedApplication] respondsToSelector:@selector(beginReceivingRemoteControlEvents)]){
-        [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
-    }
-}
+//- (void)applicationDidEnterBackground:(UIApplication *)application
+//{
+//    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
+//    // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+//    
+//    __block UIBackgroundTaskIdentifier identifier = [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:^{
+//        if (identifier != UIBackgroundTaskInvalid) {
+//            [[UIApplication sharedApplication] endBackgroundTask:identifier];
+//            identifier = UIBackgroundTaskInvalid;
+//        }
+//    }];
+//    
+//    dispatch_async(dispatch_get_main_queue(), ^{
+//        for (int i=0; i < 20; i++) {
+////            NSLog(@"%d", i);
+//            sleep(1);
+//        }
+//        if (identifier != UIBackgroundTaskInvalid) {
+//            [[UIApplication sharedApplication] endBackgroundTask:identifier];
+//            identifier = UIBackgroundTaskInvalid;
+//        }
+//    });
+//    
+//    
+//    if ([[UIApplication sharedApplication] respondsToSelector:@selector(beginReceivingRemoteControlEvents)]){
+//        [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
+//    }
+//}
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
@@ -139,66 +139,66 @@
 }
 
 
-- (void)application:(UIApplication*)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData*)deviceToken
-{
-    NSLog(@"didRegisterForRemoteNotificationsWithDeviceToken *******");
-    NSLog(@"My token is: %@", deviceToken);
-    
-    NSString *dToken = [[deviceToken description] stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]];
-    dToken = [dToken stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-    dToken = [dToken stringByReplacingOccurrencesOfString:@" " withString:@""];
-    NSLog(@"STR: %@",dToken);
-    // [self sendDeviceToken:dToken];
-    [[NSUserDefaults standardUserDefaults] setValue:dToken forKey:kDEVICETOKEN];
-    DatabaseMethods *dbObj = [[DatabaseMethods alloc] init];
-    NSString *strQuery = [NSString stringWithFormat:@"UPDATE tbl_user SET user_devicetoken='%@'",dToken];
-    [dbObj updateDatabase:[strQuery UTF8String]];
-}
+//- (void)application:(UIApplication*)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData*)deviceToken
+//{
+//    NSLog(@"didRegisterForRemoteNotificationsWithDeviceToken *******");
+//    NSLog(@"My token is: %@", deviceToken);
+//    
+//    NSString *dToken = [[deviceToken description] stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]];
+//    dToken = [dToken stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+//    dToken = [dToken stringByReplacingOccurrencesOfString:@" " withString:@""];
+//    NSLog(@"STR: %@",dToken);
+//    // [self sendDeviceToken:dToken];
+//    [[NSUserDefaults standardUserDefaults] setValue:dToken forKey:kDEVICETOKEN];
+//    DatabaseMethods *dbObj = [[DatabaseMethods alloc] init];
+//    NSString *strQuery = [NSString stringWithFormat:@"UPDATE tbl_user SET user_devicetoken='%@'",dToken];
+//    [dbObj updateDatabase:[strQuery UTF8String]];
+//}
 
-- (void)application:(UIApplication*)application didFailToRegisterForRemoteNotificationsWithError:(NSError*)error
-{
-    NSLog(@"Error in registration. Error: %@", error);
-}
+//- (void)application:(UIApplication*)application didFailToRegisterForRemoteNotificationsWithError:(NSError*)error
+//{
+//    NSLog(@"Error in registration. Error: %@", error);
+//}
 
 
-- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
-    NSLog(@"didReceiveRemoteNotification *************");
+//- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+//    NSLog(@"didReceiveRemoteNotification *************");
     //application.applicationIconBadgeNumber = 0;
-    NSInteger count = [UIApplication sharedApplication].applicationIconBadgeNumber;
-    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:count+1];
-    NSLog(@"userInfo: %@", userInfo);
+//    NSInteger count = [UIApplication sharedApplication].applicationIconBadgeNumber;
+//    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:count+1];
+//    NSLog(@"userInfo: %@", userInfo);
+//    
+//    Chat *chatObj = [Chat new];
+//    chatObj.fromPhone = [[userInfo valueForKey:kNotificationFROM] longLongValue];
+//    chatObj.toPhone = [[[NSUserDefaults standardUserDefaults] objectForKey:kMYPhoneNumber] longLongValue];
+//    chatObj.contentType = 1;
+//    chatObj.chatTime = [CommonMethods convertDatetoSting:[NSDate date]];
+//    chatObj.chatVideo = [userInfo valueForKey:kNotificationFILEPATH];
+//    
+//    DatabaseMethods *dbObj = [[DatabaseMethods alloc] init];
+//    [dbObj insertChatInfoToDB:chatObj];
     
-    Chat *chatObj = [Chat new];
-    chatObj.fromPhone = [[userInfo valueForKey:kNotificationFROM] longLongValue];
-    chatObj.toPhone = [[[NSUserDefaults standardUserDefaults] objectForKey:kMYPhoneNumber] longLongValue];
-    chatObj.contentType = 1;
-    chatObj.chatTime = [CommonMethods convertDatetoSting:[NSDate date]];
-    chatObj.chatVideo = [userInfo valueForKey:kNotificationFILEPATH];
-    
-    DatabaseMethods *dbObj = [[DatabaseMethods alloc] init];
-    [dbObj insertChatInfoToDB:chatObj];
-    
-}
+//}
 
-- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult result))completionHandler {
+//- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult result))completionHandler {
+
+//    NSLog(@"didReceiveRemoteNotification fetchCompletionHandler **********************");
+//    //application.applicationIconBadgeNumber = 0;
+//    NSInteger count = [UIApplication sharedApplication].applicationIconBadgeNumber;
+//    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:count+1];
+//    NSLog(@"userInfo: %@", userInfo);
+//    
+//    NSDictionary *apsDict = [userInfo valueForKey:kNotificationAPS];
+//    Chat *chatObj = [Chat new];
+//    chatObj.fromPhone = [[apsDict valueForKey:kNotificationFROM] longLongValue];
+//    chatObj.toPhone = [[[NSUserDefaults standardUserDefaults] objectForKey:kMYPhoneNumber] longLongValue];
+//    chatObj.contentType = 1;
+//    chatObj.chatTime = [CommonMethods convertDatetoSting:[NSDate date]];
+//    chatObj.chatVideo = [NSString stringWithFormat:@"%@%@",kVideoDownloadURL,[apsDict valueForKey:kNotificationFILEPATH]];
+//    
+//    DatabaseMethods *dbObj = [[DatabaseMethods alloc] init];
+//    [dbObj insertChatInfoToDB:chatObj];
     
-    NSLog(@"didReceiveRemoteNotification fetchCompletionHandler **********************");
-    //application.applicationIconBadgeNumber = 0;
-    NSInteger count = [UIApplication sharedApplication].applicationIconBadgeNumber;
-    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:count+1];
-    NSLog(@"userInfo: %@", userInfo);
-    
-    NSDictionary *apsDict = [userInfo valueForKey:kNotificationAPS];
-    Chat *chatObj = [Chat new];
-    chatObj.fromPhone = [[apsDict valueForKey:kNotificationFROM] longLongValue];
-    chatObj.toPhone = [[[NSUserDefaults standardUserDefaults] objectForKey:kMYPhoneNumber] longLongValue];
-    chatObj.contentType = 1;
-    chatObj.chatTime = [CommonMethods convertDatetoSting:[NSDate date]];
-    chatObj.chatVideo = [NSString stringWithFormat:@"%@%@",kVideoDownloadURL,[apsDict valueForKey:kNotificationFILEPATH]];
-    
-    DatabaseMethods *dbObj = [[DatabaseMethods alloc] init];
-    [dbObj insertChatInfoToDB:chatObj];
-    
-}
+//}
 
 @end

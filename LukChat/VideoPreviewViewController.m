@@ -154,7 +154,7 @@
     }
     else{
         
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"LUK" message:@"Please Record an Video" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"LUK" message:@"Please Record an Video" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
         [alert show];
     }
 }

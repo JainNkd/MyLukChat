@@ -11,6 +11,10 @@
 #import <MediaPlayer/MediaPlayer.h>
 #import <objc/message.h>
 #import "CameraEngine.h"
+#import "MergeVideosViewController.h"
+#import "SCRecorderViewController.h"
+#import "Constants.h"
+
 @interface VideoListViewController ()
 
 @end
@@ -56,32 +60,59 @@
     if ([[UIDevice currentDevice] respondsToSelector:@selector(setOrientation:)]) {
         objc_msgSend([UIDevice currentDevice], @selector(setOrientation:),    UIInterfaceOrientationPortrait);
     }
+    
     videoTitle =  [[NSUserDefaults standardUserDefaults] valueForKey:VIDEO_TITLE];
     
     NSMutableArray *titleWords = (NSMutableArray*)[videoTitle componentsSeparatedByString:@" "];
     if(titleWords.count>1)
         [titleWords removeObject:@""];
     
-    NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    NSString *path = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    
     
     for(int i=0 ;i<[titleWords count];i++)
     {
-        NSString *tempfile = [NSString stringWithFormat:@"%@/video%d.png", path, i];
+        NSString *filename = [[NSUserDefaults standardUserDefaults]valueForKey:[NSString stringWithFormat:@"VIDEO_%d_URL",i]];
+        
+        
+        NSString *tempfile = [NSString stringWithFormat:@"%@/%@", path, filename];
+        
+        
         UIButton *buttonObj = [videoTitleButtonsArr objectAtIndex:i];
         UILabel *titleLBLObj = [videoTitleLBLArr objectAtIndex:i];
-        
+        NSLog(@"tempfile....%@",tempfile);
         UIImage *temp = [[UIImage alloc] initWithContentsOfFile:tempfile];
         if (temp) {
             [buttonObj setImage:temp forState:UIControlStateNormal];
             [titleLBLObj setTextColor:[UIColor yellowColor]];
         }
         
-        
+        if ([[NSFileManager defaultManager] fileExistsAtPath:tempfile])
+        {
+            UIImage *image = [self generateThumbImage:tempfile];
+            
+            if(image)
+                [buttonObj setImage:image forState:UIControlStateNormal];
+            [titleLBLObj setTextColor:[UIColor yellowColor]];
+        }
     }
     
 }
 
-
+-(UIImage *)generateThumbImage : (NSString *)filepath
+{
+    NSURL *url = [NSURL fileURLWithPath:filepath];
+    
+    AVAsset *asset = [AVAsset assetWithURL:url];
+    AVAssetImageGenerator *imageGenerator = [[AVAssetImageGenerator alloc]initWithAsset:asset];
+    CMTime time = [asset duration];
+    time.value = 1000;
+    CGImageRef imageRef = [imageGenerator copyCGImageAtTime:time actualTime:NULL error:NULL];
+    UIImage *thumbnail = [UIImage imageWithCGImage:imageRef];
+    CGImageRelease(imageRef);  // CGImageRef won't be released by ARC
+    
+    return thumbnail;
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -95,7 +126,7 @@
     
     NSMutableArray *titleWords = (NSMutableArray*)[videoTitle componentsSeparatedByString:@" "];
     if(titleWords.count>1)
-    [titleWords removeObject:@""];
+        [titleWords removeObject:@""];
     
     self.titleHeaderLBL.text = videoTitle;
     
@@ -151,6 +182,9 @@
             seperationLine.hidden = NO;
             
             titleLBLObj.text = [titleWords objectAtIndex:i];
+            
+            [[NSUserDefaults standardUserDefaults]setValue:@"NO" forKey:[NSString stringWithFormat:@"VIDEO_%d_URL",i]];
+            NSLog(@"NO");
         }
         
         else
@@ -166,15 +200,15 @@
     }
 }
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+ {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 - (IBAction)videoRecordButtonPressed:(UIButton *)sender {
     UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Option" delegate:self cancelButtonTitle:CANCEL_BUTTON destructiveButtonTitle:nil otherButtonTitles:@"Record", @"Play", nil];
@@ -185,28 +219,31 @@
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     
-    NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-    fileURL = [NSString stringWithFormat:@"%@/video%ld.mov", path,(long)actionSheet.tag];
+    NSString *path = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    
+    NSString *filename = [[NSUserDefaults standardUserDefaults]valueForKey:[NSString stringWithFormat:@"VIDEO_%d_URL",(int)actionSheet.tag]];
+    
+    
+    fileURL = [NSString stringWithFormat:@"%@/%@", path,filename];
     
     if(buttonIndex==0)
     {
-        [[CameraEngine engine] shutdown];
-
-        VideoPreviewViewController *previewController = [self.storyboard instantiateViewControllerWithIdentifier:@"VideoPreviewViewController"];
+        SCRecorderViewController *previewController = [self.storyboard instantiateViewControllerWithIdentifier:@"VideoPreviewViewController"];
+        
         [previewController setIndexOfVideo:(int)actionSheet.tag];
-        previewController.fileUrl = fileURL;
         UINavigationController *navBar=[[CustomOrientationNavigationController alloc] initWithRootViewController:previewController];
         
         [self.navigationController presentViewController:navBar animated:NO completion:nil];
     }
     else if(buttonIndex == 1)
     {
+        NSLog(@"fileURL.....%@",fileURL);
         if ([[NSFileManager defaultManager] fileExistsAtPath:fileURL]) {
             [self playMovie:fileURL];
         }
         
         
-//        [self play:actionSheet.tag];
+        //        [self play:actionSheet.tag];
     }
     
     [actionSheet dismissWithClickedButtonIndex:buttonIndex animated:YES];
@@ -230,43 +267,101 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self name:MPMoviePlayerPlaybackDidFinishNotification object:mPlayer];
     [mPlayer stop];
     
-//    [CommonMethods showAlertWithTitle:@"Send to Friend" message:@"" cancelBtnTitle:@"Cancel" otherBtnTitle:@"Send" delegate:self tag:101];
+    //    [CommonMethods showAlertWithTitle:@"Send to Friend" message:@"" cancelBtnTitle:@"Cancel" otherBtnTitle:@"Send" delegate:self tag:101];
 }
 
 
-//Play signle recorded videos
--(void)play:(NSInteger)tag {
-    
-    NSLog(@"Play. - %ld", (long)tag);
-    index = tag;
-    NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-    fileURL = [NSString stringWithFormat:@"%@/video%ld.mov", path, (long)tag];
-    
-    if (![[NSFileManager defaultManager] fileExistsAtPath:fileURL]) {
-        NSLog(@"fileURL : %@", fileURL);
-        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Alert" message:@"Video file not available." delegate:nil cancelButtonTitle:@"Accept" otherButtonTitles: nil];
-        [alert show];
-    }
-    else{
-        
-        CustomeVideoPlayViewController *customeVideoPlayObj = [self.storyboard instantiateViewControllerWithIdentifier:@"CustomeVideoPlayViewController"];
-        [customeVideoPlayObj setVideoUrl:fileURL];
-        
-        UINavigationController *navBar=[[CustomOrientationNavigationController alloc] initWithRootViewController:customeVideoPlayObj];
-        
-        [self.navigationController presentViewController:navBar animated:NO completion:nil];
-    }
-}
 
 
 -(IBAction)stopPlaying:(id)sender {
     if (player) {
         // stop the player and close the view
         player.rate = 0;
-//        [videoPreviewToPlay setHidden:YES];
+        //        [videoPreviewToPlay setHidden:YES];
     }
 }
 
 - (IBAction)videoMergeButtonPressed:(UIButton *)sender {
+    
+    NSString *path = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    NSMutableArray *videofiles = [[NSMutableArray alloc] init];
+    
+    videoTitle =  [[NSUserDefaults standardUserDefaults] valueForKey:VIDEO_TITLE];
+    
+    NSMutableArray *titleWords = (NSMutableArray*)[videoTitle componentsSeparatedByString:@" "];
+    if(titleWords.count>1)
+        [titleWords removeObject:@""];
+    
+    for (int i=0; i < titleWords.count; i++) {
+        NSString *filename = [[NSUserDefaults standardUserDefaults]valueForKey:[NSString stringWithFormat:@"VIDEO_%d_URL",i]];
+        
+        filename = [NSString stringWithFormat:@"%@/%@", path, filename];
+        
+        if ([[NSFileManager defaultManager] fileExistsAtPath:filename]) {
+            [videofiles addObject:filename];
+            NSLog(@"filename : %@", filename);
+        }
+    }
+    
+    
+    if (!videofiles || [videofiles count] < 2) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"You need two recorded video clips to merge the videos." delegate:self cancelButtonTitle:nil otherButtonTitles:@"Ok", nil];
+        [alert show];
+        return;
+    }
+    
+    NSString *mergedFile = [NSString stringWithFormat:@"%@/mergedvideo.mov", path];
+    if ([[NSFileManager defaultManager] fileExistsAtPath:mergedFile]) {
+        [[NSFileManager defaultManager] removeItemAtPath:mergedFile error:nil];
+    }
+    
+    AVMutableComposition *composition = [AVMutableComposition composition];
+    AVMutableCompositionTrack *videoCompositionTrack = [composition addMutableTrackWithMediaType:AVMediaTypeVideo preferredTrackID:kCMPersistentTrackID_Invalid];
+    AVMutableCompositionTrack *audioCompositionTrack = [composition addMutableTrackWithMediaType:AVMediaTypeAudio preferredTrackID:kCMPersistentTrackID_Invalid];
+    CMTime nextVideoStartTime = kCMTimeZero;
+    
+    NSLog(@"Files : %@", videofiles);
+    
+    
+    for (int i=0; i < [videofiles count]; i++) {
+        NSURL *url = [NSURL fileURLWithPath:[videofiles objectAtIndex:i]];
+        AVURLAsset *videoAsset = [[AVURLAsset alloc] initWithURL:url options:nil];
+        CMTimeRange timeRange = CMTimeRangeMake(kCMTimeZero, [videoAsset duration]);
+        
+        AVAssetTrack *clipVideoTrack = [[videoAsset tracksWithMediaType:AVMediaTypeVideo] objectAtIndex:0];
+        [videoCompositionTrack insertTimeRange:CMTimeRangeMake(kCMTimeZero, [videoAsset duration]) ofTrack:clipVideoTrack atTime:nextVideoStartTime error:nil];
+        
+        if ([[videoAsset tracksWithMediaType:AVMediaTypeAudio] count] > 0) {
+            AVAssetTrack *clipAudioTrack = [[videoAsset tracksWithMediaType:AVMediaTypeAudio] objectAtIndex:0];
+            [audioCompositionTrack insertTimeRange:CMTimeRangeMake(kCMTimeZero, [videoAsset duration]) ofTrack:clipAudioTrack atTime:nextVideoStartTime error:nil];
+        }
+        
+        nextVideoStartTime = CMTimeAdd(nextVideoStartTime, timeRange.duration);
+    }
+    
+    NSURL *mergedVideoURL = [NSURL fileURLWithPath:mergedFile];
+    AVAssetExportSession *assetSession = [[AVAssetExportSession alloc] initWithAsset:composition presetName:AVAssetExportPresetHighestQuality];
+    assetSession.outputURL = mergedVideoURL;
+    assetSession.outputFileType = AVFileTypeQuickTimeMovie;
+    assetSession.shouldOptimizeForNetworkUse = YES;
+    [assetSession exportAsynchronouslyWithCompletionHandler:^{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self exportDidFinish:assetSession path:mergedFile];
+        });
+    }];
+}
+
+-(void)exportDidFinish:(AVAssetExportSession*)assetSession path:(NSString*)outputVideoPath {
+    NSURL *outputURL = assetSession.outputURL;
+    NSLog(@"merged video file path : %@", outputVideoPath);
+    UISaveVideoAtPathToSavedPhotosAlbum(outputVideoPath,nil,nil,nil);
+    NSData *videoData = [NSData dataWithContentsOfURL:outputURL];
+    [videoData writeToFile:outputVideoPath atomically:YES];
+    
+    [[NSUserDefaults standardUserDefaults] setValue:outputVideoPath forKey:kMyVideoToShare];
+    
+     MergeVideosViewController *mergeVC = [self.storyboard instantiateViewControllerWithIdentifier:@"MergeVideosViewController"];
+    
+    [self.navigationController pushViewController:mergeVC animated:YES];
 }
 @end

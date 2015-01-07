@@ -108,6 +108,7 @@
     [[NSUserDefaults standardUserDefaults] setValue:isSignedin forKey:@"user"];
     
     NSString *verifStatus = [[NSUserDefaults standardUserDefaults] valueForKey:kMY_VERIFICATION_CODE];
+//    number.text = verifStatus;
     if([number.text isEqualToString:verifStatus]){
         
         NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
@@ -190,7 +191,7 @@
 //        [self.navigationController pushViewController:controller animated:YES];
 //        // }
         
-         [self performSegueWithIdentifier:@"GetInput" sender:self];
+         [self performSegueWithIdentifier:@"TabBarView" sender:self];
         
         
     }
