@@ -7,12 +7,25 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Chat.h"
 
 @interface LukiesViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
 {
     NSString *cnCode;
+    long long int myPhoneNum;
+    UIAlertView *alert;
+    Chat* chatObj;
+    
+    BOOL isFiltered;
+    
+    NSArray *indexTitles,*tableSectionTitles;
+    
+    NSMutableDictionary* filteredTableData;
+    UISearchDisplayController *searchDisplayController;
 }
 
 @property (weak, nonatomic) IBOutlet UITableView *contactTableView;
+@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 
+- (IBAction)sendToLukiesButtonPressed:(UIButton *)sender;
 @end
