@@ -3,6 +3,7 @@
 #import "Chat.h"
 #import "Account.h"
 #import "Contact.h"
+#import "VideoDetail.h"
 
 
 @interface DatabaseMethods : NSObject
@@ -21,6 +22,7 @@
 -(NSMutableArray *)getChatHistoryForUser:(long long int)userPhone ;
 -(NSMutableArray *)getAllLukChatContacts;
 -(NSMutableArray *)getAllOtherContacts;
++(NSMutableArray *)getAllSentVideoContacts;
 
 -(void)insertAccountInfoToDB:(Account *)accountObj ;
 -(void)updateAccountInfoToDB:(Account *)accountObj;

@@ -16,9 +16,13 @@
 #define kShareVideoURL @"http://lukchat.com/api/share"
 #define kVideoDownloadURL @"http://lukchat.com/app/webroot/files/"
 
+// TEMP: test tag
+#define VIDEO_TITLE                      @"videoTitle"
+
 //API
 #define kAPIKey @"api_key"
 #define kAPISecret @"api_secret"
+
 // API Values
 #define kAPIKeyValue @"AiK58j67"
 #define kAPISecretValue @"a#9rJkmbOea90-"

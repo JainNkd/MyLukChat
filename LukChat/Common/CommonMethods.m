@@ -59,7 +59,8 @@
 +(NSString *)convertDatetoSting:(NSDate *)date
 {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+//    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    [dateFormatter setDateFormat:@"HH:mm a"];
     NSString *strDate = [dateFormatter stringFromDate:date];
     NSLog(@"date: %@", strDate);
     return strDate;

@@ -609,10 +609,12 @@
     if (!chatObj) {
         chatObj = [[Chat alloc] init];
     }
+    NSString *videoTitle =  [[NSUserDefaults standardUserDefaults] valueForKey:VIDEO_TITLE];
+    
     chatObj.fromPhone = myPhoneNum;
     chatObj.toPhone = [[[NSUserDefaults standardUserDefaults] valueForKey:kCurrentCHATUserPHONE] longLongValue];
     chatObj.contentType = 1;
-    chatObj.chatText = @"";
+    chatObj.chatText = videoTitle;
     chatObj.chatVideo = [video absoluteString];
     chatObj.chatTime = [CommonMethods convertDatetoSting:[NSDate date]];
     //    _chatObj.chatVideo = [NSString stringWithFormat:@"%@%@",kVideoDownloadURL,self.videoShareFileName];

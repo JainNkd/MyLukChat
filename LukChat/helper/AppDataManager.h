@@ -15,11 +15,6 @@
 #define OK_BUTTON                   @"OK"
 #define CANCEL_BUTTON               @"Cancel"
 
-// TEMP: test tag
-#define VIDEO_TITLE                      @"videoTitle"
-
-
-
 
 @interface AppDataManager : NSObject
 

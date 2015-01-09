@@ -10,9 +10,9 @@
 
 @interface SentVideosViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
 {
-    NSMutableArray *userDetailsArr;
+    NSMutableArray *videoDetailsArr;
 }
 
-@property(nonatomic,strong) NSMutableArray *userDetailsArr;
+@property(nonatomic,strong) NSMutableArray *videoDetailsArr;
 @property (weak, nonatomic) IBOutlet UITableView *sentTableViewObj;
 @end

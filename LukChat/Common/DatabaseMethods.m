@@ -400,6 +400,57 @@
     return contactArray;
 }
 
++(NSMutableArray *)getAllSentVideoContacts {
+    NSLog(@"getAllSentVideoContacts");
+    // Setup the database object
+    sqlite3 *database;
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString *databasePath=  [documentsDirectory stringByAppendingPathComponent:kDatabaseName];
+    
+    NSMutableArray *sentVideosArray = [[NSMutableArray alloc] init];
+    
+    // Open the database from the users filessytem
+    if(sqlite3_open([databasePath UTF8String], &database) == SQLITE_OK) {
+        // Setup the SQL Statement and compile it for faster access
+        NSString *quertyStr = @"SELECT t2.user_id,t1.to_phone,t1.from_phone,t2.user_fname,t2.user_lname,t1.chat_text, t1.chat_video, t1.chat_time FROM tbl_chats t1,tbl_contacts t2 where t1.to_phone = t2.user_phone ORDER BY t1.id ASC";
+        sqlite3_stmt *compiledStatement;
+        if(sqlite3_prepare_v2(database, [quertyStr UTF8String], -1, &compiledStatement, NULL) == SQLITE_OK) {
+            // Loop through the results and add them to the feeds array
+            while(sqlite3_step(compiledStatement) == SQLITE_ROW) {
+                // Read the data from the result row
+                VideoDetail *videoDetialObj = [VideoDetail new];
+                
+                videoDetialObj.toUserID = sqlite3_column_int(compiledStatement, 0);
+                videoDetialObj.toContact = sqlite3_column_int64(compiledStatement, 1);
+                videoDetialObj.fromContact = sqlite3_column_int64(compiledStatement, 2);
+                videoDetialObj.fname = [NSString stringWithFormat:@"%s",(const char*)sqlite3_column_text(compiledStatement, 3)];
+                videoDetialObj.lname = [NSString stringWithFormat:@"%s",(const char*)sqlite3_column_text(compiledStatement, 4)];
+                videoDetialObj.videoTitle = [NSString stringWithFormat:@"%s",(const char*)sqlite3_column_text(compiledStatement, 5)];
+                videoDetialObj.videoURL = [NSString stringWithFormat:@"%s",(const char*)sqlite3_column_text(compiledStatement, 6)];
+                videoDetialObj.videoTime = [NSString stringWithFormat:@"%s",(const char*)sqlite3_column_text(compiledStatement, 7)];
+                
+                if (!videoDetialObj.fname)
+                    videoDetialObj.fname = @"";
+                if (!videoDetialObj.lname)
+                    videoDetialObj.lname = @"";
+                if (!videoDetialObj.videoTitle)
+                    videoDetialObj.videoTitle = @"";
+                if (!videoDetialObj.videoURL)
+                    videoDetialObj.videoURL = @"";
+                if (!videoDetialObj.videoTime)
+                    videoDetialObj.videoTime = @"";
+                
+                [sentVideosArray addObject:videoDetialObj];
+            }
+        }
+        // Release the compiled statement from memory
+        sqlite3_finalize(compiledStatement);
+    }
+    sqlite3_close(database);
+    
+    return sentVideosArray;
+}
 #pragma mark - Insert
 
 

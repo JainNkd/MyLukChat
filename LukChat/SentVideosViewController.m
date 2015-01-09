@@ -8,13 +8,14 @@
 
 #import "SentVideosViewController.h"
 #import "SentVideoTableViewCell.h"
-#import "User.h"
+#import "VideoDetail.h"
+#import "DatabaseMethods.h"
 @interface SentVideosViewController ()
 
 @end
 
 @implementation SentVideosViewController
-@synthesize sentTableViewObj,userDetailsArr;
+@synthesize sentTableViewObj,videoDetailsArr;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -42,7 +43,8 @@
 {
     [super viewDidLoad];
     
-    userDetailsArr = [[NSMutableArray alloc]initWithArray:[[User alloc]userDetails]];
+//    userDetailsArr = [[NSMutableArray alloc]initWithArray:[[User alloc]userDetails]];
+    videoDetailsArr = [DatabaseMethods getAllSentVideoContacts];
     
     // Do any additional setup after loading the view.
 }
@@ -50,7 +52,7 @@
 //Tableview delegate methods
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [userDetailsArr count];
+    return [videoDetailsArr count];
 }
 
 -(NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index
@@ -62,17 +64,30 @@
 {
     static NSString *CellIdentifier = @"Cell";
     
-    User *userObj = [userDetailsArr objectAtIndex:indexPath.row];
+    VideoDetail *videoObj = [videoDetailsArr objectAtIndex:indexPath.row];
     
     SentVideoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[SentVideoTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
-    [cell.userImageViewObj setImage:[UIImage imageNamed:userObj.userImageUrl]];
-    [cell.userNameLBLObj setText:userObj.name];
-    [cell.videoTitleLBLObj setText:userObj.videoTitle];
-    [cell.videoTimeLBLObj setText:userObj.videoTime];
+    if(videoObj.userImageUrl.length == 0)
+        videoObj.userImageUrl = @"luk-iphone-final-lukes-sent-list-pic-dummy.png";
+    
+    NSString *name;
+    if(videoObj.fname.length > 0)
+        name = videoObj.fname;
+    else if(videoObj.lname.length > 0)
+        name = videoObj.lname;
+    else
+        name = [NSString stringWithFormat:@"%lld",videoObj.toContact];
+    
+    
+        
+    [cell.userImageViewObj setImage:[UIImage imageNamed:videoObj.userImageUrl]];
+    [cell.userNameLBLObj setText:name];
+    [cell.videoTitleLBLObj setText:videoObj.videoTitle];
+    [cell.videoTimeLBLObj setText:videoObj.videoTime];
     return cell;
 }
 
