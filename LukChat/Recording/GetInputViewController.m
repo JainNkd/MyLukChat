@@ -7,6 +7,7 @@
 //
 
 #import "GetInputViewController.h"
+#import "Constants.h"
 
 @interface GetInputViewController ()
 
