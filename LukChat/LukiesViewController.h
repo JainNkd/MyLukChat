@@ -26,6 +26,7 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *contactTableView;
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
+@property (weak, nonatomic) IBOutlet UIButton *sendTolukiesBtn;
 
 - (IBAction)sendToLukiesButtonPressed:(UIButton *)sender;
 @end

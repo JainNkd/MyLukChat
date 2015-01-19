@@ -39,14 +39,17 @@
     return UIInterfaceOrientationMaskPortrait;
 }
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    //userDetailsArr = [[NSMutableArray alloc]initWithArray:[[User alloc]userDetails]];
+    videoDetailsArr = [DatabaseMethods getAllSentVideoContacts];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-//    userDetailsArr = [[NSMutableArray alloc]initWithArray:[[User alloc]userDetails]];
-    videoDetailsArr = [DatabaseMethods getAllSentVideoContacts];
-    
-    // Do any additional setup after loading the view.
+
 }
 
 //Tableview delegate methods

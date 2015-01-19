@@ -959,6 +959,7 @@
                     <connections>
                         <outlet property="contactTableView" destination="DQX-zG-IiK" id="Jfr-5E-3Rx"/>
                         <outlet property="searchBar" destination="fPU-z6-DEU" id="J1t-OU-nM1"/>
+                        <outlet property="sendTolukiesBtn" destination="6rR-oS-VOx" id="t4p-8A-3G7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L7y-66-PBd" userLabel="First Responder" sceneMemberID="firstResponder"/>

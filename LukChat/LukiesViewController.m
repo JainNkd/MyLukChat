@@ -53,6 +53,8 @@
     if(!cnCode)
         cnCode = @"91";
     
+    self.sendTolukiesBtn.enabled = NO;
+    
     
     // Request authorization to Address Book
     ABAddressBookRef addressBookRef = ABAddressBookCreateWithOptions(NULL, NULL);
@@ -431,6 +433,8 @@
     Contact *contactObj = (Contact *)[arrayForLetter objectAtIndex:indexPath.row];
     [[NSUserDefaults standardUserDefaults] setValue:[NSString stringWithFormat:@"%lld",contactObj.user_phone] forKey:kCurrentCHATUserPHONE];
     [[NSUserDefaults standardUserDefaults] setValue:[NSString stringWithFormat:@"%ld",(long)contactObj.user_id] forKey:kCurrentCHATUserID];
+    
+    self.sendTolukiesBtn.enabled = YES;
         
         //        ChatViewController *chatVC = [[ChatViewController alloc] initWithNibName:@"ChatViewController" bundle:nil];
         //        [self.navigationController pushViewController:chatVC animated:YES];
