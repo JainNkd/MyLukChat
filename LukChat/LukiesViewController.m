@@ -51,7 +51,7 @@
     }
     
     if(!cnCode)
-        cnCode = @"91";
+        cnCode = @"49";
     
     self.sendTolukiesBtn.enabled = NO;
     
@@ -324,7 +324,7 @@
             case 1:
             {
                 [self addMyVideoLog:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",kVideoDownloadURL,[usersdict objectForKey:@"filename"]]]];
-                 [CommonMethods showAlertWithTitle:@"Error" message:[NSString stringWithFormat:@"%@%@",kVideoDownloadURL,[usersdict objectForKey:@"filename"]]];
+                 [CommonMethods showAlertWithTitle:@"Uploaded file URL" message:[NSString stringWithFormat:@"%@%@",kVideoDownloadURL,[usersdict objectForKey:@"filename"]]];
                 break;
             }
             case 2:
