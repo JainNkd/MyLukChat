@@ -485,6 +485,10 @@
 {
     //    [searchBar setTintColor:[ENSUtil UIColorWithHex:NAVIGATION_COLOR]];
     
+    [[UISearchBar appearance] setSearchFieldBackgroundImage:[UIImage imageNamed:@"video-send-search-bg.png"]forState:UIControlStateNormal];
+    
+    [[UISearchBar appearance] setImage:[UIImage imageNamed:@"search_icon.png"] forSearchBarIcon:(UISearchBarIconSearch) state:UIControlStateNormal];
+
     self.searchBar.showsCancelButton = YES;
     searchDisplayController = [[UISearchDisplayController alloc] initWithSearchBar:self.searchBar contentsController:self];
     searchDisplayController.searchBar.delegate =self;
