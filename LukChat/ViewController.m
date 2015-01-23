@@ -64,17 +64,17 @@
 //       [self performSegueWithIdentifier:@"SignUp" sender:self];
 //    }
     
-    LukiesViewController *lukie = [self.storyboard instantiateViewControllerWithIdentifier:@"LukiesViewController"];
-    [self.navigationController pushViewController:lukie animated:YES];
+//    LukiesViewController *lukie = [self.storyboard instantiateViewControllerWithIdentifier:@"LukiesViewController"];
+//    [self.navigationController pushViewController:lukie animated:YES];
     
-//    if([saving  isEqualToString: @"YES"]){
-//        [self performSegueWithIdentifier:@"TabBarView" sender:self];
-//       
-//    }
-//    else{
-//        //sign screen
-//        [self performSegueWithIdentifier:@"SignUp" sender:self];
-//    }
+    if([saving  isEqualToString: @"YES"]){
+        [self performSegueWithIdentifier:@"TabBarView" sender:self];
+       
+    }
+    else{
+        //sign screen
+        [self performSegueWithIdentifier:@"SignUp" sender:self];
+    }
 }
 
 

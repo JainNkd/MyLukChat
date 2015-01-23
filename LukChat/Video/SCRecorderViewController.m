@@ -101,7 +101,7 @@
     [self.view insertSubview:_ghostImageView aboveSubview:self.previewView];
     
     _recorder = [SCRecorder recorder];
-    _recorder.sessionPreset = AVCaptureSessionPreset1920x1080;
+    _recorder.sessionPreset = AVCaptureSessionPreset1280x720;
     _recorder.maxRecordDuration = CMTimeMake(10, 1);
     
     _recorder.delegate = self;
@@ -109,9 +109,6 @@
     
     UIView *previewView = self.previewView;
     _recorder.previewView = previewView;
-    
-    //    [self.retakeButton addTarget:self action:@selector(handleRetakeButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
-    //    [self.stopButton addTarget:self action:@selector(handleStopButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
     
     [self.reverseCamera addTarget:self action:@selector(handleReverseCameraTapped:) forControlEvents:UIControlEventTouchUpInside];
     
