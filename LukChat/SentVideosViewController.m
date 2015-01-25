@@ -46,9 +46,18 @@
     videoDetailsArr = [DatabaseMethods getAllSentVideoContacts];
 }
 
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+   // [self.sentTableViewObj reloadData];
+    
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.sentTableViewObj.estimatedRowHeight = 50.0;
+    self.sentTableViewObj.rowHeight = UITableViewAutomaticDimension;
 
 }
 
@@ -89,7 +98,8 @@
         
     [cell.userImageViewObj setImage:[UIImage imageNamed:videoObj.userImageUrl]];
     [cell.userNameLBLObj setText:name];
-    [cell.videoTitleLBLObj setText:videoObj.videoTitle];
+    [cell.videoTitleLBLObj setText:@"fjhj jhjh jhk hj jjhj kjjhk  ghgjh jth ngbbn nmn "];//videoObj.videoTitle];
+    [cell.videoTitleLBLObj sizeToFit];
     [cell.videoTimeLBLObj setText:videoObj.videoTime];
     return cell;
 }

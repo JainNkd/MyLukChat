@@ -9,7 +9,7 @@
 #import "SentVideoTableViewCell.h"
 
 @implementation SentVideoTableViewCell
-@synthesize userNameLBLObj,userImageViewObj,videoTimeLBLObj,videoTitleLBLObj;
+@synthesize userNameLBLObj,userImageViewObj,videoTimeLBLObj,videoTitleLBLObj,heightConstarints;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
