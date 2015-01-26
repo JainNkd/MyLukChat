@@ -114,6 +114,11 @@
                  
                      [self parseShareVideoResponse:responseString fromURL:path ];
              }
+             else if ([path isEqualToString:kReceivedVideosURL]||[path isEqualToString:kSentVideosURL]) {
+                  NSLog(@"Request Successful, kReceivedVideosURL response '%@'", responseString);
+                 
+                     [self parseRecievedVideosResponse:responseString fromURL:path ];
+             }
          
      } failure:^(AFHTTPRequestOperation *operation, NSError *error)
      {
@@ -238,6 +243,12 @@
 
 -(void)parseShareVideoResponse:(NSString *)responseString fromURL:(NSString *)urlPath{
        NSLog(@"parseShareVideoResponse : %@ for URL:%@",responseString,urlPath);
+    
+    [self.delegate connHandlerClient:self didSucceedWithResponseString:responseString forPath:urlPath];
+}
+
+-(void)parseRecievedVideosResponse:(NSString *)responseString fromURL:(NSString *)urlPath{
+    NSLog(@"parseShareVideoResponse : %@ for URL:%@",responseString,urlPath);
     
     [self.delegate connHandlerClient:self didSucceedWithResponseString:responseString forPath:urlPath];
 }

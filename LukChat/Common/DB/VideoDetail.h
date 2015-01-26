@@ -18,4 +18,6 @@
 @property(nonatomic,strong)NSString *fname,*lname,*videoTitle,*userImageUrl,*videoTime,*videoURL;
 @property(nonatomic,assign)NSInteger toUserID;
 @property (nonatomic, assign) long long int fromContact,toContact;
+
+-(VideoDetail*)initWithDict:(NSDictionary*)videoDetailDict;
 @end

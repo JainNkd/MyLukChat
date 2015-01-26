@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MediaPlayer/MediaPlayer.h>
 
 @interface ShareVideosViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *shareVideosTableViewObj;
+@property (nonatomic, retain) MPMoviePlayerViewController *theMovie;
 
 
 

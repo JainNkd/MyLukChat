@@ -9,5 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @interface ShareVideoTableViewCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UIImageView *videoImg;
 
+@property (weak, nonatomic) IBOutlet UILabel *videoTitleLbl;
+@property (weak, nonatomic) IBOutlet UILabel *videoSenderLbl;
+@property (weak, nonatomic) IBOutlet UIButton *videoButton;
+@property (weak, nonatomic) IBOutlet UIButton *shareButton;
 @end

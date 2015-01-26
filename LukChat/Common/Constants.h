@@ -16,6 +16,9 @@
 #define kShareVideoURL @"http://lukchat.com/api/share"
 #define kVideoDownloadURL @"http://lukchat.com/app/webroot/files/"
 
+#define kSentVideosURL @"http://lukchat.com/api/history/sent"
+#define kReceivedVideosURL @"http://lukchat.com/api/history/received"
+
 // TEMP: test tag
 #define VIDEO_TITLE                      @"videoTitle"
 

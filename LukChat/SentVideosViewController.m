@@ -10,7 +10,10 @@
 #import "SentVideoTableViewCell.h"
 #import "VideoDetail.h"
 #import "DatabaseMethods.h"
-@interface SentVideosViewController ()
+#import "ConnectionHandler.h"
+#import "CommonMethods.h"
+#import "Constants.h"
+@interface SentVideosViewController ()<ConnectionHandlerDelegate>
 
 @end
 
@@ -43,7 +46,18 @@
 {
     [super viewWillAppear:animated];
     //userDetailsArr = [[NSMutableArray alloc]initWithArray:[[User alloc]userDetails]];
-    videoDetailsArr = [DatabaseMethods getAllSentVideoContacts];
+//    videoDetailsArr = [DatabaseMethods getAllSentVideoContacts];
+    
+    long long int myPhoneNum = [[[NSUserDefaults standardUserDefaults] valueForKey:kMYPhoneNumber] longLongValue];
+    
+    NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
+    [dict setValue:kAPIKeyValue forKey:kAPIKey];
+    [dict setValue:kAPISecretValue forKey:kAPISecret];
+    [dict setValue:[NSString stringWithFormat:@"%lld",myPhoneNum] forKey:@"phone"];
+    
+    ConnectionHandler *connObj = [[ConnectionHandler alloc] init];
+    connObj.delegate = self;
+    [connObj makePOSTRequestPath:kSentVideosURL parameters:dict];
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -61,6 +75,58 @@
 
 }
 
+
+-(void)connHandlerClient:(ConnectionHandler *)client didSucceedWithResponseString:(NSString *)response forPath:(NSString *)urlPath{
+    NSLog(@"connHandlerClient didSucceedWithResponseString : %@",response);
+    NSLog(@"loadAppContactsOnTable ******************");
+    if ([urlPath isEqualToString:kSentVideosURL]) {
+        NSLog(@"SUCCESS: All Data fetched");
+        
+        NSError *error;
+        NSDictionary* responseDict = [NSJSONSerialization JSONObjectWithData: [response dataUsingEncoding:NSUTF8StringEncoding]
+                                                                     options: NSJSONReadingMutableContainers
+                                                                       error: &error];
+        NSDictionary *historydict = [responseDict objectForKey:@"history"];
+        NSInteger status = [[historydict objectForKey:@"status"] integerValue];
+        NSArray *dataList = [historydict objectForKey:@"sent"];
+        
+        switch (status) {
+            case 0:
+            {
+                [videoDetailsArr removeAllObjects];
+                videoDetailsArr = nil;
+                videoDetailsArr = [[NSMutableArray alloc]init];
+                for(NSDictionary* datadict in dataList)
+                {
+                    NSDictionary *videoDict = [datadict objectForKey:@"Video"];
+                    VideoDetail *videoDetailObj = [[VideoDetail alloc]initWithDict:videoDict];
+                    [videoDetailsArr addObject:videoDetailObj];
+                }
+                
+                if(videoDetailsArr.count > 0)
+                [self.sentTableViewObj reloadData];
+                else
+                    [CommonMethods showAlertWithTitle:@"LUK" message:@"You not sent any video to your friends." cancelBtnTitle:nil otherBtnTitle:@"Accept" delegate:nil tag:0];
+                break;
+            }
+            case -2:
+                [CommonMethods showAlertWithTitle:[historydict objectForKey:@"message"] message:@"Make sure the phone number is registered with LukChat"];
+                break;
+            default:
+                [CommonMethods showAlertWithTitle:@"Error" message:[error localizedDescription]];
+                break;
+        }
+    }
+}
+
+-(void)connHandlerClient:(ConnectionHandler *)client didFailWithError:(NSError *)error
+{
+    NSString *string = [error localizedDescription];
+    string = [string substringFromIndex:[string length]-3];
+    NSLog(@"connHandlerClient:didFailWithError = %@",string);
+}
+
+
 //Tableview delegate methods
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -76,7 +142,7 @@
 {
     static NSString *CellIdentifier = @"Cell";
     
-    VideoDetail *videoObj = [videoDetailsArr objectAtIndex:indexPath.row];
+    VideoDetail *videoObj = [videoDetailsArr objectAtIndex:(videoDetailsArr.count-(indexPath.row+1))];
     
     SentVideoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
@@ -98,7 +164,7 @@
         
     [cell.userImageViewObj setImage:[UIImage imageNamed:videoObj.userImageUrl]];
     [cell.userNameLBLObj setText:name];
-    [cell.videoTitleLBLObj setText:@"fjhj jhjh jhk hj jjhj kjjhk  ghgjh jth ngbbn nmn "];//videoObj.videoTitle];
+    [cell.videoTitleLBLObj setText:@"Video Title"];//videoObj.videoTitle];
     [cell.videoTitleLBLObj sizeToFit];
     [cell.videoTimeLBLObj setText:videoObj.videoTime];
     return cell;
