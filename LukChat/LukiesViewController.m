@@ -38,7 +38,7 @@
     
     myPhoneNum = [[[NSUserDefaults standardUserDefaults] valueForKey:kMYPhoneNumber] longLongValue];
     
-    NSLocale *locale = [NSLocale currentLocale];
+    NSLocale *locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
     NSString *countryCode = [locale objectForKey: NSLocaleCountryCode];
     
     NSString *countryName = [locale displayNameForKey: NSLocaleCountryCode value: countryCode];

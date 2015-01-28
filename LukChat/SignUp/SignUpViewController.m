@@ -61,7 +61,7 @@
     country.inputAccessoryView = myToolbar;
     
     //Fetch current country
-    NSLocale *locale = [NSLocale currentLocale];
+    NSLocale *locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];//[NSLocale currentLocale];
     NSString *countryCode = [locale objectForKey: NSLocaleCountryCode];
     
     NSString *countryName = [locale displayNameForKey: NSLocaleCountryCode value: countryCode];
