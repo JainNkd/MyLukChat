@@ -38,19 +38,16 @@
     
     myPhoneNum = [[[NSUserDefaults standardUserDefaults] valueForKey:kMYPhoneNumber] longLongValue];
     
-    NSLocale *locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
-    NSString *countryCode = [locale objectForKey: NSLocaleCountryCode];
+    NSString *countryCode = [[NSLocale currentLocale] objectForKey: NSLocaleCountryCode];
     
-    NSString *countryName = [locale displayNameForKey: NSLocaleCountryCode value: countryCode];
-    
-    if([countryName isEqualToString:@"India"]){
+    if([countryCode isEqualToString:@"IN"]){
         cnCode = [NSString stringWithFormat:@"91"];
     }
-    else if([countryName isEqualToString:@"Germany"]){
+    else if([countryCode isEqualToString:@"DE"]){
         cnCode = [NSString stringWithFormat:@"49"];
     }
     
-    if(!cnCode)
+    if(cnCode.length == 0)
         cnCode = @"49";
     
     self.sendTolukiesBtn.enabled = NO;
