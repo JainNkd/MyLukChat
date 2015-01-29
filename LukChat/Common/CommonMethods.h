@@ -10,7 +10,7 @@
 +(NSDate *)convertStringtoDate:(NSString *)dateString;
 +(NSString *)convertDatetoSting:(NSDate *)date;
 +(NSString *)convertDateofBirthFormat:(NSString *)dob;
-
++(NSString*)countryPhoneCode:(NSString*)countryCode;
 @end
 
 

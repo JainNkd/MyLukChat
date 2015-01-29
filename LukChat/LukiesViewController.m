@@ -39,13 +39,7 @@
     myPhoneNum = [[[NSUserDefaults standardUserDefaults] valueForKey:kMYPhoneNumber] longLongValue];
     
     NSString *countryCode = [[NSLocale currentLocale] objectForKey: NSLocaleCountryCode];
-    
-    if([countryCode isEqualToString:@"IN"]){
-        cnCode = [NSString stringWithFormat:@"91"];
-    }
-    else if([countryCode isEqualToString:@"DE"]){
-        cnCode = [NSString stringWithFormat:@"49"];
-    }
+    cnCode = [CommonMethods countryPhoneCode:countryCode];
     
     if(cnCode.length == 0)
         cnCode = @"49";

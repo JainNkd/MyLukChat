@@ -9,6 +9,7 @@
 #import "SignUpViewController.h"
 #import "AppDelegate.h"
 #import "Constants.h"
+#import "CommonMethods.h"
 
 @interface SignUpViewController ()
 
@@ -65,11 +66,11 @@
     NSString *countryCode = [locale objectForKey: NSLocaleCountryCode];
     
     NSString *countryName = [locale displayNameForKey: NSLocaleCountryCode value: countryCode];
-    NSLog(@"country is %@", countryName);
+    NSLog(@"country is %@..%@", countryName,countryCode);
     country.text = countryName;
     codeLabel.text = countryCode;
     
-    [self countryPhoneCode];
+    self.mobileCountryCode.text = [CommonMethods countryPhoneCode:countryCode];
     
     codeLabel.hidden = YES;
     nameLabel.hidden = YES;
@@ -184,27 +185,12 @@
     country.text = name;
     nameLabel.text = name;
     codeLabel.text = code;
-    [self countryPhoneCode];
+    self.mobileCountryCode.text = [CommonMethods countryPhoneCode:code];
     
 }
 
 
--(void)countryPhoneCode
-{
-    if([codeLabel.text isEqualToString:@"IN"]){
-        cnCode = [NSString stringWithFormat:@"91"];
-    }
-    else if([codeLabel.text isEqualToString:@"DE"]){
-        cnCode = [NSString stringWithFormat:@"49"];
-    }
-    else {
-        cnCode = [NSString stringWithFormat:@"263"];
-    }
-    
-    self.mobileCountryCode.text = cnCode;
-    
 
-}
 
 -(BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
     [self setBirth];
