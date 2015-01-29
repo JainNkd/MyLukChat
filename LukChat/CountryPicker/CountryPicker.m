@@ -83,7 +83,8 @@
         for (NSString *code in [NSLocale ISOCountryCodes])
         {
             NSString *identifier = [NSLocale localeIdentifierFromComponents:@{NSLocaleCountryCode: code}];
-//            NSLocale *usLocale = [[NSLocale alloc] initWithLocaleIdentifier:@"de_DE"];
+//            NSLocale *usLocale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
+//            NSString *countryName = [usLocale displayNameForKey:NSLocaleIdentifier value:identifier];
             NSString *countryName = [[NSLocale currentLocale] displayNameForKey:NSLocaleIdentifier value:identifier];
             if (countryName) namesByCode[code] = countryName;
         }

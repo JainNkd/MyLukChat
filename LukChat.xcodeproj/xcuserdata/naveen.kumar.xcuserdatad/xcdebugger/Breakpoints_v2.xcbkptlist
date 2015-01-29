@@ -102,15 +102,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LukChat/CountryPicker/CountryPicker.m"
-            timestampString = "444199406.982724"
+            timestampString = "444229086.004455"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "86"
-            endingLineNumber = "86"
+            startingLineNumber = "87"
+            endingLineNumber = "87"
             landmarkName = "+countryNamesByCode"
             landmarkType = "5">
          </BreakpointContent>
@@ -121,13 +121,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "LukChat/CountryPicker/CountryPicker.m"
-            timestampString = "444199407.534019"
+            filePath = "LukChat/SignUp/SignUpViewController.m"
+            timestampString = "444229537.474115"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "87"
-            endingLineNumber = "87"
-            landmarkName = "+countryNamesByCode"
+            startingLineNumber = "282"
+            endingLineNumber = "282"
+            landmarkName = "-verifyButtonPressed:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

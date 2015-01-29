@@ -57,7 +57,7 @@
     myToolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0,0, 320, 44)];
     
     UIBarButtonItem *doneButton =[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(inputAccessoryViewDidFinish)];
-  
+    
     [myToolbar setItems:[NSArray arrayWithObject: doneButton] animated:NO];
     country.inputAccessoryView = myToolbar;
     
@@ -74,7 +74,7 @@
     
     codeLabel.hidden = YES;
     nameLabel.hidden = YES;
-
+    
     
     pnTab = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
     [self.view addGestureRecognizer:pnTab];
@@ -119,7 +119,7 @@
     [pikerView setBackgroundColor:[UIColor clearColor]];
     
     UIToolbar *controlToolBar = [[UIToolbar alloc]initWithFrame:CGRectMake(0,0, pikerView.bounds.size.width, 44)];
-
+    
     [controlToolBar sizeToFit];
     
     UIBarButtonItem *spacer = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
@@ -131,7 +131,7 @@
     [controlToolBar setItems:[NSArray arrayWithObjects:spacer, cancelButton, setButton, nil] animated:NO];
     
     [pikerView addSubview:controlToolBar];
-
+    
     UIDatePicker *birthDayPicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(0,44, 320, 200)];
     [birthDayPicker setBackgroundColor:[UIColor whiteColor] ];
     [birthDayPicker setDatePickerMode:UIDatePickerModeDate];
@@ -146,11 +146,11 @@
     pikerView.frame = CGRectMake(0, 334, frame.size.width, frame.size.height);
     
     [UIView commitAnimations];
-
+    
 }
 
 -(void)cancelDateSet{
-   
+    
     [self.view addGestureRecognizer:pnTab];
     
     [UIView beginAnimations:nil context:nil];
@@ -176,7 +176,7 @@
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
     [dateFormatter setDateFormat:@"dd/MM/YYYY"];
     [dob setText:[dateFormatter stringFromDate:self.birthDate]];
-
+    
     [self cancelDateSet];
 }
 
@@ -219,7 +219,6 @@
 }
 
 
-
 - (IBAction)verifyButtonPressed:(id)sender {
     if (pno.text.length <= 0) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"Enter Phone Number"
@@ -256,14 +255,12 @@
         NSLog(@"string is %@",str);
     }
     
+    cnCode = self.mobileCountryCode.text;
     
     int number = (arc4random()%100)+1000; //Generates Number from 1 to 100.
     NSString *string = [NSString stringWithFormat:@"%i", number];
     NSLog(@"random number is %@",string);
     app.pinValue = string;
-    
-//    //india code
-//    cnCode = @"91";
     
     [[NSUserDefaults standardUserDefaults] setValue:string forKey:kMY_VERIFICATION_CODE];
     [[NSUserDefaults standardUserDefaults] setValue:[NSString stringWithFormat:@"%@%@",cnCode,str] forKey:kMYPhoneNumber];
@@ -276,34 +273,49 @@
     
     NSMutableURLRequest *request =[NSMutableURLRequest requestWithURL:targetURL];
     [request setHTTPMethod:@"post"];
-    //[request setValue:@"application/x-www-form-urlencoded" forKey:@"content-Type"];
     [request setValue:postLength forHTTPHeaderField:@"content-length"];
     [request setHTTPBody:postData];
     
-    NSURLResponse *response =nil;
-    NSError *errorReturned = nil;
-    NSData *responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&errorReturned];
+    NSOperationQueue *backgroundQueue = [[NSOperationQueue alloc] init];
     
-    if(errorReturned){
-        NSLog(@"error");
-    }
-    else{
-        NSError *jsonParsingError = nil;
-        NSArray *jsonArray = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableContainers|NSJSONReadingAllowFragments error:&jsonParsingError];
-        NSLog(@"json array is %@",jsonArray);
-        
-        [self performSegueWithIdentifier:@"Confirmation" sender:self];
-    }
+    // Create url connection and fire request
+    [NSURLConnection sendAsynchronousRequest:request
+                                       queue:backgroundQueue
+                           completionHandler:^(NSURLResponse *response, NSData *data, NSError *error){
+                               
+                               if (error)
+                               {
+                                   NSLog(@"error%@",[error localizedDescription]);
+                               }
+                               else
+                               {
+                                   NSError *jsonParsingError = nil;
+                                   id object = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonParsingError];
+                                   
+                                   if (jsonParsingError) {
+                                       NSLog(@"JSON ERROR: %@", [jsonParsingError localizedDescription]);
+                                   } else {
+                                       NSDictionary * jsonDict = (NSDictionary*)object;
+                                       NSLog(@"json array is %@",[jsonDict description]);
+                                       dispatch_async(dispatch_get_main_queue()
+                                                      , ^(void) {
+                                                          [self performSegueWithIdentifier:@"Confirmation" sender:self];
+                                                      });
+                                       
+                                   }
+                                   
+                               }
+                           }];
 }
 
 - (IBAction)checkboxButtonPressed:(UIButton *)sender {
     NSLog(@"CheckBox,........");
     self.checkBoxButton.selected = !self.checkBoxButton.selected;
-
+    
 }
 
 - (IBAction)termsAndConditionButtonPressed:(id)sender {
     
-     [self performSegueWithIdentifier:@"TermsAndConditions" sender:self];
+    [self performSegueWithIdentifier:@"TermsAndConditions" sender:self];
 }
 @end
