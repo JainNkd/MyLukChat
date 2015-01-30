@@ -8,8 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "AppDataManager.h"
+#import <AVFoundation/AVFoundation.h>
 
 @interface MergeVideosViewController : UIViewController
+{
+    AVPlayer *player;
+}
 
 @property (weak, nonatomic) IBOutlet UIImageView *mergeVideoImg;
 @property (weak, nonatomic) IBOutlet UILabel *videoTitleLBL;

@@ -46,19 +46,67 @@
     [super viewDidLoad];
     NSString *videoTitle =  [[NSUserDefaults standardUserDefaults] valueForKey:VIDEO_TITLE];
     NSString *filename = [[NSUserDefaults standardUserDefaults]valueForKey:kMyVideoToShare];
-    if ([[NSFileManager defaultManager] fileExistsAtPath:filename])
-    {
-        UIImage *image = [self generateThumbImage:filename];
-        
-        if(image)
-            [self.mergeVideoImg setImage:image];
-    }
+//    if ([[NSFileManager defaultManager] fileExistsAtPath:filename])
+//    {
+//        UIImage *image = nil;//[self generateThumbImage:filename];
+//        
+//        if(image)
+//            [self.mergeVideoImg setImage:image];
+//    }
     
     self.videoTitleLBL.text = videoTitle;
     
     
+    // prepare the video asset from recorded file
+    AVURLAsset *avAsset = [AVURLAsset URLAssetWithURL:[NSURL fileURLWithPath:filename] options:nil];
+    AVPlayerItem *playerItem = [[AVPlayerItem alloc] initWithAsset:avAsset];
+    player = [AVPlayer playerWithPlayerItem:playerItem];
     
-    // Do any additional setup after loading the view.
+    // prepare the layer to show the video
+    AVPlayerLayer *playerLayer = [AVPlayerLayer playerLayerWithPlayer:player];
+    playerLayer.frame = self.mergeVideoImg.frame;
+    [self.view.layer addSublayer:playerLayer];
+    player.actionAtItemEnd = AVPlayerActionAtItemEndNone;
+    
+    [player play];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(itemDidFinishPlaying:)
+                                                 name:AVPlayerItemDidPlayToEndTimeNotification
+                                               object:[player currentItem]];
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    
+}
+
+-(void)playMovie{
+    [player seekToTime:kCMTimeZero];
+    [player play];
+}
+
+
+-(void)itemDidFinishPlaying:(NSNotification *) notification {
+    
+    player = [notification object];
+    [player seekToTime:kCMTimeZero];
+}
+
+- (IBAction)PlayVideoButtonAction:(UIButton *)sender {
+    [self.view bringSubviewToFront:sender];
+    [self playMovie];
+}
+
+- (IBAction)sendToLukiesButtonPressed:(UIButton *)sender {
+
+    LukiesViewController *lukiesVC = [self.storyboard instantiateViewControllerWithIdentifier:@"LukiesViewController"];
+    [self.navigationController pushViewController:lukiesVC animated:YES];
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
 }
 
 -(UIImage *)generateThumbImage : (NSString *)filepath
@@ -76,50 +124,4 @@
     return thumbnail;
 }
 
--(void)playMovie: (NSString *) path{
-    
-    NSURL *url = [NSURL fileURLWithPath:path];
-    MPMoviePlayerViewController *theMovie = [[MPMoviePlayerViewController alloc] initWithContentURL:url];
-    [self presentMoviePlayerViewControllerAnimated:theMovie];
-    theMovie.moviePlayer.movieSourceType = MPMovieSourceTypeFile;
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(movieFinishedCallBack:) name:MPMoviePlayerPlaybackDidFinishNotification object:nil];
-   
-    [theMovie.moviePlayer play];
-}
-
-- (void)movieFinishedCallBack:(NSNotification *) aNotification {
-    MPMoviePlayerController *mPlayer = [aNotification object];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:MPMoviePlayerPlaybackDidFinishNotification object:mPlayer];
-    [mPlayer stop];
-}
-
-
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
-- (IBAction)PlayVideoButtonAction:(UIButton *)sender {
-    NSString *filename = [[NSUserDefaults standardUserDefaults]valueForKey:kMyVideoToShare];
-    [self playMovie:filename];
-}
-
-- (IBAction)sendToLukiesButtonPressed:(UIButton *)sender {
-    
-    LukiesViewController *lukiesVC = [self.storyboard instantiateViewControllerWithIdentifier:@"LukiesViewController"];
-    [self.navigationController pushViewController:lukiesVC animated:YES];
-}
 @end
