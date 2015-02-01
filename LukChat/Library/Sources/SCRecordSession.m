@@ -543,33 +543,11 @@ NSString *SCRecordSessionCacheDirectory = @"CacheDirectory";
             }
         } else {
             AVAsset *asset = [self assetRepresentingRecordSegments];
-            
-            //create an avassetrack with our asset
-            AVAssetTrack *clipVideoTrack = [[asset tracksWithMediaType:AVMediaTypeVideo] objectAtIndex:0];
-            
-            //create a video composition and preset some settings
-            AVMutableVideoComposition* videoComposition = [AVMutableVideoComposition videoComposition];
-            videoComposition.frameDuration = CMTimeMake(1, 30);
-            //here we are setting its render size to its height x height (Square)
-            videoComposition.renderSize = CGSizeMake(clipVideoTrack.naturalSize.width, clipVideoTrack.naturalSize.width);
-            
-            //create a video instruction
-            AVMutableVideoCompositionInstruction *instruction = [AVMutableVideoCompositionInstruction videoCompositionInstruction];
-            instruction.timeRange = CMTimeRangeMake(kCMTimeZero, CMTimeMakeWithSeconds(60, 30));
-            
-            AVMutableVideoCompositionLayerInstruction* transformer = [AVMutableVideoCompositionLayerInstruction videoCompositionLayerInstructionWithAssetTrack:clipVideoTrack];
-            
-            //add the transformer layer instructions, then add to video composition
-            instruction.layerInstructions = [NSArray arrayWithObject:transformer];
-            videoComposition.instructions = [NSArray arrayWithObject: instruction];
-            
             dispatch_async(dispatch_get_main_queue(), ^{
                 AVAssetExportSession *exportSession = [AVAssetExportSession exportSessionWithAsset:asset presetName:exportSessionPreset];
                 exportSession.outputURL = outputUrl;
                 exportSession.outputFileType = fileType;
                 exportSession.shouldOptimizeForNetworkUse = YES;
-                exportSession.videoComposition = videoComposition;
-                
                 [exportSession exportAsynchronouslyWithCompletionHandler:^{
                     NSError *error = exportSession.error;
                     
