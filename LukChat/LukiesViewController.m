@@ -15,7 +15,7 @@
 #import "CommonMethods.h"
 
 
-@interface LukiesViewController ()<ConnectionHandlerDelegate,UISearchBarDelegate,UISearchDisplayDelegate>
+@interface LukiesViewController ()<ConnectionHandlerDelegate>
 
 @property (retain, nonatomic) NSMutableArray *contacts;
 @property (retain, nonatomic) NSMutableArray *appContacts;
@@ -34,7 +34,6 @@
     
     [super viewDidLoad];
     [self tableviewInitialisation];
-    [self createSearchBar];
     
     myPhoneNum = [[[NSUserDefaults standardUserDefaults] valueForKey:kMYPhoneNumber] longLongValue];
     
@@ -467,69 +466,6 @@
 {
     return [tableSectionTitles objectAtIndex:section];
 }
-
-//Search Bar delgate methods
-
-//add search bar
--(void)createSearchBar
-{
-    //    [searchBar setTintColor:[ENSUtil UIColorWithHex:NAVIGATION_COLOR]];
-    
-//    [[UISearchBar appearance] setSearchFieldBackgroundImage:[UIImage imageNamed:@""]forState:UIControlStateNormal];
-//
-//    [[UISearchBar appearance] setImage:[UIImage imageNamed:@"search_icon.png"] forSearchBarIcon:(UISearchBarIconSearch) state:UIControlStateNormal];
-
-   
-    searchDisplayController = [[UISearchDisplayController alloc] initWithSearchBar:self.searchBar contentsController:self];
-    searchDisplayController.searchBar.delegate =self;
-    searchDisplayController.searchResultsDataSource =self;
-    searchDisplayController.delegate = self;
-    searchDisplayController.searchResultsDelegate = self;
-    searchDisplayController.searchResultsTableView.sectionIndexBackgroundColor = [UIColor clearColor];
-    searchDisplayController.searchResultsTableView.sectionIndexColor = [UIColor blackColor];
-    self.contactTableView.backgroundColor = [UIColor whiteColor];
-    self.searchDisplayController.searchResultsTableView.backgroundColor = [UIColor whiteColor];
-    self.searchDisplayController.searchResultsTableView.bounces=NO;
-    self.searchDisplayController.searchResultsTableView.separatorColor=[UIColor lightGrayColor];
-    [self.searchDisplayController.searchResultsTableView setSeparatorInset:UIEdgeInsetsMake(0, 0, 0, 0)];
-    
-}
-
-//Search Delegate methods
-- (void)searchDisplayControllerWillBeginSearch:(UISearchDisplayController *)controller {
-    //When the user taps the search bar, this means that the controller will begin searching.
-    isFiltered = YES;
-    //    [searchBar resignFirstResponder];
-    
-}
-
-- (void)searchBarTextDidEndEditing:(UISearchBar *)bsearchBar {
-    //    [searchBar resignFirstResponder];
-}
-
-- (void)searchDisplayControllerWillEndSearch:(UISearchDisplayController *)controller {
-    //When the user taps the Cancel Button, or anywhere aside from the view.
-    isFiltered = NO;
-    //    self.searchBar.hidden=YES;
-}
-
--(void) searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
-{
-    [self updateTableData:searchText];
-}
-
--(void)searchBarSearchButtonClicked:(UISearchBar *)asearchBar
-{
-    [self.contactTableView resignFirstResponder];
-    
-    
-}
-- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
-{
-    [self.searchBar resignFirstResponder];
-    [self updateTableData:@""];
-}
-
 
 
 - (void)didReceiveMemoryWarning {

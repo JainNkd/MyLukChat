@@ -36,9 +36,14 @@
 {
     [super viewDidLoad];
     self.navigationController.navigationBarHidden = YES;
-	// Do any additional setup after loading the view, typically from a nib.
+    // Do any additional setup after loading the view, typically from a nib.
 }
 
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [self performSelector:@selector(tapPressedOnStartScreen:) withObject:nil afterDelay:1.0];
+}
 
 - (void)didReceiveMemoryWarning
 {
@@ -49,31 +54,21 @@
 - (IBAction)tapPressedOnStartScreen:(id)sender {
     NSLog(@"Welcome to application");
     
-    
+    if(sender){}
+    else{
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *saving = [defaults objectForKey:@"user"];
     [defaults synchronize];
     NSLog(@"savvvvvve is %@",saving);
-
-//    if([saving  isEqualToString: @"YES"]){
-//        GetInputViewController *gitVC = [self.storyboard instantiateViewControllerWithIdentifier:@"GetInputViewController"];
-//        [self.navigationController pushViewController:gitVC animated:YES];
-//
-//    }
-//    else{
-//       [self performSegueWithIdentifier:@"SignUp" sender:self];
-//    }
-    
-//    LukiesViewController *lukie = [self.storyboard instantiateViewControllerWithIdentifier:@"LukiesViewController"];
-//    [self.navigationController pushViewController:lukie animated:YES];
     
     if([saving  isEqualToString: @"YES"]){
         [self performSegueWithIdentifier:@"TabBarView" sender:self];
-       
+        
     }
     else{
         //sign screen
         [self performSegueWithIdentifier:@"SignUp" sender:self];
+    }
     }
 }
 
