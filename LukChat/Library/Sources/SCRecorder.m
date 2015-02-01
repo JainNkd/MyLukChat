@@ -69,7 +69,8 @@
         _lastVideoBuffer = [SCSampleBufferHolder new];
         _maxRecordDuration = kCMTimeInvalid;
         
-        self.device = AVCaptureDevicePositionBack;
+        //set default camera mode 
+        self.device = AVCaptureDevicePositionFront;
         _videoConfiguration = [SCVideoConfiguration new];
         _audioConfiguration = [SCAudioConfiguration new];
         _photoConfiguration = [SCPhotoConfiguration new];

@@ -147,7 +147,6 @@
         NSLog(@"=======================");
         [self prepareCamera];
     }];
-//    [self handleReverseCameraTapped:nil];
     
 }
 
