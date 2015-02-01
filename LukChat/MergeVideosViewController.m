@@ -88,8 +88,8 @@
 
 -(void)itemDidFinishPlaying:(NSNotification *) notification {
     
-    player = [notification object];
-    [player seekToTime:kCMTimeZero];
+    AVPlayer *av = [notification object];
+    [av seekToTime:kCMTimeZero];
 }
 
 - (IBAction)PlayVideoButtonAction:(UIButton *)sender {
@@ -98,7 +98,9 @@
 }
 
 - (IBAction)sendToLukiesButtonPressed:(UIButton *)sender {
-
+    
+//    [player replaceCurrentItemWithPlayerItem:nil];
+    [player pause];
     LukiesViewController *lukiesVC = [self.storyboard instantiateViewControllerWithIdentifier:@"LukiesViewController"];
     [self.navigationController pushViewController:lukiesVC animated:YES];
 }
