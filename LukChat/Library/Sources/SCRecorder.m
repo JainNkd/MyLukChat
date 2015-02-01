@@ -51,7 +51,7 @@
         dispatch_queue_set_specific(_recordSessionQueue, kSCRecorderRecordSessionQueueKey, "true", nil);
         
         _previewLayer = [[AVCaptureVideoPreviewLayer alloc] init];
-        _previewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
+        _previewLayer.videoGravity = AVLayerVideoGravityResize;
         _initializeRecordSessionLazily = YES;
         
         _videoOrientation = AVCaptureVideoOrientationPortrait;
