@@ -13,8 +13,13 @@
     {
       "size" : "60x60",
       "idiom" : "iphone",
-      "filename" : "luk-launch-icon-v1-120.png",
+      "filename" : "luk-app-icon-120.png",
       "scale" : "2x"
+    },
+    {
+      "idiom" : "iphone",
+      "size" : "60x60",
+      "scale" : "3x"
     }
   ],
   "info" : {

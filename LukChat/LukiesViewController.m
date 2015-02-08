@@ -445,7 +445,7 @@
 //Show headders
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return 24;
+    return 0;
 }
 //Setting Header background color in TableView
 - (UIView *)tableView:(UITableView *)tableViewobj viewForHeaderInSection:(NSInteger)section
