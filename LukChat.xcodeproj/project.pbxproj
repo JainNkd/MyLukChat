@@ -56,8 +56,6 @@
 		633850FD1983C9F400C3256A /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 633850D01983C9F400C3256A /* AFURLConnectionOperation.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		633850FE1983C9F400C3256A /* AFXMLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 633850D21983C9F400C3256A /* AFXMLRequestOperation.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		633850FF1983C9F400C3256A /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 633850D41983C9F400C3256A /* UIImageView+AFNetworking.m */; };
-		633851001983C9F400C3256A /* AppRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 633850D61983C9F400C3256A /* AppRecord.m */; };
-		633851011983C9F400C3256A /* IconDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 633850D81983C9F400C3256A /* IconDownloader.m */; };
 		633851021983C9F400C3256A /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 633850DA1983C9F400C3256A /* Reachability.m */; };
 		633851031983C9F400C3256A /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 633850DE1983C9F400C3256A /* NSObject+SBJSON.m */; };
 		633851041983C9F400C3256A /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 633850E01983C9F400C3256A /* NSString+SBJSON.m */; };
@@ -301,10 +299,6 @@
 		633850D21983C9F400C3256A /* AFXMLRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFXMLRequestOperation.m; sourceTree = "<group>"; };
 		633850D31983C9F400C3256A /* UIImageView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+AFNetworking.h"; sourceTree = "<group>"; };
 		633850D41983C9F400C3256A /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
-		633850D51983C9F400C3256A /* AppRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppRecord.h; sourceTree = "<group>"; };
-		633850D61983C9F400C3256A /* AppRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppRecord.m; sourceTree = "<group>"; };
-		633850D71983C9F400C3256A /* IconDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IconDownloader.h; sourceTree = "<group>"; };
-		633850D81983C9F400C3256A /* IconDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IconDownloader.m; sourceTree = "<group>"; };
 		633850D91983C9F400C3256A /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		633850DA1983C9F400C3256A /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		633850DC1983C9F400C3256A /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
@@ -780,10 +774,6 @@
 			isa = PBXGroup;
 			children = (
 				633850BE1983C9F400C3256A /* AFNetworking */,
-				633850D51983C9F400C3256A /* AppRecord.h */,
-				633850D61983C9F400C3256A /* AppRecord.m */,
-				633850D71983C9F400C3256A /* IconDownloader.h */,
-				633850D81983C9F400C3256A /* IconDownloader.m */,
 				633850D91983C9F400C3256A /* Reachability.h */,
 				633850DA1983C9F400C3256A /* Reachability.m */,
 				633850DB1983C9F400C3256A /* SBJSON */,
@@ -1433,7 +1423,6 @@
 				633851061983C9F400C3256A /* SBJsonBase.m in Sources */,
 				8727D5CF1A4885E30092BB7C /* SCSessionTableViewCell.m in Sources */,
 				8727D5A91A4884460092BB7C /* SCRecorderFocusTargetView.m in Sources */,
-				633851011983C9F400C3256A /* IconDownloader.m in Sources */,
 				633851041983C9F400C3256A /* NSString+SBJSON.m in Sources */,
 				8727D5CC1A4885E30092BB7C /* SCRecorderViewController.m in Sources */,
 				8BC1A0951A5FBA3500920771 /* VideoDetail.m in Sources */,
@@ -1493,7 +1482,6 @@
 				8727D59F1A4884460092BB7C /* SCAudioConfiguration.m in Sources */,
 				875BFD2B1A5730CC00A83E35 /* ShareVideoTableViewCell.m in Sources */,
 				6329BEEB19A8AAC400B6D8F5 /* CustomOrientationNavigationController.m in Sources */,
-				633851001983C9F400C3256A /* AppRecord.m in Sources */,
 				8727D5CE1A4885E30092BB7C /* SCSessionListViewController.m in Sources */,
 				63979B06199F641C005AB2A0 /* VideoListViewController.m in Sources */,
 				633850FE1983C9F400C3256A /* AFXMLRequestOperation.m in Sources */,

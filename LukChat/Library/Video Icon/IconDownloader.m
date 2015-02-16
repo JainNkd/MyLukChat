@@ -52,7 +52,7 @@
 #import "AppRecord.h"
 #import "DatabaseMethods.h"
 
-#define kAppIconSize 48
+#define kAppIconSize 320
 
 @interface IconDownloader ()
 @property (nonatomic, strong) NSMutableData *activeDownload;
@@ -112,9 +112,7 @@
 		[image drawInRect:imageRect];
 		self.appRecord.appIcon = UIGraphicsGetImageFromCurrentImageContext();
 		UIGraphicsEndImageContext();
-        
-        
-        
+    
     }
     else
     {
