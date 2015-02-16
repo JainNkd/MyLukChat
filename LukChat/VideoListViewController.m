@@ -106,7 +106,7 @@
     AVAsset *asset = [AVAsset assetWithURL:url];
     AVAssetImageGenerator *imageGenerator = [[AVAssetImageGenerator alloc]initWithAsset:asset];
     CMTime time = [asset duration];
-    time.value = 1000;
+    time.value = 0001;
     CGImageRef imageRef = [imageGenerator copyCGImageAtTime:time actualTime:NULL error:NULL];
     UIImage *thumbnail = [UIImage imageWithCGImage:imageRef];
     CGImageRelease(imageRef);  // CGImageRef won't be released by ARC

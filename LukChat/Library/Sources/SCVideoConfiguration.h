@@ -11,7 +11,7 @@
 #import "SCFilterGroup.h"
 
 #define kSCVideoConfigurationDefaultCodec AVVideoCodecH264
-#define kSCVideoConfigurationDefaultScalingMode AVVideoScalingModeResize
+#define kSCVideoConfigurationDefaultScalingMode AVVideoScalingModeResizeAspectFill
 #define kSCVideoConfigurationDefaultBitrate 2000000
 
 @interface SCVideoConfiguration : SCMediaTypeConfiguration
