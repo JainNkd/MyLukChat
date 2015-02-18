@@ -135,24 +135,50 @@
 {
     static NSString *CellIdentifier = @"Cell";
     
-    ShareVideoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    VideoDetail *videoDetailObj = [receivedVideoList objectAtIndex:(receivedVideoList.count-(indexPath.row+1))];
+    
+    ShareVideoTableViewCell *cell = (ShareVideoTableViewCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     if (cell == nil) {
         cell = [[ShareVideoTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
+
     
-    VideoDetail *videoDetailObj = [receivedVideoList objectAtIndex:(receivedVideoList.count-(indexPath.row+1))];
+// using Image for thumbnails
+    
+    if(videoDetailObj.thumnail.length>0)
+        videoDetailObj.thumnail = [NSString stringWithFormat:@"%@%@",kVideoDownloadURL,videoDetailObj.thumnail];
+//    else
+//        videoDetailObj.thumnail = @"http://static2.dmcdn.net/static/video/200/584/44485002:jpeg_preview_small.jpg?20120507184941";
+    
+    
+    [cell.videoImg setImageWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:videoDetailObj.thumnail]]
+                      placeholderImage:[UIImage imageNamed:@"share-videos-1st-pic.png"]
+                               success:^(NSURLRequest *request , NSHTTPURLResponse *response , UIImage *image ){
+                                   NSLog(@"Loaded successfully: %ld", (long)[response statusCode]);
+                                   [cell.videoImg setImage:image];
+                               }
+                               failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error){
+                                   NSLog(@"failed loading: %@", error);
+                               }
+     ];
+    
+//    [cell.videoImg setImageWithURL:[NSURL URLWithString:videoDetailObj.videoURL] placeholderImage:[UIImage imageNamed:@"share-videos-1st-pic.png"]];
+    
+
+    
     cell.videoSenderLbl.text = [NSString stringWithFormat:@"%lld",videoDetailObj.fromContact];
     cell.videoTitleLbl.text = @"Welcome To LukChat";
     cell.shareButton.hidden = YES;
     cell.videoButton.hidden = YES;
+    
     return cell;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     isShowingVideo = YES;
-   VideoDetail *videoDetailObj = [receivedVideoList objectAtIndex:(receivedVideoList.count-(indexPath.row+1))];
+    VideoDetail *videoDetailObj = [receivedVideoList objectAtIndex:(receivedVideoList.count-(indexPath.row+1))];
     [self playMovie:videoDetailObj.videoURL];
     
 }
@@ -202,5 +228,48 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+
+
+
+#warning using Webview images
+//    cell.videoWebView=[[UIWebView alloc]initWithFrame:CGRectMake(0,0,320,320)];
+//cell.videoWebView.allowsInlineMediaPlayback=YES;
+//cell.videoWebView.mediaPlaybackRequiresUserAction=NO;
+//cell.videoWebView.mediaPlaybackAllowsAirPlay=YES;
+////            youTubeWebView.delegate=self;
+//
+//cell.videoWebView.scrollView.bounces=NO;
+//
+////    NSString *linkObj=@"http://www.youtube.com/v/1iBIcJFRLBA";//@"http://www.youtube.com/v/6MaSTM769Gk";
+//
+////    cell.videoWebView.userInteractionEnabled = false;
+//
+//
+//NSString *linkObj = [NSString stringWithFormat:@"%@%@",kVideoDownloadURL,videoDetailObj.videoURL];
+//NSLog(@"linkObj1_________________%@",linkObj);
+//NSString *embedHTML = @"\
+//<html><head>\
+//<style type=\"text/css\">\
+//body {\
+//background-color: transparent;color: white;}\\</style>\\</head><body style=\"margin:0\">\\<embed webkit-playsinline id=\"yt\" src=\"%@\" type=\"application/x-shockwave-flash\" \\width=\"320\" height=\"320\"></embed>\\</body></html>";
+//
+//NSString *html = [NSString stringWithFormat:embedHTML, linkObj];
+//[cell.videoWebView loadHTMLString:html baseURL:nil];
+////    [cell.videoImg addSubview:cell.videoWebView];
+
+
+#warning using AVFOUNDATION
+//    NSString *linkObj = [NSString stringWithFormat:@"%@%@",kVideoDownloadURL,videoDetailObj.videoURL];
+//
+//    AVAsset *asset = [AVAsset assetWithURL:[NSURL URLWithString:linkObj]];
+//    AVAssetImageGenerator *imageGenerator = [[AVAssetImageGenerator alloc]initWithAsset:asset];
+//    CMTime time = CMTimeMake(1, 1);
+//    CGImageRef imageRef = [imageGenerator copyCGImageAtTime:time actualTime:NULL error:NULL];
+//    UIImage *thumbnail = [UIImage imageWithCGImage:imageRef];
+//    CGImageRelease(imageRef);
+//
+//    [cell.videoImg setImage:thumbnail];
+//
 
 @end

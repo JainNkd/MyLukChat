@@ -10,7 +10,7 @@
 #import "CommonMethods.h"
 
 @implementation VideoDetail
-@synthesize toContact,toUserID,fname,lname,userImageUrl,videoTime,videoTitle,fromContact,videoURL;
+@synthesize toContact,toUserID,fname,lname,userImageUrl,videoTime,videoTitle,fromContact,videoURL,thumnail;
 
 -(VideoDetail*)initWithDict:(NSDictionary*)videoDetailDict
 {
@@ -20,9 +20,11 @@
         self.fromContact = [[videoDetailDict valueForKey:@"from"] longLongValue ];
         self.videoURL = [videoDetailDict valueForKey:@"file"];
         self.videoTime = [videoDetailDict valueForKey:@"time"];
+       
         NSDate *date = [NSDate dateWithTimeIntervalSince1970:[self.videoTime doubleValue]];
-       self.videoTime = [CommonMethods convertDatetoSting:date];
+        self.videoTime = [CommonMethods convertDatetoSting:date];
         
+        self.thumnail = [videoDetailDict valueForKey:@"thumbnail"];
         
     }
     return self;
