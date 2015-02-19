@@ -51,16 +51,16 @@
     [super viewWillAppear:animated];
     
     if(!isShowingVideo){
-    long long int myPhoneNum = [[[NSUserDefaults standardUserDefaults] valueForKey:kMYPhoneNumber] longLongValue];
-    
-    NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
-    [dict setValue:kAPIKeyValue forKey:kAPIKey];
-    [dict setValue:kAPISecretValue forKey:kAPISecret];
-    [dict setValue:[NSString stringWithFormat:@"%lld",myPhoneNum] forKey:@"phone"];
-    
-    ConnectionHandler *connObj = [[ConnectionHandler alloc] init];
-    connObj.delegate = self;
-    [connObj makePOSTRequestPath:kReceivedVideosURL parameters:dict];
+        long long int myPhoneNum = [[[NSUserDefaults standardUserDefaults] valueForKey:kMYPhoneNumber] longLongValue];
+        
+        NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
+        [dict setValue:kAPIKeyValue forKey:kAPIKey];
+        [dict setValue:kAPISecretValue forKey:kAPISecret];
+        [dict setValue:[NSString stringWithFormat:@"%@",@"919887884533"] forKey:@"phone"];
+        
+        ConnectionHandler *connObj = [[ConnectionHandler alloc] init];
+        connObj.delegate = self;
+        [connObj makePOSTRequestPath:kReceivedVideosURL parameters:dict];
     }
     isShowingVideo = NO;
 }
@@ -101,10 +101,10 @@
                 }
                 
                 if(receivedVideoList.count > 0)
-                     [self.shareVideosTableViewObj reloadData];
+                    [self.shareVideosTableViewObj reloadData];
                 else
                     [CommonMethods showAlertWithTitle:@"LUK" message:@"You not received any video from your friends." cancelBtnTitle:nil otherBtnTitle:@"Accept" delegate:nil tag:0];
-               
+                
                 break;
             }
             case -2:
@@ -133,7 +133,7 @@
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
+    static NSString *CellIdentifier = @"ShareCell";
     
     VideoDetail *videoDetailObj = [receivedVideoList objectAtIndex:(receivedVideoList.count-(indexPath.row+1))];
     
@@ -142,31 +142,24 @@
     if (cell == nil) {
         cell = [[ShareVideoTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
-
     
-// using Image for thumbnails
     
-    if(videoDetailObj.thumnail.length>0)
-        videoDetailObj.thumnail = [NSString stringWithFormat:@"%@%@",kVideoDownloadURL,videoDetailObj.thumnail];
-//    else
+    // using Image for thumbnails
+    
+//    if(indexPath.row == 1 || indexPath.row == 5)
 //        videoDetailObj.thumnail = @"http://static2.dmcdn.net/static/video/200/584/44485002:jpeg_preview_small.jpg?20120507184941";
     
     
     [cell.videoImg setImageWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:videoDetailObj.thumnail]]
-                      placeholderImage:[UIImage imageNamed:@"share-videos-1st-pic.png"]
-                               success:^(NSURLRequest *request , NSHTTPURLResponse *response , UIImage *image ){
-                                   NSLog(@"Loaded successfully: %ld", (long)[response statusCode]);
-                                   [cell.videoImg setImage:image];
-                               }
-                               failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error){
-                                   NSLog(@"failed loading: %@", error);
-                               }
+                         placeholderImage:[UIImage imageNamed:@"share-videos-1st-pic.png"]
+                                  success:^(NSURLRequest *request , NSHTTPURLResponse *response , UIImage *image ){
+                                      NSLog(@"Loaded successfully: %ld", (long)[response statusCode]);
+                                  }
+                                  failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error){
+                                      NSLog(@"failed loading: %@", error);
+                                  }
      ];
-    
-//    [cell.videoImg setImageWithURL:[NSURL URLWithString:videoDetailObj.videoURL] placeholderImage:[UIImage imageNamed:@"share-videos-1st-pic.png"]];
-    
 
-    
     cell.videoSenderLbl.text = [NSString stringWithFormat:@"%lld",videoDetailObj.fromContact];
     cell.videoTitleLbl.text = @"Welcome To LukChat";
     cell.shareButton.hidden = YES;
@@ -219,15 +212,15 @@
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+ {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 
 

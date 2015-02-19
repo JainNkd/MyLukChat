@@ -8,6 +8,7 @@
 
 #import "VideoDetail.h"
 #import "CommonMethods.h"
+#import "Constants.h"
 
 @implementation VideoDetail
 @synthesize toContact,toUserID,fname,lname,userImageUrl,videoTime,videoTitle,fromContact,videoURL,thumnail;
@@ -23,8 +24,7 @@
        
         NSDate *date = [NSDate dateWithTimeIntervalSince1970:[self.videoTime doubleValue]];
         self.videoTime = [CommonMethods convertDatetoSting:date];
-        
-        self.thumnail = [videoDetailDict valueForKey:@"thumbnail"];
+        self.thumnail =  [NSString stringWithFormat:@"%@%@",kVideoDownloadURL,[videoDetailDict valueForKey:@"thumbnail"]];
         
     }
     return self;
