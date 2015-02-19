@@ -140,7 +140,8 @@
     }
     
     NSData *videoData = [NSData dataWithContentsOfURL:path];
-   // NSLog(@"The test vid's url is %@.",path);
+    UIImage *imageObj = [self generateThumbImage:path];
+    NSData *imageData = UIImagePNGRepresentation(imageObj);
 
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
 
@@ -154,6 +155,7 @@
     NSMutableURLRequest *afRequest = [appDelegate.httpClient multipartFormRequestWithMethod:@"POST" path:kShareVideoURL parameters:parameters constructingBodyWithBlock:^(id <AFMultipartFormData>formData)
                                       {
                                           [formData appendPartWithFileData:videoData name:kShareFILE fileName:@"filename.mov" mimeType:@"video/quicktime"];
+                                          [formData appendPartWithFileData:imageData name:kShareThumbnailFILE fileName:@"thumbnail" mimeType:@"image/png"];
                                       }];
     
     
@@ -185,7 +187,21 @@
     
 }
 
-
+-(UIImage *)generateThumbImage : (NSURL *)url
+{
+    
+    AVAsset *asset = [AVAsset assetWithURL:url];
+    AVAssetImageGenerator *imageGenerator = [[AVAssetImageGenerator alloc]initWithAsset:asset];
+    CMTime time = [asset duration];
+    time.value = 0001;
+    CGImageRef imageRef = [imageGenerator copyCGImageAtTime:time actualTime:NULL error:NULL];
+    UIImage *thumbnail = [UIImage imageWithCGImage:imageRef];
+    CGImageRelease(imageRef);  // CGImageRef won't be released by ARC
+    
+    UIImageView *imageView = [[UIImageView alloc]initWithImage:thumbnail];
+    imageView.frame = CGRectMake(0,0,320,320);
+    return imageView.image;
+}
 
 #pragma mark - Parse data
 

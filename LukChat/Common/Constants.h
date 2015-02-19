@@ -79,6 +79,7 @@
 #define kShareFROM @"from"
 #define kShareTO @"to"
 #define kShareFILE @"file"
+#define kShareThumbnailFILE @"thumbnail"
 
 // Push Notification
 #define kNotificationFROM @"from-phone"

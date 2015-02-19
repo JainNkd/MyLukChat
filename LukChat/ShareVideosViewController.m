@@ -153,10 +153,10 @@
     [cell.videoImg setImageWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:videoDetailObj.thumnail]]
                          placeholderImage:[UIImage imageNamed:@"share-videos-1st-pic.png"]
                                   success:^(NSURLRequest *request , NSHTTPURLResponse *response , UIImage *image ){
-                                      NSLog(@"Loaded successfully: %ld", (long)[response statusCode]);
+                                      NSLog(@"Loaded successfully");// %ld", (long)[response statusCode]);
                                   }
                                   failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error){
-                                      NSLog(@"failed loading: %@", error);
+                                      NSLog(@"failed loading");//'%@", error);
                                   }
      ];
 

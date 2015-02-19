@@ -3,6 +3,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
 #import "Reachability.h"
+#import <AVFoundation/AVFoundation.h>
 
 @protocol ConnectionHandlerDelegate;
 
