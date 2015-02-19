@@ -192,6 +192,7 @@
     
     AVAsset *asset = [AVAsset assetWithURL:url];
     AVAssetImageGenerator *imageGenerator = [[AVAssetImageGenerator alloc]initWithAsset:asset];
+    imageGenerator.maximumSize = CGSizeMake(320.0f,320.0f);
     CMTime time = [asset duration];
     time.value = 0001;
     CGImageRef imageRef = [imageGenerator copyCGImageAtTime:time actualTime:NULL error:NULL];
