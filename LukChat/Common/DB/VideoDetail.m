@@ -21,10 +21,14 @@
         self.fromContact = [[videoDetailDict valueForKey:@"from"] longLongValue ];
         self.videoURL = [videoDetailDict valueForKey:@"file"];
         self.videoTime = [videoDetailDict valueForKey:@"time"];
+        self.videoTitle = [videoDetailDict valueForKey:@"caption"];
        
         NSDate *date = [NSDate dateWithTimeIntervalSince1970:[self.videoTime doubleValue]];
         self.videoTime = [CommonMethods convertDatetoSting:date];
         self.thumnail =  [NSString stringWithFormat:@"%@%@",kVideoDownloadURL,[videoDetailDict valueForKey:@"thumbnail"]];
+        
+        
+       
         
     }
     return self;

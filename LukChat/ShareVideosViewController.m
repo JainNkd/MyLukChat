@@ -161,7 +161,7 @@
      ];
 
     cell.videoSenderLbl.text = [NSString stringWithFormat:@"%lld",videoDetailObj.fromContact];
-    cell.videoTitleLbl.text = @"Welcome To LukChat";
+    cell.videoTitleLbl.text = videoDetailObj.videoTitle;
     cell.shareButton.hidden = YES;
     cell.videoButton.hidden = YES;
     

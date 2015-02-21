@@ -486,10 +486,11 @@
 }
 
 -(void)shareVideo:(NSURL *)videoURL {
+    NSString *videoTitle =  [[NSUserDefaults standardUserDefaults] valueForKey:VIDEO_TITLE];
     NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
     [dict setValue:kAPIKeyValue forKey:kAPIKey];
     [dict setValue:kAPISecretValue forKey:kAPISecret];
-    
+    [dict setValue:videoTitle forKey:kVideoTITLE];
     [dict setValue:[NSString stringWithFormat:@"%lld",myPhoneNum] forKey:kShareFROM];
     [dict setValue:[[NSUserDefaults standardUserDefaults] valueForKey:kCurrentCHATUserPHONE] forKey:kShareTO];
     NSLog(@"shareVideo: %@",dict);
