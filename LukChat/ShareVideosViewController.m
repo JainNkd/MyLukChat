@@ -165,6 +165,29 @@
     cell.shareButton.hidden = YES;
     cell.videoButton.hidden = YES;
     
+    if(indexPath.row == 1){
+    cell.proccessView.indeterminate = YES;
+    cell.proccessView.blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleExtraLight];
+    cell.proccessView.showsText = YES;
+    }
+    else
+    {
+        cell.proccessView.indeterminate = NO;
+        cell.proccessView.blurEffect = nil;//[UIBlurEffect effectWithStyle:UIBlurEffectStyleExtraLight];
+        cell.proccessView.showsText = YES;
+        
+    }
+//        self.proccessView.tintColor = [UIColor colorWithRed:0.0 green:122.0 / 255.0 blue:1.0 alpha:1.0];
+//        self.proccessView.usesVibrancyEffect = NO; // Turn off vibrancy effect to display custom color, if uses blur effect
+//        self.proccessView.textColor = [UIColor colorWithRed:1.0 green:0.231 blue:0.188 alpha:1.0];
+//        self.proccessView.usesVibrancyEffect = NO; // Turn off vibrancy effect to display custom color, if uses blur effect
+
+//        self.proccessView.lineWidth = [[NSUserDefaults standardUserDefaults] doubleForKey:@"lineWidth"];
+//        self.proccessView.radius = [[NSUserDefaults standardUserDefaults] doubleForKey:@"radius"];
+//        self.proccessView.textSize = [[NSUserDefaults standardUserDefaults] doubleForKey:@"textFontSize"];
+
+//    cell.proccessView.progress = 0.50;
+    
     return cell;
 }
 

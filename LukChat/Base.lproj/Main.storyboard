@@ -1016,11 +1016,11 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="terms-logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="lYM-jN-Jhj">
                                 <rect key="frame" x="10" y="10" width="126" height="40"/>
                             </imageView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" bounces="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="321" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="jOP-g0-tpG">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" bounces="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="331" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="jOP-g0-tpG">
                                 <rect key="frame" x="0.0" y="66" width="320" height="453"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ShareCell" rowHeight="321" id="yov-mb-UlA" customClass="ShareVideoTableViewCell">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ShareCell" rowHeight="331" id="yov-mb-UlA" customClass="ShareVideoTableViewCell">
                                         <rect key="frame" x="0.0" y="1" width="320" height="181"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="yov-mb-UlA" id="SYa-yh-95l">
@@ -1057,9 +1057,16 @@
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                 </button>
+                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="X2l-of-Dhp" customClass="UCZProgressView">
+                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="270"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                </view>
                                             </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <connections>
+                                            <outlet property="proccessView" destination="X2l-of-Dhp" id="W04-du-H7u"/>
                                             <outlet property="shareButton" destination="5De-4a-76U" id="Td5-fb-Woy"/>
                                             <outlet property="videoButton" destination="x49-42-63Q" id="dbd-mI-6t8"/>
                                             <outlet property="videoImg" destination="DDj-OR-lBX" id="EBe-X5-VDD"/>
