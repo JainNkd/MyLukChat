@@ -8,7 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import <MediaPlayer/MediaPlayer.h>
+
 #import "AFNetworking.h"
+#import "AFHTTPRequestOperation.h"
+#import "UIImageView+AFNetworking.h"
+#import "AFHTTPRequestOperation.h"
+#import "AFHTTPClient.h"
+
 
 @interface ShareVideosViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
 

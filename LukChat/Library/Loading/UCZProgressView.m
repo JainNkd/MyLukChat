@@ -69,7 +69,7 @@
 
 - (UIView *)defaultBackgroundView {
     UIView *backgroundView = [[UIView alloc] init];
-    backgroundView.backgroundColor = [UIColor whiteColor];
+    backgroundView.backgroundColor = [UIColor clearColor];
     
     return backgroundView;
 }

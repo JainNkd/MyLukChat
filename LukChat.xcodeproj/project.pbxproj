@@ -55,7 +55,7 @@
 		633850FC1983C9F400C3256A /* AFPropertyListRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 633850CE1983C9F400C3256A /* AFPropertyListRequestOperation.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		633850FD1983C9F400C3256A /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 633850D01983C9F400C3256A /* AFURLConnectionOperation.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		633850FE1983C9F400C3256A /* AFXMLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 633850D21983C9F400C3256A /* AFXMLRequestOperation.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		633850FF1983C9F400C3256A /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 633850D41983C9F400C3256A /* UIImageView+AFNetworking.m */; };
+		633850FF1983C9F400C3256A /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 633850D41983C9F400C3256A /* UIImageView+AFNetworking.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		633851021983C9F400C3256A /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 633850DA1983C9F400C3256A /* Reachability.m */; };
 		633851031983C9F400C3256A /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 633850DE1983C9F400C3256A /* NSObject+SBJSON.m */; };
 		633851041983C9F400C3256A /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 633850E01983C9F400C3256A /* NSString+SBJSON.m */; };

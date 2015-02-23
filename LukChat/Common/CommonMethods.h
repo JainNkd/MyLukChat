@@ -11,6 +11,9 @@
 +(NSString *)convertDatetoSting:(NSDate *)date;
 +(NSString *)convertDateofBirthFormat:(NSString *)dob;
 +(NSString*)countryPhoneCode:(NSString*)countryCode;
+
++(BOOL)fileExist:(NSString*)fileName;
++(NSString*)localFileUrl:(NSString*)fileName;
 @end
 
 

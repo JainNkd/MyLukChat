@@ -19,6 +19,7 @@
     BOOL isShowingVideo;
 }
 
+@property (nonatomic, strong) NSMutableDictionary *videoDownloadsInProgress;
 @end
 
 @implementation ShareVideosViewController
@@ -68,10 +69,45 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.videoDownloadsInProgress = [NSMutableDictionary dictionary];
+    
     receivedVideoList = [[NSMutableArray alloc]init];
     // Do any additional setup after loading the view.
 }
 
+
+// -------------------------------------------------------------------------------
+//	terminateAllDownloads
+// -------------------------------------------------------------------------------
+- (void)terminateAllDownloads
+{
+    // terminate all pending download connections
+    NSArray *allDownloads = [self.videoDownloadsInProgress allValues];
+    [allDownloads makeObjectsPerformSelector:@selector(cancelDownload)];
+    
+    [self.videoDownloadsInProgress removeAllObjects];
+}
+
+// -------------------------------------------------------------------------------
+//	dealloc
+//  If this view controller is going away, we need to cancel all outstanding downloads.
+// -------------------------------------------------------------------------------
+- (void)dealloc
+{
+    // terminate all pending download connections
+    [self terminateAllDownloads];
+}
+
+// -------------------------------------------------------------------------------
+//	didReceiveMemoryWarning
+// -------------------------------------------------------------------------------
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    
+    // terminate all pending download connections
+    [self terminateAllDownloads];
+}
 
 -(void)connHandlerClient:(ConnectionHandler *)client didSucceedWithResponseString:(NSString *)response forPath:(NSString *)urlPath{
     NSLog(@"connHandlerClient didSucceedWithResponseString : %@",response);
@@ -145,11 +181,6 @@
     
     
     // using Image for thumbnails
-    
-//    if(indexPath.row == 1 || indexPath.row == 5)
-//        videoDetailObj.thumnail = @"http://static2.dmcdn.net/static/video/200/584/44485002:jpeg_preview_small.jpg?20120507184941";
-    
-    
     [cell.videoImg setImageWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:videoDetailObj.thumnail]]
                          placeholderImage:[UIImage imageNamed:@"share-videos-1st-pic.png"]
                                   success:^(NSURLRequest *request , NSHTTPURLResponse *response , UIImage *image ){
@@ -159,34 +190,44 @@
                                       NSLog(@"failed loading");//'%@", error);
                                   }
      ];
-
+    
+    cell.proccessView.tag = indexPath.row+1;
+    cell.proccessView.indeterminate = NO;
     cell.videoSenderLbl.text = [NSString stringWithFormat:@"%lld",videoDetailObj.fromContact];
     cell.videoTitleLbl.text = videoDetailObj.videoTitle;
     cell.shareButton.hidden = YES;
     cell.videoButton.hidden = YES;
     
-    if(indexPath.row == 1){
-    cell.proccessView.indeterminate = YES;
-    cell.proccessView.blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleExtraLight];
-    cell.proccessView.showsText = YES;
+    NSLog(@"indexPath row...%@",indexPath);
+    
+    AFHTTPRequestOperation *operation = (self.videoDownloadsInProgress)[indexPath];
+    if([CommonMethods fileExist:videoDetailObj.videoURL] && !operation){
+        
+//        cell.proccessView.blurEffect = nil;
+//        cell.proccessView.showsText = NO;
+//        cell.proccessView.radius = 0.0f;
+//        cell.proccessView.lineWidth = 0.0f;
+//        cell.proccessView.textSize = 0.0f;
+        
+        cell.proccessView.backgroundView.hidden = YES;
+//        cell.proccessView.hidden = YES;
+
     }
     else
     {
-        cell.proccessView.indeterminate = NO;
-        cell.proccessView.blurEffect = nil;//[UIBlurEffect effectWithStyle:UIBlurEffectStyleExtraLight];
-        cell.proccessView.showsText = YES;
-        
+        cell.proccessView.hidden = NO;
+        cell.proccessView.blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleExtraLight];
     }
-//        self.proccessView.tintColor = [UIColor colorWithRed:0.0 green:122.0 / 255.0 blue:1.0 alpha:1.0];
-//        self.proccessView.usesVibrancyEffect = NO; // Turn off vibrancy effect to display custom color, if uses blur effect
-//        self.proccessView.textColor = [UIColor colorWithRed:1.0 green:0.231 blue:0.188 alpha:1.0];
-//        self.proccessView.usesVibrancyEffect = NO; // Turn off vibrancy effect to display custom color, if uses blur effect
-
-//        self.proccessView.lineWidth = [[NSUserDefaults standardUserDefaults] doubleForKey:@"lineWidth"];
-//        self.proccessView.radius = [[NSUserDefaults standardUserDefaults] doubleForKey:@"radius"];
-//        self.proccessView.textSize = [[NSUserDefaults standardUserDefaults] doubleForKey:@"textFontSize"];
-
-//    cell.proccessView.progress = 0.50;
+    //        self.proccessView.tintColor = [UIColor colorWithRed:0.0 green:122.0 / 255.0 blue:1.0 alpha:1.0];
+    //        self.proccessView.usesVibrancyEffect = NO; // Turn off vibrancy effect to display custom color, if uses blur effect
+    //        self.proccessView.textColor = [UIColor colorWithRed:1.0 green:0.231 blue:0.188 alpha:1.0];
+    //        self.proccessView.usesVibrancyEffect = NO; // Turn off vibrancy effect to display custom color, if uses blur effect
+    
+    //        self.proccessView.lineWidth = [[NSUserDefaults standardUserDefaults] doubleForKey:@"lineWidth"];
+    //        self.proccessView.radius = [[NSUserDefaults standardUserDefaults] doubleForKey:@"radius"];
+    //        self.proccessView.textSize = [[NSUserDefaults standardUserDefaults] doubleForKey:@"textFontSize"];
+    
+    //    cell.proccessView.progress = 0.50;
     
     return cell;
 }
@@ -194,28 +235,91 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     isShowingVideo = YES;
-    VideoDetail *videoDetailObj = [receivedVideoList objectAtIndex:(receivedVideoList.count-(indexPath.row+1))];
-    [self playMovie:videoDetailObj.videoURL];
     
+    VideoDetail *videoDetailObj = [receivedVideoList objectAtIndex:(receivedVideoList.count-(indexPath.row+1))];
+    ShareVideoTableViewCell *cell = (ShareVideoTableViewCell*)[tableView cellForRowAtIndexPath:indexPath];
+    
+    NSString *localURL = [CommonMethods localFileUrl:videoDetailObj.videoURL];
+    
+    AFHTTPRequestOperation *operation = (self.videoDownloadsInProgress)[indexPath];
+    if ([CommonMethods fileExist:videoDetailObj.videoURL] && !operation) {
+        
+        [self playMovie:localURL];
+    }
+    else
+    {
+        if(cell.proccessView.tag == indexPath.row+1)
+        {
+            cell.proccessView.indeterminate = NO;
+            cell.proccessView.showsText = YES;
+        }
+        
+        NSString *urlString = [NSString stringWithFormat:@"%@%@",kVideoDownloadURL,videoDetailObj.videoURL];
+        
+        NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:urlString]];
+        AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+        
+        operation.outputStream = [NSOutputStream outputStreamToFileAtPath:localURL append:NO];
+        
+        [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+            NSLog(@"Successfully downloaded file to %@", localURL);
+            cell.proccessView.hidden = YES;
+            [self.videoDownloadsInProgress removeObjectForKey:indexPath];
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            NSLog(@"Error: %@", error);
+        }];
+        
+        [operation setDownloadProgressBlock:^(NSInteger bytesRead, NSInteger totalBytesRead, NSInteger totalBytesExpectedToRead) {
+            
+            // Draw the actual chart.
+            dispatch_async(dispatch_get_main_queue()
+                           , ^(void) {
+                               cell.proccessView.progress = (float)totalBytesRead / totalBytesExpectedToRead;
+//                               [cell layoutSubviews];
+                           });
+            
+        }];
+        
+        (self.videoDownloadsInProgress)[indexPath] = operation;
+        [operation start];
+        
+    }
 }
+
 
 -(void)playMovie: (NSString *) path{
     
     // path = [path stringByReplacingOccurrencesOfString:@"file://" withString:@""];
     
-    path = [NSString stringWithFormat:@"%@%@",kVideoDownloadURL,path];
-    NSURL *url = [NSURL URLWithString:path];
-    NSLog(@"video URL : %@",url);
-    _theMovie = [[MPMoviePlayerViewController alloc] init];
-    _theMovie.moviePlayer.movieSourceType = MPMovieSourceTypeStreaming;
-    [_theMovie.moviePlayer setContentURL:url];
-    [self presentMoviePlayerViewControllerAnimated:_theMovie];
-    [_theMovie.moviePlayer play];
+    //    path = [NSString stringWithFormat:@"%@%@",kVideoDownloadURL,path];
+    //    NSURL *url = [NSURL URLWithString:path];
+    //    NSLog(@"video URL : %@",url);
+    //    _theMovie = [[MPMoviePlayerViewController alloc] init];
+    //    _theMovie.moviePlayer.movieSourceType = MPMovieSourceTypeStreaming;
+    //    [_theMovie.moviePlayer setContentURL:url];
+    //    [self presentMoviePlayerViewControllerAnimated:_theMovie];
+    //    [_theMovie.moviePlayer play];
+    //
+    //    [[NSNotificationCenter defaultCenter] addObserver:self
+    //                                             selector:@selector(movieDidExitFullscreen:)
+    //                                                 name:MPMoviePlayerDidExitFullscreenNotification
+    //                                               object:nil];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(movieDidExitFullscreen:)
-                                                 name:MPMoviePlayerDidExitFullscreenNotification
-                                               object:nil];
+    NSURL *url = [NSURL fileURLWithPath:path];
+    MPMoviePlayerViewController *theMovie = [[MPMoviePlayerViewController alloc] initWithContentURL:url];
+    [self presentMoviePlayerViewControllerAnimated:theMovie];
+    theMovie.moviePlayer.movieSourceType = MPMovieSourceTypeFile;
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(movieFinishedCallBack:) name:MPMoviePlayerPlaybackDidFinishNotification object:nil];
+    
+    //    theMovie.moviePlayer.initialPlaybackTime = self.startTime;
+    //    theMovie.moviePlayer.endPlaybackTime = self.stopTime;
+    [theMovie.moviePlayer play];
+}
+
+- (void)movieFinishedCallBack:(NSNotification *) aNotification {
+    MPMoviePlayerController *mPlayer = [aNotification object];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:MPMoviePlayerPlaybackDidFinishNotification object:mPlayer];
+    [mPlayer stop];
     
 }
 
@@ -228,11 +332,57 @@
 }
 
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+#pragma mark - UIScrollViewDelegate
+
+//// -------------------------------------------------------------------------------
+////	scrollViewDidEndDragging:willDecelerate:
+////  Load images for all onscreen rows when scrolling is finished.
+//// -------------------------------------------------------------------------------
+//- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+//{
+//    if (decelerate)
+//    {
+//        [self loadVideosForOnscreenRows];
+//    }
+//}
+//
+//// -------------------------------------------------------------------------------
+////	scrollViewDidEndDecelerating:scrollView
+////  When scrolling stops, proceed to load the app icons that are on screen.
+//// -------------------------------------------------------------------------------
+//- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+//{
+//    [self loadVideosForOnscreenRows];
+//}
+//
+//
+//-(void)loadVideosForOnscreenRows
+//{
+//    if (receivedVideoList.count > 0)
+//    {
+//        
+//        NSArray *visiblePaths = [self.shareVideosTableViewObj indexPathsForVisibleRows];
+//        for (NSIndexPath *indexPath in visiblePaths)
+//        {
+//            VideoDetail *videoDetailObj = [receivedVideoList objectAtIndex:(receivedVideoList.count-(indexPath.row+1))];
+//            AFHTTPRequestOperation *operation = (self.videoDownloadsInProgress)[indexPath];
+//            ShareVideoTableViewCell *cell = (ShareVideoTableViewCell*)[shareVideosTableViewObj cellForRowAtIndexPath:indexPath];
+//            
+//            if ([CommonMethods fileExist:videoDetailObj.videoURL] && !operation)
+//                // Avoid the app icon download if the app already has an icon
+//            {
+//                cell.proccessView.hidden = YES;
+//                [cell layoutSubviews];
+//            }
+//            else
+//            {
+//                cell.proccessView.blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleExtraLight];
+//                cell.proccessView.showsText = YES;
+//                cell.proccessView.indeterminate = NO;
+//            }
+//        }
+//    }
+//}
 
 /*
  #pragma mark - Navigation

@@ -729,5 +729,26 @@
 }
 
 
++(BOOL)fileExist:(NSString*)fileName
+{
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *localURL = [[paths objectAtIndex:0] stringByAppendingPathComponent:fileName];
+    
+    if ([[NSFileManager defaultManager] fileExistsAtPath:localURL])
+        return YES;
+    else
+        return NO;
+    
+}
+
++(NSString*)localFileUrl:(NSString*)fileName
+{
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *localURL = [[paths objectAtIndex:0] stringByAppendingPathComponent:fileName];
+    
+    return localURL;
+}
+
+
 @end
 
