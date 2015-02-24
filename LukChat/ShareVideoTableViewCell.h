@@ -17,6 +17,10 @@
 @property (weak, nonatomic) IBOutlet UIButton *videoButton;
 @property (weak, nonatomic) IBOutlet UIButton *shareButton;
 
-@property (weak, nonatomic) IBOutlet UCZProgressView *proccessView;
+@property (strong, nonatomic) IBOutlet UCZProgressView *proccessView;
 
+
+@property (weak, nonatomic) IBOutlet UIImageView *downloadIcon;
+
+@property (weak, nonatomic) IBOutlet UIImageView *playIcon;
 @end

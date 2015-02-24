@@ -195,6 +195,8 @@
 		8BC1A0951A5FBA3500920771 /* VideoDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BC1A0931A5FBA3500920771 /* VideoDetail.m */; };
 		8BC23E051A72342800AB29B7 /* video-send-search-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BC23E041A72342800AB29B7 /* video-send-search-bg.png */; };
 		8BC23E0C1A72486300AB29B7 /* search_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BC23E0B1A72486300AB29B7 /* search_icon.png */; };
+		8BEEE1F51A9CAFE90024305B /* download_video.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BEEE1F31A9CAFE90024305B /* download_video.png */; };
+		8BEEE1F61A9CAFE90024305B /* video_play.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BEEE1F41A9CAFE90024305B /* video_play.png */; };
 		F016EB471A2BD04500506B75 /* Cam.png in Resources */ = {isa = PBXBuildFile; fileRef = F016EB451A2BD04500506B75 /* Cam.png */; };
 		F016EB481A2BD04500506B75 /* CameraMode.png in Resources */ = {isa = PBXBuildFile; fileRef = F016EB461A2BD04500506B75 /* CameraMode.png */; };
 		F016EB511A2CD9A600506B75 /* CameraEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = F016EB501A2CD9A600506B75 /* CameraEngine.m */; };
@@ -504,6 +506,8 @@
 		8BC1A0941A5FBA3500920771 /* VideoDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoDetail.h; sourceTree = "<group>"; };
 		8BC23E041A72342800AB29B7 /* video-send-search-bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "video-send-search-bg.png"; sourceTree = "<group>"; };
 		8BC23E0B1A72486300AB29B7 /* search_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = search_icon.png; sourceTree = "<group>"; };
+		8BEEE1F31A9CAFE90024305B /* download_video.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = download_video.png; sourceTree = "<group>"; };
+		8BEEE1F41A9CAFE90024305B /* video_play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = video_play.png; sourceTree = "<group>"; };
 		F016EB451A2BD04500506B75 /* Cam.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Cam.png; sourceTree = "<group>"; };
 		F016EB461A2BD04500506B75 /* CameraMode.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CameraMode.png; sourceTree = "<group>"; };
 		F016EB4F1A2CD9A600506B75 /* CameraEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraEngine.h; sourceTree = "<group>"; };
@@ -703,6 +707,8 @@
 		633850511983A4C900C3256A /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				8BEEE1F31A9CAFE90024305B /* download_video.png */,
+				8BEEE1F41A9CAFE90024305B /* video_play.png */,
 				875BFD331A5735C300A83E35 /* Tabbar-Icon */,
 				F016EB451A2BD04500506B75 /* Cam.png */,
 				F016EB461A2BD04500506B75 /* CameraMode.png */,
@@ -1374,8 +1380,10 @@
 				63A5CDF4199DE28800C87EAB /* video-record-footer-old-vedio-icon.png in Resources */,
 				633851171983CABC00C3256A /* confirm-new.png in Resources */,
 				63F999E6199E095A005C82F6 /* textenter-top-logo.png in Resources */,
+				8BEEE1F61A9CAFE90024305B /* video_play.png in Resources */,
 				63F999D5199E095A005C82F6 /* signup-field-bg.png in Resources */,
 				63F999E5199E095A005C82F6 /* textenter-footer-line.png in Resources */,
+				8BEEE1F51A9CAFE90024305B /* download_video.png in Resources */,
 				63F999C4199E095A005C82F6 /* pic-background.png in Resources */,
 				63F99977199E04E2005C82F6 /* start-screen-footer-icon-monkey.png in Resources */,
 				63F99973199E04E2005C82F6 /* luk-iphone-final-start-screen-slicingdraft-v1.png in Resources */,

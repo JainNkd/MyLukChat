@@ -193,6 +193,9 @@
     
     cell.proccessView.tag = indexPath.row+1;
     cell.proccessView.indeterminate = NO;
+//    cell.proccessView = nil;
+//    cell.proccessView = [[UCZProgressView alloc]initWithFrame:CGRectMake(0,0,320,270)];
+//    [cell.contentView addSubview:cell.proccessView];
     cell.videoSenderLbl.text = [NSString stringWithFormat:@"%lld",videoDetailObj.fromContact];
     cell.videoTitleLbl.text = videoDetailObj.videoTitle;
     cell.shareButton.hidden = YES;
@@ -203,18 +206,13 @@
     AFHTTPRequestOperation *operation = (self.videoDownloadsInProgress)[indexPath];
     if([CommonMethods fileExist:videoDetailObj.videoURL] && !operation){
         
-//        cell.proccessView.blurEffect = nil;
-//        cell.proccessView.showsText = NO;
-//        cell.proccessView.radius = 0.0f;
-//        cell.proccessView.lineWidth = 0.0f;
-//        cell.proccessView.textSize = 0.0f;
-        
         cell.proccessView.backgroundView.hidden = YES;
-//        cell.proccessView.hidden = YES;
+        cell.downloadIcon.hidden = YES;
 
     }
     else
     {
+        cell.playIcon.hidden = YES;
         cell.proccessView.hidden = NO;
         cell.proccessView.blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleExtraLight];
     }
@@ -236,6 +234,7 @@
 {
     isShowingVideo = YES;
     
+    
     VideoDetail *videoDetailObj = [receivedVideoList objectAtIndex:(receivedVideoList.count-(indexPath.row+1))];
     ShareVideoTableViewCell *cell = (ShareVideoTableViewCell*)[tableView cellForRowAtIndexPath:indexPath];
     
@@ -248,9 +247,12 @@
     }
     else
     {
+        cell.playIcon.hidden = YES;
+        cell.downloadIcon.hidden = YES;
+        
         if(cell.proccessView.tag == indexPath.row+1)
         {
-            cell.proccessView.indeterminate = NO;
+            cell.proccessView.indeterminate = YES;
             cell.proccessView.showsText = YES;
         }
         
@@ -264,9 +266,12 @@
         [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
             NSLog(@"Successfully downloaded file to %@", localURL);
             cell.proccessView.hidden = YES;
+            cell.playIcon.hidden = NO;
+            cell.downloadIcon.hidden = YES;
             [self.videoDownloadsInProgress removeObjectForKey:indexPath];
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             NSLog(@"Error: %@", error);
+            cell.downloadIcon.hidden = NO;
         }];
         
         [operation setDownloadProgressBlock:^(NSInteger bytesRead, NSInteger totalBytesRead, NSInteger totalBytesExpectedToRead) {

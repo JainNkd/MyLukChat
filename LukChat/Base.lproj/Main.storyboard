@@ -1061,11 +1061,19 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="320" height="270"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 </view>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="download_video.png" translatesAutoresizingMaskIntoConstraints="NO" id="2QB-4R-EmK">
+                                                    <rect key="frame" x="135" y="110" width="50" height="50"/>
+                                                </imageView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="video_play.png" translatesAutoresizingMaskIntoConstraints="NO" id="ovo-6M-Jhd">
+                                                    <rect key="frame" x="135" y="110" width="50" height="50"/>
+                                                </imageView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <connections>
+                                            <outlet property="downloadIcon" destination="2QB-4R-EmK" id="ZE4-YC-cIy"/>
+                                            <outlet property="playIcon" destination="ovo-6M-Jhd" id="mmK-qd-hSf"/>
                                             <outlet property="proccessView" destination="X2l-of-Dhp" id="W04-du-H7u"/>
                                             <outlet property="shareButton" destination="5De-4a-76U" id="Td5-fb-Woy"/>
                                             <outlet property="videoButton" destination="x49-42-63Q" id="dbd-mI-6t8"/>
@@ -1187,6 +1195,7 @@
         <image name="Cam.png" width="200" height="120"/>
         <image name="CameraMode.png" width="65" height="70"/>
         <image name="crowd-recording.png" width="283" height="127"/>
+        <image name="download_video.png" width="50" height="50"/>
         <image name="luk-iphone-final-lukes-sent-list-pic-dummy.png" width="105" height="102"/>
         <image name="luk-iphone-final-merged-videos-main-bg.png" width="640" height="1136"/>
         <image name="luk-iphone-final-terms&amp;condition-mainbg.png" width="640" height="1136"/>
@@ -1222,6 +1231,7 @@
         <image name="verfication-bottom-line.png" width="640" height="1"/>
         <image name="verfication-field-bg.png" width="640" height="124"/>
         <image name="verfication-logo.png" width="254" height="80"/>
+        <image name="video_play.png" width="50" height="50"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

@@ -138,11 +138,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LukChat/ShareVideosViewController.m"
-            timestampString = "446389471.661137"
+            timestampString = "446477231.091195"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "515"
-            endingLineNumber = "515">
+            startingLineNumber = "520"
+            endingLineNumber = "520">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -200,11 +200,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LukChat/ShareVideosViewController.m"
-            timestampString = "446389471.661137"
+            timestampString = "446477231.091195"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "497"
-            endingLineNumber = "497">
+            startingLineNumber = "502"
+            endingLineNumber = "502">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -214,11 +214,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LukChat/ShareVideosViewController.m"
-            timestampString = "446389471.661137"
+            timestampString = "446477231.091195"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "484"
-            endingLineNumber = "484">
+            startingLineNumber = "489"
+            endingLineNumber = "489">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -308,11 +308,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LukChat/ShareVideosViewController.m"
-            timestampString = "446389471.661137"
+            timestampString = "446477049.935702"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "237"
-            endingLineNumber = "237"
+            startingLineNumber = "235"
+            endingLineNumber = "235"
             landmarkName = "-tableView:didSelectRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -324,11 +324,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LukChat/ShareVideosViewController.m"
-            timestampString = "446389016.897963"
+            timestampString = "446477049.935702"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "203"
-            endingLineNumber = "203"
+            startingLineNumber = "206"
+            endingLineNumber = "206"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
