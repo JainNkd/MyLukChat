@@ -208,25 +208,31 @@
         
         cell.proccessView.backgroundView.hidden = YES;
         cell.downloadIcon.hidden = YES;
+        cell.playIcon.hidden = NO;
+//         cell.proccessView = nil;
 
     }
     else
     {
+        
+        if(operation)
+        {
+            cell.downloadIcon.hidden = YES;
+            cell.playIcon.hidden = YES;
+        }
+        
+        if(!operation){
+            
+//                    if(!cell.proccessView)
+//                    {cell.proccessView = [[UCZProgressView alloc]initWithFrame:CGRectMake(0,0,320,270)];
+//                    [cell.videoImg addSubview:cell.proccessView];
+//                    }
+        cell.downloadIcon.hidden = NO;
         cell.playIcon.hidden = YES;
         cell.proccessView.hidden = NO;
         cell.proccessView.blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleExtraLight];
     }
-    //        self.proccessView.tintColor = [UIColor colorWithRed:0.0 green:122.0 / 255.0 blue:1.0 alpha:1.0];
-    //        self.proccessView.usesVibrancyEffect = NO; // Turn off vibrancy effect to display custom color, if uses blur effect
-    //        self.proccessView.textColor = [UIColor colorWithRed:1.0 green:0.231 blue:0.188 alpha:1.0];
-    //        self.proccessView.usesVibrancyEffect = NO; // Turn off vibrancy effect to display custom color, if uses blur effect
-    
-    //        self.proccessView.lineWidth = [[NSUserDefaults standardUserDefaults] doubleForKey:@"lineWidth"];
-    //        self.proccessView.radius = [[NSUserDefaults standardUserDefaults] doubleForKey:@"radius"];
-    //        self.proccessView.textSize = [[NSUserDefaults standardUserDefaults] doubleForKey:@"textFontSize"];
-    
-    //    cell.proccessView.progress = 0.50;
-    
+    }
     return cell;
 }
 
@@ -256,6 +262,16 @@
             cell.proccessView.showsText = YES;
         }
         
+        if(operation)
+        {
+            if(operation.isCancelled)
+                operation = nil;
+            //                [self.videoDownloadsInProgress removeObjectForKey:indexPath];
+            [operation cancel];
+        }
+        
+        if(!operation){
+            
         NSString *urlString = [NSString stringWithFormat:@"%@%@",kVideoDownloadURL,videoDetailObj.videoURL];
         
         NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:urlString]];
@@ -268,26 +284,28 @@
             cell.proccessView.hidden = YES;
             cell.playIcon.hidden = NO;
             cell.downloadIcon.hidden = YES;
+            cell.proccessView = nil;
             [self.videoDownloadsInProgress removeObjectForKey:indexPath];
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             NSLog(@"Error: %@", error);
             cell.downloadIcon.hidden = NO;
+             cell.playIcon.hidden = YES;
         }];
         
         [operation setDownloadProgressBlock:^(NSInteger bytesRead, NSInteger totalBytesRead, NSInteger totalBytesExpectedToRead) {
             
             // Draw the actual chart.
-            dispatch_async(dispatch_get_main_queue()
-                           , ^(void) {
+//            dispatch_async(dispatch_get_main_queue()
+//                           , ^(void) {
                                cell.proccessView.progress = (float)totalBytesRead / totalBytesExpectedToRead;
 //                               [cell layoutSubviews];
-                           });
+//                           });
             
         }];
         
         (self.videoDownloadsInProgress)[indexPath] = operation;
         [operation start];
-        
+        }
     }
 }
 
