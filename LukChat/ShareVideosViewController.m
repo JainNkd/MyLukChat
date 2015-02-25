@@ -19,7 +19,7 @@
     BOOL isShowingVideo;
 }
 
-@property (nonatomic, strong) NSMutableDictionary *videoDownloadsInProgress;
+@property (nonatomic, strong) NSMutableDictionary *videoDownloadsInProgress,*videoProgessIndicators;
 @end
 
 @implementation ShareVideosViewController
@@ -70,6 +70,7 @@
 {
     [super viewDidLoad];
     self.videoDownloadsInProgress = [NSMutableDictionary dictionary];
+    self.videoProgessIndicators = [NSMutableDictionary dictionary];
     
     receivedVideoList = [[NSMutableArray alloc]init];
     // Do any additional setup after loading the view.
@@ -86,6 +87,7 @@
     [allDownloads makeObjectsPerformSelector:@selector(cancelDownload)];
     
     [self.videoDownloadsInProgress removeAllObjects];
+     [self.videoProgessIndicators removeAllObjects];
 }
 
 // -------------------------------------------------------------------------------
@@ -179,7 +181,6 @@
         cell = [[ShareVideoTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
-    
     // using Image for thumbnails
     [cell.videoImg setImageWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:videoDetailObj.thumnail]]
                          placeholderImage:[UIImage imageNamed:@"share-videos-1st-pic.png"]
@@ -191,11 +192,7 @@
                                   }
      ];
     
-    cell.proccessView.tag = indexPath.row+1;
-    cell.proccessView.indeterminate = NO;
-//    cell.proccessView = nil;
-//    cell.proccessView = [[UCZProgressView alloc]initWithFrame:CGRectMake(0,0,320,270)];
-//    [cell.contentView addSubview:cell.proccessView];
+    //Set Text for video cell
     cell.videoSenderLbl.text = [NSString stringWithFormat:@"%lld",videoDetailObj.fromContact];
     cell.videoTitleLbl.text = videoDetailObj.videoTitle;
     cell.shareButton.hidden = YES;
@@ -203,34 +200,72 @@
     
     NSLog(@"indexPath row...%@",indexPath);
     
+    //Progress Indicator
+    
+//    cell.proccessView.tag = indexPath.row+1;
+//    cell.proccessView.indeterminate = NO;
+    //    cell.proccessView = nil;
+    //    cell.proccessView = [[UCZProgressView alloc]initWithFrame:CGRectMake(0,0,320,270)];
+    //    [cell.contentView addSubview:cell.proccessView];
+    
+    [cell.proccessView removeFromSuperview];
     AFHTTPRequestOperation *operation = (self.videoDownloadsInProgress)[indexPath];
+    UCZProgressView *progressView = (self.videoProgessIndicators)[indexPath];
     if([CommonMethods fileExist:videoDetailObj.videoURL] && !operation){
-        
-        cell.proccessView.backgroundView.hidden = YES;
         cell.downloadIcon.hidden = YES;
         cell.playIcon.hidden = NO;
-//         cell.proccessView = nil;
-
+        if(!progressView)
+        {
+            progressView = [[UCZProgressView alloc]initWithFrame:CGRectMake(0,0,320,270)];
+            [cell.videoImg addSubview:progressView];
+            progressView.hidden = YES;
+            progressView.blurEffect = nil;
+            (self.videoProgessIndicators)[indexPath] = progressView;
+        }
+         progressView.hidden = YES;
+         progressView.blurEffect = nil;
+        
+        for(UIView *view in cell.videoImg.subviews)
+        {
+            NSLog(@"view...%@",view);
+            if([view isKindOfClass:[UCZProgressView class]])
+            {
+                view.hidden = YES;
+            }
+        }
+       
     }
     else
     {
-        
         if(operation)
         {
             cell.downloadIcon.hidden = YES;
             cell.playIcon.hidden = YES;
+            progressView.hidden = NO;
         }
-        
-        if(!operation){
+        else{
             
-//                    if(!cell.proccessView)
-//                    {cell.proccessView = [[UCZProgressView alloc]initWithFrame:CGRectMake(0,0,320,270)];
-//                    [cell.videoImg addSubview:cell.proccessView];
-//                    }
+            if(!progressView)
+            {
+                progressView = [[UCZProgressView alloc]initWithFrame:CGRectMake(0,0,320,270)];
+                [cell.videoImg addSubview:progressView];
+                progressView.hidden = NO;
+                progressView.blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleExtraLight];
+                (self.videoProgessIndicators)[indexPath] = progressView;
+            }
+            else
+            {
+                for(UIView *view in cell.videoImg.subviews)
+                {
+                    NSLog(@"view...%@",view);
+                    if([view isKindOfClass:[UCZProgressView class]])
+                    {
+                        view.hidden = NO;
+                    }
+                }
+            }
         cell.downloadIcon.hidden = NO;
         cell.playIcon.hidden = YES;
-        cell.proccessView.hidden = NO;
-        cell.proccessView.blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleExtraLight];
     }
     }
     return cell;
@@ -238,15 +273,16 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    isShowingVideo = YES;
+//    isShowingVideo = YES;
     
-    
+    NSLog(@"indexpath row selected...%ld",(long)indexPath.row);
     VideoDetail *videoDetailObj = [receivedVideoList objectAtIndex:(receivedVideoList.count-(indexPath.row+1))];
     ShareVideoTableViewCell *cell = (ShareVideoTableViewCell*)[tableView cellForRowAtIndexPath:indexPath];
     
     NSString *localURL = [CommonMethods localFileUrl:videoDetailObj.videoURL];
     
     AFHTTPRequestOperation *operation = (self.videoDownloadsInProgress)[indexPath];
+    UCZProgressView *progressView = (self.videoProgessIndicators)[indexPath];
     if ([CommonMethods fileExist:videoDetailObj.videoURL] && !operation) {
         
         [self playMovie:localURL];
@@ -256,12 +292,13 @@
         cell.playIcon.hidden = YES;
         cell.downloadIcon.hidden = YES;
         
-        if(cell.proccessView.tag == indexPath.row+1)
+        if(progressView)
         {
-            cell.proccessView.indeterminate = YES;
-            cell.proccessView.showsText = YES;
+            progressView.indeterminate = YES;
+            progressView.showsText = YES;
         }
         
+        //Stop download
         if(operation)
         {
             if(operation.isCancelled)
@@ -275,17 +312,25 @@
         NSString *urlString = [NSString stringWithFormat:@"%@%@",kVideoDownloadURL,videoDetailObj.videoURL];
         
         NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:urlString]];
-        AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+        AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request ];
         
-        operation.outputStream = [NSOutputStream outputStreamToFileAtPath:localURL append:NO];
+        operation.outputStream = [NSOutputStream outputStreamToFileAtPath:localURL append:YES];
         
         [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
             NSLog(@"Successfully downloaded file to %@", localURL);
-            cell.proccessView.hidden = YES;
-            cell.playIcon.hidden = NO;
-            cell.downloadIcon.hidden = YES;
-            cell.proccessView = nil;
+//            cell.proccessView.hidden = YES;
+//            cell.playIcon.hidden = NO;
+//            cell.downloadIcon.hidden = YES;
+//            cell.proccessView = nil;
+//            
+            progressView.hidden = YES;
+            progressView.showsText = NO;
+            progressView.indeterminate = NO;
+            progressView.blurEffect = nil;
+            (self.videoProgessIndicators)[indexPath] = progressView;
             [self.videoDownloadsInProgress removeObjectForKey:indexPath];
+            [cell layoutSubviews];
+    
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             NSLog(@"Error: %@", error);
             cell.downloadIcon.hidden = NO;
@@ -297,10 +342,10 @@
             // Draw the actual chart.
 //            dispatch_async(dispatch_get_main_queue()
 //                           , ^(void) {
-                               cell.proccessView.progress = (float)totalBytesRead / totalBytesExpectedToRead;
-//                               [cell layoutSubviews];
+                               progressView.progress = (float)totalBytesRead / totalBytesExpectedToRead;
+                               [cell layoutSubviews];
 //                           });
-            
+         
         }];
         
         (self.videoDownloadsInProgress)[indexPath] = operation;
