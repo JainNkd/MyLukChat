@@ -9,7 +9,7 @@
 #import "ShareVideoTableViewCell.h"
 
 @implementation ShareVideoTableViewCell
-@synthesize videoButton,shareButton,videoImg,videoSenderLbl,videoTitleLbl,proccessView;
+@synthesize videoButton,shareButton,videoImg,videoSenderLbl,videoTitleLbl;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {

@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "UCZProgressView.h"
 
 @interface ShareVideoTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *videoImg;
@@ -16,8 +15,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *videoSenderLbl;
 @property (weak, nonatomic) IBOutlet UIButton *videoButton;
 @property (weak, nonatomic) IBOutlet UIButton *shareButton;
-
-@property (strong, nonatomic) IBOutlet UCZProgressView *proccessView;
 
 
 @property (weak, nonatomic) IBOutlet UIImageView *downloadIcon;

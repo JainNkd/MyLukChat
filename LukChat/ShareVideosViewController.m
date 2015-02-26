@@ -12,6 +12,7 @@
 #import "Constants.h"
 #import "CommonMethods.h"
 #import "VideoDetail.h"
+#import "UCZProgressView.h"
 
 @interface ShareVideosViewController ()<ConnectionHandlerDelegate>
 {
@@ -202,37 +203,45 @@
     
     //Progress Indicator
     
-//    cell.proccessView.tag = indexPath.row+1;
-//    cell.proccessView.indeterminate = NO;
-    //    cell.proccessView = nil;
-    //    cell.proccessView = [[UCZProgressView alloc]initWithFrame:CGRectMake(0,0,320,270)];
-    //    [cell.contentView addSubview:cell.proccessView];
     
-    [cell.proccessView removeFromSuperview];
+    for(UIView *view in cell.videoImg.subviews)
+    {
+        if([view isKindOfClass:[UCZProgressView class]])
+        {
+            UCZProgressView *progressView = (UCZProgressView*)view;
+            if(progressView.tag == indexPath.row)
+               progressView.hidden = NO;
+            else
+               progressView.hidden = YES;
+        }
+    }
+        
     AFHTTPRequestOperation *operation = (self.videoDownloadsInProgress)[indexPath];
     UCZProgressView *progressView = (self.videoProgessIndicators)[indexPath];
+    
     if([CommonMethods fileExist:videoDetailObj.videoURL] && !operation){
         cell.downloadIcon.hidden = YES;
         cell.playIcon.hidden = NO;
-        if(!progressView)
-        {
-            progressView = [[UCZProgressView alloc]initWithFrame:CGRectMake(0,0,320,270)];
-            [cell.videoImg addSubview:progressView];
-            progressView.hidden = YES;
-            progressView.blurEffect = nil;
-            (self.videoProgessIndicators)[indexPath] = progressView;
-        }
-         progressView.hidden = YES;
-         progressView.blurEffect = nil;
         
-        for(UIView *view in cell.videoImg.subviews)
-        {
-            NSLog(@"view...%@",view);
-            if([view isKindOfClass:[UCZProgressView class]])
-            {
-                view.hidden = YES;
-            }
-        }
+        NSLog(@"this play called 1");
+//        if(!progressView)
+//        {
+//            progressView = [[UCZProgressView alloc]initWithFrame:CGRectMake(0,0,320,270)];
+//            [cell.videoImg addSubview:progressView];
+//            progressView.hidden = YES;
+//            progressView.blurEffect = nil;
+//            (self.videoProgessIndicators)[indexPath] = progressView;
+//        }
+//         progressView.hidden = YES;
+//         progressView.blurEffect = nil;
+//        
+//        for(UIView *view in cell.videoImg.subviews)
+//        {
+//            if([view isKindOfClass:[UCZProgressView class]])
+//            {
+//                view.hidden = YES;
+//            }
+//        }
        
     }
     else
@@ -241,29 +250,40 @@
         {
             cell.downloadIcon.hidden = YES;
             cell.playIcon.hidden = YES;
-            progressView.hidden = NO;
+//            progressView.hidden = NO;
+//            for(UIView *view in cell.videoImg.subviews)
+//            {
+////                NSLog(@"view....%@......progressView...%@",view,progressView);
+//                if([view isKindOfClass:[UCZProgressView class]])
+//                {
+//                    view.hidden = NO;
+//                }
+//            }
+//            
         }
         else{
             
-            if(!progressView)
-            {
-                progressView = [[UCZProgressView alloc]initWithFrame:CGRectMake(0,0,320,270)];
-                [cell.videoImg addSubview:progressView];
-                progressView.hidden = NO;
-                progressView.blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleExtraLight];
-                (self.videoProgessIndicators)[indexPath] = progressView;
-            }
-            else
-            {
-                for(UIView *view in cell.videoImg.subviews)
-                {
-                    NSLog(@"view...%@",view);
-                    if([view isKindOfClass:[UCZProgressView class]])
-                    {
-                        view.hidden = NO;
-                    }
-                }
-            }
+//            if(!progressView)
+//            {
+//                progressView = [[UCZProgressView alloc]initWithFrame:CGRectMake(0,0,320,270)];
+//                [cell.videoImg addSubview:progressView];
+//                progressView.hidden = NO;
+//                progressView.blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleExtraLight];
+//                (self.videoProgessIndicators)[indexPath] = progressView;
+//            }
+//            else
+//            {
+//                for(UIView *view in cell.videoImg.subviews)
+//                {
+////                    NSLog(@"view...%@",view);
+//                    if([view isKindOfClass:[UCZProgressView class]])
+//                    {
+//                        view.hidden = NO;
+//                    }
+//                }
+//                progressView.hidden = NO;
+//                
+//            }
         cell.downloadIcon.hidden = NO;
         cell.playIcon.hidden = YES;
     }
@@ -282,7 +302,8 @@
     NSString *localURL = [CommonMethods localFileUrl:videoDetailObj.videoURL];
     
     AFHTTPRequestOperation *operation = (self.videoDownloadsInProgress)[indexPath];
-    UCZProgressView *progressView = (self.videoProgessIndicators)[indexPath];
+//    UCZProgressView *progressView = (self.videoProgessIndicators)[indexPath];
+    
     if ([CommonMethods fileExist:videoDetailObj.videoURL] && !operation) {
         
         [self playMovie:localURL];
@@ -292,22 +313,31 @@
         cell.playIcon.hidden = YES;
         cell.downloadIcon.hidden = YES;
         
-        if(progressView)
-        {
-            progressView.indeterminate = YES;
-            progressView.showsText = YES;
-        }
+//        if(progressView)
+//        {
+//            progressView.indeterminate = YES;
+//            progressView.showsText = YES;
+//        }
         
         //Stop download
-        if(operation)
-        {
-            if(operation.isCancelled)
-                operation = nil;
-            //                [self.videoDownloadsInProgress removeObjectForKey:indexPath];
-            [operation cancel];
-        }
+//        if(operation)
+//        {
+//            if(operation.isCancelled)
+//                operation = nil;
+//            
+//            [operation cancel];
+//        }
         
         if(!operation){
+    
+           UCZProgressView *progressView = [[UCZProgressView alloc]initWithFrame:CGRectMake(0,0,320,270)];
+            progressView.tag = indexPath.row;
+           [cell.videoImg addSubview:progressView];
+            progressView.indeterminate = YES;
+//            progressView.blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleExtraLight];
+            progressView.showsText = YES;
+            [cell.videoImg addSubview:progressView];
+
             
         NSString *urlString = [NSString stringWithFormat:@"%@%@",kVideoDownloadURL,videoDetailObj.videoURL];
         
@@ -318,24 +348,28 @@
         
         [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
             NSLog(@"Successfully downloaded file to %@", localURL);
-//            cell.proccessView.hidden = YES;
-//            cell.playIcon.hidden = NO;
-//            cell.downloadIcon.hidden = YES;
-//            cell.proccessView = nil;
-//            
-            progressView.hidden = YES;
-            progressView.showsText = NO;
-            progressView.indeterminate = NO;
-            progressView.blurEffect = nil;
-            (self.videoProgessIndicators)[indexPath] = progressView;
+            
+//            progressView.hidden = YES;
+//            progressView.showsText = NO;
+//            progressView.indeterminate = NO;
+//            progressView.blurEffect = nil;
+//            NSLog(@"ProgressView End...%@",progressView);
+//            (self.videoProgessIndicators)[indexPath] = progressView;
+            
+            
+            [progressView removeFromSuperview];
+            cell.downloadIcon.hidden = YES;
+            cell.playIcon.hidden = NO;
             [self.videoDownloadsInProgress removeObjectForKey:indexPath];
-            [cell layoutSubviews];
+//            [cell layoutSubviews];
     
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             NSLog(@"Error: %@", error);
             cell.downloadIcon.hidden = NO;
              cell.playIcon.hidden = YES;
         }];
+            
+//        NSLog(@"ProgressView start...%@",progressView);
         
         [operation setDownloadProgressBlock:^(NSInteger bytesRead, NSInteger totalBytesRead, NSInteger totalBytesExpectedToRead) {
             
@@ -343,7 +377,7 @@
 //            dispatch_async(dispatch_get_main_queue()
 //                           , ^(void) {
                                progressView.progress = (float)totalBytesRead / totalBytesExpectedToRead;
-                               [cell layoutSubviews];
+//                               [cell layoutSubviews];
 //                           });
          
         }];
