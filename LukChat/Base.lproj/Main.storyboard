@@ -1047,10 +1047,10 @@
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 </view>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="download_video.png" translatesAutoresizingMaskIntoConstraints="NO" id="2QB-4R-EmK">
-                                                    <rect key="frame" x="135" y="141" width="50" height="50"/>
+                                                    <rect key="frame" x="135" y="131" width="50" height="50"/>
                                                 </imageView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="video_play.png" translatesAutoresizingMaskIntoConstraints="NO" id="ovo-6M-Jhd">
-                                                    <rect key="frame" x="135" y="141" width="50" height="50"/>
+                                                    <rect key="frame" x="135" y="131" width="50" height="50"/>
                                                 </imageView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="share-videos-pic-descripiton-shadow.png" translatesAutoresizingMaskIntoConstraints="NO" id="tNV-cf-Gyg" userLabel="title bg">
                                                     <rect key="frame" x="0.0" y="256" width="320" height="65"/>
