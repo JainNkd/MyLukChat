@@ -1030,6 +1030,28 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="share-videos-1st-pic.png" translatesAutoresizingMaskIntoConstraints="NO" id="DDj-OR-lBX" userLabel="video img">
                                                     <rect key="frame" x="0.0" y="0.0" width="320" height="320"/>
                                                 </imageView>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x49-42-63Q" userLabel="video">
+                                                    <rect key="frame" x="258" y="12" width="52" height="25"/>
+                                                    <state key="normal" backgroundImage="share-videos-back-icon.png">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5De-4a-76U" userLabel="share">
+                                                    <rect key="frame" x="265" y="54" width="31" height="37"/>
+                                                    <state key="normal" backgroundImage="share-icon.png">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                </button>
+                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yYU-tt-pB6" customClass="FXBlurView">
+                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="320"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                </view>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="download_video.png" translatesAutoresizingMaskIntoConstraints="NO" id="2QB-4R-EmK">
+                                                    <rect key="frame" x="135" y="141" width="50" height="50"/>
+                                                </imageView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="video_play.png" translatesAutoresizingMaskIntoConstraints="NO" id="ovo-6M-Jhd">
+                                                    <rect key="frame" x="135" y="141" width="50" height="50"/>
+                                                </imageView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="share-videos-pic-descripiton-shadow.png" translatesAutoresizingMaskIntoConstraints="NO" id="tNV-cf-Gyg" userLabel="title bg">
                                                     <rect key="frame" x="0.0" y="256" width="320" height="65"/>
                                                 </imageView>
@@ -1045,29 +1067,12 @@
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x49-42-63Q" userLabel="video">
-                                                    <rect key="frame" x="258" y="12" width="52" height="25"/>
-                                                    <state key="normal" backgroundImage="share-videos-back-icon.png">
-                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                    </state>
-                                                </button>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5De-4a-76U" userLabel="share">
-                                                    <rect key="frame" x="265" y="54" width="31" height="37"/>
-                                                    <state key="normal" backgroundImage="share-icon.png">
-                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                    </state>
-                                                </button>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="download_video.png" translatesAutoresizingMaskIntoConstraints="NO" id="2QB-4R-EmK">
-                                                    <rect key="frame" x="135" y="110" width="50" height="50"/>
-                                                </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="video_play.png" translatesAutoresizingMaskIntoConstraints="NO" id="ovo-6M-Jhd">
-                                                    <rect key="frame" x="135" y="110" width="50" height="50"/>
-                                                </imageView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <connections>
+                                            <outlet property="blurView" destination="yYU-tt-pB6" id="uCE-cu-x1u"/>
                                             <outlet property="downloadIcon" destination="2QB-4R-EmK" id="ZE4-YC-cIy"/>
                                             <outlet property="playIcon" destination="ovo-6M-Jhd" id="mmK-qd-hSf"/>
                                             <outlet property="shareButton" destination="5De-4a-76U" id="Td5-fb-Woy"/>

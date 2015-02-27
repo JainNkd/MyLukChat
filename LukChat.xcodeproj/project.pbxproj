@@ -192,6 +192,7 @@
 		877E21771A99C23E009DBF71 /* UCZProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 877E21761A99C23E009DBF71 /* UCZProgressView.m */; };
 		87AFE04C1A5C55E700DCA827 /* LukiesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87AFE04B1A5C55E700DCA827 /* LukiesViewController.m */; };
 		87CCBD671A5012280018D266 /* MergeVideosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87CCBD661A5012280018D266 /* MergeVideosViewController.m */; };
+		8BB337711AA04B04008E4A82 /* FXBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BB337701AA04B04008E4A82 /* FXBlurView.m */; };
 		8BC1A0951A5FBA3500920771 /* VideoDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BC1A0931A5FBA3500920771 /* VideoDetail.m */; };
 		8BC23E051A72342800AB29B7 /* video-send-search-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BC23E041A72342800AB29B7 /* video-send-search-bg.png */; };
 		8BC23E0C1A72486300AB29B7 /* search_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BC23E0B1A72486300AB29B7 /* search_icon.png */; };
@@ -502,6 +503,8 @@
 		87AFE04B1A5C55E700DCA827 /* LukiesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LukiesViewController.m; sourceTree = "<group>"; };
 		87CCBD651A5012280018D266 /* MergeVideosViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MergeVideosViewController.h; sourceTree = "<group>"; };
 		87CCBD661A5012280018D266 /* MergeVideosViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MergeVideosViewController.m; sourceTree = "<group>"; };
+		8BB3376F1AA04B04008E4A82 /* FXBlurView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXBlurView.h; sourceTree = "<group>"; };
+		8BB337701AA04B04008E4A82 /* FXBlurView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXBlurView.m; sourceTree = "<group>"; };
 		8BC1A0931A5FBA3500920771 /* VideoDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoDetail.m; sourceTree = "<group>"; };
 		8BC1A0941A5FBA3500920771 /* VideoDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoDetail.h; sourceTree = "<group>"; };
 		8BC23E041A72342800AB29B7 /* video-send-search-bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "video-send-search-bg.png"; sourceTree = "<group>"; };
@@ -1015,6 +1018,7 @@
 		8727D5631A4884460092BB7C /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				8BB3376E1AA04B04008E4A82 /* FXBlurView */,
 				877E21741A99C23E009DBF71 /* Loading */,
 				8727D5641A4884460092BB7C /* SCRecorder.xcodeproj */,
 				8727D5671A4884460092BB7C /* SCRecorderMac */,
@@ -1204,6 +1208,15 @@
 				8727D5C61A4885E30092BB7C /* SCTouchDetector.m */,
 			);
 			name = VideoRecord;
+			sourceTree = "<group>";
+		};
+		8BB3376E1AA04B04008E4A82 /* FXBlurView */ = {
+			isa = PBXGroup;
+			children = (
+				8BB3376F1AA04B04008E4A82 /* FXBlurView.h */,
+				8BB337701AA04B04008E4A82 /* FXBlurView.m */,
+			);
+			path = FXBlurView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1466,6 +1479,7 @@
 				875BFD251A5730BE00A83E35 /* SentVideoTableViewCell.m in Sources */,
 				8727D59D1A4884460092BB7C /* SCArchivedVector.m in Sources */,
 				8727D5A51A4884460092BB7C /* SCMediaTypeConfiguration.m in Sources */,
+				8BB337711AA04B04008E4A82 /* FXBlurView.m in Sources */,
 				6338502D19839F2D00C3256A /* AppDelegate.m in Sources */,
 				633851031983C9F400C3256A /* NSObject+SBJSON.m in Sources */,
 				633851051983C9F400C3256A /* SBJSON.m in Sources */,

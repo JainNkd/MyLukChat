@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FXBlurView.h"
 
 @interface ShareVideoTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *videoImg;
@@ -19,5 +20,6 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *downloadIcon;
 
+@property (weak, nonatomic) IBOutlet FXBlurView *blurView;
 @property (weak, nonatomic) IBOutlet UIImageView *playIcon;
 @end

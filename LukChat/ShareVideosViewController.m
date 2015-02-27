@@ -13,6 +13,7 @@
 #import "CommonMethods.h"
 #import "VideoDetail.h"
 #import "UCZProgressView.h"
+#import "FXBlurView.h"
 
 @interface ShareVideosViewController ()<ConnectionHandlerDelegate>
 {
@@ -202,9 +203,7 @@
     NSLog(@"indexPath row...%@",indexPath);
     
     //Progress Indicator
-    
-    
-    for(UIView *view in cell.videoImg.subviews)
+    for(UIView *view in cell.blurView.subviews)
     {
         if([view isKindOfClass:[UCZProgressView class]])
         {
@@ -222,6 +221,7 @@
     if([CommonMethods fileExist:videoDetailObj.videoURL] && !operation){
         cell.downloadIcon.hidden = YES;
         cell.playIcon.hidden = NO;
+        [self setBlurView:cell.blurView flag:NO];
         
         NSLog(@"this play called 1");
 //        if(!progressView)
@@ -248,6 +248,7 @@
     {
         if(operation)
         {
+            [self setBlurView:cell.blurView flag:YES];
             cell.downloadIcon.hidden = YES;
             cell.playIcon.hidden = YES;
 //            progressView.hidden = NO;
@@ -286,6 +287,7 @@
 //            }
         cell.downloadIcon.hidden = NO;
         cell.playIcon.hidden = YES;
+        [self setBlurView:cell.blurView flag:YES];
     }
     }
     return cell;
@@ -312,6 +314,7 @@
     {
         cell.playIcon.hidden = YES;
         cell.downloadIcon.hidden = YES;
+        [self setBlurView:cell.blurView flag:YES];
         
 //        if(progressView)
 //        {
@@ -330,13 +333,11 @@
         
         if(!operation){
     
-           UCZProgressView *progressView = [[UCZProgressView alloc]initWithFrame:CGRectMake(0,0,320,270)];
+           UCZProgressView *progressView = [[UCZProgressView alloc]initWithFrame:CGRectMake(0,0,320,320)];
             progressView.tag = indexPath.row;
-           [cell.videoImg addSubview:progressView];
             progressView.indeterminate = YES;
-//            progressView.blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleExtraLight];
             progressView.showsText = YES;
-            [cell.videoImg addSubview:progressView];
+            [cell.blurView addSubview:progressView];
 
             
         NSString *urlString = [NSString stringWithFormat:@"%@%@",kVideoDownloadURL,videoDetailObj.videoURL];
@@ -360,6 +361,7 @@
             [progressView removeFromSuperview];
             cell.downloadIcon.hidden = YES;
             cell.playIcon.hidden = NO;
+            [self setBlurView:cell.blurView flag:NO];
             [self.videoDownloadsInProgress removeObjectForKey:indexPath];
 //            [cell layoutSubviews];
     
@@ -367,6 +369,7 @@
             NSLog(@"Error: %@", error);
             cell.downloadIcon.hidden = NO;
              cell.playIcon.hidden = YES;
+//            [self setBlurView:cell.blurView flag:YES];
         }];
             
 //        NSLog(@"ProgressView start...%@",progressView);
@@ -433,7 +436,24 @@
     [_theMovie.moviePlayer setFullscreen:NO animated:NO];
 }
 
+-(void)setBlurView:(FXBlurView*)blurView flag:(BOOL)flag
+{
+   if(flag)
+   {
+        [UIView animateWithDuration:0.1 animations:^{
+            blurView.blurRadius = 20;
+            blurView.hidden = NO;
+        }];
+   }
+    else
+    {
+        [UIView animateWithDuration:0.1 animations:^{
+            blurView.blurRadius = 0;
+            blurView.hidden = YES;
+        }];
+    }
 
+}
 #pragma mark - UIScrollViewDelegate
 
 //// -------------------------------------------------------------------------------
