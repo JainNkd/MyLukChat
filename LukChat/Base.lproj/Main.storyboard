@@ -597,6 +597,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="boR-rd-L0r"/>
                     <connections>
+                        <outlet property="mergeButton" destination="6EZ-6b-YjC" id="hjc-ZB-kCT"/>
                         <outlet property="seperationLine1" destination="MD6-mD-ZoY" id="rKV-ce-A21"/>
                         <outlet property="seperationLine10" destination="q3D-Wr-8al" id="wGJ-Og-EiM"/>
                         <outlet property="seperationLine2" destination="SrK-3u-xNL" id="yF1-r3-Gkf"/>

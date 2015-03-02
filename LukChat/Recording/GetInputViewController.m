@@ -97,6 +97,10 @@
         {
             message = @"You exid meximum word limit of 10";
         }
+        else if ([array count] < 2)
+        {
+            message = @"You need two recorded video clips to merge the videos.";
+        }
         else{
             [[NSUserDefaults standardUserDefaults] setObject:videoTitle.text forKey:VIDEO_TITLE];
             [[NSUserDefaults standardUserDefaults] setBool:YES forKey:IS_INPUT_AVAILABLE];

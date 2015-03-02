@@ -75,6 +75,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *videoTitleLBL10;
 //Video Record button action Method
 
+@property (weak, nonatomic) IBOutlet UIButton *mergeButton;
 
 - (IBAction)videoRecordButtonPressed:(UIButton *)sender;
 

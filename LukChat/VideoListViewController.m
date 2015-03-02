@@ -57,6 +57,9 @@
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
+    [self.mergeButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [self.mergeButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateDisabled];
+    
     if ([[UIDevice currentDevice] respondsToSelector:@selector(setOrientation:)]) {
         objc_msgSend([UIDevice currentDevice], @selector(setOrientation:),    UIInterfaceOrientationPortrait);
     }
@@ -97,6 +100,28 @@
         }
     }
     
+    NSMutableArray *videofiles = [[NSMutableArray alloc] init];
+    
+    if(titleWords.count>1)
+        [titleWords removeObject:@""];
+    
+    for (int i=0; i < titleWords.count; i++) {
+        NSString *filename = [[NSUserDefaults standardUserDefaults]valueForKey:[NSString stringWithFormat:@"VIDEO_%d_URL",i]];
+        filename = [NSString stringWithFormat:@"%@/%@", path, filename];
+        
+        if ([[NSFileManager defaultManager] fileExistsAtPath:filename]) {
+            [videofiles addObject:filename];
+           // NSLog(@"filename : %@", filename);
+        }
+    }
+    
+    
+    if (!videofiles || [videofiles count] < 2) {
+        self.mergeButton.enabled = NO;
+    }
+    else{
+        self.mergeButton.enabled = YES;
+    }
 }
 
 -(UIImage *)generateThumbImage : (NSString *)filepath
@@ -305,8 +330,8 @@
     
     
     if (!videofiles || [videofiles count] < 2) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"You need two recorded video clips to merge the videos." delegate:self cancelButtonTitle:nil otherButtonTitles:@"Ok", nil];
-        [alert show];
+//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"You need two recorded video clips to merge the videos." delegate:self cancelButtonTitle:nil otherButtonTitles:@"Accept", nil];
+//        [alert show];
         return;
     }
     
