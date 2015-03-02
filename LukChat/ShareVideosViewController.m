@@ -54,8 +54,10 @@
     [super viewWillAppear:animated];
     
     if(!isShowingVideo){
-        long long int myPhoneNum = [[[NSUserDefaults standardUserDefaults] valueForKey:kMYPhoneNumber] longLongValue];
         
+        [self.shareVideosTableViewObj reloadData];
+        long long int myPhoneNum = [[[NSUserDefaults standardUserDefaults] valueForKey:kMYPhoneNumber] longLongValue];
+
         NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
         [dict setValue:kAPIKeyValue forKey:kAPIKey];
         [dict setValue:kAPISecretValue forKey:kAPISecret];
@@ -172,7 +174,7 @@
 {
     static NSString *CellIdentifier = @"ShareCell";
     
-    VideoDetail *videoDetailObj = [receivedVideoList objectAtIndex:(receivedVideoList.count-(indexPath.row+1))];
+    VideoDetail *videoDetailObj = [receivedVideoList objectAtIndex:indexPath.row];
     
     ShareVideoTableViewCell *cell = (ShareVideoTableViewCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
@@ -197,7 +199,7 @@
     cell.shareButton.hidden = YES;
     cell.videoButton.hidden = YES;
     
-    NSLog(@"indexPath row...%@",indexPath);
+    NSLog(@"indexPath row...%ld......VIDEO..%@",(long)indexPath.row,videoDetailObj.videoURL);
     
     //Progress Indicator
     for(UIView *view in cell.blurView.subviews)
@@ -245,7 +247,7 @@
     isShowingVideo = YES;
     
     NSLog(@"indexpath row selected...%ld",(long)indexPath.row);
-    VideoDetail *videoDetailObj = [receivedVideoList objectAtIndex:(receivedVideoList.count-(indexPath.row+1))];
+    VideoDetail *videoDetailObj = [receivedVideoList objectAtIndex:indexPath.row];
     ShareVideoTableViewCell *cell = (ShareVideoTableViewCell*)[tableView cellForRowAtIndexPath:indexPath];
     
     NSString *localURL = [CommonMethods localFileUrl:videoDetailObj.videoURL];
