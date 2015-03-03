@@ -184,10 +184,6 @@
         
         //changes for country code
         NSString *phoneNum = [NSString stringWithFormat:@"%lld",[phNum longLongValue]];
-        //        if([[NSString stringWithFormat:@"%lld",[phNum longLongValue]] hasPrefix:@"91"])
-        //        {
-        //            NSLog(@"YES:  %@ ",[NSString stringWithFormat:@"%lld",[phNum longLongValue]]);
-        //        }
         
         if(phoneNum.length == 10)
             phoneNum = [NSString stringWithFormat:@"%@%@",cnCode,phoneNum];
@@ -235,21 +231,22 @@
 
 -(void)updateApplicationContacts {
     NSLog(@"updateApplicationContacts ************************");
-    for (int i=0; i<[self.appContacts count]; i++) {
-        
-        NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
-        [dict setValue:kAPIKeyValue forKey:kAPIKey];
-        [dict setValue:kAPISecretValue forKey:kAPISecret];
-        
-        Contact *contObj = [Contact new];
-        contObj = [self.appContacts objectAtIndex:i];
-        [dict setValue:[NSString stringWithFormat:@"%lld",contObj.user_phone] forKey:@"phone"];
-        NSLog(@"updateApplicationContacts : %lld",contObj.user_phone);
-        
-        ConnectionHandler *connObj = [[ConnectionHandler alloc] init];
-        connObj.delegate = self;
-        [connObj makePOSTRequestPath:kGetUserInfoURL parameters:dict];
-    }
+   
+//    for (int i=0; i<[self.appContacts count]; i++) {
+//        
+//        NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
+//        [dict setValue:kAPIKeyValue forKey:kAPIKey];
+//        [dict setValue:kAPISecretValue forKey:kAPISecret];
+//        
+//        Contact *contObj = [Contact new];
+//        contObj = [self.appContacts objectAtIndex:i];
+//        [dict setValue:[NSString stringWithFormat:@"%lld",contObj.user_phone] forKey:@"phone"];
+//        NSLog(@"updateApplicationContacts : %lld",contObj.user_phone);
+//        
+//        ConnectionHandler *connObj = [[ConnectionHandler alloc] init];
+//        connObj.delegate = self;
+//        [connObj makePOSTRequestPath:kGetUserInfoURL parameters:dict];
+//    }
     for (int i=0; i<[self.phoneContacts count]; i++) {
         
         NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
@@ -314,7 +311,7 @@
             case 1:
             {
                 [self addMyVideoLog:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",kVideoDownloadURL,[usersdict objectForKey:@"filename"]]]];
-                 [CommonMethods showAlertWithTitle:@"Uploaded file URL" message:[NSString stringWithFormat:@"%@%@",kVideoDownloadURL,[usersdict objectForKey:@"filename"]]];
+                 [CommonMethods showAlertWithTitle:@"Alert" message:@"Video uploaded successful."];
                 break;
             }
             case 2:
@@ -530,10 +527,6 @@
     string = [string substringFromIndex:[string length]-3];
     [self stopProgressLoader];
     NSLog(@"connHandlerClient:didFailWithError = %@",string);
-    
-    //    if ([string isEqualToString:@"401"] || [[error localizedDescription] isEqualToString:@"unauthorized"]) {
-    //
-    //    }
 }
 
 
