@@ -16,5 +16,4 @@
 @property (weak, nonatomic) IBOutlet UILabel *videoTitleLBLObj;
 @property (weak, nonatomic) IBOutlet UILabel *videoTimeLBLObj;
 
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightConstarints;
 @end

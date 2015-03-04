@@ -13,7 +13,12 @@
 #import "ConnectionHandler.h"
 #import "CommonMethods.h"
 #import "Constants.h"
+#import <AddressBook/AddressBook.h>
+
 @interface SentVideosViewController ()<ConnectionHandlerDelegate>
+{
+    NSMutableDictionary *userInfoDict;
+}
 
 @end
 
@@ -45,10 +50,19 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    userInfoDict = [[NSMutableDictionary alloc]init];
+    
+    NSString *countryCode = [[NSLocale currentLocale] objectForKey: NSLocaleCountryCode];
+    cnCode = [CommonMethods countryPhoneCode:countryCode];
+    
+    [self.sentTableViewObj reloadData];
+    
     //userDetailsArr = [[NSMutableArray alloc]initWithArray:[[User alloc]userDetails]];
 //    videoDetailsArr = [DatabaseMethods getAllSentVideoContacts];
     
     long long int myPhoneNum = [[[NSUserDefaults standardUserDefaults] valueForKey:kMYPhoneNumber] longLongValue];
+    
+    myPhoneNum = 918050636309;
     
     NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
     [dict setValue:kAPIKeyValue forKey:kAPIKey];
@@ -63,21 +77,19 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-   // [self.sentTableViewObj reloadData];
-    
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.sentTableViewObj.estimatedRowHeight = 50.0;
-    self.sentTableViewObj.rowHeight = UITableViewAutomaticDimension;
+//    self.sentTableViewObj.estimatedRowHeight = 90.0;
+//    self.sentTableViewObj.rowHeight = UITableViewAutomaticDimension;
 
 }
 
 
 -(void)connHandlerClient:(ConnectionHandler *)client didSucceedWithResponseString:(NSString *)response forPath:(NSString *)urlPath{
-    NSLog(@"connHandlerClient didSucceedWithResponseString : %@",response);
+//    NSLog(@"connHandlerClient didSucceedWithResponseString : %@",response);
     NSLog(@"loadAppContactsOnTable ******************");
     if ([urlPath isEqualToString:kSentVideosURL]) {
         NSLog(@"SUCCESS: All Data fetched");
@@ -142,15 +154,24 @@
 {
     static NSString *CellIdentifier = @"Cell";
     
-    VideoDetail *videoObj = [videoDetailsArr objectAtIndex:(videoDetailsArr.count-(indexPath.row+1))];
+    VideoDetail *videoObj = [videoDetailsArr objectAtIndex:indexPath.row];
+    NSString *phoneNumber = [NSString stringWithFormat:@"%lld",videoObj.toContact];
     
     SentVideoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[SentVideoTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
-    if(videoObj.userImageUrl.length == 0)
-        videoObj.userImageUrl = @"luk-iphone-final-lukes-sent-list-pic-dummy.png";
+    VideoDetail *videoUserInfo = [userInfoDict valueForKey:phoneNumber];
+    if(videoUserInfo){
+        
+        videoObj.fname = videoUserInfo.fname;
+        videoObj.lname = videoUserInfo.lname;
+        if(videoUserInfo.userProfileImage)
+            videoObj.userProfileImage = videoUserInfo.userProfileImage;
+        else
+            videoObj.userProfileImage = [UIImage imageNamed:videoUserInfo.userImageUrl];
+    }
     
     NSString *name;
     if(videoObj.fname.length > 0)
@@ -161,13 +182,113 @@
         name = [NSString stringWithFormat:@"%lld",videoObj.toContact];
     
     
-        
-    [cell.userImageViewObj setImage:[UIImage imageNamed:videoObj.userImageUrl]];
-    [cell.userNameLBLObj setText:name];
-    [cell.videoTitleLBLObj setText:@"Video Title"];//videoObj.videoTitle];
+    cell.userNameLBLObj.text = name;
+    cell.videoTitleLBLObj.text = videoObj.videoTitle;
     [cell.videoTitleLBLObj sizeToFit];
-    [cell.videoTimeLBLObj setText:videoObj.videoTime];
+    cell.videoTimeLBLObj.text = videoObj.videoTime;
+    
+    if(videoObj.userProfileImage)
+        [cell.userImageViewObj setImage:videoObj.userProfileImage];
+    else
+    {
+        [cell.userImageViewObj setImage:[UIImage imageNamed:videoObj.userImageUrl]];
+        
+        // Request authorization to Address Book
+        ABAddressBookRef addressBookRef = ABAddressBookCreateWithOptions(NULL, NULL);
+        
+        if (ABAddressBookGetAuthorizationStatus() == kABAuthorizationStatusNotDetermined) {
+            ABAddressBookRequestAccessWithCompletion(addressBookRef, ^(bool granted, CFErrorRef error) {
+                if (granted) {
+                    // First time access has been granted, add the contact
+                    [self getAllContacts:phoneNumber cell:cell indexpath:indexPath];
+                } else {
+                    // User denied access
+                    // Display an alert telling user the contact could not be added
+                }
+            });
+        }
+        else if (ABAddressBookGetAuthorizationStatus() == kABAuthorizationStatusAuthorized) {
+            // The user has previously given access, add the contact
+            [self getAllContacts:phoneNumber cell:cell indexpath:indexPath];
+        }
+        else {
+            // The user has previously denied access
+            // Send an alert telling user to change privacy setting in settings app
+        }
+        
+    }
+    
     return cell;
+
+}
+
+//Fetch Images and user information from addressbook
+-(void)getAllContacts:(NSString*)phoneNo cell:(SentVideoTableViewCell*)cell indexpath:(NSIndexPath*)indexPath{
+    
+    NSInteger index = indexPath.row;
+    VideoDetail *videoObj = [videoDetailsArr objectAtIndex:index];
+    videoObj.userProfileImage = [UIImage imageNamed:videoObj.userImageUrl];
+    
+    if(cnCode.length==0)
+        cnCode = @"49";
+    
+    CFErrorRef *error = NULL;
+    ABAddressBookRef addressBook = ABAddressBookCreateWithOptions(NULL, error);
+    CFArrayRef allPeople = ABAddressBookCopyArrayOfAllPeople(addressBook);
+    CFIndex numberOfPeople = ABAddressBookGetPersonCount(addressBook);
+    
+    for(int i = 0; i < numberOfPeople; i++) {
+        
+        ABRecordRef person = CFArrayGetValueAtIndex( allPeople, i );
+        
+        NSString *firstName = (__bridge NSString *)(ABRecordCopyValue(person, kABPersonFirstNameProperty));
+        NSString *lastName = (__bridge NSString *)(ABRecordCopyValue(person, kABPersonLastNameProperty));
+        // NSLog(@"Name:%@ %@", firstName, lastName);
+        
+        ABMultiValueRef phoneNumbers = ABRecordCopyValue(person, kABPersonPhoneProperty);
+        
+        NSString *phoneNumber = @"";
+        for (CFIndex i = 0; i < ABMultiValueGetCount(phoneNumbers); i++) {
+            phoneNumber = (__bridge_transfer NSString *) ABMultiValueCopyValueAtIndex(phoneNumbers, i);
+//            NSLog(@"phone:%@", phoneNumber);
+        }
+        
+        NSCharacterSet *notAllowedChars = [[NSCharacterSet characterSetWithCharactersInString:@"1234567890"] invertedSet];
+        phoneNumber = [[phoneNumber componentsSeparatedByCharactersInSet:notAllowedChars] componentsJoinedByString:@""];
+        phoneNumber = [phoneNumber stringByReplacingOccurrencesOfString:@" " withString:@""];
+        
+        if(phoneNumber.length == 10)
+            phoneNumber = [NSString stringWithFormat:@"%@%@",cnCode,phoneNumber];
+        
+        
+//        NSLog(@"phonemunber...%@....phoneN0....%@",phoneNumber,phoneNo);
+        if([phoneNumber isEqualToString:phoneNo])
+        {
+            NSData *contactImageData = (__bridge NSData*)ABPersonCopyImageData(person);
+            
+            if(contactImageData)
+                cell.userImageViewObj.image = [[UIImage alloc] initWithData:contactImageData];
+            cell.userNameLBLObj.text = firstName;
+            
+            videoObj.fname = firstName;
+            videoObj.lname = lastName;
+            videoObj.userProfileImage = [[UIImage alloc] initWithData:contactImageData];
+            
+            (userInfoDict)[phoneNo] = videoObj;
+            
+            //            [videoDetailsArr replaceObjectAtIndex:index withObject:videoObj];
+            break;
+            break;
+        }
+        
+    }
+    
+    (userInfoDict)[phoneNo] = videoObj;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 85;
 }
 
 - (void)didReceiveMemoryWarning

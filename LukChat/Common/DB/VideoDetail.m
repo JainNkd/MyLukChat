@@ -11,7 +11,7 @@
 #import "Constants.h"
 
 @implementation VideoDetail
-@synthesize toContact,toUserID,fname,lname,userImageUrl,videoTime,videoTitle,fromContact,videoURL,thumnail;
+@synthesize toContact,toUserID,fname,lname,userImageUrl,videoTime,videoTitle,fromContact,videoURL,thumnail,userProfileImage;
 
 -(VideoDetail*)initWithDict:(NSDictionary*)videoDetailDict
 {
@@ -27,7 +27,7 @@
         self.videoTime = [CommonMethods convertDatetoSting:date];
         self.thumnail =  [NSString stringWithFormat:@"%@%@",kVideoDownloadURL,[videoDetailDict valueForKey:@"thumbnail"]];
         
-        
+        self.userImageUrl = @"luk-iphone-final-lukes-sent-list-pic-dummy.png";
        
         
     }

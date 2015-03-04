@@ -11,6 +11,7 @@
 @interface SentVideosViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
 {
     NSMutableArray *videoDetailsArr;
+    NSString *cnCode;
 }
 
 @property(nonatomic,strong) NSMutableArray *videoDetailsArr;
