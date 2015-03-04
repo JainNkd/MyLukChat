@@ -11,6 +11,7 @@
 #import "CommonMethods.h"
 #import "Constants.h"
 #import "DatabaseMethods.h"
+#import <Parse/Parse.h>
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate> {
     
