@@ -475,6 +475,7 @@
 - (IBAction)sendToLukiesButtonPressed:(UIButton *)sender {
     
     NSString *urlStr = [[NSUserDefaults standardUserDefaults] valueForKey:kMyVideoToShare];
+     urlStr = [CommonMethods localFileUrl:urlStr];
     if (urlStr) {
         [self shareVideo:[NSURL fileURLWithPath:urlStr]];
     }
@@ -545,6 +546,7 @@
     chatObj.chatText = videoTitle;
     chatObj.chatVideo = [video absoluteString];
     chatObj.chatTime = [CommonMethods convertDatetoSting:[NSDate date]];
+    chatObj.mergedVideo = [[NSUserDefaults standardUserDefaults] valueForKey:kMyVideoToShare];
     //    _chatObj.chatVideo = [NSString stringWithFormat:@"%@%@",kVideoDownloadURL,self.videoShareFileName];
     
     DatabaseMethods *dbObj = [[DatabaseMethods alloc] init];

@@ -11,6 +11,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import "LukiesViewController.h"
 #import "Constants.h"
+#import "CommonMethods.h"
 
 @interface MergeVideosViewController ()
 
@@ -46,16 +47,9 @@
     [super viewDidLoad];
     NSString *videoTitle =  [[NSUserDefaults standardUserDefaults] valueForKey:VIDEO_TITLE];
     NSString *filename = [[NSUserDefaults standardUserDefaults]valueForKey:kMyVideoToShare];
-//    if ([[NSFileManager defaultManager] fileExistsAtPath:filename])
-//    {
-//        UIImage *image = nil;//[self generateThumbImage:filename];
-//        
-//        if(image)
-//            [self.mergeVideoImg setImage:image];
-//    }
+    filename = [CommonMethods localFileUrl:filename];
     
     self.videoTitleLBL.text = videoTitle;
-    
     
     // prepare the video asset from recorded file
     AVURLAsset *avAsset = [AVURLAsset URLAssetWithURL:[NSURL fileURLWithPath:filename] options:nil];

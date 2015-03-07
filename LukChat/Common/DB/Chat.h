@@ -11,6 +11,6 @@
 @property (nonatomic, strong) NSString *chatText;
 @property (nonatomic, strong) NSString *chatVideo;
 @property (nonatomic, strong) NSString *chatTime;
-
+@property (nonatomic, strong) NSString *mergedVideo;
 
 @end

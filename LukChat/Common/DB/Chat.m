@@ -12,6 +12,7 @@
 @synthesize chatText;
 @synthesize chatVideo;
 @synthesize chatTime;
+@synthesize mergedVideo;
 
 
 -(id)init
@@ -28,6 +29,7 @@
         self.chatText = @"";
         self.chatVideo = @"";
         self.chatTime = @"";
+        self.mergedVideo =@"";
 
     }
     return self;

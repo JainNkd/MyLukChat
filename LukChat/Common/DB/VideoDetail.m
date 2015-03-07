@@ -11,7 +11,7 @@
 #import "Constants.h"
 
 @implementation VideoDetail
-@synthesize toContact,toUserID,fname,lname,userImageUrl,videoTime,videoTitle,fromContact,videoURL,thumnail,userProfileImage;
+@synthesize toContact,toUserID,fname,lname,userImageUrl,videoTime,videoTitle,fromContact,videoURL,thumnail,userProfileImage,mergedVideoURL;
 
 -(VideoDetail*)initWithDict:(NSDictionary*)videoDetailDict
 {

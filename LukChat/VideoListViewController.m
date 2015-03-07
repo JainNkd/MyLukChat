@@ -335,7 +335,10 @@
         return;
     }
     
-    NSString *mergedFile = [NSString stringWithFormat:@"%@/mergedvideo.mov", path];
+     NSString *docPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    NSString * timestamp = [NSString stringWithFormat:@"%f",[[NSDate date] timeIntervalSince1970] * 1000];
+    fileName = [NSString stringWithFormat:@"%@mergedvideo.mov",timestamp];
+    NSString *mergedFile = [NSString stringWithFormat:@"%@/%@", docPath,fileName];
     if ([[NSFileManager defaultManager] fileExistsAtPath:mergedFile]) {
         [[NSFileManager defaultManager] removeItemAtPath:mergedFile error:nil];
     }
@@ -383,7 +386,7 @@
     NSData *videoData = [NSData dataWithContentsOfURL:outputURL];
     [videoData writeToFile:outputVideoPath atomically:YES];
     
-   [[NSUserDefaults standardUserDefaults] setValue:outputVideoPath forKey:kMyVideoToShare];
+   [[NSUserDefaults standardUserDefaults] setValue:fileName forKey:kMyVideoToShare];
      MergeVideosViewController *mergeVC = [self.storyboard instantiateViewControllerWithIdentifier:@"MergeVideosViewController"];
     
     [self.navigationController pushViewController:mergeVC animated:YES];

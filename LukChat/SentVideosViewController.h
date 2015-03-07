@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MediaPlayer/MediaPlayer.h>
 
 @interface SentVideosViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
 {

@@ -413,7 +413,7 @@
     // Open the database from the users filessytem
     if(sqlite3_open([databasePath UTF8String], &database) == SQLITE_OK) {
         // Setup the SQL Statement and compile it for faster access
-        NSString *quertyStr = @"SELECT t2.user_id,t1.to_phone,t1.from_phone,t2.user_fname,t2.user_lname,t1.chat_text, t1.chat_video, t1.chat_time FROM tbl_chats t1,tbl_contacts t2 where t1.to_phone = t2.user_phone ORDER BY t1.id ASC";
+        NSString *quertyStr = @"SELECT t2.user_id,t1.to_phone,t1.from_phone,t2.user_fname,t2.user_lname,t1.chat_text, t1.chat_video, t1.chat_time, t1.merged_video FROM tbl_chats t1,tbl_contacts t2 where t1.to_phone = t2.user_phone ORDER BY t1.id DESC";
         sqlite3_stmt *compiledStatement;
         if(sqlite3_prepare_v2(database, [quertyStr UTF8String], -1, &compiledStatement, NULL) == SQLITE_OK) {
             // Loop through the results and add them to the feeds array
@@ -429,6 +429,7 @@
                 videoDetialObj.videoTitle = [NSString stringWithFormat:@"%s",(const char*)sqlite3_column_text(compiledStatement, 5)];
                 videoDetialObj.videoURL = [NSString stringWithFormat:@"%s",(const char*)sqlite3_column_text(compiledStatement, 6)];
                 videoDetialObj.videoTime = [NSString stringWithFormat:@"%s",(const char*)sqlite3_column_text(compiledStatement, 7)];
+                videoDetialObj.mergedVideoURL =  [NSString stringWithFormat:@"%s",(const char*)sqlite3_column_text(compiledStatement, 8)];
                 
                 if (!videoDetialObj.fname)
                     videoDetialObj.fname = @"";
@@ -594,7 +595,7 @@
     if(sqlite3_open([databasePath UTF8String], &database) == SQLITE_OK)
     {
         sqlite3_stmt    *statement;
-        NSString *querySQL = @"INSERT INTO tbl_chats (from_phone , to_phone , content_type , chat_text , chat_video , chat_time ) VALUES (?,?,?,?,?,?); ";
+        NSString *querySQL = @"INSERT INTO tbl_chats (from_phone , to_phone , content_type , chat_text , chat_video , chat_time, merged_video ) VALUES (?,?,?,?,?,?,?); ";
         // NSLog(@"query: %@", querySQL);
         const char *query_stmt = [querySQL UTF8String];
         
@@ -608,7 +609,8 @@
             sqlite3_bind_text(statement, 4, [chatObj.chatText UTF8String], -1, SQLITE_STATIC);
             sqlite3_bind_text(statement, 5, [chatObj.chatVideo UTF8String], -1, SQLITE_STATIC);
             sqlite3_bind_text(statement, 6, [chatObj.chatTime UTF8String], -1, SQLITE_STATIC);
-            
+            sqlite3_bind_text(statement, 7, [chatObj.mergedVideo UTF8String], -1, SQLITE_STATIC);
+
             if(SQLITE_DONE != sqlite3_step(statement))
             {
                 NSLog( @"Error while inserting chatObj: '%s'", sqlite3_errmsg(database));

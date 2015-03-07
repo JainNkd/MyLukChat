@@ -57,8 +57,9 @@
     
     [self.sentTableViewObj reloadData];
     
-    //userDetailsArr = [[NSMutableArray alloc]initWithArray:[[User alloc]userDetails]];
-//    videoDetailsArr = [DatabaseMethods getAllSentVideoContacts];
+    videoDetailsArr = [DatabaseMethods getAllSentVideoContacts];
+    if(videoDetailsArr.count == 0)
+        [CommonMethods showAlertWithTitle:@"LUK" message:@"You not sent any video to your friends." cancelBtnTitle:nil otherBtnTitle:@"Accept" delegate:nil tag:0];
     
     long long int myPhoneNum = [[[NSUserDefaults standardUserDefaults] valueForKey:kMYPhoneNumber] longLongValue];
     
@@ -69,9 +70,10 @@
     [dict setValue:kAPISecretValue forKey:kAPISecret];
     [dict setValue:[NSString stringWithFormat:@"%lld",myPhoneNum] forKey:@"phone"];
     
-    ConnectionHandler *connObj = [[ConnectionHandler alloc] init];
-    connObj.delegate = self;
-    [connObj makePOSTRequestPath:kSentVideosURL parameters:dict];
+//Server Web service code
+//    ConnectionHandler *connObj = [[ConnectionHandler alloc] init];
+//    connObj.delegate = self;
+//    [connObj makePOSTRequestPath:kSentVideosURL parameters:dict];
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -225,8 +227,7 @@
 //Fetch Images and user information from addressbook
 -(void)getAllContacts:(NSString*)phoneNo cell:(SentVideoTableViewCell*)cell indexpath:(NSIndexPath*)indexPath{
     
-    NSInteger index = indexPath.row;
-    VideoDetail *videoObj = [videoDetailsArr objectAtIndex:index];
+    VideoDetail *videoObj = [videoDetailsArr objectAtIndex:indexPath.row];
     videoObj.userProfileImage = [UIImage imageNamed:videoObj.userImageUrl];
     
     if(cnCode.length==0)
@@ -290,6 +291,35 @@
 {
     return 85;
 }
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+     VideoDetail *videoObj = [videoDetailsArr objectAtIndex:indexPath.row];
+    NSLog(@"merge videos...%@",videoObj.mergedVideoURL);
+    
+
+    [self playMovie:[CommonMethods localFileUrl:videoObj.mergedVideoURL]];
+}
+
+-(void)playMovie: (NSString *) path{
+    
+    NSURL *url = [NSURL fileURLWithPath:path];
+    MPMoviePlayerViewController *theMovie = [[MPMoviePlayerViewController alloc] initWithContentURL:url];
+    theMovie.moviePlayer.controlStyle = MPMovieControlStyleFullscreen;
+    [self presentMoviePlayerViewControllerAnimated:theMovie];
+    theMovie.moviePlayer.movieSourceType = MPMovieSourceTypeFile;
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(movieFinishedCallBack:) name:MPMoviePlayerPlaybackDidFinishNotification object:nil];
+
+    [theMovie.moviePlayer play];
+}
+
+- (void)movieFinishedCallBack:(NSNotification *) aNotification {
+    MPMoviePlayerController *mPlayer = [aNotification object];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:MPMoviePlayerPlaybackDidFinishNotification object:mPlayer];
+    [mPlayer stop];
+    
+}
+
 
 - (void)didReceiveMemoryWarning
 {

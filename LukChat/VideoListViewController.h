@@ -26,6 +26,8 @@
     // index of the video
     NSInteger index;
     
+    NSString *fileName;
+    
 }
 
 @property (weak, nonatomic) IBOutlet UILabel *titleHeaderLBL;
