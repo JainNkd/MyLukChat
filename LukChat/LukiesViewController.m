@@ -168,31 +168,31 @@
         for (CFIndex i = 0; i < ABMultiValueGetCount(phoneNumbers); i++) {
             phoneNumber = (__bridge_transfer NSString *) ABMultiValueCopyValueAtIndex(phoneNumbers, i);
             NSLog(@"phone:%@", phoneNumber);
+            
+            NSCharacterSet *notAllowedChars = [[NSCharacterSet characterSetWithCharactersInString:@"1234567890"] invertedSet];
+            NSString *phNum = [[phoneNumber componentsSeparatedByCharactersInSet:notAllowedChars] componentsJoinedByString:@""];
+            phNum = [phNum stringByReplacingOccurrencesOfString:@" " withString:@""];
+            
+            Contact *contObj = [[Contact alloc] init];
+            contObj.user_id = i+1;   //////// dummy
+            contObj.user_fname = firstName;
+            contObj.user_lname = lastName;
+            contObj.user_phone = [phNum longLongValue];
+            
+            //changes for country code
+            NSString *phoneNum = [NSString stringWithFormat:@"%lld",[phNum longLongValue]];
+            
+            if(phoneNum.length == 10)
+                phoneNum = [NSString stringWithFormat:@"%@%@",cnCode,phoneNum];
+            
+            contObj.user_phone = [phoneNum longLongValue];
+            
+            if (![dbObj checkIfContactExists:contObj.user_phone]) {
+                [dbObj insertContactInfoToDB:contObj];
+            }
         }
+        
         [_contacts addObject:(__bridge id)(person)];
-        
-        
-        NSCharacterSet *notAllowedChars = [[NSCharacterSet characterSetWithCharactersInString:@"1234567890"] invertedSet];
-        NSString *phNum = [[phoneNumber componentsSeparatedByCharactersInSet:notAllowedChars] componentsJoinedByString:@""];
-        phNum = [phNum stringByReplacingOccurrencesOfString:@" " withString:@""];
-        
-        Contact *contObj = [[Contact alloc] init];
-        contObj.user_id = i+1;   //////// dummy
-        contObj.user_fname = firstName;
-        contObj.user_lname = lastName;
-        contObj.user_phone = [phNum longLongValue];
-        
-        //changes for country code
-        NSString *phoneNum = [NSString stringWithFormat:@"%lld",[phNum longLongValue]];
-        
-        if(phoneNum.length == 10)
-            phoneNum = [NSString stringWithFormat:@"%@%@",cnCode,phoneNum];
-        
-        contObj.user_phone = [phoneNum longLongValue];
-        
-        if (![dbObj checkIfContactExists:contObj.user_phone]) {
-            [dbObj insertContactInfoToDB:contObj];
-        }
         // NSLog(@"=============================================");
         
     }

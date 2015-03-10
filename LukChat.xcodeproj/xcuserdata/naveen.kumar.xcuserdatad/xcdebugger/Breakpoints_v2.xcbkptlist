@@ -73,7 +73,7 @@
                   symbolName = "-[ShareVideosViewController tableView:didSelectRowAtIndexPath:]"
                   moduleName = "LukChat"
                   urlString = "file:///Users/naveen.kumar/Documents/IOSProject/DemoApps/MyChatApp/LukChat/ShareVideosViewController.m"
-                  timestampString = "447161264.856944"
+                  timestampString = "447674069.882022"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "300"
@@ -87,7 +87,7 @@
                   symbolName = "__63-[ShareVideosViewController tableView:didSelectRowAtIndexPath:]_block_invoke248"
                   moduleName = "LukChat"
                   urlString = "file:///Users/naveen.kumar/Documents/IOSProject/DemoApps/MyChatApp/LukChat/ShareVideosViewController.m"
-                  timestampString = "447161264.857067"
+                  timestampString = "447674069.882236"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "300"
@@ -135,7 +135,7 @@
                   symbolName = "-[ShareVideosViewController setBlurView:flag:]"
                   moduleName = "LukChat"
                   urlString = "file:///Users/naveen.kumar/Documents/IOSProject/DemoApps/MyChatApp/LukChat/ShareVideosViewController.m"
-                  timestampString = "447161264.857742"
+                  timestampString = "447674069.883282"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "374"
@@ -149,7 +149,7 @@
                   symbolName = "__46-[ShareVideosViewController setBlurView:flag:]_block_invoke304"
                   moduleName = "LukChat"
                   urlString = "file:///Users/naveen.kumar/Documents/IOSProject/DemoApps/MyChatApp/LukChat/ShareVideosViewController.m"
-                  timestampString = "447161264.857863"
+                  timestampString = "447674069.88345"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "374"
@@ -171,7 +171,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "60"
             endingLineNumber = "60"
-            landmarkName = "-viewDidLoad"
+            landmarkName = "-didReceiveMemoryWarning"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -187,7 +187,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "123"
             endingLineNumber = "123"
-            landmarkName = "-applicationDidBecomeActive:"
+            landmarkName = "-applicationWillEnterForeground:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -203,7 +203,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "64"
             endingLineNumber = "64"
-            landmarkName = "-setBedgeValue:"
+            landmarkName = "-didReceiveMemoryWarning"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -262,11 +262,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LukChat/SentVideosViewController.m"
-            timestampString = "447160177.726411"
+            timestampString = "447673842.367168"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "165"
-            endingLineNumber = "165"
+            startingLineNumber = "167"
+            endingLineNumber = "167"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -278,11 +278,27 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LukChat/SentVideosViewController.m"
-            timestampString = "447161264.833767"
+            timestampString = "447673842.367168"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "232"
-            endingLineNumber = "232"
+            startingLineNumber = "234"
+            endingLineNumber = "234"
+            landmarkName = "-getAllContacts:cell:indexpath:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LukChat/SentVideosViewController.m"
+            timestampString = "447673811.060002"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "230"
+            endingLineNumber = "230"
             landmarkName = "-getAllContacts:cell:indexpath:"
             landmarkType = "5">
          </BreakpointContent>

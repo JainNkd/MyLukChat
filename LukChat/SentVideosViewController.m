@@ -61,16 +61,17 @@
     if(videoDetailsArr.count == 0)
         [CommonMethods showAlertWithTitle:@"LUK" message:@"You not sent any video to your friends." cancelBtnTitle:nil otherBtnTitle:@"Accept" delegate:nil tag:0];
     
-    long long int myPhoneNum = [[[NSUserDefaults standardUserDefaults] valueForKey:kMYPhoneNumber] longLongValue];
-    
-    myPhoneNum = 918050636309;
-    
-    NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
-    [dict setValue:kAPIKeyValue forKey:kAPIKey];
-    [dict setValue:kAPISecretValue forKey:kAPISecret];
-    [dict setValue:[NSString stringWithFormat:@"%lld",myPhoneNum] forKey:@"phone"];
-    
 //Server Web service code
+    
+//    long long int myPhoneNum = [[[NSUserDefaults standardUserDefaults] valueForKey:kMYPhoneNumber] longLongValue];
+    
+//    myPhoneNum = 918050636309;
+    
+//    NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
+//    [dict setValue:kAPIKeyValue forKey:kAPIKey];
+//    [dict setValue:kAPISecretValue forKey:kAPISecret];
+//    [dict setValue:[NSString stringWithFormat:@"%lld",myPhoneNum] forKey:@"phone"];
+    
 //    ConnectionHandler *connObj = [[ConnectionHandler alloc] init];
 //    connObj.delegate = self;
 //    [connObj makePOSTRequestPath:kSentVideosURL parameters:dict];
@@ -250,38 +251,39 @@
         
         NSString *phoneNumber = @"";
         for (CFIndex i = 0; i < ABMultiValueGetCount(phoneNumbers); i++) {
+            
             phoneNumber = (__bridge_transfer NSString *) ABMultiValueCopyValueAtIndex(phoneNumbers, i);
+            
+            NSCharacterSet *notAllowedChars = [[NSCharacterSet characterSetWithCharactersInString:@"1234567890"] invertedSet];
+            phoneNumber = [[phoneNumber componentsSeparatedByCharactersInSet:notAllowedChars] componentsJoinedByString:@""];
+            phoneNumber = [phoneNumber stringByReplacingOccurrencesOfString:@" " withString:@""];
+            
+            if(phoneNumber.length == 10)
+                phoneNumber = [NSString stringWithFormat:@"%@%@",cnCode,phoneNumber];
+            
+            
+            //        NSLog(@"phonemunber...%@....phoneN0....%@",phoneNumber,phoneNo);
+            if([phoneNumber isEqualToString:phoneNo])
+            {
+                NSData *contactImageData = (__bridge NSData*)ABPersonCopyImageData(person);
+                
+                if(contactImageData)
+                    cell.userImageViewObj.image = [[UIImage alloc] initWithData:contactImageData];
+                cell.userNameLBLObj.text = firstName;
+                
+                videoObj.fname = firstName;
+                videoObj.lname = lastName;
+                videoObj.userProfileImage = [[UIImage alloc] initWithData:contactImageData];
+                
+                (userInfoDict)[phoneNo] = videoObj;
+                
+                //            [videoDetailsArr replaceObjectAtIndex:index withObject:videoObj];
+                break;
+                break;
+            }
+
 //            NSLog(@"phone:%@", phoneNumber);
         }
-        
-        NSCharacterSet *notAllowedChars = [[NSCharacterSet characterSetWithCharactersInString:@"1234567890"] invertedSet];
-        phoneNumber = [[phoneNumber componentsSeparatedByCharactersInSet:notAllowedChars] componentsJoinedByString:@""];
-        phoneNumber = [phoneNumber stringByReplacingOccurrencesOfString:@" " withString:@""];
-        
-        if(phoneNumber.length == 10)
-            phoneNumber = [NSString stringWithFormat:@"%@%@",cnCode,phoneNumber];
-        
-        
-//        NSLog(@"phonemunber...%@....phoneN0....%@",phoneNumber,phoneNo);
-        if([phoneNumber isEqualToString:phoneNo])
-        {
-            NSData *contactImageData = (__bridge NSData*)ABPersonCopyImageData(person);
-            
-            if(contactImageData)
-                cell.userImageViewObj.image = [[UIImage alloc] initWithData:contactImageData];
-            cell.userNameLBLObj.text = firstName;
-            
-            videoObj.fname = firstName;
-            videoObj.lname = lastName;
-            videoObj.userProfileImage = [[UIImage alloc] initWithData:contactImageData];
-            
-            (userInfoDict)[phoneNo] = videoObj;
-            
-            //            [videoDetailsArr replaceObjectAtIndex:index withObject:videoObj];
-            break;
-            break;
-        }
-        
     }
     
     (userInfoDict)[phoneNo] = videoObj;
