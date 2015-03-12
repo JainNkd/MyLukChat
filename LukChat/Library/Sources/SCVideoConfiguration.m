@@ -82,8 +82,8 @@ static CGSize MakeVideoSize(CGSize videoSize, float requestedWidth) {
     return @{
              AVVideoCodecKey : self.codec,
              AVVideoScalingModeKey : self.scalingMode,
-             AVVideoWidthKey : [NSNumber numberWithInteger:videoSize.height],
-             AVVideoHeightKey : [NSNumber numberWithInteger:videoSize.height],
+             AVVideoWidthKey : [NSNumber numberWithInteger:videoSize.width],
+             AVVideoHeightKey : [NSNumber numberWithInteger:videoSize.width],
              AVVideoCompressionPropertiesKey : compressionSettings
              };
 
