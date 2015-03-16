@@ -141,58 +141,41 @@
 
 #pragma mark - Push Notfn
 
--(void)sendDeviceToken:(NSString *)deviceToken {
-    //    ConnectionHandler *connHandler = [[ConnectionHandler alloc] init];
-    //    // connHandler.delegate = self;
-    //    NSDictionary *dict =[NSDictionary dictionaryWithObject:deviceToken forKey:@"DeviceToken"];
-    //    //NSLog(@"dict:%@",dict);
-    //    [connHandler makeGETRequestPath:kSendSystemDetails parameters:dict];
-}
-
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    
     // Store the deviceToken in the current installation and save it to Parse.
     PFInstallation *currentInstallation = [PFInstallation currentInstallation];
     [currentInstallation setDeviceTokenFromData:deviceToken];
     [currentInstallation saveInBackground];
+    
+    NSLog(@"didRegisterForRemoteNotificationsWithDeviceToken *******");
+    NSLog(@"My token is: %@", deviceToken);
+    
+    NSString *dToken = [[deviceToken description] stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]];
+    dToken = [dToken stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    dToken = [dToken stringByReplacingOccurrencesOfString:@" " withString:@""];
+    NSLog(@"STR: %@",dToken);
+    
+    [[NSUserDefaults standardUserDefaults] setValue:dToken forKey:kDEVICETOKEN];
 }
+
+
+- (void)application:(UIApplication*)application didFailToRegisterForRemoteNotificationsWithError:(NSError*)error
+{
+    NSLog(@"Error in registration. Error: %@", error);
+}
+
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
     
+    [PFPush handlePush:userInfo];
+    
+    NSLog(@"didReceiveRemoteNotification *************");
+    application.applicationIconBadgeNumber = 0;
     NSInteger count = [UIApplication sharedApplication].applicationIconBadgeNumber;
     [[UIApplication sharedApplication] setApplicationIconBadgeNumber:count+1];
-    [PFPush handlePush:userInfo];
-}
-
-
-//- (void)application:(UIApplication*)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData*)deviceToken
-//{
-//    NSLog(@"didRegisterForRemoteNotificationsWithDeviceToken *******");
-//    NSLog(@"My token is: %@", deviceToken);
-//    
-//    NSString *dToken = [[deviceToken description] stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]];
-//    dToken = [dToken stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-//    dToken = [dToken stringByReplacingOccurrencesOfString:@" " withString:@""];
-//    NSLog(@"STR: %@",dToken);
-//    // [self sendDeviceToken:dToken];
-//    [[NSUserDefaults standardUserDefaults] setValue:dToken forKey:kDEVICETOKEN];
-//    DatabaseMethods *dbObj = [[DatabaseMethods alloc] init];
-//    NSString *strQuery = [NSString stringWithFormat:@"UPDATE tbl_user SET user_devicetoken='%@'",dToken];
-//    [dbObj updateDatabase:[strQuery UTF8String]];
-//}
-
-//- (void)application:(UIApplication*)application didFailToRegisterForRemoteNotificationsWithError:(NSError*)error
-//{
-//    NSLog(@"Error in registration. Error: %@", error);
-//}
-
-
-//- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
-//    NSLog(@"didReceiveRemoteNotification *************");
-    //application.applicationIconBadgeNumber = 0;
-//    NSInteger count = [UIApplication sharedApplication].applicationIconBadgeNumber;
-//    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:count+1];
-//    NSLog(@"userInfo: %@", userInfo);
-//    
+    NSLog(@"userInfo: %@", userInfo);
+    
 //    Chat *chatObj = [Chat new];
 //    chatObj.fromPhone = [[userInfo valueForKey:kNotificationFROM] longLongValue];
 //    chatObj.toPhone = [[[NSUserDefaults standardUserDefaults] objectForKey:kMYPhoneNumber] longLongValue];
@@ -203,16 +186,16 @@
 //    DatabaseMethods *dbObj = [[DatabaseMethods alloc] init];
 //    [dbObj insertChatInfoToDB:chatObj];
     
-//}
+}
 
-//- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult result))completionHandler {
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult result))completionHandler {
 
-//    NSLog(@"didReceiveRemoteNotification fetchCompletionHandler **********************");
-//    //application.applicationIconBadgeNumber = 0;
-//    NSInteger count = [UIApplication sharedApplication].applicationIconBadgeNumber;
-//    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:count+1];
-//    NSLog(@"userInfo: %@", userInfo);
-//    
+    NSLog(@"didReceiveRemoteNotification fetchCompletionHandler **********************");
+    //application.applicationIconBadgeNumber = 0;
+    NSInteger count = [UIApplication sharedApplication].applicationIconBadgeNumber;
+    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:count+1];
+    NSLog(@"userInfo background: %@", userInfo);
+    
 //    NSDictionary *apsDict = [userInfo valueForKey:kNotificationAPS];
 //    Chat *chatObj = [Chat new];
 //    chatObj.fromPhone = [[apsDict valueForKey:kNotificationFROM] longLongValue];
@@ -224,7 +207,7 @@
 //    DatabaseMethods *dbObj = [[DatabaseMethods alloc] init];
 //    [dbObj insertChatInfoToDB:chatObj];
     
-//}
+}
 
 
 @end
