@@ -182,16 +182,37 @@
         cell = [[ShareVideoTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    __block NSString *documentsDirectory = [paths objectAtIndex:0];
+     NSString *filePath = [documentsDirectory stringByAppendingPathComponent:videoDetailObj.thumnailName];
+
+    if([[NSFileManager defaultManager] fileExistsAtPath:filePath])
+    {
+        NSData *pngData = [NSData dataWithContentsOfFile:filePath];
+        UIImage *image = [UIImage imageWithData:pngData];
+        [cell.videoImg setImage:image];
+    }
+    else
+    {
     // using Image for thumbnails
     [cell.videoImg setImageWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:videoDetailObj.thumnail]]
                          placeholderImage:[UIImage imageNamed:@"share-videos-1st-pic.png"]
                                   success:^(NSURLRequest *request , NSHTTPURLResponse *response , UIImage *image ){
-                                      NSLog(@"Loaded successfully");// %ld", (long)[response statusCode]);
+                                      NSLog(@"Loaded successfully.....%@",[request.URL absoluteString]);// %ld", (long)[response statusCode]);
+                                      
+                                      NSArray *ary = [[request.URL absoluteString] componentsSeparatedByString:@"/"];
+                                      NSString *filename = [ary lastObject];
+                                      
+                                      NSString *filePath = [documentsDirectory stringByAppendingPathComponent:filename];
+                                      //Add the file name
+                                      NSData *pngData = UIImagePNGRepresentation(image);
+                                      [pngData writeToFile:filePath atomically:YES];
                                   }
                                   failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error){
                                       NSLog(@"failed loading");//'%@", error);
                                   }
      ];
+    }
     
     //Set Text for video cell
     cell.videoSenderLbl.text = [NSString stringWithFormat:@"%lld",videoDetailObj.fromContact];
@@ -241,6 +262,7 @@
     }
     return cell;
 }
+
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {

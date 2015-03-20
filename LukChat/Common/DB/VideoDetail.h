@@ -12,11 +12,11 @@
 {
     NSInteger toUserID;
     long long int fromContact,toContact;
-    NSString *fname,*lname,*videoTitle,*userImageUrl,*videoTime,*videoURL,*thumnail,*mergedVideoURL;
+    NSString *fname,*lname,*videoTitle,*userImageUrl,*videoTime,*videoURL,*thumnail,*mergedVideoURL,*thumnailName;
     UIImage *userProfileImage;
 }
 
-@property(nonatomic,strong)NSString *fname,*lname,*videoTitle,*userImageUrl,*videoTime,*videoURL,*thumnail,*mergedVideoURL;
+@property(nonatomic,strong)NSString *fname,*lname,*videoTitle,*userImageUrl,*videoTime,*videoURL,*thumnail,*mergedVideoURL,*thumnailName;
 @property(nonatomic,assign)NSInteger toUserID;
 @property (nonatomic, assign) long long int fromContact,toContact;
 @property(nonatomic,strong)UIImage *userProfileImage;
