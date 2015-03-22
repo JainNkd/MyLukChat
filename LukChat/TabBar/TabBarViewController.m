@@ -46,8 +46,16 @@
     UITabBarItem *tabBarItem2 = [tabBar.items objectAtIndex:1];
     UITabBarItem *tabBarItem3 = [tabBar.items objectAtIndex:2];
     
-    self.selectedIndex = 1;
-    
+    if([[NSUserDefaults standardUserDefaults]boolForKey:@"IS_NOTIFICATION"])
+    {
+        self.selectedIndex = 2;
+        [[NSUserDefaults standardUserDefaults]setBool:FALSE forKey:@"IS_NOTIFICATION"];
+    }
+    else
+    {
+        self.selectedIndex = 1;
+        
+    }
     [tabBarItem1 setFinishedSelectedImage:[UIImage imageNamed:@"footer-ping-monkey-icon.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"start-screen-footer-icon-monkey.png"]];
     
     [tabBarItem2 setFinishedSelectedImage:[UIImage imageNamed:@"myplan_selected.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"start-screen-footer-icon-video.png"]];

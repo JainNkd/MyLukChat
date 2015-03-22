@@ -19,6 +19,7 @@
 {
     NSMutableArray *receivedVideoList;
     BOOL isShowingVideo;
+    UIActivityIndicatorView *loadingWheel;
 }
 
 @property (nonatomic, strong) NSMutableDictionary *videoDownloadsInProgress,*videoProgessIndicators;
@@ -56,6 +57,7 @@
     if(!isShowingVideo){
         
         [self.shareVideosTableViewObj reloadData];
+        [loadingWheel startAnimating];
         long long int myPhoneNum = [[[NSUserDefaults standardUserDefaults] valueForKey:kMYPhoneNumber] longLongValue];
 
         NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
@@ -77,6 +79,10 @@
     self.videoProgessIndicators = [NSMutableDictionary dictionary];
     
     receivedVideoList = [[NSMutableArray alloc]init];
+    
+    loadingWheel = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    loadingWheel.center = CGPointMake(160, 240);
+    [self.view addSubview:loadingWheel];
     // Do any additional setup after loading the view.
 }
 
@@ -115,6 +121,7 @@
 -(void)connHandlerClient:(ConnectionHandler *)client didSucceedWithResponseString:(NSString *)response forPath:(NSString *)urlPath{
     NSLog(@"connHandlerClient didSucceedWithResponseString : %@",response);
     NSLog(@"loadAppContactsOnTable ******************");
+    [loadingWheel stopAnimating];
     if ([urlPath isEqualToString:kReceivedVideosURL]) {
         NSLog(@"SUCCESS: All Data fetched");
         

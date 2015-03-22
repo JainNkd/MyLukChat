@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="KRm-ul-vIt">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="13F1066" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="KRm-ul-vIt">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
@@ -18,14 +18,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="luk-main1-bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="WEp-IV-sBQ">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="1start-screen-v1_5.png" translatesAutoresizingMaskIntoConstraints="NO" id="WEp-IV-sBQ">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="luk-logo-1.png" translatesAutoresizingMaskIntoConstraints="NO" id="rlG-Sk-nQS">
-                                <rect key="frame" x="10" y="10" width="149" height="63"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="crowd-recording.png" translatesAutoresizingMaskIntoConstraints="NO" id="u8i-vq-ZBj">
-                                <rect key="frame" x="5" y="170" width="280" height="128"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="25w-gM-vGF">
                                 <rect key="frame" x="0.0" y="100" width="320" height="400"/>
@@ -1076,7 +1070,7 @@
         <!--Tab Bar View Controller-->
         <scene sceneID="9kn-tq-cEk">
             <objects>
-                <tabBarController definesPresentationContext="YES" id="4Z4-ez-jN2" customClass="TabBarViewController" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabBarViewController" definesPresentationContext="YES" id="4Z4-ez-jN2" customClass="TabBarViewController" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="gvd-0p-CMq"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
@@ -1165,17 +1159,15 @@
         </scene>
     </scenes>
     <resources>
+        <image name="1start-screen-v1_5.png" width="640" height="1136"/>
         <image name="Cam.png" width="200" height="120"/>
         <image name="CameraMode.png" width="65" height="70"/>
-        <image name="crowd-recording.png" width="283" height="127"/>
         <image name="download_video.png" width="50" height="50"/>
         <image name="luk-iphone-final-lukes-sent-list-main-bg.png" width="640" height="1136"/>
         <image name="luk-iphone-final-lukes-sent-list-pic-dummy.png" width="105" height="102"/>
         <image name="luk-iphone-final-merged-videos-main-bg.png" width="640" height="1136"/>
         <image name="luk-iphone-final-terms&amp;condition-mainbg.png" width="640" height="1136"/>
         <image name="luk-iphone-final-textenter-mainbg.png" width="640" height="1136"/>
-        <image name="luk-logo-1.png" width="149" height="63"/>
-        <image name="luk-main1-bg.png" width="320" height="568"/>
         <image name="lukes-sent-logo.png" width="533" height="80"/>
         <image name="merged-videos-logo.png" width="337" height="80"/>
         <image name="merged-videos-pic-description-bg.png" width="640" height="108"/>
@@ -1212,7 +1204,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="kz9-Bu-m6X"/>
+        <segue reference="Q69-w8-5QU"/>
         <segue reference="xHA-E1-qlW"/>
     </inferredMetricsTieBreakers>
 </document>

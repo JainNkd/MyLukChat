@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "CameraEngine.h"
+#import "TabBarViewController.h"
 
 @implementation AppDelegate
 
@@ -123,9 +124,27 @@
 {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
     
+    
     NSInteger count = [UIApplication sharedApplication].applicationIconBadgeNumber;
     if (count>0) {
-        [[UIApplication sharedApplication] setApplicationIconBadgeNumber:count-1];
+        [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
+        [[UIApplication sharedApplication] cancelAllLocalNotifications];
+        
+        NSString *userLoggedIn = [[NSUserDefaults standardUserDefaults] objectForKey:@"user"];
+        if([userLoggedIn isEqualToString:@"YES"])
+        {
+        [[NSUserDefaults standardUserDefaults]setBool:TRUE forKey:@"IS_NOTIFICATION"];
+        UINavigationController *navController = (UINavigationController *)self.window.rootViewController;
+            navController.navigationBar.hidden = YES;
+        NSLog(@"navigation...%@",[navController class]);
+        
+        UIStoryboard *storyBD = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        TabBarViewController *tabbar = [storyBD instantiateViewControllerWithIdentifier:@"TabBarViewController"];
+        
+        [navController pushViewController:tabbar animated:NO];
+    
+//        [CommonMethods showAlertWithTitle:@"LUK" message:@"New Video Reciceved from LUK"];
+        }
     }
 }
 
@@ -170,11 +189,15 @@
     
     [PFPush handlePush:userInfo];
     
-    NSLog(@"didReceiveRemoteNotification *************");
-    application.applicationIconBadgeNumber = 0;
-    NSInteger count = [UIApplication sharedApplication].applicationIconBadgeNumber;
-    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:count+1];
-    NSLog(@"userInfo: %@", userInfo);
+    
+//    if(application.applicationState != UIApplicationStateBackground)
+//        [CommonMethods showAlertWithTitle:@"LUK" message:@"New Video Reciceved from LUK"];
+//    NSLog(@"didReceiveRemoteNotification *************");
+    
+//    application.applicationIconBadgeNumber = 0;
+//    NSInteger count = [UIApplication sharedApplication].applicationIconBadgeNumber;
+//    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:count+1];
+//    NSLog(@"userInfo: %@", userInfo);
     
 //    Chat *chatObj = [Chat new];
 //    chatObj.fromPhone = [[userInfo valueForKey:kNotificationFROM] longLongValue];
@@ -191,22 +214,21 @@
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult result))completionHandler {
 
     NSLog(@"didReceiveRemoteNotification fetchCompletionHandler **********************");
-    //application.applicationIconBadgeNumber = 0;
-    NSInteger count = [UIApplication sharedApplication].applicationIconBadgeNumber;
-    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:count+1];
+//    application.applicationIconBadgeNumber = 0;
+//    NSInteger count = [UIApplication sharedApplication].applicationIconBadgeNumber;
+//    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:count+1];
     NSLog(@"userInfo background: %@", userInfo);
     
-//    NSDictionary *apsDict = [userInfo valueForKey:kNotificationAPS];
-//    Chat *chatObj = [Chat new];
-//    chatObj.fromPhone = [[apsDict valueForKey:kNotificationFROM] longLongValue];
-//    chatObj.toPhone = [[[NSUserDefaults standardUserDefaults] objectForKey:kMYPhoneNumber] longLongValue];
-//    chatObj.contentType = 1;
-//    chatObj.chatTime = [CommonMethods convertDatetoSting:[NSDate date]];
-//    chatObj.chatVideo = [NSString stringWithFormat:@"%@%@",kVideoDownloadURL,[apsDict valueForKey:kNotificationFILEPATH]];
-//    
-//    DatabaseMethods *dbObj = [[DatabaseMethods alloc] init];
-//    [dbObj insertChatInfoToDB:chatObj];
+    [[NSUserDefaults standardUserDefaults]setBool:TRUE forKey:@"IS_NOTIFICATION"];
     
+    UINavigationController *navController = (UINavigationController *)self.window.rootViewController;
+    navController.navigationBar.hidden = YES;
+    NSLog(@"navigation...%@",[navController class]);
+    
+    UIStoryboard *storyBD = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    TabBarViewController *tabbar = [storyBD instantiateViewControllerWithIdentifier:@"TabBarViewController"];
+    [navController pushViewController:tabbar animated:NO];
+    [CommonMethods showAlertWithTitle:@"LUK" message:@"New Video Reciceved from LUK"];
 }
 
 

@@ -158,6 +158,7 @@
 		8727D5CF1A4885E30092BB7C /* SCSessionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8727D5C41A4885E30092BB7C /* SCSessionTableViewCell.m */; };
 		8727D5D01A4885E30092BB7C /* SCTouchDetector.m in Sources */ = {isa = PBXBuildFile; fileRef = 8727D5C61A4885E30092BB7C /* SCTouchDetector.m */; };
 		8727D5D11A4885E30092BB7C /* SCVideoPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8727D5C81A4885E30092BB7C /* SCVideoPlayerViewController.m */; };
+		873C431A1ABF4F0C009D30DB /* 1start-screen-v1_5.png in Resources */ = {isa = PBXBuildFile; fileRef = 873C43191ABF4F0C009D30DB /* 1start-screen-v1_5.png */; };
 		875BFD1D1A572E2100A83E35 /* TabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 875BFD1C1A572E2100A83E35 /* TabBarViewController.m */; };
 		875BFD201A572ECC00A83E35 /* PushNoAnimationSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 875BFD1F1A572ECC00A83E35 /* PushNoAnimationSegue.m */; };
 		875BFD251A5730BE00A83E35 /* SentVideoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 875BFD241A5730BE00A83E35 /* SentVideoTableViewCell.m */; };
@@ -453,6 +454,7 @@
 		8727D5C61A4885E30092BB7C /* SCTouchDetector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCTouchDetector.m; sourceTree = "<group>"; };
 		8727D5C71A4885E30092BB7C /* SCVideoPlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCVideoPlayerViewController.h; sourceTree = "<group>"; };
 		8727D5C81A4885E30092BB7C /* SCVideoPlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCVideoPlayerViewController.m; sourceTree = "<group>"; };
+		873C43191ABF4F0C009D30DB /* 1start-screen-v1_5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1start-screen-v1_5.png"; sourceTree = "<group>"; };
 		875BFD1B1A572E2100A83E35 /* TabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TabBarViewController.h; path = TabBar/TabBarViewController.h; sourceTree = "<group>"; };
 		875BFD1C1A572E2100A83E35 /* TabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TabBarViewController.m; path = TabBar/TabBarViewController.m; sourceTree = "<group>"; };
 		875BFD1E1A572ECC00A83E35 /* PushNoAnimationSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PushNoAnimationSegue.h; sourceTree = "<group>"; };
@@ -720,6 +722,7 @@
 		633850511983A4C900C3256A /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				873C43191ABF4F0C009D30DB /* 1start-screen-v1_5.png */,
 				8BEEE1F31A9CAFE90024305B /* download_video.png */,
 				8BEEE1F41A9CAFE90024305B /* video_play.png */,
 				875BFD331A5735C300A83E35 /* Tabbar-Icon */,
@@ -1366,6 +1369,7 @@
 				633850771983A4C900C3256A /* InfoPlist.strings in Resources */,
 				63F999D0199E095A005C82F6 /* share-videos-pic-1.png in Resources */,
 				8727D59B1A4884460092BB7C /* SCRecorderMac-Info.plist in Resources */,
+				873C431A1ABF4F0C009D30DB /* 1start-screen-v1_5.png in Resources */,
 				63F999DC199E095A005C82F6 /* terms-logo.png in Resources */,
 				633850A91983BA1400C3256A /* text-field-noborder.png in Resources */,
 				63F999C3199E095A005C82F6 /* lukes-sent-logo.png in Resources */,
