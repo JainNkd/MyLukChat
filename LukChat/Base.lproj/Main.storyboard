@@ -387,100 +387,100 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uvK-2W-6db">
-                                <rect key="frame" x="0.0" y="125" width="320" height="315"/>
+                                <rect key="frame" x="0.0" y="125" width="320" height="340"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="pic-between-line.png" translatesAutoresizingMaskIntoConstraints="NO" id="MD6-mD-ZoY">
-                                        <rect key="frame" x="79" y="15" width="1" height="56"/>
+                                        <rect key="frame" x="79" y="15" width="1" height="79"/>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="pic-between-line.png" translatesAutoresizingMaskIntoConstraints="NO" id="SrK-3u-xNL">
-                                        <rect key="frame" x="159" y="15" width="1" height="56"/>
+                                        <rect key="frame" x="159" y="15" width="1" height="79"/>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="pic-between-line.png" translatesAutoresizingMaskIntoConstraints="NO" id="KSa-IK-vVq">
-                                        <rect key="frame" x="239" y="15" width="1" height="56"/>
+                                        <rect key="frame" x="239" y="15" width="1" height="79"/>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="pic-between-line.png" translatesAutoresizingMaskIntoConstraints="NO" id="6i6-8s-7uT">
-                                        <rect key="frame" x="319" y="15" width="1" height="56"/>
+                                        <rect key="frame" x="319" y="15" width="1" height="79"/>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="pic-between-line.png" translatesAutoresizingMaskIntoConstraints="NO" id="jmS-9y-AHS">
-                                        <rect key="frame" x="79" y="98" width="1" height="56"/>
+                                        <rect key="frame" x="79" y="120" width="1" height="79"/>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="pic-between-line.png" translatesAutoresizingMaskIntoConstraints="NO" id="wOa-pP-WMB">
-                                        <rect key="frame" x="159" y="98" width="1" height="56"/>
+                                        <rect key="frame" x="159" y="120" width="1" height="79"/>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="pic-between-line.png" translatesAutoresizingMaskIntoConstraints="NO" id="yJQ-Md-i1F">
-                                        <rect key="frame" x="239" y="98" width="1" height="56"/>
+                                        <rect key="frame" x="239" y="120" width="1" height="79"/>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="pic-between-line.png" translatesAutoresizingMaskIntoConstraints="NO" id="8hS-Nc-ob0">
-                                        <rect key="frame" x="319" y="98" width="1" height="56"/>
+                                        <rect key="frame" x="319" y="120" width="1" height="79"/>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="pic-between-line.png" translatesAutoresizingMaskIntoConstraints="NO" id="RUW-8K-WXZ">
-                                        <rect key="frame" x="79" y="181" width="1" height="56"/>
+                                        <rect key="frame" x="79" y="227" width="1" height="79"/>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="pic-between-line.png" translatesAutoresizingMaskIntoConstraints="NO" id="q3D-Wr-8al">
-                                        <rect key="frame" x="159" y="181" width="1" height="56"/>
+                                        <rect key="frame" x="159" y="227" width="1" height="79"/>
                                     </imageView>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="I" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c7Z-tq-xbh">
-                                        <rect key="frame" x="2" y="72" width="76" height="25"/>
+                                        <rect key="frame" x="2" y="95" width="76" height="25"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Wish" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aLx-jh-2Ke">
-                                        <rect key="frame" x="82" y="72" width="76" height="25"/>
+                                        <rect key="frame" x="82" y="95" width="76" height="25"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="You" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ou5-ua-o2n">
-                                        <rect key="frame" x="162" y="72" width="76" height="25"/>
+                                        <rect key="frame" x="162" y="95" width="76" height="25"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="You" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GT7-TA-fZc">
-                                        <rect key="frame" x="242" y="72" width="76" height="25"/>
+                                        <rect key="frame" x="242" y="95" width="76" height="25"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="You" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AcV-7n-gZ0">
-                                        <rect key="frame" x="2" y="155" width="76" height="25"/>
+                                        <rect key="frame" x="2" y="200" width="76" height="25"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="You" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0do-yu-33u">
-                                        <rect key="frame" x="82" y="155" width="76" height="25"/>
+                                        <rect key="frame" x="82" y="200" width="76" height="25"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="You" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SLs-6X-qmy">
-                                        <rect key="frame" x="162" y="155" width="76" height="25"/>
+                                        <rect key="frame" x="162" y="200" width="76" height="25"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="You" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pIu-vX-A1j">
-                                        <rect key="frame" x="242" y="155" width="76" height="25"/>
+                                        <rect key="frame" x="242" y="200" width="76" height="25"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="You" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jVf-HD-gA8">
-                                        <rect key="frame" x="2" y="238" width="76" height="25"/>
+                                        <rect key="frame" x="2" y="306" width="76" height="25"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="You" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="llV-Wm-Zb6">
-                                        <rect key="frame" x="82" y="238" width="76" height="25"/>
+                                        <rect key="frame" x="82" y="306" width="76" height="25"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LlP-mr-Puh">
-                                        <rect key="frame" x="0.0" y="15" width="79" height="56"/>
+                                        <rect key="frame" x="0.0" y="15" width="79" height="79"/>
                                         <state key="normal" image="pic-you.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -489,7 +489,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uWf-lR-Qmk">
-                                        <rect key="frame" x="80" y="15" width="79" height="56"/>
+                                        <rect key="frame" x="80" y="15" width="79" height="79"/>
                                         <state key="normal" image="pic-you.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -498,7 +498,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dsm-hn-5Vq">
-                                        <rect key="frame" x="160" y="15" width="79" height="56"/>
+                                        <rect key="frame" x="160" y="15" width="79" height="79"/>
                                         <state key="normal" image="pic-you.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -507,7 +507,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ctP-NZ-6FG">
-                                        <rect key="frame" x="240" y="15" width="79" height="56"/>
+                                        <rect key="frame" x="240" y="15" width="79" height="79"/>
                                         <state key="normal" image="pic-you.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -516,7 +516,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="4" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iJJ-xJ-2E4">
-                                        <rect key="frame" x="0.0" y="98" width="79" height="56"/>
+                                        <rect key="frame" x="0.0" y="120" width="79" height="79"/>
                                         <state key="normal" image="pic-you.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -525,7 +525,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="5" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6dT-8J-CYG">
-                                        <rect key="frame" x="80" y="98" width="79" height="56"/>
+                                        <rect key="frame" x="80" y="120" width="79" height="79"/>
                                         <state key="normal" image="pic-you.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -534,7 +534,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="6" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Icv-f8-aOd">
-                                        <rect key="frame" x="160" y="98" width="79" height="56"/>
+                                        <rect key="frame" x="160" y="120" width="79" height="79"/>
                                         <state key="normal" image="pic-you.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -543,7 +543,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="7" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aXO-4R-kPs">
-                                        <rect key="frame" x="240" y="98" width="79" height="56"/>
+                                        <rect key="frame" x="240" y="120" width="79" height="79"/>
                                         <state key="normal" image="pic-you.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -552,7 +552,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="8" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N8o-Ta-TWI">
-                                        <rect key="frame" x="0.0" y="181" width="79" height="56"/>
+                                        <rect key="frame" x="0.0" y="227" width="79" height="79"/>
                                         <state key="normal" image="pic-you.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -561,7 +561,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="9" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mD7-wz-7X9">
-                                        <rect key="frame" x="80" y="181" width="79" height="56"/>
+                                        <rect key="frame" x="80" y="227" width="79" height="79"/>
                                         <state key="normal" image="pic-you.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -573,7 +573,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6EZ-6b-YjC">
-                                <rect key="frame" x="0.0" y="446" width="320" height="72"/>
+                                <rect key="frame" x="0.0" y="460" width="320" height="50"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
                                 <state key="normal" title="Merge">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -584,7 +584,7 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="textenter-footer-line.png" translatesAutoresizingMaskIntoConstraints="NO" id="O43-YY-YEH">
-                                <rect key="frame" x="0.0" y="445" width="320" height="1"/>
+                                <rect key="frame" x="0.0" y="459" width="320" height="1"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
