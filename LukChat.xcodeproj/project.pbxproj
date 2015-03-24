@@ -166,14 +166,15 @@
 		875BFD2B1A5730CC00A83E35 /* ShareVideoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 875BFD291A5730CC00A83E35 /* ShareVideoTableViewCell.m */; };
 		875BFD2E1A57310B00A83E35 /* SentVideosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 875BFD2D1A57310B00A83E35 /* SentVideosViewController.m */; };
 		875BFD321A57317C00A83E35 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 875BFD311A57317C00A83E35 /* User.m */; };
-		875BFD391A5735C300A83E35 /* footer-ping-monkey-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 875BFD341A5735C300A83E35 /* footer-ping-monkey-icon@2x.png */; };
-		875BFD3A1A5735C300A83E35 /* share-videos-bottom-film-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 875BFD351A5735C300A83E35 /* share-videos-bottom-film-icon@2x.png */; };
-		875BFD3B1A5735C300A83E35 /* start-screen-footer-icon-film@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 875BFD361A5735C300A83E35 /* start-screen-footer-icon-film@2x.png */; };
-		875BFD3C1A5735C300A83E35 /* start-screen-footer-icon-monkey@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 875BFD371A5735C300A83E35 /* start-screen-footer-icon-monkey@2x.png */; };
-		875BFD3D1A5735C300A83E35 /* start-screen-footer-icon-video@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 875BFD381A5735C300A83E35 /* start-screen-footer-icon-video@2x.png */; };
 		877E21771A99C23E009DBF71 /* UCZProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 877E21761A99C23E009DBF71 /* UCZProgressView.m */; };
 		87AFE04C1A5C55E700DCA827 /* LukiesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87AFE04B1A5C55E700DCA827 /* LukiesViewController.m */; };
 		87CCBD671A5012280018D266 /* MergeVideosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87CCBD661A5012280018D266 /* MergeVideosViewController.m */; };
+		8BB0F6681AC161BC008453B5 /* camera-active@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BB0F6621AC161BC008453B5 /* camera-active@2x.png */; };
+		8BB0F6691AC161BC008453B5 /* camera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BB0F6631AC161BC008453B5 /* camera@2x.png */; };
+		8BB0F66A1AC161BC008453B5 /* double-monkey-active@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BB0F6641AC161BC008453B5 /* double-monkey-active@2x.png */; };
+		8BB0F66B1AC161BC008453B5 /* double-monkey@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BB0F6651AC161BC008453B5 /* double-monkey@2x.png */; };
+		8BB0F66C1AC161BC008453B5 /* movie-role-active@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BB0F6661AC161BC008453B5 /* movie-role-active@2x.png */; };
+		8BB0F66D1AC161BC008453B5 /* movie-role@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BB0F6671AC161BC008453B5 /* movie-role@2x.png */; };
 		8BB337711AA04B04008E4A82 /* FXBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BB337701AA04B04008E4A82 /* FXBlurView.m */; };
 		8BC142E81AA72415002F36B0 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BC142E31AA72415002F36B0 /* Bolts.framework */; };
 		8BC142E91AA72415002F36B0 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BC142E41AA72415002F36B0 /* Parse.framework */; };
@@ -469,17 +470,18 @@
 		875BFD2D1A57310B00A83E35 /* SentVideosViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SentVideosViewController.m; sourceTree = "<group>"; };
 		875BFD301A57317C00A83E35 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		875BFD311A57317C00A83E35 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
-		875BFD341A5735C300A83E35 /* footer-ping-monkey-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "footer-ping-monkey-icon@2x.png"; sourceTree = "<group>"; };
-		875BFD351A5735C300A83E35 /* share-videos-bottom-film-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "share-videos-bottom-film-icon@2x.png"; sourceTree = "<group>"; };
-		875BFD361A5735C300A83E35 /* start-screen-footer-icon-film@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "start-screen-footer-icon-film@2x.png"; sourceTree = "<group>"; };
-		875BFD371A5735C300A83E35 /* start-screen-footer-icon-monkey@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "start-screen-footer-icon-monkey@2x.png"; sourceTree = "<group>"; };
-		875BFD381A5735C300A83E35 /* start-screen-footer-icon-video@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "start-screen-footer-icon-video@2x.png"; sourceTree = "<group>"; };
 		877E21751A99C23E009DBF71 /* UCZProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UCZProgressView.h; sourceTree = "<group>"; };
 		877E21761A99C23E009DBF71 /* UCZProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UCZProgressView.m; sourceTree = "<group>"; };
 		87AFE04A1A5C55E700DCA827 /* LukiesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LukiesViewController.h; sourceTree = "<group>"; };
 		87AFE04B1A5C55E700DCA827 /* LukiesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LukiesViewController.m; sourceTree = "<group>"; };
 		87CCBD651A5012280018D266 /* MergeVideosViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MergeVideosViewController.h; sourceTree = "<group>"; };
 		87CCBD661A5012280018D266 /* MergeVideosViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MergeVideosViewController.m; sourceTree = "<group>"; };
+		8BB0F6621AC161BC008453B5 /* camera-active@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera-active@2x.png"; sourceTree = "<group>"; };
+		8BB0F6631AC161BC008453B5 /* camera@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera@2x.png"; sourceTree = "<group>"; };
+		8BB0F6641AC161BC008453B5 /* double-monkey-active@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "double-monkey-active@2x.png"; sourceTree = "<group>"; };
+		8BB0F6651AC161BC008453B5 /* double-monkey@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "double-monkey@2x.png"; sourceTree = "<group>"; };
+		8BB0F6661AC161BC008453B5 /* movie-role-active@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "movie-role-active@2x.png"; sourceTree = "<group>"; };
+		8BB0F6671AC161BC008453B5 /* movie-role@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "movie-role@2x.png"; sourceTree = "<group>"; };
 		8BB3376F1AA04B04008E4A82 /* FXBlurView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXBlurView.h; sourceTree = "<group>"; };
 		8BB337701AA04B04008E4A82 /* FXBlurView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXBlurView.m; sourceTree = "<group>"; };
 		8BC142E31AA72415002F36B0 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
@@ -1157,11 +1159,12 @@
 		875BFD331A5735C300A83E35 /* Tabbar-Icon */ = {
 			isa = PBXGroup;
 			children = (
-				875BFD341A5735C300A83E35 /* footer-ping-monkey-icon@2x.png */,
-				875BFD351A5735C300A83E35 /* share-videos-bottom-film-icon@2x.png */,
-				875BFD361A5735C300A83E35 /* start-screen-footer-icon-film@2x.png */,
-				875BFD371A5735C300A83E35 /* start-screen-footer-icon-monkey@2x.png */,
-				875BFD381A5735C300A83E35 /* start-screen-footer-icon-video@2x.png */,
+				8BB0F6621AC161BC008453B5 /* camera-active@2x.png */,
+				8BB0F6631AC161BC008453B5 /* camera@2x.png */,
+				8BB0F6641AC161BC008453B5 /* double-monkey-active@2x.png */,
+				8BB0F6651AC161BC008453B5 /* double-monkey@2x.png */,
+				8BB0F6661AC161BC008453B5 /* movie-role-active@2x.png */,
+				8BB0F6671AC161BC008453B5 /* movie-role@2x.png */,
 			);
 			path = "Tabbar-Icon";
 			sourceTree = "<group>";
@@ -1331,6 +1334,7 @@
 				633850931983A7B900C3256A /* luk-main2-bg.png in Resources */,
 				8727D59A1A4884460092BB7C /* InfoPlist.strings in Resources */,
 				63F999F0199E095A005C82F6 /* video-send-logo.png in Resources */,
+				8BB0F6691AC161BC008453B5 /* camera@2x.png in Resources */,
 				8BC23E0C1A72486300AB29B7 /* search_icon.png in Resources */,
 				63F999D2199E095A005C82F6 /* signup-background.png in Resources */,
 				63F999D4199E095A005C82F6 /* signup-country-code-bg.png in Resources */,
@@ -1339,10 +1343,10 @@
 				63F99979199E04E2005C82F6 /* start-screen-logo.png in Resources */,
 				633850921983A7B900C3256A /* luk-main1-bg.png in Resources */,
 				8BC23E051A72342800AB29B7 /* video-send-search-bg.png in Resources */,
+				8BB0F66B1AC161BC008453B5 /* double-monkey@2x.png in Resources */,
 				63F999EA199E095A005C82F6 /* verfication-logo.png in Resources */,
 				63F999BC199E095A005C82F6 /* luk-iphone-final-lukes-sent-list-main-bg.png in Resources */,
 				63F99974199E04E2005C82F6 /* start-screen-button.png in Resources */,
-				875BFD391A5735C300A83E35 /* footer-ping-monkey-icon@2x.png in Resources */,
 				F016EB471A2BD04500506B75 /* Cam.png in Resources */,
 				63F999D1199E095A005C82F6 /* share-videos-pic-descripiton-shadow.png in Resources */,
 				63F9997B199E04E2005C82F6 /* start-screen-text-field.png in Resources */,
@@ -1351,6 +1355,8 @@
 				63F999E0199E095A005C82F6 /* pic-a.png in Resources */,
 				63F999C5199E095A005C82F6 /* luk-iphone-final-merged-videos-main-bg.png in Resources */,
 				63F999DD199E095A005C82F6 /* footer-ping-monkey-icon.png in Resources */,
+				8BB0F66D1AC161BC008453B5 /* movie-role@2x.png in Resources */,
+				8BB0F66C1AC161BC008453B5 /* movie-role-active@2x.png in Resources */,
 				63F999D9199E095A005C82F6 /* luk-iphone-final-terms&condition-mainbg.png in Resources */,
 				63F999E9199E095A005C82F6 /* verfication-field-bg.png in Resources */,
 				63F999C9199E095A005C82F6 /* merged-videos-pic.png in Resources */,
@@ -1374,7 +1380,8 @@
 				633850A91983BA1400C3256A /* text-field-noborder.png in Resources */,
 				63F999C3199E095A005C82F6 /* lukes-sent-logo.png in Resources */,
 				63F999C7199E095A005C82F6 /* merged-videos-logo.png in Resources */,
-				875BFD3A1A5735C300A83E35 /* share-videos-bottom-film-icon@2x.png in Resources */,
+				8BB0F66A1AC161BC008453B5 /* double-monkey-active@2x.png in Resources */,
+				8BB0F6681AC161BC008453B5 /* camera-active@2x.png in Resources */,
 				63F9997A199E04E2005C82F6 /* start-screen-main-bg.png in Resources */,
 				63F999E8199E095A005C82F6 /* verfication-bottom-line.png in Resources */,
 				6338509F1983B3EC00C3256A /* verify.png in Resources */,
@@ -1392,12 +1399,10 @@
 				63F99977199E04E2005C82F6 /* start-screen-footer-icon-monkey.png in Resources */,
 				63F999BD199E095A005C82F6 /* luk-iphone-final-lukes-sent-list-pic-dummy.png in Resources */,
 				63F999ED199E095A005C82F6 /* luk-iphone-final-video-send-bg.png in Resources */,
-				875BFD3B1A5735C300A83E35 /* start-screen-footer-icon-film@2x.png in Resources */,
 				6338503019839F2D00C3256A /* Main.storyboard in Resources */,
 				633850B51983C77700C3256A /* record.png in Resources */,
 				63A5CDF5199DE28800C87EAB /* video-record-footer-video-icon.png in Resources */,
 				633850911983A7B900C3256A /* luk-logo-1.png in Resources */,
-				875BFD3D1A5735C300A83E35 /* start-screen-footer-icon-video@2x.png in Resources */,
 				63F999D7199E095A005C82F6 /* signup-terms-checkbox-normal-view.png in Resources */,
 				633850951983A7B900C3256A /* luk-main4-bg.png in Resources */,
 				63F999CE199E095A005C82F6 /* share-videos-bottom-film-icon.png in Resources */,
@@ -1409,7 +1414,6 @@
 				6338509A1983AA8A00C3256A /* crowd-recording.png in Resources */,
 				63F999CD199E095A005C82F6 /* share-videos-back-icon.png in Resources */,
 				63F999D6199E095A005C82F6 /* signup-logo.png in Resources */,
-				875BFD3C1A5735C300A83E35 /* start-screen-footer-icon-monkey@2x.png in Resources */,
 				63F999CF199E095A005C82F6 /* share-videos-logo.png in Resources */,
 				63F999E7199E095A005C82F6 /* verfication-background.png in Resources */,
 			);

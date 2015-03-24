@@ -46,6 +46,29 @@
     UITabBarItem *tabBarItem2 = [tabBar.items objectAtIndex:1];
     UITabBarItem *tabBarItem3 = [tabBar.items objectAtIndex:2];
     
+    //Set images for Tab Icon
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] < 7) {
+        
+        [tabBarItem1 setFinishedSelectedImage:[UIImage imageNamed:@"double-monkey-active@2x.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"double-monkey@2x.png"]];
+        
+        [tabBarItem2 setFinishedSelectedImage:[UIImage imageNamed:@"camera-active@2x.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"camera@2x.png"]];
+        
+        [tabBarItem3 setFinishedSelectedImage:[UIImage imageNamed:@"movie-role-active@2x.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"movie-role@2x.png"]];
+        
+    } else {
+    
+    tabBarItem1.selectedImage = [[UIImage imageNamed:@"double-monkey-active@2x.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal ];
+    tabBarItem1.image = [[UIImage imageNamed:@"double-monkey@2x.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal ];
+    
+    tabBarItem2.selectedImage = [[UIImage imageNamed:@"camera-active@2x.png"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal ];
+    tabBarItem2.image = [[UIImage imageNamed:@"camera@2x.png"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal ];
+    
+    tabBarItem3.selectedImage = [[UIImage imageNamed:@"movie-role-active@2x.png"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal ];
+    tabBarItem3.image = [[UIImage imageNamed:@"movie-role@2x.png"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal ];
+    
+    }
+    
+    //Defualt selected Tab form all Tabs
     if([[NSUserDefaults standardUserDefaults]boolForKey:@"IS_NOTIFICATION"])
     {
         self.selectedIndex = 2;
@@ -54,15 +77,7 @@
     else
     {
         self.selectedIndex = 1;
-        
     }
-    [tabBarItem1 setFinishedSelectedImage:[UIImage imageNamed:@"footer-ping-monkey-icon.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"start-screen-footer-icon-monkey.png"]];
-    
-    [tabBarItem2 setFinishedSelectedImage:[UIImage imageNamed:@"myplan_selected.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"start-screen-footer-icon-video.png"]];
-    
-    [tabBarItem3 setFinishedSelectedImage:[UIImage imageNamed:@"share-videos-bottom-film-icon.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"start-screen-footer-icon-film.png"]];
-
-    
     // Do any additional setup after loading the view.
 }
 
@@ -72,15 +87,5 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
