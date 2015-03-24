@@ -124,6 +124,11 @@
 {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
     
+}
+
+- (void)applicationDidBecomeActive:(UIApplication *)application
+{
+    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     
     NSInteger count = [UIApplication sharedApplication].applicationIconBadgeNumber;
     if (count>0) {
@@ -133,24 +138,20 @@
         NSString *userLoggedIn = [[NSUserDefaults standardUserDefaults] objectForKey:@"user"];
         if([userLoggedIn isEqualToString:@"YES"])
         {
-        [[NSUserDefaults standardUserDefaults]setBool:TRUE forKey:@"IS_NOTIFICATION"];
-        UINavigationController *navController = (UINavigationController *)self.window.rootViewController;
+            [[NSUserDefaults standardUserDefaults]setBool:TRUE forKey:@"IS_NOTIFICATION"];
+            UINavigationController *navController = (UINavigationController *)self.window.rootViewController;
             navController.navigationBar.hidden = YES;
-        NSLog(@"navigation...%@",[navController class]);
-        
-        UIStoryboard *storyBD = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        TabBarViewController *tabbar = [storyBD instantiateViewControllerWithIdentifier:@"TabBarViewController"];
-        
-        [navController pushViewController:tabbar animated:NO];
-    
-//        [CommonMethods showAlertWithTitle:@"LUK" message:@"New Video Reciceved from LUK"];
+            NSLog(@"navigation...%@",[navController class]);
+            
+            UIStoryboard *storyBD = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+            TabBarViewController *tabbar = [storyBD instantiateViewControllerWithIdentifier:@"TabBarViewController"];
+            
+            [navController pushViewController:tabbar animated:NO];
+            
+            //        [CommonMethods showAlertWithTitle:@"LUK" message:@"New Video Reciceved from LUK"];
         }
     }
-}
 
-- (void)applicationDidBecomeActive:(UIApplication *)application
-{
-    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
