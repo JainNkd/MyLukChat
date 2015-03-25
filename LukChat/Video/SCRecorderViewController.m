@@ -411,11 +411,11 @@
     
     if(CMTimeGetSeconds(currentTime) < 10)
     {
-        self.timeRecordedLabel.text = [NSString stringWithFormat:@"00:0%.2f", CMTimeGetSeconds(currentTime)];
+        self.timeRecordedLabel.text = [[NSString stringWithFormat:@"0%.2f", CMTimeGetSeconds(currentTime)] stringByReplacingOccurrencesOfString:@"." withString:@":"];
     }
     else
     {
-        self.timeRecordedLabel.text = [NSString stringWithFormat:@"00:10:00"];
+        self.timeRecordedLabel.text = [NSString stringWithFormat:@"10:00"];
     }
     
 }
