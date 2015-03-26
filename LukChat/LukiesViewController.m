@@ -13,6 +13,10 @@
 #import "DatabaseMethods.h"
 #import "Constants.h"
 #import "CommonMethods.h"
+#import "AFJSONRequestOperation.h"
+#import "AFNetworkActivityIndicatorManager.h"
+#import "AppDelegate.h"
+#import "UCZProgressView.h"
 
 
 @interface LukiesViewController ()<ConnectionHandlerDelegate>
@@ -493,12 +497,100 @@
     [dict setValue:[[NSUserDefaults standardUserDefaults] valueForKey:kCurrentCHATUserPHONE] forKey:kShareTO];
     NSLog(@"shareVideo: %@",dict);
     
-    ConnectionHandler *connHandler = [[ConnectionHandler alloc] init];
-    connHandler.delegate = self;
-    [connHandler makePOSTVideoShareAtPath:videoURL parameters:dict];
-    [self startProgressLoader];
+//    ConnectionHandler *connHandler = [[ConnectionHandler alloc] init];
+//    connHandler.delegate = self;
+    [self makePOSTVideoShareAtPath:videoURL parameters:dict];
+//    [self startProgressLoader];
     
 }
+
+-(void)makePOSTVideoShareAtPath:(NSURL *)path parameters:(NSDictionary *)parameters {
+    
+    ConnectionHandler *connHandler = [[ConnectionHandler alloc] init];
+    if (![connHandler hasConnectivity]) {
+        [CommonMethods showAlertWithTitle:@"No Connectivity" message:@"Please check the Internet Connnection"];
+        return;
+    }
+    
+    UCZProgressView *progressView = [[UCZProgressView alloc]initWithFrame:self.view.frame];
+    progressView.indeterminate = YES;
+    progressView.showsText = YES;
+    progressView.backgroundColor = [UIColor blackColor];
+    progressView.opaque = 0.5;
+    progressView.alpha = 0.5;
+    [self.view addSubview:progressView];
+    
+    NSData *videoData = [NSData dataWithContentsOfURL:path];
+    UIImage *imageObj = [self generateThumbImage:path];
+    NSData *imageData = UIImagePNGRepresentation(imageObj);
+    
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    [appDelegate.httpClient registerHTTPOperationClass:[AFJSONRequestOperation class]];
+    [appDelegate.httpClient setDefaultHeader:@"Accept" value:@"application/json"];
+    [appDelegate.httpClient setDefaultHeader:@"Accept" value:@"text/json"];
+    [appDelegate.httpClient setDefaultHeader:@"Accept" value:@"text/html"];
+    [appDelegate.httpClient setDefaultHeader:@"Content-type" value:@"application/json"];
+    [appDelegate.httpClient setParameterEncoding:AFFormURLParameterEncoding];
+    
+    NSMutableURLRequest *afRequest = [appDelegate.httpClient multipartFormRequestWithMethod:@"POST" path:kShareVideoURL parameters:parameters constructingBodyWithBlock:^(id <AFMultipartFormData>formData)
+                                      {
+                                          [formData appendPartWithFileData:videoData name:kShareFILE fileName:@"filename.mov" mimeType:@"video/quicktime"];
+                                          [formData appendPartWithFileData:imageData name:kShareThumbnailFILE fileName:@"thumbnail" mimeType:@"image/png"];
+                                      }];
+    
+    
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:afRequest];
+    
+    [operation setUploadProgressBlock:^(NSInteger bytesWritten,NSInteger totalBytesWritten,NSInteger totalBytesExpectedToWrite)
+     {
+         NSLog(@"Sent %lld of %lld bytes", (long long int)totalBytesWritten,(long long int)totalBytesExpectedToWrite);
+         progressView.progress = (float)totalBytesWritten / totalBytesExpectedToWrite;
+     }];
+    
+    [operation  setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [progressView removeFromSuperview];
+        [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
+        NSString *responseString = [operation responseString];
+        // if ([path isEqualToString:kShareVideoURL]) {
+        // NSLog(@"Request Successful, ShareVideo response '%@'", responseString);
+//        [self parseShareVideoResponse:responseString fromURL:kShareVideoURL ];
+        NSLog(@"parseShareVideoResponse : %@ for URL:%@",responseString,kShareVideoURL);
+        
+        [self connHandlerClient:nil didSucceedWithResponseString:responseString forPath:kShareVideoURL];
+        // }
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error)
+     {
+         NSLog(@"[AFHTTPRequestOperation Error]: %@", error);
+         [progressView removeFromSuperview];
+         [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
+         //delegate
+         [self connHandlerClient:nil didFailWithError:error];
+     }];
+    
+    [operation start];
+    
+}
+
+//Generate thumnail image of Video
+-(UIImage *)generateThumbImage : (NSURL *)url
+{
+    
+    AVAsset *asset = [AVAsset assetWithURL:url];
+    AVAssetImageGenerator *imageGenerator = [[AVAssetImageGenerator alloc]initWithAsset:asset];
+    imageGenerator.maximumSize = CGSizeMake(320.0f,320.0f);
+    CMTime time = [asset duration];
+    time.value = 0001;
+    CGImageRef imageRef = [imageGenerator copyCGImageAtTime:time actualTime:NULL error:NULL];
+    UIImage *thumbnail = [UIImage imageWithCGImage:imageRef];
+    CGImageRelease(imageRef);  // CGImageRef won't be released by ARC
+    
+    UIImageView *imageView = [[UIImageView alloc]initWithImage:thumbnail];
+    imageView.frame = CGRectMake(0,0,320,320);
+    return imageView.image;
+}
+
 
 -(void)startProgressLoader
 {
@@ -526,7 +618,7 @@
 {
     NSString *string = [error localizedDescription];
     string = [string substringFromIndex:[string length]-3];
-    [self stopProgressLoader];
+//    [self stopProgressLoader];
     NSLog(@"connHandlerClient:didFailWithError = %@",string);
 }
 
