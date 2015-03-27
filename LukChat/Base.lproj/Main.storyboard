@@ -766,8 +766,8 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="luk-iphone-final-merged-videos-main-bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="9el-Ue-GVI">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="merged-videos-logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="751-p5-kdj">
-                                <rect key="frame" x="10" y="10" width="168" height="40"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="video-send-logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="751-p5-kdj">
+                                <rect key="frame" x="10" y="10" width="144" height="40"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="merged-videos-pic.png" translatesAutoresizingMaskIntoConstraints="NO" id="vaI-IX-TFa">
                                 <rect key="frame" x="0.0" y="61" width="320" height="320"/>
@@ -845,7 +845,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="lukes-sent-logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="iCd-nc-bSi">
-                                <rect key="frame" x="10" y="10" width="266" height="40"/>
+                                <rect key="frame" x="10" y="10" width="154" height="40"/>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" bounces="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="85" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="K8t-B3-V5r">
                                 <rect key="frame" x="0.0" y="66" width="320" height="453"/>
@@ -956,8 +956,8 @@
                                     <action selector="sendToLukiesButtonPressed:" destination="dOp-LC-Mka" eventType="touchUpInside" id="TuU-NW-bix"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="merged-videos-logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="fpo-Hn-Ahl">
-                                <rect key="frame" x="10" y="10" width="168" height="40"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="video-send-logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="fpo-Hn-Ahl">
+                                <rect key="frame" x="10" y="10" width="144" height="40"/>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="DQX-zG-IiK">
                                 <rect key="frame" x="0.0" y="65" width="320" height="394"/>
@@ -1196,13 +1196,12 @@
         <image name="luk-iphone-final-merged-videos-main-bg.png" width="640" height="1136"/>
         <image name="luk-iphone-final-terms&amp;condition-mainbg.png" width="640" height="1136"/>
         <image name="luk-iphone-final-textenter-mainbg.png" width="640" height="1136"/>
-        <image name="lukes-sent-logo.png" width="533" height="80"/>
-        <image name="merged-videos-logo.png" width="337" height="80"/>
+        <image name="lukes-sent-logo.png" width="154" height="40"/>
         <image name="merged-videos-pic-description-bg.png" width="640" height="108"/>
         <image name="merged-videos-pic.png" width="640" height="431"/>
         <image name="monkey-featherbg.png" width="79" height="79"/>
         <image name="pic-between-line.png" width="1" height="112"/>
-        <image name="screen4-smilemonkey-icon.png" width="79" height="79"/>
+        <image name="screen4-smilemonkey-icon.png" width="80" height="80"/>
         <image name="share-icon.png" width="62" height="74"/>
         <image name="share-videos-1st-pic.png" width="640" height="362"/>
         <image name="share-videos-back-icon.png" width="105" height="51"/>
@@ -1225,6 +1224,7 @@
         <image name="verfication-bottom-line.png" width="640" height="1"/>
         <image name="verfication-field-bg.png" width="640" height="124"/>
         <image name="verfication-logo.png" width="254" height="80"/>
+        <image name="video-send-logo.png" width="144" height="40"/>
         <image name="video_play.png" width="50" height="50"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
