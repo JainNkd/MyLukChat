@@ -25,6 +25,7 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *startRecordButtom;
 @property (weak, nonatomic) IBOutlet UIButton *pauseRecordButton;
+@property (weak, nonatomic) IBOutlet UIImageView *timerMonkeyIcon;
 
 @property (weak, nonatomic) IBOutlet UIButton *saveButton;
 @property (weak, nonatomic) IBOutlet UIButton *cancelButton;

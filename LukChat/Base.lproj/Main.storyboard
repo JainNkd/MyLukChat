@@ -481,7 +481,8 @@
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LlP-mr-Puh">
                                         <rect key="frame" x="0.0" y="15" width="79" height="79"/>
-                                        <state key="normal" image="pic-you.png">
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <state key="normal" image="screen4-smilemonkey-icon.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
@@ -490,7 +491,8 @@
                                     </button>
                                     <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uWf-lR-Qmk">
                                         <rect key="frame" x="80" y="15" width="79" height="79"/>
-                                        <state key="normal" image="pic-you.png">
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <state key="normal" image="screen4-smilemonkey-icon.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
@@ -499,7 +501,8 @@
                                     </button>
                                     <button opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dsm-hn-5Vq">
                                         <rect key="frame" x="160" y="15" width="79" height="79"/>
-                                        <state key="normal" image="pic-you.png">
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <state key="normal" image="screen4-smilemonkey-icon.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
@@ -508,7 +511,8 @@
                                     </button>
                                     <button opaque="NO" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ctP-NZ-6FG">
                                         <rect key="frame" x="240" y="15" width="79" height="79"/>
-                                        <state key="normal" image="pic-you.png">
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <state key="normal" image="screen4-smilemonkey-icon.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
@@ -517,7 +521,8 @@
                                     </button>
                                     <button opaque="NO" tag="4" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iJJ-xJ-2E4">
                                         <rect key="frame" x="0.0" y="120" width="79" height="79"/>
-                                        <state key="normal" image="pic-you.png">
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <state key="normal" image="screen4-smilemonkey-icon.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
@@ -526,7 +531,8 @@
                                     </button>
                                     <button opaque="NO" tag="5" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6dT-8J-CYG">
                                         <rect key="frame" x="80" y="120" width="79" height="79"/>
-                                        <state key="normal" image="pic-you.png">
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <state key="normal" image="screen4-smilemonkey-icon.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
@@ -535,7 +541,8 @@
                                     </button>
                                     <button opaque="NO" tag="6" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Icv-f8-aOd">
                                         <rect key="frame" x="160" y="120" width="79" height="79"/>
-                                        <state key="normal" image="pic-you.png">
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <state key="normal" image="screen4-smilemonkey-icon.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
@@ -544,7 +551,8 @@
                                     </button>
                                     <button opaque="NO" tag="7" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aXO-4R-kPs">
                                         <rect key="frame" x="240" y="120" width="79" height="79"/>
-                                        <state key="normal" image="pic-you.png">
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <state key="normal" image="screen4-smilemonkey-icon.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
@@ -553,7 +561,8 @@
                                     </button>
                                     <button opaque="NO" tag="8" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N8o-Ta-TWI">
                                         <rect key="frame" x="0.0" y="227" width="79" height="79"/>
-                                        <state key="normal" image="pic-you.png">
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <state key="normal" image="screen4-smilemonkey-icon.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
@@ -562,7 +571,8 @@
                                     </button>
                                     <button opaque="NO" tag="9" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mD7-wz-7X9">
                                         <rect key="frame" x="80" y="227" width="79" height="79"/>
-                                        <state key="normal" image="pic-you.png">
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <state key="normal" image="screen4-smilemonkey-icon.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
@@ -653,7 +663,7 @@
                                 <rect key="frame" x="0.0" y="444" width="320" height="124"/>
                                 <color key="backgroundColor" red="0.61568627450980395" green="0.61568627450980395" blue="0.61568627450980395" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="camerapage-icon-running-indication.png" translatesAutoresizingMaskIntoConstraints="NO" id="caF-2W-rkB">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="camerapage-icon-running-indication-white.png" translatesAutoresizingMaskIntoConstraints="NO" id="caF-2W-rkB">
                                 <rect key="frame" x="94" y="22" width="30" height="22"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UJK-X1-2PH" userLabel="save">
@@ -715,6 +725,7 @@
                         <outlet property="saveButton" destination="UJK-X1-2PH" id="lMc-Xf-fJK"/>
                         <outlet property="startRecordButtom" destination="GaD-Z3-Soh" id="5aS-Wc-9nC"/>
                         <outlet property="timeRecordedLabel" destination="XrN-To-JaA" id="8Uf-R9-fCj"/>
+                        <outlet property="timerMonkeyIcon" destination="caF-2W-rkB" id="BZf-m6-NlW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gc5-5p-sU8" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1176,7 +1187,7 @@
         <image name="1start-screen-v1_5.png" width="640" height="1136"/>
         <image name="camerapage-icon-cance.png" width="23" height="23"/>
         <image name="camerapage-icon-rottat-camera.png" width="75" height="50"/>
-        <image name="camerapage-icon-running-indication.png" width="31" height="24"/>
+        <image name="camerapage-icon-running-indication-white.png" width="31" height="24"/>
         <image name="camerapage-icon-save.png" width="23" height="23"/>
         <image name="camerapage-icon-smiling-monkey.png" width="50" height="50"/>
         <image name="download_video.png" width="50" height="50"/>
@@ -1191,7 +1202,7 @@
         <image name="merged-videos-pic.png" width="640" height="431"/>
         <image name="monkey-featherbg.png" width="79" height="79"/>
         <image name="pic-between-line.png" width="1" height="112"/>
-        <image name="pic-you.png" width="159" height="112"/>
+        <image name="screen4-smilemonkey-icon.png" width="79" height="79"/>
         <image name="share-icon.png" width="62" height="74"/>
         <image name="share-videos-1st-pic.png" width="640" height="362"/>
         <image name="share-videos-back-icon.png" width="105" height="51"/>

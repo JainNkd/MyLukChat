@@ -438,6 +438,7 @@
 
 -(void)startRecordTapped:(UIButton*)sender
 {
+    self.timerMonkeyIcon.image = [UIImage imageNamed:@"camerapage-icon-running-indication.png"];
     sender.hidden = YES;
     //show pause button
     self.pauseRecordButton.hidden = NO;
