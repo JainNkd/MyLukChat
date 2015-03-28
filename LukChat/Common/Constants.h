@@ -17,6 +17,8 @@
 #define kVideoDownloadURL @"http://lukchat.com/app/webroot/files/"
 
 #define kSentVideosURL @"http://lukchat.com/api/history/sent"
+#define kAllHistoryURL @"http://lukchat.com/api/history/all"
+
 #define kReceivedVideosURL @"http://lukchat.com/api/history/received"
 
 // TEMP: test tag

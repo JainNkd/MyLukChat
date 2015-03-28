@@ -174,6 +174,7 @@
 		879DA4261AC30CCF00E26CCB /* camerapage-icon-smiling-monkey@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 879DA41F1AC30CCF00E26CCB /* camerapage-icon-smiling-monkey@2x.png */; };
 		879DA4271AC30CCF00E26CCB /* monkey-featherbg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 879DA4201AC30CCF00E26CCB /* monkey-featherbg@2x.png */; };
 		879DA42E1AC30E7800E26CCB /* opacity-blured-img@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 879DA42D1AC30E7800E26CCB /* opacity-blured-img@2x.png */; };
+		87A7474C1AC6C0F60046C5A0 /* RecievedVideoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 87A7474B1AC6C0F60046C5A0 /* RecievedVideoTableViewCell.m */; };
 		87AFE04C1A5C55E700DCA827 /* LukiesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87AFE04B1A5C55E700DCA827 /* LukiesViewController.m */; };
 		87CCBD671A5012280018D266 /* MergeVideosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87CCBD661A5012280018D266 /* MergeVideosViewController.m */; };
 		8BB068EA1AC58A0C000A84C7 /* monkeywithbg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BB068E41AC58A0C000A84C7 /* monkeywithbg@2x.png */; };
@@ -492,6 +493,8 @@
 		879DA41F1AC30CCF00E26CCB /* camerapage-icon-smiling-monkey@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camerapage-icon-smiling-monkey@2x.png"; sourceTree = "<group>"; };
 		879DA4201AC30CCF00E26CCB /* monkey-featherbg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "monkey-featherbg@2x.png"; sourceTree = "<group>"; };
 		879DA42D1AC30E7800E26CCB /* opacity-blured-img@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "opacity-blured-img@2x.png"; sourceTree = "<group>"; };
+		87A7474A1AC6C0F60046C5A0 /* RecievedVideoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecievedVideoTableViewCell.h; sourceTree = "<group>"; };
+		87A7474B1AC6C0F60046C5A0 /* RecievedVideoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecievedVideoTableViewCell.m; sourceTree = "<group>"; };
 		87AFE04A1A5C55E700DCA827 /* LukiesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LukiesViewController.h; sourceTree = "<group>"; };
 		87AFE04B1A5C55E700DCA827 /* LukiesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LukiesViewController.m; sourceTree = "<group>"; };
 		87CCBD651A5012280018D266 /* MergeVideosViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MergeVideosViewController.h; sourceTree = "<group>"; };
@@ -1171,6 +1174,8 @@
 				875BFD2D1A57310B00A83E35 /* SentVideosViewController.m */,
 				875BFD231A5730BE00A83E35 /* SentVideoTableViewCell.h */,
 				875BFD241A5730BE00A83E35 /* SentVideoTableViewCell.m */,
+				87A7474A1AC6C0F60046C5A0 /* RecievedVideoTableViewCell.h */,
+				87A7474B1AC6C0F60046C5A0 /* RecievedVideoTableViewCell.m */,
 			);
 			name = Send;
 			sourceTree = "<group>";
@@ -1546,6 +1551,7 @@
 				6338509D1983AFF100C3256A /* SignUpViewController.m in Sources */,
 				8727D59C1A4884460092BB7C /* CIImageRendererUtils.m in Sources */,
 				6329BEE919A8AAC400B6D8F5 /* CustomeVideoPlayViewController.m in Sources */,
+				87A7474C1AC6C0F60046C5A0 /* RecievedVideoTableViewCell.m in Sources */,
 				8727D59E1A4884460092BB7C /* SCAssetExportSession.m in Sources */,
 				8727D5AC1A4884460092BB7C /* SCSampleBufferHolder.m in Sources */,
 				8727D5AD1A4884460092BB7C /* SCSwipeableFilterView.m in Sources */,

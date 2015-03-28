@@ -370,6 +370,7 @@
 }
 
 - (void)recorder:(SCRecorder *)recorder didCompleteRecordSession:(SCRecordSession *)recordSession {
+    self.timerMonkeyIcon.image = [UIImage imageNamed:@"camerapage-icon-running-indication-white.png"];
     self.startRecordButtom.enabled = NO;
     self.pauseRecordButton.enabled = NO;
     [self saveAndShowSession:recordSession];
@@ -449,6 +450,7 @@
 
 -(void)pauseRecordTapped:(UIButton*)sender
 {
+    self.timerMonkeyIcon.image = [UIImage imageNamed:@"camerapage-icon-running-indication-white.png"];
     sender.hidden = YES;
     //show start recording button
     self.startRecordButtom.hidden = NO;
