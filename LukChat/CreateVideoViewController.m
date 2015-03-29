@@ -28,6 +28,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+        self.createTableView.estimatedRowHeight = 280;
+        self.createTableView.rowHeight = UITableViewAutomaticDimension;
     // Do any additional setup after loading the view.
 }
 
@@ -97,6 +100,7 @@
 //    cell.thumbnail3.image = [videoVC.moviePlayer thumbnailImageAtTime:frame3 timeOption:MPMovieTimeOptionExact];
     }
     cell.videoTitle.text = videoObj.videoTitle;
+    [cell.videoTitle sizeToFit];
     cell.shareButton.tag = indexPath.row;
     
 //    NSDate *dateObj = [NSDate dateWithTimeIntervalSince1970:[videoObj.videoTime doubleValue]/1000];

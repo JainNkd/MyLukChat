@@ -257,7 +257,7 @@
     
     cnCode = self.mobileCountryCode.text;
     
-    int number = (arc4random()%100)+1000; //Generates Number from 1 to 100.
+    int number = (arc4random()%1000)+1000; //Generates Number from 1 to 1000.
     NSString *string = [NSString stringWithFormat:@"%i", number];
     NSLog(@"random number is %@",string);
     app.pinValue = string;

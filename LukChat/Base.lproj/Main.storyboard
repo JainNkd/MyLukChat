@@ -1202,38 +1202,50 @@
                                                         <action selector="shareButtonClickAction:" destination="5Jt-oh-eHW" eventType="touchUpInside" id="fDw-Wo-ixJ"/>
                                                     </connections>
                                                 </button>
-                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ate-5J-kz0">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ate-5J-kz0">
                                                     <rect key="frame" x="0.0" y="240" width="320" height="40"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Wish you happy holliday" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bu9-iT-j6A">
-                                                            <rect key="frame" x="10" y="9" width="210" height="20"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wish you happy holliday" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bu9-iT-j6A">
+                                                            <rect key="frame" x="10" y="9" width="220" height="20"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" red="0.94901960784313721" green="0.0" blue="0.41568627450980389" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="31" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FDY-gn-sAX">
-                                                            <rect key="frame" x="240" y="5" width="30" height="20"/>
+                                                            <rect key="frame" x="253" y="5" width="25" height="22"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Friday" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PUJ-yx-rzm">
-                                                            <rect key="frame" x="273" y="12" width="45" height="12"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                            <rect key="frame" x="283" y="15" width="60" height="10"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="9"/>
                                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Mar 15 04:30pm" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hZ3-qW-wo8">
-                                                            <rect key="frame" x="240" y="25" width="80" height="12"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Mar 15 04:30pm" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hZ3-qW-wo8">
+                                                            <rect key="frame" x="240" y="25" width="90" height="10"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="8"/>
                                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                            <nil key="highlightedColor"/>
+                                                            <color key="highlightedColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                         </label>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="bottom" secondItem="bu9-iT-j6A" secondAttribute="bottom" constant="11" id="Gu9-Pw-VCr"/>
+                                                        <constraint firstItem="bu9-iT-j6A" firstAttribute="top" secondItem="Ate-5J-kz0" secondAttribute="top" constant="9" id="SKf-ci-m8y"/>
+                                                        <constraint firstItem="bu9-iT-j6A" firstAttribute="leading" secondItem="Ate-5J-kz0" secondAttribute="leading" constant="10" id="c1G-ji-CqW"/>
+                                                        <constraint firstAttribute="trailing" secondItem="bu9-iT-j6A" secondAttribute="trailing" constant="90" id="lfu-9J-7ap"/>
+                                                    </constraints>
                                                 </view>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstItem="Ate-5J-kz0" firstAttribute="top" secondItem="wyk-NY-4ta" secondAttribute="top" constant="240" id="Hq2-3G-TTN"/>
+                                                <constraint firstItem="Ate-5J-kz0" firstAttribute="leading" secondItem="wyk-NY-4ta" secondAttribute="leading" id="OYj-JA-JQT"/>
+                                                <constraint firstAttribute="bottom" secondItem="Ate-5J-kz0" secondAttribute="bottom" id="sH7-fA-4D9"/>
+                                                <constraint firstAttribute="trailing" secondItem="Ate-5J-kz0" secondAttribute="trailing" id="xzn-0x-gvn"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <connections>

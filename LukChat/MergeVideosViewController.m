@@ -68,7 +68,7 @@
     [monthYearTimeStr appendString:@"/"];
     
     NSDateFormatter *df = [[NSDateFormatter alloc] init];
-    [df setLocale:[NSLocale currentLocale]];
+    [df setLocale:[NSLocale localeWithLocaleIdentifier:@"en_US"]];
     
     [df setDateFormat:@"MMM"];
     [monthYearTimeStr appendString:[df stringFromDate:dateObj]];
@@ -77,7 +77,7 @@
     [monthYearTimeStr appendString:[NSString stringWithFormat:@" %@",[df stringFromDate:dateObj]]];
     
     [df setDateFormat:@"hh:mma"];
-    [monthYearTimeStr appendString:[NSString stringWithFormat:@" %@",[df stringFromDate:dateObj]]];
+    [monthYearTimeStr appendString:[NSString stringWithFormat:@" %@",[[df stringFromDate:dateObj] lowercaseString]]];
     
     Chat *chatObj = [[Chat alloc] init];
     chatObj.chatText = videoTitle;
