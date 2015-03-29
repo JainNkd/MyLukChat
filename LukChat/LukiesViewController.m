@@ -316,6 +316,7 @@
             {
                 [self addMyVideoLog:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",kVideoDownloadURL,[usersdict objectForKey:@"filename"]]]];
                  [CommonMethods showAlertWithTitle:@"Alert" message:@"Video uploaded successful."];
+                [self.navigationController popToRootViewControllerAnimated:YES];
                 break;
             }
             case 2:
@@ -478,8 +479,21 @@
 
 - (IBAction)sendToLukiesButtonPressed:(UIButton *)sender {
     
-    NSString *urlStr = [[NSUserDefaults standardUserDefaults] valueForKey:kMyVideoToShare];
-     urlStr = [CommonMethods localFileUrl:urlStr];
+    NSString *urlStr;
+    
+    if([[NSUserDefaults standardUserDefaults]boolForKey:kIsFeomCreated])
+    {
+        urlStr =  [[NSUserDefaults standardUserDefaults] valueForKey:kCreatedVideoShare];
+    }
+    else if([[NSUserDefaults standardUserDefaults]boolForKey:kIsFromRecieved])
+    {
+        urlStr =  [[NSUserDefaults standardUserDefaults] valueForKey:kRecievedVideoShare];
+    }
+    else{
+        urlStr =  [[NSUserDefaults standardUserDefaults] valueForKey:kMyVideoToShare];
+    }
+    
+    urlStr = [CommonMethods localFileUrl:urlStr];
     if (urlStr) {
         [self shareVideo:[NSURL fileURLWithPath:urlStr]];
     }

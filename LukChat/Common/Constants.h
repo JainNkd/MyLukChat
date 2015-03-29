@@ -51,6 +51,12 @@
 #define kCurrentCHATUserPHONE @"CURRENT_CHAT_USER_PHONE"
 
 #define kMyVideoToShare @"VIDEO_TO_SHARE"
+#define kCreatedVideoShare @"SHARE_CREATED_VIDEO"
+#define kRecievedVideoShare @"SHARE_RECIEVED_VIDEO"
+
+#define kIsFeomCreated @"IS_FROM_CREATED"
+#define kIsFromRecieved @"IS_FROM_RECIEVED"
+
 
 // Connection Handler
 #define kUsers @"users"

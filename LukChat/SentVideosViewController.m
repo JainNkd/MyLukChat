@@ -60,9 +60,9 @@
     [self.sentTableViewObj reloadData];
 
     //Local database
-    videoDetailsArr = [DatabaseMethods getAllSentVideoContacts];
-    if(videoDetailsArr.count == 0)
-        [CommonMethods showAlertWithTitle:@"LUK" message:@"You not sent any video to your friends." cancelBtnTitle:nil otherBtnTitle:@"Accept" delegate:nil tag:0];
+//    videoDetailsArr = [DatabaseMethods getAllSentVideoContacts];
+//    if(videoDetailsArr.count == 0)
+//        [CommonMethods showAlertWithTitle:@"LUK" message:@"You not sent any video to your friends." cancelBtnTitle:nil otherBtnTitle:@"Accept" delegate:nil tag:0];
     
 //Server Web service code
     

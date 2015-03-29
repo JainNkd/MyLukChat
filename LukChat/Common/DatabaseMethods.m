@@ -452,6 +452,50 @@
     
     return sentVideosArray;
 }
+
+
++(NSMutableArray *)getAllCreatedVideos {
+    NSLog(@"getAllCreatedVideos");
+    // Setup the database object
+    sqlite3 *database;
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString *databasePath=  [documentsDirectory stringByAppendingPathComponent:kDatabaseName];
+    
+    NSMutableArray *sentVideosArray = [[NSMutableArray alloc] init];
+    
+    // Open the database from the users filessytem
+    if(sqlite3_open([databasePath UTF8String], &database) == SQLITE_OK) {
+        // Setup the SQL Statement and compile it for faster access
+        NSString *quertyStr = @"SELECT video_title, merged_video_path, time FROM created_videos ORDER BY id DESC";
+        sqlite3_stmt *compiledStatement;
+        if(sqlite3_prepare_v2(database, [quertyStr UTF8String], -1, &compiledStatement, NULL) == SQLITE_OK) {
+            // Loop through the results and add them to the feeds array
+            while(sqlite3_step(compiledStatement) == SQLITE_ROW) {
+                // Read the data from the result row
+                VideoDetail *videoDetialObj = [VideoDetail new];
+                
+                videoDetialObj.videoTitle = [NSString stringWithFormat:@"%s",(const char*)sqlite3_column_text(compiledStatement, 0)];
+                videoDetialObj.mergedVideoURL = [NSString stringWithFormat:@"%s",(const char*)sqlite3_column_text(compiledStatement, 1)];
+                videoDetialObj.videoTime =  [NSString stringWithFormat:@"%s",(const char*)sqlite3_column_text(compiledStatement, 2)];
+                
+                if (!videoDetialObj.videoTitle)
+                    videoDetialObj.videoTitle = @"";
+                if (!videoDetialObj.videoTime)
+                    videoDetialObj.videoTime = @"";
+                
+                [sentVideosArray addObject:videoDetialObj];
+            }
+        }
+        // Release the compiled statement from memory
+        sqlite3_finalize(compiledStatement);
+    }
+    sqlite3_close(database);
+    
+    return sentVideosArray;
+}
+
+
 #pragma mark - Insert
 
 
@@ -618,6 +662,47 @@
             else
             {
                // NSLog(@"chatObj with ID: %ld inserted: ",(long)chatObj.chatId);
+            }
+            sqlite3_reset(statement);
+        }else
+        {
+            NSLog( @"Error while inserting chatObj '%s'", sqlite3_errmsg(database));
+        }
+        sqlite3_finalize(statement);
+        
+    }
+    sqlite3_close(database);
+    
+}
+
+-(void)insertCreatedVideoInfoInDB:(Chat *)chatObj {
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString *databasePath=  [documentsDirectory stringByAppendingPathComponent:kDatabaseName];
+    
+    sqlite3 *database;
+    if(sqlite3_open([databasePath UTF8String], &database) == SQLITE_OK)
+    {
+        sqlite3_stmt    *statement;
+        NSString *querySQL = @"INSERT INTO created_videos (video_title , merged_video_path , time) VALUES (?,?,?); ";
+         NSLog(@"query: %@", querySQL);
+        const char *query_stmt = [querySQL UTF8String];
+        
+        // preparing a query compiles the query so it can be re-used.
+        if(sqlite3_prepare_v2(database, query_stmt, -1, &statement, NULL) == SQLITE_OK)
+        {
+            
+            sqlite3_bind_text(statement, 1, [chatObj.chatText UTF8String], -1, SQLITE_STATIC);
+            sqlite3_bind_text(statement, 2, [chatObj.mergedVideo UTF8String], -1, SQLITE_STATIC);
+            sqlite3_bind_text(statement, 3, [chatObj.chatTime UTF8String], -1, SQLITE_STATIC);
+            
+            if(SQLITE_DONE != sqlite3_step(statement))
+            {
+                NSLog( @"Error while inserting chatObj: '%s'", sqlite3_errmsg(database));
+            }
+            else
+            {
+                // NSLog(@"chatObj with ID: %ld inserted: ",(long)chatObj.chatId);
             }
             sqlite3_reset(statement);
         }else

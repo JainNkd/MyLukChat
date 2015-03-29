@@ -31,4 +31,7 @@
 -(void)insertContactInfoToDB:(Contact *)contactObj;
 -(void)updateContactInfoToDB:(Contact *)contactObj;
 
+-(void)insertCreatedVideoInfoInDB:(Chat *)chatObj;
++(NSMutableArray *)getAllCreatedVideos;
+
 @end

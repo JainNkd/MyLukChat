@@ -12,6 +12,8 @@
 #import "LukiesViewController.h"
 #import "Constants.h"
 #import "CommonMethods.h"
+#import "Chat.h"
+#import "DatabaseMethods.h"
 
 @interface MergeVideosViewController ()
 
@@ -49,6 +51,45 @@
     NSString *filename = [[NSUserDefaults standardUserDefaults]valueForKey:kMyVideoToShare];
     filename = [CommonMethods localFileUrl:filename];
     
+    //Insert video merge data in DB
+    NSString * timestamp = [NSString stringWithFormat:@"%f",[[NSDate date] timeIntervalSince1970]];
+    
+    NSDate *dateObj = [NSDate dateWithTimeIntervalSince1970:[timestamp doubleValue]];
+    
+    NSMutableString *monthYearTimeStr = [[NSMutableString alloc]init];
+    NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear | NSCalendarUnitWeekday fromDate:dateObj];
+    
+    NSArray *weekdays = [NSArray arrayWithObjects:@"",@"Sunday",@"Monday",@"Tuesday",@"Wednesday",@"Thursday",@"Saturday",nil];
+    NSInteger day = [components day];
+    NSInteger weekday = [components weekday];
+    
+    [monthYearTimeStr appendString:[NSString stringWithFormat:@"%ld/",(long)day]];
+    [monthYearTimeStr appendString:[weekdays objectAtIndex:weekday]];
+    [monthYearTimeStr appendString:@"/"];
+    
+    NSDateFormatter *df = [[NSDateFormatter alloc] init];
+    [df setLocale:[NSLocale currentLocale]];
+    
+    [df setDateFormat:@"MMM"];
+    [monthYearTimeStr appendString:[df stringFromDate:dateObj]];
+    
+    [df setDateFormat:@"yy"];
+    [monthYearTimeStr appendString:[NSString stringWithFormat:@" %@",[df stringFromDate:dateObj]]];
+    
+    [df setDateFormat:@"hh:mma"];
+    [monthYearTimeStr appendString:[NSString stringWithFormat:@" %@",[df stringFromDate:dateObj]]];
+    
+    Chat *chatObj = [[Chat alloc] init];
+    chatObj.chatText = videoTitle;
+    chatObj.chatTime = monthYearTimeStr;
+    chatObj.mergedVideo = [[NSUserDefaults standardUserDefaults] valueForKey:kMyVideoToShare];
+    //    _chatObj.chatVideo = [NSString stringWithFormat:@"%@%@",kVideoDownloadURL,self.videoShareFileName];
+    
+    DatabaseMethods *dbObj = [[DatabaseMethods alloc] init];
+    [dbObj insertCreatedVideoInfoInDB:chatObj];
+    
+    
+    //Update UI
     self.videoTitleLBL.text = videoTitle;
     
     // prepare the video asset from recorded file

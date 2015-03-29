@@ -1152,7 +1152,119 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3J6-Zv-mB4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="702" y="2361"/>
+            <point key="canvasLocation" x="1079" y="2363"/>
+        </scene>
+        <!--Create Video View Controller-->
+        <scene sceneID="y90-Bi-VPx">
+            <objects>
+                <viewController id="5Jt-oh-eHW" customClass="CreateVideoViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Vpe-AN-QDt"/>
+                        <viewControllerLayoutGuide type="bottom" id="ric-b1-NMf"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="W1f-ux-2Ko">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="luk-iphone-final-merged-videos-main-bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="Txl-Tq-gZc">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="video-send-logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="QKO-S5-Ur4">
+                                <rect key="frame" x="10" y="10" width="144" height="40"/>
+                            </imageView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="280" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="I5G-Bb-cX9">
+                                <rect key="frame" x="0.0" y="66" width="320" height="453"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="CreateVideoCell" rowHeight="280" id="VlJ-ij-oUm" customClass="CreateVideoCell">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VlJ-ij-oUm" id="wyk-NY-4ta">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kdv-fq-2Rz" userLabel="Thumbnail1">
+                                                    <rect key="frame" x="0.0" y="0.0" width="240" height="240"/>
+                                                </imageView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kQe-a0-9q7" userLabel="Thumbnail2">
+                                                    <rect key="frame" x="240" y="80" width="80" height="80"/>
+                                                </imageView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ahz-9i-7T2" userLabel="Thumbnail3">
+                                                    <rect key="frame" x="240" y="160" width="80" height="80"/>
+                                                </imageView>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RLR-FE-czO" userLabel="ShareButton">
+                                                    <rect key="frame" x="240" y="0.0" width="80" height="80"/>
+                                                    <state key="normal" image="monkeywithbg.png">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="shareButtonClickAction:" destination="5Jt-oh-eHW" eventType="touchUpInside" id="fDw-Wo-ixJ"/>
+                                                    </connections>
+                                                </button>
+                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ate-5J-kz0">
+                                                    <rect key="frame" x="0.0" y="240" width="320" height="40"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Wish you happy holliday" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bu9-iT-j6A">
+                                                            <rect key="frame" x="10" y="9" width="210" height="20"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <color key="textColor" red="0.94901960784313721" green="0.0" blue="0.41568627450980389" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="31" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FDY-gn-sAX">
+                                                            <rect key="frame" x="240" y="5" width="30" height="20"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Friday" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PUJ-yx-rzm">
+                                                            <rect key="frame" x="273" y="12" width="45" height="12"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Mar 15 04:30pm" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hZ3-qW-wo8">
+                                                            <rect key="frame" x="240" y="25" width="80" height="12"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </view>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="dayLbl" destination="FDY-gn-sAX" id="HLV-fb-oHB"/>
+                                            <outlet property="dayTextLbl" destination="PUJ-yx-rzm" id="Mh4-fE-dyT"/>
+                                            <outlet property="monthYearTimeLbl" destination="hZ3-qW-wo8" id="0Gn-Pj-1ez"/>
+                                            <outlet property="shareButton" destination="RLR-FE-czO" id="N0H-xv-CsT"/>
+                                            <outlet property="thumbnail1" destination="kdv-fq-2Rz" id="olL-tU-Q4d"/>
+                                            <outlet property="thumbnail2" destination="kQe-a0-9q7" id="iKy-sJ-nrE"/>
+                                            <outlet property="thumbnail3" destination="ahz-9i-7T2" id="0oG-hy-aSg"/>
+                                            <outlet property="titleView" destination="Ate-5J-kz0" id="tHH-MK-Gu6"/>
+                                            <outlet property="videoTitle" destination="bu9-iT-j6A" id="FkL-nw-VVS"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="5Jt-oh-eHW" id="6dy-6K-quu"/>
+                                    <outlet property="delegate" destination="5Jt-oh-eHW" id="k0l-xE-SSq"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="3a5-JW-7rk"/>
+                    <connections>
+                        <outlet property="createTableView" destination="I5G-Bb-cX9" id="RjY-Es-OyR"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Q3S-i1-hqM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="684" y="2363"/>
         </scene>
         <!--Tab Bar View Controller-->
         <scene sceneID="9kn-tq-cEk">
@@ -1237,7 +1349,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="2Ia-Mn-sBX" kind="relationship" relationship="rootViewController" id="GbA-Lt-GJq"/>
+                        <segue destination="5Jt-oh-eHW" kind="relationship" relationship="rootViewController" id="u0d-o1-1MK"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5uP-NF-if9" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1262,6 +1374,7 @@
         <image name="merged-videos-pic-description-bg.png" width="640" height="108"/>
         <image name="merged-videos-pic.png" width="640" height="431"/>
         <image name="monkey-featherbg.png" width="79" height="79"/>
+        <image name="monkeywithbg.png" width="84" height="78"/>
         <image name="pic-between-line.png" width="1" height="112"/>
         <image name="purplebox-2blemonkey.png" width="50" height="36"/>
         <image name="screen4-smilemonkey-icon.png" width="80" height="80"/>
