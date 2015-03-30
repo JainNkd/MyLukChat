@@ -1386,7 +1386,7 @@
         <image name="merged-videos-pic-description-bg.png" width="640" height="108"/>
         <image name="merged-videos-pic.png" width="640" height="431"/>
         <image name="monkey-featherbg.png" width="79" height="79"/>
-        <image name="monkeywithbg.png" width="84" height="78"/>
+        <image name="monkeywithbg.png" width="80" height="80"/>
         <image name="pic-between-line.png" width="1" height="112"/>
         <image name="purplebox-2blemonkey.png" width="50" height="36"/>
         <image name="screen4-smilemonkey-icon.png" width="80" height="80"/>
