@@ -68,7 +68,7 @@
     
     myPhoneNum = [[[NSUserDefaults standardUserDefaults] valueForKey:kMYPhoneNumber] longLongValue];
     
-//    myPhoneNum = 918050636309;
+//    myPhoneNum = 491712223746;
     
     NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
     [dict setValue:kAPIKeyValue forKey:kAPIKey];
@@ -294,6 +294,7 @@
                                                   //Add the file name
                                                   NSData *pngData = UIImagePNGRepresentation(image);
                                                   [pngData writeToFile:filePath atomically:YES];
+                                                  [self.sentTableViewObj reloadData];
                                               }
                                               failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error){
                                                   NSLog(@"failed loading");//'%@", error);
@@ -383,6 +384,7 @@
                                                   //Add the file name
                                                   NSData *pngData = UIImagePNGRepresentation(image);
                                                   [pngData writeToFile:filePath atomically:YES];
+                                                  [self.sentTableViewObj reloadData];
                                               }
                                               failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error){
                                                   NSLog(@"failed loading");//'%@", error);
