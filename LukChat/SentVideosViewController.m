@@ -54,6 +54,9 @@
     [super viewWillAppear:animated];
     userInfoDict = [[NSMutableDictionary alloc]init];
     
+    self.sentTableViewObj.estimatedRowHeight = 130;
+    self.sentTableViewObj.rowHeight = UITableViewAutomaticDimension;
+    
     NSString *countryCode = [[NSLocale currentLocale] objectForKey: NSLocaleCountryCode];
     cnCode = [CommonMethods countryPhoneCode:countryCode];
     
@@ -68,16 +71,16 @@
     
     myPhoneNum = [[[NSUserDefaults standardUserDefaults] valueForKey:kMYPhoneNumber] longLongValue];
     
-//    myPhoneNum = 491712223746;
+    myPhoneNum = 491712223746;
     
     NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
     [dict setValue:kAPIKeyValue forKey:kAPIKey];
     [dict setValue:kAPISecretValue forKey:kAPISecret];
     [dict setValue:[NSString stringWithFormat:@"%lld",myPhoneNum] forKey:@"phone"];
     
-//    ConnectionHandler *connObj = [[ConnectionHandler alloc] init];
-//    connObj.delegate = self;
-//    [connObj makePOSTRequestPath:kAllHistoryURL parameters:dict];
+    ConnectionHandler *connObj = [[ConnectionHandler alloc] init];
+    connObj.delegate = self;
+    [connObj makePOSTRequestPath:kAllHistoryURL parameters:dict];
 }
 
 -(void)viewDidAppear:(BOOL)animated

@@ -860,8 +860,12 @@
                                                     <rect key="frame" x="100" y="0.0" width="220" height="100"/>
                                                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                 </view>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="luk-iphone-final-lukes-sent-list-pic-dummy.png" translatesAutoresizingMaskIntoConstraints="NO" id="Ccq-Lw-WeF">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="luk-iphone-final-lukes-sent-list-pic-dummy.png" translatesAutoresizingMaskIntoConstraints="NO" id="Ccq-Lw-WeF">
                                                     <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="100" id="4Mc-bS-IyZ"/>
+                                                        <constraint firstAttribute="height" constant="100" id="haP-DV-rtt"/>
+                                                    </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="I wish you happy holidy" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XAV-sY-Jru">
                                                     <rect key="frame" x="110" y="8" width="190" height="50"/>
@@ -907,6 +911,10 @@
                                                 </view>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstItem="Ccq-Lw-WeF" firstAttribute="leading" secondItem="YtS-Dt-FQi" secondAttribute="leading" id="JbC-Oo-Wq7"/>
+                                                <constraint firstItem="Ccq-Lw-WeF" firstAttribute="top" secondItem="YtS-Dt-FQi" secondAttribute="top" id="c2B-lc-Rqn"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <connections>
@@ -922,21 +930,25 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="52"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="luk-iphone-final-lukes-sent-list-pic-dummy.png" translatesAutoresizingMaskIntoConstraints="NO" id="3bt-sU-ShK">
-                                                    <rect key="frame" x="220" y="0.0" width="100" height="100"/>
-                                                </imageView>
                                                 <view alpha="0.5" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iPS-3m-ah4" userLabel="content">
                                                     <rect key="frame" x="0.0" y="0.0" width="220" height="100"/>
                                                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                 </view>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="I wish you happy holidy" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gXk-KI-8Pb">
-                                                    <rect key="frame" x="10" y="8" width="190" height="50"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="luk-iphone-final-lukes-sent-list-pic-dummy.png" translatesAutoresizingMaskIntoConstraints="NO" id="3bt-sU-ShK">
+                                                    <rect key="frame" x="220" y="0.0" width="100" height="100"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="100" id="IRi-d4-sG1"/>
+                                                        <constraint firstAttribute="width" constant="100" id="aTc-Dl-9hh"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I wish you happy holidy" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gXk-KI-8Pb">
+                                                    <rect key="frame" x="10" y="8" width="200" height="48"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Markus" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F6T-Cg-7U1">
-                                                    <rect key="frame" x="10" y="70" width="150" height="20"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Markus" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F6T-Cg-7U1">
+                                                    <rect key="frame" x="10" y="69" width="57" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.98431372549019602" green="0.83137254901960778" blue="0.27450980392156865" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -966,6 +978,15 @@
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </view>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="3bt-sU-ShK" secondAttribute="trailing" id="52T-Ff-cIf"/>
+                                                <constraint firstItem="gXk-KI-8Pb" firstAttribute="top" secondItem="6AY-mK-HnU" secondAttribute="top" constant="8" id="5xj-ks-Jpv"/>
+                                                <constraint firstItem="3bt-sU-ShK" firstAttribute="top" secondItem="6AY-mK-HnU" secondAttribute="top" id="Pw7-2A-fEb"/>
+                                                <constraint firstAttribute="trailing" secondItem="gXk-KI-8Pb" secondAttribute="trailing" constant="110" id="Qt2-Pk-4Af"/>
+                                                <constraint firstItem="gXk-KI-8Pb" firstAttribute="leading" secondItem="6AY-mK-HnU" secondAttribute="leading" constant="10" id="S49-Z4-7nB"/>
+                                                <constraint firstItem="F6T-Cg-7U1" firstAttribute="leading" secondItem="6AY-mK-HnU" secondAttribute="leading" constant="10" id="fxo-Cf-IJP"/>
+                                                <constraint firstAttribute="bottom" secondItem="F6T-Cg-7U1" secondAttribute="bottom" constant="40" id="l84-Z4-zhW"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <connections>
