@@ -71,7 +71,7 @@
     
     myPhoneNum = [[[NSUserDefaults standardUserDefaults] valueForKey:kMYPhoneNumber] longLongValue];
     
-    myPhoneNum = 491712223746;
+//    myPhoneNum = 491712223746;
     
     NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
     [dict setValue:kAPIKeyValue forKey:kAPIKey];
@@ -178,6 +178,19 @@
     RecievedVideoTableViewCell *receivedCell = [tableView dequeueReusableCellWithIdentifier:ReceivedCellIdentifier];
         [self createReceivedCellData:videoObj cell:receivedCell indexPath:indexPath];
         cell = receivedCell;
+    }
+    
+    //Progress Indicator
+    for(UIView *view in cell.subviews)
+    {
+        if([view isKindOfClass:[UCZProgressView class]])
+        {
+            UCZProgressView *progressView = (UCZProgressView*)view;
+            if(progressView.tag == indexPath.row)
+                progressView.hidden = NO;
+            else
+                progressView.hidden = YES;
+        }
     }
     
     
@@ -483,11 +496,12 @@
     
     VideoDetail *videoObj = [videoDetailsArr objectAtIndex:indexPath.row];
     NSLog(@"merge videos...%@",videoObj.mergedVideoURL);
+    videoObj.mergedVideoURL = [DatabaseMethods getVideoLocalURL:videoObj.videoID];
     
     AFHTTPRequestOperation *operation = (self.videoDownloadsInProgress)[indexPath];
     
     
-    if([[NSFileManager defaultManager] fileExistsAtPath:videoObj.mergedVideoURL])
+    if([[NSFileManager defaultManager] fileExistsAtPath:[CommonMethods localFileUrl:videoObj.mergedVideoURL]])
     {
         [self playMovie:[CommonMethods localFileUrl:videoObj.mergedVideoURL]];
     }
@@ -501,7 +515,11 @@
         NSString *localURL = [CommonMethods localFileUrl:videoObj.videoURL];
         if(!operation){
             
-            UCZProgressView *progressView = [[UCZProgressView alloc]initWithFrame:CGRectMake(0,0,100,100)];
+            UCZProgressView *progressView;
+            if(videoObj.toContact == myPhoneNum)
+                progressView = [[UCZProgressView alloc]initWithFrame:CGRectMake(0,0,100,100)];
+            else
+                progressView = [[UCZProgressView alloc]initWithFrame:CGRectMake(220,0,100,100)];
             progressView.tag = indexPath.row;
             progressView.indeterminate = YES;
             progressView.showsText = YES;

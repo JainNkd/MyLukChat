@@ -11,12 +11,13 @@
 #import "Constants.h"
 
 @implementation VideoDetail
-@synthesize toContact,toUserID,fname,lname,userImageUrl,videoTime,videoTitle,fromContact,videoURL,thumnail,userProfileImage,thumnailName,mergedVideoURL,thumbnail1,thumbnail2,thumbnail3;
+@synthesize toContact,toUserID,fname,lname,userImageUrl,videoTime,videoTitle,fromContact,videoURL,thumnail,userProfileImage,thumnailName,mergedVideoURL,thumbnail1,thumbnail2,thumbnail3,videoID;
 
 -(VideoDetail*)initWithDict:(NSDictionary*)videoDetailDict
 {
     if(self == [super init])
     {
+        self.videoID = [videoDetailDict valueForKey:@"id"];
         self.toContact = [[videoDetailDict valueForKey:@"to"] longLongValue];
         self.fromContact = [[videoDetailDict valueForKey:@"from"] longLongValue ];
         self.videoURL = [videoDetailDict valueForKey:@"file"];

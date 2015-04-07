@@ -314,7 +314,8 @@
         switch (statusInt) {
             case 1:
             {
-                [self addMyVideoLog:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",kVideoDownloadURL,[usersdict objectForKey:@"filename"]]]];
+                NSString *videoID = [[[usersdict valueForKey:@"video_id"] valueForKey:@"Video"] valueForKey:@"id"];
+                [self addMyVideoLog:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",kVideoDownloadURL,[usersdict objectForKey:@"filename"]]] videoId:videoID];
                  [CommonMethods showAlertWithTitle:@"Alert" message:@"Video uploaded successful."];
                 [self.navigationController popToRootViewControllerAnimated:YES];
                 break;
@@ -637,7 +638,7 @@
 }
 
 
-- (void)addMyVideoLog:(NSURL *)video {
+- (void)addMyVideoLog:(NSURL *)video videoId:(NSString*)videoID{
     NSLog(@"addMyVideoLog: %@",video);
     
     
@@ -646,6 +647,7 @@
     }
     NSString *videoTitle =  [[NSUserDefaults standardUserDefaults] valueForKey:VIDEO_TITLE];
     
+    chatObj.videoID = videoID;
     chatObj.fromPhone = myPhoneNum;
     chatObj.toPhone = [[[NSUserDefaults standardUserDefaults] valueForKey:kCurrentCHATUserPHONE] longLongValue];
     chatObj.contentType = 1;

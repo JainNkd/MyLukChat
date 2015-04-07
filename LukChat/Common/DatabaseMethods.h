@@ -33,5 +33,6 @@
 
 -(void)insertCreatedVideoInfoInDB:(Chat *)chatObj;
 +(NSMutableArray *)getAllCreatedVideos;
++(NSString*)getVideoLocalURL:(NSString*)videoID;
 
 @end

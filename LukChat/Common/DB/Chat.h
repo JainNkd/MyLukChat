@@ -8,6 +8,8 @@
 @property (nonatomic, assign) long long int toPhone;
 @property (nonatomic, assign) NSInteger contentType;
 
+@property (nonatomic, strong) NSString *videoID;
+
 @property (nonatomic, strong) NSString *chatText;
 @property (nonatomic, strong) NSString *chatVideo;
 @property (nonatomic, strong) NSString *chatTime;

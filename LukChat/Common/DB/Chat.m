@@ -8,6 +8,7 @@
 @synthesize fromPhone;
 @synthesize toPhone;
 @synthesize contentType;
+@synthesize videoID;
 
 @synthesize chatText;
 @synthesize chatVideo;
@@ -30,6 +31,7 @@
         self.chatVideo = @"";
         self.chatTime = @"";
         self.mergedVideo =@"";
+        self.videoID = @"";
 
     }
     return self;

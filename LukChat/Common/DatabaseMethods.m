@@ -219,6 +219,31 @@
     return myUserId;
 }
 
++(NSString*)getVideoLocalURL:(NSString*)videoID {
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString *databasePath=  [documentsDirectory stringByAppendingPathComponent:kDatabaseName];
+    
+    sqlite3 *database;
+    NSString *videoLocalURL = @"";
+    if(sqlite3_open([databasePath UTF8String], &database) == SQLITE_OK)
+    {
+        sqlite3_stmt    *compiledstatement;
+        NSString *quertyStrGetFav = [NSString stringWithFormat:@"SELECT merged_video FROM tbl_chats where video_id = '%d' ",[videoID integerValue]];
+//        NSString *quertyStrGetFav = @"SELECT merged_video FROM tbl_chats where video_id = %d ",;
+        const char *quertyGetFav = [quertyStrGetFav UTF8String];
+        if(sqlite3_prepare_v2(database, quertyGetFav, -1, &compiledstatement, NULL) == SQLITE_OK) {
+            while(sqlite3_step(compiledstatement) == SQLITE_ROW) {
+                videoLocalURL = [NSString stringWithFormat:@"%s",(const char*)sqlite3_column_text(compiledstatement, 0)];
+            }
+        }
+        sqlite3_finalize(compiledstatement);
+    }
+    sqlite3_close(database);
+    
+    return videoLocalURL;
+}
+
 -(long long int)getMyPhoneNumber {
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
@@ -639,7 +664,7 @@
     if(sqlite3_open([databasePath UTF8String], &database) == SQLITE_OK)
     {
         sqlite3_stmt    *statement;
-        NSString *querySQL = @"INSERT INTO tbl_chats (from_phone , to_phone , content_type , chat_text , chat_video , chat_time, merged_video ) VALUES (?,?,?,?,?,?,?); ";
+        NSString *querySQL = @"INSERT INTO tbl_chats (from_phone , to_phone , content_type , chat_text , chat_video , chat_time, merged_video, video_id ) VALUES (?,?,?,?,?,?,?,?); ";
         // NSLog(@"query: %@", querySQL);
         const char *query_stmt = [querySQL UTF8String];
         
@@ -654,6 +679,7 @@
             sqlite3_bind_text(statement, 5, [chatObj.chatVideo UTF8String], -1, SQLITE_STATIC);
             sqlite3_bind_text(statement, 6, [chatObj.chatTime UTF8String], -1, SQLITE_STATIC);
             sqlite3_bind_text(statement, 7, [chatObj.mergedVideo UTF8String], -1, SQLITE_STATIC);
+            sqlite3_bind_int64(statement, 8, [chatObj.videoID integerValue]);
 
             if(SQLITE_DONE != sqlite3_step(statement))
             {
