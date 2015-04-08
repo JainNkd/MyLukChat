@@ -179,6 +179,8 @@
 		87A7474C1AC6C0F60046C5A0 /* RecievedVideoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 87A7474B1AC6C0F60046C5A0 /* RecievedVideoTableViewCell.m */; };
 		87AFE04C1A5C55E700DCA827 /* LukiesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87AFE04B1A5C55E700DCA827 /* LukiesViewController.m */; };
 		87CCBD671A5012280018D266 /* MergeVideosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87CCBD661A5012280018D266 /* MergeVideosViewController.m */; };
+		8B6879521AD53C40007004E2 /* screen-8-background.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B6879501AD53C40007004E2 /* screen-8-background.png */; };
+		8B6879531AD53C40007004E2 /* sharedoublemonkey@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B6879511AD53C40007004E2 /* sharedoublemonkey@2x.png */; };
 		8BB068EA1AC58A0C000A84C7 /* monkeywithbg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BB068E41AC58A0C000A84C7 /* monkeywithbg@2x.png */; };
 		8BB068EB1AC58A0C000A84C7 /* screen8-heading-text-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BB068E51AC58A0C000A84C7 /* screen8-heading-text-icon@2x.png */; };
 		8BB068EC1AC58A0C000A84C7 /* purplebox@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BB068E61AC58A0C000A84C7 /* purplebox@2x.png */; };
@@ -505,6 +507,8 @@
 		87AFE04B1A5C55E700DCA827 /* LukiesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LukiesViewController.m; sourceTree = "<group>"; };
 		87CCBD651A5012280018D266 /* MergeVideosViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MergeVideosViewController.h; sourceTree = "<group>"; };
 		87CCBD661A5012280018D266 /* MergeVideosViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MergeVideosViewController.m; sourceTree = "<group>"; };
+		8B6879501AD53C40007004E2 /* screen-8-background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "screen-8-background.png"; sourceTree = "<group>"; };
+		8B6879511AD53C40007004E2 /* sharedoublemonkey@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sharedoublemonkey@2x.png"; sourceTree = "<group>"; };
 		8BB068E41AC58A0C000A84C7 /* monkeywithbg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "monkeywithbg@2x.png"; sourceTree = "<group>"; };
 		8BB068E51AC58A0C000A84C7 /* screen8-heading-text-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "screen8-heading-text-icon@2x.png"; sourceTree = "<group>"; };
 		8BB068E61AC58A0C000A84C7 /* purplebox@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "purplebox@2x.png"; sourceTree = "<group>"; };
@@ -953,6 +957,8 @@
 		63F9997C199E095A005C82F6 /* lukes-sent-list */ = {
 			isa = PBXGroup;
 			children = (
+				8B6879501AD53C40007004E2 /* screen-8-background.png */,
+				8B6879511AD53C40007004E2 /* sharedoublemonkey@2x.png */,
 				875437461AC5B08C0091AD68 /* lukes-sent-logo@2x.png */,
 				8BB068EF1AC58AB9000A84C7 /* screen4-smilemonkey-icon@2x.png */,
 				63F9997E199E095A005C82F6 /* luk-iphone-final-lukes-sent-list-main-bg.png */,
@@ -1433,6 +1439,7 @@
 				8BB0F66C1AC161BC008453B5 /* movie-role-active@2x.png in Resources */,
 				8BB068EE1AC58A0C000A84C7 /* purplebox-2blemonkey@2x.png in Resources */,
 				63F999D9199E095A005C82F6 /* luk-iphone-final-terms&condition-mainbg.png in Resources */,
+				8B6879521AD53C40007004E2 /* screen-8-background.png in Resources */,
 				63F999E9199E095A005C82F6 /* verfication-field-bg.png in Resources */,
 				63F999C9199E095A005C82F6 /* merged-videos-pic.png in Resources */,
 				63F999E1199E095A005C82F6 /* pic-between-line.png in Resources */,
@@ -1442,6 +1449,7 @@
 				63F999CB199E095A005C82F6 /* share-icon.png in Resources */,
 				6338502719839F2D00C3256A /* InfoPlist.strings in Resources */,
 				63F99978199E04E2005C82F6 /* start-screen-footer-icon-video.png in Resources */,
+				8B6879531AD53C40007004E2 /* sharedoublemonkey@2x.png in Resources */,
 				633850941983A7B900C3256A /* luk-main3-bg.png in Resources */,
 				63F99975199E04E2005C82F6 /* start-screen-footer-bg.png in Resources */,
 				63F999C8199E095A005C82F6 /* merged-videos-pic-description-bg.png in Resources */,

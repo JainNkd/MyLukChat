@@ -16,4 +16,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *videoTitleLBLObj;
 @property (weak, nonatomic) IBOutlet UILabel *videoTimeLBLObj;
 
+@property (weak, nonatomic) IBOutlet UILabel *dayLBL;
+
+@property (weak, nonatomic) IBOutlet UILabel *monthYearLBL;
+
+@property (weak, nonatomic) IBOutlet UILabel *dayTimeLBL;
+
 @end

@@ -59,11 +59,15 @@
     NSMutableString *monthYearTimeStr = [[NSMutableString alloc]init];
     NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear | NSCalendarUnitWeekday fromDate:dateObj];
     
-    NSArray *weekdays = [NSArray arrayWithObjects:@"",@"Sunday",@"Monday",@"Tuesday",@"Wednesday",@"Thursday",@"Saturday",nil];
+    NSArray *weekdays = [NSArray arrayWithObjects:@"",@"Sunday",@"Monday",@"Tuesday",@"Wednesday",@"Thursday",@"Friday",@"Saturday",nil];
     NSInteger day = [components day];
     NSInteger weekday = [components weekday];
     
-    [monthYearTimeStr appendString:[NSString stringWithFormat:@"%ld/",(long)day]];
+    if(day<10)
+        [monthYearTimeStr appendString:[NSString stringWithFormat:@"0%ld/",(long)day]];
+    else
+        [monthYearTimeStr appendString:[NSString stringWithFormat:@"%ld/",(long)day]];
+    
     [monthYearTimeStr appendString:[weekdays objectAtIndex:weekday]];
     [monthYearTimeStr appendString:@"/"];
     

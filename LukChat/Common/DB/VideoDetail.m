@@ -24,8 +24,8 @@
         self.videoTime = [videoDetailDict valueForKey:@"time"];
         self.videoTitle = [videoDetailDict valueForKey:@"caption"];
        
-        NSDate *date = [NSDate dateWithTimeIntervalSince1970:[self.videoTime doubleValue]];
-        self.videoTime = [CommonMethods convertDatetoSting:date];
+//        NSDate *date = [NSDate dateWithTimeIntervalSince1970:[self.videoTime doubleValue]];
+//        self.videoTime = [CommonMethods convertDatetoSting:date];
         self.thumnail =  [NSString stringWithFormat:@"%@%@",kVideoDownloadURL,[videoDetailDict valueForKey:@"thumbnail"]];
         self.thumnailName =[videoDetailDict valueForKey:@"thumbnail"];
         

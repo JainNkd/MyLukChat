@@ -283,8 +283,38 @@
     cell.userNameLBLObj.text = name;
     cell.videoTitleLBLObj.text = videoObj.videoTitle;
     [cell.videoTitleLBLObj sizeToFit];
-    cell.videoTimeLBLObj.text = videoObj.videoTime;
     
+    NSDate *dateObj = [NSDate dateWithTimeIntervalSince1970:[videoObj.videoTime doubleValue]];
+    
+    NSMutableString *monthYearTimeStr = [[NSMutableString alloc]init];
+    NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear | NSCalendarUnitWeekday fromDate:dateObj];
+    
+    NSArray *weekdays = [NSArray arrayWithObjects:@"",@"Sunday",@"Monday",@"Tuesday",@"Wednesday",@"Thursday",@"Friday",@"Saturday",nil];
+    NSInteger day = [components day];
+    NSInteger weekday = [components weekday];
+    
+    if(day<10)
+    cell.dayLBL.text = [NSString stringWithFormat:@"0%ld",(long)day];
+    else
+    cell.dayLBL.text = [NSString stringWithFormat:@"%ld",(long)day];
+    
+    [monthYearTimeStr appendString:[weekdays objectAtIndex:weekday]];
+    [monthYearTimeStr appendString:@","];
+    
+    NSDateFormatter *df = [[NSDateFormatter alloc] init];
+    [df setLocale:[NSLocale localeWithLocaleIdentifier:@"en_US"]];
+    
+    [df setDateFormat:@"hh:mma"];
+    [monthYearTimeStr appendString:[NSString stringWithFormat:@" %@",[[df stringFromDate:dateObj] lowercaseString]]];
+    cell.dayTimeLBL.text = monthYearTimeStr;
+    [monthYearTimeStr setString:@""];
+    
+    [df setDateFormat:@"MMM"];
+    [monthYearTimeStr appendString:[df stringFromDate:dateObj]];
+    
+    [df setDateFormat:@"yy"];
+    [monthYearTimeStr appendString:[NSString stringWithFormat:@" %@,",[df stringFromDate:dateObj]]];
+    cell.monthYearLBL.text = monthYearTimeStr;
     
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     __block NSString *documentsDirectory = [paths objectAtIndex:0];
@@ -375,6 +405,37 @@
     cell.videoTitleLBLObj.text = videoObj.videoTitle;
     [cell.videoTitleLBLObj sizeToFit];
     
+    NSDate *dateObj = [NSDate dateWithTimeIntervalSince1970:[videoObj.videoTime doubleValue]];
+    
+    NSMutableString *monthYearTimeStr = [[NSMutableString alloc]init];
+    NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear | NSCalendarUnitWeekday fromDate:dateObj];
+    
+    NSArray *weekdays = [NSArray arrayWithObjects:@"",@"Sunday",@"Monday",@"Tuesday",@"Wednesday",@"Thursday",@"Friday",@"Saturday",nil];
+    NSInteger day = [components day];
+    NSInteger weekday = [components weekday];
+    
+    if(day < 10)
+        cell.dayLBL.text = [NSString stringWithFormat:@"0%ld",(long)day];
+    else
+        cell.dayLBL.text = [NSString stringWithFormat:@"%ld",(long)day];
+    
+    [monthYearTimeStr appendString:[weekdays objectAtIndex:weekday]];
+    [monthYearTimeStr appendString:@","];
+    
+    NSDateFormatter *df = [[NSDateFormatter alloc] init];
+    [df setLocale:[NSLocale localeWithLocaleIdentifier:@"en_US"]];
+    
+    [df setDateFormat:@"hh:mma"];
+    [monthYearTimeStr appendString:[NSString stringWithFormat:@" %@",[[df stringFromDate:dateObj] lowercaseString]]];
+    cell.dayTimeLBL.text = monthYearTimeStr;
+    [monthYearTimeStr setString:@""];
+    
+    [df setDateFormat:@"MMM"];
+    [monthYearTimeStr appendString:[df stringFromDate:dateObj]];
+    
+    [df setDateFormat:@"yy"];
+    [monthYearTimeStr appendString:[NSString stringWithFormat:@" %@,",[df stringFromDate:dateObj]]];
+    cell.monthYearLBL.text = monthYearTimeStr;
     
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     __block NSString *documentsDirectory = [paths objectAtIndex:0];
@@ -491,6 +552,11 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+
+}
+/*
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
     
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     
@@ -500,8 +566,7 @@
     
     AFHTTPRequestOperation *operation = (self.videoDownloadsInProgress)[indexPath];
     
-    
-    if([[NSFileManager defaultManager] fileExistsAtPath:[CommonMethods localFileUrl:videoObj.mergedVideoURL]])
+    if([[NSFileManager defaultManager] fileExistsAtPath:[CommonMethods localFileUrl:videoObj.mergedVideoURL]] && videoObj.mergedVideoURL.length>0)
     {
         [self playMovie:[CommonMethods localFileUrl:videoObj.mergedVideoURL]];
     }
@@ -523,6 +588,8 @@
             progressView.tag = indexPath.row;
             progressView.indeterminate = YES;
             progressView.showsText = YES;
+            progressView.tintColor = [UIColor whiteColor];
+
             [cell addSubview:progressView];
             
             
@@ -561,7 +628,7 @@
         }
     }
 }
-
+*/
 -(void)setBlurView:(FXBlurView*)blurView flag:(BOOL)flag
 {
     if(flag)
