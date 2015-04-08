@@ -19,6 +19,7 @@
 @interface SentVideosViewController ()<ConnectionHandlerDelegate>
 {
     NSMutableDictionary *userInfoDict;
+    BOOL isShowingVideo;
 }
 @property (nonatomic, strong) NSMutableDictionary *videoDownloadsInProgress;
 @end
@@ -52,6 +53,8 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    [self.sentTableViewObj reloadData];
+    
     userInfoDict = [[NSMutableDictionary alloc]init];
     
     self.sentTableViewObj.estimatedRowHeight = 130;
@@ -59,8 +62,6 @@
     
     NSString *countryCode = [[NSLocale currentLocale] objectForKey: NSLocaleCountryCode];
     cnCode = [CommonMethods countryPhoneCode:countryCode];
-    
-    [self.sentTableViewObj reloadData];
 
     //Local database
 //    videoDetailsArr = [DatabaseMethods getAllSentVideoContacts];
@@ -73,6 +74,7 @@
     
 //    myPhoneNum = 491712223746;
     
+    if(!isShowingVideo){
     NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
     [dict setValue:kAPIKeyValue forKey:kAPIKey];
     [dict setValue:kAPISecretValue forKey:kAPISecret];
@@ -81,6 +83,8 @@
     ConnectionHandler *connObj = [[ConnectionHandler alloc] init];
     connObj.delegate = self;
     [connObj makePOSTRequestPath:kAllHistoryURL parameters:dict];
+    }
+    isShowingVideo = NO;
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -90,8 +94,8 @@
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
-    self.videoDownloadsInProgress = [NSMutableDictionary dictionary];
+      [super viewDidLoad];
+      self.videoDownloadsInProgress = [NSMutableDictionary dictionary];
 //    self.sentTableViewObj.estimatedRowHeight = 90.0;
 //    self.sentTableViewObj.rowHeight = UITableViewAutomaticDimension;
 
@@ -550,13 +554,15 @@
     return 130;
 }
 
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
+//-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//
+//}
 
-}
-/*
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
+    isShowingVideo = YES;
     
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     
@@ -628,7 +634,7 @@
         }
     }
 }
-*/
+
 -(void)setBlurView:(FXBlurView*)blurView flag:(BOOL)flag
 {
     if(flag)
