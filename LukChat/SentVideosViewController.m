@@ -53,7 +53,6 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self.sentTableViewObj reloadData];
     
     userInfoDict = [[NSMutableDictionary alloc]init];
     
@@ -62,29 +61,35 @@
     
     NSString *countryCode = [[NSLocale currentLocale] objectForKey: NSLocaleCountryCode];
     cnCode = [CommonMethods countryPhoneCode:countryCode];
-
-    //Local database
-//    videoDetailsArr = [DatabaseMethods getAllSentVideoContacts];
-//    if(videoDetailsArr.count == 0)
-//        [CommonMethods showAlertWithTitle:@"LUK" message:@"You not sent any video to your friends." cancelBtnTitle:nil otherBtnTitle:@"Accept" delegate:nil tag:0];
     
-//Server Web service code
-    
-    myPhoneNum = [[[NSUserDefaults standardUserDefaults] valueForKey:kMYPhoneNumber] longLongValue];
-    
-//    myPhoneNum = 491712223746;
-    
-    if(!isShowingVideo){
-    NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
-    [dict setValue:kAPIKeyValue forKey:kAPIKey];
-    [dict setValue:kAPISecretValue forKey:kAPISecret];
-    [dict setValue:[NSString stringWithFormat:@"%lld",myPhoneNum] forKey:@"phone"];
-    
-    ConnectionHandler *connObj = [[ConnectionHandler alloc] init];
-    connObj.delegate = self;
-    [connObj makePOSTRequestPath:kAllHistoryURL parameters:dict];
+    if(![CommonMethods reachable]){
+        //Local database
+        [self reloadHistoryData];
     }
-    isShowingVideo = NO;
+    else{
+        //Server Web service code
+        myPhoneNum = [[[NSUserDefaults standardUserDefaults] valueForKey:kMYPhoneNumber] longLongValue];
+//        myPhoneNum = 491712223746;
+        
+        if(!isShowingVideo){
+            NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
+            [dict setValue:kAPIKeyValue forKey:kAPIKey];
+            [dict setValue:kAPISecretValue forKey:kAPISecret];
+            [dict setValue:[NSString stringWithFormat:@"%lld",myPhoneNum] forKey:@"phone"];
+            
+            ConnectionHandler *connObj = [[ConnectionHandler alloc] init];
+            connObj.delegate = self;
+            [connObj makePOSTRequestPath:kAllHistoryURL parameters:dict];
+        }
+        isShowingVideo = NO;
+    }
+}
+
+-(void)reloadHistoryData
+{
+    [videoDetailsArr removeAllObjects];
+    videoDetailsArr = [DatabaseMethods getAllHistoryVideos];
+    [self.sentTableViewObj reloadData];
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -94,16 +99,16 @@
 
 - (void)viewDidLoad
 {
-      [super viewDidLoad];
-      self.videoDownloadsInProgress = [NSMutableDictionary dictionary];
-//    self.sentTableViewObj.estimatedRowHeight = 90.0;
-//    self.sentTableViewObj.rowHeight = UITableViewAutomaticDimension;
-
+    [super viewDidLoad];
+    self.videoDownloadsInProgress = [NSMutableDictionary dictionary];
+    //    self.sentTableViewObj.estimatedRowHeight = 90.0;
+    //    self.sentTableViewObj.rowHeight = UITableViewAutomaticDimension;
+    
 }
 
 
 -(void)connHandlerClient:(ConnectionHandler *)client didSucceedWithResponseString:(NSString *)response forPath:(NSString *)urlPath{
-//    NSLog(@"connHandlerClient didSucceedWithResponseString : %@",response);
+    //    NSLog(@"connHandlerClient didSucceedWithResponseString : %@",response);
     NSLog(@"loadAppContactsOnTable ******************");
     if ([urlPath isEqualToString:kAllHistoryURL]) {
         NSLog(@"SUCCESS: All Data fetched");
@@ -119,20 +124,18 @@
         switch (status) {
             case 0:
             {
-                [videoDetailsArr removeAllObjects];
-                videoDetailsArr = nil;
-                videoDetailsArr = [[NSMutableArray alloc]init];
                 for(NSDictionary* datadict in dataList)
                 {
                     NSDictionary *videoDict = [datadict objectForKey:@"Video"];
                     VideoDetail *videoDetailObj = [[VideoDetail alloc]initWithDict:videoDict];
-                    [videoDetailsArr addObject:videoDetailObj];
+                    
+                    if(![DatabaseMethods checkIfHistoryVideoExists:[videoDetailObj.videoID integerValue]])
+                    {
+                        [DatabaseMethods insertHistoryVideoInfoInDB:videoDetailObj];
+                    }
                 }
                 
-                if(videoDetailsArr.count > 0)
-                [self.sentTableViewObj reloadData];
-                else
-                    [CommonMethods showAlertWithTitle:@"LUK" message:@"You not sent any video to your friends." cancelBtnTitle:nil otherBtnTitle:@"Accept" delegate:nil tag:0];
+                [self reloadHistoryData];
                 break;
             }
             case -2:
@@ -144,6 +147,50 @@
         }
     }
 }
+
+
+//-(void)connHandlerClient:(ConnectionHandler *)client didSucceedWithResponseString:(NSString *)response forPath:(NSString *)urlPath{
+//    //    NSLog(@"connHandlerClient didSucceedWithResponseString : %@",response);
+//    NSLog(@"loadAppContactsOnTable ******************");
+//    if ([urlPath isEqualToString:kAllHistoryURL]) {
+//        NSLog(@"SUCCESS: All Data fetched");
+//
+//        NSError *error;
+//        NSDictionary* responseDict = [NSJSONSerialization JSONObjectWithData: [response dataUsingEncoding:NSUTF8StringEncoding]
+//                                                                     options: NSJSONReadingMutableContainers
+//                                                                       error: &error];
+//        NSDictionary *historydict = [responseDict objectForKey:@"history"];
+//        NSInteger status = [[historydict objectForKey:@"status"] integerValue];
+//        NSArray *dataList = [historydict objectForKey:@"all"];
+//
+//        switch (status) {
+//            case 0:
+//            {
+//                [videoDetailsArr removeAllObjects];
+//                videoDetailsArr = nil;
+//                videoDetailsArr = [[NSMutableArray alloc]init];
+//                for(NSDictionary* datadict in dataList)
+//                {
+//                    NSDictionary *videoDict = [datadict objectForKey:@"Video"];
+//                    VideoDetail *videoDetailObj = [[VideoDetail alloc]initWithDict:videoDict];
+//                    [videoDetailsArr addObject:videoDetailObj];
+//                }
+//
+//                if(videoDetailsArr.count > 0)
+//                    [self.sentTableViewObj reloadData];
+//                else
+//                    [CommonMethods showAlertWithTitle:@"LUK" message:@"You not sent any video to your friends." cancelBtnTitle:nil otherBtnTitle:@"Accept" delegate:nil tag:0];
+//                break;
+//            }
+//            case -2:
+//                [CommonMethods showAlertWithTitle:[historydict objectForKey:@"message"] message:@"Make sure the phone number is registered with LukChat"];
+//                break;
+//            default:
+//                [CommonMethods showAlertWithTitle:@"Error" message:[error localizedDescription]];
+//                break;
+//        }
+//    }
+//}
 
 -(void)connHandlerClient:(ConnectionHandler *)client didFailWithError:(NSError *)error
 {
@@ -173,13 +220,13 @@
     
     UITableViewCell *cell;
     if(videoObj.fromContact ==  myPhoneNum){
-    SentVideoTableViewCell *sentCell = [tableView dequeueReusableCellWithIdentifier:SentCellIdentifier];
-    [self createSentCellData:videoObj cell:sentCell indexPath:indexPath];
+        SentVideoTableViewCell *sentCell = [tableView dequeueReusableCellWithIdentifier:SentCellIdentifier];
+        [self createSentCellData:videoObj cell:sentCell indexPath:indexPath];
         cell = sentCell;
     }
     else
     {
-    RecievedVideoTableViewCell *receivedCell = [tableView dequeueReusableCellWithIdentifier:ReceivedCellIdentifier];
+        RecievedVideoTableViewCell *receivedCell = [tableView dequeueReusableCellWithIdentifier:ReceivedCellIdentifier];
         [self createReceivedCellData:videoObj cell:receivedCell indexPath:indexPath];
         cell = receivedCell;
     }
@@ -198,39 +245,39 @@
     }
     
     
-//    if(videoObj.userProfileImage)
-//        [cell.userImageViewObj setImage:videoObj.userProfileImage];
-//    else
-//    {
-//        [cell.userImageViewObj setImage:[UIImage imageNamed:videoObj.userImageUrl]];
-//        
-//        // Request authorization to Address Book
-//        ABAddressBookRef addressBookRef = ABAddressBookCreateWithOptions(NULL, NULL);
-//        
-//        if (ABAddressBookGetAuthorizationStatus() == kABAuthorizationStatusNotDetermined) {
-//            ABAddressBookRequestAccessWithCompletion(addressBookRef, ^(bool granted, CFErrorRef error) {
-//                if (granted) {
-//                    // First time access has been granted, add the contact
-//                    [self getAllContacts:phoneNumber cell:cell indexpath:indexPath];
-//                } else {
-//                    // User denied access
-//                    // Display an alert telling user the contact could not be added
-//                }
-//            });
-//        }
-//        else if (ABAddressBookGetAuthorizationStatus() == kABAuthorizationStatusAuthorized) {
-//            // The user has previously given access, add the contact
-//            [self getAllContacts:phoneNumber cell:cell indexpath:indexPath];
-//        }
-//        else {
-//            // The user has previously denied access
-//            // Send an alert telling user to change privacy setting in settings app
-//        }
-//        
-//    }
+    //    if(videoObj.userProfileImage)
+    //        [cell.userImageViewObj setImage:videoObj.userProfileImage];
+    //    else
+    //    {
+    //        [cell.userImageViewObj setImage:[UIImage imageNamed:videoObj.userImageUrl]];
+    //
+    //        // Request authorization to Address Book
+    //        ABAddressBookRef addressBookRef = ABAddressBookCreateWithOptions(NULL, NULL);
+    //
+    //        if (ABAddressBookGetAuthorizationStatus() == kABAuthorizationStatusNotDetermined) {
+    //            ABAddressBookRequestAccessWithCompletion(addressBookRef, ^(bool granted, CFErrorRef error) {
+    //                if (granted) {
+    //                    // First time access has been granted, add the contact
+    //                    [self getAllContacts:phoneNumber cell:cell indexpath:indexPath];
+    //                } else {
+    //                    // User denied access
+    //                    // Display an alert telling user the contact could not be added
+    //                }
+    //            });
+    //        }
+    //        else if (ABAddressBookGetAuthorizationStatus() == kABAuthorizationStatusAuthorized) {
+    //            // The user has previously given access, add the contact
+    //            [self getAllContacts:phoneNumber cell:cell indexpath:indexPath];
+    //        }
+    //        else {
+    //            // The user has previously denied access
+    //            // Send an alert telling user to change privacy setting in settings app
+    //        }
+    //
+    //    }
     
     return cell;
-
+    
 }
 
 -(void)createSentCellData:(VideoDetail*)videoObj cell:(SentVideoTableViewCell*)cell indexPath:(NSIndexPath*)indexPath
@@ -298,9 +345,9 @@
     NSInteger weekday = [components weekday];
     
     if(day<10)
-    cell.dayLBL.text = [NSString stringWithFormat:@"0%ld",(long)day];
+        cell.dayLBL.text = [NSString stringWithFormat:@"0%ld",(long)day];
     else
-    cell.dayLBL.text = [NSString stringWithFormat:@"%ld",(long)day];
+        cell.dayLBL.text = [NSString stringWithFormat:@"%ld",(long)day];
     
     [monthYearTimeStr appendString:[weekdays objectAtIndex:weekday]];
     [monthYearTimeStr appendString:@","];
@@ -328,7 +375,10 @@
     {
         NSData *pngData = [NSData dataWithContentsOfFile:filePath];
         UIImage *image = [UIImage imageWithData:pngData];
-        [cell.userImageViewObj setImage:image];
+        if(image)
+            [cell.userImageViewObj setImage:image];
+        else
+            [cell.userImageViewObj setImage:[UIImage imageNamed:videoObj.userImageUrl]];
     }
     else
     {
@@ -348,10 +398,11 @@
                                               }
                                               failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error){
                                                   NSLog(@"failed loading");//'%@", error);
+                                                  [self.sentTableViewObj reloadData];
                                               }
          ];
     }
-
+    
 }
 
 -(void)createReceivedCellData:(VideoDetail*)videoObj cell:(RecievedVideoTableViewCell*)cell indexPath:(NSIndexPath*)indexPath
@@ -449,7 +500,10 @@
     {
         NSData *pngData = [NSData dataWithContentsOfFile:filePath];
         UIImage *image = [UIImage imageWithData:pngData];
-        [cell.userImageViewObj setImage:image];
+        if(image)
+            [cell.userImageViewObj setImage:image];
+        else
+            [cell.userImageViewObj setImage:[UIImage imageNamed:videoObj.userImageUrl]];
     }
     else
     {
@@ -469,6 +523,7 @@
                                               }
                                               failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error){
                                                   NSLog(@"failed loading");//'%@", error);
+                                                  [self.sentTableViewObj reloadData];
                                               }
          ];
     }
@@ -480,7 +535,7 @@
 -(void)getAllContacts:(NSString*)phoneNo cell:(UITableViewCell*)cell indexpath:(NSIndexPath*)indexPath{
     
     VideoDetail *videoObj = [videoDetailsArr objectAtIndex:indexPath.row];
-//    videoObj.userProfileImage = [UIImage imageNamed:videoObj.userImageUrl];
+    //    videoObj.userProfileImage = [UIImage imageNamed:videoObj.userImageUrl];
     
     if(cnCode.length==0)
         cnCode = @"49";
@@ -516,10 +571,10 @@
             //        NSLog(@"phonemunber...%@....phoneN0....%@",phoneNumber,phoneNo);
             if([phoneNumber isEqualToString:phoneNo])
             {
-//                NSData *contactImageData = (__bridge NSData*)ABPersonCopyImageData(person);
+                //                NSData *contactImageData = (__bridge NSData*)ABPersonCopyImageData(person);
                 
-//                if(contactImageData)
-//                    cell.userImageViewObj.image = [[UIImage alloc] initWithData:contactImageData];
+                //                if(contactImageData)
+                //                    cell.userImageViewObj.image = [[UIImage alloc] initWithData:contactImageData];
                 if(videoObj.fromContact == myPhoneNum)
                 {
                     SentVideoTableViewCell *cell = (SentVideoTableViewCell*)cell;
@@ -532,7 +587,7 @@
                 }
                 videoObj.fname = firstName;
                 videoObj.lname = lastName;
-//                videoObj.userProfileImage = [[UIImage alloc] initWithData:contactImageData];
+                //                videoObj.userProfileImage = [[UIImage alloc] initWithData:contactImageData];
                 
                 (userInfoDict)[phoneNo] = videoObj;
                 
@@ -540,8 +595,8 @@
                 break;
                 break;
             }
-
-//            NSLog(@"phone:%@", phoneNumber);
+            
+            //            NSLog(@"phone:%@", phoneNumber);
         }
     }
     
@@ -550,7 +605,7 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-
+    
     return 130;
 }
 
@@ -582,7 +637,7 @@
     }
     else
     {
-//        [self setBlurView:cell.blurView flag:YES];
+        //        [self setBlurView:cell.blurView flag:YES];
         NSString *localURL = [CommonMethods localFileUrl:videoObj.videoURL];
         if(!operation){
             
@@ -595,7 +650,7 @@
             progressView.indeterminate = YES;
             progressView.showsText = YES;
             progressView.tintColor = [UIColor whiteColor];
-
+            
             [cell addSubview:progressView];
             
             
@@ -609,13 +664,13 @@
             [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
                 NSLog(@"Successfully downloaded file to %@", localURL);
                 [progressView removeFromSuperview];
-//                [self setBlurView:cell.blurView flag:NO];
+                //                [self setBlurView:cell.blurView flag:NO];
                 [self.videoDownloadsInProgress removeObjectForKey:indexPath];
                 
             } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                 NSLog(@"Error: %@", error);
-//                cell.downloadIcon.hidden = NO;
-//                cell.playIcon.hidden = YES;
+                //                cell.downloadIcon.hidden = NO;
+                //                cell.playIcon.hidden = YES;
             }];
             
             [operation setDownloadProgressBlock:^(NSInteger bytesRead, NSInteger totalBytesRead, NSInteger totalBytesExpectedToRead) {
@@ -662,7 +717,7 @@
     [self presentMoviePlayerViewControllerAnimated:theMovie];
     theMovie.moviePlayer.movieSourceType = MPMovieSourceTypeFile;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(movieFinishedCallBack:) name:MPMoviePlayerPlaybackDidFinishNotification object:nil];
-
+    
     [theMovie.moviePlayer play];
 }
 
@@ -681,14 +736,14 @@
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+ {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end

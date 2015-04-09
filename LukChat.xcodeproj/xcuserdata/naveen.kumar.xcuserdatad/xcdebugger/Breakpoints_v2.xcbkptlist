@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LukChat/SentVideosViewController.m"
-            timestampString = "450183626.336651"
+            timestampString = "450268916.624142"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "558"
-            endingLineNumber = "558"
+            startingLineNumber = "613"
+            endingLineNumber = "613"
             landmarkName = "@implementation SentVideosViewController"
             landmarkType = "3">
          </BreakpointContent>

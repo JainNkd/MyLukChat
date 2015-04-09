@@ -35,4 +35,8 @@
 +(NSMutableArray *)getAllCreatedVideos;
 +(NSString*)getVideoLocalURL:(NSString*)videoID;
 
++(NSMutableArray *)getAllHistoryVideos;
++(void)insertHistoryVideoInfoInDB:(VideoDetail *)videoDetailObj;
++(BOOL)checkIfHistoryVideoExists:(NSInteger)videoId;
+
 @end

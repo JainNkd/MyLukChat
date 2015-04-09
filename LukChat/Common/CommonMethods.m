@@ -749,6 +749,20 @@
     return localURL;
 }
 
+//Internect Connectivity
+
+/***************Creating AlertView when Missing Network connectivity****/
++(BOOL)reachable
+{
+    Reachability *r = [Reachability reachabilityWithHostName:@"www.google.com"];
+    NetworkStatus internetStatus = [r currentReachabilityStatus];
+    if(internetStatus == NotReachable)
+    {
+        return NO;
+    }
+    return YES;
+}
+
 
 @end
 

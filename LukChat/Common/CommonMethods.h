@@ -1,5 +1,6 @@
 
 #import <Foundation/Foundation.h>
+#import "Reachability.h"
 
 @interface CommonMethods : NSObject
 
@@ -14,6 +15,8 @@
 
 +(BOOL)fileExist:(NSString*)fileName;
 +(NSString*)localFileUrl:(NSString*)fileName;
+
++(BOOL)reachable;
 @end
 
 

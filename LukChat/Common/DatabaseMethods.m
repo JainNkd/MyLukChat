@@ -229,7 +229,7 @@
     if(sqlite3_open([databasePath UTF8String], &database) == SQLITE_OK)
     {
         sqlite3_stmt    *compiledstatement;
-        NSString *quertyStrGetFav = [NSString stringWithFormat:@"SELECT merged_video FROM tbl_chats where video_id = '%d' ",[videoID integerValue]];
+        NSString *quertyStrGetFav = [NSString stringWithFormat:@"SELECT merged_video FROM tbl_chats where video_id = '%ld' ",[videoID integerValue]];
 //        NSString *quertyStrGetFav = @"SELECT merged_video FROM tbl_chats where video_id = %d ",;
         const char *quertyGetFav = [quertyStrGetFav UTF8String];
         if(sqlite3_prepare_v2(database, quertyGetFav, -1, &compiledstatement, NULL) == SQLITE_OK) {
@@ -478,7 +478,7 @@
     return sentVideosArray;
 }
 
-
+//Fetch All Created videos from DB
 +(NSMutableArray *)getAllCreatedVideos {
     NSLog(@"getAllCreatedVideos");
     // Setup the database object
@@ -520,6 +520,82 @@
     return sentVideosArray;
 }
 
+//Fetch All History Videos
++(NSMutableArray *)getAllHistoryVideos {
+    NSLog(@"getAllCreatedVideos");
+    // Setup the database object
+    sqlite3 *database;
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString *databasePath=  [documentsDirectory stringByAppendingPathComponent:kDatabaseName];
+    
+    NSMutableArray *sentVideosArray = [[NSMutableArray alloc] init];
+    
+    // Open the database from the users filessytem
+    if(sqlite3_open([databasePath UTF8String], &database) == SQLITE_OK) {
+        // Setup the SQL Statement and compile it for faster access
+        NSString *quertyStr = @"SELECT caption, time,video_id,file,thumbnail,from_phone,to_phone FROM history_videos ORDER BY id ASC";
+        sqlite3_stmt *compiledStatement;
+        if(sqlite3_prepare_v2(database, [quertyStr UTF8String], -1, &compiledStatement, NULL) == SQLITE_OK) {
+            // Loop through the results and add them to the feeds array
+            while(sqlite3_step(compiledStatement) == SQLITE_ROW) {
+                // Read the data from the result row
+                VideoDetail *videoDetialObj = [VideoDetail new];
+                
+                videoDetialObj.videoTitle = [NSString stringWithFormat:@"%s",(const char*)sqlite3_column_text(compiledStatement, 0)];
+                videoDetialObj.videoTime = [NSString stringWithFormat:@"%s",(const char*)sqlite3_column_text(compiledStatement, 1)];
+                videoDetialObj.videoID = [NSString stringWithFormat:@"%lld",sqlite3_column_int64(compiledStatement, 2)];
+                
+                videoDetialObj.videoURL =  [NSString stringWithFormat:@"%s",(const char*)sqlite3_column_text(compiledStatement, 3)];
+    
+                videoDetialObj.thumnailName =  [NSString stringWithFormat:@"%s",(const char*)sqlite3_column_text(compiledStatement, 4)];
+                
+                videoDetialObj.fromContact = sqlite3_column_int64(compiledStatement, 5);
+                videoDetialObj.toContact = sqlite3_column_int64(compiledStatement, 6);
+                
+                videoDetialObj.thumnail =  [NSString stringWithFormat:@"%@%@",kVideoDownloadURL,videoDetialObj.thumnailName];
+                videoDetialObj.userImageUrl = @"luk-iphone-final-lukes-sent-list-pic-dummy.png";
+                
+                if (!videoDetialObj.videoTitle)
+                    videoDetialObj.videoTitle = @"";
+                if (!videoDetialObj.videoTime)
+                    videoDetialObj.videoTime = @"";
+                
+                [sentVideosArray addObject:videoDetialObj];
+            }
+        }
+        // Release the compiled statement from memory
+        sqlite3_finalize(compiledStatement);
+    }
+    sqlite3_close(database);
+    
+    return sentVideosArray;
+}
+
+//Check videos exixt in DB
++(BOOL)checkIfHistoryVideoExists:(NSInteger)videoId {
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString *databasePath=  [documentsDirectory stringByAppendingPathComponent:kDatabaseName];
+    
+    BOOL isVideoExist = NO;
+    sqlite3 *database;
+    if(sqlite3_open([databasePath UTF8String], &database) == SQLITE_OK)
+    {
+        sqlite3_stmt    *compiledstatement;
+        NSString *quertyStrGetFav = [NSString stringWithFormat:@"SELECT video_id FROM history_videos WHERE video_id = '%ld'",(long)videoId];
+        const char *quertyGetFav = [quertyStrGetFav UTF8String];
+        if(sqlite3_prepare_v2(database, quertyGetFav, -1, &compiledstatement, NULL) == SQLITE_OK) {
+            while(sqlite3_step(compiledstatement) == SQLITE_ROW) {
+                isVideoExist = YES;
+            }
+        }
+        sqlite3_finalize(compiledstatement);
+    }
+    sqlite3_close(database);
+    
+    return isVideoExist;
+}
 
 #pragma mark - Insert
 
@@ -721,6 +797,53 @@
             sqlite3_bind_text(statement, 1, [chatObj.chatText UTF8String], -1, SQLITE_STATIC);
             sqlite3_bind_text(statement, 2, [chatObj.mergedVideo UTF8String], -1, SQLITE_STATIC);
             sqlite3_bind_text(statement, 3, [chatObj.chatTime UTF8String], -1, SQLITE_STATIC);
+            
+            if(SQLITE_DONE != sqlite3_step(statement))
+            {
+                NSLog( @"Error while inserting chatObj: '%s'", sqlite3_errmsg(database));
+            }
+            else
+            {
+                // NSLog(@"chatObj with ID: %ld inserted: ",(long)chatObj.chatId);
+            }
+            sqlite3_reset(statement);
+        }else
+        {
+            NSLog( @"Error while inserting chatObj '%s'", sqlite3_errmsg(database));
+        }
+        sqlite3_finalize(statement);
+        
+    }
+    sqlite3_close(database);
+    
+}
+
+//Insert history videos
++(void)insertHistoryVideoInfoInDB:(VideoDetail *)videoDetailObj {
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString *databasePath=  [documentsDirectory stringByAppendingPathComponent:kDatabaseName];
+    
+    sqlite3 *database;
+    if(sqlite3_open([databasePath UTF8String], &database) == SQLITE_OK)
+    {
+        sqlite3_stmt    *statement;
+        NSString *querySQL = @"INSERT INTO history_videos (caption, time, video_id, file, thumbnail,from_phone,to_phone) VALUES (?,?,?,?,?,?,?); ";
+        NSLog(@"query: %@", querySQL);
+        const char *query_stmt = [querySQL UTF8String];
+        
+        // preparing a query compiles the query so it can be re-used.
+        if(sqlite3_prepare_v2(database, query_stmt, -1, &statement, NULL) == SQLITE_OK)
+        {
+            
+            sqlite3_bind_text(statement, 1, [videoDetailObj.videoTitle UTF8String], -1, SQLITE_STATIC);
+            sqlite3_bind_text(statement, 2, [videoDetailObj.videoTime UTF8String], -1, SQLITE_STATIC);
+            sqlite3_bind_int64(statement, 3, [videoDetailObj.videoID integerValue]);
+            sqlite3_bind_text(statement, 4, [videoDetailObj.videoURL UTF8String], -1, SQLITE_STATIC);
+            sqlite3_bind_text(statement, 5, [videoDetailObj.thumnailName UTF8String], -1, SQLITE_STATIC);
+            sqlite3_bind_int64(statement, 6, videoDetailObj.fromContact);
+            sqlite3_bind_int64(statement, 7, videoDetailObj.toContact);
+
             
             if(SQLITE_DONE != sqlite3_step(statement))
             {
