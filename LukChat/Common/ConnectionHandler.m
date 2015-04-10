@@ -241,7 +241,7 @@
     
     if ([[parametersDict objectForKey:kUserPhone] length] > 9 ) {
         
-        [[NSUserDefaults standardUserDefaults] setValue:[NSString stringWithFormat:@"%ld",acctObj.UserId] forKey:kMYUSERID];
+        [[NSUserDefaults standardUserDefaults] setValue:[NSString stringWithFormat:@"%ld",(long)acctObj.UserId] forKey:kMYUSERID];
         [[NSUserDefaults standardUserDefaults] setValue:[NSString stringWithFormat:@"%lld",acctObj.UserPhone] forKey:kMYPhoneNumber];
 
         DatabaseMethods *dbObj = [[DatabaseMethods alloc] init];

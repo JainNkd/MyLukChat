@@ -229,7 +229,7 @@
     if(sqlite3_open([databasePath UTF8String], &database) == SQLITE_OK)
     {
         sqlite3_stmt    *compiledstatement;
-        NSString *quertyStrGetFav = [NSString stringWithFormat:@"SELECT merged_video FROM tbl_chats where video_id = '%ld' ",[videoID integerValue]];
+        NSString *quertyStrGetFav = [NSString stringWithFormat:@"SELECT merged_video FROM tbl_chats where video_id = '%ld' ",(long)[videoID integerValue]];
 //        NSString *quertyStrGetFav = @"SELECT merged_video FROM tbl_chats where video_id = %d ",;
         const char *quertyGetFav = [quertyStrGetFav UTF8String];
         if(sqlite3_prepare_v2(database, quertyGetFav, -1, &compiledstatement, NULL) == SQLITE_OK) {
@@ -534,7 +534,7 @@
     // Open the database from the users filessytem
     if(sqlite3_open([databasePath UTF8String], &database) == SQLITE_OK) {
         // Setup the SQL Statement and compile it for faster access
-        NSString *quertyStr = @"SELECT caption, time,video_id,file,thumbnail,from_phone,to_phone FROM history_videos ORDER BY id ASC";
+        NSString *quertyStr = @"SELECT caption, time,video_id,file,thumbnail,from_phone,to_phone FROM history_videos ORDER BY video_id DESC";
         sqlite3_stmt *compiledStatement;
         if(sqlite3_prepare_v2(database, [quertyStr UTF8String], -1, &compiledStatement, NULL) == SQLITE_OK) {
             // Loop through the results and add them to the feeds array

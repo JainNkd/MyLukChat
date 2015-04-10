@@ -512,11 +512,8 @@
     [dict setValue:[[NSUserDefaults standardUserDefaults] valueForKey:kCurrentCHATUserPHONE] forKey:kShareTO];
     NSLog(@"shareVideo: %@",dict);
     
-//    ConnectionHandler *connHandler = [[ConnectionHandler alloc] init];
-//    connHandler.delegate = self;
+    if([CommonMethods reachable])
     [self makePOSTVideoShareAtPath:videoURL parameters:dict];
-//    [self startProgressLoader];
-    
 }
 
 -(void)makePOSTVideoShareAtPath:(NSURL *)path parameters:(NSDictionary *)parameters {

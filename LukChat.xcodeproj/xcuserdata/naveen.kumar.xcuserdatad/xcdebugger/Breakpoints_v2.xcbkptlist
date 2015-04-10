@@ -57,14 +57,14 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "LukChat/SentVideosViewController.m"
-            timestampString = "450268916.624142"
+            filePath = "LukChat/Common/DatabaseMethods.m"
+            timestampString = "450342539.067925"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "613"
-            endingLineNumber = "613"
-            landmarkName = "@implementation SentVideosViewController"
-            landmarkType = "3">
+            startingLineNumber = "232"
+            endingLineNumber = "232"
+            landmarkName = "+getVideoLocalURL:"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

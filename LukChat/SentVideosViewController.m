@@ -69,7 +69,7 @@
     else{
         //Server Web service code
         myPhoneNum = [[[NSUserDefaults standardUserDefaults] valueForKey:kMYPhoneNumber] longLongValue];
-//        myPhoneNum = 491712223746;
+        //        myPhoneNum = 491712223746;
         
         if(!isShowingVideo){
             NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
@@ -383,24 +383,30 @@
     else
     {
         // using Image for thumbnails
-        [cell.userImageViewObj setImageWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:videoObj.thumnail]] placeholderImage:[UIImage imageNamed:@"luk-iphone-final-lukes-sent-list-pic-dummy.png"]
-                                              success:^(NSURLRequest *request , NSHTTPURLResponse *response , UIImage *image ){
-                                                  NSLog(@"Loaded successfully.....%@",[request.URL absoluteString]);// %ld", (long)[response statusCode]);
-                                                  
-                                                  NSArray *ary = [[request.URL absoluteString] componentsSeparatedByString:@"/"];
-                                                  NSString *filename = [ary lastObject];
-                                                  
-                                                  NSString *filePath = [documentsDirectory stringByAppendingPathComponent:filename];
-                                                  //Add the file name
-                                                  NSData *pngData = UIImagePNGRepresentation(image);
-                                                  [pngData writeToFile:filePath atomically:YES];
-                                                  [self.sentTableViewObj reloadData];
-                                              }
-                                              failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error){
-                                                  NSLog(@"failed loading");//'%@", error);
-                                                  [self.sentTableViewObj reloadData];
-                                              }
-         ];
+        if([CommonMethods reachable]){
+            [cell.userImageViewObj setImageWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:videoObj.thumnail]] placeholderImage:[UIImage imageNamed:@"luk-iphone-final-lukes-sent-list-pic-dummy.png"]
+                                                  success:^(NSURLRequest *request , NSHTTPURLResponse *response , UIImage *image ){
+                                                      NSLog(@"Loaded successfully.....%@",[request.URL absoluteString]);// %ld", (long)[response statusCode]);
+                                                      
+                                                      NSArray *ary = [[request.URL absoluteString] componentsSeparatedByString:@"/"];
+                                                      NSString *filename = [ary lastObject];
+                                                      
+                                                      NSString *filePath = [documentsDirectory stringByAppendingPathComponent:filename];
+                                                      //Add the file name
+                                                      NSData *pngData = UIImagePNGRepresentation(image);
+                                                      [pngData writeToFile:filePath atomically:YES];
+                                                      [self.sentTableViewObj reloadData];
+                                                  }
+                                                  failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error){
+                                                      NSLog(@"failed loading");//'%@", error);
+                                                      [self.sentTableViewObj reloadData];
+                                                  }
+             ];
+        }
+        else
+        {
+            [cell.userImageViewObj setImage:[UIImage imageNamed:videoObj.userImageUrl]];
+        }
     }
     
 }
@@ -508,24 +514,30 @@
     else
     {
         // using Image for thumbnails
-        [cell.userImageViewObj setImageWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:videoObj.thumnail]] placeholderImage:[UIImage imageNamed:@"luk-iphone-final-lukes-sent-list-pic-dummy.png"]
-                                              success:^(NSURLRequest *request , NSHTTPURLResponse *response , UIImage *image ){
-                                                  NSLog(@"Loaded successfully.....%@",[request.URL absoluteString]);// %ld", (long)[response statusCode]);
-                                                  
-                                                  NSArray *ary = [[request.URL absoluteString] componentsSeparatedByString:@"/"];
-                                                  NSString *filename = [ary lastObject];
-                                                  
-                                                  NSString *filePath = [documentsDirectory stringByAppendingPathComponent:filename];
-                                                  //Add the file name
-                                                  NSData *pngData = UIImagePNGRepresentation(image);
-                                                  [pngData writeToFile:filePath atomically:YES];
-                                                  [self.sentTableViewObj reloadData];
-                                              }
-                                              failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error){
-                                                  NSLog(@"failed loading");//'%@", error);
-                                                  [self.sentTableViewObj reloadData];
-                                              }
-         ];
+        if([CommonMethods reachable]){
+            [cell.userImageViewObj setImageWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:videoObj.thumnail]] placeholderImage:[UIImage imageNamed:@"luk-iphone-final-lukes-sent-list-pic-dummy.png"]
+                                                  success:^(NSURLRequest *request , NSHTTPURLResponse *response , UIImage *image ){
+                                                      NSLog(@"Loaded successfully.....%@",[request.URL absoluteString]);// %ld", (long)[response statusCode]);
+                                                      
+                                                      NSArray *ary = [[request.URL absoluteString] componentsSeparatedByString:@"/"];
+                                                      NSString *filename = [ary lastObject];
+                                                      
+                                                      NSString *filePath = [documentsDirectory stringByAppendingPathComponent:filename];
+                                                      //Add the file name
+                                                      NSData *pngData = UIImagePNGRepresentation(image);
+                                                      [pngData writeToFile:filePath atomically:YES];
+                                                      [self.sentTableViewObj reloadData];
+                                                  }
+                                                  failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error){
+                                                      NSLog(@"failed loading");//'%@", error);
+                                                      [self.sentTableViewObj reloadData];
+                                                  }
+             ];
+        }
+        else
+        {
+            [cell.userImageViewObj setImage:[UIImage imageNamed:videoObj.userImageUrl]];
+        }
     }
     
 }
@@ -638,54 +650,60 @@
     else
     {
         //        [self setBlurView:cell.blurView flag:YES];
-        NSString *localURL = [CommonMethods localFileUrl:videoObj.videoURL];
-        if(!operation){
-            
-            UCZProgressView *progressView;
-            if(videoObj.toContact == myPhoneNum)
-                progressView = [[UCZProgressView alloc]initWithFrame:CGRectMake(0,0,100,100)];
-            else
-                progressView = [[UCZProgressView alloc]initWithFrame:CGRectMake(220,0,100,100)];
-            progressView.tag = indexPath.row;
-            progressView.indeterminate = YES;
-            progressView.showsText = YES;
-            progressView.tintColor = [UIColor whiteColor];
-            
-            [cell addSubview:progressView];
-            
-            
-            NSString *urlString = [NSString stringWithFormat:@"%@%@",kVideoDownloadURL,videoObj.videoURL];
-            
-            NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:urlString]];
-            AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request ];
-            
-            operation.outputStream = [NSOutputStream outputStreamToFileAtPath:localURL append:YES];
-            
-            [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-                NSLog(@"Successfully downloaded file to %@", localURL);
-                [progressView removeFromSuperview];
-                //                [self setBlurView:cell.blurView flag:NO];
-                [self.videoDownloadsInProgress removeObjectForKey:indexPath];
+        if([CommonMethods reachable])
+        {
+            NSString *localURL = [CommonMethods localFileUrl:videoObj.videoURL];
+            if(!operation){
                 
-            } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                NSLog(@"Error: %@", error);
-                //                cell.downloadIcon.hidden = NO;
-                //                cell.playIcon.hidden = YES;
-            }];
-            
-            [operation setDownloadProgressBlock:^(NSInteger bytesRead, NSInteger totalBytesRead, NSInteger totalBytesExpectedToRead) {
+                UCZProgressView *progressView;
+                if(videoObj.toContact == myPhoneNum)
+                    progressView = [[UCZProgressView alloc]initWithFrame:CGRectMake(0,0,100,100)];
+                else
+                    progressView = [[UCZProgressView alloc]initWithFrame:CGRectMake(220,0,100,100)];
+                progressView.tag = indexPath.row;
+                progressView.indeterminate = YES;
+                progressView.showsText = YES;
+                progressView.tintColor = [UIColor whiteColor];
                 
-                // Draw the actual chart.
-                //            dispatch_async(dispatch_get_main_queue()
-                //                           , ^(void) {
-                progressView.progress = (float)totalBytesRead / totalBytesExpectedToRead;
-                //                               [cell layoutSubviews];
-                //                           });
+                [cell addSubview:progressView];
                 
-            }];
-            
-            (self.videoDownloadsInProgress)[indexPath] = operation;
-            [operation start];
+                
+                NSString *urlString = [NSString stringWithFormat:@"%@%@",kVideoDownloadURL,videoObj.videoURL];
+                
+                NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:urlString]];
+                AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request ];
+                
+                operation.outputStream = [NSOutputStream outputStreamToFileAtPath:localURL append:YES];
+                
+                [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+                    NSLog(@"Successfully downloaded file to %@", localURL);
+                    [progressView removeFromSuperview];
+                    //                [self setBlurView:cell.blurView flag:NO];
+                    [self.videoDownloadsInProgress removeObjectForKey:indexPath];
+                    
+                } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                    NSLog(@"Error: %@", error);
+                    //                cell.downloadIcon.hidden = NO;
+                    //                cell.playIcon.hidden = YES;
+                }];
+                
+                [operation setDownloadProgressBlock:^(NSInteger bytesRead, NSInteger totalBytesRead, NSInteger totalBytesExpectedToRead) {
+                    
+                    // Draw the actual chart.
+                    //            dispatch_async(dispatch_get_main_queue()
+                    //                           , ^(void) {
+                    progressView.progress = (float)totalBytesRead / totalBytesExpectedToRead;
+                    //                               [cell layoutSubviews];
+                    //                           });
+                    
+                }];
+                
+                (self.videoDownloadsInProgress)[indexPath] = operation;
+                [operation start];
+            }
+        }
+        else{
+            NSLog(@"No internet connectivity");
         }
     }
 }
