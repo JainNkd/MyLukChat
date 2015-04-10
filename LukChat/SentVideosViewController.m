@@ -62,14 +62,15 @@
     NSString *countryCode = [[NSLocale currentLocale] objectForKey: NSLocaleCountryCode];
     cnCode = [CommonMethods countryPhoneCode:countryCode];
     
+    myPhoneNum = [[[NSUserDefaults standardUserDefaults] valueForKey:kMYPhoneNumber] longLongValue];
+    //        myPhoneNum = 491712223746;
+    
     if(![CommonMethods reachable]){
         //Local database
         [self reloadHistoryData];
     }
     else{
         //Server Web service code
-        myPhoneNum = [[[NSUserDefaults standardUserDefaults] valueForKey:kMYPhoneNumber] longLongValue];
-        //        myPhoneNum = 491712223746;
         
         if(!isShowingVideo){
             NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
