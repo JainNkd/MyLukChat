@@ -884,6 +884,9 @@
                                                     <state key="normal" image="sharedoublemonkey.png">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="shareButtonClickedAction:" destination="mkT-9U-X0P" eventType="touchUpInside" id="Hvn-GV-Avj"/>
+                                                    </connections>
                                                 </button>
                                                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rbP-Eq-0G3">
                                                     <rect key="frame" x="0.0" y="100" width="320" height="30"/>
@@ -924,6 +927,7 @@
                                             <outlet property="dayLBL" destination="Pe2-S7-NfC" id="ifc-Ci-xJy"/>
                                             <outlet property="dayTimeLBL" destination="n7c-kb-KEk" id="DG5-vg-us9"/>
                                             <outlet property="monthYearLBL" destination="B7x-D6-XIs" id="lRp-Qv-pWJ"/>
+                                            <outlet property="shareButton" destination="91x-zn-K09" id="27l-my-Dk8"/>
                                             <outlet property="userImageViewObj" destination="Ccq-Lw-WeF" id="9HW-Rr-aDN"/>
                                             <outlet property="userNameLBLObj" destination="40I-DV-mCm" id="Tc0-rw-hhs"/>
                                             <outlet property="videoTitleLBLObj" destination="XAV-sY-Jru" id="ZjL-VE-4c5"/>

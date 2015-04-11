@@ -10,6 +10,7 @@
 
 @interface RecievedVideoTableViewCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UIButton *shareButton;
 @property (weak, nonatomic) IBOutlet UIImageView *userImageViewObj;
 
 @property (weak, nonatomic) IBOutlet UILabel *userNameLBLObj;

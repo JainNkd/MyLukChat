@@ -15,6 +15,7 @@
 #import "CommonMethods.h"
 #import "Constants.h"
 #import <AddressBook/AddressBook.h>
+#import "LukiesViewController.h"
 
 @interface SentVideosViewController ()<ConnectionHandlerDelegate>
 {
@@ -53,6 +54,8 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    [[NSUserDefaults standardUserDefaults]setBool:FALSE forKey:kIsFromRecieved];
     
     userInfoDict = [[NSMutableDictionary alloc]init];
     
@@ -414,6 +417,8 @@
 
 -(void)createReceivedCellData:(VideoDetail*)videoObj cell:(RecievedVideoTableViewCell*)cell indexPath:(NSIndexPath*)indexPath
 {
+    
+    cell.shareButton.tag = indexPath.row;
     NSString *phoneNumber = [NSString stringWithFormat:@"%lld",videoObj.fromContact];
     VideoDetail *videoUserInfo = [userInfoDict valueForKey:phoneNumber];
     if(videoUserInfo){
@@ -765,4 +770,17 @@
  }
  */
 
+- (IBAction)shareButtonClickedAction:(UIButton *)sender {
+    
+    NSLog(@"Sharebutton clicked...%d",sender.tag);
+    
+    VideoDetail *video = [videoDetailsArr objectAtIndex:sender.tag];
+    
+    [[NSUserDefaults standardUserDefaults]setBool:TRUE forKey:kIsFromRecieved];
+    [[NSUserDefaults standardUserDefaults]setValue:video.videoURL forKey:kRecievedVideoShare];
+    [[NSUserDefaults standardUserDefaults]setValue:video.videoTitle forKey:kRecievedVideoShareTitle];
+    
+    LukiesViewController *lukiesVC = [self.storyboard instantiateViewControllerWithIdentifier:@"LukiesViewController"];
+    [self.navigationController pushViewController:lukiesVC animated:YES];
+}
 @end

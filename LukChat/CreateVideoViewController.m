@@ -37,6 +37,8 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    [[NSUserDefaults standardUserDefaults]setBool:FALSE forKey:kIsFromCreated];
     createdVideos = [DatabaseMethods getAllCreatedVideos];
     [self.createTableView reloadData];
     

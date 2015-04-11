@@ -24,6 +24,7 @@
     long long int myPhoneNum;
 }
 
+- (IBAction)shareButtonClickedAction:(UIButton *)sender;
 @property(nonatomic,strong) NSMutableArray *videoDetailsArr;
 @property (weak, nonatomic) IBOutlet UITableView *sentTableViewObj;
 @end

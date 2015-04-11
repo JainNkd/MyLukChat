@@ -495,11 +495,46 @@
     }
     
     urlStr = [CommonMethods localFileUrl:urlStr];
-    if (urlStr) {
+    if (urlStr && [[NSUserDefaults standardUserDefaults]boolForKey:kIsFromRecieved])
+    {
+        [self sentRecievedVideos];
+    }
+    else if (urlStr) {
         [self shareVideo:[NSURL fileURLWithPath:urlStr]];
     }
     else
         [CommonMethods showAlertWithTitle:@"LUK" message:@"No Video available to share." cancelBtnTitle:@"Accept"otherBtnTitle:nil delegate:nil tag:0];
+}
+
+//Share received video to friends
+-(void)sentRecievedVideos
+{
+    NSString *videoTitle = [[NSUserDefaults standardUserDefaults] valueForKey:kRecievedVideoShareTitle];
+    NSString *videoUrl = [[NSUserDefaults standardUserDefaults]valueForKey:kRecievedVideoShare];
+    NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
+    [dict setValue:kAPIKeyValue forKey:kAPIKey];
+    [dict setValue:kAPISecretValue forKey:kAPISecret];
+    [dict setValue:videoTitle forKey:kVideoTITLE];
+    [dict setValue:videoUrl forKey:kShareReceivedFile];
+    [dict setValue:[NSString stringWithFormat:@"%lld",myPhoneNum] forKey:kShareFROM];
+    [dict setValue:[[NSUserDefaults standardUserDefaults] valueForKey:kCurrentCHATUserPHONE] forKey:kShareTO];
+    NSLog(@"shareVideo: %@",dict);
+    
+    if([CommonMethods reachable])
+    {
+        UCZProgressView *progressView = [[UCZProgressView alloc]initWithFrame:self.view.frame];
+        progressView.indeterminate = YES;
+        progressView.showsText = YES;
+        progressView.backgroundColor = [UIColor blackColor];
+        progressView.opaque = 0.5;
+        progressView.alpha = 0.5;
+        [self.view addSubview:progressView];
+
+    }
+    ConnectionHandler *connObj = [[ConnectionHandler alloc] init];
+    connObj.delegate = self;
+    [connObj makePOSTRequestPath:kShareVideoURL parameters:dict];
+
 }
 
 -(void)shareVideo:(NSURL *)videoURL {
@@ -663,7 +698,8 @@
     }
     else if([[NSUserDefaults standardUserDefaults]boolForKey:kIsFromRecieved])
     {
-        mergedVideoUrl = [[NSUserDefaults standardUserDefaults] valueForKey:kRecievedVideoShare];
+//        mergedVideoUrl = [[NSUserDefaults standardUserDefaults] valueForKey:kRecievedVideoShare];
+        mergedVideoUrl = @"";
         videoTitle = [[NSUserDefaults standardUserDefaults] valueForKey:kRecievedVideoShareTitle];
     }
     else{
@@ -685,5 +721,6 @@
     [dbObj insertChatInfoToDB:chatObj];
     
 }
+
 
 @end

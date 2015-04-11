@@ -91,6 +91,7 @@
 #define kShareFILE @"file"
 #define kShareThumbnailFILE @"thumbnail"
 #define kVideoTITLE @"caption"
+#define kShareReceivedFile @"vfile"
 
 // Push Notification
 #define kNotificationFROM @"from-phone"
