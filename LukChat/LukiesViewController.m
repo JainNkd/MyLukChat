@@ -482,7 +482,7 @@
     
     NSString *urlStr;
     
-    if([[NSUserDefaults standardUserDefaults]boolForKey:kIsFeomCreated])
+    if([[NSUserDefaults standardUserDefaults]boolForKey:kIsFromCreated])
     {
         urlStr =  [[NSUserDefaults standardUserDefaults] valueForKey:kCreatedVideoShare];
     }
@@ -503,7 +503,19 @@
 }
 
 -(void)shareVideo:(NSURL *)videoURL {
-    NSString *videoTitle =  [[NSUserDefaults standardUserDefaults] valueForKey:VIDEO_TITLE];
+    NSString *videoTitle;
+    if([[NSUserDefaults standardUserDefaults]boolForKey:kIsFromCreated])
+    {
+        videoTitle = [[NSUserDefaults standardUserDefaults] valueForKey:kCreatedVideoShareTitle];
+    }
+    else if([[NSUserDefaults standardUserDefaults]boolForKey:kIsFromRecieved])
+    {
+        videoTitle = [[NSUserDefaults standardUserDefaults] valueForKey:kRecievedVideoShareTitle];
+    }
+    else{
+        videoTitle = [[NSUserDefaults standardUserDefaults] valueForKey:VIDEO_TITLE];
+    }
+    
     NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
     [dict setValue:kAPIKeyValue forKey:kAPIKey];
     [dict setValue:kAPISecretValue forKey:kAPISecret];
@@ -642,7 +654,22 @@
     if (!chatObj) {
         chatObj = [[Chat alloc] init];
     }
-    NSString *videoTitle =  [[NSUserDefaults standardUserDefaults] valueForKey:VIDEO_TITLE];
+    
+    NSString *videoTitle,*mergedVideoUrl;
+    if([[NSUserDefaults standardUserDefaults]boolForKey:kIsFromCreated])
+    {
+        mergedVideoUrl = [[NSUserDefaults standardUserDefaults] valueForKey:kCreatedVideoShare];
+        videoTitle = [[NSUserDefaults standardUserDefaults] valueForKey:kCreatedVideoShareTitle];
+    }
+    else if([[NSUserDefaults standardUserDefaults]boolForKey:kIsFromRecieved])
+    {
+        mergedVideoUrl = [[NSUserDefaults standardUserDefaults] valueForKey:kRecievedVideoShare];
+        videoTitle = [[NSUserDefaults standardUserDefaults] valueForKey:kRecievedVideoShareTitle];
+    }
+    else{
+        videoTitle = [[NSUserDefaults standardUserDefaults] valueForKey:VIDEO_TITLE];
+        mergedVideoUrl = [[NSUserDefaults standardUserDefaults] valueForKey:kMyVideoToShare];
+    }
     
     chatObj.videoID = videoID;
     chatObj.fromPhone = myPhoneNum;
@@ -651,7 +678,7 @@
     chatObj.chatText = videoTitle;
     chatObj.chatVideo = [video absoluteString];
     chatObj.chatTime = [CommonMethods convertDatetoSting:[NSDate date]];
-    chatObj.mergedVideo = [[NSUserDefaults standardUserDefaults] valueForKey:kMyVideoToShare];
+    chatObj.mergedVideo = mergedVideoUrl;
     //    _chatObj.chatVideo = [NSString stringWithFormat:@"%@%@",kVideoDownloadURL,self.videoShareFileName];
     
     DatabaseMethods *dbObj = [[DatabaseMethods alloc] init];

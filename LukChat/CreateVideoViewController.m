@@ -179,8 +179,9 @@
 {
     VideoDetail *video = [createdVideos objectAtIndex:sender.tag];
     
-    [[NSUserDefaults standardUserDefaults]setBool:TRUE forKey:kIsFeomCreated];
+    [[NSUserDefaults standardUserDefaults]setBool:TRUE forKey:kIsFromCreated];
     [[NSUserDefaults standardUserDefaults]setValue:video.mergedVideoURL forKey:kCreatedVideoShare];
+    [[NSUserDefaults standardUserDefaults]setValue:video.videoTitle forKey:kCreatedVideoShareTitle];
     
     LukiesViewController *lukiesVC = [self.storyboard instantiateViewControllerWithIdentifier:@"LukiesViewController"];
     [self.navigationController pushViewController:lukiesVC animated:YES];
