@@ -14,6 +14,7 @@
 #import "CommonMethods.h"
 #import "Chat.h"
 #import "DatabaseMethods.h"
+#import "NSString+HTML.h"
 
 @interface MergeVideosViewController ()
 
@@ -84,7 +85,7 @@
     [monthYearTimeStr appendString:[NSString stringWithFormat:@" %@",[[df stringFromDate:dateObj] lowercaseString]]];
     
     Chat *chatObj = [[Chat alloc] init];
-    chatObj.chatText = videoTitle;
+    chatObj.chatText = [videoTitle stringByEncodingHTMLEntities];
     chatObj.chatTime = monthYearTimeStr;
     chatObj.mergedVideo = [[NSUserDefaults standardUserDefaults] valueForKey:kMyVideoToShare];
     //    _chatObj.chatVideo = [NSString stringWithFormat:@"%@%@",kVideoDownloadURL,self.videoShareFileName];

@@ -13,6 +13,7 @@
 #import "VideoDetail.h"
 #import "LukiesViewController.h"
 #import "Constants.h"
+#import "NSString+HTML.h"
 
 #import <MediaPlayer/MediaPlayer.h>
 #import <AVFoundation/AVFoundation.h>
@@ -101,7 +102,7 @@
 //    cell.thumbnail2.image = [videoVC.moviePlayer thumbnailImageAtTime:frame2 timeOption:MPMovieTimeOptionExact];
 //    cell.thumbnail3.image = [videoVC.moviePlayer thumbnailImageAtTime:frame3 timeOption:MPMovieTimeOptionExact];
     }
-    cell.videoTitle.text = videoObj.videoTitle;
+    cell.videoTitle.text = [videoObj.videoTitle stringByDecodingHTMLEntities];
     [cell.videoTitle sizeToFit];
     cell.shareButton.tag = indexPath.row;
     

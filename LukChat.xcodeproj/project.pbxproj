@@ -169,6 +169,8 @@
 		875BFD2E1A57310B00A83E35 /* SentVideosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 875BFD2D1A57310B00A83E35 /* SentVideosViewController.m */; };
 		875BFD321A57317C00A83E35 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 875BFD311A57317C00A83E35 /* User.m */; };
 		877E21771A99C23E009DBF71 /* UCZProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 877E21761A99C23E009DBF71 /* UCZProgressView.m */; };
+		8786A4271ADAE0B700FD206B /* NSString+HTML.m in Sources */ = {isa = PBXBuildFile; fileRef = 8786A4261ADAE0B700FD206B /* NSString+HTML.m */; };
+		8786A42C1ADAE14400FD206B /* GTMNSString+HTML.m in Sources */ = {isa = PBXBuildFile; fileRef = 8786A42B1ADAE14400FD206B /* GTMNSString+HTML.m */; };
 		879DA4221AC30CCF00E26CCB /* camerapage-icon-cance@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 879DA41B1AC30CCF00E26CCB /* camerapage-icon-cance@2x.png */; };
 		879DA4231AC30CCF00E26CCB /* camerapage-icon-rottat-camera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 879DA41C1AC30CCF00E26CCB /* camerapage-icon-rottat-camera@2x.png */; };
 		879DA4241AC30CCF00E26CCB /* camerapage-icon-running-indication@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 879DA41D1AC30CCF00E26CCB /* camerapage-icon-running-indication@2x.png */; };
@@ -494,6 +496,10 @@
 		875BFD311A57317C00A83E35 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		877E21751A99C23E009DBF71 /* UCZProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UCZProgressView.h; sourceTree = "<group>"; };
 		877E21761A99C23E009DBF71 /* UCZProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UCZProgressView.m; sourceTree = "<group>"; };
+		8786A4251ADAE0B700FD206B /* NSString+HTML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+HTML.h"; sourceTree = "<group>"; };
+		8786A4261ADAE0B700FD206B /* NSString+HTML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+HTML.m"; sourceTree = "<group>"; };
+		8786A42A1ADAE14400FD206B /* GTMNSString+HTML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GTMNSString+HTML.h"; sourceTree = "<group>"; };
+		8786A42B1ADAE14400FD206B /* GTMNSString+HTML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GTMNSString+HTML.m"; sourceTree = "<group>"; };
 		879DA41B1AC30CCF00E26CCB /* camerapage-icon-cance@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camerapage-icon-cance@2x.png"; sourceTree = "<group>"; };
 		879DA41C1AC30CCF00E26CCB /* camerapage-icon-rottat-camera@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camerapage-icon-rottat-camera@2x.png"; sourceTree = "<group>"; };
 		879DA41D1AC30CCF00E26CCB /* camerapage-icon-running-indication@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camerapage-icon-running-indication@2x.png"; sourceTree = "<group>"; };
@@ -1194,6 +1200,10 @@
 		875BFD221A57305000A83E35 /* Send */ = {
 			isa = PBXGroup;
 			children = (
+				8786A42A1ADAE14400FD206B /* GTMNSString+HTML.h */,
+				8786A42B1ADAE14400FD206B /* GTMNSString+HTML.m */,
+				8786A4251ADAE0B700FD206B /* NSString+HTML.h */,
+				8786A4261ADAE0B700FD206B /* NSString+HTML.m */,
 				875BFD2C1A57310B00A83E35 /* SentVideosViewController.h */,
 				875BFD2D1A57310B00A83E35 /* SentVideosViewController.m */,
 				875BFD231A5730BE00A83E35 /* SentVideoTableViewCell.h */,
@@ -1532,9 +1542,11 @@
 				633850F91983C9F400C3256A /* AFImageRequestOperation.m in Sources */,
 				6338503319839F2D00C3256A /* ViewController.m in Sources */,
 				633850F41983C9F400C3256A /* CommonMethods.m in Sources */,
+				8786A42C1ADAE14400FD206B /* GTMNSString+HTML.m in Sources */,
 				633850F71983C9F400C3256A /* AFHTTPRequestOperation.m in Sources */,
 				8727D5A71A4884460092BB7C /* SCPlayer.m in Sources */,
 				633850FA1983C9F400C3256A /* AFJSONRequestOperation.m in Sources */,
+				8786A4271ADAE0B700FD206B /* NSString+HTML.m in Sources */,
 				633850F61983C9F400C3256A /* AFHTTPClient.m in Sources */,
 				8727D5D01A4885E30092BB7C /* SCTouchDetector.m in Sources */,
 				633851061983C9F400C3256A /* SBJsonBase.m in Sources */,

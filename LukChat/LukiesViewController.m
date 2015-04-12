@@ -17,6 +17,7 @@
 #import "AFNetworkActivityIndicatorManager.h"
 #import "AppDelegate.h"
 #import "UCZProgressView.h"
+#import "NSString+HTML.h"
 
 
 @interface LukiesViewController ()<ConnectionHandlerDelegate>
@@ -226,7 +227,7 @@
     
     //Refresh Contacts List
     [self updateTableData:@""];
-//    [self.contactTableView reloadData];
+    //    [self.contactTableView reloadData];
     
     //update Contact Info
     [self updateApplicationContacts];
@@ -235,22 +236,22 @@
 
 -(void)updateApplicationContacts {
     NSLog(@"updateApplicationContacts ************************");
-   
-//    for (int i=0; i<[self.appContacts count]; i++) {
-//        
-//        NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
-//        [dict setValue:kAPIKeyValue forKey:kAPIKey];
-//        [dict setValue:kAPISecretValue forKey:kAPISecret];
-//        
-//        Contact *contObj = [Contact new];
-//        contObj = [self.appContacts objectAtIndex:i];
-//        [dict setValue:[NSString stringWithFormat:@"%lld",contObj.user_phone] forKey:@"phone"];
-//        NSLog(@"updateApplicationContacts : %lld",contObj.user_phone);
-//        
-//        ConnectionHandler *connObj = [[ConnectionHandler alloc] init];
-//        connObj.delegate = self;
-//        [connObj makePOSTRequestPath:kGetUserInfoURL parameters:dict];
-//    }
+    
+    //    for (int i=0; i<[self.appContacts count]; i++) {
+    //
+    //        NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
+    //        [dict setValue:kAPIKeyValue forKey:kAPIKey];
+    //        [dict setValue:kAPISecretValue forKey:kAPISecret];
+    //
+    //        Contact *contObj = [Contact new];
+    //        contObj = [self.appContacts objectAtIndex:i];
+    //        [dict setValue:[NSString stringWithFormat:@"%lld",contObj.user_phone] forKey:@"phone"];
+    //        NSLog(@"updateApplicationContacts : %lld",contObj.user_phone);
+    //
+    //        ConnectionHandler *connObj = [[ConnectionHandler alloc] init];
+    //        connObj.delegate = self;
+    //        [connObj makePOSTRequestPath:kGetUserInfoURL parameters:dict];
+    //    }
     for (int i=0; i<[self.phoneContacts count]; i++) {
         
         NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
@@ -297,7 +298,7 @@
         
         //Refresh Contacts List
         [self updateTableData:@""];
-//        [self.contactTableView reloadData];
+        //        [self.contactTableView reloadData];
     }
     if ([urlPath isEqualToString:kShareVideoURL]) {
         NSLog(@"SUCCESS: ShareVideo");
@@ -316,7 +317,7 @@
             {
                 NSString *videoID = [[[usersdict valueForKey:@"video_id"] valueForKey:@"Video"] valueForKey:@"id"];
                 [self addMyVideoLog:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",kVideoDownloadURL,[usersdict objectForKey:@"filename"]]] videoId:videoID];
-                 [CommonMethods showAlertWithTitle:@"Alert" message:@"Video uploaded successful."];
+                [CommonMethods showAlertWithTitle:@"Alert" message:@"Video uploaded successful."];
                 [self.navigationController popToRootViewControllerAnimated:YES];
                 break;
             }
@@ -356,8 +357,8 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-//    if (section==0) return self.appContacts.count;
-//    else    return self.phoneContacts.count;
+    //    if (section==0) return self.appContacts.count;
+    //    else    return self.phoneContacts.count;
     NSString* letter = [tableSectionTitles objectAtIndex:section];
     NSArray* arrayForLetter = (NSArray*)[filteredTableData objectForKey:letter];
     NSLog(@"%@",letter);
@@ -370,27 +371,27 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-//    static NSString *CellIdentifier = @"Cell";
-//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-//    if(cell == nil)
-//        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
-//    
-//    // Get Row Value
-//    Contact *contactObj = [Contact new];
-//    if (indexPath.section == 0) {
-//        contactObj = (Contact *)[self.appContacts objectAtIndex:indexPath.row];
-//    } else {
-//        contactObj = (Contact *)[self.phoneContacts objectAtIndex:indexPath.row];
-//    }
+    //    static NSString *CellIdentifier = @"Cell";
+    //    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    //    if(cell == nil)
+    //        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+    //
+    //    // Get Row Value
+    //    Contact *contactObj = [Contact new];
+    //    if (indexPath.section == 0) {
+    //        contactObj = (Contact *)[self.appContacts objectAtIndex:indexPath.row];
+    //    } else {
+    //        contactObj = (Contact *)[self.phoneContacts objectAtIndex:indexPath.row];
+    //    }
     // Display Contact Details
-//    if (contactObj) {
-//        if (contactObj.user_fname)
-//            cell.textLabel.text = [NSString stringWithFormat:@"%@ %@",contactObj.user_fname,contactObj.user_lname];
-//        NSLog(@"username is %@ %@",contactObj.user_fname,contactObj.user_lname);
-//        if (contactObj.user_phone)
-//            cell.detailTextLabel.text = [NSString stringWithFormat:@"%lld",contactObj.user_phone];
-//    }
-//    return cell;
+    //    if (contactObj) {
+    //        if (contactObj.user_fname)
+    //            cell.textLabel.text = [NSString stringWithFormat:@"%@ %@",contactObj.user_fname,contactObj.user_lname];
+    //        NSLog(@"username is %@ %@",contactObj.user_fname,contactObj.user_lname);
+    //        if (contactObj.user_phone)
+    //            cell.detailTextLabel.text = [NSString stringWithFormat:@"%lld",contactObj.user_phone];
+    //    }
+    //    return cell;
     
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -413,25 +414,25 @@
     }
     
     return cell;
-
+    
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-  
+    
     NSString* letter = [tableSectionTitles objectAtIndex:indexPath.section];
     NSArray* arrayForLetter = (NSArray*)[filteredTableData objectForKey:letter];
-        
+    
     Contact *contactObj = (Contact *)[arrayForLetter objectAtIndex:indexPath.row];
     [[NSUserDefaults standardUserDefaults] setValue:[NSString stringWithFormat:@"%lld",contactObj.user_phone] forKey:kCurrentCHATUserPHONE];
     [[NSUserDefaults standardUserDefaults] setValue:[NSString stringWithFormat:@"%ld",(long)contactObj.user_id] forKey:kCurrentCHATUserID];
     
     self.sendTolukiesBtn.enabled = YES;
-        
-        //        ChatViewController *chatVC = [[ChatViewController alloc] initWithNibName:@"ChatViewController" bundle:nil];
-        //        [self.navigationController pushViewController:chatVC animated:YES];
-//    }
-//    else    [CommonMethods showAlertWithTitle:@"Invalid User" message:@"User not registered with LukChat"];
+    
+    //        ChatViewController *chatVC = [[ChatViewController alloc] initWithNibName:@"ChatViewController" bundle:nil];
+    //        [self.navigationController pushViewController:chatVC animated:YES];
+    //    }
+    //    else    [CommonMethods showAlertWithTitle:@"Invalid User" message:@"User not registered with LukChat"];
 }
 
 //For showing side index bar
@@ -510,11 +511,12 @@
 -(void)sentRecievedVideos
 {
     NSString *videoTitle = [[NSUserDefaults standardUserDefaults] valueForKey:kRecievedVideoShareTitle];
+    videoTitle = [videoTitle stringByDecodingHTMLEntities];
     NSString *videoUrl = [[NSUserDefaults standardUserDefaults]valueForKey:kRecievedVideoShare];
     NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
     [dict setValue:kAPIKeyValue forKey:kAPIKey];
     [dict setValue:kAPISecretValue forKey:kAPISecret];
-    [dict setValue:videoTitle forKey:kVideoTITLE];
+    [dict setValue:[videoTitle stringByEncodingHTMLEntities] forKey:kVideoTITLE];
     [dict setValue:videoUrl forKey:kShareReceivedFile];
     [dict setValue:[NSString stringWithFormat:@"%lld",myPhoneNum] forKey:kShareFROM];
     [dict setValue:[[NSUserDefaults standardUserDefaults] valueForKey:kCurrentCHATUserPHONE] forKey:kShareTO];
@@ -529,12 +531,12 @@
         progressView.opaque = 0.5;
         progressView.alpha = 0.5;
         [self.view addSubview:progressView];
-
+        
     }
     ConnectionHandler *connObj = [[ConnectionHandler alloc] init];
     connObj.delegate = self;
     [connObj makePOSTRequestPath:kShareVideoURL parameters:dict];
-
+    
 }
 
 -(void)shareVideo:(NSURL *)videoURL {
@@ -551,6 +553,8 @@
         videoTitle = [[NSUserDefaults standardUserDefaults] valueForKey:VIDEO_TITLE];
     }
     
+    videoTitle = [videoTitle stringByDecodingHTMLEntities];
+    videoTitle = [videoTitle stringByEncodingHTMLEntities];
     NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
     [dict setValue:kAPIKeyValue forKey:kAPIKey];
     [dict setValue:kAPISecretValue forKey:kAPISecret];
@@ -560,7 +564,7 @@
     NSLog(@"shareVideo: %@",dict);
     
     if([CommonMethods reachable])
-    [self makePOSTVideoShareAtPath:videoURL parameters:dict];
+        [self makePOSTVideoShareAtPath:videoURL parameters:dict];
 }
 
 -(void)makePOSTVideoShareAtPath:(NSURL *)path parameters:(NSDictionary *)parameters {
@@ -604,7 +608,11 @@
     [operation setUploadProgressBlock:^(NSInteger bytesWritten,NSInteger totalBytesWritten,NSInteger totalBytesExpectedToWrite)
      {
          NSLog(@"Sent %lld of %lld bytes", (long long int)totalBytesWritten,(long long int)totalBytesExpectedToWrite);
-         progressView.progress = (float)totalBytesWritten / totalBytesExpectedToWrite;
+//         dispatch_async(dispatch_get_main_queue()
+//                        , ^(void) {
+                            progressView.progress = (float)totalBytesWritten / totalBytesExpectedToWrite;
+//                        });
+         
      }];
     
     [operation  setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -613,7 +621,7 @@
         NSString *responseString = [operation responseString];
         // if ([path isEqualToString:kShareVideoURL]) {
         // NSLog(@"Request Successful, ShareVideo response '%@'", responseString);
-//        [self parseShareVideoResponse:responseString fromURL:kShareVideoURL ];
+        //        [self parseShareVideoResponse:responseString fromURL:kShareVideoURL ];
         NSLog(@"parseShareVideoResponse : %@ for URL:%@",responseString,kShareVideoURL);
         
         [self connHandlerClient:nil didSucceedWithResponseString:responseString forPath:kShareVideoURL];
@@ -677,7 +685,7 @@
 {
     NSString *string = [error localizedDescription];
     string = [string substringFromIndex:[string length]-3];
-//    [self stopProgressLoader];
+    //    [self stopProgressLoader];
     NSLog(@"connHandlerClient:didFailWithError = %@",string);
 }
 
@@ -698,7 +706,7 @@
     }
     else if([[NSUserDefaults standardUserDefaults]boolForKey:kIsFromRecieved])
     {
-//        mergedVideoUrl = [[NSUserDefaults standardUserDefaults] valueForKey:kRecievedVideoShare];
+        //        mergedVideoUrl = [[NSUserDefaults standardUserDefaults] valueForKey:kRecievedVideoShare];
         mergedVideoUrl = @"";
         videoTitle = [[NSUserDefaults standardUserDefaults] valueForKey:kRecievedVideoShareTitle];
     }

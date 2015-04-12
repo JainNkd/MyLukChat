@@ -16,6 +16,7 @@
 #import "Constants.h"
 #import <AddressBook/AddressBook.h>
 #import "LukiesViewController.h"
+#import "NSString+HTML.h"
 
 @interface SentVideosViewController ()<ConnectionHandlerDelegate>
 {
@@ -68,9 +69,12 @@
     myPhoneNum = [[[NSUserDefaults standardUserDefaults] valueForKey:kMYPhoneNumber] longLongValue];
     //        myPhoneNum = 491712223746;
     
+    //Local database
+    [self reloadHistoryData];
+    
     if(![CommonMethods reachable]){
-        //Local database
-        [self reloadHistoryData];
+//        //Local database
+//        [self reloadHistoryData];
     }
     else{
         //Server Web service code
@@ -336,7 +340,8 @@
     
     
     cell.userNameLBLObj.text = name;
-    cell.videoTitleLBLObj.text = videoObj.videoTitle;
+    NSString *title = [videoObj.videoTitle stringByDecodingHTMLEntities];
+    cell.videoTitleLBLObj.text = title;
     [cell.videoTitleLBLObj sizeToFit];
     
     NSDate *dateObj = [NSDate dateWithTimeIntervalSince1970:[videoObj.videoTime doubleValue]];
