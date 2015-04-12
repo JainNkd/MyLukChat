@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "CameraEngine.h"
 #import "TabBarViewController.h"
+#import <AddressBook/AddressBook.h>
 
 @implementation AppDelegate
 
@@ -37,6 +38,23 @@
                                                                              categories:nil];
     [application registerUserNotificationSettings:settings];
     [application registerForRemoteNotifications];
+    
+    
+    // Request authorization to Address Book
+    ABAddressBookRef addressBookRef = ABAddressBookCreateWithOptions(NULL, NULL);
+    
+    if (ABAddressBookGetAuthorizationStatus() == kABAuthorizationStatusNotDetermined) {
+        ABAddressBookRequestAccessWithCompletion(addressBookRef, ^(bool granted, CFErrorRef error) {
+            if (granted) {
+                // First time access has been granted, add the contact
+//                [self getAllContacts:phoneNumber cell:cell indexpath:indexPath];
+            } else {
+                // User denied access
+                // Display an alert telling user the contact could not be added
+            }
+        });
+    }
+
     
     return YES;
 }
