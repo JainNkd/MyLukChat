@@ -472,8 +472,9 @@
     else
         name = [NSString stringWithFormat:@"%lld",videoObj.fromContact];
     
-    NSString *title = [videoObj.videoTitle stringByDecodingHTMLEntities];
+    
     cell.userNameLBLObj.text = name;
+    NSString *title = [videoObj.videoTitle stringByDecodingHTMLEntities];
     cell.videoTitleLBLObj.text = title;
     [cell.videoTitleLBLObj sizeToFit];
     
