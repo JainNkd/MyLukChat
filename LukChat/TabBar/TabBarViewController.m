@@ -71,7 +71,7 @@
     //Defualt selected Tab form all Tabs
     if([[NSUserDefaults standardUserDefaults]boolForKey:@"IS_NOTIFICATION"])
     {
-        self.selectedIndex = 2;
+        self.selectedIndex = 0;
         [[NSUserDefaults standardUserDefaults]setBool:FALSE forKey:@"IS_NOTIFICATION"];
     }
     else

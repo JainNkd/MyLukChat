@@ -251,7 +251,7 @@
     UIStoryboard *storyBD = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     TabBarViewController *tabbar = [storyBD instantiateViewControllerWithIdentifier:@"TabBarViewController"];
     [navController pushViewController:tabbar animated:NO];
-    [CommonMethods showAlertWithTitle:@"LUK" message:@"New Video Reciceved from LUK"];
+//    [CommonMethods showAlertWithTitle:@"LUK" message:@"New Video Reciceved from LUK"];
 }
 
 
