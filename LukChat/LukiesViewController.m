@@ -605,16 +605,6 @@
     
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:afRequest];
     
-    [operation setUploadProgressBlock:^(NSInteger bytesWritten,NSInteger totalBytesWritten,NSInteger totalBytesExpectedToWrite)
-     {
-         NSLog(@"Sent %lld of %lld bytes", (long long int)totalBytesWritten,(long long int)totalBytesExpectedToWrite);
-//         dispatch_async(dispatch_get_main_queue()
-//                        , ^(void) {
-                            progressView.progress = (float)totalBytesWritten / totalBytesExpectedToWrite;
-//                        });
-         
-     }];
-    
     [operation  setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         [progressView removeFromSuperview];
         [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
@@ -636,7 +626,14 @@
          [self connHandlerClient:nil didFailWithError:error];
      }];
     
+    [operation setUploadProgressBlock:^(NSInteger bytesWritten,NSInteger totalBytesWritten,NSInteger totalBytesExpectedToWrite)
+     {
+         NSLog(@"Sent %lld of %lld bytes", (long long int)totalBytesWritten,(long long int)totalBytesExpectedToWrite);
+         progressView.progress = (float)totalBytesWritten / totalBytesExpectedToWrite;
+     }];
+    
     [operation start];
+//    [appDelegate.httpClient enqueueHTTPRequestOperation:operation];
     
 }
 

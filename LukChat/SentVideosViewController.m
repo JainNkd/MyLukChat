@@ -472,9 +472,9 @@
     else
         name = [NSString stringWithFormat:@"%lld",videoObj.fromContact];
     
-    
+    NSString *title = [videoObj.videoTitle stringByDecodingHTMLEntities];
     cell.userNameLBLObj.text = name;
-    cell.videoTitleLBLObj.text = videoObj.videoTitle;
+    cell.videoTitleLBLObj.text = title;
     [cell.videoTitleLBLObj sizeToFit];
     
     NSDate *dateObj = [NSDate dateWithTimeIntervalSince1970:[videoObj.videoTime doubleValue]];
