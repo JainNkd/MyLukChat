@@ -14,6 +14,7 @@
 #import "MergeVideosViewController.h"
 #import "SCRecorderViewController.h"
 #import "Constants.h"
+#import "SingleVideoViewController.h"
 
 @interface VideoListViewController ()
 
@@ -266,6 +267,9 @@
         if ([[NSFileManager defaultManager] fileExistsAtPath:fileURL]) {
             [self playMovie:fileURL];
         }
+        
+        SingleVideoViewController *singleVC = [self.storyboard instantiateViewControllerWithIdentifier:@"SingleVideoViewController"];
+        [self.navigationController presentViewController:singleVC animated:YES completion:nil];
         
         
         //        [self play:actionSheet.tag];

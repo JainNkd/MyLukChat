@@ -182,6 +182,7 @@
 		87A7474C1AC6C0F60046C5A0 /* RecievedVideoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 87A7474B1AC6C0F60046C5A0 /* RecievedVideoTableViewCell.m */; };
 		87AFE04C1A5C55E700DCA827 /* LukiesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87AFE04B1A5C55E700DCA827 /* LukiesViewController.m */; };
 		87CCBD671A5012280018D266 /* MergeVideosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87CCBD661A5012280018D266 /* MergeVideosViewController.m */; };
+		8B6562C71ADE96BE00C54EA9 /* SingleVideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B6562C61ADE96BE00C54EA9 /* SingleVideoViewController.m */; };
 		8B6879521AD53C40007004E2 /* screen-8-background.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B6879501AD53C40007004E2 /* screen-8-background.png */; };
 		8B6879531AD53C40007004E2 /* sharedoublemonkey@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B6879511AD53C40007004E2 /* sharedoublemonkey@2x.png */; };
 		8BB068EA1AC58A0C000A84C7 /* monkeywithbg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BB068E41AC58A0C000A84C7 /* monkeywithbg@2x.png */; };
@@ -515,6 +516,8 @@
 		87AFE04B1A5C55E700DCA827 /* LukiesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LukiesViewController.m; sourceTree = "<group>"; };
 		87CCBD651A5012280018D266 /* MergeVideosViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MergeVideosViewController.h; sourceTree = "<group>"; };
 		87CCBD661A5012280018D266 /* MergeVideosViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MergeVideosViewController.m; sourceTree = "<group>"; };
+		8B6562C51ADE96BE00C54EA9 /* SingleVideoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleVideoViewController.h; sourceTree = "<group>"; };
+		8B6562C61ADE96BE00C54EA9 /* SingleVideoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleVideoViewController.m; sourceTree = "<group>"; };
 		8B6879501AD53C40007004E2 /* screen-8-background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "screen-8-background.png"; sourceTree = "<group>"; };
 		8B6879511AD53C40007004E2 /* sharedoublemonkey@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sharedoublemonkey@2x.png"; sourceTree = "<group>"; };
 		8BB068E41AC58A0C000A84C7 /* monkeywithbg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "monkeywithbg@2x.png"; sourceTree = "<group>"; };
@@ -613,6 +616,7 @@
 		6329BEEE19A8ABA300B6D8F5 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				8B6562C21ADE968F00C54EA9 /* SingleVideo */,
 				874F46C01AC71D6E001CE774 /* CreateVideo */,
 				87AFE0471A5C55BC00DCA827 /* Contacts */,
 				875BFD221A57305000A83E35 /* Send */,
@@ -1296,6 +1300,15 @@
 			name = VideoRecord;
 			sourceTree = "<group>";
 		};
+		8B6562C21ADE968F00C54EA9 /* SingleVideo */ = {
+			isa = PBXGroup;
+			children = (
+				8B6562C51ADE96BE00C54EA9 /* SingleVideoViewController.h */,
+				8B6562C61ADE96BE00C54EA9 /* SingleVideoViewController.m */,
+			);
+			name = SingleVideo;
+			sourceTree = "<group>";
+		};
 		8BB3376E1AA04B04008E4A82 /* FXBlurView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1579,6 +1592,7 @@
 				8727D59D1A4884460092BB7C /* SCArchivedVector.m in Sources */,
 				8727D5A51A4884460092BB7C /* SCMediaTypeConfiguration.m in Sources */,
 				874F46C51AC71DEF001CE774 /* CreateVideoCell.m in Sources */,
+				8B6562C71ADE96BE00C54EA9 /* SingleVideoViewController.m in Sources */,
 				8BB337711AA04B04008E4A82 /* FXBlurView.m in Sources */,
 				6338502D19839F2D00C3256A /* AppDelegate.m in Sources */,
 				633851031983C9F400C3256A /* NSObject+SBJSON.m in Sources */,
