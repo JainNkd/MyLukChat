@@ -22,9 +22,9 @@
 
 @interface LukiesViewController ()<ConnectionHandlerDelegate>
 
-@property (retain, nonatomic) NSMutableArray *contacts;
-@property (retain, nonatomic) NSMutableArray *appContacts;
-@property (retain, nonatomic) NSMutableArray *phoneContacts;
+@property (strong, nonatomic) NSMutableArray *contacts;
+@property (strong, nonatomic) NSMutableArray *appContacts;
+@property (strong, nonatomic) NSMutableArray *phoneContacts;
 
 -(void)getAllContacts ;
 -(void)updateApplicationContacts;
@@ -49,7 +49,17 @@
         cnCode = @"49";
     
     self.sendTolukiesBtn.enabled = NO;
-    
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self reloadAppLukies];
+}
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    //    [self loadAppContactsOnTable];
     
     // Request authorization to Address Book
     ABAddressBookRef addressBookRef = ABAddressBookCreateWithOptions(NULL, NULL);
@@ -74,18 +84,6 @@
         // Send an alert telling user to change privacy setting in settings app
     }
     
-    //  self.tblContacts.scrollsToTop = NO;
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    [self loadAppContactsOnTable];
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
 }
 
 //Filter data
@@ -172,7 +170,7 @@
         NSString *phoneNumber = @"";
         for (CFIndex i = 0; i < ABMultiValueGetCount(phoneNumbers); i++) {
             phoneNumber = (__bridge_transfer NSString *) ABMultiValueCopyValueAtIndex(phoneNumbers, i);
-            NSLog(@"phone:%@", phoneNumber);
+            //            NSLog(@"phone:%@", phoneNumber);
             
             NSCharacterSet *notAllowedChars = [[NSCharacterSet characterSetWithCharactersInString:@"1234567890"] invertedSet];
             NSString *phNum = [[phoneNumber componentsSeparatedByCharactersInSet:notAllowedChars] componentsJoinedByString:@""];
@@ -192,8 +190,10 @@
             
             contObj.user_phone = [phoneNum longLongValue];
             
-            if (![dbObj checkIfContactExists:contObj.user_phone]) {
-                [dbObj insertContactInfoToDB:contObj];
+            if(contObj.user_phone>0){
+                if (![dbObj checkIfContactExists:contObj.user_phone]) {
+                    [dbObj insertContactInfoToDB:contObj];
+                }
             }
         }
         
@@ -201,33 +201,13 @@
         // NSLog(@"=============================================");
         
     }
-    
     [self loadAppContactsOnTable];
 }
 
 
 -(void)loadAppContactsOnTable {
     NSLog(@"loadAppContactsOnTable ******************");
-    //LukChat Contacts
-    if (self.appContacts) {
-        [self.appContacts removeAllObjects];
-        self.appContacts = nil;
-    }
-    self.appContacts = [[NSMutableArray alloc] init];
-    DatabaseMethods *dbObj = [[DatabaseMethods alloc] init];
-    self.appContacts = [dbObj getAllLukChatContacts];
-    
-    //Non-Lukchat Contacts
-    if (self.phoneContacts) {
-        [self.phoneContacts removeAllObjects];
-        self.phoneContacts = nil;
-    }
-    self.phoneContacts = [[NSMutableArray alloc] init];
-    self.phoneContacts = [dbObj getAllOtherContacts];
-    
-    //Refresh Contacts List
-    [self updateTableData:@""];
-    //    [self.contactTableView reloadData];
+    [self reloadAppLukies];
     
     //update Contact Info
     [self updateApplicationContacts];
@@ -258,14 +238,21 @@
         [dict setValue:kAPIKeyValue forKey:kAPIKey];
         [dict setValue:kAPISecretValue forKey:kAPISecret];
         
-        Contact *contObj = [Contact new];
-        contObj = [self.phoneContacts objectAtIndex:i];
-        [dict setValue:[NSString stringWithFormat:@"%lld",contObj.user_phone] forKey:@"phone"];
-        //   NSLog(@"updateOtherContacts : %lld",contObj.user_phone);
         
-        ConnectionHandler *connObj = [[ConnectionHandler alloc] init];
-        connObj.delegate = self;
-        [connObj makePOSTRequestPath:kGetUserInfoURL parameters:dict];
+        Contact *contObj = [Contact new];
+        if(self.phoneContacts.count > i){
+            contObj = [self.phoneContacts objectAtIndex:i];
+            if(contObj.user_phone>0){
+                [dict setValue:[NSString stringWithFormat:@"%lld",contObj.user_phone] forKey:@"phone"];
+                //   NSLog(@"updateOtherContacts : %lld",contObj.user_phone);
+                
+                if(dict){
+                ConnectionHandler *connObj = [[ConnectionHandler alloc] init];
+                connObj.delegate = self;
+                [connObj makePOSTRequestPath:kGetUserInfoURL parameters:dict];
+                }
+            }
+        }
     }
     
 }
@@ -277,28 +264,7 @@
     NSLog(@"connHandlerClient didSucceedWithResponseString : %@",response);
     if ([urlPath isEqualToString:kGetUserInfoURL]) {
         //Refresh Contacts List
-        
-        NSLog(@"loadAppContactsOnTable ******************");
-        //LukChat Contacts
-        if (self.appContacts) {
-            [self.appContacts removeAllObjects];
-            self.appContacts = nil;
-        }
-        self.appContacts = [[NSMutableArray alloc] init];
-        DatabaseMethods *dbObj = [[DatabaseMethods alloc] init];
-        self.appContacts = [dbObj getAllLukChatContacts];
-        
-        //Non-Lukchat Contacts
-        if (self.phoneContacts) {
-            [self.phoneContacts removeAllObjects];
-            self.phoneContacts = nil;
-        }
-        self.phoneContacts = [[NSMutableArray alloc] init];
-        self.phoneContacts = [dbObj getAllOtherContacts];
-        
-        //Refresh Contacts List
-        [self updateTableData:@""];
-        //        [self.contactTableView reloadData];
+        [self reloadAppLukies];
     }
     if ([urlPath isEqualToString:kShareVideoURL]) {
         NSLog(@"SUCCESS: ShareVideo");
@@ -337,6 +303,29 @@
     }
 }
 
+-(void)reloadAppLukies
+{
+    //LukChat Contacts
+    if (self.appContacts) {
+        [self.appContacts removeAllObjects];
+        self.appContacts = nil;
+    }
+    self.appContacts = [[NSMutableArray alloc] init];
+    DatabaseMethods *dbObj = [[DatabaseMethods alloc] init];
+    self.appContacts = [dbObj getAllLukChatContacts];
+    
+    //Non-Lukchat Contacts
+    if (self.phoneContacts) {
+        [self.phoneContacts removeAllObjects];
+        self.phoneContacts = nil;
+    }
+    self.phoneContacts = [[NSMutableArray alloc] init];
+    self.phoneContacts = [dbObj getAllOtherContacts];
+    
+    //Refresh Contacts List
+    [self updateTableData:@""];
+}
+
 #pragma mark - Table View
 
 //Show index bar at right side
@@ -361,7 +350,7 @@
     //    else    return self.phoneContacts.count;
     NSString* letter = [tableSectionTitles objectAtIndex:section];
     NSArray* arrayForLetter = (NSArray*)[filteredTableData objectForKey:letter];
-    NSLog(@"%@",letter);
+    //    NSLog(@"%@",letter);
     return arrayForLetter.count;
 }
 
@@ -408,7 +397,7 @@
     if (contactObj) {
         if (contactObj.user_fname)
             cell.textLabel.text = [NSString stringWithFormat:@"%@ %@",contactObj.user_fname,contactObj.user_lname];
-        NSLog(@"username is %@ %@",contactObj.user_fname,contactObj.user_lname);
+        //        NSLog(@"username is %@ %@",contactObj.user_fname,contactObj.user_lname);
         if (contactObj.user_phone)
             cell.detailTextLabel.text = [NSString stringWithFormat:@"%lld",contactObj.user_phone];
     }
@@ -633,7 +622,7 @@
      }];
     
     [operation start];
-//    [appDelegate.httpClient enqueueHTTPRequestOperation:operation];
+    //    [appDelegate.httpClient enqueueHTTPRequestOperation:operation];
     
 }
 
