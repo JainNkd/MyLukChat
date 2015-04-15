@@ -181,6 +181,16 @@
 		879DA42E1AC30E7800E26CCB /* opacity-blured-img@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 879DA42D1AC30E7800E26CCB /* opacity-blured-img@2x.png */; };
 		87A7474C1AC6C0F60046C5A0 /* RecievedVideoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 87A7474B1AC6C0F60046C5A0 /* RecievedVideoTableViewCell.m */; };
 		87AFE04C1A5C55E700DCA827 /* LukiesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87AFE04B1A5C55E700DCA827 /* LukiesViewController.m */; };
+		87BD84281ADEE14200761A28 /* back-button-bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 87BD841F1ADEE14200761A28 /* back-button-bg@2x.png */; };
+		87BD84291ADEE14200761A28 /* back-button-withbg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 87BD84201ADEE14200761A28 /* back-button-withbg@2x.png */; };
+		87BD842A1ADEE14200761A28 /* bg-select-screen@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 87BD84211ADEE14200761A28 /* bg-select-screen@2x.png */; };
+		87BD842B1ADEE14200761A28 /* pic-bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 87BD84221ADEE14200761A28 /* pic-bg@2x.png */; };
+		87BD842C1ADEE14200761A28 /* pic-bgwith-monkey-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 87BD84231ADEE14200761A28 /* pic-bgwith-monkey-icon@2x.png */; };
+		87BD842D1ADEE14200761A28 /* select-button-bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 87BD84241ADEE14200761A28 /* select-button-bg@2x.png */; };
+		87BD842E1ADEE14200761A28 /* select-button-with-bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 87BD84251ADEE14200761A28 /* select-button-with-bg@2x.png */; };
+		87BD842F1ADEE14200761A28 /* select-logo-luk@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 87BD84261ADEE14200761A28 /* select-logo-luk@2x.png */; };
+		87BD84301ADEE14200761A28 /* selected-pic-frame@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 87BD84271ADEE14200761A28 /* selected-pic-frame@2x.png */; };
+		87BD84381ADEE66700761A28 /* SignleVideoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 87BD84371ADEE66700761A28 /* SignleVideoCell.m */; };
 		87CCBD671A5012280018D266 /* MergeVideosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87CCBD661A5012280018D266 /* MergeVideosViewController.m */; };
 		8B6562C71ADE96BE00C54EA9 /* SingleVideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B6562C61ADE96BE00C54EA9 /* SingleVideoViewController.m */; };
 		8B6879521AD53C40007004E2 /* screen-8-background.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B6879501AD53C40007004E2 /* screen-8-background.png */; };
@@ -514,6 +524,17 @@
 		87A7474B1AC6C0F60046C5A0 /* RecievedVideoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecievedVideoTableViewCell.m; sourceTree = "<group>"; };
 		87AFE04A1A5C55E700DCA827 /* LukiesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LukiesViewController.h; sourceTree = "<group>"; };
 		87AFE04B1A5C55E700DCA827 /* LukiesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LukiesViewController.m; sourceTree = "<group>"; };
+		87BD841F1ADEE14200761A28 /* back-button-bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back-button-bg@2x.png"; sourceTree = "<group>"; };
+		87BD84201ADEE14200761A28 /* back-button-withbg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back-button-withbg@2x.png"; sourceTree = "<group>"; };
+		87BD84211ADEE14200761A28 /* bg-select-screen@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg-select-screen@2x.png"; sourceTree = "<group>"; };
+		87BD84221ADEE14200761A28 /* pic-bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pic-bg@2x.png"; sourceTree = "<group>"; };
+		87BD84231ADEE14200761A28 /* pic-bgwith-monkey-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pic-bgwith-monkey-icon@2x.png"; sourceTree = "<group>"; };
+		87BD84241ADEE14200761A28 /* select-button-bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "select-button-bg@2x.png"; sourceTree = "<group>"; };
+		87BD84251ADEE14200761A28 /* select-button-with-bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "select-button-with-bg@2x.png"; sourceTree = "<group>"; };
+		87BD84261ADEE14200761A28 /* select-logo-luk@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "select-logo-luk@2x.png"; sourceTree = "<group>"; };
+		87BD84271ADEE14200761A28 /* selected-pic-frame@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "selected-pic-frame@2x.png"; sourceTree = "<group>"; };
+		87BD84361ADEE66700761A28 /* SignleVideoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignleVideoCell.h; sourceTree = "<group>"; };
+		87BD84371ADEE66700761A28 /* SignleVideoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignleVideoCell.m; sourceTree = "<group>"; };
 		87CCBD651A5012280018D266 /* MergeVideosViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MergeVideosViewController.h; sourceTree = "<group>"; };
 		87CCBD661A5012280018D266 /* MergeVideosViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MergeVideosViewController.m; sourceTree = "<group>"; };
 		8B6562C51ADE96BE00C54EA9 /* SingleVideoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleVideoViewController.h; sourceTree = "<group>"; };
@@ -776,6 +797,7 @@
 		633850511983A4C900C3256A /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				87BD841E1ADEE14200761A28 /* SingleVideo */,
 				8782D2961ADC368D00A1137A /* MonkeyShortAIFF.AIFF */,
 				879DA41A1AC30CCF00E26CCB /* Camera */,
 				873C43191ABF4F0C009D30DB /* 1start-screen-v1_5.png */,
@@ -1280,6 +1302,22 @@
 			name = Contacts;
 			sourceTree = "<group>";
 		};
+		87BD841E1ADEE14200761A28 /* SingleVideo */ = {
+			isa = PBXGroup;
+			children = (
+				87BD841F1ADEE14200761A28 /* back-button-bg@2x.png */,
+				87BD84201ADEE14200761A28 /* back-button-withbg@2x.png */,
+				87BD84211ADEE14200761A28 /* bg-select-screen@2x.png */,
+				87BD84221ADEE14200761A28 /* pic-bg@2x.png */,
+				87BD84231ADEE14200761A28 /* pic-bgwith-monkey-icon@2x.png */,
+				87BD84241ADEE14200761A28 /* select-button-bg@2x.png */,
+				87BD84251ADEE14200761A28 /* select-button-with-bg@2x.png */,
+				87BD84261ADEE14200761A28 /* select-logo-luk@2x.png */,
+				87BD84271ADEE14200761A28 /* selected-pic-frame@2x.png */,
+			);
+			path = SingleVideo;
+			sourceTree = "<group>";
+		};
 		87CCBD621A5012170018D266 /* Merge */ = {
 			isa = PBXGroup;
 			children = (
@@ -1305,6 +1343,8 @@
 			children = (
 				8B6562C51ADE96BE00C54EA9 /* SingleVideoViewController.h */,
 				8B6562C61ADE96BE00C54EA9 /* SingleVideoViewController.m */,
+				87BD84361ADEE66700761A28 /* SignleVideoCell.h */,
+				87BD84371ADEE66700761A28 /* SignleVideoCell.m */,
 			);
 			name = SingleVideo;
 			sourceTree = "<group>";
@@ -1456,6 +1496,7 @@
 				63F999D1199E095A005C82F6 /* share-videos-pic-descripiton-shadow.png in Resources */,
 				63F9997B199E04E2005C82F6 /* start-screen-text-field.png in Resources */,
 				63F999EF199E095A005C82F6 /* name-list-bg.png in Resources */,
+				87BD842F1ADEE14200761A28 /* select-logo-luk@2x.png in Resources */,
 				63F99976199E04E2005C82F6 /* start-screen-footer-icon-film.png in Resources */,
 				63F999E0199E095A005C82F6 /* pic-a.png in Resources */,
 				63F999C5199E095A005C82F6 /* luk-iphone-final-merged-videos-main-bg.png in Resources */,
@@ -1464,12 +1505,14 @@
 				8BB0F66D1AC161BC008453B5 /* movie-role@2x.png in Resources */,
 				8BB0F66C1AC161BC008453B5 /* movie-role-active@2x.png in Resources */,
 				8BB068EE1AC58A0C000A84C7 /* purplebox-2blemonkey@2x.png in Resources */,
+				87BD84301ADEE14200761A28 /* selected-pic-frame@2x.png in Resources */,
 				63F999D9199E095A005C82F6 /* luk-iphone-final-terms&condition-mainbg.png in Resources */,
 				8B6879521AD53C40007004E2 /* screen-8-background.png in Resources */,
 				63F999E9199E095A005C82F6 /* verfication-field-bg.png in Resources */,
 				63F999C9199E095A005C82F6 /* merged-videos-pic.png in Resources */,
 				63F999E1199E095A005C82F6 /* pic-between-line.png in Resources */,
 				63A5CDF1199DE28800C87EAB /* luk-mh-old-vedios-hover-icon.png in Resources */,
+				87BD842E1ADEE14200761A28 /* select-button-with-bg@2x.png in Resources */,
 				6338503519839F2D00C3256A /* Images.xcassets in Resources */,
 				8BB068EA1AC58A0C000A84C7 /* monkeywithbg@2x.png in Resources */,
 				63F999CB199E095A005C82F6 /* share-icon.png in Resources */,
@@ -1481,6 +1524,7 @@
 				63F999C8199E095A005C82F6 /* merged-videos-pic-description-bg.png in Resources */,
 				63A5CDF2199DE28800C87EAB /* phone-book-icon-selected.png in Resources */,
 				6329BEEC19A8AAC400B6D8F5 /* VideoShare.sqlite in Resources */,
+				87BD84281ADEE14200761A28 /* back-button-bg@2x.png in Resources */,
 				63F999DB199E095A005C82F6 /* terms-bg.png in Resources */,
 				633850771983A4C900C3256A /* InfoPlist.strings in Resources */,
 				63F999D0199E095A005C82F6 /* share-videos-pic-1.png in Resources */,
@@ -1498,6 +1542,8 @@
 				63A5CDF3199DE28800C87EAB /* video-record-footer-monkey-icon.png in Resources */,
 				63F999EC199E095A005C82F6 /* letters-between-line.png in Resources */,
 				63F999CC199E095A005C82F6 /* share-videos-1st-pic.png in Resources */,
+				87BD842C1ADEE14200761A28 /* pic-bgwith-monkey-icon@2x.png in Resources */,
+				87BD84291ADEE14200761A28 /* back-button-withbg@2x.png in Resources */,
 				63A5CDF4199DE28800C87EAB /* video-record-footer-old-vedio-icon.png in Resources */,
 				633851171983CABC00C3256A /* confirm-new.png in Resources */,
 				63F999E6199E095A005C82F6 /* textenter-top-logo.png in Resources */,
@@ -1527,6 +1573,7 @@
 				633850981983A7C000C3256A /* luk-logo-1.png in Resources */,
 				633850B31983C70F00C3256A /* confirm-1.png in Resources */,
 				63F999D3199E095A005C82F6 /* signup-bottom-line.png in Resources */,
+				87BD842D1ADEE14200761A28 /* select-button-bg@2x.png in Resources */,
 				6338509A1983AA8A00C3256A /* crowd-recording.png in Resources */,
 				63F999CD199E095A005C82F6 /* share-videos-back-icon.png in Resources */,
 				879DA4231AC30CCF00E26CCB /* camerapage-icon-rottat-camera@2x.png in Resources */,
@@ -1534,6 +1581,8 @@
 				63F999CF199E095A005C82F6 /* share-videos-logo.png in Resources */,
 				63F999E7199E095A005C82F6 /* verfication-background.png in Resources */,
 				879DA4241AC30CCF00E26CCB /* camerapage-icon-running-indication@2x.png in Resources */,
+				87BD842B1ADEE14200761A28 /* pic-bg@2x.png in Resources */,
+				87BD842A1ADEE14200761A28 /* bg-select-screen@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1563,6 +1612,7 @@
 				633850F71983C9F400C3256A /* AFHTTPRequestOperation.m in Sources */,
 				8727D5A71A4884460092BB7C /* SCPlayer.m in Sources */,
 				633850FA1983C9F400C3256A /* AFJSONRequestOperation.m in Sources */,
+				87BD84381ADEE66700761A28 /* SignleVideoCell.m in Sources */,
 				8786A4271ADAE0B700FD206B /* NSString+HTML.m in Sources */,
 				633850F61983C9F400C3256A /* AFHTTPClient.m in Sources */,
 				8727D5D01A4885E30092BB7C /* SCTouchDetector.m in Sources */,
