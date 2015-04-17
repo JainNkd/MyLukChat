@@ -778,7 +778,7 @@
 
 - (IBAction)shareButtonClickedAction:(UIButton *)sender {
     
-    NSLog(@"Sharebutton clicked...%d",sender.tag);
+    NSLog(@"Sharebutton clicked...%ld",(long)sender.tag);
     
     VideoDetail *video = [videoDetailsArr objectAtIndex:sender.tag];
     
