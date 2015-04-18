@@ -101,6 +101,8 @@
         }
         else
         {
+            NSLog(@"This is it: %@",contactObj.user_fname);
+            
             // If we have a search string, check to see if it matches the food's name or description
             NSRange nameRange = [contactObj.user_fname rangeOfString:searchString options:(NSAnchoredSearch|NSCaseInsensitiveSearch)];
             NSLog(@"This is it: %@",contactObj.user_fname);
@@ -114,6 +116,7 @@
         if(isMatch)
         {
             // Find the first letter of the food's name. This will be its gropu
+            if(contactObj.user_fname.length>0){
             NSString* firstLetter = [contactObj.user_fname substringToIndex:1];
             
             NSLog(@"This is it: %@",firstLetter);
@@ -130,6 +133,7 @@
             
             // Finally, add the food to this group's array
             [arrayForLetter addObject:contactObj];
+            }
         }
     }
     
