@@ -18,9 +18,11 @@
 #import "UIImageView+AFNetworking.h"
 #import "AFHTTPRequestOperation.h"
 #import "AFHTTPClient.h"
+#import "UCZProgressView.h"
+#import <MediaPlayer/MediaPlayer.h>
 
 @interface SingleVideoViewController ()<ConnectionHandlerDelegate>
-
+@property (nonatomic, strong) NSMutableDictionary *videoDownloadsInProgress;
 @end
 
 @implementation SingleVideoViewController
@@ -28,6 +30,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    
+    self.selectBtn.enabled = NO;
     singleVideosData = [[NSMutableArray alloc]init];
     singleVideoIndex = [[NSUserDefaults standardUserDefaults]integerForKey:@"SingleVideoIndex"];
     
@@ -151,6 +155,7 @@
     SignleVideoCell *selectedCell = (SignleVideoCell*)[self.singleVideoCollectionView cellForItemAtIndexPath:selectedIndexPath];
     
     if(selectedCell){
+        self.selectBtn.enabled = YES;
         selectedCell.thumbnail.layer.borderWidth = 2.0f;
         selectedCell.thumbnail.layer.borderColor = [UIColor yellowColor].CGColor;
         selectedCell.thumbnail.layer.masksToBounds = YES;
@@ -165,10 +170,94 @@
     CGPoint pointInCollectionView = [gesture locationInView:self.singleVideoCollectionView];
     NSIndexPath *selectedIndexPath = [self.singleVideoCollectionView indexPathForItemAtPoint:pointInCollectionView];
     SignleVideoCell *selectedCell = (SignleVideoCell*)[self.singleVideoCollectionView cellForItemAtIndexPath:selectedIndexPath];
+
     if(selectedCell){
         [selectedCell setSelected:NO];
+        
+        self.selectBtn.enabled = NO;
+        VideoDetail *videoObj = [singleVideosData objectAtIndex:selectedIndexPath.row];
+        AFHTTPRequestOperation *operation = (self.videoDownloadsInProgress)[selectedIndexPath];
+        
+        if([CommonMethods fileExist:videoObj.videoURL] && !operation)
+        {
+            [self playMovie:[CommonMethods localFileUrl:videoObj.videoURL]];
+        }
+        else
+        {
+            //        [self setBlurView:cell.blurView flag:YES];
+            if([CommonMethods reachable])
+            {
+                NSString *localURL = [CommonMethods localFileUrl:videoObj.videoURL];
+                if(!operation){
+                    
+                    UCZProgressView *progressView = [[UCZProgressView alloc]initWithFrame:CGRectMake(0,0,100,100)];
+                    progressView.tag = selectedIndexPath.row;
+                    progressView.indeterminate = YES;
+                    progressView.showsText = YES;
+                    progressView.tintColor = [UIColor whiteColor];
+                    
+                    [selectedCell addSubview:progressView];
+                    
+                    
+                    NSString *urlString = [NSString stringWithFormat:@"%@%@",kVideoDownloadURL,videoObj.videoURL];
+                    
+                    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:urlString]];
+                    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request ];
+                    
+                    operation.outputStream = [NSOutputStream outputStreamToFileAtPath:localURL append:YES];
+                    
+                    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+                        NSLog(@"Successfully downloaded file to %@", localURL);
+                        [progressView removeFromSuperview];
+                        //                [self setBlurView:cell.blurView flag:NO];
+                        [self.videoDownloadsInProgress removeObjectForKey:selectedIndexPath];
+                        
+                    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                        NSLog(@"Error: %@", error);
+                        //                cell.downloadIcon.hidden = NO;
+                        //                cell.playIcon.hidden = YES;
+                    }];
+                    
+                    [operation setDownloadProgressBlock:^(NSInteger bytesRead, NSInteger totalBytesRead, NSInteger totalBytesExpectedToRead) {
+                        
+                        // Draw the actual chart.
+                        //            dispatch_async(dispatch_get_main_queue()
+                        //                           , ^(void) {
+                        progressView.progress = (float)totalBytesRead / totalBytesExpectedToRead;
+                        //                               [cell layoutSubviews];
+                        //                           });
+                        
+                    }];
+                    
+                    (self.videoDownloadsInProgress)[selectedIndexPath] = operation;
+                    [operation start];
+                }
+            }
+            else{
+                NSLog(@"No internet connectivity");
+            }
+        }
         NSLog(@"single  ..%d ,%d",selectedIndexPath.row,selectedCell.tag);
     }
+}
+
+-(void)playMovie: (NSString *) path{
+    
+    NSURL *url = [NSURL fileURLWithPath:path];
+    MPMoviePlayerViewController *theMovie = [[MPMoviePlayerViewController alloc] initWithContentURL:url];
+    theMovie.moviePlayer.controlStyle = MPMovieControlStyleFullscreen;
+    [self presentMoviePlayerViewControllerAnimated:theMovie];
+    theMovie.moviePlayer.movieSourceType = MPMovieSourceTypeFile;
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(movieFinishedCallBack:) name:MPMoviePlayerPlaybackDidFinishNotification object:nil];
+    
+    [theMovie.moviePlayer play];
+}
+
+- (void)movieFinishedCallBack:(NSNotification *) aNotification {
+    MPMoviePlayerController *mPlayer = [aNotification object];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:MPMoviePlayerPlaybackDidFinishNotification object:mPlayer];
+    [mPlayer stop];
+    
 }
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
