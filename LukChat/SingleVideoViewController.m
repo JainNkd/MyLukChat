@@ -161,7 +161,7 @@
         selectedCell.thumbnail.layer.masksToBounds = YES;
         VideoDetail *videoObj = [singleVideosData objectAtIndex:selectedIndexPath.row];
         selectedVideoURL = videoObj.videoURL;
-        NSLog(@"double ..%d ,%d,..%@",selectedIndexPath.row,selectedCell.tag,selectedVideoURL);
+        NSLog(@"double ..%ld ,%ld,..%@",(long)selectedIndexPath.row,(long)selectedCell.tag,selectedVideoURL);
     }
     
 }
@@ -238,7 +238,7 @@
                 NSLog(@"No internet connectivity");
             }
         }
-        NSLog(@"single  ..%d ,%d",selectedIndexPath.row,selectedCell.tag);
+        NSLog(@"single  ..%ld ,%ld",(long)selectedIndexPath.row,(long)selectedCell.tag);
     }
 }
 
@@ -309,6 +309,9 @@
         [singleVideosData addObject:videoDetail];
     }
     
+    if(singleVideosData.count==0)
+        [CommonMethods showAlertWithTitle:@"LUK" message:@"No video found."];
+    
     [self.singleVideoCollectionView reloadData];
     
 }
@@ -330,7 +333,7 @@
  */
 
 - (IBAction)selectButtonPressed:(UIButton *)sender {
-    [[NSUserDefaults standardUserDefaults]setValue:selectedVideoURL forKey:[NSString stringWithFormat:@"VIDEO_%d_URL",singleVideoIndex]];
+    [[NSUserDefaults standardUserDefaults]setValue:selectedVideoURL forKey:[NSString stringWithFormat:@"VIDEO_%ld_URL",(long)singleVideoIndex]];
     [[NSUserDefaults standardUserDefaults]synchronize];
      [self dismissViewControllerAnimated:YES completion:nil];
 }
