@@ -88,10 +88,12 @@
          NSDictionary* responseDict = [NSJSONSerialization JSONObjectWithData: [responseString dataUsingEncoding:NSUTF8StringEncoding]
                                                                       options: NSJSONReadingMutableContainers
                                                                         error: &error];
-         NSDictionary *usersdict = [responseDict objectForKey:@"users"];
-         NSInteger statusInt = [[usersdict objectForKey:@"status"] integerValue]; // 1 = INSERTED, 2= UPDATED
-
+         
              if ([path isEqualToString:kRegistrationURL]) {
+                 
+                 NSDictionary *usersdict = [responseDict objectForKey:@"users"];
+                 NSInteger statusInt = [[usersdict objectForKey:@"status"] integerValue]; // 1 = INSERTED, 2= UPDATED
+
                 // NSLog(@"Request Successful, RegistrationURL response '%@'", responseString);
                  [[NSUserDefaults standardUserDefaults] setValue:[NSString stringWithFormat:@"%ld",(long)[[parameters objectForKey:kUserId] integerValue]] forKey:kMYUSERID];
                  [[NSUserDefaults standardUserDefaults] setValue:[NSString stringWithFormat:@"%lld",[[parameters objectForKey:kUserPhone] longLongValue]] forKey:kMYPhoneNumber];
@@ -104,6 +106,8 @@
               }
              else if ([path isEqualToString:kGetUserInfoURL]) {
                 // NSLog(@"Request Successful, GetUserInfo response '%@'", responseString);
+                 NSDictionary *usersdict = [responseDict objectForKey:@"users"];
+                 NSInteger statusInt = [[usersdict objectForKey:@"status"] integerValue]; // 1 = INSERTED, 2= UPDATED
 
                  if (statusInt == 1 || statusInt == 2) {
                      [self parseAccountResponse:responseString fromURL:path ];
@@ -118,6 +122,11 @@
 //                  NSLog(@"Request Successful, kReceivedVideosURL response '%@'", responseString);
                  
                      [self parseRecievedVideosResponse:responseString fromURL:path ];
+             }
+             else if ([path isEqualToString:kSearchSingleVideo]) {
+                 //                  NSLog(@"Request Successful, kReceivedVideosURL response '%@'", responseString);
+                 
+                 [self parseRecievedVideosResponse:responseString fromURL:path ];
              }
          
      } failure:^(AFHTTPRequestOperation *operation, NSError *error)

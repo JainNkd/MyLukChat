@@ -16,13 +16,13 @@
     if(selected)
     {
         self.thumbnail.layer.borderWidth = 2.0f;
-        self.thumbnail.layer.borderColor = [UIColor redColor].CGColor;
+        self.thumbnail.layer.borderColor = [UIColor clearColor].CGColor;
         self.thumbnail.layer.masksToBounds = YES;
     }
     else
     {
         self.thumbnail.layer.borderWidth = 2.0f;
-        self.thumbnail.layer.borderColor = [UIColor yellowColor].CGColor;
+        self.thumbnail.layer.borderColor = [UIColor clearColor].CGColor;
         self.thumbnail.layer.masksToBounds = YES;
     }
 }

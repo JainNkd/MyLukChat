@@ -237,7 +237,7 @@
  */
 
 - (IBAction)videoRecordButtonPressed:(UIButton *)sender {
-    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Option" delegate:self cancelButtonTitle:CANCEL_BUTTON destructiveButtonTitle:nil otherButtonTitles:@"Record", @"Play", nil];
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Option" delegate:self cancelButtonTitle:CANCEL_BUTTON destructiveButtonTitle:nil otherButtonTitles:@"Record", @"Load",@"Play", nil];
     [actionSheet setTag:sender.tag];
     [actionSheet showFromRect:sender.frame inView:self.view animated:YES];
 }
@@ -263,16 +263,17 @@
     }
     else if(buttonIndex == 1)
     {
+        [[NSUserDefaults standardUserDefaults]setInteger:actionSheet.tag forKey:@"SingleVideoIndex"];
+        SingleVideoViewController *singleVC = [self.storyboard instantiateViewControllerWithIdentifier:@"SingleVideoViewController"];
+        [self.navigationController presentViewController:singleVC animated:YES completion:nil];
+    }
+    else if (buttonIndex == 2)
+    {
         NSLog(@"fileURL.....%@",fileURL);
         if ([[NSFileManager defaultManager] fileExistsAtPath:fileURL]) {
             [self playMovie:fileURL];
         }
         
-        SingleVideoViewController *singleVC = [self.storyboard instantiateViewControllerWithIdentifier:@"SingleVideoViewController"];
-        [self.navigationController presentViewController:singleVC animated:YES completion:nil];
-        
-        
-        //        [self play:actionSheet.tag];
     }
     
     [actionSheet dismissWithClickedButtonIndex:buttonIndex animated:YES];

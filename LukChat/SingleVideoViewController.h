@@ -9,6 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @interface SingleVideoViewController : UIViewController<UICollectionViewDataSource,UICollectionViewDelegate>
+{
+    NSInteger singleVideoIndex;
+    NSString *title;
+    NSMutableArray*singleVideosData;
+}
 @property (weak, nonatomic) IBOutlet UIButton *selectBtn;
 
 @property (weak, nonatomic) IBOutlet UILabel *wordLBL;
