@@ -159,8 +159,9 @@
         selectedCell.thumbnail.layer.borderWidth = 2.0f;
         selectedCell.thumbnail.layer.borderColor = [UIColor yellowColor].CGColor;
         selectedCell.thumbnail.layer.masksToBounds = YES;
-        
-        NSLog(@"double ..%d ,%d",selectedIndexPath.row,selectedCell.tag);
+        VideoDetail *videoObj = [singleVideosData objectAtIndex:selectedIndexPath.row];
+        selectedVideoURL = videoObj.videoURL;
+        NSLog(@"double ..%d ,%d,..%@",selectedIndexPath.row,selectedCell.tag,selectedVideoURL);
     }
     
 }
@@ -329,6 +330,9 @@
  */
 
 - (IBAction)selectButtonPressed:(UIButton *)sender {
+    [[NSUserDefaults standardUserDefaults]setValue:selectedVideoURL forKey:[NSString stringWithFormat:@"VIDEO_%d_URL",singleVideoIndex]];
+    [[NSUserDefaults standardUserDefaults]synchronize];
+     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (IBAction)backButtonPressed:(UIButton *)sender {

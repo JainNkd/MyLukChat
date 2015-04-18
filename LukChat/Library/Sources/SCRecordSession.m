@@ -108,7 +108,7 @@ NSString *SCRecordSessionCacheDirectory = @"CacheDirectory";
     if ([SCRecordSessionTemporaryDirectory isEqualToString:directory]) {
         directoryUrl = [NSURL fileURLWithPath:NSTemporaryDirectory()];
     } else if ([SCRecordSessionCacheDirectory isEqualToString:directory]) {
-        NSArray *myPathList = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
+        NSArray *myPathList = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
         directoryUrl = [NSURL fileURLWithPath:myPathList.firstObject];
     } else {
         directoryUrl = [NSURL fileURLWithPath:directory];

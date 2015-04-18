@@ -13,6 +13,7 @@
     NSInteger singleVideoIndex;
     NSString *title;
     NSMutableArray*singleVideosData;
+    NSString *selectedVideoURL;
 }
 @property (weak, nonatomic) IBOutlet UIButton *selectBtn;
 
