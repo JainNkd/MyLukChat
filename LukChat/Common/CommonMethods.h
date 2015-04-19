@@ -17,6 +17,7 @@
 +(NSString*)localFileUrl:(NSString*)fileName;
 
 +(BOOL)reachable;
++(BOOL)isWiFiConnected;
 @end
 
 

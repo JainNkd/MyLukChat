@@ -763,6 +763,17 @@
     return YES;
 }
 
++(BOOL)isWiFiConnected
+{
+    Reachability *r = [Reachability reachabilityForLocalWiFi];
+    NetworkStatus internetStatus = [r currentReachabilityStatus];
+    if(internetStatus == ReachableViaWiFi)
+    {
+        return YES;
+    }
+    return NO;
+}
+
 
 @end
 

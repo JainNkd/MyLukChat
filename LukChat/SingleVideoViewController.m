@@ -119,6 +119,7 @@
     {
         // using Image for thumbnails
         if([CommonMethods reachable]){
+            if(videoObj.thumnail.length>0){
             [cell.thumbnail setImageWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:videoObj.thumnail]] placeholderImage:[UIImage imageNamed:@"pic-bgwith-monkey-icon.png"]
                                            success:^(NSURLRequest *request , NSHTTPURLResponse *response , UIImage *image ){
                                                NSLog(@"Loaded successfully.....%@",[request.URL absoluteString]);// %ld", (long)[response statusCode]);
@@ -129,14 +130,21 @@
                                                NSString *filePath = [documentsDirectory stringByAppendingPathComponent:filename];
                                                //Add the file name
                                                NSData *pngData = UIImagePNGRepresentation(image);
-                                               [pngData writeToFile:filePath atomically:YES];
+                                               if(pngData && filename.length>0){
+                                                [pngData writeToFile:filePath atomically:YES];
                                                [self.singleVideoCollectionView reloadData];
+                                               }
                                            }
                                            failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error){
                                                NSLog(@"failed loading");//'%@", error);
                                                //                                                      [self.sentTableViewObj reloadData];
                                            }
              ];
+            }
+            else
+            {
+             [cell.thumbnail setImage:[UIImage imageNamed:@"pic-bgwith-monkey-icon.png"]];
+            }
         }
         else
         {
@@ -155,12 +163,24 @@
     SignleVideoCell *selectedCell = (SignleVideoCell*)[self.singleVideoCollectionView cellForItemAtIndexPath:selectedIndexPath];
     
     if(selectedCell){
-        self.selectBtn.enabled = YES;
-        selectedCell.thumbnail.layer.borderWidth = 2.0f;
-        selectedCell.thumbnail.layer.borderColor = [UIColor yellowColor].CGColor;
-        selectedCell.thumbnail.layer.masksToBounds = YES;
+        AFHTTPRequestOperation *operation = (self.videoDownloadsInProgress)[selectedIndexPath];
         VideoDetail *videoObj = [singleVideosData objectAtIndex:selectedIndexPath.row];
-        selectedVideoURL = videoObj.videoURL;
+        if([CommonMethods fileExist:videoObj.videoURL] && !operation)
+        {
+            self.selectBtn.enabled = YES;
+            selectedCell.thumbnail.layer.borderWidth = 2.0f;
+            selectedCell.thumbnail.layer.borderColor = [UIColor yellowColor].CGColor;
+            selectedCell.thumbnail.layer.masksToBounds = YES;
+            selectedVideoURL = videoObj.videoURL;
+        }
+        else
+        {
+            [CommonMethods showAlertWithTitle:@"LUK" message:@"You need to downlaod this video before select."];
+        }
+        
+        
+        
+        
         NSLog(@"double ..%ld ,%ld,..%@",(long)selectedIndexPath.row,(long)selectedCell.tag,selectedVideoURL);
     }
     

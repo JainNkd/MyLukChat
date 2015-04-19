@@ -15,6 +15,7 @@
 //#define kVideoUploadURL @"http://lukchat.com/api/videos"
 #define kShareVideoURL @"http://lukchat.com/api/share"
 #define kVideoDownloadURL @"http://lukchat.com/app/webroot/files/"
+#define kUploadSingleVideos @"http://lukchat.com/api/share"
 
 #define kSentVideosURL @"http://lukchat.com/api/history/sent"
 #define kAllHistoryURL @"http://lukchat.com/api/history/all"

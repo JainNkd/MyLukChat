@@ -15,6 +15,7 @@
     AVPlayer *player;
 }
 
+@property (nonatomic, strong) NSMutableDictionary *videoUploadInProgress;
 @property (weak, nonatomic) IBOutlet UIImageView *mergeVideoImg;
 @property (weak, nonatomic) IBOutlet UILabel *videoTitleLBL;
 @property (weak, nonatomic) IBOutlet UILabel *userNameLBL;
