@@ -435,6 +435,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				de,
 			);
 			mainGroup = DC551C3B17ADD66000E37F8F;
 			productRefGroup = DC551C4517ADD66000E37F8F /* Products */;

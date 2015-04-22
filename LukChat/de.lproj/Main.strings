@@ -1,0 +1,138 @@
+
+/* Class = "IBUILabel"; text = "You"; ObjectID = "0do-yu-33u"; */
+"0do-yu-33u.text" = "You";
+
+/* Class = "IBUIButton"; normalTitle = "Send to your LUKis"; ObjectID = "3Tp-Ny-Pbv"; */
+"3Tp-Ny-Pbv.normalTitle" = "Send to your LUKis";
+
+/* Class = "IBUILabel"; text = "Markus"; ObjectID = "40I-DV-mCm"; */
+"40I-DV-mCm.text" = "Markus";
+
+/* Class = "IBUIButton"; normalTitle = "Merge"; ObjectID = "6EZ-6b-YjC"; */
+"6EZ-6b-YjC.normalTitle" = "Merge";
+
+/* Class = "IBUILabel"; text = "Happy"; ObjectID = "6b9-So-UrQ"; */
+"6b9-So-UrQ.text" = "Happy";
+
+/* Class = "IBUIButton"; normalTitle = "Send to your LUKis"; ObjectID = "6rR-oS-VOx"; */
+"6rR-oS-VOx.normalTitle" = "Send to your LUKis";
+
+/* Class = "IBUILabel"; text = "Label"; ObjectID = "7uL-XQ-wcr"; */
+"7uL-XQ-wcr.text" = "Label";
+
+/* Class = "IBUILabel"; text = "terms and conditions"; ObjectID = "AL7-Il-12r"; */
+"AL7-Il-12r.text" = "terms and conditions";
+
+/* Class = "IBUILabel"; text = "Label"; ObjectID = "AYN-rV-6Z5"; */
+"AYN-rV-6Z5.text" = "Label";
+
+/* Class = "IBUILabel"; text = "You"; ObjectID = "AcV-7n-gZ0"; */
+"AcV-7n-gZ0.text" = "You";
+
+/* Class = "IBUILabel"; text = "Mar 15,"; ObjectID = "B7x-D6-XIs"; */
+"B7x-D6-XIs.text" = "Mar 15,";
+
+/* Class = "IBUILabel"; text = "Markus"; ObjectID = "F6T-Cg-7U1"; */
+"F6T-Cg-7U1.text" = "Markus";
+
+/* Class = "IBUILabel"; text = "31"; ObjectID = "FDY-gn-sAX"; */
+"FDY-gn-sAX.text" = "31";
+
+/* Class = "IBUIButton"; normalTitle = "Button"; ObjectID = "FkQ-en-J7t"; */
+"FkQ-en-J7t.normalTitle" = "Button";
+
+/* Class = "IBUILabel"; text = "Mit Urteil vom 12. Mai 1998 hat das Landgericht ?Hamburg entschieden, dass man durch die Ausbringung eines Links die Inhalte der gelinkten Seite ggf. mit zu verantworten hat. Dies kann - so das LG - durch die Ausdruckliche nhalten verhindert werden. "; ObjectID = "GBM-Pw-raQ"; */
+"GBM-Pw-raQ.text" = "Mit Urteil vom 12. Mai 1998 hat das Landgericht ?Hamburg entschieden, dass man durch die Ausbringung eines Links die Inhalte der gelinkten Seite ggf. mit zu verantworten hat. Dies kann - so das LG - durch die Ausdruckliche nhalten verhindert werden. ";
+
+/* Class = "IBUILabel"; text = "Markus"; ObjectID = "GMf-tK-Cbj"; */
+"GMf-tK-Cbj.text" = "Markus";
+
+/* Class = "IBUILabel"; text = "You"; ObjectID = "GT7-TA-fZc"; */
+"GT7-TA-fZc.text" = "You";
+
+/* Class = "IBUILabel"; text = "I agree in terms and conditions"; ObjectID = "H94-gg-WVg"; */
+"H94-gg-WVg.text" = "I agree in terms and conditions";
+
+/* Class = "IBUILabel"; text = "You"; ObjectID = "Ou5-ua-o2n"; */
+"Ou5-ua-o2n.text" = "You";
+
+/* Class = "IBUITextField"; placeholder = "Enter verification code"; ObjectID = "PD1-XY-QYM"; */
+"PD1-XY-QYM.placeholder" = "Enter verification code";
+
+/* Class = "IBUILabel"; text = "Friday"; ObjectID = "PUJ-yx-rzm"; */
+"PUJ-yx-rzm.text" = "Friday";
+
+/* Class = "IBUILabel"; text = "06"; ObjectID = "Pe2-S7-NfC"; */
+"Pe2-S7-NfC.text" = "06";
+
+/* Class = "IBUIButton"; normalTitle = "Confirm"; ObjectID = "QfB-D7-BSQ"; */
+"QfB-D7-BSQ.normalTitle" = "Confirm";
+
+/* Class = "IBUITextField"; placeholder = "Country"; ObjectID = "RVg-RX-kHx"; */
+"RVg-RX-kHx.placeholder" = "Country";
+
+/* Class = "IBUILabel"; text = "Happy Birthday "; ObjectID = "SCH-3r-NLp"; */
+"SCH-3r-NLp.text" = "Happy Birthday ";
+
+/* Class = "IBUILabel"; text = "You"; ObjectID = "SLs-6X-qmy"; */
+"SLs-6X-qmy.text" = "You";
+
+/* Class = "IBUILabel"; text = "Mar 15,"; ObjectID = "T1i-eC-EP2"; */
+"T1i-eC-EP2.text" = "Mar 15,";
+
+/* Class = "IBUITextField"; placeholder = "Date of birth"; ObjectID = "ThL-6x-LKf"; */
+"ThL-6x-LKf.placeholder" = "Date of birth";
+
+/* Class = "IBUILabel"; text = "Friday, 04:30pm"; ObjectID = "UZO-dJ-U6w"; */
+"UZO-dJ-U6w.text" = "Friday, 04:30pm";
+
+/* Class = "IBUILabel"; text = "I wish you happy holidy"; ObjectID = "XAV-sY-Jru"; */
+"XAV-sY-Jru.text" = "I wish you happy holidy";
+
+/* Class = "IBUILabel"; text = "00:00"; ObjectID = "XrN-To-JaA"; */
+"XrN-To-JaA.text" = "00:00";
+
+/* Class = "IBUITextField"; placeholder = "Phone number"; ObjectID = "ZYC-Wv-g1n"; */
+"ZYC-Wv-g1n.placeholder" = "Phone number";
+
+/* Class = "IBUILabel"; text = "Wish"; ObjectID = "aLx-jh-2Ke"; */
+"aLx-jh-2Ke.text" = "Wish";
+
+/* Class = "IBUIButton"; normalTitle = "Verify"; ObjectID = "afH-rC-9tX"; */
+"afH-rC-9tX.normalTitle" = "Verify";
+
+/* Class = "IBUILabel"; text = "Wish you happy holliday"; ObjectID = "bu9-iT-j6A"; */
+"bu9-iT-j6A.text" = "Wish you happy holliday";
+
+/* Class = "IBUILabel"; text = "I"; ObjectID = "c7Z-tq-xbh"; */
+"c7Z-tq-xbh.text" = "I";
+
+/* Class = "IBUILabel"; text = "I love you so much dear"; ObjectID = "d4M-xv-mYd"; */
+"d4M-xv-mYd.text" = "I love you so much dear";
+
+/* Class = "IBUILabel"; text = "I wish you happy holidy"; ObjectID = "gXk-KI-8Pb"; */
+"gXk-KI-8Pb.text" = "I wish you happy holidy";
+
+/* Class = "IBUILabel"; text = "Mar 15 04:30pm"; ObjectID = "hZ3-qW-wo8"; */
+"hZ3-qW-wo8.text" = "Mar 15 04:30pm";
+
+/* Class = "IBUILabel"; text = "You"; ObjectID = "jVf-HD-gA8"; */
+"jVf-HD-gA8.text" = "You";
+
+/* Class = "IBUILabel"; text = "You"; ObjectID = "llV-Wm-Zb6"; */
+"llV-Wm-Zb6.text" = "You";
+
+/* Class = "IBUIButton"; normalTitle = "Back"; ObjectID = "mn9-wM-MFb"; */
+"mn9-wM-MFb.normalTitle" = "Back";
+
+/* Class = "IBUILabel"; text = "Friday, 04:30pm"; ObjectID = "n7c-kb-KEk"; */
+"n7c-kb-KEk.text" = "Friday, 04:30pm";
+
+/* Class = "IBUILabel"; text = "You"; ObjectID = "pIu-vX-A1j"; */
+"pIu-vX-A1j.text" = "You";
+
+/* Class = "IBUILabel"; text = "Allgemein"; ObjectID = "s9I-Hs-vAr"; */
+"s9I-Hs-vAr.text" = "Allgemein";
+
+/* Class = "IBUILabel"; text = "06"; ObjectID = "xmC-rq-feB"; */
+"xmC-rq-feB.text" = "06";
