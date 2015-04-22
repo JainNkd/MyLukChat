@@ -391,9 +391,17 @@
     [videoData writeToFile:outputVideoPath atomically:YES];
     
    [[NSUserDefaults standardUserDefaults] setValue:fileName forKey:kMyVideoToShare];
+    
+    [self addWaterMark];
      MergeVideosViewController *mergeVC = [self.storyboard instantiateViewControllerWithIdentifier:@"MergeVideosViewController"];
     
     [self.navigationController pushViewController:mergeVC animated:YES];
 //    [self playMovie:outputVideoPath];
+}
+
+
+-(void)addWaterMark
+{
+    
 }
 @end

@@ -89,13 +89,29 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "LukChat/Recording/GetInputViewController.m"
-            timestampString = "451374711.839155"
+            filePath = "LukChat/Video/SCRecorderViewController.m"
+            timestampString = "451393732.180062"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "116"
-            endingLineNumber = "116"
-            landmarkName = "-recordVideoButtonPressed:"
+            startingLineNumber = "590"
+            endingLineNumber = "590"
+            landmarkName = "-addWaterMark"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LukChat/Video/SCRecorderViewController.m"
+            timestampString = "451393732.987018"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "591"
+            endingLineNumber = "591"
+            landmarkName = "-addWaterMark"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

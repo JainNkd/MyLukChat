@@ -563,6 +563,12 @@
         if (error == nil) {
             NSLog(@"url.path....%@",url.path);
             
+//Add watermark=====================
+            
+//            [self addWaterMark];
+            
+//==================================
+            
             UISaveVideoAtPathToSavedPhotosAlbum(url.path, self, @selector(video:didFinishSavingWithError:contextInfo:), nil);
         } else {
             [[UIApplication sharedApplication] endIgnoringInteractionEvents];
@@ -573,6 +579,94 @@
     
     [_recordSession mergeRecordSegmentsUsingPreset:AVAssetExportPresetHighestQuality completionHandler:completionHandler];
     
+}
+
+-(void)addWaterMark
+{
+    NSString *filename = [NSString stringWithFormat:@"%@SCVideo-Merged.mp4", _recordSession.identifier];
+    NSString *documentsDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)objectAtIndex:0];
+    NSString *destinationPath = [documentsDirectory stringByAppendingFormat:@"/%@", filename];
+
+    
+        NSURL *videoURL = [NSURL fileURLWithPath:destinationPath];
+        
+        AVURLAsset* videoAsset = [[AVURLAsset alloc]initWithURL:videoURL options:nil];
+        AVMutableComposition* mixComposition = [AVMutableComposition composition];
+        
+        AVMutableCompositionTrack *compositionVideoTrack = [mixComposition addMutableTrackWithMediaType:AVMediaTypeVideo preferredTrackID:kCMPersistentTrackID_Invalid];
+        AVAssetTrack *clipVideoTrack = [[videoAsset tracksWithMediaType:AVMediaTypeVideo] objectAtIndex:0];
+        AVMutableCompositionTrack *compositionAudioTrack = [mixComposition addMutableTrackWithMediaType:AVMediaTypeAudio preferredTrackID:kCMPersistentTrackID_Invalid];
+        AVAssetTrack *clipAudioTrack = [[videoAsset tracksWithMediaType:AVMediaTypeAudio] objectAtIndex:0];
+        //If you need audio as well add the Asset Track for audio here
+        
+        [compositionVideoTrack insertTimeRange:CMTimeRangeMake(kCMTimeZero, videoAsset.duration) ofTrack:clipVideoTrack atTime:kCMTimeZero error:nil];
+        [compositionAudioTrack insertTimeRange:CMTimeRangeMake(kCMTimeZero, videoAsset.duration) ofTrack:clipAudioTrack atTime:kCMTimeZero error:nil];
+        
+        [compositionVideoTrack setPreferredTransform:[[[videoAsset tracksWithMediaType:AVMediaTypeVideo] objectAtIndex:0] preferredTransform]];
+        
+        CGSize sizeOfVideo=[videoAsset naturalSize];
+        NSLog(@"size width %F, height %f",sizeOfVideo.width,sizeOfVideo.height);
+        
+        //TextLayer defines the text they want to add in Video
+        //Text of watermark
+        CATextLayer *textOfvideo=[[CATextLayer alloc] init];
+        textOfvideo.string= [NSString stringWithFormat:@"LUK"];//text is shows the text that you want add in video.
+        [textOfvideo setFont:(__bridge CFTypeRef)([UIFont boldSystemFontOfSize:24.0f])];//fontUsed is the name of font
+        [textOfvideo setFrame:CGRectMake(10,10, sizeOfVideo.width,sizeOfVideo.height-20)];
+        [textOfvideo setAlignmentMode:kCAAlignmentLeft];
+        [textOfvideo setForegroundColor:[[UIColor whiteColor] CGColor]];
+
+        
+        CALayer *parentLayer=[CALayer layer];
+        CALayer *videoLayer=[CALayer layer];
+        parentLayer.frame=CGRectMake(0, 0, sizeOfVideo.width, sizeOfVideo.height);
+        videoLayer.frame=CGRectMake(0,0, sizeOfVideo.width, sizeOfVideo.height);
+        [parentLayer addSublayer:videoLayer];
+        [parentLayer addSublayer:textOfvideo];
+        
+        AVMutableVideoComposition *videoComposition=[AVMutableVideoComposition videoComposition] ;
+        videoComposition.frameDuration=CMTimeMake(1, 10);
+        videoComposition.renderSize=sizeOfVideo;
+        videoComposition.animationTool=[AVVideoCompositionCoreAnimationTool videoCompositionCoreAnimationToolWithPostProcessingAsVideoLayer:videoLayer inLayer:parentLayer];
+        
+        AVMutableVideoCompositionInstruction *instruction = [AVMutableVideoCompositionInstruction videoCompositionInstruction];
+        instruction.timeRange = CMTimeRangeMake(kCMTimeZero, [mixComposition duration]);
+        AVAssetTrack *videoTrack = [[mixComposition tracksWithMediaType:AVMediaTypeVideo] objectAtIndex:0];
+        AVMutableVideoCompositionLayerInstruction* layerInstruction = [AVMutableVideoCompositionLayerInstruction videoCompositionLayerInstructionWithAssetTrack:videoTrack];
+        instruction.layerInstructions = [NSArray arrayWithObject:layerInstruction];
+        videoComposition.instructions = [NSArray arrayWithObject: instruction];
+    
+        
+        NSLog(@"destinationPath...%@",destinationPath);
+       [self removeFile:[NSURL fileURLWithPath:destinationPath]];
+    
+        AVAssetExportSession *exportSession = [[AVAssetExportSession alloc] initWithAsset:mixComposition presetName:AVAssetExportPresetMediumQuality];
+        exportSession.videoComposition=videoComposition;
+        
+        exportSession.outputURL = [NSURL fileURLWithPath:destinationPath];
+        exportSession.outputFileType = AVFileTypeQuickTimeMovie;
+        [exportSession exportAsynchronouslyWithCompletionHandler:^{
+            switch (exportSession.status)
+            {
+                case AVAssetExportSessionStatusCompleted:
+                    NSLog(@"Export OK");
+                    if (UIVideoAtPathIsCompatibleWithSavedPhotosAlbum(destinationPath)) {
+                        UISaveVideoAtPathToSavedPhotosAlbum(destinationPath, self, @selector(video:didFinishSavingWithError:contextInfo:), nil);
+                    }
+                    break;
+                case AVAssetExportSessionStatusFailed:
+                    NSLog (@"AVAssetExportSessionStatusFailed: %@", exportSession.error);
+                    break;
+                case AVAssetExportSessionStatusCancelled:
+                    NSLog(@"Export Cancelled");
+                    break;
+            }
+        }];
+}
+
+- (void)removeFile:(NSURL *)fileUrl {
+    NSError *error = nil;
+    [[NSFileManager defaultManager] removeItemAtPath:fileUrl.path error:&error];
 }
 
 - (void)video:(NSString *)videoPath didFinishSavingWithError:(NSError *)error contextInfo: (void *) contextInfo {
