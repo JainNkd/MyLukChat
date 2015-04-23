@@ -59,9 +59,9 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-//        if ([[UIDevice currentDevice] respondsToSelector:@selector(setOrientation:)]) {
-//            objc_msgSend([UIDevice currentDevice], @selector(setOrientation:),    UIInterfaceOrientationLandscapeRight);
-//        }
+        //        if ([[UIDevice currentDevice] respondsToSelector:@selector(setOrientation:)]) {
+        //            objc_msgSend([UIDevice currentDevice], @selector(setOrientation:),    UIInterfaceOrientationLandscapeRight);
+        //        }
     }
     return self;
 }
@@ -86,9 +86,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-//    if ([[UIDevice currentDevice] respondsToSelector:@selector(setOrientation:)]) {
-//        objc_msgSend([UIDevice currentDevice], @selector(setOrientation:),    UIInterfaceOrientationLandscapeRight );
-//    }
+    //    if ([[UIDevice currentDevice] respondsToSelector:@selector(setOrientation:)]) {
+    //        objc_msgSend([UIDevice currentDevice], @selector(setOrientation:),    UIInterfaceOrientationLandscapeRight );
+    //    }
     
     isVideoSaved = NO;
     
@@ -192,11 +192,11 @@
     
     self.navigationController.navigationBarHidden = NO;
     
-//    if ([self.navigationController.viewControllers indexOfObject:self]==NSNotFound) {
-//        if ([[UIDevice currentDevice] respondsToSelector:@selector(setOrientation:)]) {
-//            objc_msgSend([UIDevice currentDevice], @selector(setOrientation:),    UIInterfaceOrientationPortrait);
-//        }
-//    }
+    //    if ([self.navigationController.viewControllers indexOfObject:self]==NSNotFound) {
+    //        if ([[UIDevice currentDevice] respondsToSelector:@selector(setOrientation:)]) {
+    //            objc_msgSend([UIDevice currentDevice], @selector(setOrientation:),    UIInterfaceOrientationPortrait);
+    //        }
+    //    }
     
     //    [UIApplication sharedApplication].statusBarHidden = NO;
 }
@@ -399,8 +399,8 @@
 - (void)recorder:(SCRecorder *)recorder didEndRecordSegment:(SCRecordSession *)recordSession segmentIndex:(NSInteger)segmentIndex error:(NSError *)error {
     NSLog(@"End record segment %d at %@: %@", (int)segmentIndex, segmentIndex >= 0 ? [recordSession.recordSegments objectAtIndex:segmentIndex] : nil, error);
     
-     [self saveAndShowSession:recordSession];
-
+    [self saveAndShowSession:recordSession];
+    
 }
 
 - (void)updateTimeRecordedLabel {
@@ -423,7 +423,7 @@
 
 - (void)recorder:(SCRecorder *)recorder didAppendVideoSampleBuffer:(SCRecordSession *)recordSession {
     [self updateTimeRecordedLabel];
-//    _recordSession = recordSession;
+    //    _recordSession = recordSession;
     
 }
 
@@ -525,13 +525,13 @@
     else{
         [self saveToCameraRoll];
     }
-
+    
 }
 
 -(void)saveSession:(SCRecordSession *)recordSession {
     [self saveAndShowSession:recordSession];
     [self saveToCameraRoll];
-            //[self.navigationController dismissViewControllerAnimated:NO completion:nil];
+    //[self.navigationController dismissViewControllerAnimated:NO completion:nil];
 }
 
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
@@ -564,13 +564,13 @@
         if (error == nil) {
             NSLog(@"url.path....%@",url.path);
             
-//Add watermark=====================
+            //Add watermark=====================
             
             [self addWaterMark];
             
-//==================================
+            //==================================
             
-//            UISaveVideoAtPathToSavedPhotosAlbum(url.path, self, @selector(video:didFinishSavingWithError:contextInfo:), nil);
+            //            UISaveVideoAtPathToSavedPhotosAlbum(url.path, self, @selector(video:didFinishSavingWithError:contextInfo:), nil);
         } else {
             [[UIApplication sharedApplication] endIgnoringInteractionEvents];
             
@@ -587,82 +587,82 @@
     NSString *filename = [NSString stringWithFormat:@"%@SCVideo-Merged.mp4", _recordSession.identifier];
     NSString *documentsDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)objectAtIndex:0];
     NSString *destinationPath = [documentsDirectory stringByAppendingFormat:@"/%@", filename];
-
     
-        NSURL *videoURL = [NSURL fileURLWithPath:destinationPath];
-        
-        AVURLAsset* videoAsset = [[AVURLAsset alloc]initWithURL:videoURL options:nil];
-        AVMutableComposition* mixComposition = [AVMutableComposition composition];
-        
-        AVMutableCompositionTrack *compositionVideoTrack = [mixComposition addMutableTrackWithMediaType:AVMediaTypeVideo preferredTrackID:kCMPersistentTrackID_Invalid];
-        AVAssetTrack *clipVideoTrack = [[videoAsset tracksWithMediaType:AVMediaTypeVideo] objectAtIndex:0];
-        AVMutableCompositionTrack *compositionAudioTrack = [mixComposition addMutableTrackWithMediaType:AVMediaTypeAudio preferredTrackID:kCMPersistentTrackID_Invalid];
-        AVAssetTrack *clipAudioTrack = [[videoAsset tracksWithMediaType:AVMediaTypeAudio] objectAtIndex:0];
-        //If you need audio as well add the Asset Track for audio here
-        
-        [compositionVideoTrack insertTimeRange:CMTimeRangeMake(kCMTimeZero, videoAsset.duration) ofTrack:clipVideoTrack atTime:kCMTimeZero error:nil];
-        [compositionAudioTrack insertTimeRange:CMTimeRangeMake(kCMTimeZero, videoAsset.duration) ofTrack:clipAudioTrack atTime:kCMTimeZero error:nil];
-        
-        [compositionVideoTrack setPreferredTransform:[[[videoAsset tracksWithMediaType:AVMediaTypeVideo] objectAtIndex:0] preferredTransform]];
-        
-        CGSize sizeOfVideo=[videoAsset naturalSize];
-        NSLog(@"size width %F, height %f",sizeOfVideo.width,sizeOfVideo.height);
-        
-        //TextLayer defines the text they want to add in Video
-        //Text of watermark
-        CATextLayer *textOfvideo=[[CATextLayer alloc] init];
-        textOfvideo.string= [NSString stringWithFormat:@"LUK"];//text is shows the text that you want add in video.
-        [textOfvideo setFont:(__bridge CFTypeRef)([UIFont boldSystemFontOfSize:27])];//fontUsed is the name of font
-        [textOfvideo setFrame:CGRectMake(20,-20, sizeOfVideo.width,sizeOfVideo.height)];
-        [textOfvideo setAlignmentMode:kCAAlignmentLeft];
-        [textOfvideo setForegroundColor:[[UIColor whiteColor] CGColor]];
-
-        
-        CALayer *parentLayer=[CALayer layer];
-        CALayer *videoLayer=[CALayer layer];
-        parentLayer.frame=CGRectMake(0, 0, sizeOfVideo.width, sizeOfVideo.height);
-        videoLayer.frame=CGRectMake(0,0, sizeOfVideo.width, sizeOfVideo.height);
-        [parentLayer addSublayer:videoLayer];
-        [parentLayer addSublayer:textOfvideo];
-        
-        AVMutableVideoComposition *videoComposition=[AVMutableVideoComposition videoComposition] ;
-        videoComposition.frameDuration=CMTimeMake(1, 10);
-        videoComposition.renderSize=sizeOfVideo;
-        videoComposition.animationTool=[AVVideoCompositionCoreAnimationTool videoCompositionCoreAnimationToolWithPostProcessingAsVideoLayer:videoLayer inLayer:parentLayer];
-        
-        AVMutableVideoCompositionInstruction *instruction = [AVMutableVideoCompositionInstruction videoCompositionInstruction];
-        instruction.timeRange = CMTimeRangeMake(kCMTimeZero, [mixComposition duration]);
-        AVAssetTrack *videoTrack = [[mixComposition tracksWithMediaType:AVMediaTypeVideo] objectAtIndex:0];
-        AVMutableVideoCompositionLayerInstruction* layerInstruction = [AVMutableVideoCompositionLayerInstruction videoCompositionLayerInstructionWithAssetTrack:videoTrack];
-        instruction.layerInstructions = [NSArray arrayWithObject:layerInstruction];
-        videoComposition.instructions = [NSArray arrayWithObject: instruction];
     
-        
-        NSLog(@"destinationPath...%@",destinationPath);
-       [self removeFile:[NSURL fileURLWithPath:destinationPath]];
+    NSURL *videoURL = [NSURL fileURLWithPath:destinationPath];
     
-        AVAssetExportSession *exportSession = [[AVAssetExportSession alloc] initWithAsset:mixComposition presetName:AVAssetExportPresetMediumQuality];
-        exportSession.videoComposition=videoComposition;
-        
-        exportSession.outputURL = [NSURL fileURLWithPath:destinationPath];
-        exportSession.outputFileType = AVFileTypeQuickTimeMovie;
-        [exportSession exportAsynchronouslyWithCompletionHandler:^{
-            switch (exportSession.status)
-            {
-                case AVAssetExportSessionStatusCompleted:
-                    NSLog(@"Export OK");
-                    if (UIVideoAtPathIsCompatibleWithSavedPhotosAlbum(destinationPath)) {
-                        UISaveVideoAtPathToSavedPhotosAlbum(destinationPath, self, @selector(video:didFinishSavingWithError:contextInfo:), nil);
-                    }
-                    break;
-                case AVAssetExportSessionStatusFailed:
-                    NSLog (@"AVAssetExportSessionStatusFailed: %@", exportSession.error);
-                    break;
-                case AVAssetExportSessionStatusCancelled:
-                    NSLog(@"Export Cancelled");
-                    break;
-            }
-        }];
+    AVURLAsset* videoAsset = [[AVURLAsset alloc]initWithURL:videoURL options:nil];
+    AVMutableComposition* mixComposition = [AVMutableComposition composition];
+    
+    AVMutableCompositionTrack *compositionVideoTrack = [mixComposition addMutableTrackWithMediaType:AVMediaTypeVideo preferredTrackID:kCMPersistentTrackID_Invalid];
+    AVAssetTrack *clipVideoTrack = [[videoAsset tracksWithMediaType:AVMediaTypeVideo] objectAtIndex:0];
+    AVMutableCompositionTrack *compositionAudioTrack = [mixComposition addMutableTrackWithMediaType:AVMediaTypeAudio preferredTrackID:kCMPersistentTrackID_Invalid];
+    AVAssetTrack *clipAudioTrack = [[videoAsset tracksWithMediaType:AVMediaTypeAudio] objectAtIndex:0];
+    //If you need audio as well add the Asset Track for audio here
+    
+    [compositionVideoTrack insertTimeRange:CMTimeRangeMake(kCMTimeZero, videoAsset.duration) ofTrack:clipVideoTrack atTime:kCMTimeZero error:nil];
+    [compositionAudioTrack insertTimeRange:CMTimeRangeMake(kCMTimeZero, videoAsset.duration) ofTrack:clipAudioTrack atTime:kCMTimeZero error:nil];
+    
+    [compositionVideoTrack setPreferredTransform:[[[videoAsset tracksWithMediaType:AVMediaTypeVideo] objectAtIndex:0] preferredTransform]];
+    
+    CGSize sizeOfVideo=[videoAsset naturalSize];
+    NSLog(@"size width %F, height %f",sizeOfVideo.width,sizeOfVideo.height);
+    
+    
+    // 1 - set up the overlay
+    CALayer *overlayLayer = [CALayer layer];
+    UIImage *overlayImage = nil;
+    overlayImage = [UIImage imageNamed:@"watermark.png"];
+    
+    [overlayLayer setContents:(id)[overlayImage CGImage]];
+    overlayLayer.frame = CGRectMake(0, 0,  sizeOfVideo.width, sizeOfVideo.height);
+    [overlayLayer setMasksToBounds:YES];
+    
+    CALayer *parentLayer=[CALayer layer];
+    CALayer *videoLayer=[CALayer layer];
+    parentLayer.frame=CGRectMake(0, 0, sizeOfVideo.width, sizeOfVideo.height);
+    videoLayer.frame=CGRectMake(0,0, sizeOfVideo.width, sizeOfVideo.height);
+    [parentLayer addSublayer:videoLayer];
+    [parentLayer addSublayer:overlayLayer];
+    
+    AVMutableVideoComposition *videoComposition=[AVMutableVideoComposition videoComposition] ;
+    videoComposition.frameDuration=CMTimeMake(1, 10);
+    videoComposition.renderSize=sizeOfVideo;
+    videoComposition.animationTool=[AVVideoCompositionCoreAnimationTool videoCompositionCoreAnimationToolWithPostProcessingAsVideoLayer:videoLayer inLayer:parentLayer];
+    
+    AVMutableVideoCompositionInstruction *instruction = [AVMutableVideoCompositionInstruction videoCompositionInstruction];
+    instruction.timeRange = CMTimeRangeMake(kCMTimeZero, [mixComposition duration]);
+    AVAssetTrack *videoTrack = [[mixComposition tracksWithMediaType:AVMediaTypeVideo] objectAtIndex:0];
+    AVMutableVideoCompositionLayerInstruction* layerInstruction = [AVMutableVideoCompositionLayerInstruction videoCompositionLayerInstructionWithAssetTrack:videoTrack];
+    instruction.layerInstructions = [NSArray arrayWithObject:layerInstruction];
+    videoComposition.instructions = [NSArray arrayWithObject: instruction];
+    
+    
+    NSLog(@"destinationPath...%@",destinationPath);
+    [self removeFile:[NSURL fileURLWithPath:destinationPath]];
+    
+    AVAssetExportSession *exportSession = [[AVAssetExportSession alloc] initWithAsset:mixComposition presetName:AVAssetExportPresetMediumQuality];
+    exportSession.videoComposition=videoComposition;
+    
+    exportSession.outputURL = [NSURL fileURLWithPath:destinationPath];
+    exportSession.outputFileType = AVFileTypeQuickTimeMovie;
+    [exportSession exportAsynchronouslyWithCompletionHandler:^{
+        switch (exportSession.status)
+        {
+            case AVAssetExportSessionStatusCompleted:
+                NSLog(@"Export OK");
+                if (UIVideoAtPathIsCompatibleWithSavedPhotosAlbum(destinationPath)) {
+                    UISaveVideoAtPathToSavedPhotosAlbum(destinationPath, self, @selector(video:didFinishSavingWithError:contextInfo:), nil);
+                }
+                break;
+            case AVAssetExportSessionStatusFailed:
+                NSLog (@"AVAssetExportSessionStatusFailed: %@", exportSession.error);
+                break;
+            case AVAssetExportSessionStatusCancelled:
+                NSLog(@"Export Cancelled");
+                break;
+        }
+    }];
 }
 
 - (void)removeFile:(NSURL *)fileUrl {
@@ -682,9 +682,9 @@
         // save video in default
         [[NSUserDefaults standardUserDefaults]setValue:filename forKey:[NSString stringWithFormat:@"VIDEO_%d_URL",indexOfVideo]];
         [[NSUserDefaults standardUserDefaults]synchronize];
-    
+        
         [self.navigationController dismissViewControllerAnimated:NO completion:nil];
-//        [[[UIAlertView alloc] initWithTitle:@"Saved to camera roll" message:@"" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+        //        [[[UIAlertView alloc] initWithTitle:@"Saved to camera roll" message:@"" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
     } else {
         [[[UIAlertView alloc] initWithTitle:@"Failed to save" message:error.localizedDescription delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
     }
@@ -714,4 +714,4 @@
 
 // Copyright belongs to original author
 // http://code4app.net (en) http://code4app.com (cn)
-// From the most professional code share website: Code4App.net 
+// From the most professional code share website: Code4App.net
