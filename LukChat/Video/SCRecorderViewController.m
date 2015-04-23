@@ -439,6 +439,7 @@
 
 -(void)startRecordTapped:(UIButton*)sender
 {
+    self.reverseCamera.enabled = NO;
     self.timerMonkeyIcon.image = [UIImage imageNamed:@"camerapage-icon-running-indication.png"];
     sender.hidden = YES;
     //show pause button
@@ -565,11 +566,11 @@
             
 //Add watermark=====================
             
-//            [self addWaterMark];
+            [self addWaterMark];
             
 //==================================
             
-            UISaveVideoAtPathToSavedPhotosAlbum(url.path, self, @selector(video:didFinishSavingWithError:contextInfo:), nil);
+//            UISaveVideoAtPathToSavedPhotosAlbum(url.path, self, @selector(video:didFinishSavingWithError:contextInfo:), nil);
         } else {
             [[UIApplication sharedApplication] endIgnoringInteractionEvents];
             
@@ -611,8 +612,8 @@
         //Text of watermark
         CATextLayer *textOfvideo=[[CATextLayer alloc] init];
         textOfvideo.string= [NSString stringWithFormat:@"LUK"];//text is shows the text that you want add in video.
-        [textOfvideo setFont:(__bridge CFTypeRef)([UIFont boldSystemFontOfSize:24.0f])];//fontUsed is the name of font
-        [textOfvideo setFrame:CGRectMake(10,10, sizeOfVideo.width,sizeOfVideo.height-20)];
+        [textOfvideo setFont:(__bridge CFTypeRef)([UIFont boldSystemFontOfSize:27])];//fontUsed is the name of font
+        [textOfvideo setFrame:CGRectMake(20,-20, sizeOfVideo.width,sizeOfVideo.height)];
         [textOfvideo setAlignmentMode:kCAAlignmentLeft];
         [textOfvideo setForegroundColor:[[UIColor whiteColor] CGColor]];
 
