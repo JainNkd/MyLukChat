@@ -178,7 +178,7 @@
     [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
     [[UIApplication sharedApplication] cancelAllLocalNotifications];
     
-    if(![CommonMethods isWiFiConnected])
+    if([CommonMethods isWiFiConnected])
     [self uploadVideosInBackground];
 }
 
