@@ -41,6 +41,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    NSURL *websiteUrl = [NSURL URLWithString:@"http://www.lukchat.com/legal"];
+    NSURLRequest *urlRequest = [NSURLRequest requestWithURL:websiteUrl];
+    [self.webView loadRequest:urlRequest];
     // Do any additional setup after loading the view.
 }
 

@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TermsAndConditionsViewController : UIViewController
+@interface TermsAndConditionsViewController : UIViewController<UIWebViewDelegate>
 - (IBAction)backButtonPressed:(id)sender;
 
+@property (weak, nonatomic) IBOutlet UIWebView *webView;
 @end

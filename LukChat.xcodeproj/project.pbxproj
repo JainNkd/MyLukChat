@@ -488,7 +488,7 @@
 		8727D5C71A4885E30092BB7C /* SCVideoPlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCVideoPlayerViewController.h; sourceTree = "<group>"; };
 		8727D5C81A4885E30092BB7C /* SCVideoPlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCVideoPlayerViewController.m; sourceTree = "<group>"; };
 		873C43191ABF4F0C009D30DB /* 1start-screen-v1_5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1start-screen-v1_5.png"; sourceTree = "<group>"; };
-		873CBF191AE97643001F20E6 /* watermark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = watermark.png; sourceTree = "<group>"; };
+		873CBF191AE97643001F20E6 /* watermark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = watermark.png; path = ../watermark.png; sourceTree = "<group>"; };
 		874F46C31AC71DEF001CE774 /* CreateVideoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateVideoCell.h; sourceTree = "<group>"; };
 		874F46C41AC71DEF001CE774 /* CreateVideoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateVideoCell.m; sourceTree = "<group>"; };
 		874F46C61AC71E73001CE774 /* CreateVideoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateVideoViewController.h; sourceTree = "<group>"; };
@@ -755,7 +755,6 @@
 		6338502219839F2D00C3256A /* LukChat */ = {
 			isa = PBXGroup;
 			children = (
-				873CBF191AE97643001F20E6 /* watermark.png */,
 				8BC142E21AA72415002F36B0 /* parse-library-1.6.3 */,
 				875BFD2F1A57316200A83E35 /* Domain */,
 				8727D5B61A4885E30092BB7C /* Video */,
@@ -806,6 +805,7 @@
 		633850511983A4C900C3256A /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				873CBF191AE97643001F20E6 /* watermark.png */,
 				87BD841E1ADEE14200761A28 /* SingleVideo */,
 				8782D2961ADC368D00A1137A /* MonkeyShortAIFF.AIFF */,
 				879DA41A1AC30CCF00E26CCB /* Camera */,
