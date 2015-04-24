@@ -520,6 +520,50 @@
     return sentVideosArray;
 }
 
+//Fetch Single videos with count from DB
++(NSMutableArray *)getAllSingleVideos:(NSInteger)count {
+    NSLog(@"getAllSingleVideos");
+    // Setup the database object
+    sqlite3 *database;
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString *databasePath=  [documentsDirectory stringByAppendingPathComponent:kDatabaseName];
+    
+    NSMutableArray *sentVideosArray = [[NSMutableArray alloc] init];
+    
+    // Open the database from the users filessytem
+    if(sqlite3_open([databasePath UTF8String], &database) == SQLITE_OK) {
+        // Setup the SQL Statement and compile it for faster access
+        NSString *quertyStr = [NSString stringWithFormat:@"SELECT video_title, video_path, id FROM upload_videos ORDER BY id DESC LIMIT %ld",(long)count];
+        NSLog(@"get single videos ...%@",quertyStr);
+        sqlite3_stmt *compiledStatement;
+        if(sqlite3_prepare_v2(database, [quertyStr UTF8String], -1, &compiledStatement, NULL) == SQLITE_OK) {
+            // Loop through the results and add them to the feeds array
+            while(sqlite3_step(compiledStatement) == SQLITE_ROW) {
+                // Read the data from the result row
+                VideoDetail *videoDetialObj = [VideoDetail new];
+                
+                videoDetialObj.videoTitle = [NSString stringWithFormat:@"%s",(const char*)sqlite3_column_text(compiledStatement, 0)];
+                videoDetialObj.mergedVideoURL = [NSString stringWithFormat:@"%s",(const char*)sqlite3_column_text(compiledStatement, 1)];
+
+                videoDetialObj.toUserID = sqlite3_column_int(compiledStatement, 2);
+                
+                if (!videoDetialObj.videoTitle)
+                    videoDetialObj.videoTitle = @"";
+                if (!videoDetialObj.videoTime)
+                    videoDetialObj.videoTime = @"";
+                
+                [sentVideosArray addObject:videoDetialObj];
+            }
+        }
+        // Release the compiled statement from memory
+        sqlite3_finalize(compiledStatement);
+    }
+    sqlite3_close(database);
+    
+    return sentVideosArray;
+}
+
 //Fetch All History Videos
 +(NSMutableArray *)getAllHistoryVideos {
     NSLog(@"getAllCreatedVideos");
@@ -818,6 +862,47 @@
     
 }
 
+//Insert SingleVideos in DB
++(void)insertSingleVideosInfoInDB:(Chat *)chatObj {
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString *databasePath=  [documentsDirectory stringByAppendingPathComponent:kDatabaseName];
+    
+    sqlite3 *database;
+    if(sqlite3_open([databasePath UTF8String], &database) == SQLITE_OK)
+    {
+        sqlite3_stmt    *statement;
+        NSString *querySQL = @"INSERT INTO upload_videos (video_title , video_path) VALUES (?,?); ";
+        NSLog(@"query: %@", querySQL);
+        const char *query_stmt = [querySQL UTF8String];
+        
+        // preparing a query compiles the query so it can be re-used.
+        if(sqlite3_prepare_v2(database, query_stmt, -1, &statement, NULL) == SQLITE_OK)
+        {
+            
+            sqlite3_bind_text(statement, 1, [chatObj.chatText UTF8String], -1, SQLITE_STATIC);
+            sqlite3_bind_text(statement, 2, [chatObj.mergedVideo UTF8String], -1, SQLITE_STATIC);
+            
+            if(SQLITE_DONE != sqlite3_step(statement))
+            {
+                NSLog( @"Error while inserting uplaod video: '%s'", sqlite3_errmsg(database));
+            }
+            else
+            {
+                // NSLog(@"chatObj with ID: %ld inserted: ",(long)chatObj.chatId);
+            }
+            sqlite3_reset(statement);
+        }else
+        {
+            NSLog( @"Error while inserting uplaod video: '%s'", sqlite3_errmsg(database));
+        }
+        sqlite3_finalize(statement);
+        
+    }
+    sqlite3_close(database);
+    
+}
+
 //Insert history videos
 +(void)insertHistoryVideoInfoInDB:(VideoDetail *)videoDetailObj {
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
@@ -967,6 +1052,43 @@
         }else
         {
             NSLog( @"Error while updating Contact '%s'", sqlite3_errmsg(database));
+        }
+        sqlite3_finalize(statement);
+        
+    }
+    sqlite3_close(database);
+    
+}
+
++(void)deleteRecordFromDB:(NSInteger)videoID
+{
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString *databasePath=  [documentsDirectory stringByAppendingPathComponent:kDatabaseName];
+    
+    sqlite3 *database;
+    if(sqlite3_open([databasePath UTF8String], &database) == SQLITE_OK)
+    {
+        sqlite3_stmt    *statement;
+        NSString *querySQL = @"Delete from upload_videos where id = (select max(id) from upload_videos)";
+        // NSLog(@"query: %@", querySQL);
+        const char *query_stmt = [querySQL UTF8String];
+        
+        // preparing a query compiles the query so it can be re-used.
+        if(sqlite3_prepare_v2(database, query_stmt, -1, &statement, NULL) == SQLITE_OK)
+        {
+            if(SQLITE_DONE != sqlite3_step(statement))
+            {
+                NSLog( @"Error while deleting single video record: '%s'", sqlite3_errmsg(database));
+            }
+            else
+            {
+                // NSLog(@"chatObj with ID: %ld inserted: ",(long)chatObj.chatId);
+            }
+            sqlite3_reset(statement);
+        }else
+        {
+            NSLog( @"Error while deleting chatObj '%s'", sqlite3_errmsg(database));
         }
         sqlite3_finalize(statement);
         

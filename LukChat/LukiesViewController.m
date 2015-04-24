@@ -597,7 +597,6 @@
     
     
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:afRequest];
-    
     [operation  setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         [progressView removeFromSuperview];
         [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];

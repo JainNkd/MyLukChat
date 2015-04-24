@@ -98,6 +98,8 @@
     [dbObj insertCreatedVideoInfoInDB:chatObj];
     
     
+    [self storevideosInDB];
+    
     //Update UI
     self.videoTitleLBL.text = videoTitle;
     
@@ -118,24 +120,63 @@
                                                  name:AVPlayerItemDidPlayToEndTimeNotification
                                                object:[player currentItem]];
     
-        if([CommonMethods isWiFiConnected])
-            [self uploadVideosInBackground];
+    if([CommonMethods isWiFiConnected])
+        [self uploadVideosInBackground];
 }
 
 -(void)uploadVideosInBackground
 {
-    
     NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
     
     long long int myPhoneNum = [[[NSUserDefaults standardUserDefaults]valueForKey:kMYPhoneNumber] longLongValue];
     
+    NSString *videoTitle =  [[NSUserDefaults standardUserDefaults] valueForKey:VIDEO_TITLE];
+    NSMutableArray *titleWords;
+    NSArray *singleVideos;
+    if(videoTitle.length>0){
+        titleWords = (NSMutableArray*)[videoTitle componentsSeparatedByString:@" "];
+    }
+        if(titleWords.count>0)
+        singleVideos  = [DatabaseMethods getAllSingleVideos:[titleWords count]];
+        else
+        singleVideos  = [DatabaseMethods getAllSingleVideos:5];
+        if(singleVideos.count > 0)
+        {
+            for(int i = 0; i<singleVideos.count ; i++){
+                VideoDetail *videoDetail = [singleVideos objectAtIndex:i];
+                
+                
+                videoDetail.videoTitle = [videoDetail.videoTitle stringByDecodingHTMLEntities];
+                videoDetail.videoTitle = [videoDetail.videoTitle stringByEncodingHTMLEntities];
+                
+                NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
+                [dict setValue:kAPIKeyValue forKey:kAPIKey];
+                [dict setValue:kAPISecretValue forKey:kAPISecret];
+                [dict setValue:videoDetail.videoTitle forKey:kVideoTITLE];
+                [dict setValue:[NSString stringWithFormat:@"%lld",myPhoneNum] forKey:kShareFROM];
+                NSLog(@"shareVideo: %@",dict);
+                
+                videoDetail.mergedVideoURL = [NSString stringWithFormat:@"%@/%@", path, videoDetail.mergedVideoURL];
+                if(videoDetail.mergedVideoURL.length>0)
+                {
+                    NSURL * localVideoURL = [NSURL fileURLWithPath:videoDetail.mergedVideoURL];
+                    if ([[NSFileManager defaultManager] fileExistsAtPath:videoDetail.mergedVideoURL]) {
+                         [self makePOSTVideoShareAtPath:localVideoURL parameters:dict];
+                        NSLog(@"upload single video file name  : %@", videoDetail.mergedVideoURL);
+                    }
+                }
+            }
+        }
+}
+
+-(void)storevideosInDB
+{
     NSString *videoTitle =  [[NSUserDefaults standardUserDefaults] valueForKey:VIDEO_TITLE];
     if(videoTitle.length>0){
         NSMutableArray *titleWords = (NSMutableArray*)[videoTitle componentsSeparatedByString:@" "];
         if(titleWords.count>1)
         {
             [titleWords removeObject:@""];
-            
             
             for(int i = 0; i<titleWords.count ; i++){
                 videoTitle = [videoTitle stringByDecodingHTMLEntities];
@@ -144,31 +185,22 @@
                 NSString *videoWord = [titleWords objectAtIndex:i];
                 videoWord = [videoWord stringByDecodingHTMLEntities];
                 videoWord = [videoWord stringByEncodingHTMLEntities];
-                NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
-                [dict setValue:kAPIKeyValue forKey:kAPIKey];
-                [dict setValue:kAPISecretValue forKey:kAPISecret];
-                [dict setValue:videoWord forKey:kVideoTITLE];
-                [dict setValue:[NSString stringWithFormat:@"%lld",myPhoneNum] forKey:kShareFROM];
-                NSLog(@"shareVideo: %@",dict);
                 
                 NSString *filename = [[NSUserDefaults standardUserDefaults]valueForKey:[NSString stringWithFormat:@"VIDEO_%d_URL",i]];
                 
-                filename = [NSString stringWithFormat:@"%@/%@", path, filename];
-                if(filename.length>0)
-                {
-                    if ([filename rangeOfString:@"Merged"].location != NSNotFound) {
-                        NSURL * localVideoURL = [NSURL fileURLWithPath:filename];
-                        if ([[NSFileManager defaultManager] fileExistsAtPath:filename]) {
-                            [self makePOSTVideoShareAtPath:localVideoURL parameters:dict];
-                            NSLog(@"upload single video file name  : %@", filename);
-                        }
-                    }
+                if ([filename rangeOfString:@"Merged"].location != NSNotFound) {
+                    Chat* chatObj = [[Chat alloc]init];
+                    chatObj.chatText = videoWord;
+                    chatObj.mergedVideo = filename;
+                    
+                    [DatabaseMethods insertSingleVideosInfoInDB:chatObj];
                 }
-                
             }
         }
     }
 }
+
+
 
 -(void)makePOSTVideoShareAtPath:(NSURL *)path parameters:(NSDictionary *)parameters {
     
@@ -197,11 +229,12 @@
                                           [formData appendPartWithFileData:imageData name:kShareThumbnailFILE fileName:@"thumbnail" mimeType:@"image/png"];
                                       }];
     
-    
+    afRequest.timeoutInterval = 60.0;
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:afRequest];
     
     [operation  setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
+         [DatabaseMethods deleteRecordFromDB:0];
         NSString *responseString = [operation responseString];
         // if ([path isEqualToString:kShareVideoURL]) {
         // NSLog(@"Request Successful, ShareVideo response '%@'", responseString);
@@ -350,4 +383,54 @@
     imageView.frame = CGRectMake(0,0,320,320);
     return imageView.image;
 }
+
+
+
+//-(void)uploadVideosInBg
+//{
+//
+//    NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+//
+//    long long int myPhoneNum = [[[NSUserDefaults standardUserDefaults]valueForKey:kMYPhoneNumber] longLongValue];
+//
+//    NSString *videoTitle =  [[NSUserDefaults standardUserDefaults] valueForKey:VIDEO_TITLE];
+//    if(videoTitle.length>0){
+//        NSMutableArray *titleWords = (NSMutableArray*)[videoTitle componentsSeparatedByString:@" "];
+//        if(titleWords.count>1)
+//        {
+//            [titleWords removeObject:@""];
+//
+//
+//            for(int i = 0; i<titleWords.count ; i++){
+//                videoTitle = [videoTitle stringByDecodingHTMLEntities];
+//                videoTitle = [videoTitle stringByEncodingHTMLEntities];
+//
+//                NSString *videoWord = [titleWords objectAtIndex:i];
+//                videoWord = [videoWord stringByDecodingHTMLEntities];
+//                videoWord = [videoWord stringByEncodingHTMLEntities];
+//                NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
+//                [dict setValue:kAPIKeyValue forKey:kAPIKey];
+//                [dict setValue:kAPISecretValue forKey:kAPISecret];
+//                [dict setValue:videoWord forKey:kVideoTITLE];
+//                [dict setValue:[NSString stringWithFormat:@"%lld",myPhoneNum] forKey:kShareFROM];
+//                NSLog(@"shareVideo: %@",dict);
+//
+//                NSString *filename = [[NSUserDefaults standardUserDefaults]valueForKey:[NSString stringWithFormat:@"VIDEO_%d_URL",i]];
+//
+//                filename = [NSString stringWithFormat:@"%@/%@", path, filename];
+//                if(filename.length>0)
+//                {
+//                    if ([filename rangeOfString:@"Merged"].location != NSNotFound) {
+//                        NSURL * localVideoURL = [NSURL fileURLWithPath:filename];
+//                        if ([[NSFileManager defaultManager] fileExistsAtPath:filename]) {
+//                            [self makePOSTVideoShareAtPath:localVideoURL parameters:dict];
+//                            NSLog(@"upload single video file name  : %@", filename);
+//                        }
+//                    }
+//                }
+//
+//            }
+//        }
+//    }
+//}
 @end
