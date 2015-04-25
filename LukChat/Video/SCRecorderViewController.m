@@ -624,9 +624,11 @@
     videoLayer.frame=CGRectMake(0,0, sizeOfVideo.width, sizeOfVideo.height);
     [parentLayer addSublayer:videoLayer];
     [parentLayer addSublayer:overlayLayer];
+
     
+    NSLog(@"Framerate.....,%d,%lld",videoAsset.duration.timescale,videoAsset.duration.value);
     AVMutableVideoComposition *videoComposition=[AVMutableVideoComposition videoComposition] ;
-    videoComposition.frameDuration=CMTimeMake(1, 10);
+    videoComposition.frameDuration = CMTimeMake(1, 24);
     videoComposition.renderSize=sizeOfVideo;
     videoComposition.animationTool=[AVVideoCompositionCoreAnimationTool videoCompositionCoreAnimationToolWithPostProcessingAsVideoLayer:videoLayer inLayer:parentLayer];
     
