@@ -11,7 +11,7 @@
 #import "VideoPreviewViewController.h"
 #import "CustomeVideoPlayViewController.h"
 
-@interface VideoListViewController : UIViewController<UIActionSheetDelegate>
+@interface VideoListViewController : UIViewController<UIActionSheetDelegate,UITextFieldDelegate>
 {
     NSMutableArray *videoTitleLBLArr, *videoTitleButtonsArr,*lukViewsArr;
     NSString *videoTitle;
@@ -91,6 +91,8 @@
 @property (weak, nonatomic) IBOutlet UIView *lukView10;
 
 
+//Video title Textfield
+@property (weak, nonatomic) IBOutlet UITextField *videoTitleTextField;
 
 
 //Video Record button action Method

@@ -50,6 +50,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.titleHeaderLBL.hidden = YES;
     [[NSUserDefaults standardUserDefaults] setObject:@"Welcome To Luk" forKey:VIDEO_TITLE];
     [self initUIArrays];
     // Do any additional setup after loading the view.
@@ -111,7 +113,7 @@
         
         if ([[NSFileManager defaultManager] fileExistsAtPath:filename]) {
             [videofiles addObject:filename];
-           // NSLog(@"filename : %@", filename);
+            // NSLog(@"filename : %@", filename);
         }
     }
     
@@ -122,26 +124,6 @@
     else{
         self.mergeButton.enabled = YES;
     }
-}
-
--(UIImage *)generateThumbImage : (NSString *)filepath
-{
-    NSURL *url = [NSURL fileURLWithPath:filepath];
-    
-    AVAsset *asset = [AVAsset assetWithURL:url];
-    AVAssetImageGenerator *imageGenerator = [[AVAssetImageGenerator alloc]initWithAsset:asset];
-    CMTime time = [asset duration];
-    time.value = 0001;
-    CGImageRef imageRef = [imageGenerator copyCGImageAtTime:time actualTime:NULL error:NULL];
-    UIImage *thumbnail = [UIImage imageWithCGImage:imageRef];
-    CGImageRelease(imageRef);  // CGImageRef won't be released by ARC
-    
-    return thumbnail;
-}
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 
@@ -208,8 +190,8 @@
         
         else
         {
-             UIView *lukView = [lukViewsArr objectAtIndex:i];
-             lukView.hidden = YES;
+            UIView *lukView = [lukViewsArr objectAtIndex:i];
+            lukView.hidden = YES;
         }
     }
 }
@@ -323,12 +305,12 @@
     
     
     if (!videofiles || [videofiles count] < 2) {
-//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"You need two recorded video clips to merge the videos." delegate:self cancelButtonTitle:nil otherButtonTitles:@"Accept", nil];
-//        [alert show];
+        //        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"You need two recorded video clips to merge the videos." delegate:self cancelButtonTitle:nil otherButtonTitles:@"Accept", nil];
+        //        [alert show];
         return;
     }
     
-     NSString *docPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    NSString *docPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
     NSString * timestamp = [NSString stringWithFormat:@"%f",[[NSDate date] timeIntervalSince1970] * 1000];
     fileName = [NSString stringWithFormat:@"%@mergedvideo.mov",timestamp];
     NSString *mergedFile = [NSString stringWithFormat:@"%@/%@", docPath,fileName];
@@ -379,18 +361,54 @@
     NSData *videoData = [NSData dataWithContentsOfURL:outputURL];
     [videoData writeToFile:outputVideoPath atomically:YES];
     
-   [[NSUserDefaults standardUserDefaults] setValue:fileName forKey:kMyVideoToShare];
+    [[NSUserDefaults standardUserDefaults] setValue:fileName forKey:kMyVideoToShare];
     
-    [self addWaterMark];
-     MergeVideosViewController *mergeVC = [self.storyboard instantiateViewControllerWithIdentifier:@"MergeVideosViewController"];
+    MergeVideosViewController *mergeVC = [self.storyboard instantiateViewControllerWithIdentifier:@"MergeVideosViewController"];
     
     [self.navigationController pushViewController:mergeVC animated:YES];
-//    [self playMovie:outputVideoPath];
 }
 
 
--(void)addWaterMark
+//Generate thumnail images
+-(UIImage *)generateThumbImage : (NSString *)filepath
 {
+    NSURL *url = [NSURL fileURLWithPath:filepath];
     
+    AVAsset *asset = [AVAsset assetWithURL:url];
+    AVAssetImageGenerator *imageGenerator = [[AVAssetImageGenerator alloc]initWithAsset:asset];
+    CMTime time = [asset duration];
+    time.value = 0001;
+    CGImageRef imageRef = [imageGenerator copyCGImageAtTime:time actualTime:NULL error:NULL];
+    UIImage *thumbnail = [UIImage imageWithCGImage:imageRef];
+    CGImageRelease(imageRef);  // CGImageRef won't be released by ARC
+    
+    return thumbnail;
 }
+
+//Textfield Delgate methods
+
+-(BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+{
+    return YES;
+}
+
+-(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    return YES;
+}
+
+
+-(BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
+}
+
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
 @end

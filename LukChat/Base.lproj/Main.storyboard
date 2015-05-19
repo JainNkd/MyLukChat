@@ -322,12 +322,21 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="start-screen-text-field.png" translatesAutoresizingMaskIntoConstraints="NO" id="nZw-wN-f60">
                                 <rect key="frame" x="0.0" y="85" width="320" height="40"/>
                             </imageView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7uL-XQ-wcr">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7uL-XQ-wcr">
                                 <rect key="frame" x="10" y="85" width="300" height="40"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                 <color key="textColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0lL-A5-UE9">
+                                <rect key="frame" x="10" y="90" width="300" height="30"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="hzu-ak-A4P" id="Cm9-Zg-2kc"/>
+                                </connections>
+                            </textField>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uvK-2W-6db">
                                 <rect key="frame" x="0.0" y="125" width="320" height="340"/>
                                 <subviews>
@@ -645,6 +654,7 @@
                         <outlet property="videoTitleLBL7" destination="SLs-6X-qmy" id="esb-7L-MkF"/>
                         <outlet property="videoTitleLBL8" destination="pIu-vX-A1j" id="xcn-7Z-x59"/>
                         <outlet property="videoTitleLBL9" destination="jVf-HD-gA8" id="qaC-YO-tA5"/>
+                        <outlet property="videoTitleTextField" destination="0lL-A5-UE9" id="wTe-Cf-wBW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fas-s2-y1l" userLabel="First Responder" sceneMemberID="firstResponder"/>
