@@ -181,17 +181,7 @@
         isSignedin = @"YES";
         [[NSUserDefaults standardUserDefaults] setValue:isSignedin forKey:@"user"];
         
-        
-//        /*     BOOL status = [[NSUserDefaults standardUserDefaults] boolForKey:IS_INPUT_AVAILABLE];
-//         if (!status) {
-//         GetInputViewController *controller = [[GetInputViewController alloc] initWithNibName:@"GetInputViewController" bundle:nil];
-//         [self.navigationController pushViewController:controller animated:YES];
-//         } else {*/
-//        VideoListViewController *controller = [[VideoListViewController alloc] initWithNibName:@"VideoListViewController" bundle:nil];
-//        [self.navigationController pushViewController:controller animated:YES];
-//        // }
-        
-         [self performSegueWithIdentifier:@"TabBarView" sender:self];
+        [self performSegueWithIdentifier:@"TabBarView" sender:self];
         
         
     }

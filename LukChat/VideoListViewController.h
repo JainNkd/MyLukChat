@@ -13,7 +13,7 @@
 
 @interface VideoListViewController : UIViewController<UIActionSheetDelegate>
 {
-    NSMutableArray *videoTitleLBLArr, *videoTitleButtonsArr, *seperationLineArr;
+    NSMutableArray *videoTitleLBLArr, *videoTitleButtonsArr,*lukViewsArr;
     NSString *videoTitle;
     
 //    VideoPreviewViewController *previewController;
@@ -75,6 +75,24 @@
 @property (weak, nonatomic) IBOutlet UILabel *videoTitleLBL8;
 @property (weak, nonatomic) IBOutlet UILabel *videoTitleLBL9;
 @property (weak, nonatomic) IBOutlet UILabel *videoTitleLBL10;
+
+
+//Luk views
+
+@property (weak, nonatomic) IBOutlet UIView *lukView1;
+@property (weak, nonatomic) IBOutlet UIView *lukView2;
+@property (weak, nonatomic) IBOutlet UIView *lukView3;
+@property (weak, nonatomic) IBOutlet UIView *lukView4;
+@property (weak, nonatomic) IBOutlet UIView *lukView5;
+@property (weak, nonatomic) IBOutlet UIView *lukView6;
+@property (weak, nonatomic) IBOutlet UIView *lukView7;
+@property (weak, nonatomic) IBOutlet UIView *lukView8;
+@property (weak, nonatomic) IBOutlet UIView *lukView9;
+@property (weak, nonatomic) IBOutlet UIView *lukView10;
+
+
+
+
 //Video Record button action Method
 
 @property (weak, nonatomic) IBOutlet UIButton *mergeButton;

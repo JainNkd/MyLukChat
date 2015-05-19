@@ -8,7 +8,6 @@
 
 #import "ViewController.h"
 #import "SignUpViewController.h"
-#import "GetInputViewController.h"
 #import "LukiesViewController.h"
 
 @interface ViewController ()

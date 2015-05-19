@@ -50,7 +50,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    [[NSUserDefaults standardUserDefaults] setObject:@"Welcome To Luk" forKey:VIDEO_TITLE];
     [self initUIArrays];
     // Do any additional setup after loading the view.
 }
@@ -157,7 +157,18 @@
     
     videoTitleButtonsArr = [[NSMutableArray alloc]init];
     videoTitleLBLArr = [[NSMutableArray alloc]init];
-    seperationLineArr = [[NSMutableArray alloc]init];
+    lukViewsArr = [[NSMutableArray alloc]init];
+    
+    [lukViewsArr addObject:self.lukView1];
+    [lukViewsArr addObject:self.lukView2];
+    [lukViewsArr addObject:self.lukView3];
+    [lukViewsArr addObject:self.lukView4];
+    [lukViewsArr addObject:self.lukView5];
+    [lukViewsArr addObject:self.lukView6];
+    [lukViewsArr addObject:self.lukView7];
+    [lukViewsArr addObject:self.lukView8];
+    [lukViewsArr addObject:self.lukView9];
+    [lukViewsArr addObject:self.lukView10];
     
     [videoTitleButtonsArr addObject:self.videoTitleButton1];
     [videoTitleButtonsArr addObject:self.videoTitleButton2];
@@ -182,45 +193,23 @@
     [videoTitleLBLArr addObject:self.videoTitleLBL9];
     [videoTitleLBLArr addObject:self.videoTitleLBL10];
     
-    [seperationLineArr addObject:self.seperationLine1];
-    [seperationLineArr addObject:self.seperationLine2];
-    [seperationLineArr addObject:self.seperationLine3];
-    [seperationLineArr addObject:self.seperationLine4];
-    [seperationLineArr addObject:self.seperationLine5];
-    [seperationLineArr addObject:self.seperationLine6];
-    [seperationLineArr addObject:self.seperationLine7];
-    [seperationLineArr addObject:self.seperationLine8];
-    [seperationLineArr addObject:self.seperationLine9];
-    [seperationLineArr addObject:self.seperationLine10];
-    
     
     for(int i=0 ;i<10;i++)
     {
         if(i<[titleWords count])
         {
-            UIButton *buttonObj = [videoTitleButtonsArr objectAtIndex:i];
+            UIView *lukView = [lukViewsArr objectAtIndex:i];
             UILabel *titleLBLObj = [videoTitleLBLArr objectAtIndex:i];
-            UIImageView *seperationLine = [seperationLineArr objectAtIndex:i];
-            
-            buttonObj.hidden = NO;
-            titleLBLObj.hidden = NO;
-            seperationLine.hidden = NO;
-            
             titleLBLObj.text = [titleWords objectAtIndex:i];
-            
+            lukView.hidden = NO;
             [[NSUserDefaults standardUserDefaults]setValue:@"NO" forKey:[NSString stringWithFormat:@"VIDEO_%d_URL",i]];
             NSLog(@"NO");
         }
         
         else
         {
-            UIButton *buttonObj = [videoTitleButtonsArr objectAtIndex:i];
-            UILabel *titleLBLObj = [videoTitleLBLArr objectAtIndex:i];
-            UIImageView *seperationLine = [seperationLineArr objectAtIndex:i];
-            
-            buttonObj.hidden = YES;
-            titleLBLObj.hidden = YES;
-            seperationLine.hidden = YES;
+             UIView *lukView = [lukViewsArr objectAtIndex:i];
+             lukView.hidden = YES;
         }
     }
 }
