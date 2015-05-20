@@ -15,6 +15,7 @@
 #import "SCRecorderViewController.h"
 #import "Constants.h"
 #import "SingleVideoViewController.h"
+#import "CommonMethods.h"
 
 @interface VideoListViewController ()
 
@@ -52,7 +53,6 @@
     [super viewDidLoad];
     
     self.titleHeaderLBL.hidden = YES;
-    [[NSUserDefaults standardUserDefaults] setObject:@"Welcome To Luk" forKey:VIDEO_TITLE];
     [self initUIArrays];
     // Do any additional setup after loading the view.
 }
@@ -67,73 +67,85 @@
         objc_msgSend([UIDevice currentDevice], @selector(setOrientation:),    UIInterfaceOrientationPortrait);
     }
     
-    videoTitle =  [[NSUserDefaults standardUserDefaults] valueForKey:VIDEO_TITLE];
-    
-    NSMutableArray *titleWords = (NSMutableArray*)[videoTitle componentsSeparatedByString:@" "];
-    if(titleWords.count>1)
+    videoTitle = [CommonMethods getVideoTitle];
+    self.videoTitleTextField.text = videoTitle;
+    NSLog(@"videoTitle..%@..",videoTitle);
+    if(videoTitle.length>0){
+        NSMutableArray *titleWords = (NSMutableArray*)[videoTitle componentsSeparatedByString:@" "];
+        if(titleWords.count>1)
         [titleWords removeObject:@""];
-    
-    NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-    
-    for(int i=0 ;i<[titleWords count];i++)
-    {
-        NSString *filename = [[NSUserDefaults standardUserDefaults]valueForKey:[NSString stringWithFormat:@"VIDEO_%d_URL",i]];
         
+        NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
         
-        NSString *tempfile = [NSString stringWithFormat:@"%@/%@", path, filename];
-        
-        
-        UIButton *buttonObj = [videoTitleButtonsArr objectAtIndex:i];
-        UILabel *titleLBLObj = [videoTitleLBLArr objectAtIndex:i];
-        NSLog(@"tempfile....%@",tempfile);
-        UIImage *temp = [[UIImage alloc] initWithContentsOfFile:tempfile];
-        if (temp) {
-            [buttonObj setImage:temp forState:UIControlStateNormal];
-            [titleLBLObj setTextColor:[UIColor yellowColor]];
-        }
-        
-        if ([[NSFileManager defaultManager] fileExistsAtPath:tempfile])
+        for(int i=0 ;i<[titleWords count];i++)
         {
-            UIImage *image = [self generateThumbImage:tempfile];
+            NSString *filename = [[NSUserDefaults standardUserDefaults]valueForKey:[NSString stringWithFormat:@"VIDEO_%d_URL",i]];
             
-            if(image)
+            
+            NSString *tempfile = [NSString stringWithFormat:@"%@/%@", path, filename];
+            
+            
+            UIButton *buttonObj = [videoTitleButtonsArr objectAtIndex:i];
+            UILabel *titleLBLObj = [videoTitleLBLArr objectAtIndex:i];
+            NSLog(@"tempfile....%@",tempfile);
+            UIImage *temp = [[UIImage alloc] initWithContentsOfFile:tempfile];
+            if (temp) {
+                [buttonObj setImage:temp forState:UIControlStateNormal];
+                [titleLBLObj setTextColor:[UIColor yellowColor]];
+            }
+            
+            if ([[NSFileManager defaultManager] fileExistsAtPath:tempfile])
+            {
+                UIImage *image = [self generateThumbImage:tempfile];
+                
+                if(image)
                 [buttonObj setImage:image forState:UIControlStateNormal];
-            [titleLBLObj setTextColor:[UIColor yellowColor]];
+                [titleLBLObj setTextColor:[UIColor yellowColor]];
+            }
         }
-    }
-    
-    NSMutableArray *videofiles = [[NSMutableArray alloc] init];
-    
-    if(titleWords.count>1)
-        [titleWords removeObject:@""];
-    
-    for (int i=0; i < titleWords.count; i++) {
-        NSString *filename = [[NSUserDefaults standardUserDefaults]valueForKey:[NSString stringWithFormat:@"VIDEO_%d_URL",i]];
-        filename = [NSString stringWithFormat:@"%@/%@", path, filename];
         
-        if ([[NSFileManager defaultManager] fileExistsAtPath:filename]) {
-            [videofiles addObject:filename];
-            // NSLog(@"filename : %@", filename);
+        NSMutableArray *videofiles = [[NSMutableArray alloc] init];
+        
+        if(titleWords.count>1)
+        [titleWords removeObject:@""];
+        
+        for (int i=0; i < titleWords.count; i++) {
+            NSString *filename = [[NSUserDefaults standardUserDefaults]valueForKey:[NSString stringWithFormat:@"VIDEO_%d_URL",i]];
+            filename = [NSString stringWithFormat:@"%@/%@", path, filename];
+            
+            if ([[NSFileManager defaultManager] fileExistsAtPath:filename]) {
+                [videofiles addObject:filename];
+                // NSLog(@"filename : %@", filename);
+            }
+        }
+        
+        
+        if (!videofiles || [videofiles count] < 2) {
+            self.mergeButton.enabled = NO;
+        }
+        else{
+            self.mergeButton.enabled = YES;
         }
     }
-    
-    
-    if (!videofiles || [videofiles count] < 2) {
+    else
+    {
         self.mergeButton.enabled = NO;
-    }
-    else{
-        self.mergeButton.enabled = YES;
     }
 }
 
 
 -(void)initUIArrays
 {
-    videoTitle =  [[NSUserDefaults standardUserDefaults] valueForKey:VIDEO_TITLE];
-    
-    NSMutableArray *titleWords = (NSMutableArray*)[videoTitle componentsSeparatedByString:@" "];
-    if(titleWords.count>1)
+    videoTitle = [CommonMethods getVideoTitle];
+    NSMutableArray *titleWords;
+    if(videoTitle.length>0){
+        titleWords = (NSMutableArray*)[videoTitle componentsSeparatedByString:@" "];
+        if(titleWords.count>1)
         [titleWords removeObject:@""];
+    }else
+    {
+        titleWords = [[NSMutableArray alloc]init];
+    }
     
     self.titleHeaderLBL.text = videoTitle;
     
@@ -286,11 +298,11 @@
     NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
     NSMutableArray *videofiles = [[NSMutableArray alloc] init];
     
-    videoTitle =  [[NSUserDefaults standardUserDefaults] valueForKey:VIDEO_TITLE];
+    videoTitle = [CommonMethods getVideoTitle];
     
     NSMutableArray *titleWords = (NSMutableArray*)[videoTitle componentsSeparatedByString:@" "];
     if(titleWords.count>1)
-        [titleWords removeObject:@""];
+    [titleWords removeObject:@""];
     
     for (int i=0; i < titleWords.count; i++) {
         NSString *filename = [[NSUserDefaults standardUserDefaults]valueForKey:[NSString stringWithFormat:@"VIDEO_%d_URL",i]];
@@ -394,7 +406,105 @@
 
 -(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
+    NSLog(@"textField1...%@...text..%@..",textField.text,string);
+    
+    NSMutableArray *array;
+    NSString *textViewStr = textField.text;
+    
+    if(string.length == 0)
+    {
+        if ([textViewStr length] > 0) {
+            textViewStr = [textViewStr substringToIndex:[textViewStr length] - 1];
+            NSLog(@"textField2...%@...text..%@..",textViewStr,string);
+        } else {
+            //no characters to delete... attempting to do so will result in a crash
+        }
+    }
+    else
+    {
+        textViewStr = [NSString stringWithFormat:@"%@%@",textViewStr,string];
+        NSLog(@"textField3...%@...text..%@..",textViewStr,string);
+    }
+    
+    
+    textViewStr = [textViewStr stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    
+    if(textViewStr.length>0){
+        array = (NSMutableArray*)[textViewStr componentsSeparatedByString:@" "];
+        if([array count]>1)
+        [array removeObject:@""];
+    }
+    
+    if ( [string isEqualToString:@""]) {//When detect backspace when have one character.
+        if(isRecordingStart){
+            return NO;
+        }
+        else{
+            [self resetLUK:[array count]];
+            currentLUKIndex = [array count];
+        }
+    }
+    else{
+        if([string isEqualToString:@" "])//When user enter one character.
+        {
+            NSLog(@"textView...%@..",textViewStr);
+            if(textViewStr.length>0){
+                
+                if([array count] > 0 && [array count] < 11){
+                [[NSUserDefaults standardUserDefaults] setObject:textViewStr forKey:VIDEO_TITLE];
+                    if(currentLUKIndex != [array count]){
+                        [self animateView:[array count]wordText:[array lastObject]];
+                        currentLUKIndex = [array count];
+                    }
+                }
+                
+                if([array count] > 10)
+                {
+                    //            message = @"You exceed meximum word limit of 10";
+                    NSLog(@"1 You exceed meximum word limit of 10");
+                    return NO;
+                }
+            }
+        }
+        else
+        {
+            if([array count] > 10)
+            {
+                NSLog(@"2 You exceed meximum word limit of 10");
+                return NO;
+                
+            }
+        }
+    }
     return YES;
+}
+
+//Show look with animation
+-(void)animateView:(NSInteger)viewIndex wordText:(NSString*)wordText
+{
+    UIView *lukView = [lukViewsArr objectAtIndex:viewIndex-1];
+    UILabel *titleLBLObj = [videoTitleLBLArr objectAtIndex:viewIndex-1];
+    titleLBLObj.text = wordText;
+    lukView.hidden = NO;
+    lukView.alpha = 0.0f;
+    lukView.transform = CGAffineTransformMakeScale(0.3,0.3);
+    [UIView beginAnimations:@"fadeInNewView" context:NULL];
+    [UIView setAnimationDuration:.5];
+    lukView.transform = CGAffineTransformMakeScale(1,1);
+    lukView.alpha = 1.0f;
+    [UIView commitAnimations];
+}
+
+//Reset Luk
+-(void)resetLUK:(NSInteger)lukCount
+{
+    lukCount = 10-lukCount;
+    
+    for(NSInteger i = 9; lukCount>0;lukCount--,i--)
+    {
+        UIView *view = [lukViewsArr objectAtIndex:i];
+        view.hidden = YES;
+    }
 }
 
 

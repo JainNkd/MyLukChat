@@ -52,7 +52,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    NSString *videoTitle =  [[NSUserDefaults standardUserDefaults] valueForKey:VIDEO_TITLE];
+    NSString *videoTitle =  [CommonMethods getVideoTitle];
     NSString *filename = [[NSUserDefaults standardUserDefaults]valueForKey:kMyVideoToShare];
     filename = [CommonMethods localFileUrl:filename];
     
@@ -130,7 +130,7 @@
     
     long long int myPhoneNum = [[[NSUserDefaults standardUserDefaults]valueForKey:kMYPhoneNumber] longLongValue];
     
-    NSString *videoTitle =  [[NSUserDefaults standardUserDefaults] valueForKey:VIDEO_TITLE];
+    NSString *videoTitle =  [CommonMethods getVideoTitle];
     NSMutableArray *titleWords;
     NSArray *singleVideos;
     if(videoTitle.length>0){
@@ -171,7 +171,7 @@
 
 -(void)storevideosInDB
 {
-    NSString *videoTitle =  [[NSUserDefaults standardUserDefaults] valueForKey:VIDEO_TITLE];
+    NSString *videoTitle = [CommonMethods getVideoTitle];
     if(videoTitle.length>0){
         NSMutableArray *titleWords = (NSMutableArray*)[videoTitle componentsSeparatedByString:@" "];
         if(titleWords.count>1)
@@ -393,7 +393,7 @@
 //
 //    long long int myPhoneNum = [[[NSUserDefaults standardUserDefaults]valueForKey:kMYPhoneNumber] longLongValue];
 //
-//    NSString *videoTitle =  [[NSUserDefaults standardUserDefaults] valueForKey:VIDEO_TITLE];
+//    NSString *videoTitle =  [CommonMethods getVideoTitle];
 //    if(videoTitle.length>0){
 //        NSMutableArray *titleWords = (NSMutableArray*)[videoTitle componentsSeparatedByString:@" "];
 //        if(titleWords.count>1)

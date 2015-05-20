@@ -1,6 +1,7 @@
 
 #import "CommonMethods.h"
 #import "DataBaseMethods.h"
+#import "Constants.h"
 
 @implementation CommonMethods
 
@@ -774,6 +775,13 @@
     return NO;
 }
 
+//Get Video Tiles
++(NSString*)getVideoTitle
+{
+    NSString *videoTitle =  [[NSUserDefaults standardUserDefaults] valueForKey:VIDEO_TITLE];
+    videoTitle = [videoTitle stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    return videoTitle;
+}
 
 @end
 

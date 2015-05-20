@@ -18,6 +18,7 @@
 
 +(BOOL)reachable;
 +(BOOL)isWiFiConnected;
++(NSString*)getVideoTitle;
 @end
 
 

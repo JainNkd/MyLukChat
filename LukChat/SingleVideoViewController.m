@@ -36,7 +36,7 @@
     singleVideoIndex = [[NSUserDefaults standardUserDefaults]integerForKey:@"SingleVideoIndex"];
     
     
-    NSString *videoTitle =  [[NSUserDefaults standardUserDefaults] valueForKey:VIDEO_TITLE];
+    NSString *videoTitle =  [CommonMethods getVideoTitle];
     
     NSMutableArray *titleWords = (NSMutableArray*)[videoTitle componentsSeparatedByString:@" "];
     if(titleWords.count>1)

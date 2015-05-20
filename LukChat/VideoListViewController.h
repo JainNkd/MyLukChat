@@ -25,8 +25,11 @@
     
     // index of the video
     NSInteger index;
-    
     NSString *fileName;
+    
+    //TextView releated
+    NSInteger currentLUKIndex;
+    BOOL isRecordingStart;
     
 }
 

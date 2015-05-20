@@ -543,7 +543,7 @@
         videoTitle = [[NSUserDefaults standardUserDefaults] valueForKey:kRecievedVideoShareTitle];
     }
     else{
-        videoTitle = [[NSUserDefaults standardUserDefaults] valueForKey:VIDEO_TITLE];
+        videoTitle = [CommonMethods getVideoTitle];
     }
     
     videoTitle = [videoTitle stringByDecodingHTMLEntities];
@@ -700,7 +700,7 @@
         videoTitle = [[NSUserDefaults standardUserDefaults] valueForKey:kRecievedVideoShareTitle];
     }
     else{
-        videoTitle = [[NSUserDefaults standardUserDefaults] valueForKey:VIDEO_TITLE];
+        videoTitle = [CommonMethods getVideoTitle];
         mergedVideoUrl = [[NSUserDefaults standardUserDefaults] valueForKey:kMyVideoToShare];
     }
     
