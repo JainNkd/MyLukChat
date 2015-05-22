@@ -269,6 +269,10 @@
         [[NSUserDefaults standardUserDefaults]setValue:@"NO" forKey:[NSString stringWithFormat:@"VIDEO_%d_URL",i]];
         
         UIView *lukView = [lukViewsArr objectAtIndex:i];
+        UIButton *lukBtn = [videoTitleButtonsArr objectAtIndex:i];
+        UILabel *lbl = [videoTitleLBLArr objectAtIndex:i];
+        [lbl setTextColor:[UIColor whiteColor]];
+        [lukBtn setImage:[UIImage imageNamed: @"screen4-smilemonkey-icon.png"] forState:UIControlStateNormal];
         lukView.hidden = YES;
     }
 }
@@ -539,6 +543,7 @@
 {
     UIView *lukView = [lukViewsArr objectAtIndex:viewIndex-1];
     UILabel *titleLBLObj = [videoTitleLBLArr objectAtIndex:viewIndex-1];
+//    [lukBtn setImage:[UIImage imageNamed: @"screen4-smilemonkey-icon.png"] forState:UIControlStateNormal];
     titleLBLObj.text = wordText;
     lukView.hidden = NO;
     lukView.alpha = 0.0f;
