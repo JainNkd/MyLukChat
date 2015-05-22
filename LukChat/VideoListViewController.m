@@ -57,9 +57,18 @@
     swipe.direction = UISwipeGestureRecognizerDirectionRight;
     [self.view addGestureRecognizer:swipe];
     
+    //Added Tap Gesture to remove keyboard
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
+    [self.view addGestureRecognizer:tap];
+    
     self.titleHeaderLBL.hidden = YES;
     [self initUIArrays];
     // Do any additional setup after loading the view.
+}
+
+-(void)dismissKeyboard
+{
+    [self.videoTitleTextField resignFirstResponder];
 }
 
 -(void)viewWillAppear:(BOOL)animated {
