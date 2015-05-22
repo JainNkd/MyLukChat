@@ -11,7 +11,7 @@
 #import "VideoPreviewViewController.h"
 #import "CustomeVideoPlayViewController.h"
 
-@interface VideoListViewController : UIViewController<UIActionSheetDelegate,UITextFieldDelegate>
+@interface VideoListViewController : UIViewController<UIActionSheetDelegate,UITextFieldDelegate,UIAlertViewDelegate>
 {
     NSMutableArray *videoTitleLBLArr, *videoTitleButtonsArr,*lukViewsArr;
     NSString *videoTitle;

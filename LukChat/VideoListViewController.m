@@ -53,7 +53,7 @@
     [super viewDidLoad];
     
     //Added Sweipe Gesture to reset text box
-    UISwipeGestureRecognizer *swipe = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(resetTextBox)];
+    UISwipeGestureRecognizer *swipe = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(confirmationToResetTextBox)];
     swipe.direction = UISwipeGestureRecognizerDirectionRight;
     [self.view addGestureRecognizer:swipe];
     
@@ -66,6 +66,23 @@
     // Do any additional setup after loading the view.
 }
 
+-(void)confirmationToResetTextBox
+{
+    NSString *textBoxText = [CommonMethods getVideoTitle];
+    if (textBoxText.length>0) {
+    [CommonMethods showAlertWithTitle:@"" message:@"Are you sure you want to clear the text?" cancelBtnTitle:@"Cancel" otherBtnTitle:@"OK" delegate:self tag:1];
+    }
+}
+
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if(buttonIndex==1)
+    {
+        [self resetTextBox];
+    }
+    
+    [alertView dismissWithClickedButtonIndex:buttonIndex animated:YES];
+}
 -(void)dismissKeyboard
 {
     [self.videoTitleTextField resignFirstResponder];
