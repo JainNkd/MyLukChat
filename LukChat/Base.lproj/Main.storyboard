@@ -602,7 +602,7 @@
                                 <rect key="frame" x="10" y="90" width="300" height="30"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardAppearance="alert"/>
                                 <connections>
                                     <outlet property="delegate" destination="hzu-ak-A4P" id="Cm9-Zg-2kc"/>
                                 </connections>
