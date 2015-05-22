@@ -58,6 +58,7 @@
 
 #define kIsFromCreated @"IS_FROM_CREATED"
 #define kIsFromRecieved @"IS_FROM_RECIEVED"
+#define kIsFromMerged @"IS_FROM_MERGED"
 
 #define kCreatedVideoShareTitle @"CREATED_VIDEO_TITLE"
 #define kRecievedVideoShareTitle @"RECIEVED_VIDEO_TITLE"

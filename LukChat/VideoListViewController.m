@@ -52,6 +52,11 @@
 {
     [super viewDidLoad];
     
+    //Added Sweipe Gesture to reset text box
+    UISwipeGestureRecognizer *swipe = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(resetTextBox)];
+    swipe.direction = UISwipeGestureRecognizerDirectionRight;
+    [self.view addGestureRecognizer:swipe];
+    
     self.titleHeaderLBL.hidden = YES;
     [self initUIArrays];
     // Do any additional setup after loading the view.
@@ -67,88 +72,85 @@
         objc_msgSend([UIDevice currentDevice], @selector(setOrientation:),    UIInterfaceOrientationPortrait);
     }
     
-    videoTitle = [CommonMethods getVideoTitle];
-    self.videoTitleTextField.text = videoTitle;
-    NSLog(@"videoTitle..%@..",videoTitle);
-    if(videoTitle.length>0){
-        NSMutableArray *titleWords = (NSMutableArray*)[videoTitle componentsSeparatedByString:@" "];
-        if(titleWords.count>1)
-        [titleWords removeObject:@""];
-        
-        NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-        
-        for(int i=0 ;i<[titleWords count];i++)
-        {
-            NSString *filename = [[NSUserDefaults standardUserDefaults]valueForKey:[NSString stringWithFormat:@"VIDEO_%d_URL",i]];
+    BOOL isfromMerged = [[NSUserDefaults standardUserDefaults]boolForKey:kIsFromMerged];
+    if(isfromMerged)
+    {
+        [[NSUserDefaults standardUserDefaults]setBool:FALSE forKey:kIsFromMerged];
+        [self resetTextBox];
+    }
+    else{
+        videoTitle = [CommonMethods getVideoTitle];
+        self.videoTitleTextField.text = videoTitle;
+        NSLog(@"videoTitle..%@..",videoTitle);
+        if(videoTitle.length>0){
+            NSMutableArray *titleWords = (NSMutableArray*)[videoTitle componentsSeparatedByString:@" "];
+            if(titleWords.count>1)
+                [titleWords removeObject:@""];
             
+            NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
             
-            NSString *tempfile = [NSString stringWithFormat:@"%@/%@", path, filename];
-            
-            
-            UIButton *buttonObj = [videoTitleButtonsArr objectAtIndex:i];
-            UILabel *titleLBLObj = [videoTitleLBLArr objectAtIndex:i];
-            NSLog(@"tempfile....%@",tempfile);
-            UIImage *temp = [[UIImage alloc] initWithContentsOfFile:tempfile];
-            if (temp) {
-                [buttonObj setImage:temp forState:UIControlStateNormal];
-                [titleLBLObj setTextColor:[UIColor yellowColor]];
-            }
-            
-            if ([[NSFileManager defaultManager] fileExistsAtPath:tempfile])
+            currentLUKIndex = titleWords.count-1;
+            for(int i=0 ;i<[titleWords count];i++)
             {
-                UIImage *image = [self generateThumbImage:tempfile];
+                NSString *filename = [[NSUserDefaults standardUserDefaults]valueForKey:[NSString stringWithFormat:@"VIDEO_%d_URL",i]];
                 
-                if(image)
-                [buttonObj setImage:image forState:UIControlStateNormal];
-                [titleLBLObj setTextColor:[UIColor yellowColor]];
+                
+                NSString *tempfile = [NSString stringWithFormat:@"%@/%@", path, filename];
+                
+                
+                UIButton *buttonObj = [videoTitleButtonsArr objectAtIndex:i];
+                UILabel *titleLBLObj = [videoTitleLBLArr objectAtIndex:i];
+                NSLog(@"tempfile....%@",tempfile);
+                UIImage *temp = [[UIImage alloc] initWithContentsOfFile:tempfile];
+                if (temp) {
+                    [buttonObj setImage:temp forState:UIControlStateNormal];
+                    [titleLBLObj setTextColor:[UIColor yellowColor]];
+                }
+                
+                if ([[NSFileManager defaultManager] fileExistsAtPath:tempfile])
+                {
+                    UIImage *image = [self generateThumbImage:tempfile];
+                    
+                    if(image)
+                        [buttonObj setImage:image forState:UIControlStateNormal];
+                    [titleLBLObj setTextColor:[UIColor yellowColor]];
+                }
             }
-        }
-        
-        NSMutableArray *videofiles = [[NSMutableArray alloc] init];
-        
-        if(titleWords.count>1)
-        [titleWords removeObject:@""];
-        
-        for (int i=0; i < titleWords.count; i++) {
-            NSString *filename = [[NSUserDefaults standardUserDefaults]valueForKey:[NSString stringWithFormat:@"VIDEO_%d_URL",i]];
-            filename = [NSString stringWithFormat:@"%@/%@", path, filename];
             
-            if ([[NSFileManager defaultManager] fileExistsAtPath:filename]) {
-                [videofiles addObject:filename];
-                // NSLog(@"filename : %@", filename);
+            NSMutableArray *videofiles = [[NSMutableArray alloc] init];
+            
+            if(titleWords.count>1)
+                [titleWords removeObject:@""];
+            
+            for (int i=0; i < titleWords.count; i++) {
+                NSString *filename = [[NSUserDefaults standardUserDefaults]valueForKey:[NSString stringWithFormat:@"VIDEO_%d_URL",i]];
+                filename = [NSString stringWithFormat:@"%@/%@", path, filename];
+                
+                if ([[NSFileManager defaultManager] fileExistsAtPath:filename]) {
+                    [videofiles addObject:filename];
+                    // NSLog(@"filename : %@", filename);
+                }
+            }
+            
+            
+            if (!videofiles || [videofiles count] < 2) {
+                self.mergeButton.enabled = NO;
+            }
+            else{
+                self.mergeButton.enabled = YES;
             }
         }
-        
-        
-        if (!videofiles || [videofiles count] < 2) {
+        else
+        {
             self.mergeButton.enabled = NO;
         }
-        else{
-            self.mergeButton.enabled = YES;
-        }
     }
-    else
-    {
-        self.mergeButton.enabled = NO;
-    }
+   
 }
 
 
 -(void)initUIArrays
 {
-    videoTitle = [CommonMethods getVideoTitle];
-    NSMutableArray *titleWords;
-    if(videoTitle.length>0){
-        titleWords = (NSMutableArray*)[videoTitle componentsSeparatedByString:@" "];
-        if(titleWords.count>1)
-        [titleWords removeObject:@""];
-    }else
-    {
-        titleWords = [[NSMutableArray alloc]init];
-    }
-    
-    self.titleHeaderLBL.text = videoTitle;
-    
     videoTitleButtonsArr = [[NSMutableArray alloc]init];
     videoTitleLBLArr = [[NSMutableArray alloc]init];
     lukViewsArr = [[NSMutableArray alloc]init];
@@ -187,6 +189,18 @@
     [videoTitleLBLArr addObject:self.videoTitleLBL9];
     [videoTitleLBLArr addObject:self.videoTitleLBL10];
     
+    videoTitle = [CommonMethods getVideoTitle];
+    NSMutableArray *titleWords;
+    if(videoTitle.length>0){
+        titleWords = (NSMutableArray*)[videoTitle componentsSeparatedByString:@" "];
+        if(titleWords.count>1)
+            [titleWords removeObject:@""];
+    }else
+    {
+        titleWords = [[NSMutableArray alloc]init];
+    }
+    
+    self.titleHeaderLBL.text = videoTitle;
     
     for(int i=0 ;i<10;i++)
     {
@@ -199,7 +213,6 @@
             [[NSUserDefaults standardUserDefaults]setValue:@"NO" forKey:[NSString stringWithFormat:@"VIDEO_%d_URL",i]];
             NSLog(@"NO");
         }
-        
         else
         {
             UIView *lukView = [lukViewsArr objectAtIndex:i];
@@ -218,6 +231,22 @@
  }
  */
 
+-(void)resetTextBox
+{
+    self.mergeButton.enabled = NO;
+    isRecordingStart = NO;
+    currentLUKIndex = -1;
+    [[NSUserDefaults standardUserDefaults]setValue:@"" forKey:VIDEO_TITLE];
+    self.videoTitleTextField.text = @"";
+    for(int i=0 ;i<10;i++)
+    {
+        [[NSUserDefaults standardUserDefaults]setValue:@"NO" forKey:[NSString stringWithFormat:@"VIDEO_%d_URL",i]];
+        
+        UIView *lukView = [lukViewsArr objectAtIndex:i];
+        lukView.hidden = YES;
+    }
+}
+
 - (IBAction)videoRecordButtonPressed:(UIButton *)sender {
     UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Option" delegate:self cancelButtonTitle:CANCEL_BUTTON destructiveButtonTitle:nil otherButtonTitles:@"Record", @"Load",@"Play", nil];
     [actionSheet setTag:sender.tag];
@@ -226,7 +255,7 @@
 
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    
+    isRecordingStart = YES;
     NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
     
     NSString *filename = [[NSUserDefaults standardUserDefaults]valueForKey:[NSString stringWithFormat:@"VIDEO_%d_URL",(int)actionSheet.tag]];
@@ -302,7 +331,7 @@
     
     NSMutableArray *titleWords = (NSMutableArray*)[videoTitle componentsSeparatedByString:@" "];
     if(titleWords.count>1)
-    [titleWords removeObject:@""];
+        [titleWords removeObject:@""];
     
     for (int i=0; i < titleWords.count; i++) {
         NSString *filename = [[NSUserDefaults standardUserDefaults]valueForKey:[NSString stringWithFormat:@"VIDEO_%d_URL",i]];
@@ -432,7 +461,7 @@
     if(textViewStr.length>0){
         array = (NSMutableArray*)[textViewStr componentsSeparatedByString:@" "];
         if([array count]>1)
-        [array removeObject:@""];
+            [array removeObject:@""];
     }
     
     if ( [string isEqualToString:@""]) {//When detect backspace when have one character.
@@ -451,7 +480,7 @@
             if(textViewStr.length>0){
                 
                 if([array count] > 0 && [array count] < 11){
-                [[NSUserDefaults standardUserDefaults] setObject:textViewStr forKey:VIDEO_TITLE];
+                    [[NSUserDefaults standardUserDefaults] setObject:textViewStr forKey:VIDEO_TITLE];
                     if(currentLUKIndex != [array count]){
                         [self animateView:[array count]wordText:[array lastObject]];
                         currentLUKIndex = [array count];
@@ -502,6 +531,7 @@
     
     for(NSInteger i = 9; lukCount>0;lukCount--,i--)
     {
+        
         UIView *view = [lukViewsArr objectAtIndex:i];
         view.hidden = YES;
     }

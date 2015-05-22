@@ -52,6 +52,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [[NSUserDefaults standardUserDefaults] setBool:TRUE forKey:kIsFromMerged];
     NSString *videoTitle =  [CommonMethods getVideoTitle];
     NSString *filename = [[NSUserDefaults standardUserDefaults]valueForKey:kMyVideoToShare];
     filename = [CommonMethods localFileUrl:filename];
