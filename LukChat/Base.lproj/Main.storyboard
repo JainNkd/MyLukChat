@@ -321,6 +321,7 @@
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                 <connections>
                                     <action selector="textFielddidendediting:" destination="RKr-Z6-xE7" eventType="editingDidEndOnExit" id="1QC-vH-4yO"/>
+                                    <outlet property="delegate" destination="RKr-Z6-xE7" id="64V-9c-C0s"/>
                                 </connections>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9su-Cw-1Ik">

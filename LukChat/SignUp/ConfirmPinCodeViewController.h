@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ConfirmPinCodeViewController : UIViewController
+@interface ConfirmPinCodeViewController : UIViewController<UITextFieldDelegate>
 {
     IBOutlet UITextField *number;
     NSString *isSignedin;

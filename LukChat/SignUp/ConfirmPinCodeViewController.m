@@ -36,7 +36,7 @@
     
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
     [self.view addGestureRecognizer:tap];
-
+    
     // Do any additional setup after loading the view.
 }
 
@@ -68,18 +68,42 @@
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+ {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 -(IBAction)textFielddidendediting:(id)sender{
     [sender resignFirstResponder];
+}
+
+-(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    
+    if(string.length>0){
+        NSString *codeText = [NSString stringWithFormat:@"%@%@",textField.text,string];
+        if(codeText.length == 4)
+        {
+            textField.text = codeText;
+            [textField resignFirstResponder];
+            return FALSE;
+        }
+        else if (codeText.length > 4)
+        {
+            return FALSE;
+        }
+        else
+        {
+            return TRUE;
+        }
+    }else{
+        return TRUE;
+    }
 }
 
 -(void)callGetAccountInfoService {
@@ -108,7 +132,7 @@
     [[NSUserDefaults standardUserDefaults] setValue:isSignedin forKey:@"user"];
     
     NSString *verifStatus = [[NSUserDefaults standardUserDefaults] valueForKey:kMY_VERIFICATION_CODE];
-//    number.text = verifStatus;
+    //    number.text = verifStatus;
     if([number.text isEqualToString:verifStatus]){
         
         NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
