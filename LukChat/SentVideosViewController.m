@@ -67,7 +67,7 @@
     cnCode = [CommonMethods countryPhoneCode:countryCode];
     
     myPhoneNum = [[[NSUserDefaults standardUserDefaults] valueForKey:kMYPhoneNumber] longLongValue];
-    //        myPhoneNum = 491712223746;
+            myPhoneNum = 918050636309;
     
     //Local database
     [self reloadHistoryData];
