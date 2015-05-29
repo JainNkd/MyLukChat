@@ -169,6 +169,8 @@
 		875BFD2B1A5730CC00A83E35 /* ShareVideoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 875BFD291A5730CC00A83E35 /* ShareVideoTableViewCell.m */; };
 		875BFD2E1A57310B00A83E35 /* SentVideosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 875BFD2D1A57310B00A83E35 /* SentVideosViewController.m */; };
 		875BFD321A57317C00A83E35 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 875BFD311A57317C00A83E35 /* User.m */; };
+		875F64BE1B18FDA10074E244 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 875F64BC1B18FDA10074E244 /* Fabric.framework */; };
+		875F64BF1B18FDA20074E244 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 875F64BD1B18FDA10074E244 /* Crashlytics.framework */; };
 		877E21771A99C23E009DBF71 /* UCZProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 877E21761A99C23E009DBF71 /* UCZProgressView.m */; };
 		8782D2971ADC368D00A1137A /* MonkeyShortAIFF.AIFF in Resources */ = {isa = PBXBuildFile; fileRef = 8782D2961ADC368D00A1137A /* MonkeyShortAIFF.AIFF */; };
 		8786A4271ADAE0B700FD206B /* NSString+HTML.m in Sources */ = {isa = PBXBuildFile; fileRef = 8786A4261ADAE0B700FD206B /* NSString+HTML.m */; };
@@ -509,6 +511,8 @@
 		875BFD2D1A57310B00A83E35 /* SentVideosViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SentVideosViewController.m; sourceTree = "<group>"; };
 		875BFD301A57317C00A83E35 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		875BFD311A57317C00A83E35 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		875F64BC1B18FDA10074E244 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
+		875F64BD1B18FDA10074E244 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		877E21751A99C23E009DBF71 /* UCZProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UCZProgressView.h; sourceTree = "<group>"; };
 		877E21761A99C23E009DBF71 /* UCZProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UCZProgressView.m; sourceTree = "<group>"; };
 		8782D2961ADC368D00A1137A /* MonkeyShortAIFF.AIFF */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = MonkeyShortAIFF.AIFF; sourceTree = "<group>"; };
@@ -598,6 +602,7 @@
 				8BC142FC1AA724E2002F36B0 /* SystemConfiguration.framework in Frameworks */,
 				8BC142FA1AA724D8002F36B0 /* StoreKit.framework in Frameworks */,
 				8BC142F81AA724C3002F36B0 /* Security.framework in Frameworks */,
+				875F64BF1B18FDA20074E244 /* Crashlytics.framework in Frameworks */,
 				8BC142F61AA724BA002F36B0 /* QuartzCore.framework in Frameworks */,
 				8BC142F41AA724B0002F36B0 /* MobileCoreServices.framework in Frameworks */,
 				8BC142F21AA7249D002F36B0 /* CoreLocation.framework in Frameworks */,
@@ -615,6 +620,7 @@
 				8BC142EA1AA72415002F36B0 /* ParseCrashReporting.framework in Frameworks */,
 				6338501D19839F2D00C3256A /* Foundation.framework in Frameworks */,
 				8BC142EC1AA72415002F36B0 /* ParseUI.framework in Frameworks */,
+				875F64BE1B18FDA10074E244 /* Fabric.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -732,6 +738,8 @@
 			isa = PBXGroup;
 			children = (
 				8BC142FD1AA724ED002F36B0 /* libz.dylib */,
+				875F64BC1B18FDA10074E244 /* Fabric.framework */,
+				875F64BD1B18FDA10074E244 /* Crashlytics.framework */,
 				8BC142FB1AA724E2002F36B0 /* SystemConfiguration.framework */,
 				8BC142F91AA724D8002F36B0 /* StoreKit.framework */,
 				8BC142F71AA724C3002F36B0 /* Security.framework */,
@@ -1389,6 +1397,7 @@
 				6338501519839F2D00C3256A /* Sources */,
 				6338501619839F2D00C3256A /* Frameworks */,
 				6338501719839F2D00C3256A /* Resources */,
+				875F64B91B18FCED0074E244 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -1608,6 +1617,22 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		875F64B91B18FCED0074E244 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Fabric.framework/run f4734fa2847f34dbe5b7e0f3cec825e7605921cd e2b12479a73bc1974ea55946e845bced30d2775d08118f575483a5e788118b8f";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		6338501519839F2D00C3256A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -1784,8 +1809,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -1824,8 +1849,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1847,11 +1872,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/LukChat/parse-library-1.6.3",
+					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LukChat/LukChat-Prefix.pch";
@@ -1868,11 +1894,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/LukChat/parse-library-1.6.3",
+					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LukChat/LukChat-Prefix.pch";

@@ -11,7 +11,9 @@
 #import "CommonMethods.h"
 #import "Constants.h"
 #import "DatabaseMethods.h"
-#import <Parse/Parse.h>
+#import <Fabric/Fabric.h>
+#import <Crashlytics/Crashlytics.h>
+
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate> {
     

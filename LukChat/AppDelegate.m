@@ -15,6 +15,7 @@
 #import "Common/ConnectionHandler.h"
 #import "AFJSONRequestOperation.h"
 #import "AFNetworkActivityIndicatorManager.h"
+#import <Parse/Parse.h>
 
 @implementation AppDelegate
 
@@ -31,6 +32,10 @@
     NSURL *url = [NSURL URLWithString:kServerURL];
     self.httpClient = [[AFHTTPClient alloc] initWithBaseURL:url];
     
+    // Crashlytics
+    [Fabric with:@[CrashlyticsKit]];
+    
+    //Parse
     [Parse setApplicationId:@"pGx3VxVJ0hAU6TNDrNVo2LboonA5HbmakPRUclGL"
                   clientKey:@"QXf9V4NCjtz3FyQePhEUT7SFCXSfip8Oygyvy8ps"];
     
