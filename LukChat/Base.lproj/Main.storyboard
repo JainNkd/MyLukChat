@@ -18,7 +18,7 @@
                         <rect key="frame" x="2" y="-4" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="1start-screen-v1_5.png" translatesAutoresizingMaskIntoConstraints="NO" id="WEp-IV-sBQ">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1start-screen-v1_5.png" translatesAutoresizingMaskIntoConstraints="NO" id="WEp-IV-sBQ">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="25w-gM-vGF">
@@ -31,14 +31,14 @@
                                     <segue destination="4Z4-ez-jN2" kind="custom" identifier="TabBarView" customClass="PushNoAnimationSegue" id="Q69-w8-5QU"/>
                                 </connections>
                             </button>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FkQ-en-J7t">
-                                <rect key="frame" x="10" y="114" width="294" height="54"/>
-                                <state key="normal" title="Button">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="WEp-IV-sBQ" secondAttribute="trailing" id="8U5-JR-G9c"/>
+                            <constraint firstItem="WEp-IV-sBQ" firstAttribute="top" secondItem="qgC-U6-GT3" secondAttribute="top" id="NLn-Jo-Ytq"/>
+                            <constraint firstAttribute="bottom" secondItem="WEp-IV-sBQ" secondAttribute="bottom" id="P1E-lt-wbz"/>
+                            <constraint firstItem="WEp-IV-sBQ" firstAttribute="leading" secondItem="qgC-U6-GT3" secondAttribute="leading" id="yyn-Dz-xgi"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="hZ5-TB-8B8"/>
                     <connections>
@@ -930,7 +930,8 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="lukes-sent-logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="iCd-nc-bSi">
                                 <rect key="frame" x="10" y="10" width="154" height="40"/>
                             </imageView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" bounces="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="85" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="K8t-B3-V5r">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="85" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="K8t-B3-V5r">
+                                <rect key="frame" x="0.0" y="64" width="320" height="454"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ReceivedCell" rowHeight="130" id="DGQ-pQ-Dk7" userLabel="ReceivedCell" customClass="RecievedVideoTableViewCell">
@@ -1099,6 +1100,12 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="K8t-B3-V5r" firstAttribute="top" secondItem="X1V-CR-PPQ" secondAttribute="top" constant="64" id="ax8-r6-lW6"/>
+                            <constraint firstAttribute="trailing" secondItem="K8t-B3-V5r" secondAttribute="trailing" id="dbE-zf-rEd"/>
+                            <constraint firstItem="K8t-B3-V5r" firstAttribute="leading" secondItem="X1V-CR-PPQ" secondAttribute="leading" id="geg-vA-WN2"/>
+                            <constraint firstAttribute="bottom" secondItem="K8t-B3-V5r" secondAttribute="bottom" constant="50" id="jGs-S1-tNP"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="kCI-zf-iOz"/>
                     <connections>
@@ -1124,21 +1131,8 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="luk-iphone-final-merged-videos-main-bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="mIE-II-Tw7">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6rR-oS-VOx">
-                                <rect key="frame" x="0.0" y="460" width="320" height="50"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
-                                <state key="normal" title="Send to your LUKis">
-                                    <color key="titleColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="sendToLukiesButtonPressed:" destination="dOp-LC-Mka" eventType="touchUpInside" id="TuU-NW-bix"/>
-                                </connections>
-                            </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="video-send-logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="fpo-Hn-Ahl">
-                                <rect key="frame" x="10" y="10" width="144" height="40"/>
-                            </imageView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="DQX-zG-IiK">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="DQX-zG-IiK">
+                                <rect key="frame" x="0.0" y="64" width="320" height="396"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="szS-WV-OPq">
@@ -1153,11 +1147,44 @@
                                     <outlet property="delegate" destination="dOp-LC-Mka" id="2a7-Rq-9JT"/>
                                 </connections>
                             </tableView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="verfication-bottom-line.png" translatesAutoresizingMaskIntoConstraints="NO" id="fWE-e0-21p">
-                                <rect key="frame" x="0.0" y="460" width="320" height="1"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aiR-G9-1ri">
+                                <rect key="frame" x="0.0" y="460" width="320" height="51"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6rR-oS-VOx">
+                                        <rect key="frame" x="0.0" y="1" width="320" height="50"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                        <state key="normal" title="Send to your LUKis">
+                                            <color key="titleColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="sendToLukiesButtonPressed:" destination="dOp-LC-Mka" eventType="touchUpInside" id="TuU-NW-bix"/>
+                                        </connections>
+                                    </button>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="verfication-bottom-line.png" translatesAutoresizingMaskIntoConstraints="NO" id="fWE-e0-21p">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="1"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="51" id="IPF-tm-HNQ"/>
+                                    <constraint firstAttribute="width" constant="320" id="gTE-q0-rSO"/>
+                                </constraints>
+                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="video-send-logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="fpo-Hn-Ahl">
+                                <rect key="frame" x="10" y="10" width="144" height="40"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="aiR-G9-1ri" secondAttribute="bottom" constant="57" id="0Ri-Lq-8Mh"/>
+                            <constraint firstItem="DQX-zG-IiK" firstAttribute="leading" secondItem="a3c-Mm-D7j" secondAttribute="leading" id="AhN-yZ-mue"/>
+                            <constraint firstAttribute="trailing" secondItem="DQX-zG-IiK" secondAttribute="trailing" id="H4u-PX-QIH"/>
+                            <constraint firstItem="DQX-zG-IiK" firstAttribute="top" secondItem="a3c-Mm-D7j" secondAttribute="top" constant="64" id="JoV-7K-G18"/>
+                            <constraint firstItem="aiR-G9-1ri" firstAttribute="leading" secondItem="a3c-Mm-D7j" secondAttribute="leading" id="lcO-iq-oha"/>
+                            <constraint firstItem="DQX-zG-IiK" firstAttribute="bottom" secondItem="aiR-G9-1ri" secondAttribute="top" id="lsC-ya-FoC"/>
+                            <constraint firstAttribute="trailing" secondItem="aiR-G9-1ri" secondAttribute="trailing" id="osg-7D-1sv"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="contactTableView" destination="DQX-zG-IiK" id="Jfr-5E-3Rx"/>
@@ -1199,7 +1226,6 @@
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="pic-bgwith-monkey-icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="cCD-cf-EFZ">
@@ -1375,7 +1401,8 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="video-send-logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="QKO-S5-Ur4">
                                 <rect key="frame" x="10" y="10" width="144" height="40"/>
                             </imageView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="280" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="I5G-Bb-cX9">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="280" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="I5G-Bb-cX9">
+                                <rect key="frame" x="0.0" y="64" width="320" height="454"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -1470,6 +1497,12 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="I5G-Bb-cX9" firstAttribute="top" secondItem="W1f-ux-2Ko" secondAttribute="top" constant="64" id="4hQ-Gv-Wc4"/>
+                            <constraint firstAttribute="trailing" secondItem="I5G-Bb-cX9" secondAttribute="trailing" id="bC9-8K-GzC"/>
+                            <constraint firstItem="I5G-Bb-cX9" firstAttribute="leading" secondItem="W1f-ux-2Ko" secondAttribute="leading" id="i5D-80-Yyl"/>
+                            <constraint firstAttribute="bottom" secondItem="I5G-Bb-cX9" secondAttribute="bottom" constant="50" id="nVg-WS-FpR"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="3a5-JW-7rk"/>
                     <connections>
@@ -1678,6 +1711,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="kz9-Bu-m6X"/>
+        <segue reference="Q69-w8-5QU"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -566,7 +566,7 @@
 
 //Fetch All History Videos
 +(NSMutableArray *)getAllHistoryVideos {
-    NSLog(@"getAllCreatedVideos");
+    NSLog(@"getAllHistoryVideos");
     // Setup the database object
     sqlite3 *database;
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
