@@ -16,9 +16,12 @@
 #import "Constants.h"
 #import "SingleVideoViewController.h"
 #import "CommonMethods.h"
+#import "Constants.h"
 
 @interface VideoListViewController ()
-
+{
+    NSInteger videoCount;
+}
 @end
 
 @implementation VideoListViewController
@@ -90,6 +93,15 @@
 
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    
+    if(IS_IPHONE_4_OR_LESS)
+    {
+        videoCount = 8;
+    }
+    else
+    {
+        videoCount = 10;
+    }
     
     [self.mergeButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [self.mergeButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateDisabled];
@@ -509,7 +521,7 @@
             NSLog(@"textView...%@..",textViewStr);
             if(textViewStr.length>0){
                 
-                if([array count] > 0 && [array count] < 11){
+                if([array count] > 0 && [array count] < (videoCount+1)){
                     [[NSUserDefaults standardUserDefaults] setObject:textViewStr forKey:VIDEO_TITLE];
                     if(currentLUKIndex != [array count]){
                         [self animateView:[array count]wordText:[array lastObject]];
@@ -517,7 +529,7 @@
                     }
                 }
                 
-                if([array count] > 10)
+                if([array count] > videoCount)
                 {
                     //            message = @"You exceed meximum word limit of 10";
                     NSLog(@"1 You exceed meximum word limit of 10");
@@ -527,7 +539,7 @@
         }
         else
         {
-            if([array count] > 10)
+            if([array count] > videoCount)
             {
                 NSLog(@"2 You exceed meximum word limit of 10");
                 return NO;
