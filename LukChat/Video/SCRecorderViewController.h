@@ -30,6 +30,16 @@
 @property (weak, nonatomic) IBOutlet UIButton *saveButton;
 @property (weak, nonatomic) IBOutlet UIButton *cancelButton;
 
+
+@property (weak, nonatomic) IBOutlet UIView *topView;
+
+
+@property (weak, nonatomic) IBOutlet UIView *bottomView;
+
+@property (weak, nonatomic) IBOutlet UIImageView *bgMonkeyImg;
+
+
+
 //- (IBAction)switchCameraMode:(id)sender;
 //- (IBAction)switchFlash:(id)sender;
 //- (IBAction)switchGhostMode:(id)sender;

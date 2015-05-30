@@ -19,6 +19,7 @@
 #import "SCSessionListViewController.h"
 #import "SCRecordSessionManager.h"
 #import <MobileCoreServices/MobileCoreServices.h>
+#import "Constants.h"
 
 #define kVideoPreset AVCaptureSessionPresetHigh
 
@@ -66,6 +67,53 @@
     return self;
 }
 
+-(void)resetCameraView
+{
+    if(IS_IPHONE_4_OR_LESS)
+    {
+        self.topView.translatesAutoresizingMaskIntoConstraints = YES;
+        self.bottomView.translatesAutoresizingMaskIntoConstraints =YES;
+        self.bgMonkeyImg.translatesAutoresizingMaskIntoConstraints=YES;
+        self.previewView.translatesAutoresizingMaskIntoConstraints = YES;
+        self.cancelButton.translatesAutoresizingMaskIntoConstraints =YES;
+        self.saveButton.translatesAutoresizingMaskIntoConstraints = YES;
+        self.startRecordButtom.translatesAutoresizingMaskIntoConstraints=YES;
+        self.pauseRecordButton.translatesAutoresizingMaskIntoConstraints =YES;
+        
+        CGRect topViewFrame = self.topView.frame;
+        topViewFrame.size.height = 75;
+        self.topView.frame = topViewFrame;
+        
+        CGRect bottomFrame = self.bottomView.frame;
+        bottomFrame.origin.y = 395;
+        self.bottomView.frame = bottomFrame;
+        
+        CGRect previewViewFrame = self.previewView.frame;
+        previewViewFrame.origin.y = 75;
+        self.previewView.frame = previewViewFrame;
+        
+        CGRect cancleBtnFrame = self.cancelButton.frame;
+        cancleBtnFrame.origin.y = 416;
+        self.cancelButton.frame = cancleBtnFrame;
+        
+        CGRect saveBtnFrame = self.saveButton.frame;
+        saveBtnFrame.origin.y = 416;
+        self.saveButton.frame = saveBtnFrame;
+        
+        CGRect bgBtnFrame = self.bgMonkeyImg.frame;
+        bgBtnFrame.origin.y  = 398;
+        self.bgMonkeyImg.frame = bgBtnFrame;
+        
+        CGRect startBtnFrame = self.startRecordButtom.frame;
+        startBtnFrame.origin.y = 413;
+        self.startRecordButtom.frame = startBtnFrame;
+        
+        CGRect stopButton = self.pauseRecordButton.frame;
+        stopButton.origin.y = 413;
+        self.pauseRecordButton.frame = stopButton;
+    }
+}
+
 -(BOOL)shouldAutorotate
 {
     return YES;
@@ -85,6 +133,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [self resetCameraView];
     
     //    if ([[UIDevice currentDevice] respondsToSelector:@selector(setOrientation:)]) {
     //        objc_msgSend([UIDevice currentDevice], @selector(setOrientation:),    UIInterfaceOrientationLandscapeRight );

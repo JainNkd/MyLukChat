@@ -754,26 +754,35 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6EQ-Za-41c">
+                                <rect key="frame" x="0.0" y="124" width="320" height="320"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <view alpha="0.5" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZN7-rR-Wz5" userLabel="TopView">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="124"/>
                                 <color key="backgroundColor" red="0.61568627450980395" green="0.61568627450980395" blue="0.61568627450980395" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <view alpha="0.5" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ziD-Q8-guj" userLabel="BottomView">
+                                <rect key="frame" x="0.0" y="444" width="320" height="124"/>
                                 <color key="backgroundColor" red="0.61568627450980395" green="0.61568627450980395" blue="0.61568627450980395" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="camerapage-icon-running-indication-white.png" translatesAutoresizingMaskIntoConstraints="NO" id="caF-2W-rkB">
                                 <rect key="frame" x="94" y="22" width="30" height="22"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UJK-X1-2PH" userLabel="save">
-                                <rect key="frame" x="250" y="482" width="46" height="46"/>
-                                <state key="normal" image="camerapage-icon-save.png">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XrN-To-JaA">
+                                <rect key="frame" x="8" y="16" width="85" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HcW-yf-hCP" userLabel="camera">
                                 <rect key="frame" x="235" y="10" width="75" height="50"/>
                                 <state key="normal" image="camerapage-icon-rottat-camera.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UJK-X1-2PH" userLabel="save">
+                                <rect key="frame" x="250" y="482" width="46" height="46"/>
+                                <state key="normal" image="camerapage-icon-save.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
@@ -783,12 +792,6 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XrN-To-JaA">
-                                <rect key="frame" x="8" y="16" width="85" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="monkey-featherbg.png" translatesAutoresizingMaskIntoConstraints="NO" id="yYP-7V-be2">
                                 <rect key="frame" x="120" y="464" width="79" height="79"/>
                             </imageView>
@@ -816,6 +819,8 @@
                     <nil key="simulatedStatusBarMetrics"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <connections>
+                        <outlet property="bgMonkeyImg" destination="yYP-7V-be2" id="XCt-Y6-10E"/>
+                        <outlet property="bottomView" destination="ziD-Q8-guj" id="3SA-zY-vRT"/>
                         <outlet property="cancelButton" destination="FBP-K7-18g" id="bO4-kD-74d"/>
                         <outlet property="ghostModeButton" destination="eGB-xg-rV4" id="tKN-HI-b7a"/>
                         <outlet property="pauseRecordButton" destination="peD-7A-wkz" id="dip-QQ-SOO"/>
@@ -825,6 +830,7 @@
                         <outlet property="startRecordButtom" destination="GaD-Z3-Soh" id="5aS-Wc-9nC"/>
                         <outlet property="timeRecordedLabel" destination="XrN-To-JaA" id="8Uf-R9-fCj"/>
                         <outlet property="timerMonkeyIcon" destination="caF-2W-rkB" id="BZf-m6-NlW"/>
+                        <outlet property="topView" destination="ZN7-rR-Wz5" id="Tjg-2h-YQk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gc5-5p-sU8" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -868,7 +874,7 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="video-send-logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="751-p5-kdj">
                                 <rect key="frame" x="10" y="10" width="144" height="40"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="merged-videos-pic.png" translatesAutoresizingMaskIntoConstraints="NO" id="vaI-IX-TFa">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vaI-IX-TFa">
                                 <rect key="frame" x="0.0" y="61" width="320" height="320"/>
                             </imageView>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="N9N-VO-AfM">
@@ -934,6 +940,7 @@
                         <outlet property="mergeVideoImg" destination="vaI-IX-TFa" id="rDI-mt-e2a"/>
                         <outlet property="userNameLBL" destination="oYL-DH-pvv" id="oEq-za-3i2"/>
                         <outlet property="videoTitleLBL" destination="SCH-3r-NLp" id="eSH-TR-ePg"/>
+                        <outlet property="videoTitleView" destination="N9N-VO-AfM" id="kG5-RQ-ARo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9BC-eK-Ikf" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1723,7 +1730,6 @@
         <image name="luk-iphone-final-textenter-mainbg.png" width="640" height="1136"/>
         <image name="lukes-sent-logo.png" width="154" height="40"/>
         <image name="merged-videos-pic-description-bg.png" width="640" height="108"/>
-        <image name="merged-videos-pic.png" width="640" height="431"/>
         <image name="monkey-featherbg.png" width="79" height="79"/>
         <image name="monkeywithbg.png" width="80" height="80"/>
         <image name="pic-between-line.png" width="1" height="112"/>

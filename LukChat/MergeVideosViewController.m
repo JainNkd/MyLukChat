@@ -35,6 +35,16 @@
     return self;
 }
 
+-(void)awakeFromNib
+{
+    if(IS_IPHONE_4_OR_LESS)
+    {
+        self.videoTitleView.translatesAutoresizingMaskIntoConstraints = YES;
+        CGRect videoTitileFrame = self.videoTitleView.frame;
+        videoTitileFrame.origin.y -=54;
+        self.videoTitleView.frame = videoTitileFrame;
+    }
+}
 
 -(BOOL)shouldAutorotate
 {

@@ -20,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *videoTitleLBL;
 @property (weak, nonatomic) IBOutlet UILabel *userNameLBL;
 
+@property (weak, nonatomic) IBOutlet UIView *videoTitleView;
 - (IBAction)PlayVideoButtonAction:(UIButton *)sender;
 
 - (IBAction)sendToLukiesButtonPressed:(UIButton *)sender;
