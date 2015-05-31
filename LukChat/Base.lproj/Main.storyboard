@@ -677,7 +677,7 @@
                                     <constraint firstAttribute="height" constant="1" id="VuP-Et-rjY"/>
                                 </constraints>
                             </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter video title" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0lL-A5-UE9">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Write your LUK" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0lL-A5-UE9">
                                 <rect key="frame" x="10" y="90" width="300" height="30"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -890,8 +890,8 @@
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="merged-videos-pic-description-bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="ArA-Pa-gfB">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="54"/>
                                     </imageView>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Happy Birthday " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SCH-3r-NLp">
-                                        <rect key="frame" x="10" y="8" width="300" height="20"/>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="bhbhh hjhkh bvkkjskvbnk " lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SCH-3r-NLp">
+                                        <rect key="frame" x="10" y="4" width="300" height="46"/>
                                         <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="20"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
