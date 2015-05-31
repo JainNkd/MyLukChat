@@ -48,6 +48,14 @@
 {
     [super viewDidLoad];
     
+    if(IS_IPHONE_4_OR_LESS){
+    self.signupView.translatesAutoresizingMaskIntoConstraints = YES;
+    CGRect signupFrame = self.signupView.frame;
+        signupFrame.origin.y = 100;
+        self.signupView.frame = signupFrame;
+    
+    }
+    
     myPickerView = [[CountryPicker alloc] initWithFrame:CGRectMake(0, 150, 170, 160)];
     myPickerView.delegate = self;
     myPickerView.showsSelectionIndicator = YES;
@@ -135,6 +143,7 @@
     UIDatePicker *birthDayPicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(0,44, 320, 200)];
     [birthDayPicker setBackgroundColor:[UIColor whiteColor] ];
     [birthDayPicker setDatePickerMode:UIDatePickerModeDate];
+    [birthDayPicker setMaximumDate:[NSDate date]];
     [pikerView addSubview:birthDayPicker];
     
     [self.view addSubview:pikerView];
@@ -143,8 +152,10 @@
     [UIView setAnimationDuration:.5];
     
     CGRect frame= pikerView.frame;
+    if(IS_IPHONE_4_OR_LESS)
+    pikerView.frame = CGRectMake(0, 334-50, frame.size.width, frame.size.height);
+    else
     pikerView.frame = CGRectMake(0, 334, frame.size.width, frame.size.height);
-    
     [UIView commitAnimations];
     
 }
@@ -227,10 +238,10 @@
         return;
     }
     if (dob.text.length <= 0) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"Enter Date of Birth"
-                                                       delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
-        [alert show];
-        return;
+//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"Enter Date of Birth"
+//                                                       delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+//        [alert show];
+//        return;
     }
     
     if(!self.checkBoxButton.selected)

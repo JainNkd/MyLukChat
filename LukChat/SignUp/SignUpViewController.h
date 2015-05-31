@@ -38,6 +38,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *checkBoxButton;
 
 
+@property (weak, nonatomic) IBOutlet UIView *signupView;
 
 
 -(void)setBirth;

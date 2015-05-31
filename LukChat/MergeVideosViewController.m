@@ -35,13 +35,13 @@
     return self;
 }
 
--(void)awakeFromNib
+-(void)adjustView
 {
     if(IS_IPHONE_4_OR_LESS)
     {
         self.videoTitleView.translatesAutoresizingMaskIntoConstraints = YES;
         CGRect videoTitileFrame = self.videoTitleView.frame;
-        videoTitileFrame.origin.y -=54;
+        videoTitileFrame.origin.y = 326;
         self.videoTitleView.frame = videoTitileFrame;
     }
 }
@@ -62,6 +62,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [self adjustView];
     
     [[NSUserDefaults standardUserDefaults] setBool:TRUE forKey:kIsFromMerged];
     NSString *videoTitle =  [CommonMethods getVideoTitle];
