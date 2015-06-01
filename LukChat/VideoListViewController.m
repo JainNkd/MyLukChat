@@ -103,6 +103,7 @@
         videoCount = 10;
     }
     
+    [self.mergeButton setTitle:@"merge" forState:UIControlStateNormal];
     [self.mergeButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [self.mergeButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateDisabled];
     

@@ -137,23 +137,25 @@
     [[NSUserDefaults standardUserDefaults] setValue:isSignedin forKey:@"user"];
     
     NSString *verifStatus = [[NSUserDefaults standardUserDefaults] valueForKey:kMY_VERIFICATION_CODE];
+    NSString *myPhone = [[NSUserDefaults standardUserDefaults] valueForKey:kMYPhoneNumber];
+    
+    if ([myPhone length]>0) {
+        NSCharacterSet *notAllowedChars = [[NSCharacterSet characterSetWithCharactersInString:@"1234567890"] invertedSet];
+        myPhone = [[myPhone componentsSeparatedByCharactersInSet:notAllowedChars] componentsJoinedByString:@""];
+        myPhone = [myPhone stringByReplacingOccurrencesOfString:@" " withString:@""];
+    }
     //    number.text = verifStatus;
-    if([number.text isEqualToString:verifStatus]|| [number.text isEqualToString:@"2015"]){
+    if([number.text isEqualToString:verifStatus]|| ([number.text isEqualToString:@"2015"] && [myPhone isEqualToString:@"11234567890"])){
         
         NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
         [dict setValue:kAPIKeyValue forKey:kAPIKey];
         [dict setValue:kAPISecretValue forKey:kAPISecret];
         [dict setValue:@"1" forKey:kRegStatus];
         
-        NSString *myPhone = [[NSUserDefaults standardUserDefaults] valueForKey:kMYPhoneNumber];
         NSString *myDob = [[NSUserDefaults standardUserDefaults] valueForKey:kMYDOB];
-        
-        if ([myPhone length]>0) {
-            NSCharacterSet *notAllowedChars = [[NSCharacterSet characterSetWithCharactersInString:@"1234567890"] invertedSet];
-            myPhone = [[myPhone componentsSeparatedByCharactersInSet:notAllowedChars] componentsJoinedByString:@""];
-            myPhone = [myPhone stringByReplacingOccurrencesOfString:@" " withString:@""];
+       
+        if ([myPhone length]>0)
             [dict setValue:myPhone forKey:kRegPhoneNum];
-        }
         if ([myDob length]>0)
             [dict setValue:myDob forKey:kRegDOB];
         
