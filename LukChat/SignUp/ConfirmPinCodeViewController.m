@@ -13,8 +13,12 @@
 #import "DatabaseMethods.h"
 #import "CommonMethods.h"
 #import "AppDataManager.h"
+#import "UCZProgressView.h"
 
 @interface ConfirmPinCodeViewController ()<ConnectionHandlerDelegate>
+{
+    UCZProgressView *progressView;
+}
 @property (retain, nonatomic) UIAlertView *alert;
 @end
 
@@ -129,6 +133,7 @@
 
 - (IBAction)verificationPinCode:(id)sender {
     isSignedin = @"NO";
+    
     [[NSUserDefaults standardUserDefaults] setValue:isSignedin forKey:@"user"];
     
     NSString *verifStatus = [[NSUserDefaults standardUserDefaults] valueForKey:kMY_VERIFICATION_CODE];
@@ -158,9 +163,19 @@
         time_t unixTime = (time_t) [[NSDate date] timeIntervalSince1970];
         [dict setValue:[NSString stringWithFormat:@"%ld",unixTime] forKey:kRegLastLogin];
         
-        ConnectionHandler *connHandler = [[ConnectionHandler alloc] init];
-        connHandler.delegate = self;
-        [connHandler makePOSTRequestPath:kRegistrationURL parameters:dict];
+        
+        if([CommonMethods reachable])
+        {
+            [self startProgressLoader];
+            ConnectionHandler *connHandler = [[ConnectionHandler alloc] init];
+            connHandler.delegate = self;
+            [connHandler makePOSTRequestPath:kRegistrationURL parameters:dict];
+        }
+        else
+        {
+            [CommonMethods showAlertWithTitle:@"No Connectivity" message:@"Please check the Internet Connnection"];
+            return;
+        }
         
     }
     else{
@@ -177,30 +192,30 @@
     
     if (status==1 || status==2) {
         if (status==1 ) {
-            Account *acctObj = [Account new];
-            acctObj.UserId =   [[[NSUserDefaults standardUserDefaults] valueForKey:kMYUSERID] integerValue];
-            acctObj.UserPhone = [[[NSUserDefaults standardUserDefaults] valueForKey:kMYPhoneNumber] longLongValue];
-            acctObj.UserDOB = [[NSUserDefaults standardUserDefaults] valueForKey:kMYDOB];
-            acctObj.UserDevToken = [[NSUserDefaults standardUserDefaults] valueForKey:kDEVICETOKEN];
-            acctObj.UserLastLogin = [CommonMethods convertDatetoSting:[NSDate date]];
-            if ([[[NSUserDefaults standardUserDefaults] valueForKey:kMYPhoneNumber] length] > kPhoneNumberMINrange ) {
-                DatabaseMethods *dbObj = [[DatabaseMethods alloc] init];
-                [dbObj insertAccountInfoToDB:acctObj];
-            }
+//            Account *acctObj = [Account new];
+//            acctObj.UserId =   [[[NSUserDefaults standardUserDefaults] valueForKey:kMYUSERID] integerValue];
+//            acctObj.UserPhone = [[[NSUserDefaults standardUserDefaults] valueForKey:kMYPhoneNumber] longLongValue];
+//            acctObj.UserDOB = [[NSUserDefaults standardUserDefaults] valueForKey:kMYDOB];
+//            acctObj.UserDevToken = [[NSUserDefaults standardUserDefaults] valueForKey:kDEVICETOKEN];
+//            acctObj.UserLastLogin = [CommonMethods convertDatetoSting:[NSDate date]];
+//            if ([[[NSUserDefaults standardUserDefaults] valueForKey:kMYPhoneNumber] length] > kPhoneNumberMINrange ) {
+//                DatabaseMethods *dbObj = [[DatabaseMethods alloc] init];
+//                [dbObj insertAccountInfoToDB:acctObj];
+//            }
         }
         else if (status == 2 ) {
             
-            NSString *myPhone = [[NSUserDefaults standardUserDefaults] valueForKey:kMYPhoneNumber];
-            //NSString *myDob = [[NSUserDefaults standardUserDefaults] valueForKey:kMYDOB];
-            
-            NSCharacterSet *notAllowedChars = [[NSCharacterSet characterSetWithCharactersInString:@"1234567890"] invertedSet];
-            NSString *phNumStr = [[myPhone componentsSeparatedByCharactersInSet:notAllowedChars] componentsJoinedByString:@""];
-            phNumStr = [phNumStr stringByReplacingOccurrencesOfString:@" " withString:@""];
-            DatabaseMethods *dbObj = [[DatabaseMethods alloc] init];
-            [dbObj updateMyPhoneNumberInDB:[phNumStr longLongValue]];
+//            NSString *myPhone = [[NSUserDefaults standardUserDefaults] valueForKey:kMYPhoneNumber];
+//            //NSString *myDob = [[NSUserDefaults standardUserDefaults] valueForKey:kMYDOB];
+//            
+//            NSCharacterSet *notAllowedChars = [[NSCharacterSet characterSetWithCharactersInString:@"1234567890"] invertedSet];
+//            NSString *phNumStr = [[myPhone componentsSeparatedByCharactersInSet:notAllowedChars] componentsJoinedByString:@""];
+//            phNumStr = [phNumStr stringByReplacingOccurrencesOfString:@" " withString:@""];
+//            DatabaseMethods *dbObj = [[DatabaseMethods alloc] init];
+//            [dbObj updateMyPhoneNumberInDB:[phNumStr longLongValue]];
         }
         
-        [self callGetAccountInfoService];
+//        [self callGetAccountInfoService];
         
         isSignedin = @"YES";
         [[NSUserDefaults standardUserDefaults] setValue:isSignedin forKey:@"user"];
@@ -229,19 +244,29 @@
 
 -(void)startProgressLoader
 {
-    if (!_alert) {
-        _alert = [[UIAlertView alloc] initWithTitle:@"" message:@"Saving data..." delegate:self cancelButtonTitle:nil otherButtonTitles:nil];
-        UIActivityIndicatorView *progress= [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(125, 55, 30, 30)];
-        progress.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhiteLarge;
-        [_alert addSubview:progress];
-        [progress startAnimating];
-        [_alert show];
-    }
+//    if (!_alert) {
+//        _alert = [[UIAlertView alloc] initWithTitle:@"" message:@"Saving data..." delegate:self cancelButtonTitle:nil otherButtonTitles:nil];
+//        UIActivityIndicatorView *progress= [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(125, 55, 30, 30)];
+//        progress.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
+//        [_alert addSubview:progress];
+//        [progress startAnimating];
+//        [_alert show];
+//    }
+    
+    progressView = [[UCZProgressView alloc]initWithFrame:self.view.frame];
+    progressView.indeterminate = YES;
+    progressView.showsText = NO;
+    progressView.backgroundColor = [UIColor clearColor];
+    progressView.opaque = 0.5;
+    progressView.alpha = 0.5;
+    [self.view addSubview:progressView];
+
 }
 
 -(void)stopProgressLoader
 {
     [_alert dismissWithClickedButtonIndex:0 animated:YES];
+    [progressView removeFromSuperview];
 }
 
 @end
