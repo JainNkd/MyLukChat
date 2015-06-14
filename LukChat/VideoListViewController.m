@@ -243,9 +243,26 @@
     
     for(int i=0 ;i<10;i++)
     {
+        UIView *lukView = [lukViewsArr objectAtIndex:i];
+        
+        UITapGestureRecognizer *tapOnce = [[UITapGestureRecognizer alloc] initWithTarget:self  action:@selector(tapOnce:)];
+        UITapGestureRecognizer *tapTwice = [[UITapGestureRecognizer alloc] initWithTarget:self  action:@selector(tapTwice:)];
+        
+        []
+        
+        tapOnce.numberOfTapsRequired = 1;
+        tapTwice.numberOfTapsRequired = 2;
+
+        //stops tapOnce from overriding tapTwice
+        [tapOnce requireGestureRecognizerToFail:tapTwice];
+        
+        //then need to add the gesture recogniser to a view - this will be the view that recognises the gesture
+        [lukView addGestureRecognizer:tapOnce]; //remove the other button action which calls method `button`
+        [lukView addGestureRecognizer:tapTwice];
+        
         if(i<[titleWords count])
         {
-            UIView *lukView = [lukViewsArr objectAtIndex:i];
+            
             UILabel *titleLBLObj = [videoTitleLBLArr objectAtIndex:i];
             titleLBLObj.text = [titleWords objectAtIndex:i];
             lukView.hidden = NO;
@@ -254,11 +271,23 @@
         }
         else
         {
-            UIView *lukView = [lukViewsArr objectAtIndex:i];
             lukView.hidden = YES;
         }
     }
 }
+-(void)tapOnce:(UIGestureRecognizer*)gesture
+{
+    NSLog(@"single tap...");
+}
+
+
+
+-(void)tapTwice:(UIGestureRecognizer*)gesture
+{
+    NSLog(@"tapTwice tap...");
+}
+
+
 /*
  #pragma mark - Navigation
  
