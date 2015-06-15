@@ -92,7 +92,10 @@
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return [singleVideosData count];
+    NSInteger count = [singleVideosData count];
+    if(count < 3)
+        return 3;
+    else return count+1;
 }
 
 -(UICollectionViewCell*)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -100,7 +103,18 @@
     static NSString *cellIdentifier = @"Cell";
     SignleVideoCell* cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
     
-    VideoDetail *videoObj = [singleVideosData objectAtIndex:indexPath.row];
+    NSInteger indexValue = indexPath.row;
+    if(indexValue>2)
+        indexValue = indexValue-1;
+    
+    if(indexPath.row == 2)
+    {
+        [cell.thumbnail setImage:[UIImage imageNamed:@"button_add.png"]];
+        return cell;
+    }
+
+    if(singleVideosData.count> indexValue){
+    VideoDetail *videoObj = [singleVideosData objectAtIndex:indexValue];
     
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     __block NSString *documentsDirectory = [paths objectAtIndex:0];
@@ -150,7 +164,11 @@
         {
             [cell.thumbnail setImage:[UIImage imageNamed:@"pic-bgwith-monkey-icon.png"]];
         }
-        cell.tag = indexPath.row;
+        cell.tag = indexValue;
+    }
+    }
+    else{
+        [cell.thumbnail setImage:[UIImage imageNamed:@""]];
     }
     return cell;
 }
@@ -162,9 +180,22 @@
     NSIndexPath *selectedIndexPath = [self.singleVideoCollectionView indexPathForItemAtPoint:pointInCollectionView];
     SignleVideoCell *selectedCell = (SignleVideoCell*)[self.singleVideoCollectionView cellForItemAtIndexPath:selectedIndexPath];
     
+    if(selectedIndexPath.row ==2)
+    {
+        self.selectBtn.enabled = NO;
+        NSLog(@"camera button clicked...");
+        return;
+    }
+    
+    NSInteger indexValue = selectedIndexPath.row;
+    if(indexValue>2)
+        indexValue = indexValue-1;
+    
+    if(singleVideosData.count> indexValue){
+    
     if(selectedCell){
         AFHTTPRequestOperation *operation = (self.videoDownloadsInProgress)[selectedIndexPath];
-        VideoDetail *videoObj = [singleVideosData objectAtIndex:selectedIndexPath.row];
+        VideoDetail *videoObj = [singleVideosData objectAtIndex:indexValue];
         if([CommonMethods fileExist:videoObj.videoURL] && !operation)
         {
             self.selectBtn.enabled = YES;
@@ -177,11 +208,8 @@
         {
             [CommonMethods showAlertWithTitle:@"LUK" message:@"You need to downlaod this video before select."];
         }
-        
-        
-        
-        
-        NSLog(@"double ..%ld ,%ld,..%@",(long)selectedIndexPath.row,(long)selectedCell.tag,selectedVideoURL);
+        NSLog(@"double ..indexValue %ld ,selectedCell %ld,..%@",(long)indexValue,(long)selectedCell.tag,selectedVideoURL);
+    }
     }
     
 }
@@ -191,12 +219,23 @@
     CGPoint pointInCollectionView = [gesture locationInView:self.singleVideoCollectionView];
     NSIndexPath *selectedIndexPath = [self.singleVideoCollectionView indexPathForItemAtPoint:pointInCollectionView];
     SignleVideoCell *selectedCell = (SignleVideoCell*)[self.singleVideoCollectionView cellForItemAtIndexPath:selectedIndexPath];
-
+    
+    if(selectedIndexPath.row ==2)
+    {
+        self.selectBtn.enabled = NO;
+        NSLog(@"camera button clicked...");
+        return;
+    }
+    NSInteger indexValue = selectedIndexPath.row;
+    if(indexValue>2)
+        indexValue = indexValue-1;
+    
+    if(singleVideosData.count> indexValue){
     if(selectedCell){
         [selectedCell setSelected:NO];
         
         self.selectBtn.enabled = NO;
-        VideoDetail *videoObj = [singleVideosData objectAtIndex:selectedIndexPath.row];
+        VideoDetail *videoObj = [singleVideosData objectAtIndex:indexValue];
         AFHTTPRequestOperation *operation = (self.videoDownloadsInProgress)[selectedIndexPath];
         
         if([CommonMethods fileExist:videoObj.videoURL] && !operation)
@@ -212,7 +251,7 @@
                 if(!operation){
                     
                     UCZProgressView *progressView = [[UCZProgressView alloc]initWithFrame:CGRectMake(0,0,100,100)];
-                    progressView.tag = selectedIndexPath.row;
+                    progressView.tag = indexValue;
                     progressView.indeterminate = YES;
                     progressView.showsText = YES;
                     progressView.tintColor = [UIColor whiteColor];
@@ -258,7 +297,8 @@
                 NSLog(@"No internet connectivity");
             }
         }
-        NSLog(@"single  ..%ld ,%ld",(long)selectedIndexPath.row,(long)selectedCell.tag);
+        NSLog(@"single  .selectedCell.%ld ,selectedCell %ld",(long)indexValue,(long)selectedCell.tag);
+    }
     }
 }
 
@@ -335,6 +375,9 @@
     [self.singleVideoCollectionView reloadData];
     
 }
+
+
+
 
 
 - (void)didReceiveMemoryWarning {

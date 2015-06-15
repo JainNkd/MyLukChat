@@ -73,7 +73,7 @@
 {
     NSString *textBoxText = [CommonMethods getVideoTitle];
     if (textBoxText.length>0) {
-    [CommonMethods showAlertWithTitle:@"" message:@"Are you sure you want to clear the text?" cancelBtnTitle:@"Cancel" otherBtnTitle:@"OK" delegate:self tag:1];
+        [CommonMethods showAlertWithTitle:@"" message:@"Are you sure you want to clear the text?" cancelBtnTitle:@"Cancel" otherBtnTitle:@"OK" delegate:self tag:1];
     }
 }
 
@@ -184,7 +184,7 @@
             self.mergeButton.enabled = NO;
         }
     }
-   
+    
 }
 
 
@@ -244,15 +244,14 @@
     for(int i=0 ;i<10;i++)
     {
         UIView *lukView = [lukViewsArr objectAtIndex:i];
-        
+        lukView.tag = i;
         UITapGestureRecognizer *tapOnce = [[UITapGestureRecognizer alloc] initWithTarget:self  action:@selector(tapOnce:)];
         UITapGestureRecognizer *tapTwice = [[UITapGestureRecognizer alloc] initWithTarget:self  action:@selector(tapTwice:)];
         
-        []
         
         tapOnce.numberOfTapsRequired = 1;
         tapTwice.numberOfTapsRequired = 2;
-
+        
         //stops tapOnce from overriding tapTwice
         [tapOnce requireGestureRecognizerToFail:tapTwice];
         
@@ -275,16 +274,46 @@
         }
     }
 }
--(void)tapOnce:(UIGestureRecognizer*)gesture
+-(void)tapOnce:(UIGestureRecognizer*)sender
 {
-    NSLog(@"single tap...");
+    UIView *view = sender.view; //cast pointer to the derived class if needed
+    NSLog(@"single tap..%d.",view.tag);
+    
+    isRecordingStart = YES;
+    
+    //Code for load screen
+    [[NSUserDefaults standardUserDefaults]setInteger:view.tag forKey:@"SingleVideoIndex"];
+    SingleVideoViewController *singleVC = [self.storyboard instantiateViewControllerWithIdentifier:@"SingleVideoViewController"];
+    [self.navigationController presentViewController:singleVC animated:YES completion:nil];
 }
 
-
-
--(void)tapTwice:(UIGestureRecognizer*)gesture
+-(void)tapTwice:(UIGestureRecognizer*)sender
 {
-    NSLog(@"tapTwice tap...");
+    isRecordingStart = YES;
+    
+    UIView *view = sender.view; //cast pointer to the derived class if needed
+    NSLog(@"tapTwice tap..%d.",view.tag);
+    
+    //Get Video Local Path
+    NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    
+    NSString *filename = [[NSUserDefaults standardUserDefaults]valueForKey:[NSString stringWithFormat:@"VIDEO_%d_URL",(int)view.tag]];
+    
+    fileURL = [NSString stringWithFormat:@"%@/%@", path,filename];
+    NSLog(@"fileURL.....%@",fileURL);
+    
+    //If video available then play
+    if ([[NSFileManager defaultManager] fileExistsAtPath:fileURL]) {
+        [self playMovie:fileURL];
+    }
+    else
+    {
+        //Go to Load Screen 
+        [[NSUserDefaults standardUserDefaults]setInteger:view.tag forKey:@"SingleVideoIndex"];
+        SingleVideoViewController *singleVC = [self.storyboard instantiateViewControllerWithIdentifier:@"SingleVideoViewController"];
+        [self.navigationController presentViewController:singleVC animated:YES completion:nil];
+    }
+    
 }
 
 
@@ -585,7 +614,7 @@
 {
     UIView *lukView = [lukViewsArr objectAtIndex:viewIndex-1];
     UILabel *titleLBLObj = [videoTitleLBLArr objectAtIndex:viewIndex-1];
-//    [lukBtn setImage:[UIImage imageNamed: @"screen4-smilemonkey-icon.png"] forState:UIControlStateNormal];
+    //    [lukBtn setImage:[UIImage imageNamed: @"screen4-smilemonkey-icon.png"] forState:UIControlStateNormal];
     titleLBLObj.text = wordText;
     lukView.hidden = NO;
     lukView.alpha = 0.0f;
