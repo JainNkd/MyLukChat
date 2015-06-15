@@ -524,7 +524,8 @@
     else
     {
         if(isVideoSaved){
-            [self.navigationController dismissViewControllerAnimated:NO completion:nil];
+//            [self.navigationController dismissViewControllerAnimated:NO completion:nil];
+            [self goToFirstView];
         }
         else{
             if(_recordSession){
@@ -534,7 +535,8 @@
             }
             else
             {
-                [self.navigationController dismissViewControllerAnimated:NO completion:nil];
+//                [self goToFirstView];
+                [self dismissViewControllerAnimated:NO completion:nil];
             }
         }
     }
@@ -544,7 +546,8 @@
     [self saveAndShowSession:recordSession];
     
     if(isVideoSaved){
-        [self.navigationController dismissViewControllerAnimated:NO completion:nil];
+//        [self.navigationController dismissViewControllerAnimated:NO completion:nil];
+        [self goToFirstView];
     }
     else{
         if(_recordSession){
@@ -554,9 +557,17 @@
         }
         else
         {
-            [self.navigationController dismissViewControllerAnimated:NO completion:nil];
+//            [self.navigationController dismissViewControllerAnimated:NO completion:nil];
+            [self goToFirstView];
         }
     }
+}
+
+-(void)goToFirstView{
+//    UIViewController *vc = [self parentViewController];
+         UIViewController *vc = [self presentingViewController]; //ios 5 or later
+    [self dismissViewControllerAnimated:NO completion:nil];
+    [vc dismissViewControllerAnimated:YES completion:nil];
 }
 
 
@@ -735,7 +746,8 @@
         [[NSUserDefaults standardUserDefaults]setValue:filename forKey:[NSString stringWithFormat:@"VIDEO_%d_URL",indexOfVideo]];
         [[NSUserDefaults standardUserDefaults]synchronize];
         
-        [self.navigationController dismissViewControllerAnimated:NO completion:nil];
+//        [self.navigationController dismissViewControllerAnimated:NO completion:nil];
+        [self goToFirstView];
         //        [[[UIAlertView alloc] initWithTitle:@"Saved to camera roll" message:@"" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
     } else {
         [[[UIAlertView alloc] initWithTitle:@"Failed to save" message:error.localizedDescription delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];

@@ -18,7 +18,7 @@
                         <rect key="frame" x="2" y="-4" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1start-screen-v1_5.png" translatesAutoresizingMaskIntoConstraints="NO" id="WEp-IV-sBQ">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="app-store-screen-1_7.png" translatesAutoresizingMaskIntoConstraints="NO" id="WEp-IV-sBQ">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="25w-gM-vGF">
@@ -1722,7 +1722,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="1start-screen-v1_5.png" width="640" height="1136"/>
+        <image name="app-store-screen-1_7.png" width="640" height="1136"/>
         <image name="back-button-withbg.png" width="320" height="47"/>
         <image name="bg-select-screen.png" width="320" height="568"/>
         <image name="camerapage-icon-cance.png" width="23" height="23"/>
@@ -1774,6 +1774,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="kz9-Bu-m6X"/>
+        <segue reference="Q69-w8-5QU"/>
     </inferredMetricsTieBreakers>
 </document>

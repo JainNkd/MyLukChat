@@ -196,6 +196,7 @@
 		87BD84381ADEE66700761A28 /* SignleVideoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 87BD84371ADEE66700761A28 /* SignleVideoCell.m */; };
 		87CCBD671A5012280018D266 /* MergeVideosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87CCBD661A5012280018D266 /* MergeVideosViewController.m */; };
 		8B064A111B2EAEF500A70EEA /* button_add@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B064A101B2EAEF500A70EEA /* button_add@2x.png */; };
+		8B064A131B2EDC3F00A70EEA /* app-store-screen-1_7.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B064A121B2EDC3F00A70EEA /* app-store-screen-1_7.png */; };
 		8B6562C71ADE96BE00C54EA9 /* SingleVideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B6562C61ADE96BE00C54EA9 /* SingleVideoViewController.m */; };
 		8B6879521AD53C40007004E2 /* screen-8-background.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B6879501AD53C40007004E2 /* screen-8-background.png */; };
 		8B6879531AD53C40007004E2 /* sharedoublemonkey@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B6879511AD53C40007004E2 /* sharedoublemonkey@2x.png */; };
@@ -546,6 +547,7 @@
 		87CCBD651A5012280018D266 /* MergeVideosViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MergeVideosViewController.h; sourceTree = "<group>"; };
 		87CCBD661A5012280018D266 /* MergeVideosViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MergeVideosViewController.m; sourceTree = "<group>"; };
 		8B064A101B2EAEF500A70EEA /* button_add@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_add@2x.png"; sourceTree = "<group>"; };
+		8B064A121B2EDC3F00A70EEA /* app-store-screen-1_7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "app-store-screen-1_7.png"; sourceTree = "<group>"; };
 		8B6562C51ADE96BE00C54EA9 /* SingleVideoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleVideoViewController.h; sourceTree = "<group>"; };
 		8B6562C61ADE96BE00C54EA9 /* SingleVideoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleVideoViewController.m; sourceTree = "<group>"; };
 		8B6879501AD53C40007004E2 /* screen-8-background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "screen-8-background.png"; sourceTree = "<group>"; };
@@ -815,6 +817,7 @@
 		633850511983A4C900C3256A /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				8B064A121B2EDC3F00A70EEA /* app-store-screen-1_7.png */,
 				873CBF191AE97643001F20E6 /* watermark.png */,
 				87BD841E1ADEE14200761A28 /* SingleVideo */,
 				8782D2961ADC368D00A1137A /* MonkeyShortAIFF.AIFF */,
@@ -1507,6 +1510,7 @@
 				63F99979199E04E2005C82F6 /* start-screen-logo.png in Resources */,
 				633850921983A7B900C3256A /* luk-main1-bg.png in Resources */,
 				8BC23E051A72342800AB29B7 /* video-send-search-bg.png in Resources */,
+				8B064A131B2EDC3F00A70EEA /* app-store-screen-1_7.png in Resources */,
 				875437491AC5B1990091AD68 /* video-send-logo@2x.png in Resources */,
 				8BB068EC1AC58A0C000A84C7 /* purplebox@2x.png in Resources */,
 				8BB0F66B1AC161BC008453B5 /* double-monkey@2x.png in Resources */,

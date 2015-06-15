@@ -21,6 +21,9 @@
 #import "UCZProgressView.h"
 #import <MediaPlayer/MediaPlayer.h>
 
+#import "SCRecorderViewController.h"
+#import "CustomOrientationNavigationController.h"
+
 @interface SingleVideoViewController ()<ConnectionHandlerDelegate>
 @property (nonatomic, strong) NSMutableDictionary *videoDownloadsInProgress;
 @end
@@ -29,7 +32,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.navigationController.navigationBarHidden = YES;
     
     self.selectBtn.enabled = NO;
     singleVideosData = [[NSMutableArray alloc]init];
@@ -184,6 +187,7 @@
     {
         self.selectBtn.enabled = NO;
         NSLog(@"camera button clicked...");
+        [self showCameraLayout];
         return;
     }
     
@@ -224,6 +228,7 @@
     {
         self.selectBtn.enabled = NO;
         NSLog(@"camera button clicked...");
+        [self showCameraLayout];
         return;
     }
     NSInteger indexValue = selectedIndexPath.row;
@@ -376,7 +381,15 @@
     
 }
 
-
+-(void)showCameraLayout
+{
+    SCRecorderViewController *previewController = [self.storyboard instantiateViewControllerWithIdentifier:@"VideoPreviewViewController"];
+    
+    [previewController setIndexOfVideo:(int)singleVideoIndex];
+//    UINavigationController *navBar=[[CustomOrientationNavigationController alloc] initWithRootViewController:previewController];
+    
+    [self.navigationController presentViewController:previewController animated:NO completion:nil];
+}
 
 
 

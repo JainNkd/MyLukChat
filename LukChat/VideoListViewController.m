@@ -284,7 +284,9 @@
     //Code for load screen
     [[NSUserDefaults standardUserDefaults]setInteger:view.tag forKey:@"SingleVideoIndex"];
     SingleVideoViewController *singleVC = [self.storyboard instantiateViewControllerWithIdentifier:@"SingleVideoViewController"];
-    [self.navigationController presentViewController:singleVC animated:YES completion:nil];
+    UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:singleVC];
+    [self.navigationController presentViewController:nav animated:YES completion:nil];
+//    [self.navigationController pushViewController:singleVC animated:YES];
 }
 
 -(void)tapTwice:(UIGestureRecognizer*)sender
