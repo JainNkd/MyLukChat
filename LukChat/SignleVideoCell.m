@@ -15,15 +15,15 @@
     [super setSelected:selected];
     if(selected)
     {
-        self.thumbnail.layer.borderWidth = 2.0f;
-        self.thumbnail.layer.borderColor = [UIColor clearColor].CGColor;
-        self.thumbnail.layer.masksToBounds = YES;
+        self.layer.borderWidth = 2.0f;
+        self.layer.borderColor = [UIColor clearColor].CGColor;
+        self.layer.masksToBounds = YES;
     }
     else
     {
-        self.thumbnail.layer.borderWidth = 2.0f;
-        self.thumbnail.layer.borderColor = [UIColor clearColor].CGColor;
-        self.thumbnail.layer.masksToBounds = YES;
+        self.layer.borderWidth = 2.0f;
+        self.layer.borderColor = [UIColor clearColor].CGColor;
+        self.layer.masksToBounds = YES;
     }
 }
 

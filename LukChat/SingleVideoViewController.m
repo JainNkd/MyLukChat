@@ -70,7 +70,7 @@
     [dict setValue:kAPISecretValue forKey:kAPISecret];
     [dict setValue:title forKey:@"key"];
     [dict setValue:[NSString stringWithFormat:@"%d",0] forKey:@"start"];
-    [dict setValue:[NSString stringWithFormat:@"%d",10] forKey:@"count"];
+    [dict setValue:[NSString stringWithFormat:@"%d",50] forKey:@"count"];
     
     ConnectionHandler *connObj = [[ConnectionHandler alloc] init];
     connObj.delegate = self;
@@ -203,9 +203,10 @@
         if([CommonMethods fileExist:videoObj.videoURL] && !operation)
         {
             self.selectBtn.enabled = YES;
-            selectedCell.thumbnail.layer.borderWidth = 2.0f;
-            selectedCell.thumbnail.layer.borderColor = [UIColor yellowColor].CGColor;
-            selectedCell.thumbnail.layer.masksToBounds = YES;
+//            [selectedCell setSelected:YES];
+            selectedCell.layer.borderWidth = 2.0f;
+            selectedCell.layer.borderColor = [UIColor yellowColor].CGColor;
+            selectedCell.layer.masksToBounds = YES;
             selectedVideoURL = videoObj.videoURL;
         }
         else
@@ -224,9 +225,11 @@
     NSIndexPath *selectedIndexPath = [self.singleVideoCollectionView indexPathForItemAtPoint:pointInCollectionView];
     SignleVideoCell *selectedCell = (SignleVideoCell*)[self.singleVideoCollectionView cellForItemAtIndexPath:selectedIndexPath];
     
+    [selectedCell setSelected:NO];
+    self.selectBtn.enabled = NO;
+    
     if(selectedIndexPath.row ==2)
     {
-        self.selectBtn.enabled = NO;
         NSLog(@"camera button clicked...");
         [self showCameraLayout];
         return;
@@ -237,15 +240,24 @@
     
     if(singleVideosData.count> indexValue){
     if(selectedCell){
-        [selectedCell setSelected:NO];
-        
-        self.selectBtn.enabled = NO;
         VideoDetail *videoObj = [singleVideosData objectAtIndex:indexValue];
         AFHTTPRequestOperation *operation = (self.videoDownloadsInProgress)[selectedIndexPath];
         
         if([CommonMethods fileExist:videoObj.videoURL] && !operation)
         {
             [self playMovie:[CommonMethods localFileUrl:videoObj.videoURL]];
+            // prepare the video asset from recorded file
+//            AVURLAsset *avAsset = [AVURLAsset URLAssetWithURL:[NSURL fileURLWithPath:[CommonMethods localFileUrl:videoObj.videoURL]] options:nil];
+//            AVPlayerItem *playerItem = [[AVPlayerItem alloc] initWithAsset:avAsset];
+//            AVPlayer *player = [AVPlayer playerWithPlayerItem:playerItem];
+//            
+//            // prepare the layer to show the video
+//            AVPlayerLayer *playerLayer = [AVPlayerLayer playerLayerWithPlayer:player];
+//            playerLayer.frame = selectedCell.thumbnail.frame;
+//            [selectedCell.layer addSublayer:playerLayer];
+//            player.actionAtItemEnd = AVPlayerActionAtItemEndNone;
+//            
+//            [player play];
         }
         else
         {
@@ -276,6 +288,22 @@
                         [progressView removeFromSuperview];
                         //                [self setBlurView:cell.blurView flag:NO];
                         [self.videoDownloadsInProgress removeObjectForKey:selectedIndexPath];
+                        
+//                        SignleVideoCell *selectedCellObj = (SignleVideoCell*)[self.singleVideoCollectionView cellForItemAtIndexPath:selectedIndexPath];
+//                        
+                        
+                        // prepare the video asset from recorded file
+//                        AVURLAsset *avAsset = [AVURLAsset URLAssetWithURL:[NSURL fileURLWithPath:localURL] options:nil];
+//                        AVPlayerItem *playerItem = [[AVPlayerItem alloc] initWithAsset:avAsset];
+//                        AVPlayer *player = [AVPlayer playerWithPlayerItem:playerItem];
+//                        
+//                        // prepare the layer to show the video
+//                        AVPlayerLayer *playerLayer = [AVPlayerLayer playerLayerWithPlayer:player];
+//                        playerLayer.frame = selectedCellObj.thumbnail.frame;
+//                        [selectedCellObj.layer addSublayer:playerLayer];
+//                        player.actionAtItemEnd = AVPlayerActionAtItemEndNone;
+//                        
+//                        [player play];
                         
                     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                         NSLog(@"Error: %@", error);
