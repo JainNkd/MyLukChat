@@ -89,7 +89,7 @@
         self.bottomView.frame = bottomFrame;
         
         CGRect previewViewFrame = self.previewView.frame;
-        previewViewFrame.origin.y = 75;
+        previewViewFrame.size.height = self.view.bounds.size.height;
         self.previewView.frame = previewViewFrame;
         
         CGRect cancleBtnFrame = self.cancelButton.frame;
