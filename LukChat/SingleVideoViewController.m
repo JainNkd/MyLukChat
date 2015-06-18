@@ -245,19 +245,19 @@
         
         if([CommonMethods fileExist:videoObj.videoURL] && !operation)
         {
-            [self playMovie:[CommonMethods localFileUrl:videoObj.videoURL]];
+//            [self playMovie:[CommonMethods localFileUrl:videoObj.videoURL]];
             // prepare the video asset from recorded file
-//            AVURLAsset *avAsset = [AVURLAsset URLAssetWithURL:[NSURL fileURLWithPath:[CommonMethods localFileUrl:videoObj.videoURL]] options:nil];
-//            AVPlayerItem *playerItem = [[AVPlayerItem alloc] initWithAsset:avAsset];
-//            AVPlayer *player = [AVPlayer playerWithPlayerItem:playerItem];
-//            
-//            // prepare the layer to show the video
-//            AVPlayerLayer *playerLayer = [AVPlayerLayer playerLayerWithPlayer:player];
-//            playerLayer.frame = selectedCell.thumbnail.frame;
-//            [selectedCell.layer addSublayer:playerLayer];
-//            player.actionAtItemEnd = AVPlayerActionAtItemEndNone;
-//            
-//            [player play];
+            AVURLAsset *avAsset = [AVURLAsset URLAssetWithURL:[NSURL fileURLWithPath:[CommonMethods localFileUrl:videoObj.videoURL]] options:nil];
+            AVPlayerItem *playerItem = [[AVPlayerItem alloc] initWithAsset:avAsset];
+            AVPlayer *player = [AVPlayer playerWithPlayerItem:playerItem];
+            
+            // prepare the layer to show the video
+            AVPlayerLayer *playerLayer = [AVPlayerLayer playerLayerWithPlayer:player];
+            playerLayer.frame = selectedCell.thumbnail.frame;
+            [selectedCell.layer addSublayer:playerLayer];
+            player.actionAtItemEnd = AVPlayerActionAtItemEndNone;
+            
+            [player play];
         }
         else
         {
@@ -289,21 +289,21 @@
                         //                [self setBlurView:cell.blurView flag:NO];
                         [self.videoDownloadsInProgress removeObjectForKey:selectedIndexPath];
                         
-//                        SignleVideoCell *selectedCellObj = (SignleVideoCell*)[self.singleVideoCollectionView cellForItemAtIndexPath:selectedIndexPath];
-//                        
+                        SignleVideoCell *selectedCellObj = (SignleVideoCell*)[self.singleVideoCollectionView cellForItemAtIndexPath:selectedIndexPath];
                         
-                        // prepare the video asset from recorded file
-//                        AVURLAsset *avAsset = [AVURLAsset URLAssetWithURL:[NSURL fileURLWithPath:localURL] options:nil];
-//                        AVPlayerItem *playerItem = [[AVPlayerItem alloc] initWithAsset:avAsset];
-//                        AVPlayer *player = [AVPlayer playerWithPlayerItem:playerItem];
-//                        
-//                        // prepare the layer to show the video
-//                        AVPlayerLayer *playerLayer = [AVPlayerLayer playerLayerWithPlayer:player];
-//                        playerLayer.frame = selectedCellObj.thumbnail.frame;
-//                        [selectedCellObj.layer addSublayer:playerLayer];
-//                        player.actionAtItemEnd = AVPlayerActionAtItemEndNone;
-//                        
-//                        [player play];
+                        
+//                         prepare the video asset from recorded file
+                        AVURLAsset *avAsset = [AVURLAsset URLAssetWithURL:[NSURL fileURLWithPath:localURL] options:nil];
+                        AVPlayerItem *playerItem = [[AVPlayerItem alloc] initWithAsset:avAsset];
+                        AVPlayer *player = [AVPlayer playerWithPlayerItem:playerItem];
+                        
+                        // prepare the layer to show the video
+                        AVPlayerLayer *playerLayer = [AVPlayerLayer playerLayerWithPlayer:player];
+                        playerLayer.frame = selectedCellObj.thumbnail.frame;
+                        [selectedCellObj.layer addSublayer:playerLayer];
+                        player.actionAtItemEnd = AVPlayerActionAtItemEndNone;
+                        
+                        [player play];
                         
                     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                         NSLog(@"Error: %@", error);

@@ -597,7 +597,7 @@
 
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     if (buttonIndex == 0 && alertView.tag == 1) {
-        [self.navigationController dismissViewControllerAnimated:NO completion:nil];
+        [self dismissViewControllerAnimated:NO completion:nil];
     }
     else if (buttonIndex == 1 && alertView.tag == 1){
         [self saveToCameraRoll];
