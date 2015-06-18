@@ -538,29 +538,33 @@
 
 -(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
-    NSLog(@"textField1...%@...text..%@..",textField.text,string);
+    NSLog(@"textField1...%@...text..%@..%d",textField.text,string,range.location);
     
     NSMutableArray *array;
-    NSString *textViewStr = textField.text;
+    NSString *textViewStr;
+    
+    NSMutableString *textViewStr1 = [NSMutableString stringWithString:textField.text];
     
     if(string.length == 0)
     {
-        if ([textViewStr length] > 0) {
-            textViewStr = [textViewStr substringToIndex:[textViewStr length] - 1];
-            NSLog(@"textField2...%@...text..%@..",textViewStr,string);
+        if ([textViewStr1 length] > 0) {
+//            textViewStr = [textViewStr substringToIndex:[textViewStr length] - 1];
+            [textViewStr1 deleteCharactersInRange:range];
+            NSLog(@"textField2...%@...text..%@..",textViewStr1,string);
         } else {
             //no characters to delete... attempting to do so will result in a crash
         }
     }
     else
     {
-        textViewStr = [NSString stringWithFormat:@"%@%@",textViewStr,string];
-        NSLog(@"textField3...%@...text..%@..",textViewStr,string);
+//        textViewStr = [NSString stringWithFormat:@"%@%@",textViewStr,string];
+        [textViewStr1 insertString:string atIndex:range.location];
+        NSLog(@"textField3...%@...text..%@..",textViewStr1,string);
     }
     
-    
+    textViewStr = textViewStr1;
     textViewStr = [textViewStr stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-    
+    [[NSUserDefaults standardUserDefaults] setObject:textViewStr forKey:VIDEO_TITLE];
     if(textViewStr.length>0){
         array = (NSMutableArray*)[textViewStr componentsSeparatedByString:@" "];
         if([array count]>1)
@@ -572,8 +576,10 @@
             return NO;
         }
         else{
-            [self resetLUK:[array count]];
-            currentLUKIndex = [array count];
+//            [self resetLUK:[array count]];
+            if(currentLUKIndex != [array count]-2)
+             [self resetLUK:array];
+//            currentLUKIndex = [array count];
         }
     }
     else{
@@ -583,11 +589,17 @@
             if(textViewStr.length>0){
                 
                 if([array count] > 0 && [array count] < (videoCount+1)){
-                    [[NSUserDefaults standardUserDefaults] setObject:textViewStr forKey:VIDEO_TITLE];
+//                    [[NSUserDefaults standardUserDefaults] setObject:textViewStr forKey:VIDEO_TITLE];
                     if(currentLUKIndex != [array count]){
                         [self animateView:[array count]wordText:[array lastObject]];
-                        currentLUKIndex = [array count];
+                        currentLUKIndex = [array count]-1;
                     }
+                    else
+                    {
+                        if(currentLUKIndex == [array count]-1)
+                        [self resetLUK:array];
+                    }
+
                 }
                 
                 if([array count] > videoCount)
@@ -605,6 +617,11 @@
                 NSLog(@"2 You exceed meximum word limit of 10");
                 return NO;
                 
+            }
+            if(currentLUKIndex == [array count]-2)
+            {}
+            else if(currentLUKIndex <  [array count]){
+            [self resetLUK:array];
             }
         }
     }
@@ -629,16 +646,45 @@
 }
 
 //Reset Luk
--(void)resetLUK:(NSInteger)lukCount
+//-(void)resetLUK:(NSInteger)lukCount
+//{
+//    lukCount = 10-lukCount;
+//    
+//    for(NSInteger i = 9; lukCount>0;lukCount--,i--)
+//    {
+//        
+//        UIView *view = [lukViewsArr objectAtIndex:i];
+//        view.hidden = YES;
+//    }
+//}
+
+-(void)resetLUK:(NSArray*)array
 {
-    lukCount = 10-lukCount;
+//    lukCount = 10-lukCount;
     
-    for(NSInteger i = 9; lukCount>0;lukCount--,i--)
+//    NSLog(@"videoTitle..%@..",titleStr);
+//    if(titleStr.length>0){
+//        NSMutableArray *titleWords = (NSMutableArray*)[titleStr componentsSeparatedByString:@" "];
+//        if(titleWords.count>1)
+//            [titleWords removeObject:@""];
+    
+    currentLUKIndex = array.count-1;
+
+    for(NSInteger i = 0; i<10;i++)
     {
-        
         UIView *view = [lukViewsArr objectAtIndex:i];
-        view.hidden = YES;
+        UILabel *titleLBLObj = [videoTitleLBLArr objectAtIndex:i];
+        if(i<array.count){
+            
+            titleLBLObj.text = [array objectAtIndex:i];
+            view.hidden = NO;
+        }
+        else
+        {
+            view.hidden = YES;
+        }
     }
+//    }
 }
 
 
