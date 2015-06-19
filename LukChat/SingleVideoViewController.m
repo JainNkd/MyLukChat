@@ -402,8 +402,8 @@
         [singleVideosData addObject:videoDetail];
     }
     
-    if(singleVideosData.count==0)
-        [CommonMethods showAlertWithTitle:@"LUK" message:@"No video found."];
+//    if(singleVideosData.count==0)
+//        [CommonMethods showAlertWithTitle:@"LUK" message:@"No video found."];
     
     [self.singleVideoCollectionView reloadData];
     

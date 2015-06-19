@@ -282,11 +282,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LukChat/VideoListViewController.m"
-            timestampString = "456309378.050462"
+            timestampString = "456386140.214662"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "661"
-            endingLineNumber = "661"
+            startingLineNumber = "694"
+            endingLineNumber = "694"
             landmarkName = "-resetLUK:"
             landmarkType = "5">
          </BreakpointContent>
@@ -352,6 +352,22 @@
             startingLineNumber = "541"
             endingLineNumber = "541"
             landmarkName = "-textField:shouldChangeCharactersInRange:replacementString:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LukChat/VideoListViewController.m"
+            timestampString = "456385863.491395"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "632"
+            endingLineNumber = "632"
+            landmarkName = "-animateView:range:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

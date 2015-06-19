@@ -277,7 +277,7 @@
 -(void)tapOnce:(UIGestureRecognizer*)sender
 {
     UIView *view = sender.view; //cast pointer to the derived class if needed
-    NSLog(@"single tap..%d.",view.tag);
+    NSLog(@"single tap..%ld.",(long)view.tag);
     
     isRecordingStart = YES;
     
@@ -286,7 +286,7 @@
     SingleVideoViewController *singleVC = [self.storyboard instantiateViewControllerWithIdentifier:@"SingleVideoViewController"];
     UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:singleVC];
     [self.navigationController presentViewController:nav animated:YES completion:nil];
-//    [self.navigationController pushViewController:singleVC animated:YES];
+    //    [self.navigationController pushViewController:singleVC animated:YES];
 }
 
 -(void)tapTwice:(UIGestureRecognizer*)sender
@@ -294,7 +294,7 @@
     isRecordingStart = YES;
     
     UIView *view = sender.view; //cast pointer to the derived class if needed
-    NSLog(@"tapTwice tap..%d.",view.tag);
+    NSLog(@"tapTwice tap..%ld.",(long)view.tag);
     
     //Get Video Local Path
     NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
@@ -310,7 +310,7 @@
     }
     else
     {
-        //Go to Load Screen 
+        //Go to Load Screen
         [[NSUserDefaults standardUserDefaults]setInteger:view.tag forKey:@"SingleVideoIndex"];
         SingleVideoViewController *singleVC = [self.storyboard instantiateViewControllerWithIdentifier:@"SingleVideoViewController"];
         [self.navigationController presentViewController:singleVC animated:YES completion:nil];
@@ -538,7 +538,7 @@
 
 -(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
-    NSLog(@"textField1...%@...text..%@..%d",textField.text,string,range.location);
+    NSLog(@"textField1...%@...text..%@..%lu",textField.text,string,(unsigned long)range.location);
     
     NSMutableArray *array;
     NSString *textViewStr;
@@ -548,7 +548,7 @@
     if(string.length == 0)
     {
         if ([textViewStr1 length] > 0) {
-//            textViewStr = [textViewStr substringToIndex:[textViewStr length] - 1];
+            //            textViewStr = [textViewStr substringToIndex:[textViewStr length] - 1];
             [textViewStr1 deleteCharactersInRange:range];
             NSLog(@"textField2...%@...text..%@..",textViewStr1,string);
         } else {
@@ -557,7 +557,7 @@
     }
     else
     {
-//        textViewStr = [NSString stringWithFormat:@"%@%@",textViewStr,string];
+        //        textViewStr = [NSString stringWithFormat:@"%@%@",textViewStr,string];
         [textViewStr1 insertString:string atIndex:range.location];
         NSLog(@"textField3...%@...text..%@..",textViewStr1,string);
     }
@@ -576,10 +576,10 @@
             return NO;
         }
         else{
-//            [self resetLUK:[array count]];
+            //            [self resetLUK:[array count]];
             if(currentLUKIndex != [array count]-2)
-             [self resetLUK:array];
-//            currentLUKIndex = [array count];
+                [self resetLUK:array ];
+            //            currentLUKIndex = [array count];
         }
     }
     else{
@@ -589,17 +589,17 @@
             if(textViewStr.length>0){
                 
                 if([array count] > 0 && [array count] < (videoCount+1)){
-//                    [[NSUserDefaults standardUserDefaults] setObject:textViewStr forKey:VIDEO_TITLE];
+                    //                    [[NSUserDefaults standardUserDefaults] setObject:textViewStr forKey:VIDEO_TITLE];
                     if(currentLUKIndex != [array count]){
-                        [self animateView:[array count]wordText:[array lastObject]];
+                        [self animateView:array range:range];
                         currentLUKIndex = [array count]-1;
                     }
                     else
                     {
                         if(currentLUKIndex == [array count]-1)
-                        [self resetLUK:array];
+                            [self resetLUK:array];
                     }
-
+                    
                 }
                 
                 if([array count] > videoCount)
@@ -621,7 +621,7 @@
             if(currentLUKIndex == [array count]-2)
             {}
             else if(currentLUKIndex <  [array count]){
-            [self resetLUK:array];
+                [self resetLUK:array];
             }
         }
     }
@@ -629,30 +629,63 @@
 }
 
 //Show look with animation
--(void)animateView:(NSInteger)viewIndex wordText:(NSString*)wordText
+-(void)animateView:(NSArray*)titleArray range:(NSRange)range
 {
-    UIView *lukView = [lukViewsArr objectAtIndex:viewIndex-1];
-    UILabel *titleLBLObj = [videoTitleLBLArr objectAtIndex:viewIndex-1];
-    //    [lukBtn setImage:[UIImage imageNamed: @"screen4-smilemonkey-icon.png"] forState:UIControlStateNormal];
-    titleLBLObj.text = wordText;
-    lukView.hidden = NO;
-    lukView.alpha = 0.0f;
-    lukView.transform = CGAffineTransformMakeScale(0.3,0.3);
-    [UIView beginAnimations:@"fadeInNewView" context:NULL];
-    [UIView setAnimationDuration:.5];
-    lukView.transform = CGAffineTransformMakeScale(1,1);
-    lukView.alpha = 1.0f;
-    [UIView commitAnimations];
+    NSLog(@"length..%lu ,%lu",(unsigned long)self.videoTitleTextField.text.length,(unsigned long)range.location);
+    if(self.videoTitleTextField.text.length == range.location){
+        
+        for(NSInteger i = 0; i<10;i++)
+        {
+            UIView *view = [lukViewsArr objectAtIndex:i];
+            UILabel *titleLBLObj = [videoTitleLBLArr objectAtIndex:i];
+            if(i<titleArray.count-1){
+                
+                titleLBLObj.text = [titleArray objectAtIndex:i];
+                view.hidden = NO;
+            }
+        }
+        
+        NSInteger viewIndex = [titleArray count];
+        NSString *wordText = [titleArray lastObject];
+        UIView *lukView = [lukViewsArr objectAtIndex:viewIndex-1];
+        UILabel *titleLBLObj = [videoTitleLBLArr objectAtIndex:viewIndex-1];
+        //    [lukBtn setImage:[UIImage imageNamed: @"screen4-smilemonkey-icon.png"] forState:UIControlStateNormal];
+        titleLBLObj.text = wordText;
+        lukView.hidden = NO;
+        lukView.alpha = 0.0f;
+        lukView.transform = CGAffineTransformMakeScale(0.3,0.3);
+        [UIView beginAnimations:@"fadeInNewView" context:NULL];
+        [UIView setAnimationDuration:.5];
+        lukView.transform = CGAffineTransformMakeScale(1,1);
+        lukView.alpha = 1.0f;
+        [UIView commitAnimations];
+    }
+    else
+    {
+        for(NSInteger i = 0; i<10;i++)
+        {
+            UIView *view = [lukViewsArr objectAtIndex:i];
+            UILabel *titleLBLObj = [videoTitleLBLArr objectAtIndex:i];
+            if(i<titleArray.count){
+                
+                titleLBLObj.text = [titleArray objectAtIndex:i];
+                view.hidden = NO;
+            }
+        }
+    }
+    
+    
+   
 }
 
 //Reset Luk
 //-(void)resetLUK:(NSInteger)lukCount
 //{
 //    lukCount = 10-lukCount;
-//    
+//
 //    for(NSInteger i = 9; lukCount>0;lukCount--,i--)
 //    {
-//        
+//
 //        UIView *view = [lukViewsArr objectAtIndex:i];
 //        view.hidden = YES;
 //    }
@@ -660,16 +693,16 @@
 
 -(void)resetLUK:(NSArray*)array
 {
-//    lukCount = 10-lukCount;
+    //    lukCount = 10-lukCount;
     
-//    NSLog(@"videoTitle..%@..",titleStr);
-//    if(titleStr.length>0){
-//        NSMutableArray *titleWords = (NSMutableArray*)[titleStr componentsSeparatedByString:@" "];
-//        if(titleWords.count>1)
-//            [titleWords removeObject:@""];
+    //    NSLog(@"videoTitle..%@..",titleStr);
+    //    if(titleStr.length>0){
+    //        NSMutableArray *titleWords = (NSMutableArray*)[titleStr componentsSeparatedByString:@" "];
+    //        if(titleWords.count>1)
+    //            [titleWords removeObject:@""];
     
     currentLUKIndex = array.count-1;
-
+    
     for(NSInteger i = 0; i<10;i++)
     {
         UIView *view = [lukViewsArr objectAtIndex:i];
@@ -684,7 +717,7 @@
             view.hidden = YES;
         }
     }
-//    }
+    //    }
 }
 
 
