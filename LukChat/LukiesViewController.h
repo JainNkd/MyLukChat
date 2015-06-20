@@ -26,5 +26,10 @@
 @property (weak, nonatomic) IBOutlet UITableView *contactTableView;
 @property (weak, nonatomic) IBOutlet UIButton *sendTolukiesBtn;
 
+@property (weak, nonatomic) IBOutlet UIButton *facebookPostBtn;
+
+- (IBAction)facebookPostBtnClicked:(UIButton *)sender;
+
+
 - (IBAction)sendToLukiesButtonPressed:(UIButton *)sender;
 @end

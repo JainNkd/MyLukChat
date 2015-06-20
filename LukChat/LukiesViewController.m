@@ -49,6 +49,11 @@
         cnCode = @"49";
     
     self.sendTolukiesBtn.enabled = NO;
+    
+    [self.sendTolukiesBtn setImage:[UIImage imageNamed:@"send-lukies_text-with-buttonbg.png"] forState:UIControlStateNormal];
+    [self.sendTolukiesBtn setImage:[UIImage imageNamed:@"send-lukies_text-with-pressbuttonbg.png"] forState:UIControlStateSelected];
+    [self.facebookPostBtn setImage:[UIImage imageNamed:@"facebook_post-text-with-buttonbg.png"] forState:UIControlStateNormal];
+    [self.facebookPostBtn setImage:[UIImage imageNamed:@"facebook_post-text-with-pressbuttonbg.png"] forState:UIControlStateSelected];
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -471,6 +476,9 @@
 }
 
 //Share video code...
+
+- (IBAction)facebookPostBtnClicked:(UIButton *)sender {
+}
 
 - (IBAction)sendToLukiesButtonPressed:(UIButton *)sender {
     
