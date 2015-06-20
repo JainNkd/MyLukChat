@@ -266,11 +266,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LukChat/SignUp/SignUpViewController.m"
-            timestampString = "454709724.211862"
+            timestampString = "456528647.539591"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "271"
-            endingLineNumber = "271"
+            startingLineNumber = "276"
+            endingLineNumber = "276"
             landmarkName = "-verifyButtonPressed:"
             landmarkType = "5">
          </BreakpointContent>

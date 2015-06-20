@@ -252,6 +252,11 @@
         return;
     }
     
+    if(![CommonMethods reachable])
+    {
+        [CommonMethods showAlertWithTitle:@"No Connectivity" message:@"Please check the Internet Connnection"];
+        return;
+    }
     AppDelegate *app = (AppDelegate *)[[UIApplication sharedApplication]delegate];
     app.number = pno.text;
     
@@ -297,6 +302,7 @@
                                if (error)
                                {
                                    NSLog(@"error%@",[error localizedDescription]);
+                                   [CommonMethods showAlertWithTitle:@"Error" message:[error localizedDescription]];
                                }
                                else
                                {
