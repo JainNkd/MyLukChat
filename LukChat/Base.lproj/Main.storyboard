@@ -42,6 +42,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="hZ5-TB-8B8"/>
                     <connections>
+                        <outlet property="bgImage" destination="WEp-IV-sBQ" id="Dnj-ab-qLg"/>
                         <segue destination="CHD-gy-CpZ" kind="custom" identifier="SignUp" customClass="PushNoAnimationSegue" id="KRi-GP-6la"/>
                     </connections>
                 </viewController>

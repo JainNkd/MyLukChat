@@ -10,5 +10,6 @@
 
 @interface ViewController : UIViewController
 - (IBAction)tapPressedOnStartScreen:(id)sender;
+@property (weak, nonatomic) IBOutlet UIImageView *bgImage;
 
 @end

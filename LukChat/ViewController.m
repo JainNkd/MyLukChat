@@ -9,7 +9,8 @@
 #import "ViewController.h"
 #import "SignUpViewController.h"
 #import "LukiesViewController.h"
-
+#import "CommonMethods.h"
+#import "Constants.h"
 @interface ViewController ()
 
 @end
@@ -35,6 +36,11 @@
 {
     [super viewDidLoad];
     self.navigationController.navigationBarHidden = YES;
+    
+    if(IS_IPHONE_4_OR_LESS)
+    {
+        [self.bgImage setImage:[UIImage imageNamed:@"iphone4-screen-1.png"]];
+    }
     // Do any additional setup after loading the view, typically from a nib.
 }
 
