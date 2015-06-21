@@ -786,7 +786,7 @@
     NSLog(@"Video Title....%@",videoTitle);
     
     if(facebookVideoPath.length>0){
-        NSData *videoData = [NSData dataWithContentsOfURL:[NSURL URLWithString:facebookVideoPath]];
+        NSData *videoData = [NSData dataWithContentsOfFile:facebookVideoPath];
         NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                        videoData, @"video.mov",
                                        @"video/quicktime", @"contentType",
