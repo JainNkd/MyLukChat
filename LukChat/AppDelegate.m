@@ -17,8 +17,9 @@
 #import "AFNetworkActivityIndicatorManager.h"
 #import <Parse/Parse.h>
 
-@implementation AppDelegate
 
+@implementation AppDelegate
+//@synthesize facebook;
 @synthesize number,pinValue,saving;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -31,6 +32,7 @@
     
     NSURL *url = [NSURL URLWithString:kServerURL];
     self.httpClient = [[AFHTTPClient alloc] initWithBaseURL:url];
+    
     
     // Crashlytics
     [Fabric with:@[CrashlyticsKit]];
@@ -67,6 +69,10 @@
     
     
     return YES;
+}
+
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
+    return [self.lukVC.facebook handleOpenURL:url];
 }
 
 -(void) checkAndCreateDatabase{

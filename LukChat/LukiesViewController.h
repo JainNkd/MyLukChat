@@ -8,10 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "Chat.h"
+#import "Facebook.h"
 
-@interface LukiesViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
+@interface LukiesViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,FBSessionDelegate, FBRequestDelegate>
 {
-    NSString *cnCode;
+    Facebook *facebook;
+    NSString *cnCode,*facebookVideoPath;
     long long int myPhoneNum;
     UIAlertView *alert;
     Chat* chatObj;
@@ -23,6 +25,7 @@
     NSMutableDictionary* filteredTableData;
 }
 
+@property (nonatomic,strong)Facebook *facebook;
 @property (weak, nonatomic) IBOutlet UITableView *contactTableView;
 @property (weak, nonatomic) IBOutlet UIButton *sendTolukiesBtn;
 

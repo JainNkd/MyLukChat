@@ -18,7 +18,7 @@
 #import "AppDelegate.h"
 #import "UCZProgressView.h"
 #import "NSString+HTML.h"
-
+#import "AppDelegate.h"
 
 @interface LukiesViewController ()<ConnectionHandlerDelegate>
 
@@ -34,11 +34,17 @@
 @end
 
 @implementation LukiesViewController
-
+@synthesize facebook;
 - (void)viewDidLoad {
     
     [super viewDidLoad];
     [self tableviewInitialisation];
+    
+    //Facebook
+    facebook = [[Facebook alloc] initWithAppId:@"1445458002425387"];
+    
+    SharedAppDelegate.lukVC = self;
+    facebookVideoPath = @"";
     
     myPhoneNum = [[[NSUserDefaults standardUserDefaults] valueForKey:kMYPhoneNumber] longLongValue];
     
@@ -122,22 +128,22 @@
         {
             // Find the first letter of the food's name. This will be its gropu
             if(contactObj.user_fname.length>0){
-            NSString* firstLetter = [contactObj.user_fname substringToIndex:1];
-            
-            NSLog(@"This is it: %@",firstLetter);
-            
-            // Check to see if we already have an array for this group
-            NSMutableArray* arrayForLetter = (NSMutableArray*)[filteredTableData objectForKey:firstLetter];
-            if(arrayForLetter == nil)
-            {
-                // If we don't, create one, and add it to our dictionary
-                arrayForLetter = [[NSMutableArray alloc] init];
-                [filteredTableData setValue:arrayForLetter forKey:firstLetter];
-                NSLog(@"This is it: %@",filteredTableData);
-            }
-            
-            // Finally, add the food to this group's array
-            [arrayForLetter addObject:contactObj];
+                NSString* firstLetter = [contactObj.user_fname substringToIndex:1];
+                
+                NSLog(@"This is it: %@",firstLetter);
+                
+                // Check to see if we already have an array for this group
+                NSMutableArray* arrayForLetter = (NSMutableArray*)[filteredTableData objectForKey:firstLetter];
+                if(arrayForLetter == nil)
+                {
+                    // If we don't, create one, and add it to our dictionary
+                    arrayForLetter = [[NSMutableArray alloc] init];
+                    [filteredTableData setValue:arrayForLetter forKey:firstLetter];
+                    NSLog(@"This is it: %@",filteredTableData);
+                }
+                
+                // Finally, add the food to this group's array
+                [arrayForLetter addObject:contactObj];
             }
         }
     }
@@ -256,9 +262,9 @@
                 //   NSLog(@"updateOtherContacts : %lld",contObj.user_phone);
                 
                 if(dict){
-                ConnectionHandler *connObj = [[ConnectionHandler alloc] init];
-                connObj.delegate = self;
-                [connObj makePOSTRequestPath:kGetUserInfoURL parameters:dict];
+                    ConnectionHandler *connObj = [[ConnectionHandler alloc] init];
+                    connObj.delegate = self;
+                    [connObj makePOSTRequestPath:kGetUserInfoURL parameters:dict];
                 }
             }
         }
@@ -478,6 +484,40 @@
 //Share video code...
 
 - (IBAction)facebookPostBtnClicked:(UIButton *)sender {
+    
+    NSString *urlStr;
+    
+    if([[NSUserDefaults standardUserDefaults]boolForKey:kIsFromCreated])
+    {
+        urlStr =  [[NSUserDefaults standardUserDefaults] valueForKey:kCreatedVideoShare];
+    }
+    else if([[NSUserDefaults standardUserDefaults]boolForKey:kIsFromRecieved])
+    {
+        urlStr =  [[NSUserDefaults standardUserDefaults] valueForKey:kRecievedVideoShare];
+    }
+    else{
+        urlStr =  [[NSUserDefaults standardUserDefaults] valueForKey:kMyVideoToShare];
+    }
+    
+    urlStr = [CommonMethods localFileUrl:urlStr];
+    if (urlStr && [[NSUserDefaults standardUserDefaults]boolForKey:kIsFromRecieved])
+    {
+        //        [self sentRecievedVideos];
+        [CommonMethods showAlertWithTitle:@"LUK" message:@"No Video available to share." cancelBtnTitle:@"Accept"otherBtnTitle:nil delegate:nil tag:0];
+        
+    }
+    else if (urlStr) {
+        //        [self shareVideo:[NSURL fileURLWithPath:urlStr]];
+        
+        facebookVideoPath = urlStr;
+        NSArray* permissions = [[NSArray alloc] initWithObjects:
+                                @"publish_actions", nil];
+        [facebook authorize:permissions delegate:self];
+        
+    }
+    else
+        [CommonMethods showAlertWithTitle:@"LUK" message:@"No Video available to share." cancelBtnTitle:@"Accept"otherBtnTitle:nil delegate:nil tag:0];
+    
 }
 
 - (IBAction)sendToLukiesButtonPressed:(UIButton *)sender {
@@ -726,6 +766,64 @@
     [dbObj insertChatInfoToDB:chatObj];
     
 }
+
+//==================== facebook delegate methods.
+- (void)fbDidLogin {
+    //    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"sample" ofType:@"mov"];
+    
+    NSString *videoTitle;
+    if([[NSUserDefaults standardUserDefaults]boolForKey:kIsFromCreated])
+    {
+        videoTitle = [[NSUserDefaults standardUserDefaults] valueForKey:kCreatedVideoShareTitle];
+    }
+    else if([[NSUserDefaults standardUserDefaults]boolForKey:kIsFromRecieved])
+    {
+        videoTitle = [[NSUserDefaults standardUserDefaults] valueForKey:kRecievedVideoShareTitle];
+    }
+    else{
+        videoTitle = [CommonMethods getVideoTitle];
+    }
+    NSLog(@"Video Title....%@",videoTitle);
+    
+    if(facebookVideoPath.length>0){
+        NSData *videoData = [NSData dataWithContentsOfURL:[NSURL URLWithString:facebookVideoPath]];
+        NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                       videoData, @"video.mov",
+                                       @"video/quicktime", @"contentType",
+                                       @"Video Test Title", @"title",
+                                       @"Video Test Description", @"description",
+                                       nil];
+        [facebook requestWithGraphPath:@"me/videos"
+                                               andParams:params
+                                           andHttpMethod:@"POST"
+                                             andDelegate:self];
+    }
+    else
+    {
+        [CommonMethods showAlertWithTitle:@"LUK" message:@"No Video available to share." cancelBtnTitle:@"Accept"otherBtnTitle:nil delegate:nil tag:0];
+        
+    }
+}
+
+
+-(void)fbDidNotLogin:(BOOL)cancelled {
+    NSLog(@"did not login");
+    [CommonMethods showAlertWithTitle:@"Error" message:@"Something is wrong with your facebook account."];
+}
+
+- (void)request:(FBRequest *)request didLoad:(id)result {
+    if ([result isKindOfClass:[NSArray class]]) {
+        result = [result objectAtIndex:0];
+    }
+    NSLog(@"Result of API call: %@", result);
+    [CommonMethods showAlertWithTitle:@"" message:@"Video Successfully post at facebook"];
+}
+
+- (void)request:(FBRequest *)request didFailWithError:(NSError *)error {
+    NSLog(@"Failed with error: %@/nerror:%@", [error localizedDescription],[error description]);
+    [CommonMethods showAlertWithTitle:@"Error" message:[error localizedDescription]];
+}
+
 
 
 @end

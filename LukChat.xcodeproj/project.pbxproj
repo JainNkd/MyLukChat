@@ -53,12 +53,12 @@
 		633850FE1983C9F400C3256A /* AFXMLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 633850D21983C9F400C3256A /* AFXMLRequestOperation.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		633850FF1983C9F400C3256A /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 633850D41983C9F400C3256A /* UIImageView+AFNetworking.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		633851021983C9F400C3256A /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 633850DA1983C9F400C3256A /* Reachability.m */; };
-		633851031983C9F400C3256A /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 633850DE1983C9F400C3256A /* NSObject+SBJSON.m */; };
-		633851041983C9F400C3256A /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 633850E01983C9F400C3256A /* NSString+SBJSON.m */; };
-		633851051983C9F400C3256A /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 633850E21983C9F400C3256A /* SBJSON.m */; };
-		633851061983C9F400C3256A /* SBJsonBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 633850E41983C9F400C3256A /* SBJsonBase.m */; };
-		633851071983C9F400C3256A /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 633850E61983C9F400C3256A /* SBJsonParser.m */; };
-		633851081983C9F400C3256A /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 633850E81983C9F400C3256A /* SBJsonWriter.m */; };
+		633851031983C9F400C3256A /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 633850DE1983C9F400C3256A /* NSObject+SBJSON.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		633851041983C9F400C3256A /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 633850E01983C9F400C3256A /* NSString+SBJSON.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		633851051983C9F400C3256A /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 633850E21983C9F400C3256A /* SBJSON.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		633851061983C9F400C3256A /* SBJsonBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 633850E41983C9F400C3256A /* SBJsonBase.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		633851071983C9F400C3256A /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 633850E61983C9F400C3256A /* SBJsonParser.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		633851081983C9F400C3256A /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 633850E81983C9F400C3256A /* SBJsonWriter.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		633851091983C9F400C3256A /* DatabaseMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 633850EA1983C9F400C3256A /* DatabaseMethods.m */; };
 		6338510A1983C9F400C3256A /* Account.m in Sources */ = {isa = PBXBuildFile; fileRef = 633850ED1983C9F400C3256A /* Account.m */; };
 		6338510B1983C9F400C3256A /* Chat.m in Sources */ = {isa = PBXBuildFile; fileRef = 633850EF1983C9F400C3256A /* Chat.m */; };
@@ -183,6 +183,11 @@
 		879DA4271AC30CCF00E26CCB /* monkey-featherbg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 879DA4201AC30CCF00E26CCB /* monkey-featherbg@2x.png */; };
 		879DA42E1AC30E7800E26CCB /* opacity-blured-img@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 879DA42D1AC30E7800E26CCB /* opacity-blured-img@2x.png */; };
 		87A7474C1AC6C0F60046C5A0 /* RecievedVideoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 87A7474B1AC6C0F60046C5A0 /* RecievedVideoTableViewCell.m */; };
+		87A9EC061B36ADDD00064041 /* Facebook.m in Sources */ = {isa = PBXBuildFile; fileRef = 87A9EBEF1B36ADDD00064041 /* Facebook.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		87A9EC071B36ADDD00064041 /* FBDialog.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 87A9EBF11B36ADDD00064041 /* FBDialog.bundle */; };
+		87A9EC081B36ADDD00064041 /* FBDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 87A9EBF31B36ADDD00064041 /* FBDialog.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		87A9EC091B36ADDD00064041 /* FBLoginDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 87A9EBF51B36ADDD00064041 /* FBLoginDialog.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		87A9EC0A1B36ADDD00064041 /* FBRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 87A9EBF71B36ADDD00064041 /* FBRequest.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		87AFE04C1A5C55E700DCA827 /* LukiesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87AFE04B1A5C55E700DCA827 /* LukiesViewController.m */; };
 		87B9791B1B3603AE00B2C54D /* contact_bg@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 87B979071B3603AE00B2C54D /* contact_bg@1x.png */; };
 		87B9791C1B3603AE00B2C54D /* contact_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 87B979081B3603AE00B2C54D /* contact_bg@2x.png */; };
@@ -552,6 +557,16 @@
 		879DA42D1AC30E7800E26CCB /* opacity-blured-img@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "opacity-blured-img@2x.png"; sourceTree = "<group>"; };
 		87A7474A1AC6C0F60046C5A0 /* RecievedVideoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecievedVideoTableViewCell.h; sourceTree = "<group>"; };
 		87A7474B1AC6C0F60046C5A0 /* RecievedVideoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecievedVideoTableViewCell.m; sourceTree = "<group>"; };
+		87A9EBEE1B36ADDD00064041 /* Facebook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Facebook.h; sourceTree = "<group>"; };
+		87A9EBEF1B36ADDD00064041 /* Facebook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Facebook.m; sourceTree = "<group>"; };
+		87A9EBF01B36ADDD00064041 /* FBConnect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBConnect.h; sourceTree = "<group>"; };
+		87A9EBF11B36ADDD00064041 /* FBDialog.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = FBDialog.bundle; sourceTree = "<group>"; };
+		87A9EBF21B36ADDD00064041 /* FBDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBDialog.h; sourceTree = "<group>"; };
+		87A9EBF31B36ADDD00064041 /* FBDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBDialog.m; sourceTree = "<group>"; };
+		87A9EBF41B36ADDD00064041 /* FBLoginDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBLoginDialog.h; sourceTree = "<group>"; };
+		87A9EBF51B36ADDD00064041 /* FBLoginDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBLoginDialog.m; sourceTree = "<group>"; };
+		87A9EBF61B36ADDD00064041 /* FBRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBRequest.h; sourceTree = "<group>"; };
+		87A9EBF71B36ADDD00064041 /* FBRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBRequest.m; sourceTree = "<group>"; };
 		87AFE04A1A5C55E700DCA827 /* LukiesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LukiesViewController.h; sourceTree = "<group>"; };
 		87AFE04B1A5C55E700DCA827 /* LukiesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LukiesViewController.m; sourceTree = "<group>"; };
 		87B979071B3603AE00B2C54D /* contact_bg@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "contact_bg@1x.png"; sourceTree = "<group>"; };
@@ -809,6 +824,7 @@
 		6338502219839F2D00C3256A /* LukChat */ = {
 			isa = PBXGroup;
 			children = (
+				87A9EBED1B36ADDD00064041 /* Facebook */,
 				8BC142E21AA72415002F36B0 /* parse-library-1.6.3 */,
 				875BFD2F1A57316200A83E35 /* Domain */,
 				8727D5B61A4885E30092BB7C /* Video */,
@@ -1378,6 +1394,24 @@
 			path = Camera;
 			sourceTree = "<group>";
 		};
+		87A9EBED1B36ADDD00064041 /* Facebook */ = {
+			isa = PBXGroup;
+			children = (
+				87A9EBEE1B36ADDD00064041 /* Facebook.h */,
+				87A9EBEF1B36ADDD00064041 /* Facebook.m */,
+				87A9EBF01B36ADDD00064041 /* FBConnect.h */,
+				87A9EBF11B36ADDD00064041 /* FBDialog.bundle */,
+				87A9EBF21B36ADDD00064041 /* FBDialog.h */,
+				87A9EBF31B36ADDD00064041 /* FBDialog.m */,
+				87A9EBF41B36ADDD00064041 /* FBLoginDialog.h */,
+				87A9EBF51B36ADDD00064041 /* FBLoginDialog.m */,
+				87A9EBF61B36ADDD00064041 /* FBRequest.h */,
+				87A9EBF71B36ADDD00064041 /* FBRequest.m */,
+			);
+			name = Facebook;
+			path = Library/Facebook;
+			sourceTree = "<group>";
+		};
 		87AFE0471A5C55BC00DCA827 /* Contacts */ = {
 			isa = PBXGroup;
 			children = (
@@ -1607,6 +1641,7 @@
 				63F999E9199E095A005C82F6 /* verfication-field-bg.png in Resources */,
 				63F999C9199E095A005C82F6 /* merged-videos-pic.png in Resources */,
 				63F999E1199E095A005C82F6 /* pic-between-line.png in Resources */,
+				87A9EC071B36ADDD00064041 /* FBDialog.bundle in Resources */,
 				63A5CDF1199DE28800C87EAB /* luk-mh-old-vedios-hover-icon.png in Resources */,
 				87B979231B3603AE00B2C54D /* facebook_post-text-with-pressbuttonbg.png in Resources */,
 				87BD842E1ADEE14200761A28 /* select-button-with-bg@2x.png in Resources */,
@@ -1764,6 +1799,7 @@
 				874F46C81AC71E73001CE774 /* CreateVideoViewController.m in Sources */,
 				8727D5D11A4885E30092BB7C /* SCVideoPlayerViewController.m in Sources */,
 				8727D5AA1A4884460092BB7C /* SCRecorderFocusView.m in Sources */,
+				87A9EC081B36ADDD00064041 /* FBDialog.m in Sources */,
 				8727D5AB1A4884460092BB7C /* SCRecordSession.m in Sources */,
 				8727D5CD1A4885E30092BB7C /* SCRecordSessionManager.m in Sources */,
 				F016EB511A2CD9A600506B75 /* CameraEngine.m in Sources */,
@@ -1777,8 +1813,10 @@
 				8727D5AD1A4884460092BB7C /* SCSwipeableFilterView.m in Sources */,
 				8727D5CA1A4885E30092BB7C /* SCEditVideoViewController.m in Sources */,
 				8727D5A31A4884460092BB7C /* SCFilterSelectorView.m in Sources */,
+				87A9EC0A1B36ADDD00064041 /* FBRequest.m in Sources */,
 				875BFD1D1A572E2100A83E35 /* TabBarViewController.m in Sources */,
 				875BFD201A572ECC00A83E35 /* PushNoAnimationSegue.m in Sources */,
+				87A9EC091B36ADDD00064041 /* FBLoginDialog.m in Sources */,
 				875BFD2A1A5730CC00A83E35 /* ShareVideosViewController.m in Sources */,
 				63985C7F199E2E7400EAD6C1 /* TermsAndConditionsViewController.m in Sources */,
 				633851081983C9F400C3256A /* SBJsonWriter.m in Sources */,
@@ -1800,6 +1838,7 @@
 				63979B06199F641C005AB2A0 /* VideoListViewController.m in Sources */,
 				633850FE1983C9F400C3256A /* AFXMLRequestOperation.m in Sources */,
 				8727D5AF1A4884460092BB7C /* SCVideoPlayerView.m in Sources */,
+				87A9EC061B36ADDD00064041 /* Facebook.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

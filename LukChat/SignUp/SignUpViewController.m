@@ -143,7 +143,15 @@
     UIDatePicker *birthDayPicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(0,44, 320, 200)];
     [birthDayPicker setBackgroundColor:[UIColor whiteColor] ];
     [birthDayPicker setDatePickerMode:UIDatePickerModeDate];
-    [birthDayPicker setMaximumDate:[NSDate date]];
+    
+    NSDate *today = [NSDate date]; // get the current date
+    NSCalendar* cal = [NSCalendar currentCalendar]; // get current calender
+    NSDateComponents* dateOnlyToday = [cal components:( NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit ) fromDate:today];
+    [dateOnlyToday setYear:([dateOnlyToday year] - 1)];
+    NSDate *nextYear = [cal dateFromComponents:dateOnlyToday];
+    
+    [birthDayPicker setDate:nextYear];
+    [birthDayPicker setMaximumDate:today];
     [pikerView addSubview:birthDayPicker];
     
     [self.view addSubview:pikerView];
@@ -302,7 +310,10 @@
                                if (error)
                                {
                                    NSLog(@"error%@",[error localizedDescription]);
+                                   dispatch_async(dispatch_get_main_queue()
+                                                  , ^(void) {
                                    [CommonMethods showAlertWithTitle:@"Error" message:[error localizedDescription]];
+                                                      });
                                }
                                else
                                {
