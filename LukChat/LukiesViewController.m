@@ -790,8 +790,8 @@
         NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                        videoData, @"video.mov",
                                        @"video/quicktime", @"contentType",
-                                       @"Video Test Title", @"title",
-                                       @"Video Test Description", @"description",
+                                       [NSString stringWithFormat:@"LUK - %@",videoTitle], @"title",
+                                       videoTitle, @"description",
                                        nil];
         [facebook requestWithGraphPath:@"me/videos"
                                                andParams:params
