@@ -21,6 +21,9 @@
 #import "AppDelegate.h"
 
 @interface LukiesViewController ()<ConnectionHandlerDelegate>
+{
+    UCZProgressView *progressViewObj;
+}
 
 @property (strong, nonatomic) NSMutableArray *contacts;
 @property (strong, nonatomic) NSMutableArray *appContacts;
@@ -247,6 +250,12 @@
     //        connObj.delegate = self;
     //        [connObj makePOSTRequestPath:kGetUserInfoURL parameters:dict];
     //    }
+    
+    if (![CommonMethods reachable]) {
+        [CommonMethods showAlertWithTitle:@"No Connectivity" message:@"Please check the Internet Connnection"];
+        return;
+    }
+    
     for (int i=0; i<[self.phoneContacts count]; i++) {
         
         NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
@@ -485,6 +494,12 @@
 
 - (IBAction)facebookPostBtnClicked:(UIButton *)sender {
     
+    if(![CommonMethods reachable])
+    {
+        [CommonMethods showAlertWithTitle:@"No Connectivity" message:@"Please check the Internet Connnection"];
+        return;
+    }
+    
     NSString *urlStr;
     
     if([[NSUserDefaults standardUserDefaults]boolForKey:kIsFromCreated])
@@ -551,6 +566,12 @@
 //Share received video to friends
 -(void)sentRecievedVideos
 {
+    if(![CommonMethods reachable])
+    {
+        [CommonMethods showAlertWithTitle:@"No Connectivity" message:@"Please check the Internet Connnection"];
+        return;
+    }
+    
     NSString *videoTitle = [[NSUserDefaults standardUserDefaults] valueForKey:kRecievedVideoShareTitle];
     videoTitle = [videoTitle stringByDecodingHTMLEntities];
     NSString *videoUrl = [[NSUserDefaults standardUserDefaults]valueForKey:kRecievedVideoShare];
@@ -581,6 +602,12 @@
 }
 
 -(void)shareVideo:(NSURL *)videoURL {
+    
+    if(![CommonMethods reachable])
+    {
+        [CommonMethods showAlertWithTitle:@"No Connectivity" message:@"Please check the Internet Connnection"];
+        return;
+    }
     NSString *videoTitle;
     if([[NSUserDefaults standardUserDefaults]boolForKey:kIsFromCreated])
     {
@@ -695,24 +722,43 @@
     return imageView.image;
 }
 
-
 -(void)startProgressLoader
 {
-    if (!alert) {
-        alert = [[UIAlertView alloc] initWithTitle:@"" message:@"SharingVideo" delegate:self cancelButtonTitle:nil otherButtonTitles:nil];
-        UIActivityIndicatorView *progress= [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(125, 55, 30, 30)];
-        progress.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhiteLarge;
-        [alert addSubview:progress];
-        [progress startAnimating];
-        [alert show];
+    if(!progressViewObj){
+    progressViewObj = [[UCZProgressView alloc]initWithFrame:self.view.frame];
+    progressViewObj.indeterminate = YES;
+    progressViewObj.showsText = NO;
+    progressViewObj.backgroundColor = [UIColor clearColor];
+    progressViewObj.opaque = 0.5;
+    progressViewObj.alpha = 0.5;
+    [self.view addSubview:progressViewObj];
     }
 }
 
 -(void)stopProgressLoader
 {
-    [alert dismissWithClickedButtonIndex:0 animated:YES];
-    alert = nil;
+    [progressViewObj removeFromSuperview];
+    progressViewObj = nil;
 }
+
+
+//-(void)startProgressLoader
+//{
+//    if (!alert) {
+//        alert = [[UIAlertView alloc] initWithTitle:@"" message:@"SharingVideo" delegate:self cancelButtonTitle:nil otherButtonTitles:nil];
+//        UIActivityIndicatorView *progress= [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(125, 55, 30, 30)];
+//        progress.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhiteLarge;
+//        [alert addSubview:progress];
+//        [progress startAnimating];
+//        [alert show];
+//    }
+//}
+//
+//-(void)stopProgressLoader
+//{
+//    [alert dismissWithClickedButtonIndex:0 animated:YES];
+//    alert = nil;
+//}
 
 #pragma mark - Connection
 
@@ -771,6 +817,12 @@
 - (void)fbDidLogin {
     //    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"sample" ofType:@"mov"];
     
+    if(![CommonMethods reachable])
+    {
+        [CommonMethods showAlertWithTitle:@"No Connectivity" message:@"Please check the Internet Connnection"];
+        return;
+    }
+    
     NSString *videoTitle;
     if([[NSUserDefaults standardUserDefaults]boolForKey:kIsFromCreated])
     {
@@ -786,6 +838,8 @@
     NSLog(@"Video Title....%@",videoTitle);
     
     if(facebookVideoPath.length>0){
+        
+        [self startProgressLoader];
         NSData *videoData = [NSData dataWithContentsOfFile:facebookVideoPath];
         NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                        videoData, @"video.mov",
@@ -816,11 +870,13 @@
         result = [result objectAtIndex:0];
     }
     NSLog(@"Result of API call: %@", result);
+    [self stopProgressLoader];
     [CommonMethods showAlertWithTitle:@"" message:@"Video Successfully post at facebook"];
 }
 
 - (void)request:(FBRequest *)request didFailWithError:(NSError *)error {
     NSLog(@"Failed with error: %@/nerror:%@", [error localizedDescription],[error description]);
+    [self stopProgressLoader];
     [CommonMethods showAlertWithTitle:@"Error" message:[error localizedDescription]];
 }
 
