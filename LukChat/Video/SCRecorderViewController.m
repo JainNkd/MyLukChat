@@ -689,7 +689,7 @@
     
     NSLog(@"Framerate.....,%d,%lld",videoAsset.duration.timescale,videoAsset.duration.value);
     AVMutableVideoComposition *videoComposition=[AVMutableVideoComposition videoComposition] ;
-    videoComposition.frameDuration = CMTimeMake(1, 24);
+    videoComposition.frameDuration = CMTimeMake(1, 30);
     videoComposition.renderSize=sizeOfVideo;
     videoComposition.animationTool=[AVVideoCompositionCoreAnimationTool videoCompositionCoreAnimationToolWithPostProcessingAsVideoLayer:videoLayer inLayer:parentLayer];
     
@@ -704,7 +704,7 @@
     NSLog(@"destinationPath...%@",destinationPath);
     [self removeFile:[NSURL fileURLWithPath:destinationPath]];
     
-    AVAssetExportSession *exportSession = [[AVAssetExportSession alloc] initWithAsset:mixComposition presetName:AVAssetExportPresetMediumQuality];
+    AVAssetExportSession *exportSession = [[AVAssetExportSession alloc] initWithAsset:mixComposition presetName:AVAssetExportPresetHighestQuality];
     exportSession.videoComposition=videoComposition;
     
     exportSession.outputURL = [NSURL fileURLWithPath:destinationPath];

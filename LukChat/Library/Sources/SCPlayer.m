@@ -53,7 +53,7 @@
     if (!self.isSendingPlayMessages) {
         __weak SCPlayer *myWeakSelf = self;
         
-        _timeObserver = [self addPeriodicTimeObserverForInterval:CMTimeMake(1, 24) queue:dispatch_get_main_queue() usingBlock:^(CMTime time) {
+        _timeObserver = [self addPeriodicTimeObserverForInterval:CMTimeMake(1, 30) queue:dispatch_get_main_queue() usingBlock:^(CMTime time) {
             SCPlayer *mySelf = myWeakSelf;
             id<SCPlayerDelegate> delegate = mySelf.delegate;
             if ([delegate respondsToSelector:@selector(player:didPlay:loopsCount:)]) {
