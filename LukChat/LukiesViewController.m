@@ -845,7 +845,7 @@
                                        videoData, @"video.mov",
                                        @"video/quicktime", @"contentType",
                                        [NSString stringWithFormat:@"LUK - %@",videoTitle], @"title",
-                                       [NSString stringWithFormat:@"%@ http://www.lukchat.com/landing",videoTitle], @"description",
+                                       [NSString stringWithFormat:@"%@ \n\nCreate your own LUK www.lukchat.com/go",videoTitle], @"description",
                                        nil];
         [facebook requestWithGraphPath:@"me/videos"
                                                andParams:params
