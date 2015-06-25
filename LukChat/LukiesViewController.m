@@ -379,7 +379,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 44.0;
+    return 35.0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -413,6 +413,14 @@
         cell.accessoryType = UITableViewCellAccessoryNone;
     }
     
+    UIView *backgroundView = [[UIView alloc]initWithFrame:cell.contentView.frame];
+    backgroundView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@""]];
+    cell.backgroundView = backgroundView;
+   
+    UIView *selectedBgView = [[UIView alloc]initWithFrame:cell.contentView.frame];
+    selectedBgView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"select-namebg.png"]];
+    cell.selectedBackgroundView = selectedBgView;
+    
     NSString* letter = [tableSectionTitles objectAtIndex:indexPath.section];
     NSArray* arrayForLetter = (NSArray*)[filteredTableData objectForKey:letter];
     Contact *contactObj = (Contact*)[arrayForLetter objectAtIndex:indexPath.row];
@@ -420,7 +428,9 @@
     // Display Contact Details
     if (contactObj) {
         if (contactObj.user_fname)
+            cell.textLabel.textColor = [UIColor whiteColor];
             cell.textLabel.text = [NSString stringWithFormat:@"%@ %@",contactObj.user_fname,contactObj.user_lname];
+        
         //        NSLog(@"username is %@ %@",contactObj.user_fname,contactObj.user_lname);
         if (contactObj.user_phone)
             cell.detailTextLabel.text = [NSString stringWithFormat:@"%lld",contactObj.user_phone];
@@ -449,10 +459,10 @@
 }
 
 //For showing side index bar
-- (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
-{
-    return indexTitles;
-}
+//- (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
+//{
+//    return indexTitles;
+//}
 
 - (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index
 {

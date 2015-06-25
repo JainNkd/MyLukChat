@@ -258,6 +258,10 @@
 		8BC23E0C1A72486300AB29B7 /* search_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BC23E0B1A72486300AB29B7 /* search_icon.png */; };
 		8BEEE1F51A9CAFE90024305B /* download_video.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BEEE1F31A9CAFE90024305B /* download_video.png */; };
 		8BEEE1F61A9CAFE90024305B /* video_play.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BEEE1F41A9CAFE90024305B /* video_play.png */; };
+		8BFB476A1B3BC302009C1F71 /* select-namebg.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BFB47681B3BC302009C1F71 /* select-namebg.png */; };
+		8BFB476B1B3BC302009C1F71 /* select-namebg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BFB47691B3BC302009C1F71 /* select-namebg@2x.png */; };
+		8BFB47701B3BCB28009C1F71 /* logo-luk.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BFB476E1B3BCB28009C1F71 /* logo-luk.png */; };
+		8BFB47711B3BCB28009C1F71 /* logo-luk@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BFB476F1B3BCB28009C1F71 /* logo-luk@2x.png */; };
 		F016EB471A2BD04500506B75 /* Cam.png in Resources */ = {isa = PBXBuildFile; fileRef = F016EB451A2BD04500506B75 /* Cam.png */; };
 		F016EB481A2BD04500506B75 /* CameraMode.png in Resources */ = {isa = PBXBuildFile; fileRef = F016EB461A2BD04500506B75 /* CameraMode.png */; };
 		F016EB511A2CD9A600506B75 /* CameraEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = F016EB501A2CD9A600506B75 /* CameraEngine.m */; };
@@ -646,6 +650,10 @@
 		8BC23E0B1A72486300AB29B7 /* search_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = search_icon.png; sourceTree = "<group>"; };
 		8BEEE1F31A9CAFE90024305B /* download_video.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = download_video.png; sourceTree = "<group>"; };
 		8BEEE1F41A9CAFE90024305B /* video_play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = video_play.png; sourceTree = "<group>"; };
+		8BFB47681B3BC302009C1F71 /* select-namebg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "select-namebg.png"; sourceTree = "<group>"; };
+		8BFB47691B3BC302009C1F71 /* select-namebg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "select-namebg@2x.png"; sourceTree = "<group>"; };
+		8BFB476E1B3BCB28009C1F71 /* logo-luk.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo-luk.png"; sourceTree = "<group>"; };
+		8BFB476F1B3BCB28009C1F71 /* logo-luk@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo-luk@2x.png"; sourceTree = "<group>"; };
 		F016EB451A2BD04500506B75 /* Cam.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Cam.png; sourceTree = "<group>"; };
 		F016EB461A2BD04500506B75 /* CameraMode.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CameraMode.png; sourceTree = "<group>"; };
 		F016EB4F1A2CD9A600506B75 /* CameraEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraEngine.h; sourceTree = "<group>"; };
@@ -1161,6 +1169,10 @@
 		63F999B4199E095A005C82F6 /* video-send */ = {
 			isa = PBXGroup;
 			children = (
+				8BFB476E1B3BCB28009C1F71 /* logo-luk.png */,
+				8BFB476F1B3BCB28009C1F71 /* logo-luk@2x.png */,
+				8BFB47681B3BC302009C1F71 /* select-namebg.png */,
+				8BFB47691B3BC302009C1F71 /* select-namebg@2x.png */,
 				87B979071B3603AE00B2C54D /* contact_bg@1x.png */,
 				87B979081B3603AE00B2C54D /* contact_bg@2x.png */,
 				87B979091B3603AE00B2C54D /* facebook_post_buttonbg.png */,
@@ -1610,6 +1622,7 @@
 				633850921983A7B900C3256A /* luk-main1-bg.png in Resources */,
 				8BC23E051A72342800AB29B7 /* video-send-search-bg.png in Resources */,
 				8B064A131B2EDC3F00A70EEA /* app-store-screen-1_7.png in Resources */,
+				8BFB476B1B3BC302009C1F71 /* select-namebg@2x.png in Resources */,
 				87B979271B3603AE00B2C54D /* send-lukies_buttonbg.png in Resources */,
 				875437491AC5B1990091AD68 /* video-send-logo@2x.png in Resources */,
 				87B979321B36108000B2C54D /* iphone4-screen-1.png in Resources */,
@@ -1646,6 +1659,7 @@
 				87B979231B3603AE00B2C54D /* facebook_post-text-with-pressbuttonbg.png in Resources */,
 				87BD842E1ADEE14200761A28 /* select-button-with-bg@2x.png in Resources */,
 				87B9792C1B3603AE00B2C54D /* send-lukies_text-with-buttonbg@2x.png in Resources */,
+				8BFB476A1B3BC302009C1F71 /* select-namebg.png in Resources */,
 				6338503519839F2D00C3256A /* Images.xcassets in Resources */,
 				87B9791E1B3603AE00B2C54D /* facebook_post_buttonbg@2x.png in Resources */,
 				8BB068EA1AC58A0C000A84C7 /* monkeywithbg@2x.png in Resources */,
@@ -1658,6 +1672,8 @@
 				63F999C8199E095A005C82F6 /* merged-videos-pic-description-bg.png in Resources */,
 				63A5CDF2199DE28800C87EAB /* phone-book-icon-selected.png in Resources */,
 				6329BEEC19A8AAC400B6D8F5 /* VideoShare.sqlite in Resources */,
+				8BFB47711B3BCB28009C1F71 /* logo-luk@2x.png in Resources */,
+				8BFB47701B3BCB28009C1F71 /* logo-luk.png in Resources */,
 				87BD84281ADEE14200761A28 /* back-button-bg@2x.png in Resources */,
 				63F999DB199E095A005C82F6 /* terms-bg.png in Resources */,
 				633850771983A4C900C3256A /* InfoPlist.strings in Resources */,
