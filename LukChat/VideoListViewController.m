@@ -60,6 +60,10 @@
     swipe.direction = UISwipeGestureRecognizerDirectionRight;
     [self.view addGestureRecognizer:swipe];
     
+    UISwipeGestureRecognizer *swipe1 = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(closeSetting)];
+    swipe1.direction = UISwipeGestureRecognizerDirectionRight;
+    [self.settingView addGestureRecognizer:swipe1];
+    
     //Added Tap Gesture to remove keyboard
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
     [self.view addGestureRecognizer:tap];
@@ -67,6 +71,11 @@
     self.titleHeaderLBL.hidden = YES;
     [self initUIArrays];
     // Do any additional setup after loading the view.
+}
+
+-(void)closeSetting
+{
+    [self closeSettingBtnAction:nil];
 }
 
 -(void)confirmationToResetTextBox
@@ -350,10 +359,41 @@
     }
 }
 
+- (IBAction)openSettingBtnAction:(UIButton *)sender {
+ 
+    self.settingView.translatesAutoresizingMaskIntoConstraints  = YES;
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:.5];
+    
+    CGRect frame= self.settingView.frame;
+    if(IS_IPHONE_4_OR_LESS)
+        self.settingView.frame = CGRectMake(80, 0, frame.size.width, frame.size.height);
+    else
+        self.settingView.frame = CGRectMake(80, 0, frame.size.width, frame.size.height);
+    [UIView commitAnimations];
+}
+
 - (IBAction)videoRecordButtonPressed:(UIButton *)sender {
     UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Option" delegate:self cancelButtonTitle:CANCEL_BUTTON destructiveButtonTitle:nil otherButtonTitles:@"Record", @"Load",@"Play", nil];
     [actionSheet setTag:sender.tag];
     [actionSheet showFromRect:sender.frame inView:self.view animated:YES];
+}
+
+- (IBAction)closeSettingBtnAction:(UIButton *)sender {
+    
+    self.settingView.translatesAutoresizingMaskIntoConstraints  = YES;
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:.5];
+    
+    CGRect frame= self.settingView.frame;
+    if(IS_IPHONE_4_OR_LESS)
+        self.settingView.frame = CGRectMake(320, 0, frame.size.width, frame.size.height);
+    else
+        self.settingView.frame = CGRectMake(320, 0, frame.size.width, frame.size.height);
+    [UIView commitAnimations];
+}
+
+- (IBAction)facebookBtnAction:(UIButton *)sender {
 }
 
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex

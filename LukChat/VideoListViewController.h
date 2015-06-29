@@ -93,6 +93,7 @@
 @property (weak, nonatomic) IBOutlet UIView *lukView9;
 @property (weak, nonatomic) IBOutlet UIView *lukView10;
 
+@property (weak, nonatomic) IBOutlet UIView *settingView;
 
 //Video title Textfield
 @property (weak, nonatomic) IBOutlet UITextField *videoTitleTextField;
@@ -101,9 +102,12 @@
 //Video Record button action Method
 
 @property (weak, nonatomic) IBOutlet UIButton *mergeButton;
+- (IBAction)openSettingBtnAction:(UIButton *)sender;
 
 - (IBAction)videoRecordButtonPressed:(UIButton *)sender;
 
+- (IBAction)closeSettingBtnAction:(UIButton *)sender;
+- (IBAction)facebookBtnAction:(UIButton *)sender;
 
 //Video Merge button Action
 

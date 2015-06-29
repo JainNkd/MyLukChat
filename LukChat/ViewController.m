@@ -66,7 +66,7 @@
     [defaults synchronize];
     NSLog(@"savvvvvve is %@",saving);
     
-    if([saving  isEqualToString: @"YES"]){
+    if(![saving  isEqualToString: @"YES"]){
         [self performSegueWithIdentifier:@"TabBarView" sender:self];
         
     }

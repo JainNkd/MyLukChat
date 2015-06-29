@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="KRm-ul-vIt">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="13F1077" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="KRm-ul-vIt">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -687,6 +687,49 @@
                                     <outlet property="delegate" destination="hzu-ak-A4P" id="Cm9-Zg-2kc"/>
                                 </connections>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Orl-GE-lae">
+                                <rect key="frame" x="264" y="25" width="38" height="22"/>
+                                <state key="normal" image="settings-icon.png">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="openSettingBtnAction:" destination="hzu-ak-A4P" eventType="touchUpInside" id="aOY-pC-ki7"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nDn-Pp-r9R">
+                                <rect key="frame" x="320" y="0.0" width="240" height="568"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="setting" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AeR-9E-5MA">
+                                        <rect key="frame" x="20" y="20" width="200" height="32"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="28"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n66-Uc-x48">
+                                        <rect key="frame" x="0.0" y="115" width="210" height="60"/>
+                                        <color key="backgroundColor" red="0.11764705882352941" green="0.32941176470588235" blue="0.94509803921568625" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
+                                        <state key="normal" title="login to facebook">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="facebookBtnAction:" destination="hzu-ak-A4P" eventType="touchUpInside" id="FXX-Sk-7eS"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Xq-Wm-TBq">
+                                        <rect key="frame" x="200" y="23" width="28" height="26"/>
+                                        <state key="normal" image="close-icon.png">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="closeSettingBtnAction:" destination="hzu-ak-A4P" eventType="touchUpInside" id="vSH-bQ-PCG"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.68627450980392157" green="0.0" blue="0.76470588235294112" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -721,6 +764,7 @@
                         <outlet property="seperationLine7" destination="yJQ-Md-i1F" id="jTi-ed-KMN"/>
                         <outlet property="seperationLine8" destination="8hS-Nc-ob0" id="j7A-4T-0UU"/>
                         <outlet property="seperationLine9" destination="RUW-8K-WXZ" id="Obr-UM-AuL"/>
+                        <outlet property="settingView" destination="nDn-Pp-r9R" id="J7z-Qe-Pbb"/>
                         <outlet property="titleHeaderLBL" destination="7uL-XQ-wcr" id="QwE-gd-0vQ"/>
                         <outlet property="videoTitleButton1" destination="LlP-mr-Puh" id="g8i-wE-2ys"/>
                         <outlet property="videoTitleButton10" destination="mD7-wz-7X9" id="V9D-1Q-0uW"/>
@@ -1741,6 +1785,7 @@
         <image name="camerapage-icon-running-indication-white.png" width="31" height="24"/>
         <image name="camerapage-icon-save.png" width="23" height="23"/>
         <image name="camerapage-icon-smiling-monkey.png" width="50" height="50"/>
+        <image name="close-icon.png" width="28" height="26"/>
         <image name="contact_bg.png" width="320" height="480"/>
         <image name="download_video.png" width="50" height="50"/>
         <image name="facebook_post-text-with-buttonbg.png" width="320" height="57"/>
@@ -1760,6 +1805,7 @@
         <image name="select-button-with-bg.png" width="320" height="57"/>
         <image name="select-logo-luk.png" width="57" height="27"/>
         <image name="send-lukies_text-with-buttonbg.png" width="320" height="57"/>
+        <image name="settings-icon.png" width="38" height="15"/>
         <image name="share-icon.png" width="62" height="74"/>
         <image name="share-videos-1st-pic.png" width="640" height="362"/>
         <image name="share-videos-back-icon.png" width="105" height="51"/>

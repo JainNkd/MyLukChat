@@ -183,6 +183,10 @@
 		879DA4271AC30CCF00E26CCB /* monkey-featherbg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 879DA4201AC30CCF00E26CCB /* monkey-featherbg@2x.png */; };
 		879DA42E1AC30E7800E26CCB /* opacity-blured-img@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 879DA42D1AC30E7800E26CCB /* opacity-blured-img@2x.png */; };
 		87A7474C1AC6C0F60046C5A0 /* RecievedVideoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 87A7474B1AC6C0F60046C5A0 /* RecievedVideoTableViewCell.m */; };
+		87A8178C1B41A6A400EF5F73 /* close-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 87A817881B41A6A400EF5F73 /* close-icon.png */; };
+		87A8178D1B41A6A400EF5F73 /* close-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 87A817891B41A6A400EF5F73 /* close-icon@2x.png */; };
+		87A8178E1B41A6A400EF5F73 /* settings-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 87A8178A1B41A6A400EF5F73 /* settings-icon.png */; };
+		87A8178F1B41A6A400EF5F73 /* settings-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 87A8178B1B41A6A400EF5F73 /* settings-icon@2x.png */; };
 		87A9EC061B36ADDD00064041 /* Facebook.m in Sources */ = {isa = PBXBuildFile; fileRef = 87A9EBEF1B36ADDD00064041 /* Facebook.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		87A9EC071B36ADDD00064041 /* FBDialog.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 87A9EBF11B36ADDD00064041 /* FBDialog.bundle */; };
 		87A9EC081B36ADDD00064041 /* FBDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 87A9EBF31B36ADDD00064041 /* FBDialog.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -561,6 +565,10 @@
 		879DA42D1AC30E7800E26CCB /* opacity-blured-img@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "opacity-blured-img@2x.png"; sourceTree = "<group>"; };
 		87A7474A1AC6C0F60046C5A0 /* RecievedVideoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecievedVideoTableViewCell.h; sourceTree = "<group>"; };
 		87A7474B1AC6C0F60046C5A0 /* RecievedVideoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecievedVideoTableViewCell.m; sourceTree = "<group>"; };
+		87A817881B41A6A400EF5F73 /* close-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close-icon.png"; sourceTree = "<group>"; };
+		87A817891B41A6A400EF5F73 /* close-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close-icon@2x.png"; sourceTree = "<group>"; };
+		87A8178A1B41A6A400EF5F73 /* settings-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings-icon.png"; sourceTree = "<group>"; };
+		87A8178B1B41A6A400EF5F73 /* settings-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings-icon@2x.png"; sourceTree = "<group>"; };
 		87A9EBEE1B36ADDD00064041 /* Facebook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Facebook.h; sourceTree = "<group>"; };
 		87A9EBEF1B36ADDD00064041 /* Facebook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Facebook.m; sourceTree = "<group>"; };
 		87A9EBF01B36ADDD00064041 /* FBConnect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBConnect.h; sourceTree = "<group>"; };
@@ -883,6 +891,7 @@
 		633850511983A4C900C3256A /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				87A817871B41A6A400EF5F73 /* Setting */,
 				87B979311B36108000B2C54D /* iphone4-screen-1.png */,
 				8B064A121B2EDC3F00A70EEA /* app-store-screen-1_7.png */,
 				873CBF191AE97643001F20E6 /* watermark.png */,
@@ -1406,6 +1415,17 @@
 			path = Camera;
 			sourceTree = "<group>";
 		};
+		87A817871B41A6A400EF5F73 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				87A817881B41A6A400EF5F73 /* close-icon.png */,
+				87A817891B41A6A400EF5F73 /* close-icon@2x.png */,
+				87A8178A1B41A6A400EF5F73 /* settings-icon.png */,
+				87A8178B1B41A6A400EF5F73 /* settings-icon@2x.png */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
 		87A9EBED1B36ADDD00064041 /* Facebook */ = {
 			isa = PBXGroup;
 			children = (
@@ -1623,6 +1643,7 @@
 				633850921983A7B900C3256A /* luk-main1-bg.png in Resources */,
 				8BC23E051A72342800AB29B7 /* video-send-search-bg.png in Resources */,
 				8B064A131B2EDC3F00A70EEA /* app-store-screen-1_7.png in Resources */,
+				87A8178E1B41A6A400EF5F73 /* settings-icon.png in Resources */,
 				8BFB476B1B3BC302009C1F71 /* select-namebg@2x.png in Resources */,
 				87B979271B3603AE00B2C54D /* send-lukies_buttonbg.png in Resources */,
 				875437491AC5B1990091AD68 /* video-send-logo@2x.png in Resources */,
@@ -1653,6 +1674,7 @@
 				63F999D9199E095A005C82F6 /* luk-iphone-final-terms&condition-mainbg.png in Resources */,
 				8B6879521AD53C40007004E2 /* screen-8-background.png in Resources */,
 				63F999E9199E095A005C82F6 /* verfication-field-bg.png in Resources */,
+				87A8178D1B41A6A400EF5F73 /* close-icon@2x.png in Resources */,
 				63F999C9199E095A005C82F6 /* merged-videos-pic.png in Resources */,
 				63F999E1199E095A005C82F6 /* pic-between-line.png in Resources */,
 				87A9EC071B36ADDD00064041 /* FBDialog.bundle in Resources */,
@@ -1709,6 +1731,7 @@
 				8BEEE1F51A9CAFE90024305B /* download_video.png in Resources */,
 				63F999C4199E095A005C82F6 /* pic-background.png in Resources */,
 				63F99977199E04E2005C82F6 /* start-screen-footer-icon-monkey.png in Resources */,
+				87A8178F1B41A6A400EF5F73 /* settings-icon@2x.png in Resources */,
 				63F999BD199E095A005C82F6 /* luk-iphone-final-lukes-sent-list-pic-dummy.png in Resources */,
 				63F999ED199E095A005C82F6 /* luk-iphone-final-video-send-bg.png in Resources */,
 				873CBF1A1AE97643001F20E6 /* watermark.png in Resources */,
@@ -1717,6 +1740,7 @@
 				87B979221B3603AE00B2C54D /* facebook_post-text-with-buttonbg@2x.png in Resources */,
 				87B9791B1B3603AE00B2C54D /* contact_bg@1x.png in Resources */,
 				879DA42E1AC30E7800E26CCB /* opacity-blured-img@2x.png in Resources */,
+				87A8178C1B41A6A400EF5F73 /* close-icon.png in Resources */,
 				63A5CDF5199DE28800C87EAB /* video-record-footer-video-icon.png in Resources */,
 				633850911983A7B900C3256A /* luk-logo-1.png in Resources */,
 				8BB068F01AC58AB9000A84C7 /* screen4-smilemonkey-icon@2x.png in Resources */,
@@ -1956,8 +1980,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: aumkii Unternehmergesellschaft haftungsbeschrankt (F9KDL972HX)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: aumkii Unternehmergesellschaft haftungsbeschrankt (F9KDL972HX)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -1975,7 +1999,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "275a6496-dafc-4798-a531-520c1775007c";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1996,8 +2020,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: aumkii Unternehmergesellschaft haftungsbeschrankt (F9KDL972HX)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: aumkii Unternehmergesellschaft haftungsbeschrankt (F9KDL972HX)";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -2008,7 +2032,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "275a6496-dafc-4798-a531-520c1775007c";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -2019,8 +2043,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: aumkii Unternehmergesellschaft haftungsbeschrankt (F9KDL972HX)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: aumkii Unternehmergesellschaft haftungsbeschrankt (F9KDL972HX)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/LukChat/parse-library-1.6.3",
@@ -2031,7 +2055,7 @@
 				INFOPLIST_FILE = "LukChat/LukChat-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "275a6496-dafc-4798-a531-520c1775007c";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -2041,8 +2065,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: aumkii Unternehmergesellschaft haftungsbeschrankt (F9KDL972HX)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: aumkii Unternehmergesellschaft haftungsbeschrankt (F9KDL972HX)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/LukChat/parse-library-1.6.3",
@@ -2053,7 +2077,7 @@
 				INFOPLIST_FILE = "LukChat/LukChat-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "275a6496-dafc-4798-a531-520c1775007c";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -2062,8 +2086,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/LukChat.app/LukChat";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: aumkii Unternehmergesellschaft haftungsbeschrankt (F9KDL972HX)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: aumkii Unternehmergesellschaft haftungsbeschrankt (F9KDL972HX)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -2077,7 +2101,7 @@
 				);
 				INFOPLIST_FILE = "LukChatTests/LukChatTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "275a6496-dafc-4798-a531-520c1775007c";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -2087,8 +2111,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/LukChat.app/LukChat";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: aumkii Unternehmergesellschaft haftungsbeschrankt (F9KDL972HX)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: aumkii Unternehmergesellschaft haftungsbeschrankt (F9KDL972HX)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -2098,7 +2122,7 @@
 				GCC_PREFIX_HEADER = "LukChat/LukChat-Prefix.pch";
 				INFOPLIST_FILE = "LukChatTests/LukChatTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "275a6496-dafc-4798-a531-520c1775007c";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};

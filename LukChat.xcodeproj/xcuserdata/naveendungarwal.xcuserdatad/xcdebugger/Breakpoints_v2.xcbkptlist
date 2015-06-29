@@ -287,7 +287,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "536"
             endingLineNumber = "536"
-            landmarkName = "-sendToLukiesButtonPressed:"
+            landmarkName = "-facebookPostBtnClicked:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -319,7 +319,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "616"
             endingLineNumber = "616"
-            landmarkName = "-makePOSTVideoShareAtPath:parameters:"
+            landmarkName = "-shareVideo:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -335,7 +335,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "594"
             endingLineNumber = "594"
-            landmarkName = "-shareVideo:"
+            landmarkName = "-sentRecievedVideos"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -351,7 +351,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "622"
             endingLineNumber = "622"
-            landmarkName = "-makePOSTVideoShareAtPath:parameters:"
+            landmarkName = "-shareVideo:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -383,7 +383,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "563"
             endingLineNumber = "563"
-            landmarkName = "-sentRecievedVideos"
+            landmarkName = "-sendToLukiesButtonPressed:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -399,8 +399,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "550"
             endingLineNumber = "550"
-            landmarkName = "@implementation LukiesViewController"
-            landmarkType = "3">
+            landmarkName = "-sendToLukiesButtonPressed:"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -447,7 +447,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "745"
             endingLineNumber = "745"
-            landmarkName = "-addMyVideoLog:videoId:"
+            landmarkName = "-startProgressLoader"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -463,7 +463,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "609"
             endingLineNumber = "609"
-            landmarkName = "-shareVideo:"
+            landmarkName = "-sentRecievedVideos"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -959,7 +959,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "810"
             endingLineNumber = "810"
-            landmarkName = "-fbDidNotLogin:"
+            landmarkName = "-addMyVideoLog:videoId:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -975,7 +975,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "815"
             endingLineNumber = "815"
-            landmarkName = "-request:didLoad:"
+            landmarkName = "-addMyVideoLog:videoId:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -991,7 +991,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "824"
             endingLineNumber = "824"
-            landmarkName = "-request:didFailWithError:"
+            landmarkName = "-addMyVideoLog:videoId:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1007,7 +1007,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "486"
             endingLineNumber = "486"
-            landmarkName = "-facebookPostBtnClicked:"
+            landmarkName = "-tableView:viewForHeaderInSection:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1039,8 +1039,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "771"
             endingLineNumber = "771"
-            landmarkName = "-fbDidLogin"
-            landmarkType = "5">
+            landmarkName = "@implementation LukiesViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1055,7 +1055,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "786"
             endingLineNumber = "786"
-            landmarkName = "-fbDidLogin"
+            landmarkName = "-addMyVideoLog:videoId:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
