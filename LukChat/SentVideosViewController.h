@@ -27,4 +27,21 @@
 - (IBAction)shareButtonClickedAction:(UIButton *)sender;
 @property(nonatomic,strong) NSMutableArray *videoDetailsArr;
 @property (weak, nonatomic) IBOutlet UITableView *sentTableViewObj;
+
+
+
+@property (weak, nonatomic) IBOutlet UIView *settingView;
+
+- (IBAction)openSettingBtnAction:(id)sender;
+
+- (IBAction)closeSettingBtnAction:(id)sender;
+
+@property (weak, nonatomic) IBOutlet UIButton *loginBtn;
+
+@property (weak, nonatomic) IBOutlet UIButton *logoutBtn;
+
+- (IBAction)facebookLoginAction:(UIButton *)sender;
+
+- (IBAction)facebookLououtAction:(UIButton *)sender;
+
 @end

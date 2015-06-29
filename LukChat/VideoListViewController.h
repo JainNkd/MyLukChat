@@ -98,6 +98,10 @@
 //Video title Textfield
 @property (weak, nonatomic) IBOutlet UITextField *videoTitleTextField;
 
+@property (weak, nonatomic) IBOutlet UIButton *loginBtn;
+
+@property (weak, nonatomic) IBOutlet UIButton *logoutBtn;
+
 
 //Video Record button action Method
 
@@ -107,7 +111,10 @@
 - (IBAction)videoRecordButtonPressed:(UIButton *)sender;
 
 - (IBAction)closeSettingBtnAction:(UIButton *)sender;
-- (IBAction)facebookBtnAction:(UIButton *)sender;
+
+- (IBAction)facebookLoginAction:(UIButton *)sender;
+
+- (IBAction)facebookLououtAction:(UIButton *)sender;
 
 //Video Merge button Action
 

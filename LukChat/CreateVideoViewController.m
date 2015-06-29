@@ -32,8 +32,19 @@
     
         self.createTableView.estimatedRowHeight = 280;
         self.createTableView.rowHeight = UITableViewAutomaticDimension;
+    
+    UISwipeGestureRecognizer *swipe1 = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(closeSetting)];
+    swipe1.direction = UISwipeGestureRecognizerDirectionRight;
+    [self.settingView addGestureRecognizer:swipe1];
     // Do any additional setup after loading the view.
 }
+
+
+-(void)closeSetting
+{
+    [self closeSettingBtnAction:nil];
+}
+
 
 -(void)viewWillAppear:(BOOL)animated
 {
@@ -189,6 +200,33 @@
     LukiesViewController *lukiesVC = [self.storyboard instantiateViewControllerWithIdentifier:@"LukiesViewController"];
     [self.navigationController pushViewController:lukiesVC animated:YES];
 
+}
+
+- (IBAction)openSettingBtnAction:(id)sender {
+    self.settingView.translatesAutoresizingMaskIntoConstraints  = YES;
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:.5];
+    
+    CGRect frame= self.settingView.frame;
+    if(IS_IPHONE_4_OR_LESS)
+        self.settingView.frame = CGRectMake(80, 0, frame.size.width, frame.size.height);
+    else
+        self.settingView.frame = CGRectMake(80, 0, frame.size.width, frame.size.height);
+    [UIView commitAnimations];
+}
+
+- (IBAction)closeSettingBtnAction:(id)sender {
+    self.settingView.translatesAutoresizingMaskIntoConstraints  = YES;
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:.5];
+    
+    CGRect frame= self.settingView.frame;
+    if(IS_IPHONE_4_OR_LESS)
+        self.settingView.frame = CGRectMake(320, 0, frame.size.width, frame.size.height);
+    else
+        self.settingView.frame = CGRectMake(320, 0, frame.size.width, frame.size.height);
+    [UIView commitAnimations];
+    
 }
 
 

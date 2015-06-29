@@ -393,6 +393,12 @@
     [UIView commitAnimations];
 }
 
+- (IBAction)facebookLoginAction:(UIButton *)sender {
+}
+
+- (IBAction)facebookLououtAction:(UIButton *)sender {
+}
+
 - (IBAction)facebookBtnAction:(UIButton *)sender {
 }
 

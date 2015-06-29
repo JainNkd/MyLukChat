@@ -93,6 +93,33 @@
     }
 }
 
+- (IBAction)openSettingBtnAction:(id)sender {
+    self.settingView.translatesAutoresizingMaskIntoConstraints  = YES;
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:.5];
+    
+    CGRect frame= self.settingView.frame;
+    if(IS_IPHONE_4_OR_LESS)
+        self.settingView.frame = CGRectMake(80, 0, frame.size.width, frame.size.height);
+    else
+        self.settingView.frame = CGRectMake(80, 0, frame.size.width, frame.size.height);
+    [UIView commitAnimations];
+}
+
+- (IBAction)closeSettingBtnAction:(id)sender {
+    self.settingView.translatesAutoresizingMaskIntoConstraints  = YES;
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:.5];
+    
+    CGRect frame= self.settingView.frame;
+    if(IS_IPHONE_4_OR_LESS)
+        self.settingView.frame = CGRectMake(320, 0, frame.size.width, frame.size.height);
+    else
+        self.settingView.frame = CGRectMake(320, 0, frame.size.width, frame.size.height);
+    [UIView commitAnimations];
+    
+}
+
 -(void)reloadHistoryData
 {
     [videoDetailsArr removeAllObjects];
@@ -112,7 +139,17 @@
     //    self.sentTableViewObj.estimatedRowHeight = 90.0;
     //    self.sentTableViewObj.rowHeight = UITableViewAutomaticDimension;
     
+    UISwipeGestureRecognizer *swipe1 = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(closeSetting)];
+    swipe1.direction = UISwipeGestureRecognizerDirectionRight;
+    [self.settingView addGestureRecognizer:swipe1];
+    
 }
+
+-(void)closeSetting
+{
+    [self closeSettingBtnAction:nil];
+}
+
 
 
 -(void)connHandlerClient:(ConnectionHandler *)client didSucceedWithResponseString:(NSString *)response forPath:(NSString *)urlPath{
