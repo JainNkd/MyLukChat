@@ -13,16 +13,18 @@
 @property (weak, nonatomic) IBOutlet UITableView *createTableView;
 @property (weak, nonatomic) IBOutlet UIView *settingView;
 
-- (IBAction)shareButtonClickAction:(UIButton *)sender;
+@property (weak, nonatomic) IBOutlet UIButton *loginBtn;
 
+@property (weak, nonatomic) IBOutlet UIButton *logoutBtn;
+
+
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+
+- (IBAction)shareButtonClickAction:(UIButton *)sender;
 
 - (IBAction)openSettingBtnAction:(id)sender;
 
 - (IBAction)closeSettingBtnAction:(id)sender;
-
-@property (weak, nonatomic) IBOutlet UIButton *loginBtn;
-
-@property (weak, nonatomic) IBOutlet UIButton *logoutBtn;
 
 - (IBAction)facebookLoginAction:(UIButton *)sender;
 

@@ -830,8 +830,72 @@
 
 //==================== facebook delegate methods.
 - (void)fbDidLogin {
-    //    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"sample" ofType:@"mov"];
-    [[NSUserDefaults standardUserDefaults]setBool:TRUE forKey:@"FB_LOGIN"];
+    
+    if(![CommonMethods reachable])
+    {
+        [CommonMethods showAlertWithTitle:@"No Connectivity" message:@"Please check the Internet Connnection"];
+        return;
+    }
+    
+    [self getUserFBProfileData];
+}
+
+-(void)getUserFBProfileData
+{
+    //Get fb server data List Request to server
+    NSOperationQueue *backgroundQueue = [[NSOperationQueue alloc] init];
+    
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://graph.facebook.com/me?fields=id,name&access_token=%@",SharedAppDelegate.facebook.accessToken]]];
+    
+    
+    [request setHTTPMethod:@"GET"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    
+    // Create url connection and fire request
+    [NSURLConnection sendAsynchronousRequest:request
+                                       queue:backgroundQueue
+                           completionHandler:^(NSURLResponse *response, NSData *data, NSError *error){
+                               dispatch_async(dispatch_get_main_queue(), ^{
+                                   //                                   [GMDCircleLoader hideFromView:self.view animated:YES];
+                               });
+                               
+                               if (error)
+                               {
+                                   NSLog(@"error%@",[error localizedDescription]);
+                                   dispatch_async(dispatch_get_main_queue()
+                                                  , ^(void) {
+                                                      [CommonMethods showAlertWithTitle:@"Error" message:[error localizedDescription] cancelBtnTitle:@"Accept" otherBtnTitle:nil delegate:nil tag:0];
+                                                  });
+                               }
+                               else
+                               {
+                                   NSString *result = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+                                   NSLog(@"result....%@",result);
+                                   
+                                   NSError *jsonParsingError = nil;
+                                   id object = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonParsingError];
+                                   
+                                   if (jsonParsingError) {
+                                       NSLog(@"JSON ERROR: %@", [jsonParsingError localizedDescription]);
+                                   } else {
+                                       NSDictionary *responseDict = (NSDictionary*)object;
+                                       dispatch_async(dispatch_get_main_queue(), ^{
+                                           NSString*name = [responseDict valueForKey:@"name"];
+                                           if(name.length>0){
+                                               [[NSUserDefaults standardUserDefaults]setValue:name forKey:@"FB_NAME"];
+                                               [[NSUserDefaults standardUserDefaults]setBool:TRUE forKey:@"FB_LOGIN"];
+                                               [self postVideoToFacebook];
+                                           }
+                                       });
+                                   }
+                               }
+                           }];
+    
+}
+
+-(void)postVideoToFacebook
+{
     if(![CommonMethods reachable])
     {
         [CommonMethods showAlertWithTitle:@"No Connectivity" message:@"Please check the Internet Connnection"];
@@ -872,6 +936,7 @@
         [CommonMethods showAlertWithTitle:@"LUK" message:@"No Video available to share." cancelBtnTitle:@"Accept"otherBtnTitle:nil delegate:nil tag:0];
         
     }
+
 }
 
 

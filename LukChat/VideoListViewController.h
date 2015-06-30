@@ -103,6 +103,7 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *logoutBtn;
 
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 
 //Video Record button action Method
 

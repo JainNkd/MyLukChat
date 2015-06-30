@@ -747,6 +747,11 @@
 - (IBAction)openSettingBtnAction:(id)sender {
     
     BOOL isUserLogin = [[NSUserDefaults standardUserDefaults]boolForKey:@"FB_LOGIN"];
+    NSString *name = [[NSUserDefaults standardUserDefaults]valueForKey:@"FB_NAME"];
+    if(name.length>0)
+        self.nameLabel.text = name;
+    else
+        self.nameLabel.text = @"";
     
     self.loginBtn.hidden = isUserLogin;
     self.logoutBtn.hidden = !isUserLogin;
@@ -792,9 +797,7 @@
 
 //==================== facebook delegate methods.
 - (void)fbDidLogin {
-    [[NSUserDefaults standardUserDefaults]setBool:TRUE forKey:@"FB_LOGIN"];
-    self.loginBtn.hidden = YES;
-    self.logoutBtn.hidden = NO;
+    [self getUserFBProfileData];
     NSLog(@"User login in faceook");
 }
 
@@ -807,10 +810,70 @@
 -(void)fbDidLogout
 {
     [[NSUserDefaults standardUserDefaults]setBool:FALSE forKey:@"FB_LOGIN"];
+    [[NSUserDefaults standardUserDefaults]setValue:@"" forKey:@"FB_NAME"];
     self.loginBtn.hidden = NO;
     self.logoutBtn.hidden = YES;
+    self.nameLabel.text = @"";
     NSLog(@"facebook logout");
+
 }
+
+-(void)getUserFBProfileData
+{
+    //Get fb server data List Request to server
+    NSOperationQueue *backgroundQueue = [[NSOperationQueue alloc] init];
+    
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://graph.facebook.com/me?fields=id,name&access_token=%@",SharedAppDelegate.facebook.accessToken]]];
+    
+    
+    [request setHTTPMethod:@"GET"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    
+    // Create url connection and fire request
+    [NSURLConnection sendAsynchronousRequest:request
+                                       queue:backgroundQueue
+                           completionHandler:^(NSURLResponse *response, NSData *data, NSError *error){
+                               dispatch_async(dispatch_get_main_queue(), ^{
+                                   //                                   [GMDCircleLoader hideFromView:self.view animated:YES];
+                               });
+                               
+                               if (error)
+                               {
+                                   NSLog(@"error%@",[error localizedDescription]);
+                                   dispatch_async(dispatch_get_main_queue()
+                                                  , ^(void) {
+                                                      [CommonMethods showAlertWithTitle:@"Error" message:[error localizedDescription] cancelBtnTitle:@"Accept" otherBtnTitle:nil delegate:nil tag:0];
+                                                  });
+                               }
+                               else
+                               {
+                                   NSString *result = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+                                   NSLog(@"result....%@",result);
+                                   
+                                   NSError *jsonParsingError = nil;
+                                   id object = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonParsingError];
+                                   
+                                   if (jsonParsingError) {
+                                       NSLog(@"JSON ERROR: %@", [jsonParsingError localizedDescription]);
+                                   } else {
+                                       NSDictionary *responseDict = (NSDictionary*)object;
+                                       dispatch_async(dispatch_get_main_queue(), ^{
+                                           NSString*name = [responseDict valueForKey:@"name"];
+                                           if(name.length>0){
+                                               [[NSUserDefaults standardUserDefaults]setValue:name forKey:@"FB_NAME"];
+                                               [[NSUserDefaults standardUserDefaults]setBool:TRUE forKey:@"FB_LOGIN"];
+                                               self.nameLabel.text = name;
+                                               self.loginBtn.hidden = YES;
+                                               self.logoutBtn.hidden = NO;
+                                           }
+                                       });
+                                   }
+                               }
+                           }];
+    
+}
+
 
 
 

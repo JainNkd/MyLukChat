@@ -739,6 +739,12 @@
                                             <action selector="closeSettingBtnAction:" destination="hzu-ak-A4P" eventType="touchUpInside" id="vSH-bQ-PCG"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EDx-cH-1u3">
+                                        <rect key="frame" x="10" y="86" width="200" height="20"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.68627450980392157" green="0.0" blue="0.76470588235294112" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
@@ -768,6 +774,7 @@
                         <outlet property="lukView8" destination="0OB-f5-4dM" id="OtN-kv-nMA"/>
                         <outlet property="lukView9" destination="btr-fs-YKg" id="g2a-6B-5GL"/>
                         <outlet property="mergeButton" destination="6EZ-6b-YjC" id="hjc-ZB-kCT"/>
+                        <outlet property="nameLabel" destination="EDx-cH-1u3" id="Dkw-z6-Ef5"/>
                         <outlet property="seperationLine1" destination="MD6-mD-ZoY" id="rKV-ce-A21"/>
                         <outlet property="seperationLine10" destination="q3D-Wr-8al" id="wGJ-Og-EiM"/>
                         <outlet property="seperationLine2" destination="SrK-3u-xNL" id="yF1-r3-Gkf"/>
@@ -1210,7 +1217,7 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="j0G-z2-uuk" userLabel="SettingView">
-                                <rect key="frame" x="0.0" y="0.0" width="240" height="568"/>
+                                <rect key="frame" x="320" y="0.0" width="240" height="568"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="setting" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EtN-q5-USr">
                                         <rect key="frame" x="20" y="20" width="200" height="32"/>
@@ -1746,6 +1753,12 @@
                                             <action selector="closeSettingBtnAction:" destination="5Jt-oh-eHW" eventType="touchUpInside" id="80j-cB-e75"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B8i-ZO-wPP">
+                                        <rect key="frame" x="10" y="86" width="200" height="20"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.68627450980000004" green="0.0" blue="0.76470588240000004" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
@@ -1763,6 +1776,7 @@
                         <outlet property="createTableView" destination="I5G-Bb-cX9" id="RjY-Es-OyR"/>
                         <outlet property="loginBtn" destination="Ch1-H8-4kY" id="Dja-ML-FVm"/>
                         <outlet property="logoutBtn" destination="XN3-Xk-7MS" id="MIJ-wD-kCl"/>
+                        <outlet property="nameLabel" destination="B8i-ZO-wPP" id="acb-0j-3dm"/>
                         <outlet property="settingView" destination="hoY-op-8CG" id="aO6-BP-6qQ"/>
                     </connections>
                 </viewController>
