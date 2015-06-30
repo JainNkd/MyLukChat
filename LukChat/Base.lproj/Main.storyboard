@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="KRm-ul-vIt">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="13F1077" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="KRm-ul-vIt">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -65,8 +64,8 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" restorationIdentifier="SignUpView" image="signup-background.png" translatesAutoresizingMaskIntoConstraints="NO" id="GE9-qE-OTw">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="signup-logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="eHc-jR-f1v">
-                                <rect key="frame" x="10" y="10" width="127" height="40"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="logo-luk.png" translatesAutoresizingMaskIntoConstraints="NO" id="eHc-jR-f1v">
+                                <rect key="frame" x="16" y="15" width="62" height="30"/>
                             </imageView>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UV8-Ft-ejY">
                                 <rect key="frame" x="0.0" y="150" width="320" height="285"/>
@@ -229,35 +228,29 @@
                         <rect key="frame" x="-2" y="-4" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="luk-iphone-final-terms&amp;condition-mainbg.png" translatesAutoresizingMaskIntoConstraints="NO" id="lZC-CZ-JjW">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="luk-iphone-final-terms&amp;condition-mainbg.png" translatesAutoresizingMaskIntoConstraints="NO" id="lZC-CZ-JjW">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="terms-logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="whI-zt-cwc">
-                                <rect key="frame" x="10" y="10" width="127" height="40"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-luk.png" translatesAutoresizingMaskIntoConstraints="NO" id="whI-zt-cwc">
+                                <rect key="frame" x="16" y="15" width="62" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="Pga-P9-EGx"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="127" id="TNA-BK-P0D"/>
-                                    <constraint firstAttribute="width" constant="127" id="iGu-43-hFu"/>
+                                    <constraint firstAttribute="width" constant="62" id="AkE-0D-e0j"/>
+                                    <constraint firstAttribute="height" constant="30" id="Pae-EQ-5g8"/>
                                 </constraints>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="terms-bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="QD8-ft-nLa">
-                                <rect key="frame" x="0.0" y="70" width="320" height="420"/>
                             </imageView>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5jd-Jr-KVU">
                                 <rect key="frame" x="0.0" y="70" width="320" height="420"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="420" id="Vs4-2G-H4g"/>
-                                </constraints>
                                 <connections>
                                     <outlet property="delegate" destination="Avq-eh-KMo" id="jQF-n7-iI7"/>
                                 </connections>
                             </webView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mn9-wM-MFb">
                                 <rect key="frame" x="0.0" y="496" width="320" height="72"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="320" id="anW-Vn-TRh"/>
-                                    <constraint firstAttribute="height" constant="72" id="g6W-gl-0W1"/>
+                                    <constraint firstAttribute="height" constant="72" id="iNZ-Ff-kAg"/>
+                                    <constraint firstAttribute="width" constant="320" id="mSY-xj-Nf9"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
                                 <state key="normal" title="Back">
@@ -271,26 +264,16 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="5jd-Jr-KVU" firstAttribute="trailing" secondItem="lZC-CZ-JjW" secondAttribute="trailing" id="0A7-bb-8sp"/>
-                            <constraint firstItem="whI-zt-cwc" firstAttribute="leading" secondItem="YWh-7q-dqx" secondAttribute="leadingMargin" constant="-6" id="5ID-pc-Y0S"/>
-                            <constraint firstAttribute="trailing" secondItem="whI-zt-cwc" secondAttribute="trailing" constant="183" id="5KY-AO-siU"/>
-                            <constraint firstItem="5jd-Jr-KVU" firstAttribute="bottom" relation="lessThanOrEqual" secondItem="mn9-wM-MFb" secondAttribute="top" constant="2" id="5V7-Wg-PJR"/>
-                            <constraint firstItem="5jd-Jr-KVU" firstAttribute="leading" secondItem="QD8-ft-nLa" secondAttribute="leading" id="9a9-7b-lZR"/>
-                            <constraint firstAttribute="bottom" secondItem="mn9-wM-MFb" secondAttribute="bottom" id="BWl-PA-Rgd"/>
-                            <constraint firstItem="mn9-wM-MFb" firstAttribute="top" secondItem="5jd-Jr-KVU" secondAttribute="bottom" constant="6" id="Brq-mz-3PV"/>
-                            <constraint firstItem="mn9-wM-MFb" firstAttribute="leading" secondItem="YWh-7q-dqx" secondAttribute="leading" id="BxQ-4R-pAE"/>
-                            <constraint firstItem="5jd-Jr-KVU" firstAttribute="top" secondItem="QD8-ft-nLa" secondAttribute="top" id="Ce3-sJ-4sc"/>
-                            <constraint firstItem="5jd-Jr-KVU" firstAttribute="leading" secondItem="YWh-7q-dqx" secondAttribute="leading" id="Fwr-FP-7SR"/>
-                            <constraint firstItem="5jd-Jr-KVU" firstAttribute="trailing" secondItem="QD8-ft-nLa" secondAttribute="trailing" id="HtU-lO-moG"/>
-                            <constraint firstItem="whI-zt-cwc" firstAttribute="leading" secondItem="YWh-7q-dqx" secondAttribute="leading" constant="10" id="RUe-sd-uLs"/>
-                            <constraint firstItem="lZC-CZ-JjW" firstAttribute="bottom" secondItem="suV-j9-WDW" secondAttribute="top" id="dxe-4g-Rig"/>
-                            <constraint firstItem="whI-zt-cwc" firstAttribute="top" secondItem="YWh-7q-dqx" secondAttribute="topMargin" constant="10" id="ebl-Zt-TXo"/>
-                            <constraint firstAttribute="trailing" secondItem="mn9-wM-MFb" secondAttribute="trailing" id="fcf-PL-bLV"/>
-                            <constraint firstAttribute="trailing" secondItem="5jd-Jr-KVU" secondAttribute="trailing" id="gFj-FG-iET"/>
-                            <constraint firstItem="5jd-Jr-KVU" firstAttribute="top" secondItem="whI-zt-cwc" secondAttribute="bottom" constant="20" id="ob9-vX-XCe"/>
-                            <constraint firstItem="5jd-Jr-KVU" firstAttribute="leading" secondItem="lZC-CZ-JjW" secondAttribute="leading" id="pC4-JB-8LY"/>
-                            <constraint firstItem="5jd-Jr-KVU" firstAttribute="bottom" secondItem="QD8-ft-nLa" secondAttribute="bottom" id="sSM-WW-IwS"/>
-                            <constraint firstItem="lZC-CZ-JjW" firstAttribute="top" secondItem="YWh-7q-dqx" secondAttribute="top" id="urM-ld-xVb"/>
+                            <constraint firstItem="whI-zt-cwc" firstAttribute="top" secondItem="YWh-7q-dqx" secondAttribute="top" constant="15" id="1Nb-Uo-dZm"/>
+                            <constraint firstItem="5jd-Jr-KVU" firstAttribute="leading" secondItem="YWh-7q-dqx" secondAttribute="leading" id="7Fc-ue-a96"/>
+                            <constraint firstAttribute="trailing" secondItem="5jd-Jr-KVU" secondAttribute="trailing" id="Ev4-rc-WNM"/>
+                            <constraint firstAttribute="trailing" secondItem="whI-zt-cwc" secondAttribute="trailing" constant="242" id="GPd-Yh-PUg"/>
+                            <constraint firstAttribute="trailing" secondItem="mn9-wM-MFb" secondAttribute="trailing" id="Hth-cF-THz"/>
+                            <constraint firstItem="mn9-wM-MFb" firstAttribute="leading" secondItem="YWh-7q-dqx" secondAttribute="leading" id="Iw3-GS-r3s"/>
+                            <constraint firstItem="whI-zt-cwc" firstAttribute="top" secondItem="5jd-Jr-KVU" secondAttribute="top" constant="-55" id="MW1-84-2dU"/>
+                            <constraint firstItem="whI-zt-cwc" firstAttribute="leading" secondItem="YWh-7q-dqx" secondAttribute="leading" constant="16" id="u1B-po-OHh"/>
+                            <constraint firstAttribute="bottom" secondItem="mn9-wM-MFb" secondAttribute="bottom" id="uU8-c6-2DN"/>
+                            <constraint firstItem="mn9-wM-MFb" firstAttribute="top" secondItem="5jd-Jr-KVU" secondAttribute="bottom" constant="6" id="zpt-tC-jER"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="WX5-xg-18R"/>
@@ -317,8 +300,8 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="verfication-background.png" translatesAutoresizingMaskIntoConstraints="NO" id="uRT-cK-3EU">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="verfication-logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="fYx-6I-R4O">
-                                <rect key="frame" x="10" y="10" width="127" height="40"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="logo-luk.png" translatesAutoresizingMaskIntoConstraints="NO" id="fYx-6I-R4O">
+                                <rect key="frame" x="16" y="15" width="62" height="30"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="verfication-field-bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="NtK-i2-cLQ">
                                 <rect key="frame" x="0.0" y="150" width="320" height="62"/>
@@ -388,20 +371,20 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="luk-iphone-final-textenter-mainbg.png" translatesAutoresizingMaskIntoConstraints="NO" id="Ne2-LU-kgj">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="textenter-top-logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="3FJ-UO-aHN">
-                                <rect key="frame" x="10" y="10" width="127" height="40"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="logo-luk.png" translatesAutoresizingMaskIntoConstraints="NO" id="3FJ-UO-aHN">
+                                <rect key="frame" x="16" y="15" width="62" height="30"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="start-screen-text-field.png" translatesAutoresizingMaskIntoConstraints="NO" id="nZw-wN-f60">
-                                <rect key="frame" x="0.0" y="85" width="320" height="40"/>
+                                <rect key="frame" x="0.0" y="65" width="320" height="40"/>
                             </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7uL-XQ-wcr">
-                                <rect key="frame" x="10" y="85" width="300" height="40"/>
+                                <rect key="frame" x="10" y="65" width="300" height="40"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                 <color key="textColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uvK-2W-6db">
-                                <rect key="frame" x="0.0" y="125" width="320" height="330"/>
+                                <rect key="frame" x="0.0" y="105" width="320" height="330"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Yuz-lm-dHt" userLabel="View1">
                                         <rect key="frame" x="0.0" y="15" width="80" height="104"/>
@@ -417,7 +400,7 @@
                                             </label>
                                             <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LlP-mr-Puh">
                                                 <rect key="frame" x="0.0" y="0.0" width="79" height="79"/>
-                                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <state key="normal" image="screen4-smilemonkey-icon.png">
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
@@ -433,7 +416,7 @@
                                         <subviews>
                                             <button opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uWf-lR-Qmk">
                                                 <rect key="frame" x="0.0" y="0.0" width="79" height="79"/>
-                                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <state key="normal" image="screen4-smilemonkey-icon.png">
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
@@ -467,7 +450,7 @@
                                             </label>
                                             <button opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dsm-hn-5Vq">
                                                 <rect key="frame" x="0.0" y="0.0" width="79" height="79"/>
-                                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <state key="normal" image="screen4-smilemonkey-icon.png">
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
@@ -492,7 +475,7 @@
                                             </label>
                                             <button opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ctP-NZ-6FG">
                                                 <rect key="frame" x="0.0" y="0.0" width="79" height="79"/>
-                                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <state key="normal" image="screen4-smilemonkey-icon.png">
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
@@ -517,7 +500,7 @@
                                             </label>
                                             <button opaque="NO" userInteractionEnabled="NO" tag="4" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iJJ-xJ-2E4">
                                                 <rect key="frame" x="0.0" y="0.0" width="79" height="79"/>
-                                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <state key="normal" image="screen4-smilemonkey-icon.png">
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
@@ -542,7 +525,7 @@
                                             </label>
                                             <button opaque="NO" userInteractionEnabled="NO" tag="5" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6dT-8J-CYG">
                                                 <rect key="frame" x="0.0" y="0.0" width="79" height="79"/>
-                                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <state key="normal" image="screen4-smilemonkey-icon.png">
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
@@ -567,7 +550,7 @@
                                             </label>
                                             <button opaque="NO" userInteractionEnabled="NO" tag="6" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Icv-f8-aOd">
                                                 <rect key="frame" x="0.0" y="0.0" width="79" height="79"/>
-                                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <state key="normal" image="screen4-smilemonkey-icon.png">
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
@@ -592,7 +575,7 @@
                                             </label>
                                             <button opaque="NO" userInteractionEnabled="NO" tag="7" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aXO-4R-kPs">
                                                 <rect key="frame" x="0.0" y="0.0" width="79" height="79"/>
-                                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <state key="normal" image="screen4-smilemonkey-icon.png">
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
@@ -617,7 +600,7 @@
                                             </label>
                                             <button opaque="NO" userInteractionEnabled="NO" tag="8" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N8o-Ta-TWI">
                                                 <rect key="frame" x="0.0" y="0.0" width="79" height="79"/>
-                                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <state key="normal" image="screen4-smilemonkey-icon.png">
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
@@ -642,7 +625,7 @@
                                             </label>
                                             <button opaque="NO" userInteractionEnabled="NO" tag="9" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mD7-wz-7X9">
                                                 <rect key="frame" x="0.0" y="0.0" width="79" height="79"/>
-                                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <state key="normal" image="screen4-smilemonkey-icon.png">
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
@@ -657,13 +640,13 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6EZ-6b-YjC">
-                                <rect key="frame" x="0.0" y="460" width="320" height="50"/>
+                                <rect key="frame" x="0.0" y="461" width="320" height="57"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="320" id="PaA-e8-cYm"/>
-                                    <constraint firstAttribute="height" constant="50" id="kOK-3g-hn8"/>
+                                    <constraint firstAttribute="height" constant="57" id="kOK-3g-hn8"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
-                                <state key="normal" title="merge">
+                                <state key="normal" title="merge" backgroundImage="merge_bg.png">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -672,14 +655,14 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="textenter-footer-line.png" translatesAutoresizingMaskIntoConstraints="NO" id="O43-YY-YEH">
-                                <rect key="frame" x="0.0" y="459" width="320" height="1"/>
+                                <rect key="frame" x="0.0" y="460" width="320" height="1"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="320" id="4Hy-DJ-Ari"/>
                                     <constraint firstAttribute="height" constant="1" id="VuP-Et-rjY"/>
                                 </constraints>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Write your LUK" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0lL-A5-UE9">
-                                <rect key="frame" x="10" y="90" width="300" height="30"/>
+                                <rect key="frame" x="10" y="70" width="300" height="30"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardAppearance="alert"/>
@@ -688,7 +671,7 @@
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Orl-GE-lae">
-                                <rect key="frame" x="264" y="25" width="38" height="22"/>
+                                <rect key="frame" x="264" y="20" width="38" height="22"/>
                                 <state key="normal" image="settings-icon.png">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -754,7 +737,7 @@
                             <constraint firstItem="O43-YY-YEH" firstAttribute="leading" secondItem="rm1-uf-hGU" secondAttribute="leading" id="A4r-wZ-HxH"/>
                             <constraint firstItem="6EZ-6b-YjC" firstAttribute="leading" secondItem="rm1-uf-hGU" secondAttribute="leading" id="e1d-Tu-QpR"/>
                             <constraint firstAttribute="trailing" secondItem="O43-YY-YEH" secondAttribute="trailing" id="nbW-rk-Qqk"/>
-                            <constraint firstAttribute="bottom" secondItem="6EZ-6b-YjC" secondAttribute="bottom" constant="58" id="tOo-p5-6iu"/>
+                            <constraint firstAttribute="bottom" secondItem="6EZ-6b-YjC" secondAttribute="bottom" constant="50" id="tOo-p5-6iu"/>
                             <constraint firstAttribute="trailing" secondItem="6EZ-6b-YjC" secondAttribute="trailing" id="ugA-l5-Txr"/>
                             <constraint firstItem="O43-YY-YEH" firstAttribute="bottom" secondItem="6EZ-6b-YjC" secondAttribute="top" id="yQv-Nq-pHT"/>
                         </constraints>
@@ -944,8 +927,8 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="luk-iphone-final-merged-videos-main-bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="9el-Ue-GVI">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="video-send-logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="751-p5-kdj">
-                                <rect key="frame" x="10" y="10" width="144" height="40"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="logo-luk.png" translatesAutoresizingMaskIntoConstraints="NO" id="751-p5-kdj">
+                                <rect key="frame" x="16" y="15" width="62" height="30"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vaI-IX-TFa">
                                 <rect key="frame" x="0.0" y="64" width="320" height="320"/>
@@ -1035,8 +1018,8 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="screen-8-background.png" translatesAutoresizingMaskIntoConstraints="NO" id="BZ2-4G-4CD">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="lukes-sent-logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="iCd-nc-bSi">
-                                <rect key="frame" x="10" y="10" width="154" height="40"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="logo-luk.png" translatesAutoresizingMaskIntoConstraints="NO" id="iCd-nc-bSi">
+                                <rect key="frame" x="16" y="15" width="62" height="30"/>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="85" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="K8t-B3-V5r">
                                 <rect key="frame" x="0.0" y="64" width="320" height="454"/>
@@ -1207,7 +1190,7 @@
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hE9-oy-PRf">
-                                <rect key="frame" x="264" y="25" width="38" height="22"/>
+                                <rect key="frame" x="264" y="20" width="38" height="22"/>
                                 <state key="normal" image="settings-icon.png">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -1485,7 +1468,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Iv-KQ-QCj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2461" y="1919"/>
+            <point key="canvasLocation" x="1209" y="1650"/>
         </scene>
         <!--Share Videos View Controller-->
         <scene sceneID="D6y-WE-iXP">
@@ -1502,8 +1485,8 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="luk-iphone-final-merged-videos-main-bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="4dp-3W-kqr">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="terms-logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="lYM-jN-Jhj">
-                                <rect key="frame" x="10" y="10" width="126" height="40"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="logo-luk.png" translatesAutoresizingMaskIntoConstraints="NO" id="lYM-jN-Jhj">
+                                <rect key="frame" x="16" y="15" width="62" height="30"/>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" bounces="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="331" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="jOP-g0-tpG">
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -1603,8 +1586,8 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="luk-iphone-final-merged-videos-main-bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="Txl-Tq-gZc">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="video-send-logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="QKO-S5-Ur4">
-                                <rect key="frame" x="10" y="10" width="144" height="40"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="logo-luk.png" translatesAutoresizingMaskIntoConstraints="NO" id="QKO-S5-Ur4">
+                                <rect key="frame" x="16" y="15" width="62" height="30"/>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="280" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="I5G-Bb-cX9">
                                 <rect key="frame" x="0.0" y="64" width="320" height="454"/>
@@ -1701,7 +1684,7 @@
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="45T-5K-V0C">
-                                <rect key="frame" x="264" y="25" width="38" height="22"/>
+                                <rect key="frame" x="264" y="20" width="38" height="22"/>
                                 <state key="normal" image="settings-icon.png">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -1874,59 +1857,6 @@
             </objects>
             <point key="canvasLocation" x="204" y="2363"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="FAb-5d-4qu">
-            <objects>
-                <viewController id="NN3-Tg-mPn" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="vCj-SV-z5b"/>
-                        <viewControllerLayoutGuide type="bottom" id="X8x-bh-rP4"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="zn9-hc-5GP">
-                        <rect key="frame" x="-2" y="-4" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="luk-iphone-final-terms&amp;condition-mainbg.png" translatesAutoresizingMaskIntoConstraints="NO" id="qD6-52-crP">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="terms-logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="hfx-TQ-VOM">
-                                <rect key="frame" x="10" y="10" width="127" height="40"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="terms-bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="7bW-Lf-5e6">
-                                <rect key="frame" x="0.0" y="70" width="320" height="420"/>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2W7-8y-sdN">
-                                <rect key="frame" x="0.0" y="496" width="320" height="72"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
-                                <state key="normal" title="Back">
-                                    <color key="titleColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="backButtonPressed:" destination="NN3-Tg-mPn" eventType="touchUpInside" id="dOU-fR-4O4"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Allgemein" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yh0-Q1-YHb">
-                                <rect key="frame" x="15" y="100" width="290" height="35"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <color key="textColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="deviceRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" lineBreakMode="tailTruncation" numberOfLines="8" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="290" translatesAutoresizingMaskIntoConstraints="NO" id="EoW-hk-veu">
-                                <rect key="frame" x="15" y="140" width="290" height="180"/>
-                                <string key="text">Mit Urteil vom 12. Mai 1998 hat das Landgericht ?Hamburg entschieden, dass man durch die Ausbringung eines Links die Inhalte der gelinkten Seite ggf. mit zu verantworten hat. Dies kann - so das LG - durch die Ausdruckliche nhalten verhindert werden. </string>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="Vpm-xI-zAb"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="zKb-wY-enW" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="710" y="-547"/>
-        </scene>
     </scenes>
     <resources>
         <image name="app-store-screen-1_7.png" width="640" height="1136"/>
@@ -1946,14 +1876,14 @@
         <image name="luk-iphone-final-merged-videos-main-bg.png" width="640" height="1136"/>
         <image name="luk-iphone-final-terms&amp;condition-mainbg.png" width="640" height="1136"/>
         <image name="luk-iphone-final-textenter-mainbg.png" width="640" height="1136"/>
-        <image name="lukes-sent-logo.png" width="154" height="40"/>
+        <image name="merge_bg.png" width="320" height="77"/>
         <image name="merged-videos-pic-description-bg.png" width="640" height="108"/>
         <image name="monkey-featherbg.png" width="79" height="79"/>
         <image name="monkeywithbg.png" width="80" height="80"/>
         <image name="pic-between-line.png" width="1" height="112"/>
         <image name="pic-bgwith-monkey-icon.png" width="106" height="106"/>
         <image name="screen-8-background.png" width="640" height="1136"/>
-        <image name="screen4-smilemonkey-icon.png" width="80" height="80"/>
+        <image name="screen4-smilemonkey-icon.png" width="80" height="79"/>
         <image name="select-button-with-bg.png" width="320" height="57"/>
         <image name="select-logo-luk.png" width="57" height="27"/>
         <image name="send-lukies_text-with-buttonbg.png" width="320" height="57"/>
@@ -1967,18 +1897,12 @@
         <image name="signup-bottom-line.png" width="640" height="1"/>
         <image name="signup-country-code-bg.png" width="132" height="122"/>
         <image name="signup-field-bg.png" width="640" height="124"/>
-        <image name="signup-logo.png" width="254" height="80"/>
         <image name="signup-terms-checkbox-normal-view.png" width="65" height="65"/>
-        <image name="start-screen-text-field.png" width="640" height="84"/>
-        <image name="terms-bg.png" width="640" height="840"/>
-        <image name="terms-logo.png" width="253" height="80"/>
+        <image name="start-screen-text-field.png" width="320" height="35"/>
         <image name="textenter-footer-line.png" width="640" height="1"/>
-        <image name="textenter-top-logo.png" width="251" height="80"/>
         <image name="verfication-background.png" width="640" height="1136"/>
         <image name="verfication-bottom-line.png" width="640" height="1"/>
         <image name="verfication-field-bg.png" width="640" height="124"/>
-        <image name="verfication-logo.png" width="254" height="80"/>
-        <image name="video-send-logo.png" width="144" height="40"/>
         <image name="video_play.png" width="50" height="50"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
@@ -1987,6 +1911,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="Q69-w8-5QU"/>
+        <segue reference="kz9-Bu-m6X"/>
     </inferredMetricsTieBreakers>
 </document>
