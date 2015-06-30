@@ -17,6 +17,7 @@
 #import <AddressBook/AddressBook.h>
 #import "LukiesViewController.h"
 #import "NSString+HTML.h"
+#import "AppDelegate.h"
 
 @interface SentVideosViewController ()<ConnectionHandlerDelegate>
 {
@@ -56,6 +57,10 @@
 {
     [super viewWillAppear:animated];
     
+    self.settingView.translatesAutoresizingMaskIntoConstraints = YES;
+    CGRect frame= self.settingView.frame;
+    self.settingView.frame = CGRectMake(self.view.frame.size.width, 0, frame.size.width, frame.size.height);
+    
     [[NSUserDefaults standardUserDefaults]setBool:FALSE forKey:kIsFromRecieved];
     
     userInfoDict = [[NSMutableDictionary alloc]init];
@@ -67,14 +72,14 @@
     cnCode = [CommonMethods countryPhoneCode:countryCode];
     
     myPhoneNum = [[[NSUserDefaults standardUserDefaults] valueForKey:kMYPhoneNumber] longLongValue];
-           // myPhoneNum = 918050636309;
+    // myPhoneNum = 918050636309;
     
     //Local database
     [self reloadHistoryData];
     
     if(![CommonMethods reachable]){
-//        //Local database
-//        [self reloadHistoryData];
+        //        //Local database
+        //        [self reloadHistoryData];
     }
     else{
         //Server Web service code
@@ -91,33 +96,6 @@
         }
         isShowingVideo = NO;
     }
-}
-
-- (IBAction)openSettingBtnAction:(id)sender {
-    self.settingView.translatesAutoresizingMaskIntoConstraints  = YES;
-    [UIView beginAnimations:nil context:nil];
-    [UIView setAnimationDuration:.5];
-    
-    CGRect frame= self.settingView.frame;
-    if(IS_IPHONE_4_OR_LESS)
-        self.settingView.frame = CGRectMake(80, 0, frame.size.width, frame.size.height);
-    else
-        self.settingView.frame = CGRectMake(80, 0, frame.size.width, frame.size.height);
-    [UIView commitAnimations];
-}
-
-- (IBAction)closeSettingBtnAction:(id)sender {
-    self.settingView.translatesAutoresizingMaskIntoConstraints  = YES;
-    [UIView beginAnimations:nil context:nil];
-    [UIView setAnimationDuration:.5];
-    
-    CGRect frame= self.settingView.frame;
-    if(IS_IPHONE_4_OR_LESS)
-        self.settingView.frame = CGRectMake(320, 0, frame.size.width, frame.size.height);
-    else
-        self.settingView.frame = CGRectMake(320, 0, frame.size.width, frame.size.height);
-    [UIView commitAnimations];
-    
 }
 
 -(void)reloadHistoryData
@@ -142,7 +120,6 @@
     UISwipeGestureRecognizer *swipe1 = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(closeSetting)];
     swipe1.direction = UISwipeGestureRecognizerDirectionRight;
     [self.settingView addGestureRecognizer:swipe1];
-    
 }
 
 -(void)closeSetting
@@ -796,23 +773,6 @@
 }
 
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-/*
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
- {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
-
 - (IBAction)shareButtonClickedAction:(UIButton *)sender {
     
     NSLog(@"Sharebutton clicked...%ld",(long)sender.tag);
@@ -826,4 +786,145 @@
     LukiesViewController *lukiesVC = [self.storyboard instantiateViewControllerWithIdentifier:@"LukiesViewController"];
     [self.navigationController pushViewController:lukiesVC animated:YES];
 }
+
+//Facebook Methods
+
+- (IBAction)openSettingBtnAction:(id)sender {
+    
+    BOOL isUserLogin = [[NSUserDefaults standardUserDefaults]boolForKey:@"FB_LOGIN"];
+    NSString *name = [[NSUserDefaults standardUserDefaults]valueForKey:@"FB_NAME"];
+    if(name.length>0)
+        self.nameLabel.text = name;
+    else
+        self.nameLabel.text = @"";
+    
+    self.loginBtn.hidden = isUserLogin;
+    self.logoutBtn.hidden = !isUserLogin;
+    
+    self.settingView.translatesAutoresizingMaskIntoConstraints  = YES;
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:.5];
+    
+    CGRect frame= self.settingView.frame;
+    if(IS_IPHONE_4_OR_LESS)
+        self.settingView.frame = CGRectMake(80, 0, frame.size.width, frame.size.height);
+    else
+        self.settingView.frame = CGRectMake(80, 0, frame.size.width, frame.size.height);
+    [UIView commitAnimations];
+}
+
+- (IBAction)closeSettingBtnAction:(id)sender {
+    self.settingView.translatesAutoresizingMaskIntoConstraints  = YES;
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:.5];
+    
+    CGRect frame= self.settingView.frame;
+    if(IS_IPHONE_4_OR_LESS)
+        self.settingView.frame = CGRectMake(self.view.frame.size.width, 0, frame.size.width, frame.size.height);
+    else
+        self.settingView.frame = CGRectMake(self.view.frame.size.width, 0, frame.size.width, frame.size.height);
+    [UIView commitAnimations];
+    
+}
+
+- (IBAction)facebookLoginAction:(UIButton *)sender
+{
+    NSArray* permissions = [[NSArray alloc] initWithObjects:
+                            @"publish_actions", nil];
+    [SharedAppDelegate.facebook authorize:permissions delegate:self];
+}
+
+- (IBAction)facebookLououtAction:(UIButton *)sender
+{
+    [SharedAppDelegate.facebook logout:self];
+}
+
+
+//==================== facebook delegate methods.
+- (void)fbDidLogin {
+    
+    [self getUserFBProfileData];
+    NSLog(@"User login in faceook");
+}
+
+
+-(void)fbDidNotLogin:(BOOL)cancelled {
+    NSLog(@"did not login");
+    [[NSUserDefaults standardUserDefaults]setBool:FALSE forKey:@"FB_LOGIN"];
+    [CommonMethods showAlertWithTitle:@"Error" message:@"Something is wrong with your facebook account."];
+}
+-(void)fbDidLogout
+{
+    [[NSUserDefaults standardUserDefaults]setBool:FALSE forKey:@"FB_LOGIN"];
+    [[NSUserDefaults standardUserDefaults]setValue:@"" forKey:@"FB_NAME"];
+    self.loginBtn.hidden = NO;
+    self.logoutBtn.hidden = YES;
+    self.nameLabel.text = @"";
+    NSLog(@"facebook logout");
+}
+
+-(void)getUserFBProfileData
+{
+    //Get fb server data List Request to server
+    NSOperationQueue *backgroundQueue = [[NSOperationQueue alloc] init];
+    
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://graph.facebook.com/me?fields=id,name&access_token=%@",SharedAppDelegate.facebook.accessToken]]];
+    
+    
+    [request setHTTPMethod:@"GET"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    
+    // Create url connection and fire request
+    [NSURLConnection sendAsynchronousRequest:request
+                                       queue:backgroundQueue
+                           completionHandler:^(NSURLResponse *response, NSData *data, NSError *error){
+                               dispatch_async(dispatch_get_main_queue(), ^{
+                                   //                                   [GMDCircleLoader hideFromView:self.view animated:YES];
+                               });
+                               
+                               if (error)
+                               {
+                                   NSLog(@"error%@",[error localizedDescription]);
+                                   dispatch_async(dispatch_get_main_queue()
+                                                  , ^(void) {
+                                                      [CommonMethods showAlertWithTitle:@"Error" message:[error localizedDescription] cancelBtnTitle:@"Accept" otherBtnTitle:nil delegate:nil tag:0];
+                                                  });
+                               }
+                               else
+                               {
+                                   NSString *result = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+                                   NSLog(@"result....%@",result);
+                                   
+                                   NSError *jsonParsingError = nil;
+                                   id object = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonParsingError];
+                                   
+                                   if (jsonParsingError) {
+                                       NSLog(@"JSON ERROR: %@", [jsonParsingError localizedDescription]);
+                                   } else {
+                                       NSDictionary *responseDict = (NSDictionary*)object;
+                                       dispatch_async(dispatch_get_main_queue(), ^{
+                                           NSString*name = [responseDict valueForKey:@"name"];
+                                           if(name.length>0){
+                                               [[NSUserDefaults standardUserDefaults]setValue:name forKey:@"FB_NAME"];
+                                               [[NSUserDefaults standardUserDefaults]setBool:TRUE forKey:@"FB_LOGIN"];
+                                               self.nameLabel.text = name;
+                                               self.loginBtn.hidden = YES;
+                                               self.logoutBtn.hidden = NO;
+                                           }
+                                       });
+                                   }
+                               }
+                           }];
+    
+}
+
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+
 @end

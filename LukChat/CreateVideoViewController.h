@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Facebook.h"
 
-@interface CreateVideoViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
+@interface CreateVideoViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,FBSessionDelegate,FBRequestDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *createTableView;
 @property (weak, nonatomic) IBOutlet UIView *settingView;
 

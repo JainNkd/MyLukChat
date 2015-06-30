@@ -14,20 +14,22 @@
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
 #import "LukiesViewController.h"
+#import "Facebook.h"
+
 //#import "Facebook.h"
 
 #define SharedAppDelegate ((AppDelegate*)[[UIApplication sharedApplication] delegate])
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate> {
+@interface AppDelegate : UIResponder <UIApplicationDelegate,FBSessionDelegate, FBRequestDelegate> {
     
     NSString *number;
     NSString *pinValue;
     NSString *saving;
-//    Facebook *facebook;
+    Facebook *facebook;
     
 }
 
-//@property (nonatomic, retain) Facebook *facebook;
+@property (nonatomic, retain) Facebook *facebook;
 @property (nonatomic,strong) LukiesViewController *lukVC;
 @property (nonatomic, retain)  NSString *number;
 @property (nonatomic, retain)  NSString *pinValue;

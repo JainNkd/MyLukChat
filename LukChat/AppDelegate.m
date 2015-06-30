@@ -19,7 +19,7 @@
 
 
 @implementation AppDelegate
-//@synthesize facebook;
+@synthesize facebook;
 @synthesize number,pinValue,saving;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -36,6 +36,9 @@
     
     // Crashlytics
     [Fabric with:@[CrashlyticsKit]];
+    
+    //Facebook
+    facebook = [[Facebook alloc] initWithAppId:@"1445458002425387"];
     
     //Parse
     [Parse setApplicationId:@"pGx3VxVJ0hAU6TNDrNVo2LboonA5HbmakPRUclGL"
@@ -72,7 +75,7 @@
 }
 
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
-    return [self.lukVC.facebook handleOpenURL:url];
+    return [self.facebook handleOpenURL:url];
 }
 
 -(void) checkAndCreateDatabase{

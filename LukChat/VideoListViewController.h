@@ -10,8 +10,9 @@
 #import "AppDataManager.h"
 #import "VideoPreviewViewController.h"
 #import "CustomeVideoPlayViewController.h"
+#import "Facebook.h"
 
-@interface VideoListViewController : UIViewController<UIActionSheetDelegate,UITextFieldDelegate,UIAlertViewDelegate>
+@interface VideoListViewController : UIViewController<UIActionSheetDelegate,UITextFieldDelegate,UIAlertViewDelegate,FBRequestDelegate,FBSessionDelegate>
 {
     NSMutableArray *videoTitleLBLArr, *videoTitleButtonsArr,*lukViewsArr;
     NSString *videoTitle;

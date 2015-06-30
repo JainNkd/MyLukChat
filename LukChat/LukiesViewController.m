@@ -37,14 +37,14 @@
 @end
 
 @implementation LukiesViewController
-@synthesize facebook;
+//@synthesize facebook;
 - (void)viewDidLoad {
     
     [super viewDidLoad];
     [self tableviewInitialisation];
     
     //Facebook
-    facebook = [[Facebook alloc] initWithAppId:@"1445458002425387"];
+    //    facebook = [[Facebook alloc] initWithAppId:@"1445458002425387"];
     
     SharedAppDelegate.lukVC = self;
     facebookVideoPath = @"";
@@ -416,7 +416,7 @@
     UIView *backgroundView = [[UIView alloc]initWithFrame:cell.contentView.frame];
     backgroundView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@""]];
     cell.backgroundView = backgroundView;
-   
+    
     UIView *selectedBgView = [[UIView alloc]initWithFrame:cell.contentView.frame];
     selectedBgView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"select-namebg.png"]];
     cell.selectedBackgroundView = selectedBgView;
@@ -429,7 +429,7 @@
     if (contactObj) {
         if (contactObj.user_fname)
             cell.textLabel.textColor = [UIColor whiteColor];
-            cell.textLabel.text = [NSString stringWithFormat:@"%@ %@",contactObj.user_fname,contactObj.user_lname];
+        cell.textLabel.text = [NSString stringWithFormat:@"%@ %@",contactObj.user_fname,contactObj.user_lname];
         
         //        NSLog(@"username is %@ %@",contactObj.user_fname,contactObj.user_lname);
         if (contactObj.user_phone)
@@ -535,10 +535,15 @@
         //        [self shareVideo:[NSURL fileURLWithPath:urlStr]];
         
         facebookVideoPath = urlStr;
-        NSArray* permissions = [[NSArray alloc] initWithObjects:
-                                @"publish_actions", nil];
-        [facebook authorize:permissions delegate:self];
-        
+        if(!SharedAppDelegate.facebook.isSessionValid){
+            NSArray* permissions = [[NSArray alloc] initWithObjects:
+                                    @"publish_actions", nil];
+            [SharedAppDelegate.facebook authorize:permissions delegate:self];
+        }
+        else
+        {
+            [self fbDidLogin];
+        }
     }
     else
         [CommonMethods showAlertWithTitle:@"LUK" message:@"No Video available to share." cancelBtnTitle:@"Accept"otherBtnTitle:nil delegate:nil tag:0];
@@ -735,13 +740,13 @@
 -(void)startProgressLoader
 {
     if(!progressViewObj){
-    progressViewObj = [[UCZProgressView alloc]initWithFrame:self.view.frame];
-    progressViewObj.indeterminate = YES;
-    progressViewObj.showsText = NO;
-    progressViewObj.backgroundColor = [UIColor clearColor];
-    progressViewObj.opaque = 0.5;
-    progressViewObj.alpha = 0.5;
-    [self.view addSubview:progressViewObj];
+        progressViewObj = [[UCZProgressView alloc]initWithFrame:self.view.frame];
+        progressViewObj.indeterminate = YES;
+        progressViewObj.showsText = NO;
+        progressViewObj.backgroundColor = [UIColor clearColor];
+        progressViewObj.opaque = 0.5;
+        progressViewObj.alpha = 0.5;
+        [self.view addSubview:progressViewObj];
     }
 }
 
@@ -826,7 +831,7 @@
 //==================== facebook delegate methods.
 - (void)fbDidLogin {
     //    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"sample" ofType:@"mov"];
-    
+    [[NSUserDefaults standardUserDefaults]setBool:TRUE forKey:@"FB_LOGIN"];
     if(![CommonMethods reachable])
     {
         [CommonMethods showAlertWithTitle:@"No Connectivity" message:@"Please check the Internet Connnection"];
@@ -857,7 +862,7 @@
                                        [NSString stringWithFormat:@"LUK - %@",videoTitle], @"title",
                                        [NSString stringWithFormat:@"%@ \n\nCreate your own LUK www.lukchat.com/go",videoTitle], @"description",
                                        nil];
-        [facebook requestWithGraphPath:@"me/videos"
+        [SharedAppDelegate.facebook requestWithGraphPath:@"me/videos"
                                                andParams:params
                                            andHttpMethod:@"POST"
                                              andDelegate:self];
@@ -872,6 +877,7 @@
 
 -(void)fbDidNotLogin:(BOOL)cancelled {
     NSLog(@"did not login");
+    [[NSUserDefaults standardUserDefaults]setBool:FALSE forKey:@"FB_LOGIN"];
     [CommonMethods showAlertWithTitle:@"Error" message:@"Something is wrong with your facebook account."];
 }
 

@@ -16,8 +16,9 @@
 #import "AFHTTPClient.h"
 #import "FXBlurView.h"
 #import "UCZProgressView.h"
+#import "Facebook.h"
 
-@interface SentVideosViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
+@interface SentVideosViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,FBSessionDelegate,FBRequestDelegate>
 {
     NSMutableArray *videoDetailsArr;
     NSString *cnCode;
@@ -32,13 +33,17 @@
 
 @property (weak, nonatomic) IBOutlet UIView *settingView;
 
-- (IBAction)openSettingBtnAction:(id)sender;
-
-- (IBAction)closeSettingBtnAction:(id)sender;
-
 @property (weak, nonatomic) IBOutlet UIButton *loginBtn;
 
 @property (weak, nonatomic) IBOutlet UIButton *logoutBtn;
+
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+
+
+
+- (IBAction)openSettingBtnAction:(id)sender;
+
+- (IBAction)closeSettingBtnAction:(id)sender;
 
 - (IBAction)facebookLoginAction:(UIButton *)sender;
 

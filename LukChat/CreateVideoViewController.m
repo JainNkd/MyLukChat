@@ -17,6 +17,7 @@
 
 #import <MediaPlayer/MediaPlayer.h>
 #import <AVFoundation/AVFoundation.h>
+#import "AppDelegate.h"
 
 @interface CreateVideoViewController ()
 {
@@ -49,6 +50,10 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    self.settingView.translatesAutoresizingMaskIntoConstraints = YES;
+    CGRect frame= self.settingView.frame;
+    self.settingView.frame = CGRectMake(self.view.frame.size.width, 0, frame.size.width, frame.size.height);
     
     [[NSUserDefaults standardUserDefaults]setBool:FALSE forKey:kIsFromCreated];
     createdVideos = [DatabaseMethods getAllCreatedVideos];
@@ -202,7 +207,16 @@
 
 }
 
+
+//Facebook Methods
+
 - (IBAction)openSettingBtnAction:(id)sender {
+    
+    BOOL isUserLogin = [[NSUserDefaults standardUserDefaults]boolForKey:@"FB_LOGIN"];
+    
+    self.loginBtn.hidden = isUserLogin;
+    self.logoutBtn.hidden = !isUserLogin;
+    
     self.settingView.translatesAutoresizingMaskIntoConstraints  = YES;
     [UIView beginAnimations:nil context:nil];
     [UIView setAnimationDuration:.5];
@@ -222,12 +236,48 @@
     
     CGRect frame= self.settingView.frame;
     if(IS_IPHONE_4_OR_LESS)
-        self.settingView.frame = CGRectMake(320, 0, frame.size.width, frame.size.height);
+        self.settingView.frame = CGRectMake(self.view.frame.size.width, 0, frame.size.width, frame.size.height);
     else
-        self.settingView.frame = CGRectMake(320, 0, frame.size.width, frame.size.height);
+        self.settingView.frame = CGRectMake(self.view.frame.size.width, 0, frame.size.width, frame.size.height);
     [UIView commitAnimations];
     
 }
+
+- (IBAction)facebookLoginAction:(UIButton *)sender
+{
+    NSArray* permissions = [[NSArray alloc] initWithObjects:
+                            @"publish_actions", nil];
+    [SharedAppDelegate.facebook authorize:permissions delegate:self];
+}
+
+- (IBAction)facebookLououtAction:(UIButton *)sender
+{
+    [SharedAppDelegate.facebook logout:self];
+}
+
+
+//==================== facebook delegate methods.
+- (void)fbDidLogin {
+    [[NSUserDefaults standardUserDefaults]setBool:TRUE forKey:@"FB_LOGIN"];
+    self.loginBtn.hidden = YES;
+    self.logoutBtn.hidden = NO;
+    NSLog(@"User login in faceook");
+}
+
+
+-(void)fbDidNotLogin:(BOOL)cancelled {
+    NSLog(@"did not login");
+    [[NSUserDefaults standardUserDefaults]setBool:FALSE forKey:@"FB_LOGIN"];
+    [CommonMethods showAlertWithTitle:@"Error" message:@"Something is wrong with your facebook account."];
+}
+-(void)fbDidLogout
+{
+    [[NSUserDefaults standardUserDefaults]setBool:FALSE forKey:@"FB_LOGIN"];
+    self.loginBtn.hidden = NO;
+    self.logoutBtn.hidden = YES;
+    NSLog(@"facebook logout");
+}
+
 
 
 - (void)didReceiveMemoryWarning {

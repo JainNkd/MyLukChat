@@ -12,7 +12,7 @@
 
 @interface LukiesViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,FBSessionDelegate, FBRequestDelegate>
 {
-    Facebook *facebook;
+//    Facebook *facebook;
     NSString *cnCode,*facebookVideoPath;
     long long int myPhoneNum;
     UIAlertView *alert;
@@ -25,7 +25,7 @@
     NSMutableDictionary* filteredTableData;
 }
 
-@property (nonatomic,strong)Facebook *facebook;
+//@property (nonatomic,strong)Facebook *facebook;
 @property (weak, nonatomic) IBOutlet UITableView *contactTableView;
 @property (weak, nonatomic) IBOutlet UIButton *sendTolukiesBtn;
 
