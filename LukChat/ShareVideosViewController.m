@@ -149,15 +149,15 @@
                 if(receivedVideoList.count > 0)
                     [self.shareVideosTableViewObj reloadData];
                 else
-                    [CommonMethods showAlertWithTitle:@"LUK" message:@"You not received any video from your friends." cancelBtnTitle:nil otherBtnTitle:@"Accept" delegate:nil tag:0];
+                    [CommonMethods showAlertWithTitle:NSLocalizedString(@"LUK",nil) message:NSLocalizedString(@"You not received any video from your friends.",nil) cancelBtnTitle:nil otherBtnTitle:NSLocalizedString(@"Accept",nil) delegate:nil tag:0];
                 
                 break;
             }
             case -2:
-                [CommonMethods showAlertWithTitle:[historydict objectForKey:@"Message"] message:@"Make sure the phone number is registered with LukChat"];
+                [CommonMethods showAlertWithTitle:[historydict objectForKey:@"Message"] message:NSLocalizedString(@"Make sure the phone number is registered with LukChat",nil)];
                 break;
             default:
-                [CommonMethods showAlertWithTitle:@"Error" message:[error localizedDescription]];
+                [CommonMethods showAlertWithTitle:NSLocalizedString(@"Error",nil) message:[error localizedDescription]];
                 break;
         }
     }

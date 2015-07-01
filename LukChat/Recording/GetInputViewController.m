@@ -114,7 +114,7 @@
     }
     
     if(message){
-        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:NSLocalizedString(@"Alert",nil) message:message delegate:nil cancelButtonTitle:@"Accept" otherButtonTitles:nil];
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:NSLocalizedString(@"Alert",nil) message:message delegate:nil cancelButtonTitle:NSLocalizedString(@"Accept",nil) otherButtonTitles:nil];
         [alert show];
         return;
     }

@@ -211,7 +211,7 @@
         }
         else
         {
-            [CommonMethods showAlertWithTitle:@"LUK" message:@"You need to downlaod this video before select."];
+            [CommonMethods showAlertWithTitle:NSLocalizedString(@"LUK",nil) message:NSLocalizedString(@"You need to downlaod this video before select.",nil)];
         }
         NSLog(@"double ..indexValue %ld ,selectedCell %ld,..%@",(long)indexValue,(long)selectedCell.tag,selectedVideoURL);
     }
@@ -373,7 +373,7 @@
                                                                        error: &error];
         
         if(error)
-            [CommonMethods showAlertWithTitle:@"Error" message:[error localizedDescription]];
+            [CommonMethods showAlertWithTitle:NSLocalizedString(@"Error",nil) message:[error localizedDescription]];
         else
         {
             NSArray *singleArrData = (NSArray*)responseDict;

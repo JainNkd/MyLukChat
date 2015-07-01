@@ -58,7 +58,7 @@
    // NSLog(@"parameters: %@",parameters);
     
     if (![self hasConnectivity]) {
-        [CommonMethods showAlertWithTitle:@"No Connectivity" message:@"Please check the Internet Connnection"];
+        [CommonMethods showAlertWithTitle:NSLocalizedString(@"No Connectivity",nil) message:NSLocalizedString(@"Please check the Internet Connnection",nil)];
         return;
     }
     
@@ -144,7 +144,7 @@
 -(void)makePOSTVideoShareAtPath:(NSURL *)path parameters:(NSDictionary *)parameters {
     
     if (![self hasConnectivity]) {
-        [CommonMethods showAlertWithTitle:@"No Connectivity" message:@"Please check the Internet Connnection"];
+        [CommonMethods showAlertWithTitle:NSLocalizedString(@"No Connectivity",nil) message:NSLocalizedString(@"Please check the Internet Connnection",nil)];
         return;
     }
     

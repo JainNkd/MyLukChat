@@ -252,7 +252,7 @@
     //    }
     
     if (![CommonMethods reachable]) {
-        [CommonMethods showAlertWithTitle:@"No Connectivity" message:@"Please check the Internet Connnection"];
+        [CommonMethods showAlertWithTitle:NSLocalizedString(@"No Connectivity",nil) message:NSLocalizedString(@"Please check the Internet Connnection",nil)];
         return;
     }
     
@@ -307,21 +307,21 @@
             {
                 NSString *videoID = [[[usersdict valueForKey:@"video_id"] valueForKey:@"Video"] valueForKey:@"id"];
                 [self addMyVideoLog:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",kVideoDownloadURL,[usersdict objectForKey:@"filename"]]] videoId:videoID];
-                [CommonMethods showAlertWithTitle:@"Alert" message:@"Video uploaded successful."];
+                [CommonMethods showAlertWithTitle:NSLocalizedString(@"Alert",nil) message:NSLocalizedString(@"Video uploaded successful.",nil)];
                 [self.navigationController popToRootViewControllerAnimated:YES];
                 break;
             }
             case 2:
-                [CommonMethods showAlertWithTitle:[usersdict objectForKey:@"message"] message:@"Upload iPhone supported video format with size less than 100MB"];
+                [CommonMethods showAlertWithTitle:[usersdict objectForKey:@"message"] message:NSLocalizedString(@"Upload iPhone supported video format with size less than 100MB",nil)];
                 break;
             case 3:
-                [CommonMethods showAlertWithTitle:[usersdict objectForKey:@"message"] message:@"Make sure the phone number is registered with LukChat"];
+                [CommonMethods showAlertWithTitle:[usersdict objectForKey:@"message"] message:NSLocalizedString(@"Make sure the phone number is registered with LukChat",nil)];
                 break;
             case 4:
-                [CommonMethods showAlertWithTitle:[usersdict objectForKey:@"message"] message:@"Upload Error. Please send again"];
+                [CommonMethods showAlertWithTitle:[usersdict objectForKey:@"message"] message:NSLocalizedString(@"Upload Error. Please send again",nil)];
                 break;
             default:
-                [CommonMethods showAlertWithTitle:@"Error" message:[error localizedDescription]];
+                [CommonMethods showAlertWithTitle:NSLocalizedString(@"Error",nil) message:[error localizedDescription]];
                 break;
         }
     }
@@ -506,7 +506,7 @@
     
     if(![CommonMethods reachable])
     {
-        [CommonMethods showAlertWithTitle:@"No Connectivity" message:@"Please check the Internet Connnection"];
+        [CommonMethods showAlertWithTitle:NSLocalizedString(@"No Connectivity",nil) message:NSLocalizedString(@"Please check the Internet Connnection",nil)];
         return;
     }
     
@@ -528,7 +528,7 @@
     if (urlStr && [[NSUserDefaults standardUserDefaults]boolForKey:kIsFromRecieved])
     {
         //        [self sentRecievedVideos];
-        [CommonMethods showAlertWithTitle:@"LUK" message:@"No Video available to share." cancelBtnTitle:@"Accept"otherBtnTitle:nil delegate:nil tag:0];
+        [CommonMethods showAlertWithTitle:NSLocalizedString(@"LUK",nil) message:NSLocalizedString(@"No Video available to share.",nil) cancelBtnTitle:NSLocalizedString(@"Accept",nil) otherBtnTitle:nil delegate:nil tag:0];
         
     }
     else if (urlStr) {
@@ -546,7 +546,7 @@
         }
     }
     else
-        [CommonMethods showAlertWithTitle:@"LUK" message:@"No Video available to share." cancelBtnTitle:@"Accept"otherBtnTitle:nil delegate:nil tag:0];
+        [CommonMethods showAlertWithTitle:NSLocalizedString(@"LUK",nil) message:NSLocalizedString(@"No Video available to share.",nil) cancelBtnTitle:NSLocalizedString(@"Accept",nil) otherBtnTitle:nil delegate:nil tag:0];
     
 }
 
@@ -575,7 +575,7 @@
         [self shareVideo:[NSURL fileURLWithPath:urlStr]];
     }
     else
-        [CommonMethods showAlertWithTitle:@"LUK" message:@"No Video available to share." cancelBtnTitle:@"Accept"otherBtnTitle:nil delegate:nil tag:0];
+        [CommonMethods showAlertWithTitle:NSLocalizedString(@"LUK",nil) message:NSLocalizedString(@"No Video available to share.",nil) cancelBtnTitle:NSLocalizedString(@"Accept",nil) otherBtnTitle:nil delegate:nil tag:0];
 }
 
 //Share received video to friends
@@ -583,7 +583,7 @@
 {
     if(![CommonMethods reachable])
     {
-        [CommonMethods showAlertWithTitle:@"No Connectivity" message:@"Please check the Internet Connnection"];
+        [CommonMethods showAlertWithTitle:NSLocalizedString(@"No Connectivity",nil) message:NSLocalizedString(@"Please check the Internet Connnection",nil)];
         return;
     }
     
@@ -620,7 +620,7 @@
     
     if(![CommonMethods reachable])
     {
-        [CommonMethods showAlertWithTitle:@"No Connectivity" message:@"Please check the Internet Connnection"];
+        [CommonMethods showAlertWithTitle:NSLocalizedString(@"No Connectivity",nil) message:NSLocalizedString(@"Please check the Internet Connnection",nil)];
         return;
     }
     NSString *videoTitle;
@@ -654,7 +654,7 @@
     
     ConnectionHandler *connHandler = [[ConnectionHandler alloc] init];
     if (![connHandler hasConnectivity]) {
-        [CommonMethods showAlertWithTitle:@"No Connectivity" message:@"Please check the Internet Connnection"];
+        [CommonMethods showAlertWithTitle:NSLocalizedString(@"No Connectivity",nil) message:NSLocalizedString(@"Please check the Internet Connnection",nil)];
         return;
     }
     
@@ -833,7 +833,7 @@
     
     if(![CommonMethods reachable])
     {
-        [CommonMethods showAlertWithTitle:@"No Connectivity" message:@"Please check the Internet Connnection"];
+        [CommonMethods showAlertWithTitle:NSLocalizedString(@"No Connectivity",nil) message:NSLocalizedString(@"Please check the Internet Connnection",nil)];
         return;
     }
     
@@ -865,7 +865,7 @@
                                    NSLog(@"error%@",[error localizedDescription]);
                                    dispatch_async(dispatch_get_main_queue()
                                                   , ^(void) {
-                                                      [CommonMethods showAlertWithTitle:@"Error" message:[error localizedDescription] cancelBtnTitle:@"Accept" otherBtnTitle:nil delegate:nil tag:0];
+                                                      [CommonMethods showAlertWithTitle:NSLocalizedString(@"Error",nil) message:[error localizedDescription] cancelBtnTitle:NSLocalizedString(@"Accept",nil) otherBtnTitle:nil delegate:nil tag:0];
                                                   });
                                }
                                else
@@ -898,7 +898,7 @@
 {
     if(![CommonMethods reachable])
     {
-        [CommonMethods showAlertWithTitle:@"No Connectivity" message:@"Please check the Internet Connnection"];
+        [CommonMethods showAlertWithTitle:NSLocalizedString(@"No Connectivity",nil) message:NSLocalizedString(@"Please check the Internet Connnection",nil)];
         return;
     }
     
@@ -933,7 +933,7 @@
     }
     else
     {
-        [CommonMethods showAlertWithTitle:@"LUK" message:@"No Video available to share." cancelBtnTitle:@"Accept"otherBtnTitle:nil delegate:nil tag:0];
+        [CommonMethods showAlertWithTitle:NSLocalizedString(@"LUK",nil) message:NSLocalizedString(@"No Video available to share.",nil) cancelBtnTitle:NSLocalizedString(@"Accept",nil)otherBtnTitle:nil delegate:nil tag:0];
         
     }
 
@@ -943,7 +943,7 @@
 -(void)fbDidNotLogin:(BOOL)cancelled {
     NSLog(@"did not login");
     [[NSUserDefaults standardUserDefaults]setBool:FALSE forKey:@"FB_LOGIN"];
-    [CommonMethods showAlertWithTitle:@"Error" message:@"Something is wrong with your facebook account."];
+    [CommonMethods showAlertWithTitle:NSLocalizedString(@"Error",nil) message:NSLocalizedString(@"Something is wrong with your facebook account.",nil)];
 }
 
 - (void)request:(FBRequest *)request didLoad:(id)result {
@@ -952,13 +952,13 @@
     }
     NSLog(@"Result of API call: %@", result);
     [self stopProgressLoader];
-    [CommonMethods showAlertWithTitle:@"" message:@"Video Successfully post at facebook"];
+    [CommonMethods showAlertWithTitle:NSLocalizedString(@"",nil) message:NSLocalizedString(@"Video Successfully post at facebook",nil)];
 }
 
 - (void)request:(FBRequest *)request didFailWithError:(NSError *)error {
     NSLog(@"Failed with error: %@/nerror:%@", [error localizedDescription],[error description]);
     [self stopProgressLoader];
-    [CommonMethods showAlertWithTitle:@"Error" message:[error localizedDescription]];
+    [CommonMethods showAlertWithTitle:NSLocalizedString(@"Error",nil) message:[error localizedDescription]];
 }
 
 

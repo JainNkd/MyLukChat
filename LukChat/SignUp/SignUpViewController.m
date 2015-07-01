@@ -240,8 +240,7 @@
 
 - (IBAction)verifyButtonPressed:(id)sender {
     if (pno.text.length <= 0) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"Enter Phone Number"
-                                                       delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Alert",nil) message:NSLocalizedString(@"Enter Phone Number",nil) delegate:self cancelButtonTitle:NSLocalizedString(@"OK",nil) otherButtonTitles: nil];
         [alert show];
         return;
     }
@@ -254,15 +253,15 @@
     
     if(!self.checkBoxButton.selected)
     {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"Follow terms and conditions."
-                                                       delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Alert",nil) message:NSLocalizedString(@"Follow terms and conditions.",nil)
+                                                       delegate:self cancelButtonTitle:NSLocalizedString(@"OK",nil) otherButtonTitles: nil];
         [alert show];
         return;
     }
     
     if(![CommonMethods reachable])
     {
-        [CommonMethods showAlertWithTitle:@"No Connectivity" message:@"Please check the Internet Connnection"];
+        [CommonMethods showAlertWithTitle:NSLocalizedString(@"No Connectivity",nil) message:NSLocalizedString(@"Please check the Internet Connnection",nil)];
         return;
     }
     AppDelegate *app = (AppDelegate *)[[UIApplication sharedApplication]delegate];
@@ -312,7 +311,7 @@
                                    NSLog(@"error%@",[error localizedDescription]);
                                    dispatch_async(dispatch_get_main_queue()
                                                   , ^(void) {
-                                   [CommonMethods showAlertWithTitle:@"Error" message:[error localizedDescription]];
+                                   [CommonMethods showAlertWithTitle:NSLocalizedString(@"Error",nil) message:[error localizedDescription]];
                                                       });
                                }
                                else

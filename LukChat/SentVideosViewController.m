@@ -161,10 +161,10 @@
                 break;
             }
             case -2:
-                [CommonMethods showAlertWithTitle:[historydict objectForKey:@"Message"] message:@"Make sure the phone number is registered with LukChat"];
+                [CommonMethods showAlertWithTitle:[historydict objectForKey:@"Message"] message:NSLocalizedString(@"Make sure the phone number is registered with LukChat",nil)];
                 break;
             default:
-                [CommonMethods showAlertWithTitle:@"Error" message:[error localizedDescription]];
+                [CommonMethods showAlertWithTitle:NSLocalizedString(@"Error",nil) message:[error localizedDescription]];
                 break;
         }
     }
@@ -851,7 +851,7 @@
 -(void)fbDidNotLogin:(BOOL)cancelled {
     NSLog(@"did not login");
     [[NSUserDefaults standardUserDefaults]setBool:FALSE forKey:@"FB_LOGIN"];
-    [CommonMethods showAlertWithTitle:@"Error" message:@"Something is wrong with your facebook account."];
+    [CommonMethods showAlertWithTitle:NSLocalizedString(@"Error",nil) message:NSLocalizedString(@"Something is wrong with your facebook account.",nil)];
 }
 -(void)fbDidLogout
 {
@@ -888,7 +888,7 @@
                                    NSLog(@"error%@",[error localizedDescription]);
                                    dispatch_async(dispatch_get_main_queue()
                                                   , ^(void) {
-                                                      [CommonMethods showAlertWithTitle:@"Error" message:[error localizedDescription] cancelBtnTitle:@"Accept" otherBtnTitle:nil delegate:nil tag:0];
+                                                      [CommonMethods showAlertWithTitle:NSLocalizedString(@"Error",nil) message:[error localizedDescription] cancelBtnTitle:NSLocalizedString(@"Accept",nil) otherBtnTitle:nil delegate:nil tag:0];
                                                   });
                                }
                                else

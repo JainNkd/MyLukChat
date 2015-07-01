@@ -175,13 +175,13 @@
         }
         else
         {
-            [CommonMethods showAlertWithTitle:@"No Connectivity" message:@"Please check the Internet Connnection"];
+            [CommonMethods showAlertWithTitle:NSLocalizedString(@"No Connectivity",nil) message:NSLocalizedString(@"Please check the Internet Connnection",nil)];
             return;
         }
         
     }
     else{
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"Please enter valid pin number" delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Alert",nil) message:NSLocalizedString(@"Please enter valid pin number",nil) delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
         [alert show];
     }
 }
@@ -227,10 +227,8 @@
         
     }
     else if (status == -1 )
-        [CommonMethods showAlertWithTitle:@"Registration Failed" message:@"Some unknown error occured. Please try again."];
-    
-    
-    
+        [CommonMethods showAlertWithTitle:NSLocalizedString(@"Registration Failed",nil) message:NSLocalizedString(@"Some unknown error occured. Please try again.",nil)];
+
 }
 
 -(void)connHandlerClient:(ConnectionHandler *)client didSucceedWithResponseString:(NSString *)response forPath:(NSString *)urlPath{

@@ -320,7 +320,7 @@
     
     ConnectionHandler *connHandler = [[ConnectionHandler alloc] init];
     if (![connHandler hasConnectivity]) {
-        [CommonMethods showAlertWithTitle:@"No Connectivity" message:@"Please check the Internet Connnection"];
+        [CommonMethods showAlertWithTitle:NSLocalizedString(@"No Connectivity",nil) message:NSLocalizedString(@"Please check the Internet Connnection",nil)];
         return;
     }
     
@@ -399,16 +399,16 @@
                 break;
             }
             case 2:
-                [CommonMethods showAlertWithTitle:[usersdict objectForKey:@"Message"] message:@"Upload iPhone supported video format with size less than 100MB"];
+                [CommonMethods showAlertWithTitle:[usersdict objectForKey:@"message"] message:NSLocalizedString(@"Upload iPhone supported video format with size less than 100MB",nil)];
                 break;
             case 3:
-                [CommonMethods showAlertWithTitle:[usersdict objectForKey:@"Message"] message:@"Make sure the phone number is registered with LukChat"];
+                [CommonMethods showAlertWithTitle:[usersdict objectForKey:@"message"] message:NSLocalizedString(@"Make sure the phone number is registered with LukChat",nil)];
                 break;
             case 4:
-                [CommonMethods showAlertWithTitle:[usersdict objectForKey:@"Message"] message:@"Upload Error. Please send again"];
+                [CommonMethods showAlertWithTitle:[usersdict objectForKey:@"message"] message:NSLocalizedString(@"Upload Error. Please send again",nil)];
                 break;
             default:
-                [CommonMethods showAlertWithTitle:@"Error" message:[error localizedDescription]];
+                [CommonMethods showAlertWithTitle:NSLocalizedString(@"Error",nil) message:[error localizedDescription]];
                 break;
         }
     }
