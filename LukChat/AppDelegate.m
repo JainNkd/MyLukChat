@@ -399,13 +399,13 @@
                 break;
             }
             case 2:
-                [CommonMethods showAlertWithTitle:[usersdict objectForKey:@"message"] message:@"Upload iPhone supported video format with size less than 100MB"];
+                [CommonMethods showAlertWithTitle:[usersdict objectForKey:@"Message"] message:@"Upload iPhone supported video format with size less than 100MB"];
                 break;
             case 3:
-                [CommonMethods showAlertWithTitle:[usersdict objectForKey:@"message"] message:@"Make sure the phone number is registered with LukChat"];
+                [CommonMethods showAlertWithTitle:[usersdict objectForKey:@"Message"] message:@"Make sure the phone number is registered with LukChat"];
                 break;
             case 4:
-                [CommonMethods showAlertWithTitle:[usersdict objectForKey:@"message"] message:@"Upload Error. Please send again"];
+                [CommonMethods showAlertWithTitle:[usersdict objectForKey:@"Message"] message:@"Upload Error. Please send again"];
                 break;
             default:
                 [CommonMethods showAlertWithTitle:@"Error" message:[error localizedDescription]];

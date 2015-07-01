@@ -95,7 +95,7 @@
         }
         else if([array count]>10)
         {
-            message = @"You exid meximum word limit of 10";
+            message = @"You exceed meximum word limit of 10";
         }
         else if ([array count] < 2)
         {

@@ -154,7 +154,7 @@
                 break;
             }
             case -2:
-                [CommonMethods showAlertWithTitle:[historydict objectForKey:@"message"] message:@"Make sure the phone number is registered with LukChat"];
+                [CommonMethods showAlertWithTitle:[historydict objectForKey:@"Message"] message:@"Make sure the phone number is registered with LukChat"];
                 break;
             default:
                 [CommonMethods showAlertWithTitle:@"Error" message:[error localizedDescription]];

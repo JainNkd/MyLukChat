@@ -49,7 +49,7 @@
 }
 
 - (void)showError:(NSError*)error {
-      [[[UIAlertView alloc] initWithTitle:@"Something went wrong" message:error.localizedDescription delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+      [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Something went wrong",nil) message:error.localizedDescription delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
 }
 
 - (void)createSession {
