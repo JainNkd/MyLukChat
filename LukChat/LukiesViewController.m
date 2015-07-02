@@ -919,12 +919,13 @@
     if(facebookVideoPath.length>0){
         
         [self startProgressLoader];
+        //[NSString stringWithFormat:@"%@ \n\nCreate your own LUK www.lukchat.com/go",videoTitle]
         NSData *videoData = [NSData dataWithContentsOfFile:facebookVideoPath];
         NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                        videoData, @"video.mov",
                                        @"video/quicktime", @"contentType",
                                        [NSString stringWithFormat:@"LUK - %@",videoTitle], @"title",
-                                       [NSString stringWithFormat:@"%@ \n\nCreate your own LUK www.lukchat.com/go",videoTitle], @"description",
+                                       videoTitle, @"description",
                                        nil];
         [SharedAppDelegate.facebook requestWithGraphPath:@"me/videos"
                                                andParams:params

@@ -119,6 +119,7 @@
     
     [self.mergeButton setTitle:@"merge" forState:UIControlStateNormal];
     [self.mergeButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [self.mergeButton setTitle:@"record at least 2 videos" forState:UIControlStateDisabled];
     [self.mergeButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateDisabled];
     
     if ([[UIDevice currentDevice] respondsToSelector:@selector(setOrientation:)]) {
@@ -241,6 +242,17 @@
     [videoTitleLBLArr addObject:self.videoTitleLBL8];
     [videoTitleLBLArr addObject:self.videoTitleLBL9];
     [videoTitleLBLArr addObject:self.videoTitleLBL10];
+    
+    [self.seperationLine1 removeFromSuperview];
+    [self.seperationLine2 removeFromSuperview];
+    [self.seperationLine3 removeFromSuperview];
+    [self.seperationLine4 removeFromSuperview];
+    [self.seperationLine5 removeFromSuperview];
+    [self.seperationLine6 removeFromSuperview];
+    [self.seperationLine7 removeFromSuperview];
+    [self.seperationLine8 removeFromSuperview];
+    [self.seperationLine9 removeFromSuperview];
+    [self.seperationLine10 removeFromSuperview];
     
     videoTitle = [CommonMethods getVideoTitle];
     NSMutableArray *titleWords;
