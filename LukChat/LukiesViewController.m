@@ -58,11 +58,14 @@
         cnCode = @"49";
     
     self.sendTolukiesBtn.enabled = NO;
+    [self.sendTolukiesBtn setTitle:NSLocalizedString(@"send", nil) forState:UIControlStateNormal];
+    [self.facebookPostBtn setTitle:NSLocalizedString(@"post to facebook", nil) forState:UIControlStateNormal];
     
-    [self.sendTolukiesBtn setImage:[UIImage imageNamed:@"send-lukies_text-with-buttonbg.png"] forState:UIControlStateNormal];
-    [self.sendTolukiesBtn setImage:[UIImage imageNamed:@"send-lukies_text-with-pressbuttonbg.png"] forState:UIControlStateSelected];
-    [self.facebookPostBtn setImage:[UIImage imageNamed:@"facebook_post-text-with-buttonbg.png"] forState:UIControlStateNormal];
-    [self.facebookPostBtn setImage:[UIImage imageNamed:@"facebook_post-text-with-pressbuttonbg.png"] forState:UIControlStateSelected];
+    [self.sendTolukiesBtn setBackgroundImage:[UIImage imageNamed:@"send-lukies_buttonbg.png"] forState:UIControlStateNormal];
+    [self.sendTolukiesBtn setBackgroundImage:[UIImage imageNamed:@"send-lukies_pressbuttonbg.png"] forState:UIControlStateSelected];
+    [self.facebookPostBtn setBackgroundImage:[UIImage imageNamed:@"facebook_post_buttonbg.png"] forState:UIControlStateNormal];
+    [self.facebookPostBtn setBackgroundImage:[UIImage imageNamed:@"facebook_post_pressbuttonbg.png"] forState:UIControlStateSelected];
+
 }
 
 -(void)viewWillAppear:(BOOL)animated

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="KRm-ul-vIt">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="13F1077" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="KRm-ul-vIt">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -650,7 +650,7 @@
                                     <constraint firstAttribute="width" constant="320" id="PaA-e8-cYm"/>
                                     <constraint firstAttribute="height" constant="77" id="kOK-3g-hn8"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="24"/>
                                 <state key="normal" title="merge" backgroundImage="merge_bg.png">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -961,7 +961,7 @@
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Tp-Ny-Pbv">
                                 <rect key="frame" x="0.0" y="468" width="320" height="42"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="25"/>
                                 <state key="normal" title="send to your LUKis">
                                     <color key="titleColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -970,7 +970,7 @@
                                     <action selector="sendToLukiesButtonPressed:" destination="14W-qH-SPe" eventType="touchUpInside" id="QUD-Ue-ffZ"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="verfication-bottom-line.png" translatesAutoresizingMaskIntoConstraints="NO" id="gaR-Cq-EQL">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gaR-Cq-EQL">
                                 <rect key="frame" x="0.0" y="467" width="320" height="1"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="320" id="PkM-i0-0ue"/>
@@ -1317,7 +1317,8 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6rR-oS-VOx" userLabel="sendLukies">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="57"/>
-                                        <state key="normal" image="send-lukies_text-with-buttonbg.png">
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="22"/>
+                                        <state key="normal" title="send">
                                             <color key="titleColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -1327,7 +1328,8 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sf9-1Z-aga" userLabel="facebook">
                                         <rect key="frame" x="0.0" y="57" width="320" height="57"/>
-                                        <state key="normal" image="facebook_post-text-with-buttonbg.png">
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="22"/>
+                                        <state key="normal" title="post to facebook">
                                             <color key="titleColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -1425,7 +1427,9 @@
                                     <constraint firstAttribute="height" constant="56" id="Jj8-bt-TBo"/>
                                     <constraint firstAttribute="width" constant="320" id="OYq-uP-2Xt"/>
                                 </constraints>
-                                <state key="normal" backgroundImage="select-button-with-bg.png">
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
+                                <state key="normal" title="select">
+                                    <color key="titleColor" red="0.63529411764705879" green="0.0" blue="0.79607843137254897" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -1434,12 +1438,14 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6WX-hS-GYq" userLabel="Back">
                                 <rect key="frame" x="0.0" y="523" width="320" height="45"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="320" id="ZZA-As-1iP"/>
                                     <constraint firstAttribute="height" constant="45" id="Zzc-Xj-2bp"/>
                                 </constraints>
-                                <state key="normal" backgroundImage="back-button-withbg.png">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="back">
+                                    <color key="titleColor" red="0.14901960784313725" green="0.68235294117647061" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -1867,7 +1873,6 @@
     </scenes>
     <resources>
         <image name="app-store-screen-1_7.png" width="640" height="1136"/>
-        <image name="back-button-withbg.png" width="320" height="47"/>
         <image name="bg-select-screen.png" width="320" height="568"/>
         <image name="camerapage-icon-cance.png" width="23" height="23"/>
         <image name="camerapage-icon-rottat-camera.png" width="75" height="50"/>
@@ -1877,7 +1882,6 @@
         <image name="close-icon.png" width="28" height="26"/>
         <image name="contact_bg.png" width="320" height="480"/>
         <image name="download_video.png" width="50" height="50"/>
-        <image name="facebook_post-text-with-buttonbg.png" width="320" height="57"/>
         <image name="logo-luk.png" width="62" height="30"/>
         <image name="luk-iphone-final-lukes-sent-list-pic-dummy.png" width="105" height="102"/>
         <image name="luk-iphone-final-merged-videos-main-bg.png" width="640" height="1136"/>
@@ -1891,9 +1895,7 @@
         <image name="pic-bgwith-monkey-icon.png" width="106" height="106"/>
         <image name="screen-8-background.png" width="640" height="1136"/>
         <image name="screen4-smilemonkey-icon.png" width="80" height="79"/>
-        <image name="select-button-with-bg.png" width="320" height="57"/>
         <image name="select-logo-luk.png" width="57" height="27"/>
-        <image name="send-lukies_text-with-buttonbg.png" width="320" height="57"/>
         <image name="settings-icon.png" width="38" height="15"/>
         <image name="share-icon.png" width="62" height="74"/>
         <image name="share-videos-1st-pic.png" width="640" height="362"/>
@@ -1907,7 +1909,6 @@
         <image name="signup-terms-checkbox-normal-view.png" width="65" height="65"/>
         <image name="start-screen-text-field.png" width="320" height="35"/>
         <image name="verfication-background.png" width="640" height="1136"/>
-        <image name="verfication-bottom-line.png" width="640" height="1"/>
         <image name="verfication-field-bg.png" width="640" height="124"/>
         <image name="video_play.png" width="50" height="50"/>
     </resources>

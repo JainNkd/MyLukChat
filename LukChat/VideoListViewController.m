@@ -124,6 +124,10 @@
     [self.mergeButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [self.mergeButton setTitle:NSLocalizedString(@"record at least 2 videos",nil) forState:UIControlStateDisabled];
     [self.mergeButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateDisabled];
+    [self.mergeButton setBackgroundImage:[UIImage imageNamed:@"merge_bg@2x.png"] forState:UIControlStateNormal];
+    [self.mergeButton setBackgroundImage:[UIImage imageNamed:@"merge_bg@2x.png"] forState:UIControlStateDisabled];
+    [self.mergeButton setBackgroundImage:[UIImage imageNamed:@"button-bg-merge-select@2x.png"] forState:UIControlStateSelected];
+    
     self.videoTitleTextField.placeholder = NSLocalizedString(@"Write your LUK", nil);
     
     if ([[UIDevice currentDevice] respondsToSelector:@selector(setOrientation:)]) {

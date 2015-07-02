@@ -38,6 +38,15 @@
     singleVideosData = [[NSMutableArray alloc]init];
     singleVideoIndex = [[NSUserDefaults standardUserDefaults]integerForKey:@"SingleVideoIndex"];
     
+    [self.selectBtn setTitle:NSLocalizedString(@"select", nil) forState:UIControlStateNormal];
+    [self.backBtn setTitle:NSLocalizedString(@"back", nil) forState:UIControlStateNormal];
+    
+    [self.selectBtn setBackgroundImage:[UIImage imageNamed:@"select-button-bg@2x.png"] forState:UIControlStateNormal];
+    [self.selectBtn setBackgroundImage:[UIImage imageNamed:@"select-button-bg@2x.png"] forState:UIControlStateSelected];
+    
+    
+    [self.backBtn setBackgroundImage:[UIImage imageNamed:@"back-button-bg@2x.png"] forState:UIControlStateNormal];
+    [self.backBtn setBackgroundImage:[UIImage imageNamed:@"back-button-bg@2x.png"] forState:UIControlStateSelected];
     
     NSString *videoTitle =  [CommonMethods getVideoTitle];
     
