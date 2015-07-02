@@ -65,6 +65,9 @@
     
     [self adjustView];
     
+    [self.sendToLukiesBtn setTitle:NSLocalizedString(@"send to your LUKis",nil) forState:UIControlStateNormal];
+    
+    
     [[NSUserDefaults standardUserDefaults] setBool:TRUE forKey:kIsFromMerged];
     NSString *videoTitle =  [CommonMethods getVideoTitle];
     NSString *filename = [[NSUserDefaults standardUserDefaults]valueForKey:kMyVideoToShare];

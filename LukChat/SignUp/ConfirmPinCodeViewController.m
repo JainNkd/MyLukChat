@@ -41,6 +41,9 @@
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
     [self.view addGestureRecognizer:tap];
     
+    number.placeholder = NSLocalizedString(@"Enter verification code", nil);
+    [self.confirmBtn setTitle:NSLocalizedString(@"confirm", nil) forState:UIControlStateNormal];
+    
     // Do any additional setup after loading the view.
 }
 

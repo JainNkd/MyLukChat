@@ -11,5 +11,6 @@
 @interface TermsAndConditionsViewController : UIViewController<UIWebViewDelegate>
 - (IBAction)backButtonPressed:(id)sender;
 
+@property (weak, nonatomic) IBOutlet UIButton *backBtn;
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 @end

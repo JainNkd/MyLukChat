@@ -87,9 +87,17 @@
     pnTab = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
     [self.view addGestureRecognizer:pnTab];
     
+    //UI SET UP
     [self.checkBoxButton setImage:[UIImage imageNamed:@"signup-terms-checkbox-normal-view.png"] forState:UIControlStateNormal];
     [self.checkBoxButton setImage:[UIImage imageNamed:@"signup-terms-checkbox-selection.png"] forState:UIControlStateSelected];
     
+    country.placeholder = NSLocalizedString(@"Country", nil);
+    pno.placeholder = NSLocalizedString(@"Phone number", nil);
+    dob.placeholder = NSLocalizedString(@"Date of birth", nil);
+    self.termsAndConditionsLBL.text = NSLocalizedString(@"terms and conditions", nil);
+    self.iAgreeTextLBL.text = NSLocalizedString(@"I agree in terms and conditions", nil);
+    [self.verufyBtn setTitle:NSLocalizedString(@"verify", nil) forState:UIControlStateNormal];
+
 }
 
 - (void)didReceiveMemoryWarning

@@ -55,6 +55,9 @@
     CGRect frame= self.settingView.frame;
     self.settingView.frame = CGRectMake(self.view.frame.size.width, 0, frame.size.width, frame.size.height);
     
+    [self.loginBtn setTitle:NSLocalizedString(@"login to facebook",) forState:UIControlStateNormal];
+    [self.logoutBtn setTitle:NSLocalizedString(@"logout from facebook",) forState:UIControlStateNormal];
+    
     [[NSUserDefaults standardUserDefaults]setBool:FALSE forKey:kIsFromCreated];
     createdVideos = [DatabaseMethods getAllCreatedVideos];
     [self.createTableView reloadData];

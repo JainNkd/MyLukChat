@@ -108,6 +108,9 @@
     CGRect frame= self.settingView.frame;
     self.settingView.frame = CGRectMake(self.view.frame.size.width, 0, frame.size.width, frame.size.height);
     
+    [self.loginBtn setTitle:NSLocalizedString(@"login to facebook",) forState:UIControlStateNormal];
+    [self.logoutBtn setTitle:NSLocalizedString(@"logout from facebook",) forState:UIControlStateNormal];
+    
     if(IS_IPHONE_4_OR_LESS)
     {
         videoCount = 8;
@@ -117,10 +120,11 @@
         videoCount = 10;
     }
     
-    [self.mergeButton setTitle:@"merge" forState:UIControlStateNormal];
+    [self.mergeButton setTitle:NSLocalizedString(@"merge",nil) forState:UIControlStateNormal];
     [self.mergeButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [self.mergeButton setTitle:@"record at least 2 videos" forState:UIControlStateDisabled];
+    [self.mergeButton setTitle:NSLocalizedString(@"record at least 2 videos",nil) forState:UIControlStateDisabled];
     [self.mergeButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateDisabled];
+    self.videoTitleTextField.placeholder = NSLocalizedString(@"Write your LUK", nil);
     
     if ([[UIDevice currentDevice] respondsToSelector:@selector(setOrientation:)]) {
         objc_msgSend([UIDevice currentDevice], @selector(setOrientation:),    UIInterfaceOrientationPortrait);

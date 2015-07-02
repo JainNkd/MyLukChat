@@ -16,6 +16,7 @@
     NSString *selectedVideoURL;
 }
 @property (weak, nonatomic) IBOutlet UIButton *selectBtn;
+@property (weak, nonatomic) IBOutlet UIButton *backBtn;
 
 @property (weak, nonatomic) IBOutlet UILabel *wordLBL;
 @property (weak, nonatomic) IBOutlet UICollectionView *singleVideoCollectionView;

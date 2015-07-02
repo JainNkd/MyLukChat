@@ -19,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *mergeVideoImg;
 @property (weak, nonatomic) IBOutlet UILabel *videoTitleLBL;
 @property (weak, nonatomic) IBOutlet UILabel *userNameLBL;
+@property (weak, nonatomic) IBOutlet UIButton *sendToLukiesBtn;
 
 @property (weak, nonatomic) IBOutlet UIView *videoTitleView;
 - (IBAction)PlayVideoButtonAction:(UIButton *)sender;

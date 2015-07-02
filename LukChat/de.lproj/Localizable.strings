@@ -6,4 +6,71 @@
   Copyright (c) 2015 Markus Haass Mac Mini. All rights reserved.
 */
 
+
+"Country" = "Land";
+"Phone number" = "Telefonnummer";
+"Date of birth" = "Geburtsdatum";
+"I agree in terms and conditions" = "Ich stimme den Nutzungsbedingungen zu.";
+"terms and conditions" = "Nutzungsbedingungen";
+"verify" = "prüfen";
+
+"Enter verification code" = "Bestätigungscode eingeben";
+"confirm" = "bestätigen";
+
+"back" = "zurück";
+
+"merge" = "zusammenfügen";
+"record at least 2 videos" = "Nimm 2 Videos auf";
+"Write your LUK" = "Schreiben Sie LUK";
+
+"send to your LUKis" = "schick es an Deine LUKis";
+
+"LUK" = "LUK";
+"OK" = "OK";
+"Accept" = "Annehmen.";
+"Error" = "Fehler";
+"Cancel" = "Abbrechen";
+"Done" = "Erledigt.";
+"Failed" = "Fehlgeschlagen.";
+"No" = "Nein";
+"Yes" = "Ja";
+
 "Alert" = "Alarm";
+"No Connectivity" = "Kein Verbindung!";
+"Please check the Internet Connnection" = "Bitte überprüfe Deine Internetverbindung.";
+
+"Message" = "Nachricht";
+"Upload iPhone supported video format with size less than 100MB" = "Lade ein vom iPhone unterstützten Video-Format mit einer Größe von weniger als 100 MB hoch.";
+"Make sure the phone number is registered with LukChat" = "Stelle sicher, dass die Telefonnummermit LukChat registriert ist.";
+"Upload Error. Please send again" = "Fehler beim Upload! Bitte erneut senden.";
+"Please enter valid pin number" = "Bitte geben Sie eine gültige PIN-Nummer ein.";
+"Registration Failed" = "Registrierung fehlgeschlagen.";
+"Some unknown error occured. Please try again." = "Ein unbekannter Fehler ist aufgetreten. Bitte versuche es erneut.";
+
+"Video uploaded successful." = "Video erfolgreich hochgeladen.";
+"No Video available to share." = "Kein Video zum teilen verfügbar.";
+"Video successfully posted at facebook" = "Video erfolgreich auf Facebook hochgeladen";
+
+"You not yet received any video from your friends." = "Du hast noch kein Video von Deinen Freunden empfangen.";
+"You need to downlaod this video before select." = "Du must das Video herunterladen, bevor Du es auswählen kannst.";
+"Are you sure you want to clear the text?" = "Bist du sicher, dass Du den Text löschen willst?";
+"Something is wrong with your facebook account" = "Etwas stimmt nicht bei Deinem Facebook-Konto.";
+"Please enter a valid title" = "Bitte gibt einen zulässigen Titel ein.";
+"You exceed the maximum number of 10 words" = "Du überschreitest die maximale Anzahl von 10 Worten.";
+
+"You need two recorded video clips to merge the videos." = "Du must mindestens 2 Videos aufnehmen um einen LUK zu erstellen.";
+"Something went wrong, try again" = "Etwas schief ging, versuch es nochmal.";
+
+"Do you want to save video" = "Willst Du das Video speichern.";
+"Please Record a Video" = "Nimm ein Video auf!";
+"Failed to save" = "Fehler beim Speichern.";
+"Saved to camera role" = "Zu den Videos gespeichert.";
+"Enter Phone Number" = "Gib Deine Telefonnummer ein.";
+"Follow terms and conditions" = "Nimm die Nutzungsbedingungen an.";
+
+"send" = "senden";
+"post to facebook" = "Auf Facebook posten";
+"select" = "auswählen";
+
+
+

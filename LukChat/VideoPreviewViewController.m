@@ -111,7 +111,7 @@
         [self.navigationController dismissViewControllerAnimated:NO completion:nil];    }
     else{
         
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"LUK" message:@"Do you want to save video" delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil];
+       UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"LUK", nil)  message:NSLocalizedString(@"Do you want to save video",nil) delegate:self cancelButtonTitle:NSLocalizedString(@"No",nil) otherButtonTitles:NSLocalizedString(@"Yes",nil), nil];
         [alert show];
         alert.tag = 1;
 
@@ -154,7 +154,7 @@
     }
     else{
         
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"LUK" message:@"Please Record a Video" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"LUK",nil) message:NSLocalizedString(@"Please Record a Video",nil) delegate:nil cancelButtonTitle:NSLocalizedString(@"OK",nil) otherButtonTitles:nil, nil];
         [alert show];
     }
 }

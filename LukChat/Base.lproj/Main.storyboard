@@ -204,10 +204,13 @@
                         <outlet property="codeLabel" destination="YcQ-Fx-qzW" id="BcE-Qz-faQ"/>
                         <outlet property="country" destination="RVg-RX-kHx" id="524-JW-v5E"/>
                         <outlet property="dob" destination="ThL-6x-LKf" id="WPN-Pe-zn8"/>
+                        <outlet property="iAgreeTextLBL" destination="H94-gg-WVg" id="Njb-ra-NN6"/>
                         <outlet property="mobileCountryCode" destination="oaX-an-6LA" id="ifK-QM-RIg"/>
                         <outlet property="nameLabel" destination="PHO-hF-FOi" id="lMo-kJ-wqR"/>
                         <outlet property="pno" destination="ZYC-Wv-g1n" id="SiB-w9-79n"/>
                         <outlet property="signupView" destination="UV8-Ft-ejY" id="nw7-bF-xaa"/>
+                        <outlet property="termsAndConditionsLBL" destination="AL7-Il-12r" id="PKY-H3-7KM"/>
+                        <outlet property="verufyBtn" destination="afH-rC-9tX" id="dMp-su-sW3"/>
                         <segue destination="RKr-Z6-xE7" kind="push" identifier="Confirmation" id="Kzo-nk-bYN"/>
                         <segue destination="Avq-eh-KMo" kind="push" identifier="TermsAndConditions" id="Age-ET-KYi"/>
                     </connections>
@@ -278,6 +281,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="WX5-xg-18R"/>
                     <connections>
+                        <outlet property="backBtn" destination="mn9-wM-MFb" id="ezi-yA-bmZ"/>
                         <outlet property="webView" destination="5jd-Jr-KVU" id="z41-d5-B4O"/>
                     </connections>
                 </viewController>
@@ -318,7 +322,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9su-Cw-1Ik">
                                 <rect key="frame" x="0.0" y="495" width="320" height="73"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="verfication-bottom-line.png" translatesAutoresizingMaskIntoConstraints="NO" id="L15-3e-urd">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="L15-3e-urd">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="1"/>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QfB-D7-BSQ">
@@ -348,6 +352,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="51I-yh-ejM"/>
                     <connections>
+                        <outlet property="confirmBtn" destination="QfB-D7-BSQ" id="ZvZ-ho-Znx"/>
                         <outlet property="number" destination="PD1-XY-QYM" id="oNi-h9-x7O"/>
                         <segue destination="4Z4-ez-jN2" kind="custom" identifier="TabBarView" customClass="PushNoAnimationSegue" id="kz9-Bu-m6X"/>
                     </connections>
@@ -994,6 +999,7 @@
                     </view>
                     <connections>
                         <outlet property="mergeVideoImg" destination="vaI-IX-TFa" id="rDI-mt-e2a"/>
+                        <outlet property="sendToLukiesBtn" destination="3Tp-Ny-Pbv" id="8iS-m1-WCL"/>
                         <outlet property="userNameLBL" destination="oYL-DH-pvv" id="oEq-za-3i2"/>
                         <outlet property="videoTitleLBL" destination="SCH-3r-NLp" id="eSH-TR-ePg"/>
                         <outlet property="videoTitleView" destination="N9N-VO-AfM" id="kG5-RQ-ARo"/>
@@ -1461,6 +1467,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="backBtn" destination="6WX-hS-GYq" id="oV5-n2-ANL"/>
                         <outlet property="selectBtn" destination="MSM-wz-5DH" id="fuJ-3x-oWq"/>
                         <outlet property="singleVideoCollectionView" destination="kEe-77-bPR" id="DyV-0G-w46"/>
                         <outlet property="wordLBL" destination="6b9-So-UrQ" id="SmD-d5-849"/>

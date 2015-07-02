@@ -42,6 +42,8 @@
 {
     [super viewDidLoad];
     
+    [self.backBtn setTitle:NSLocalizedString(@"back",nil) forState:UIControlStateNormal];
+    
     NSURL *websiteUrl = [NSURL URLWithString:@"http://www.lukchat.com/legal"];
     NSURLRequest *urlRequest = [NSURLRequest requestWithURL:websiteUrl];
     [self.webView loadRequest:urlRequest];

@@ -32,11 +32,17 @@
 @property (nonatomic, strong) IBOutlet UILabel *codeLabel;
 @property (nonatomic, strong) IBOutlet UILabel *nameLabel;
 @property (nonatomic, strong) IBOutlet UITextField *country;
+
+@property (weak, nonatomic) IBOutlet UILabel *iAgreeTextLBL;
+
+@property (weak, nonatomic) IBOutlet UILabel *termsAndConditionsLBL;
+
 @property (nonatomic, retain) NSDate *birthDate;
 @property (nonatomic, retain) UIActionSheet *dateSheet;
 
 @property (weak, nonatomic) IBOutlet UIButton *checkBoxButton;
 
+@property (weak, nonatomic) IBOutlet UIButton *verufyBtn;
 
 @property (weak, nonatomic) IBOutlet UIView *signupView;
 
