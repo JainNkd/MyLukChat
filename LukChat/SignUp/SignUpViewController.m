@@ -94,8 +94,21 @@
     country.placeholder = NSLocalizedString(@"Country", nil);
     pno.placeholder = NSLocalizedString(@"Phone number", nil);
     dob.placeholder = NSLocalizedString(@"Date of birth", nil);
-    self.termsAndConditionsLBL.text = NSLocalizedString(@"terms and conditions", nil);
+    
+//    self.termsAndConditionsLBL.text = NSLocalizedString(@"terms and conditions", nil);
+    
     self.iAgreeTextLBL.text = NSLocalizedString(@"I agree in terms and conditions", nil);
+    [self.iAgreeTextLBL setFont:[UIFont systemFontOfSize:[NSLocalizedString(@"IAgreeFontSize", nil)integerValue]]];
+    
+    self.tAndCLineLBL.translatesAutoresizingMaskIntoConstraints = YES;
+    self.tAndCBtn.translatesAutoresizingMaskIntoConstraints = YES;
+    CGFloat tAndCOrigix = [NSLocalizedString(@"tAndcX",nil) floatValue];
+    CGFloat tAndCOrigiy = [NSLocalizedString(@"tAndcY",nil) floatValue];
+    CGFloat tAndCOrigiWidth = [NSLocalizedString(@"tAndcWidth",nil) floatValue];
+    [self.tAndCLineLBL setFrame:CGRectMake(tAndCOrigix, tAndCOrigiy, tAndCOrigiWidth,1)];
+    
+    [self.tAndCBtn setFrame:CGRectMake(tAndCOrigix, tAndCOrigiy-20, tAndCOrigiWidth,30)];
+
     [self.verufyBtn setTitle:NSLocalizedString(@"verify", nil) forState:UIControlStateNormal];
 
 }

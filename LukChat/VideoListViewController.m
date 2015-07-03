@@ -122,7 +122,7 @@
     
     [self.mergeButton setTitle:NSLocalizedString(@"merge",nil) forState:UIControlStateNormal];
     [self.mergeButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [self.mergeButton setTitle:NSLocalizedString(@"record at least 2 videos",nil) forState:UIControlStateDisabled];
+    [self.mergeButton setTitle:NSLocalizedString(@"press the monkeys",nil) forState:UIControlStateDisabled];
     [self.mergeButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateDisabled];
     [self.mergeButton setBackgroundImage:[UIImage imageNamed:@"merge_bg@2x.png"] forState:UIControlStateNormal];
     [self.mergeButton setBackgroundImage:[UIImage imageNamed:@"merge_bg@2x.png"] forState:UIControlStateDisabled];

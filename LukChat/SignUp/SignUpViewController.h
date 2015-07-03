@@ -46,7 +46,9 @@
 
 @property (weak, nonatomic) IBOutlet UIView *signupView;
 
+@property (weak, nonatomic) IBOutlet UILabel *tAndCLineLBL;
 
+@property (weak, nonatomic) IBOutlet UIButton *tAndCBtn;
 -(void)setBirth;
 -(void)dismissDateSet;
 -(void)cancelDateSet;
