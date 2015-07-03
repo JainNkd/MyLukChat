@@ -18,7 +18,10 @@
 #import <Parse/Parse.h>
 
 
+
+
 @implementation AppDelegate
+
 @synthesize facebook;
 @synthesize number,pinValue,saving;
 
@@ -43,6 +46,8 @@
     //Parse
     [Parse setApplicationId:@"pGx3VxVJ0hAU6TNDrNVo2LboonA5HbmakPRUclGL"
                   clientKey:@"QXf9V4NCjtz3FyQePhEUT7SFCXSfip8Oygyvy8ps"];
+    //Local notification
+    [JCNotificationCenter sharedCenter].presenter = [JCNotificationBannerPresenterIOS7Style new];
     
     // Register for Push Notitications
     UIUserNotificationType userNotificationTypes = (UIUserNotificationTypeAlert |
@@ -163,7 +168,7 @@
     if (count>0) {
         [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
         [[UIApplication sharedApplication] cancelAllLocalNotifications];
-        
+//         [CommonMethods showAlertWithTitle:@"LUK2" message:[NSString stringWithFormat:@"%d",count]];
         NSString *userLoggedIn = [[NSUserDefaults standardUserDefaults] objectForKey:@"user"];
         if([userLoggedIn isEqualToString:@"YES"])
         {
@@ -196,11 +201,11 @@
     [self uploadVideosInBackground];
 }
 
-- (void)applicationWillTerminate:(UIApplication *)application
-{
-    // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+- (void)applicationWillTerminate:(UIApplication *)application {
+    if (self.localNotificationSound) {
+        AudioServicesDisposeSystemSoundID(self.localNotificationSound);
+    }
 }
-
 -(void)uploadVideosInBackground
 {
     NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
@@ -297,21 +302,65 @@
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult result))completionHandler {
     
     NSLog(@"didReceiveRemoteNotification fetchCompletionHandler **********************");
-    //    application.applicationIconBadgeNumber = 0;
-    //    NSInteger count = [UIApplication sharedApplication].applicationIconBadgeNumber;
-    //    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:count+1];
     NSLog(@"userInfo background: %@", userInfo);
     
     [[NSUserDefaults standardUserDefaults]setBool:TRUE forKey:@"IS_NOTIFICATION"];
     
-    UINavigationController *navController = (UINavigationController *)self.window.rootViewController;
-    navController.navigationBar.hidden = YES;
-    NSLog(@"navigation...%@",[navController class]);
-    
-    UIStoryboard *storyBD = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    TabBarViewController *tabbar = [storyBD instantiateViewControllerWithIdentifier:@"TabBarViewController"];
-    [navController pushViewController:tabbar animated:NO];
-    //    [CommonMethods showAlertWithTitle:@"LUK" message:@"New Video Reciceved from LUK"];
+    UIApplicationState state = [application applicationState];
+    if (state == UIApplicationStateActive)
+    {
+        if(userInfo)
+        {
+//            [CommonMethods showAlertWithTitle:@"LUK1" message:[NSString stringWithFormat:@"%@",userInfo]];
+            NSDictionary *apsDict = [userInfo valueForKey:@"aps"];
+           
+            NSString *alert = [apsDict valueForKey:@"alert"];
+            NSString *from = [userInfo valueForKey:@"from-phone"];
+            from = @"LUK";
+            NSDictionary *infoDict = [NSDictionary dictionaryWithObjectsAndKeys:from, @"name",alert, @"message",@"1",@"type",nil];
+        
+            [self showNotification:infoDict];
+            
+            if (!self.localNotificationSound) {
+                NSURL *soundURL = [[NSBundle mainBundle] URLForResource:@"MonkeyShortAIFF"
+                                                          withExtension:@"AIFF"];
+                AudioServicesCreateSystemSoundID((__bridge CFURLRef)soundURL, &_localNotificationSound);
+            }
+            AudioServicesPlaySystemSound(self.localNotificationSound);
+        }
+        //What you want to do when your app was active and it got push notification
+    }
+    else
+    {
+        UINavigationController *navController = (UINavigationController *)self.window.rootViewController;
+        navController.navigationBar.hidden = YES;
+        NSLog(@"navigation...%@",[navController class]);
+        
+        UIStoryboard *storyBD = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        TabBarViewController *tabbar = [storyBD instantiateViewControllerWithIdentifier:@"TabBarViewController"];
+        [navController pushViewController:tabbar animated:NO];
+    }
+}
+
+-(void)showNotification:(NSDictionary *)userInfo
+{
+    //    JCNotificationCenter *jc = [JCNotificationCenter sharedCenter];
+    //    [jc dequeueNotification];
+    NSInteger type;
+    type = [[userInfo valueForKey:@"type"] integerValue];
+    [JCNotificationCenter
+     enqueueNotificationWithTitle:NSLocalizedString([userInfo valueForKey:@"name"],nil)
+     message:NSLocalizedString([userInfo valueForKey:@"message"],nil)
+     tapHandler:^{
+         NSLog(@"type...2%ld",(long)type);
+         UINavigationController *navController = (UINavigationController *)self.window.rootViewController;
+         navController.navigationBar.hidden = YES;
+         NSLog(@"navigation...%@",[navController class]);
+         
+         UIStoryboard *storyBD = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+         TabBarViewController *tabbar = [storyBD instantiateViewControllerWithIdentifier:@"TabBarViewController"];
+         [navController pushViewController:tabbar animated:NO];
+        }];
 }
 
 //

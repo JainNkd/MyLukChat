@@ -16,6 +16,12 @@
 #import "LukiesViewController.h"
 #import "Facebook.h"
 
+#import <AudioToolbox/AudioToolbox.h>
+#import "JCNotificationCenter.h"
+#import "JCNotificationBannerPresenterSmokeStyle.h"
+#import "JCNotificationBannerPresenterIOSStyle.h"
+#import "JCNotificationBannerPresenterIOS7Style.h"
+
 //#import "Facebook.h"
 
 #define SharedAppDelegate ((AppDelegate*)[[UIApplication sharedApplication] delegate])
@@ -28,7 +34,7 @@
     Facebook *facebook;
     
 }
-
+@property (readwrite, nonatomic, assign) SystemSoundID localNotificationSound;
 @property (nonatomic, retain) Facebook *facebook;
 @property (nonatomic,strong) LukiesViewController *lukVC;
 @property (nonatomic, retain)  NSString *number;

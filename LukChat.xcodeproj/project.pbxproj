@@ -232,8 +232,20 @@
 		8BC1A0951A5FBA3500920771 /* VideoDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BC1A0931A5FBA3500920771 /* VideoDetail.m */; };
 		8BC23E051A72342800AB29B7 /* video-send-search-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BC23E041A72342800AB29B7 /* video-send-search-bg.png */; };
 		8BC23E0C1A72486300AB29B7 /* search_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BC23E0B1A72486300AB29B7 /* search_icon.png */; };
+		8BCBB39E1B4693AE000DDEB0 /* JCNotificationBanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BCBB3881B4693AE000DDEB0 /* JCNotificationBanner.m */; };
+		8BCBB39F1B4693AE000DDEB0 /* JCNotificationBannerPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BCBB38A1B4693AE000DDEB0 /* JCNotificationBannerPresenter.m */; };
+		8BCBB3A01B4693AE000DDEB0 /* JCNotificationBannerPresenterIOS7Style.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BCBB38D1B4693AE000DDEB0 /* JCNotificationBannerPresenterIOS7Style.m */; };
+		8BCBB3A11B4693AE000DDEB0 /* JCNotificationBannerPresenterIOSStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BCBB38F1B4693AE000DDEB0 /* JCNotificationBannerPresenterIOSStyle.m */; };
+		8BCBB3A21B4693AE000DDEB0 /* JCNotificationBannerPresenterSmokeStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BCBB3911B4693AE000DDEB0 /* JCNotificationBannerPresenterSmokeStyle.m */; };
+		8BCBB3A31B4693AE000DDEB0 /* JCNotificationBannerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BCBB3931B4693AE000DDEB0 /* JCNotificationBannerView.m */; };
+		8BCBB3A41B4693AE000DDEB0 /* JCNotificationBannerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BCBB3951B4693AE000DDEB0 /* JCNotificationBannerViewController.m */; };
+		8BCBB3A51B4693AE000DDEB0 /* JCNotificationBannerViewIOS7Style.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BCBB3971B4693AE000DDEB0 /* JCNotificationBannerViewIOS7Style.m */; };
+		8BCBB3A61B4693AE000DDEB0 /* JCNotificationBannerViewIOSStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BCBB3991B4693AE000DDEB0 /* JCNotificationBannerViewIOSStyle.m */; };
+		8BCBB3A71B4693AE000DDEB0 /* JCNotificationBannerWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BCBB39B1B4693AE000DDEB0 /* JCNotificationBannerWindow.m */; };
+		8BCBB3A81B4693AE000DDEB0 /* JCNotificationCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BCBB39D1B4693AE000DDEB0 /* JCNotificationCenter.m */; };
 		8BEEE1F51A9CAFE90024305B /* download_video.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BEEE1F31A9CAFE90024305B /* download_video.png */; };
 		8BEEE1F61A9CAFE90024305B /* video_play.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BEEE1F41A9CAFE90024305B /* video_play.png */; };
+		8BF359261B46A31D0056BE81 /* luk-app-icon-80.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BF359251B46A31D0056BE81 /* luk-app-icon-80.png */; };
 		8BFB476A1B3BC302009C1F71 /* select-namebg.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BFB47681B3BC302009C1F71 /* select-namebg.png */; };
 		8BFB476B1B3BC302009C1F71 /* select-namebg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BFB47691B3BC302009C1F71 /* select-namebg@2x.png */; };
 		8BFB47701B3BCB28009C1F71 /* logo-luk.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BFB476E1B3BCB28009C1F71 /* logo-luk.png */; };
@@ -599,8 +611,32 @@
 		8BC1A0941A5FBA3500920771 /* VideoDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoDetail.h; sourceTree = "<group>"; };
 		8BC23E041A72342800AB29B7 /* video-send-search-bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "video-send-search-bg.png"; sourceTree = "<group>"; };
 		8BC23E0B1A72486300AB29B7 /* search_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = search_icon.png; sourceTree = "<group>"; };
+		8BCBB3871B4693AE000DDEB0 /* JCNotificationBanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JCNotificationBanner.h; sourceTree = "<group>"; };
+		8BCBB3881B4693AE000DDEB0 /* JCNotificationBanner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JCNotificationBanner.m; sourceTree = "<group>"; };
+		8BCBB3891B4693AE000DDEB0 /* JCNotificationBannerPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JCNotificationBannerPresenter.h; sourceTree = "<group>"; };
+		8BCBB38A1B4693AE000DDEB0 /* JCNotificationBannerPresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JCNotificationBannerPresenter.m; sourceTree = "<group>"; };
+		8BCBB38B1B4693AE000DDEB0 /* JCNotificationBannerPresenter_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JCNotificationBannerPresenter_Private.h; sourceTree = "<group>"; };
+		8BCBB38C1B4693AE000DDEB0 /* JCNotificationBannerPresenterIOS7Style.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JCNotificationBannerPresenterIOS7Style.h; sourceTree = "<group>"; };
+		8BCBB38D1B4693AE000DDEB0 /* JCNotificationBannerPresenterIOS7Style.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JCNotificationBannerPresenterIOS7Style.m; sourceTree = "<group>"; };
+		8BCBB38E1B4693AE000DDEB0 /* JCNotificationBannerPresenterIOSStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JCNotificationBannerPresenterIOSStyle.h; sourceTree = "<group>"; };
+		8BCBB38F1B4693AE000DDEB0 /* JCNotificationBannerPresenterIOSStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JCNotificationBannerPresenterIOSStyle.m; sourceTree = "<group>"; };
+		8BCBB3901B4693AE000DDEB0 /* JCNotificationBannerPresenterSmokeStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JCNotificationBannerPresenterSmokeStyle.h; sourceTree = "<group>"; };
+		8BCBB3911B4693AE000DDEB0 /* JCNotificationBannerPresenterSmokeStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JCNotificationBannerPresenterSmokeStyle.m; sourceTree = "<group>"; };
+		8BCBB3921B4693AE000DDEB0 /* JCNotificationBannerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JCNotificationBannerView.h; sourceTree = "<group>"; };
+		8BCBB3931B4693AE000DDEB0 /* JCNotificationBannerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JCNotificationBannerView.m; sourceTree = "<group>"; };
+		8BCBB3941B4693AE000DDEB0 /* JCNotificationBannerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JCNotificationBannerViewController.h; sourceTree = "<group>"; };
+		8BCBB3951B4693AE000DDEB0 /* JCNotificationBannerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JCNotificationBannerViewController.m; sourceTree = "<group>"; };
+		8BCBB3961B4693AE000DDEB0 /* JCNotificationBannerViewIOS7Style.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JCNotificationBannerViewIOS7Style.h; sourceTree = "<group>"; };
+		8BCBB3971B4693AE000DDEB0 /* JCNotificationBannerViewIOS7Style.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JCNotificationBannerViewIOS7Style.m; sourceTree = "<group>"; };
+		8BCBB3981B4693AE000DDEB0 /* JCNotificationBannerViewIOSStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JCNotificationBannerViewIOSStyle.h; sourceTree = "<group>"; };
+		8BCBB3991B4693AE000DDEB0 /* JCNotificationBannerViewIOSStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JCNotificationBannerViewIOSStyle.m; sourceTree = "<group>"; };
+		8BCBB39A1B4693AE000DDEB0 /* JCNotificationBannerWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JCNotificationBannerWindow.h; sourceTree = "<group>"; };
+		8BCBB39B1B4693AE000DDEB0 /* JCNotificationBannerWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JCNotificationBannerWindow.m; sourceTree = "<group>"; };
+		8BCBB39C1B4693AE000DDEB0 /* JCNotificationCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JCNotificationCenter.h; sourceTree = "<group>"; };
+		8BCBB39D1B4693AE000DDEB0 /* JCNotificationCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JCNotificationCenter.m; sourceTree = "<group>"; };
 		8BEEE1F31A9CAFE90024305B /* download_video.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = download_video.png; sourceTree = "<group>"; };
 		8BEEE1F41A9CAFE90024305B /* video_play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = video_play.png; sourceTree = "<group>"; };
+		8BF359251B46A31D0056BE81 /* luk-app-icon-80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "luk-app-icon-80.png"; sourceTree = "<group>"; };
 		8BFB47681B3BC302009C1F71 /* select-namebg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "select-namebg.png"; sourceTree = "<group>"; };
 		8BFB47691B3BC302009C1F71 /* select-namebg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "select-namebg@2x.png"; sourceTree = "<group>"; };
 		8BFB476E1B3BCB28009C1F71 /* logo-luk.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo-luk.png"; sourceTree = "<group>"; };
@@ -833,6 +869,7 @@
 		633850511983A4C900C3256A /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				8BF359251B46A31D0056BE81 /* luk-app-icon-80.png */,
 				87A817871B41A6A400EF5F73 /* Setting */,
 				87B979311B36108000B2C54D /* iphone4-screen-1.png */,
 				8B064A121B2EDC3F00A70EEA /* app-store-screen-1_7.png */,
@@ -1097,6 +1134,7 @@
 		8727D5631A4884460092BB7C /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				8BCBB3861B4693AE000DDEB0 /* JCNotification */,
 				8BB3376E1AA04B04008E4A82 /* FXBlurView */,
 				877E21741A99C23E009DBF71 /* Loading */,
 				8727D5641A4884460092BB7C /* SCRecorder.xcodeproj */,
@@ -1403,6 +1441,36 @@
 			path = "parse-library-1.6.3";
 			sourceTree = "<group>";
 		};
+		8BCBB3861B4693AE000DDEB0 /* JCNotification */ = {
+			isa = PBXGroup;
+			children = (
+				8BCBB3871B4693AE000DDEB0 /* JCNotificationBanner.h */,
+				8BCBB3881B4693AE000DDEB0 /* JCNotificationBanner.m */,
+				8BCBB3891B4693AE000DDEB0 /* JCNotificationBannerPresenter.h */,
+				8BCBB38A1B4693AE000DDEB0 /* JCNotificationBannerPresenter.m */,
+				8BCBB38B1B4693AE000DDEB0 /* JCNotificationBannerPresenter_Private.h */,
+				8BCBB38C1B4693AE000DDEB0 /* JCNotificationBannerPresenterIOS7Style.h */,
+				8BCBB38D1B4693AE000DDEB0 /* JCNotificationBannerPresenterIOS7Style.m */,
+				8BCBB38E1B4693AE000DDEB0 /* JCNotificationBannerPresenterIOSStyle.h */,
+				8BCBB38F1B4693AE000DDEB0 /* JCNotificationBannerPresenterIOSStyle.m */,
+				8BCBB3901B4693AE000DDEB0 /* JCNotificationBannerPresenterSmokeStyle.h */,
+				8BCBB3911B4693AE000DDEB0 /* JCNotificationBannerPresenterSmokeStyle.m */,
+				8BCBB3921B4693AE000DDEB0 /* JCNotificationBannerView.h */,
+				8BCBB3931B4693AE000DDEB0 /* JCNotificationBannerView.m */,
+				8BCBB3941B4693AE000DDEB0 /* JCNotificationBannerViewController.h */,
+				8BCBB3951B4693AE000DDEB0 /* JCNotificationBannerViewController.m */,
+				8BCBB3961B4693AE000DDEB0 /* JCNotificationBannerViewIOS7Style.h */,
+				8BCBB3971B4693AE000DDEB0 /* JCNotificationBannerViewIOS7Style.m */,
+				8BCBB3981B4693AE000DDEB0 /* JCNotificationBannerViewIOSStyle.h */,
+				8BCBB3991B4693AE000DDEB0 /* JCNotificationBannerViewIOSStyle.m */,
+				8BCBB39A1B4693AE000DDEB0 /* JCNotificationBannerWindow.h */,
+				8BCBB39B1B4693AE000DDEB0 /* JCNotificationBannerWindow.m */,
+				8BCBB39C1B4693AE000DDEB0 /* JCNotificationCenter.h */,
+				8BCBB39D1B4693AE000DDEB0 /* JCNotificationCenter.m */,
+			);
+			path = JCNotification;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1539,6 +1607,7 @@
 				63F999C5199E095A005C82F6 /* luk-iphone-final-merged-videos-main-bg.png in Resources */,
 				87A93B371B43069A00056114 /* screen4-smilemonkey-icon@2x.png in Resources */,
 				63F999DD199E095A005C82F6 /* footer-ping-monkey-icon.png in Resources */,
+				8BF359261B46A31D0056BE81 /* luk-app-icon-80.png in Resources */,
 				879DA4221AC30CCF00E26CCB /* camerapage-icon-cance@2x.png in Resources */,
 				8BB0F66D1AC161BC008453B5 /* movie-role@2x.png in Resources */,
 				8BB0F66C1AC161BC008453B5 /* movie-role-active@2x.png in Resources */,
@@ -1667,6 +1736,8 @@
 				8786A42C1ADAE14400FD206B /* GTMNSString+HTML.m in Sources */,
 				633850F71983C9F400C3256A /* AFHTTPRequestOperation.m in Sources */,
 				8727D5A71A4884460092BB7C /* SCPlayer.m in Sources */,
+				8BCBB3A71B4693AE000DDEB0 /* JCNotificationBannerWindow.m in Sources */,
+				8BCBB3A61B4693AE000DDEB0 /* JCNotificationBannerViewIOSStyle.m in Sources */,
 				633850FA1983C9F400C3256A /* AFJSONRequestOperation.m in Sources */,
 				87BD84381ADEE66700761A28 /* SignleVideoCell.m in Sources */,
 				8786A4271ADAE0B700FD206B /* NSString+HTML.m in Sources */,
@@ -1681,6 +1752,7 @@
 				8727D5C91A4885E30092BB7C /* SCAudioRecordViewController.m in Sources */,
 				633850FF1983C9F400C3256A /* UIImageView+AFNetworking.m in Sources */,
 				633850AE1983C24A00C3256A /* ConfirmPinCodeViewController.m in Sources */,
+				8BCBB39F1B4693AE000DDEB0 /* JCNotificationBannerPresenter.m in Sources */,
 				633851021983C9F400C3256A /* Reachability.m in Sources */,
 				633850B11983C49000C3256A /* GetInputViewController.m in Sources */,
 				875BFD2E1A57310B00A83E35 /* SentVideosViewController.m in Sources */,
@@ -1700,6 +1772,7 @@
 				874F46C51AC71DEF001CE774 /* CreateVideoCell.m in Sources */,
 				8B6562C71ADE96BE00C54EA9 /* SingleVideoViewController.m in Sources */,
 				8BB337711AA04B04008E4A82 /* FXBlurView.m in Sources */,
+				8BCBB3A01B4693AE000DDEB0 /* JCNotificationBannerPresenterIOS7Style.m in Sources */,
 				6338502D19839F2D00C3256A /* AppDelegate.m in Sources */,
 				633851031983C9F400C3256A /* NSObject+SBJSON.m in Sources */,
 				633851051983C9F400C3256A /* SBJSON.m in Sources */,
@@ -1709,6 +1782,7 @@
 				8727D5D11A4885E30092BB7C /* SCVideoPlayerViewController.m in Sources */,
 				8727D5AA1A4884460092BB7C /* SCRecorderFocusView.m in Sources */,
 				87A9EC081B36ADDD00064041 /* FBDialog.m in Sources */,
+				8BCBB3A21B4693AE000DDEB0 /* JCNotificationBannerPresenterSmokeStyle.m in Sources */,
 				8727D5AB1A4884460092BB7C /* SCRecordSession.m in Sources */,
 				8727D5CD1A4885E30092BB7C /* SCRecordSessionManager.m in Sources */,
 				F016EB511A2CD9A600506B75 /* CameraEngine.m in Sources */,
@@ -1716,6 +1790,7 @@
 				6338509D1983AFF100C3256A /* SignUpViewController.m in Sources */,
 				8727D59C1A4884460092BB7C /* CIImageRendererUtils.m in Sources */,
 				6329BEE919A8AAC400B6D8F5 /* CustomeVideoPlayViewController.m in Sources */,
+				8BCBB3A51B4693AE000DDEB0 /* JCNotificationBannerViewIOS7Style.m in Sources */,
 				87A7474C1AC6C0F60046C5A0 /* RecievedVideoTableViewCell.m in Sources */,
 				8727D59E1A4884460092BB7C /* SCAssetExportSession.m in Sources */,
 				8727D5AC1A4884460092BB7C /* SCSampleBufferHolder.m in Sources */,
@@ -1736,6 +1811,7 @@
 				6338510B1983C9F400C3256A /* Chat.m in Sources */,
 				8727D5A81A4884460092BB7C /* SCRecorder.m in Sources */,
 				633850FB1983C9F400C3256A /* AFNetworkActivityIndicatorManager.m in Sources */,
+				8BCBB3A41B4693AE000DDEB0 /* JCNotificationBannerViewController.m in Sources */,
 				F016EB541A2CD9F100506B75 /* VideoEncoder.m in Sources */,
 				6338502919839F2D00C3256A /* main.m in Sources */,
 				6338510C1983C9F400C3256A /* Contact.m in Sources */,
@@ -1744,9 +1820,13 @@
 				875BFD2B1A5730CC00A83E35 /* ShareVideoTableViewCell.m in Sources */,
 				6329BEEB19A8AAC400B6D8F5 /* CustomOrientationNavigationController.m in Sources */,
 				8727D5CE1A4885E30092BB7C /* SCSessionListViewController.m in Sources */,
+				8BCBB3A81B4693AE000DDEB0 /* JCNotificationCenter.m in Sources */,
+				8BCBB39E1B4693AE000DDEB0 /* JCNotificationBanner.m in Sources */,
 				63979B06199F641C005AB2A0 /* VideoListViewController.m in Sources */,
 				633850FE1983C9F400C3256A /* AFXMLRequestOperation.m in Sources */,
 				8727D5AF1A4884460092BB7C /* SCVideoPlayerView.m in Sources */,
+				8BCBB3A31B4693AE000DDEB0 /* JCNotificationBannerView.m in Sources */,
+				8BCBB3A11B4693AE000DDEB0 /* JCNotificationBannerPresenterIOSStyle.m in Sources */,
 				87A9EC061B36ADDD00064041 /* Facebook.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1832,8 +1912,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Markus Haas (5P499J9SM4)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Markus Haas (5P499J9SM4)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: aumkii Unternehmergesellschaft haftungsbeschrankt (F9KDL972HX)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: aumkii Unternehmergesellschaft haftungsbeschrankt (F9KDL972HX)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -1851,7 +1931,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "6f5cf38a-1510-43ae-9c77-5eac2c20d088";
+				PROVISIONING_PROFILE = "275a6496-dafc-4798-a531-520c1775007c";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1872,8 +1952,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Markus Haas (5P499J9SM4)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Markus Haas (5P499J9SM4)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: aumkii Unternehmergesellschaft haftungsbeschrankt (F9KDL972HX)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: aumkii Unternehmergesellschaft haftungsbeschrankt (F9KDL972HX)";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1884,7 +1964,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				PROVISIONING_PROFILE = "6f5cf38a-1510-43ae-9c77-5eac2c20d088";
+				PROVISIONING_PROFILE = "275a6496-dafc-4798-a531-520c1775007c";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1895,8 +1975,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Markus Haas (5P499J9SM4)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Markus Haas (5P499J9SM4)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: aumkii Unternehmergesellschaft haftungsbeschrankt (F9KDL972HX)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: aumkii Unternehmergesellschaft haftungsbeschrankt (F9KDL972HX)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/LukChat/parse-library-1.6.3",
@@ -1907,7 +1987,7 @@
 				INFOPLIST_FILE = "LukChat/LukChat-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6f5cf38a-1510-43ae-9c77-5eac2c20d088";
+				PROVISIONING_PROFILE = "275a6496-dafc-4798-a531-520c1775007c";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1917,8 +1997,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Markus Haas (5P499J9SM4)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Markus Haas (5P499J9SM4)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: aumkii Unternehmergesellschaft haftungsbeschrankt (F9KDL972HX)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: aumkii Unternehmergesellschaft haftungsbeschrankt (F9KDL972HX)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/LukChat/parse-library-1.6.3",
@@ -1929,7 +2009,7 @@
 				INFOPLIST_FILE = "LukChat/LukChat-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6f5cf38a-1510-43ae-9c77-5eac2c20d088";
+				PROVISIONING_PROFILE = "275a6496-dafc-4798-a531-520c1775007c";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -1938,8 +2018,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/LukChat.app/LukChat";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Markus Haas (5P499J9SM4)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Markus Haas (5P499J9SM4)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: aumkii Unternehmergesellschaft haftungsbeschrankt (F9KDL972HX)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: aumkii Unternehmergesellschaft haftungsbeschrankt (F9KDL972HX)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -1953,7 +2033,7 @@
 				);
 				INFOPLIST_FILE = "LukChatTests/LukChatTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6f5cf38a-1510-43ae-9c77-5eac2c20d088";
+				PROVISIONING_PROFILE = "275a6496-dafc-4798-a531-520c1775007c";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -1963,8 +2043,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/LukChat.app/LukChat";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Markus Haas (5P499J9SM4)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Markus Haas (5P499J9SM4)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: aumkii Unternehmergesellschaft haftungsbeschrankt (F9KDL972HX)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: aumkii Unternehmergesellschaft haftungsbeschrankt (F9KDL972HX)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -1974,7 +2054,7 @@
 				GCC_PREFIX_HEADER = "LukChat/LukChat-Prefix.pch";
 				INFOPLIST_FILE = "LukChatTests/LukChatTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6f5cf38a-1510-43ae-9c77-5eac2c20d088";
+				PROVISIONING_PROFILE = "275a6496-dafc-4798-a531-520c1775007c";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
