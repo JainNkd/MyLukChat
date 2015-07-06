@@ -956,7 +956,7 @@
     }
     NSLog(@"Result of API call: %@", result);
     [self stopProgressLoader];
-    [CommonMethods showAlertWithTitle:NSLocalizedString(@"",nil) message:NSLocalizedString(@"Video Successfully post at facebook",nil)];
+    [CommonMethods showAlertWithTitle:NSLocalizedString(@"",nil) message:NSLocalizedString(@"Video successfully posted on your Facebook wall!",nil)];
 }
 
 - (void)request:(FBRequest *)request didFailWithError:(NSError *)error {

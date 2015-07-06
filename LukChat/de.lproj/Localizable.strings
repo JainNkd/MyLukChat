@@ -21,7 +21,7 @@
 "I agree in terms and conditions" = "Ich stimme den Nutzungsbedingungen zu.";
 "terms and conditions" = "Nutzungsbedingungen";
 
-"verify" = "prüfen";
+"verify" = "los geht's";
 
 "Enter verification code" = "Bestätigungscode eingeben";
 "confirm" = "bestätigen";
@@ -59,7 +59,7 @@
 
 "Video uploaded successful." = "Video erfolgreich hochgeladen.";
 "No Video available to share." = "Kein Video zum teilen verfügbar.";
-"Video successfully posted at facebook" = "Video erfolgreich auf Facebook hochgeladen";
+"Video successfully posted on your Facebook wall!" = "Video erfolgreich auf Deiner Facebool wall gepostet.";
 
 "You not yet received any video from your friends." = "Du hast noch kein Video von Deinen Freunden empfangen.";
 "You need to downlaod this video before select." = "Du must das Video herunterladen, bevor Du es auswählen kannst.";
@@ -79,7 +79,7 @@
 "Follow terms and conditions" = "Nimm die Nutzungsbedingungen an.";
 
 "send" = "senden";
-"post to facebook" = "Auf Facebook posten";
+"post to facebook" = "auf Facebook posten";
 "select" = "auswählen";
 
 
