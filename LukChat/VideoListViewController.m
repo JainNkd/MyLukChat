@@ -110,6 +110,10 @@
     
     [self.loginBtn setTitle:NSLocalizedString(@"login to facebook",) forState:UIControlStateNormal];
     [self.logoutBtn setTitle:NSLocalizedString(@"logout from facebook",) forState:UIControlStateNormal];
+    self.loginBtn.titleLabel.font = [UIFont fontWithName:@"Helvetica Bold" size:[NSLocalizedString(@"LoginToFacebookFontSize", nil)integerValue]];
+    self.logoutBtn.titleLabel.font = [UIFont fontWithName:@"Helvetica Bold" size:[NSLocalizedString(@"LogoutFromFacebookFontSize", nil)integerValue]];
+    
+    self.settingLBL.text = NSLocalizedString(@"setting", nil);
     
     if(IS_IPHONE_4_OR_LESS)
     {

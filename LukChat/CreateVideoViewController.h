@@ -17,6 +17,8 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *logoutBtn;
 
+@property (weak, nonatomic) IBOutlet UILabel *settingLBL;
+
 
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 

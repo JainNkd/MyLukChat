@@ -13,6 +13,9 @@
 "tAndcY" = "235";
 "tAndcWidth"= "139";
 
+"LogoutFromFacebookFontSize" = "17.5";
+"LoginToFacebookFontSize" = "17.5";
+
 "New video received" = "Du hast ein neues Video erhalten!";
 
 "Country" = "Land";
@@ -81,6 +84,10 @@
 "send" = "senden";
 "post to facebook" = "auf Facebook posten";
 "select" = "auswählen";
+
+"setting" = "Einstellung";
+"login to facebook" = "auf facebook Einloggen";
+"logout from facebook" = "abmelden von facebook";
 
 
 

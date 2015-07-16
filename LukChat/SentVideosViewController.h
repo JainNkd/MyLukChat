@@ -39,6 +39,7 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 
+@property (weak, nonatomic) IBOutlet UILabel *settingLBL;
 
 
 - (IBAction)openSettingBtnAction:(id)sender;
