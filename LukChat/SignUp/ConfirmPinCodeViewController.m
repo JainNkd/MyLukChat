@@ -43,7 +43,8 @@
     
     number.placeholder = NSLocalizedString(@"Enter verification code", nil);
     [self.confirmBtn setTitle:NSLocalizedString(@"confirm", nil) forState:UIControlStateNormal];
-    
+    [self.confirmBtn setBackgroundImage:[UIImage imageNamed:@"confirm-button.png"] forState:UIControlStateNormal];
+    [self.confirmBtn setBackgroundImage:[UIImage imageNamed:@"confirm-button-selected.png"] forState:UIControlStateSelected];
     // Do any additional setup after loading the view.
 }
 
@@ -134,8 +135,11 @@
 
 
 
-- (IBAction)verificationPinCode:(id)sender {
+- (IBAction)verificationPinCode:(UIButton*)sender {
+    UIButton *btn = (UIButton*)sender;
+    [btn setSelected:YES];
     isSignedin = @"NO";
+    NSLog(@"ststus ...%d",[sender isSelected]);
     
     [[NSUserDefaults standardUserDefaults] setValue:isSignedin forKey:@"user"];
     

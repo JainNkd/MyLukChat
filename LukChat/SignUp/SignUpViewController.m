@@ -110,6 +110,8 @@
     [self.tAndCBtn setFrame:CGRectMake(tAndCOrigix, tAndCOrigiy-20, tAndCOrigiWidth,30)];
 
     [self.verufyBtn setTitle:NSLocalizedString(@"verify", nil) forState:UIControlStateNormal];
+    [self.verufyBtn setBackgroundImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
+    [self.verufyBtn setBackgroundImage:[UIImage imageNamed:@""] forState:UIControlStateSelected];
 
 }
 
@@ -157,7 +159,7 @@
     
     UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStyleBordered target:self action:@selector(cancelDateSet)];
     
-    [controlToolBar setItems:[NSArray arrayWithObjects:spacer, cancelButton, setButton, nil] animated:NO];
+    [controlToolBar setItems:[NSArray arrayWithObjects:cancelButton,spacer, setButton, nil] animated:NO];
     
     [pikerView addSubview:controlToolBar];
     

@@ -16,6 +16,6 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *confirmBtn;
 @property(nonatomic, retain) IBOutlet UITextField *number;
-- (IBAction)verificationPinCode:(id)sender;
+- (IBAction)verificationPinCode:(UIButton*)sender;
 
 @end

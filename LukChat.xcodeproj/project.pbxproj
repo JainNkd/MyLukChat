@@ -201,6 +201,8 @@
 		87CCBD671A5012280018D266 /* MergeVideosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87CCBD661A5012280018D266 /* MergeVideosViewController.m */; };
 		8B064A111B2EAEF500A70EEA /* button_add@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B064A101B2EAEF500A70EEA /* button_add@2x.png */; };
 		8B064A131B2EDC3F00A70EEA /* app-store-screen-1_7.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B064A121B2EDC3F00A70EEA /* app-store-screen-1_7.png */; };
+		8B0DB2BF1B664F14007EDB7B /* confirm-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B0DB2BE1B664F14007EDB7B /* confirm-button@2x.png */; };
+		8B0DB2C31B6650E8007EDB7B /* confirm-button-selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B0DB2C21B6650E8007EDB7B /* confirm-button-selected@2x.png */; };
 		8B6562C71ADE96BE00C54EA9 /* SingleVideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B6562C61ADE96BE00C54EA9 /* SingleVideoViewController.m */; };
 		8B6879521AD53C40007004E2 /* screen-8-background.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B6879501AD53C40007004E2 /* screen-8-background.png */; };
 		8B6879531AD53C40007004E2 /* sharedoublemonkey@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B6879511AD53C40007004E2 /* sharedoublemonkey@2x.png */; };
@@ -574,6 +576,8 @@
 		87CCBD661A5012280018D266 /* MergeVideosViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MergeVideosViewController.m; sourceTree = "<group>"; };
 		8B064A101B2EAEF500A70EEA /* button_add@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_add@2x.png"; sourceTree = "<group>"; };
 		8B064A121B2EDC3F00A70EEA /* app-store-screen-1_7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "app-store-screen-1_7.png"; sourceTree = "<group>"; };
+		8B0DB2BE1B664F14007EDB7B /* confirm-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "confirm-button@2x.png"; sourceTree = "<group>"; };
+		8B0DB2C21B6650E8007EDB7B /* confirm-button-selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "confirm-button-selected@2x.png"; sourceTree = "<group>"; };
 		8B6562C51ADE96BE00C54EA9 /* SingleVideoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleVideoViewController.h; sourceTree = "<group>"; };
 		8B6562C61ADE96BE00C54EA9 /* SingleVideoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleVideoViewController.m; sourceTree = "<group>"; };
 		8B6879501AD53C40007004E2 /* screen-8-background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "screen-8-background.png"; sourceTree = "<group>"; };
@@ -1087,6 +1091,8 @@
 		63F999AE199E095A005C82F6 /* verfication */ = {
 			isa = PBXGroup;
 			children = (
+				8B0DB2C21B6650E8007EDB7B /* confirm-button-selected@2x.png */,
+				8B0DB2BE1B664F14007EDB7B /* confirm-button@2x.png */,
 				63F999AF199E095A005C82F6 /* verfication-background.png */,
 				63F999B0199E095A005C82F6 /* verfication-bottom-line.png */,
 				63F999B1199E095A005C82F6 /* verfication-field-bg.png */,
@@ -1602,6 +1608,7 @@
 				63F999EF199E095A005C82F6 /* name-list-bg.png in Resources */,
 				87BD842F1ADEE14200761A28 /* select-logo-luk@2x.png in Resources */,
 				87B979261B3603AE00B2C54D /* luk-screen-post-facebook@2x.png in Resources */,
+				8B0DB2BF1B664F14007EDB7B /* confirm-button@2x.png in Resources */,
 				63F999E0199E095A005C82F6 /* pic-a.png in Resources */,
 				87B979281B3603AE00B2C54D /* send-lukies_buttonbg@2x.png in Resources */,
 				63F999C5199E095A005C82F6 /* luk-iphone-final-merged-videos-main-bg.png in Resources */,
@@ -1659,6 +1666,7 @@
 				63F999E5199E095A005C82F6 /* textenter-footer-line.png in Resources */,
 				87B979201B3603AE00B2C54D /* facebook_post_pressbuttonbg@2x.png in Resources */,
 				8BEEE1F51A9CAFE90024305B /* download_video.png in Resources */,
+				8B0DB2C31B6650E8007EDB7B /* confirm-button-selected@2x.png in Resources */,
 				63F999C4199E095A005C82F6 /* pic-background.png in Resources */,
 				87A8178F1B41A6A400EF5F73 /* settings-icon@2x.png in Resources */,
 				63F999BD199E095A005C82F6 /* luk-iphone-final-lukes-sent-list-pic-dummy.png in Resources */,
