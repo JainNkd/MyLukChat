@@ -890,13 +890,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LukChat/SignUp/ConfirmPinCodeViewController.m"
-            timestampString = "454445139.484372"
+            timestampString = "459711053.045688"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "85"
-            endingLineNumber = "85"
-            landmarkName = "-textFielddidendediting:"
-            landmarkType = "5">
+            startingLineNumber = "90"
+            endingLineNumber = "90"
+            landmarkName = "@implementation ConfirmPinCodeViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

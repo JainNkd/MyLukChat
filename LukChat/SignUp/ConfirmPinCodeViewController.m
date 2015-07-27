@@ -45,6 +45,11 @@
     [self.confirmBtn setTitle:NSLocalizedString(@"confirm", nil) forState:UIControlStateNormal];
     [self.confirmBtn setBackgroundImage:[UIImage imageNamed:@"confirm-button.png"] forState:UIControlStateNormal];
     [self.confirmBtn setBackgroundImage:[UIImage imageNamed:@"confirm-button-selected.png"] forState:UIControlStateSelected];
+    [self.confirmBtn setBackgroundImage:[UIImage imageNamed:@"confirm-button-selected.png"] forState:UIControlStateHighlighted];
+    [self.confirmBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
+    [self.confirmBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
+    [self.confirmBtn setTitleColor:[UIColor purpleColor] forState:UIControlStateNormal];
+    
     // Do any additional setup after loading the view.
 }
 
@@ -136,8 +141,7 @@
 
 
 - (IBAction)verificationPinCode:(UIButton*)sender {
-    UIButton *btn = (UIButton*)sender;
-    [btn setSelected:YES];
+    [self.confirmBtn setSelected:YES];
     isSignedin = @"NO";
     NSLog(@"ststus ...%d",[sender isSelected]);
     
@@ -182,12 +186,14 @@
         }
         else
         {
+            [self.confirmBtn setSelected:NO];
             [CommonMethods showAlertWithTitle:NSLocalizedString(@"No Connectivity",nil) message:NSLocalizedString(@"Please check the Internet Connnection",nil)];
             return;
         }
         
     }
     else{
+                    [self.confirmBtn setSelected:NO];
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Alert",nil) message:NSLocalizedString(@"Please enter valid pin number",nil) delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
         [alert show];
     }
