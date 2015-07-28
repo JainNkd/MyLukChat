@@ -109,10 +109,16 @@
     
     [self.tAndCBtn setFrame:CGRectMake(tAndCOrigix, tAndCOrigiy-20, tAndCOrigiWidth,30)];
 
+    
+    UIColor *selectedColor = [UIColor colorWithRed:238.0/255 green:13.0/255 blue:143.0/255 alpha:1];
     [self.verufyBtn setTitle:NSLocalizedString(@"verify", nil) forState:UIControlStateNormal];
-    [self.verufyBtn setBackgroundImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
-    [self.verufyBtn setBackgroundImage:[UIImage imageNamed:@""] forState:UIControlStateSelected];
-
+    [self.verufyBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [self.verufyBtn setTitleColor:selectedColor forState:UIControlStateSelected];
+    [self.verufyBtn setTitleColor:selectedColor forState:UIControlStateHighlighted];
+    [self.verufyBtn setBackgroundImage:[UIImage imageNamed:@"screen1-btn-normal.png"] forState:UIControlStateNormal];
+    [self.verufyBtn setBackgroundImage:[UIImage imageNamed:@"screen1-btn-selected.png"] forState:UIControlStateHighlighted];
+    [self.verufyBtn setBackgroundImage:[UIImage imageNamed:@"screen1-btn-selected.png"] forState:UIControlStateSelected];
+  
 }
 
 - (void)didReceiveMemoryWarning
@@ -287,6 +293,10 @@
         [CommonMethods showAlertWithTitle:NSLocalizedString(@"No Connectivity",nil) message:NSLocalizedString(@"Please check the Internet Connnection",nil)];
         return;
     }
+    
+    //Set button selected
+    [self.verufyBtn setSelected:YES];
+    
     AppDelegate *app = (AppDelegate *)[[UIApplication sharedApplication]delegate];
     app.number = pno.text;
     
@@ -334,6 +344,7 @@
                                    NSLog(@"error%@",[error localizedDescription]);
                                    dispatch_async(dispatch_get_main_queue()
                                                   , ^(void) {
+                                    [self.verufyBtn setSelected:NO];
                                    [CommonMethods showAlertWithTitle:NSLocalizedString(@"Error",nil) message:[error localizedDescription]];
                                                       });
                                }

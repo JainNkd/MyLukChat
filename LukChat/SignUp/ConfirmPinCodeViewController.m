@@ -42,13 +42,15 @@
     [self.view addGestureRecognizer:tap];
     
     number.placeholder = NSLocalizedString(@"Enter verification code", nil);
+    UIColor *selectedColor = [UIColor colorWithRed:188.0/255 green:38.0/255 blue:209.0/255 alpha:1];
+
     [self.confirmBtn setTitle:NSLocalizedString(@"confirm", nil) forState:UIControlStateNormal];
     [self.confirmBtn setBackgroundImage:[UIImage imageNamed:@"confirm-button.png"] forState:UIControlStateNormal];
     [self.confirmBtn setBackgroundImage:[UIImage imageNamed:@"confirm-button-selected.png"] forState:UIControlStateSelected];
     [self.confirmBtn setBackgroundImage:[UIImage imageNamed:@"confirm-button-selected.png"] forState:UIControlStateHighlighted];
     [self.confirmBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
     [self.confirmBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
-    [self.confirmBtn setTitleColor:[UIColor purpleColor] forState:UIControlStateNormal];
+    [self.confirmBtn setTitleColor:selectedColor forState:UIControlStateNormal];
     
     // Do any additional setup after loading the view.
 }

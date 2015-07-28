@@ -252,6 +252,10 @@
 		8BFB476B1B3BC302009C1F71 /* select-namebg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BFB47691B3BC302009C1F71 /* select-namebg@2x.png */; };
 		8BFB47701B3BCB28009C1F71 /* logo-luk.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BFB476E1B3BCB28009C1F71 /* logo-luk.png */; };
 		8BFB47711B3BCB28009C1F71 /* logo-luk@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BFB476F1B3BCB28009C1F71 /* logo-luk@2x.png */; };
+		8BFD744B1B67963000BF41B4 /* screen1-btn-normal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BFD74491B67963000BF41B4 /* screen1-btn-normal@2x.png */; };
+		8BFD744C1B67963000BF41B4 /* screen1-btn-selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BFD744A1B67963000BF41B4 /* screen1-btn-selected@2x.png */; };
+		8BFD74511B67963C00BF41B4 /* screen5-btn-normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BFD744F1B67963C00BF41B4 /* screen5-btn-normal.png */; };
+		8BFD74521B67963C00BF41B4 /* screen5-btn-selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BFD74501B67963C00BF41B4 /* screen5-btn-selected.png */; };
 		F016EB481A2BD04500506B75 /* CameraMode.png in Resources */ = {isa = PBXBuildFile; fileRef = F016EB461A2BD04500506B75 /* CameraMode.png */; };
 		F016EB511A2CD9A600506B75 /* CameraEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = F016EB501A2CD9A600506B75 /* CameraEngine.m */; };
 		F016EB541A2CD9F100506B75 /* VideoEncoder.m in Sources */ = {isa = PBXBuildFile; fileRef = F016EB531A2CD9F100506B75 /* VideoEncoder.m */; };
@@ -645,6 +649,10 @@
 		8BFB47691B3BC302009C1F71 /* select-namebg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "select-namebg@2x.png"; sourceTree = "<group>"; };
 		8BFB476E1B3BCB28009C1F71 /* logo-luk.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo-luk.png"; sourceTree = "<group>"; };
 		8BFB476F1B3BCB28009C1F71 /* logo-luk@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo-luk@2x.png"; sourceTree = "<group>"; };
+		8BFD74491B67963000BF41B4 /* screen1-btn-normal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "screen1-btn-normal@2x.png"; sourceTree = "<group>"; };
+		8BFD744A1B67963000BF41B4 /* screen1-btn-selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "screen1-btn-selected@2x.png"; sourceTree = "<group>"; };
+		8BFD744F1B67963C00BF41B4 /* screen5-btn-normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "screen5-btn-normal.png"; sourceTree = "<group>"; };
+		8BFD74501B67963C00BF41B4 /* screen5-btn-selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "screen5-btn-selected.png"; sourceTree = "<group>"; };
 		F016EB461A2BD04500506B75 /* CameraMode.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CameraMode.png; sourceTree = "<group>"; };
 		F016EB4F1A2CD9A600506B75 /* CameraEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraEngine.h; sourceTree = "<group>"; };
 		F016EB501A2CD9A600506B75 /* CameraEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraEngine.m; sourceTree = "<group>"; };
@@ -1027,6 +1035,8 @@
 		63F99987199E095A005C82F6 /* merged-videos-logo */ = {
 			isa = PBXGroup;
 			children = (
+				8BFD744F1B67963C00BF41B4 /* screen5-btn-normal.png */,
+				8BFD74501B67963C00BF41B4 /* screen5-btn-selected.png */,
 				63F99988199E095A005C82F6 /* luk-iphone-final-merged-videos-main-bg.png */,
 				63F9998A199E095A005C82F6 /* merged-videos-logo.png */,
 				63F9998B199E095A005C82F6 /* merged-videos-pic-description-bg.png */,
@@ -1049,6 +1059,8 @@
 		63F99996199E095A005C82F6 /* signup */ = {
 			isa = PBXGroup;
 			children = (
+				8BFD74491B67963000BF41B4 /* screen1-btn-normal@2x.png */,
+				8BFD744A1B67963000BF41B4 /* screen1-btn-selected@2x.png */,
 				63F99997199E095A005C82F6 /* signup-background.png */,
 				63F99998199E095A005C82F6 /* signup-bottom-line.png */,
 				63F99999199E095A005C82F6 /* signup-country-code-bg.png */,
@@ -1598,6 +1610,7 @@
 				8BFB476B1B3BC302009C1F71 /* select-namebg@2x.png in Resources */,
 				87A93B351B43069A00056114 /* luk-iphone-final-textenter-mainbg@2x.png in Resources */,
 				87B979271B3603AE00B2C54D /* send-lukies_buttonbg.png in Resources */,
+				8BFD744C1B67963000BF41B4 /* screen1-btn-selected@2x.png in Resources */,
 				875437491AC5B1990091AD68 /* video-send-logo@2x.png in Resources */,
 				87B979321B36108000B2C54D /* iphone4-screen-1.png in Resources */,
 				8BB068EC1AC58A0C000A84C7 /* purplebox@2x.png in Resources */,
@@ -1613,12 +1626,14 @@
 				87B979281B3603AE00B2C54D /* send-lukies_buttonbg@2x.png in Resources */,
 				63F999C5199E095A005C82F6 /* luk-iphone-final-merged-videos-main-bg.png in Resources */,
 				87A93B371B43069A00056114 /* screen4-smilemonkey-icon@2x.png in Resources */,
+				8BFD74511B67963C00BF41B4 /* screen5-btn-normal.png in Resources */,
 				63F999DD199E095A005C82F6 /* footer-ping-monkey-icon.png in Resources */,
 				8BF359261B46A31D0056BE81 /* luk-app-icon-80.png in Resources */,
 				879DA4221AC30CCF00E26CCB /* camerapage-icon-cance@2x.png in Resources */,
 				8BB0F66D1AC161BC008453B5 /* movie-role@2x.png in Resources */,
 				8BB0F66C1AC161BC008453B5 /* movie-role-active@2x.png in Resources */,
 				87B979291B3603AE00B2C54D /* send-lukies_pressbuttonbg.png in Resources */,
+				8BFD744B1B67963000BF41B4 /* screen1-btn-normal@2x.png in Resources */,
 				8BB068EE1AC58A0C000A84C7 /* purplebox-2blemonkey@2x.png in Resources */,
 				87A029D91B459E2F00226677 /* button-bg-merge-select@2x.png in Resources */,
 				87BD84301ADEE14200761A28 /* selected-pic-frame@2x.png in Resources */,
@@ -1654,6 +1669,7 @@
 				8B697C9C1AE7767E007494ED /* Localizable.strings in Resources */,
 				8BB0F66A1AC161BC008453B5 /* double-monkey-active@2x.png in Resources */,
 				8BB0F6681AC161BC008453B5 /* camera-active@2x.png in Resources */,
+				8BFD74521B67963C00BF41B4 /* screen5-btn-selected.png in Resources */,
 				63F999E8199E095A005C82F6 /* verfication-bottom-line.png in Resources */,
 				87B9792B1B3603AE00B2C54D /* send-lukies_text-with-buttonbg.png in Resources */,
 				63F999EC199E095A005C82F6 /* letters-between-line.png in Resources */,

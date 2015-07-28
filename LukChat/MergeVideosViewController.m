@@ -43,6 +43,16 @@
         CGRect videoTitileFrame = self.videoTitleView.frame;
         videoTitileFrame.origin.y = 326;
         self.videoTitleView.frame = videoTitileFrame;
+        
+        self.sendToLukiesBtn.translatesAutoresizingMaskIntoConstraints = YES;
+        CGRect btnframe = CGRectMake(0,386,320,45);
+        self.sendToLukiesBtn.frame = btnframe;
+    }
+    else
+    {
+        self.sendToLukiesBtn.translatesAutoresizingMaskIntoConstraints = YES;
+        CGRect btnframe = CGRectMake(0,444,320,75);
+        self.sendToLukiesBtn.frame = btnframe;
     }
 }
 
@@ -65,8 +75,13 @@
     
     [self adjustView];
     
-    [self.sendToLukiesBtn setTitle:NSLocalizedString(@"send to your LUKis",nil) forState:UIControlStateNormal];
+    [self.sendToLukiesBtn setBackgroundImage:[UIImage imageNamed:@"screen5-btn-normal.png"] forState:UIControlStateNormal];
+    [self.sendToLukiesBtn setBackgroundImage:[UIImage imageNamed:@"screen5-btn-selected.png"] forState:UIControlStateHighlighted];
+    [self.sendToLukiesBtn setBackgroundImage:[UIImage imageNamed:@"screen5-btn-selected.png"] forState:UIControlStateSelected];
+
     
+    [self.sendToLukiesBtn setTitle:NSLocalizedString(@"send to your LUKis",nil) forState:UIControlStateNormal];
+    [self.sendToLukiesBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     
     [[NSUserDefaults standardUserDefaults] setBool:TRUE forKey:kIsFromMerged];
     NSString *videoTitle =  [CommonMethods getVideoTitle];
@@ -356,7 +371,7 @@
 }
 
 - (IBAction)sendToLukiesButtonPressed:(UIButton *)sender {
-    
+    [self.sendToLukiesBtn setSelected:YES];
     //    [player replaceCurrentItemWithPlayerItem:nil];
     LukiesViewController *lukiesVC = [self.storyboard instantiateViewControllerWithIdentifier:@"LukiesViewController"];
     [self.navigationController pushViewController:lukiesVC animated:YES];
