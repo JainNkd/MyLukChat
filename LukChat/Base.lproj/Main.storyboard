@@ -391,262 +391,6 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uvK-2W-6db">
-                                <rect key="frame" x="0.0" y="105" width="320" height="330"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Yuz-lm-dHt" userLabel="View1">
-                                        <rect key="frame" x="0.0" y="15" width="80" height="104"/>
-                                        <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="pic-between-line.png" translatesAutoresizingMaskIntoConstraints="NO" id="MD6-mD-ZoY">
-                                                <rect key="frame" x="79" y="0.0" width="1" height="79"/>
-                                            </imageView>
-                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="I" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c7Z-tq-xbh">
-                                                <rect key="frame" x="2" y="80" width="76" height="25"/>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="12"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LlP-mr-Puh">
-                                                <rect key="frame" x="0.0" y="0.0" width="79" height="79"/>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                <state key="normal" image="screen4-smilemonkey-icon.png">
-                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="videoRecordButtonPressed:" destination="hzu-ak-A4P" eventType="touchUpInside" id="4zx-Eo-7i7"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                    </view>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qUh-S3-Q21" userLabel="View2">
-                                        <rect key="frame" x="80" y="15" width="80" height="104"/>
-                                        <subviews>
-                                            <button opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uWf-lR-Qmk">
-                                                <rect key="frame" x="0.0" y="0.0" width="79" height="79"/>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                <state key="normal" image="screen4-smilemonkey-icon.png">
-                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="videoRecordButtonPressed:" destination="hzu-ak-A4P" eventType="touchUpInside" id="MZG-8e-Wtr"/>
-                                                </connections>
-                                            </button>
-                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Wish" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aLx-jh-2Ke">
-                                                <rect key="frame" x="2" y="80" width="76" height="25"/>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="12"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="pic-between-line.png" translatesAutoresizingMaskIntoConstraints="NO" id="SrK-3u-xNL">
-                                                <rect key="frame" x="79" y="0.0" width="1" height="79"/>
-                                            </imageView>
-                                        </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                    </view>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YbH-Te-5vU" userLabel="View3">
-                                        <rect key="frame" x="160" y="15" width="80" height="104"/>
-                                        <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="pic-between-line.png" translatesAutoresizingMaskIntoConstraints="NO" id="KSa-IK-vVq">
-                                                <rect key="frame" x="79" y="0.0" width="1" height="79"/>
-                                            </imageView>
-                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="You" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ou5-ua-o2n">
-                                                <rect key="frame" x="2" y="80" width="76" height="25"/>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="12"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <button opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dsm-hn-5Vq">
-                                                <rect key="frame" x="0.0" y="0.0" width="79" height="79"/>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                <state key="normal" image="screen4-smilemonkey-icon.png">
-                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="videoRecordButtonPressed:" destination="hzu-ak-A4P" eventType="touchUpInside" id="i3e-1H-NRm"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                    </view>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GGa-dj-0Fd" userLabel="View4">
-                                        <rect key="frame" x="240" y="15" width="80" height="104"/>
-                                        <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="pic-between-line.png" translatesAutoresizingMaskIntoConstraints="NO" id="6i6-8s-7uT">
-                                                <rect key="frame" x="79" y="0.0" width="1" height="79"/>
-                                            </imageView>
-                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="You" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GT7-TA-fZc">
-                                                <rect key="frame" x="2" y="80" width="76" height="25"/>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="12"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <button opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ctP-NZ-6FG">
-                                                <rect key="frame" x="0.0" y="0.0" width="79" height="79"/>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                <state key="normal" image="screen4-smilemonkey-icon.png">
-                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="videoRecordButtonPressed:" destination="hzu-ak-A4P" eventType="touchUpInside" id="gMF-hV-gvj"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                    </view>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9e1-AZ-PmC" userLabel="View5">
-                                        <rect key="frame" x="0.0" y="120" width="80" height="104"/>
-                                        <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="pic-between-line.png" translatesAutoresizingMaskIntoConstraints="NO" id="jmS-9y-AHS">
-                                                <rect key="frame" x="79" y="0.0" width="1" height="79"/>
-                                            </imageView>
-                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="You" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AcV-7n-gZ0">
-                                                <rect key="frame" x="2" y="80" width="76" height="25"/>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="12"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <button opaque="NO" userInteractionEnabled="NO" tag="4" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iJJ-xJ-2E4">
-                                                <rect key="frame" x="0.0" y="0.0" width="79" height="79"/>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                <state key="normal" image="screen4-smilemonkey-icon.png">
-                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="videoRecordButtonPressed:" destination="hzu-ak-A4P" eventType="touchUpInside" id="Aki-tD-ar5"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                    </view>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eSm-Vv-OOy" userLabel="View6">
-                                        <rect key="frame" x="80" y="120" width="80" height="104"/>
-                                        <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="pic-between-line.png" translatesAutoresizingMaskIntoConstraints="NO" id="wOa-pP-WMB">
-                                                <rect key="frame" x="79" y="0.0" width="1" height="79"/>
-                                            </imageView>
-                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="You" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0do-yu-33u">
-                                                <rect key="frame" x="2" y="80" width="76" height="25"/>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="12"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <button opaque="NO" userInteractionEnabled="NO" tag="5" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6dT-8J-CYG">
-                                                <rect key="frame" x="0.0" y="0.0" width="79" height="79"/>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                <state key="normal" image="screen4-smilemonkey-icon.png">
-                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="videoRecordButtonPressed:" destination="hzu-ak-A4P" eventType="touchUpInside" id="as7-CT-V33"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                    </view>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nUR-xc-KPl" userLabel="View7">
-                                        <rect key="frame" x="160" y="120" width="80" height="104"/>
-                                        <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="pic-between-line.png" translatesAutoresizingMaskIntoConstraints="NO" id="yJQ-Md-i1F">
-                                                <rect key="frame" x="79" y="0.0" width="1" height="79"/>
-                                            </imageView>
-                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="You" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SLs-6X-qmy">
-                                                <rect key="frame" x="2" y="80" width="76" height="25"/>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="12"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <button opaque="NO" userInteractionEnabled="NO" tag="6" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Icv-f8-aOd">
-                                                <rect key="frame" x="0.0" y="0.0" width="79" height="79"/>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                <state key="normal" image="screen4-smilemonkey-icon.png">
-                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="videoRecordButtonPressed:" destination="hzu-ak-A4P" eventType="touchUpInside" id="im3-sV-Tt3"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                    </view>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0OB-f5-4dM" userLabel="View8">
-                                        <rect key="frame" x="240" y="120" width="80" height="104"/>
-                                        <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="pic-between-line.png" translatesAutoresizingMaskIntoConstraints="NO" id="8hS-Nc-ob0">
-                                                <rect key="frame" x="79" y="0.0" width="1" height="79"/>
-                                            </imageView>
-                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="You" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pIu-vX-A1j">
-                                                <rect key="frame" x="2" y="80" width="76" height="25"/>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="12"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <button opaque="NO" userInteractionEnabled="NO" tag="7" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aXO-4R-kPs">
-                                                <rect key="frame" x="0.0" y="0.0" width="79" height="79"/>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                <state key="normal" image="screen4-smilemonkey-icon.png">
-                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="videoRecordButtonPressed:" destination="hzu-ak-A4P" eventType="touchUpInside" id="skb-Ej-vq4"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                    </view>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="btr-fs-YKg" userLabel="View9">
-                                        <rect key="frame" x="0.0" y="227" width="80" height="104"/>
-                                        <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="pic-between-line.png" translatesAutoresizingMaskIntoConstraints="NO" id="RUW-8K-WXZ">
-                                                <rect key="frame" x="79" y="0.0" width="1" height="79"/>
-                                            </imageView>
-                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="You" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jVf-HD-gA8">
-                                                <rect key="frame" x="2" y="80" width="76" height="25"/>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="12"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <button opaque="NO" userInteractionEnabled="NO" tag="8" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N8o-Ta-TWI">
-                                                <rect key="frame" x="0.0" y="0.0" width="79" height="79"/>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                <state key="normal" image="screen4-smilemonkey-icon.png">
-                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="videoRecordButtonPressed:" destination="hzu-ak-A4P" eventType="touchUpInside" id="9QU-8F-U4n"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                    </view>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="B0u-Qw-UGe" userLabel="View10">
-                                        <rect key="frame" x="80" y="227" width="80" height="104"/>
-                                        <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="pic-between-line.png" translatesAutoresizingMaskIntoConstraints="NO" id="q3D-Wr-8al">
-                                                <rect key="frame" x="79" y="0.0" width="1" height="79"/>
-                                            </imageView>
-                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="You" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="llV-Wm-Zb6">
-                                                <rect key="frame" x="2" y="80" width="76" height="25"/>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="12"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <button opaque="NO" userInteractionEnabled="NO" tag="9" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mD7-wz-7X9">
-                                                <rect key="frame" x="0.0" y="0.0" width="79" height="79"/>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                <state key="normal" image="screen4-smilemonkey-icon.png">
-                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="videoRecordButtonPressed:" destination="hzu-ak-A4P" eventType="touchUpInside" id="pyg-VK-xMZ"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                    </view>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6EZ-6b-YjC">
                                 <rect key="frame" x="0.0" y="442" width="320" height="77"/>
                                 <constraints>
@@ -688,6 +432,47 @@
                                     <action selector="openSettingBtnAction:" destination="hzu-ak-A4P" eventType="touchUpInside" id="aOY-pC-ki7"/>
                                 </connections>
                             </button>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="hKH-4E-diY">
+                                <rect key="frame" x="0.0" y="106" width="320" height="337"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="1" minimumInteritemSpacing="1" id="XKE-k0-EFI">
+                                    <size key="itemSize" width="79" height="104"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="1c9-lV-MUv" customClass="LukCell">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="79" height="104"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="screen4-smilemonkey-icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="616-m5-8zc">
+                                                    <rect key="frame" x="0.0" y="0.0" width="79" height="79"/>
+                                                </imageView>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ke6-kK-NGv">
+                                                    <rect key="frame" x="2" y="80" width="76" height="24"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="12"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="imageView" destination="616-m5-8zc" id="x5j-jV-8kw"/>
+                                            <outlet property="label" destination="ke6-kK-NGv" id="dDI-mX-7Xo"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="hzu-ak-A4P" id="mKx-GN-2Ss"/>
+                                    <outlet property="delegate" destination="hzu-ak-A4P" id="JFb-ZD-BHO"/>
+                                </connections>
+                            </collectionView>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nDn-Pp-r9R" userLabel="SettingView">
                                 <rect key="frame" x="320" y="0.0" width="240" height="568"/>
                                 <subviews>
@@ -752,53 +537,14 @@
                     </view>
                     <navigationItem key="navigationItem" id="boR-rd-L0r"/>
                     <connections>
+                        <outlet property="collectionView" destination="hKH-4E-diY" id="ec9-3f-ItH"/>
                         <outlet property="loginBtn" destination="n66-Uc-x48" id="hwi-Pd-CMs"/>
                         <outlet property="logoutBtn" destination="9ue-Bh-Wik" id="jhL-pQ-8uj"/>
-                        <outlet property="lukView1" destination="Yuz-lm-dHt" id="QoG-mh-I9M"/>
-                        <outlet property="lukView10" destination="B0u-Qw-UGe" id="QOa-0j-B8s"/>
-                        <outlet property="lukView2" destination="qUh-S3-Q21" id="4s1-J7-x9y"/>
-                        <outlet property="lukView3" destination="YbH-Te-5vU" id="RJC-3O-P5E"/>
-                        <outlet property="lukView4" destination="GGa-dj-0Fd" id="Vec-qs-IcV"/>
-                        <outlet property="lukView5" destination="9e1-AZ-PmC" id="7od-lg-EkT"/>
-                        <outlet property="lukView6" destination="eSm-Vv-OOy" id="ygf-Y9-wFI"/>
-                        <outlet property="lukView7" destination="nUR-xc-KPl" id="shV-8R-88l"/>
-                        <outlet property="lukView8" destination="0OB-f5-4dM" id="OtN-kv-nMA"/>
-                        <outlet property="lukView9" destination="btr-fs-YKg" id="g2a-6B-5GL"/>
                         <outlet property="mergeButton" destination="6EZ-6b-YjC" id="hjc-ZB-kCT"/>
                         <outlet property="nameLabel" destination="EDx-cH-1u3" id="Dkw-z6-Ef5"/>
-                        <outlet property="seperationLine1" destination="MD6-mD-ZoY" id="rKV-ce-A21"/>
-                        <outlet property="seperationLine10" destination="q3D-Wr-8al" id="wGJ-Og-EiM"/>
-                        <outlet property="seperationLine2" destination="SrK-3u-xNL" id="yF1-r3-Gkf"/>
-                        <outlet property="seperationLine3" destination="KSa-IK-vVq" id="GkH-tF-Juo"/>
-                        <outlet property="seperationLine4" destination="6i6-8s-7uT" id="DTs-x1-RZC"/>
-                        <outlet property="seperationLine5" destination="jmS-9y-AHS" id="ebe-qs-8e8"/>
-                        <outlet property="seperationLine6" destination="wOa-pP-WMB" id="sOq-z6-eAq"/>
-                        <outlet property="seperationLine7" destination="yJQ-Md-i1F" id="jTi-ed-KMN"/>
-                        <outlet property="seperationLine8" destination="8hS-Nc-ob0" id="j7A-4T-0UU"/>
-                        <outlet property="seperationLine9" destination="RUW-8K-WXZ" id="Obr-UM-AuL"/>
                         <outlet property="settingLBL" destination="AeR-9E-5MA" id="4q5-ko-mGd"/>
                         <outlet property="settingView" destination="nDn-Pp-r9R" id="J7z-Qe-Pbb"/>
                         <outlet property="titleHeaderLBL" destination="7uL-XQ-wcr" id="QwE-gd-0vQ"/>
-                        <outlet property="videoTitleButton1" destination="LlP-mr-Puh" id="g8i-wE-2ys"/>
-                        <outlet property="videoTitleButton10" destination="mD7-wz-7X9" id="V9D-1Q-0uW"/>
-                        <outlet property="videoTitleButton2" destination="uWf-lR-Qmk" id="tHp-Rn-NQc"/>
-                        <outlet property="videoTitleButton3" destination="Dsm-hn-5Vq" id="rTs-g5-NYw"/>
-                        <outlet property="videoTitleButton4" destination="ctP-NZ-6FG" id="xEv-oK-fmh"/>
-                        <outlet property="videoTitleButton5" destination="iJJ-xJ-2E4" id="8p2-Q0-K5e"/>
-                        <outlet property="videoTitleButton6" destination="6dT-8J-CYG" id="9oL-h1-ePF"/>
-                        <outlet property="videoTitleButton7" destination="Icv-f8-aOd" id="GRp-e6-RIC"/>
-                        <outlet property="videoTitleButton8" destination="aXO-4R-kPs" id="ceM-WI-Kkb"/>
-                        <outlet property="videoTitleButton9" destination="N8o-Ta-TWI" id="rtA-pl-LeB"/>
-                        <outlet property="videoTitleLBL1" destination="c7Z-tq-xbh" id="HdA-Tr-k8w"/>
-                        <outlet property="videoTitleLBL10" destination="llV-Wm-Zb6" id="OVE-iv-jtj"/>
-                        <outlet property="videoTitleLBL2" destination="aLx-jh-2Ke" id="0Fz-qZ-Z1r"/>
-                        <outlet property="videoTitleLBL3" destination="Ou5-ua-o2n" id="a9o-bY-QGH"/>
-                        <outlet property="videoTitleLBL4" destination="GT7-TA-fZc" id="tS0-At-fhu"/>
-                        <outlet property="videoTitleLBL5" destination="AcV-7n-gZ0" id="isB-6d-8B2"/>
-                        <outlet property="videoTitleLBL6" destination="0do-yu-33u" id="H2d-gJ-s2d"/>
-                        <outlet property="videoTitleLBL7" destination="SLs-6X-qmy" id="esb-7L-MkF"/>
-                        <outlet property="videoTitleLBL8" destination="pIu-vX-A1j" id="xcn-7Z-x59"/>
-                        <outlet property="videoTitleLBL9" destination="jVf-HD-gA8" id="qaC-YO-tA5"/>
                         <outlet property="videoTitleTextField" destination="0lL-A5-UE9" id="wTe-Cf-wBW"/>
                     </connections>
                 </viewController>
@@ -1892,7 +1638,6 @@
         <image name="merged-videos-pic-description-bg.png" width="640" height="108"/>
         <image name="monkey-featherbg.png" width="79" height="79"/>
         <image name="monkeywithbg.png" width="80" height="80"/>
-        <image name="pic-between-line.png" width="1" height="112"/>
         <image name="pic-bgwith-monkey-icon.png" width="106" height="106"/>
         <image name="screen-8-background.png" width="640" height="1136"/>
         <image name="screen4-smilemonkey-icon.png" width="80" height="79"/>

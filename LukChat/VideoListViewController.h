@@ -12,12 +12,11 @@
 #import "CustomeVideoPlayViewController.h"
 #import "Facebook.h"
 
-@interface VideoListViewController : UIViewController<UIActionSheetDelegate,UITextFieldDelegate,UIAlertViewDelegate,FBRequestDelegate,FBSessionDelegate>
+#import "UICollectionView+Draggable.h"
+
+@interface VideoListViewController : UIViewController<UICollectionViewDataSource_Draggable, UICollectionViewDelegate,UIActionSheetDelegate,UITextFieldDelegate,UIAlertViewDelegate,FBRequestDelegate,FBSessionDelegate>
 {
-    NSMutableArray *videoTitleLBLArr, *videoTitleButtonsArr,*lukViewsArr;
     NSString *videoTitle;
-    
-//    VideoPreviewViewController *previewController;
     
     // session to play the video
     AVPlayer *player;
@@ -34,65 +33,9 @@
     
 }
 
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+
 @property (weak, nonatomic) IBOutlet UILabel *titleHeaderLBL;
-
-//titleButtons
-
-@property (weak, nonatomic) IBOutlet UIButton *videoTitleButton1;
-@property (weak, nonatomic) IBOutlet UIButton *videoTitleButton2;
-@property (weak, nonatomic) IBOutlet UIButton *videoTitleButton3;
-@property (weak, nonatomic) IBOutlet UIButton *videoTitleButton4;
-@property (weak, nonatomic) IBOutlet UIButton *videoTitleButton5;
-@property (weak, nonatomic) IBOutlet UIButton *videoTitleButton6;
-@property (weak, nonatomic) IBOutlet UIButton *videoTitleButton7;
-@property (weak, nonatomic) IBOutlet UIButton *videoTitleButton8;
-@property (weak, nonatomic) IBOutlet UIButton *videoTitleButton9;
-@property (weak, nonatomic) IBOutlet UIButton *videoTitleButton10;
-
-
-
-//seperation lines
-
-
-@property (weak, nonatomic) IBOutlet UIImageView *seperationLine1;
-@property (weak, nonatomic) IBOutlet UIImageView *seperationLine2;
-@property (weak, nonatomic) IBOutlet UIImageView *seperationLine3;
-@property (weak, nonatomic) IBOutlet UIImageView *seperationLine4;
-@property (weak, nonatomic) IBOutlet UIImageView *seperationLine5;
-@property (weak, nonatomic) IBOutlet UIImageView *seperationLine6;
-@property (weak, nonatomic) IBOutlet UIImageView *seperationLine7;
-@property (weak, nonatomic) IBOutlet UIImageView *seperationLine8;
-@property (weak, nonatomic) IBOutlet UIImageView *seperationLine9;
-@property (weak, nonatomic) IBOutlet UIImageView *seperationLine10;
-
-
-//Title Labels
-
-@property (weak, nonatomic) IBOutlet UILabel *videoTitleLBL1;
-@property (weak, nonatomic) IBOutlet UILabel *videoTitleLBL2;
-@property (weak, nonatomic) IBOutlet UILabel *videoTitleLBL3;
-@property (weak, nonatomic) IBOutlet UILabel *videoTitleLBL4;
-
-@property (weak, nonatomic) IBOutlet UILabel *videoTitleLBL5;
-@property (weak, nonatomic) IBOutlet UILabel *videoTitleLBL6;
-@property (weak, nonatomic) IBOutlet UILabel *videoTitleLBL7;
-@property (weak, nonatomic) IBOutlet UILabel *videoTitleLBL8;
-@property (weak, nonatomic) IBOutlet UILabel *videoTitleLBL9;
-@property (weak, nonatomic) IBOutlet UILabel *videoTitleLBL10;
-
-
-//Luk views
-
-@property (weak, nonatomic) IBOutlet UIView *lukView1;
-@property (weak, nonatomic) IBOutlet UIView *lukView2;
-@property (weak, nonatomic) IBOutlet UIView *lukView3;
-@property (weak, nonatomic) IBOutlet UIView *lukView4;
-@property (weak, nonatomic) IBOutlet UIView *lukView5;
-@property (weak, nonatomic) IBOutlet UIView *lukView6;
-@property (weak, nonatomic) IBOutlet UIView *lukView7;
-@property (weak, nonatomic) IBOutlet UIView *lukView8;
-@property (weak, nonatomic) IBOutlet UIView *lukView9;
-@property (weak, nonatomic) IBOutlet UIView *lukView10;
 
 @property (weak, nonatomic) IBOutlet UIView *settingView;
 

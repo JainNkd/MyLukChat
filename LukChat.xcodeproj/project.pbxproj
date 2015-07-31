@@ -203,6 +203,11 @@
 		8B064A131B2EDC3F00A70EEA /* app-store-screen-1_7.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B064A121B2EDC3F00A70EEA /* app-store-screen-1_7.png */; };
 		8B0DB2BF1B664F14007EDB7B /* confirm-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B0DB2BE1B664F14007EDB7B /* confirm-button@2x.png */; };
 		8B0DB2C31B6650E8007EDB7B /* confirm-button-selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B0DB2C21B6650E8007EDB7B /* confirm-button-selected@2x.png */; };
+		8B1241781B6B866B00C805D0 /* LSCollectionViewHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B12416E1B6B866B00C805D0 /* LSCollectionViewHelper.m */; };
+		8B1241791B6B866B00C805D0 /* LSCollectionViewLayoutHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B1241701B6B866B00C805D0 /* LSCollectionViewLayoutHelper.m */; };
+		8B12417A1B6B866B00C805D0 /* DraggableCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B1241731B6B866B00C805D0 /* DraggableCollectionViewFlowLayout.m */; };
+		8B12417B1B6B866B00C805D0 /* UICollectionView+Draggable.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B1241751B6B866B00C805D0 /* UICollectionView+Draggable.m */; };
+		8B1241811B6B878300C805D0 /* LukCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B1241801B6B878300C805D0 /* LukCell.m */; };
 		8B6562C71ADE96BE00C54EA9 /* SingleVideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B6562C61ADE96BE00C54EA9 /* SingleVideoViewController.m */; };
 		8B6879521AD53C40007004E2 /* screen-8-background.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B6879501AD53C40007004E2 /* screen-8-background.png */; };
 		8B6879531AD53C40007004E2 /* sharedoublemonkey@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B6879511AD53C40007004E2 /* sharedoublemonkey@2x.png */; };
@@ -582,6 +587,18 @@
 		8B064A121B2EDC3F00A70EEA /* app-store-screen-1_7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "app-store-screen-1_7.png"; sourceTree = "<group>"; };
 		8B0DB2BE1B664F14007EDB7B /* confirm-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "confirm-button@2x.png"; sourceTree = "<group>"; };
 		8B0DB2C21B6650E8007EDB7B /* confirm-button-selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "confirm-button-selected@2x.png"; sourceTree = "<group>"; };
+		8B12416D1B6B866B00C805D0 /* LSCollectionViewHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSCollectionViewHelper.h; sourceTree = "<group>"; };
+		8B12416E1B6B866B00C805D0 /* LSCollectionViewHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSCollectionViewHelper.m; sourceTree = "<group>"; };
+		8B12416F1B6B866B00C805D0 /* LSCollectionViewLayoutHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSCollectionViewLayoutHelper.h; sourceTree = "<group>"; };
+		8B1241701B6B866B00C805D0 /* LSCollectionViewLayoutHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSCollectionViewLayoutHelper.m; sourceTree = "<group>"; };
+		8B1241721B6B866B00C805D0 /* DraggableCollectionViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DraggableCollectionViewFlowLayout.h; sourceTree = "<group>"; };
+		8B1241731B6B866B00C805D0 /* DraggableCollectionViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DraggableCollectionViewFlowLayout.m; sourceTree = "<group>"; };
+		8B1241741B6B866B00C805D0 /* UICollectionView+Draggable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UICollectionView+Draggable.h"; sourceTree = "<group>"; };
+		8B1241751B6B866B00C805D0 /* UICollectionView+Draggable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UICollectionView+Draggable.m"; sourceTree = "<group>"; };
+		8B1241761B6B866B00C805D0 /* UICollectionViewDataSource_Draggable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UICollectionViewDataSource_Draggable.h; sourceTree = "<group>"; };
+		8B1241771B6B866B00C805D0 /* UICollectionViewLayout_Warpable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UICollectionViewLayout_Warpable.h; sourceTree = "<group>"; };
+		8B12417F1B6B878300C805D0 /* LukCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LukCell.h; sourceTree = "<group>"; };
+		8B1241801B6B878300C805D0 /* LukCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LukCell.m; sourceTree = "<group>"; };
 		8B6562C51ADE96BE00C54EA9 /* SingleVideoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleVideoViewController.h; sourceTree = "<group>"; };
 		8B6562C61ADE96BE00C54EA9 /* SingleVideoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleVideoViewController.m; sourceTree = "<group>"; };
 		8B6879501AD53C40007004E2 /* screen-8-background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "screen-8-background.png"; sourceTree = "<group>"; };
@@ -748,6 +765,7 @@
 		6329BEF019A8ABC700B6D8F5 /* VideoRecording */ = {
 			isa = PBXGroup;
 			children = (
+				8B12417E1B6B875E00C805D0 /* LUK */,
 				63979B04199F641C005AB2A0 /* VideoListViewController.h */,
 				63979B05199F641C005AB2A0 /* VideoListViewController.m */,
 				6329BEE219A8AAC400B6D8F5 /* CustomeVideoPlayViewController.m */,
@@ -1152,6 +1170,7 @@
 		8727D5631A4884460092BB7C /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				8B12416B1B6B866B00C805D0 /* DraggableCollectionView */,
 				8BCBB3861B4693AE000DDEB0 /* JCNotification */,
 				8BB3376E1AA04B04008E4A82 /* FXBlurView */,
 				877E21741A99C23E009DBF71 /* Loading */,
@@ -1414,6 +1433,48 @@
 				87CCBD661A5012280018D266 /* MergeVideosViewController.m */,
 			);
 			name = Merge;
+			sourceTree = "<group>";
+		};
+		8B12416B1B6B866B00C805D0 /* DraggableCollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				8B12416C1B6B866B00C805D0 /* Helpers */,
+				8B1241711B6B866B00C805D0 /* Layout */,
+				8B1241741B6B866B00C805D0 /* UICollectionView+Draggable.h */,
+				8B1241751B6B866B00C805D0 /* UICollectionView+Draggable.m */,
+				8B1241761B6B866B00C805D0 /* UICollectionViewDataSource_Draggable.h */,
+				8B1241771B6B866B00C805D0 /* UICollectionViewLayout_Warpable.h */,
+			);
+			path = DraggableCollectionView;
+			sourceTree = "<group>";
+		};
+		8B12416C1B6B866B00C805D0 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				8B12416D1B6B866B00C805D0 /* LSCollectionViewHelper.h */,
+				8B12416E1B6B866B00C805D0 /* LSCollectionViewHelper.m */,
+				8B12416F1B6B866B00C805D0 /* LSCollectionViewLayoutHelper.h */,
+				8B1241701B6B866B00C805D0 /* LSCollectionViewLayoutHelper.m */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		8B1241711B6B866B00C805D0 /* Layout */ = {
+			isa = PBXGroup;
+			children = (
+				8B1241721B6B866B00C805D0 /* DraggableCollectionViewFlowLayout.h */,
+				8B1241731B6B866B00C805D0 /* DraggableCollectionViewFlowLayout.m */,
+			);
+			path = Layout;
+			sourceTree = "<group>";
+		};
+		8B12417E1B6B875E00C805D0 /* LUK */ = {
+			isa = PBXGroup;
+			children = (
+				8B12417F1B6B878300C805D0 /* LukCell.h */,
+				8B1241801B6B878300C805D0 /* LukCell.m */,
+			);
+			name = LUK;
 			sourceTree = "<group>";
 		};
 		8B5098CD1A491EE900F1E117 /* VideoRecord */ = {
@@ -1755,6 +1816,7 @@
 				633851091983C9F400C3256A /* DatabaseMethods.m in Sources */,
 				8727D5AE1A4884460092BB7C /* SCVideoConfiguration.m in Sources */,
 				633850F91983C9F400C3256A /* AFImageRequestOperation.m in Sources */,
+				8B1241781B6B866B00C805D0 /* LSCollectionViewHelper.m in Sources */,
 				6338503319839F2D00C3256A /* ViewController.m in Sources */,
 				633850F41983C9F400C3256A /* CommonMethods.m in Sources */,
 				8786A42C1ADAE14400FD206B /* GTMNSString+HTML.m in Sources */,
@@ -1767,6 +1829,8 @@
 				8786A4271ADAE0B700FD206B /* NSString+HTML.m in Sources */,
 				633850F61983C9F400C3256A /* AFHTTPClient.m in Sources */,
 				8727D5D01A4885E30092BB7C /* SCTouchDetector.m in Sources */,
+				8B12417B1B6B866B00C805D0 /* UICollectionView+Draggable.m in Sources */,
+				8B12417A1B6B866B00C805D0 /* DraggableCollectionViewFlowLayout.m in Sources */,
 				633851061983C9F400C3256A /* SBJsonBase.m in Sources */,
 				8727D5CF1A4885E30092BB7C /* SCSessionTableViewCell.m in Sources */,
 				8727D5A91A4884460092BB7C /* SCRecorderFocusTargetView.m in Sources */,
@@ -1794,6 +1858,7 @@
 				8727D59D1A4884460092BB7C /* SCArchivedVector.m in Sources */,
 				8727D5A51A4884460092BB7C /* SCMediaTypeConfiguration.m in Sources */,
 				874F46C51AC71DEF001CE774 /* CreateVideoCell.m in Sources */,
+				8B1241791B6B866B00C805D0 /* LSCollectionViewLayoutHelper.m in Sources */,
 				8B6562C71ADE96BE00C54EA9 /* SingleVideoViewController.m in Sources */,
 				8BB337711AA04B04008E4A82 /* FXBlurView.m in Sources */,
 				8BCBB3A01B4693AE000DDEB0 /* JCNotificationBannerPresenterIOS7Style.m in Sources */,
@@ -1820,6 +1885,7 @@
 				8727D5AC1A4884460092BB7C /* SCSampleBufferHolder.m in Sources */,
 				8727D5AD1A4884460092BB7C /* SCSwipeableFilterView.m in Sources */,
 				8727D5CA1A4885E30092BB7C /* SCEditVideoViewController.m in Sources */,
+				8B1241811B6B878300C805D0 /* LukCell.m in Sources */,
 				8727D5A31A4884460092BB7C /* SCFilterSelectorView.m in Sources */,
 				87A9EC0A1B36ADDD00064041 /* FBRequest.m in Sources */,
 				875BFD1D1A572E2100A83E35 /* TabBarViewController.m in Sources */,
