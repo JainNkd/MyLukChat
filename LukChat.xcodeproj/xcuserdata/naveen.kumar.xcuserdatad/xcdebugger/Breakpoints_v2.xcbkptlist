@@ -105,22 +105,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "LukChat/AppDelegate.m"
-            timestampString = "457334443.895792"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "217"
-            endingLineNumber = "217"
-            landmarkName = "-uploadVideosInBackground"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "LukChat/SingleVideoViewController.m"
             timestampString = "456151563.832885"
             startingColumnNumber = "9223372036854775807"
@@ -128,22 +112,6 @@
             startingLineNumber = "364"
             endingLineNumber = "364"
             landmarkName = "-movieFinishedCallBack:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "LukChat/AppDelegate.m"
-            timestampString = "457334443.895792"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "215"
-            endingLineNumber = "215"
-            landmarkName = "-uploadVideosInBackground"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -186,7 +154,7 @@
                   moduleName = "LukChat"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/naveen.kumar/Documents/IOSProject/DemoApps/MyLukChatAug15/LukChat/SingleVideoViewController.m"
-                  timestampString = "460038827.671145"
+                  timestampString = "460468564.46518"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "412"
@@ -201,7 +169,7 @@
                   moduleName = "LukChat"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/naveen.kumar/Documents/IOSProject/DemoApps/MyLukChatAug15/LukChat/SingleVideoViewController.m"
-                  timestampString = "460038827.671284"
+                  timestampString = "460468564.4653"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "412"
@@ -266,7 +234,7 @@
                   moduleName = "LukChat"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/naveen.kumar/Documents/IOSProject/DemoApps/MyLukChatAug15/LukChat/SingleVideoViewController.m"
-                  timestampString = "460038827.673086"
+                  timestampString = "460468564.466849"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "181"
@@ -281,7 +249,7 @@
                   moduleName = "LukChat"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/naveen.kumar/Documents/IOSProject/DemoApps/MyLukChatAug15/LukChat/SingleVideoViewController.m"
-                  timestampString = "460038827.673214"
+                  timestampString = "460468564.466965"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "181"
@@ -314,43 +282,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LukChat/VideoListViewController.m"
-            timestampString = "460378830.604425"
+            timestampString = "460471363.169469"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "422"
-            endingLineNumber = "422"
-            landmarkName = "-textField:shouldChangeCharactersInRange:replacementString:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "LukChat/VideoListViewController.m"
-            timestampString = "460378830.604425"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "403"
-            endingLineNumber = "403"
-            landmarkName = "-generateThumbImage:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "LukChat/VideoListViewController.m"
-            timestampString = "460378830.604425"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "363"
-            endingLineNumber = "363"
+            startingLineNumber = "369"
+            endingLineNumber = "369"
             landmarkName = "-videoMergeButtonPressed:"
             landmarkType = "5">
          </BreakpointContent>
@@ -457,13 +393,45 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "LukChat/Library/DraggableCollectionView/Helpers/LSCollectionViewHelper.m"
-            timestampString = "460038621.932226"
+            filePath = "LukChat/VideoListViewController.m"
+            timestampString = "460471363.169469"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "212"
-            endingLineNumber = "212"
-            landmarkName = "-handleLongPressGesture:"
+            startingLineNumber = "557"
+            endingLineNumber = "557"
+            landmarkName = "-resetLUK:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LukChat/VideoListViewController.m"
+            timestampString = "460471363.169469"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "794"
+            endingLineNumber = "794"
+            landmarkName = "-collectionView:moveItemAtIndexPath:toIndexPath:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LukChat/VideoListViewController.m"
+            timestampString = "460471363.169469"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "782"
+            endingLineNumber = "782"
+            landmarkName = "-collectionView:moveItemAtIndexPath:toIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

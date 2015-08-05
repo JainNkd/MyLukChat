@@ -17,6 +17,7 @@
 @interface VideoListViewController : UIViewController<UICollectionViewDataSource_Draggable, UICollectionViewDelegate,UIActionSheetDelegate,UITextFieldDelegate,UIAlertViewDelegate,FBRequestDelegate,FBSessionDelegate>
 {
     NSString *videoTitle;
+    NSMutableArray *videofiles;
     
     // session to play the video
     AVPlayer *player;

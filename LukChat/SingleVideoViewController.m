@@ -386,7 +386,7 @@
         else
         {
             NSArray *singleArrData = (NSArray*)responseDict;
-            NSLog(@"log....%@",[singleArrData description]);
+//            NSLog(@"log....%@",[singleArrData description]);
             
             [self parseSingleVideoData:singleArrData];
         }

@@ -86,7 +86,12 @@
     [self.collectionView addGestureRecognizer:singleTapGesture];
     
     sections = [[NSMutableArray alloc] initWithCapacity:videoCount];
-    
+    videofiles = [[NSMutableArray alloc] initWithCapacity:videoCount];
+    [videofiles removeAllObjects];
+    for(int i=0 ;i<10;i++)
+    {
+        [videofiles addObject:@"NO"];
+    }
     self.titleHeaderLBL.hidden = YES;
 }
 
@@ -178,20 +183,21 @@
             currentLUKIndex = titleWords.count;
             
             NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-            NSMutableArray *videofiles = [[NSMutableArray alloc] init];
+            NSMutableArray *videofilesExist = [[NSMutableArray alloc]init];
             
             for (int i=0; i < titleWords.count; i++) {
                 NSString *filename = [[NSUserDefaults standardUserDefaults]valueForKey:[NSString stringWithFormat:@"VIDEO_%d_URL",i]];
-                filename = [NSString stringWithFormat:@"%@/%@", path, filename];
-                
-                if ([[NSFileManager defaultManager] fileExistsAtPath:filename]) {
-                    [videofiles addObject:filename];
-                    // NSLog(@"filename : %@", filename);
+                NSString *pathWithfilename = [NSString stringWithFormat:@"%@/%@", path, filename];
+                [videofiles replaceObjectAtIndex:i withObject:filename];
+                if ([[NSFileManager defaultManager] fileExistsAtPath:pathWithfilename]) {
+                    [videofilesExist addObject:filename];
                 }
             }
             
+            if(videofilesExist.count>0)
+                isRecordingStart = YES;
             
-            if (!videofiles || [videofiles count] < 2) {
+            if (!videofilesExist || [videofilesExist count] < 2) {
                 self.mergeButton.enabled = NO;
             }
             else{
@@ -316,7 +322,7 @@
         
         if ([[NSFileManager defaultManager] fileExistsAtPath:filename]) {
             [videofiles addObject:filename];
-            NSLog(@"filename : %@", filename);
+            //            NSLog(@"filename : %@", filename);
         }
     }
     
@@ -538,15 +544,11 @@
     currentLUKIndex = 0;
     [[NSUserDefaults standardUserDefaults]setValue:@"" forKey:@"videoTitle"];
     self.videoTitleTextField.text = @"";
+    [videofiles removeAllObjects];
     for(int i=0 ;i<10;i++)
     {
         [[NSUserDefaults standardUserDefaults]setValue:@"NO" forKey:[NSString stringWithFormat:@"VIDEO_%d_URL",i]];
-        //        UIView *lukView = [lukViewsArr objectAtIndex:i];
-        //        UIButton *lukBtn = [videoTitleButtonsArr objectAtIndex:i];
-        //        UILabel *lbl = [videoTitleLBLArr objectAtIndex:i];
-        //        [lbl setTextColor:[UIColor whiteColor]];
-        //        [lukBtn setImage:[UIImage imageNamed: @"screen4-smilemonkey-icon.png"] forState:UIControlStateNormal];
-        //        lukView.hidden = YES;
+        [videofiles addObject:@"NO"];
     }
     [sections removeAllObjects];
     [self.collectionView reloadData];
@@ -639,7 +641,7 @@
     self.logoutBtn.hidden = YES;
     self.nameLabel.text = @"";
     NSLog(@"facebook logout");
-
+    
 }
 
 -(void)getUserFBProfileData
@@ -713,13 +715,14 @@
 
 //-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 //{
-//    
+//
 //    NSLog(@"cell selected...%@",[sections objectAtIndex:indexPath.item]);
 //}
 
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSLog(@"tempfile indexPath....%@",indexPath);
     LukCell *cell = (LukCell*)[collectionView dequeueReusableCellWithReuseIdentifier:@"Cell" forIndexPath:indexPath];
     if(sections.count>indexPath.row){
         cell.label.text = [sections objectAtIndex:indexPath.item];
@@ -728,24 +731,25 @@
         NSString *filename = [[NSUserDefaults standardUserDefaults]valueForKey:[NSString stringWithFormat:@"VIDEO_%ld_URL",(long)indexPath.row]];
         
         NSString *tempfile = [NSString stringWithFormat:@"%@/%@", path, filename];
-            NSLog(@"tempfile....%@",tempfile);
-            UIImage *temp = [[UIImage alloc] initWithContentsOfFile:tempfile];
-            if (temp) {
-                [cell.imageView setImage:temp];
-                [cell.label setTextColor:[UIColor yellowColor]];
-            }
+        NSLog(@"tempfile....%@",tempfile);
+        UIImage *temp = [[UIImage alloc] initWithContentsOfFile:tempfile];
+        if (temp) {
+            [cell.imageView setImage:temp];
+            [cell.label setTextColor:[UIColor yellowColor]];
+        }
+        
+        if ([[NSFileManager defaultManager] fileExistsAtPath:tempfile])
+        {
+            UIImage *image = [self generateThumbImage:tempfile];
             
-            if ([[NSFileManager defaultManager] fileExistsAtPath:tempfile])
-            {
-                UIImage *image = [self generateThumbImage:tempfile];
-                
-                if(image)
-                    [cell.imageView setImage:image];
-                [cell.label setTextColor:[UIColor yellowColor]];
-            }
+            if(image)
+                [cell.imageView setImage:image];
+            [cell.label setTextColor:[UIColor yellowColor]];
+        }
         else
         {
             [cell.imageView setImage:[UIImage imageNamed:@"screen4-smilemonkey-icon.png"]];
+            [cell.label setTextColor:[UIColor whiteColor]];
         }
     }
     return cell;
@@ -764,17 +768,31 @@
 
 - (void)collectionView:(LSCollectionViewHelper *)collectionView moveItemAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
 {
-    NSString *index = [sections objectAtIndex:fromIndexPath.item];
-    [sections removeObjectAtIndex:fromIndexPath.item];
-    [sections insertObject:index atIndex:toIndexPath.item];
     
+    NSLog(@"fromindex...%ld.....toindex...%ld",fromIndexPath.item,toIndexPath.item);
+    NSString *wordText = [sections objectAtIndex:fromIndexPath.item];
+    [sections removeObjectAtIndex:fromIndexPath.item];
+    [sections insertObject:wordText atIndex:toIndexPath.item];
+    
+    NSString *videoName = [videofiles objectAtIndex:fromIndexPath.item];
+    [videofiles removeObjectAtIndex:fromIndexPath.item];
+    [videofiles insertObject:videoName atIndex:toIndexPath.item];
+    
+    int i=0;
     NSMutableString *string = [[NSMutableString alloc]init];
     for(NSString* appendStr in sections){
         [string appendString:appendStr];
         [string appendString:@" "];
+        NSString *videoName = [videofiles objectAtIndex:i];
+        [[NSUserDefaults standardUserDefaults]setValue:videoName forKey:[NSString stringWithFormat:@"VIDEO_%d_URL",i]];
+        i++;
     }
     self.videoTitleTextField.text = string;
+    [[NSUserDefaults standardUserDefaults]setValue:string forKey:VIDEO_TITLE];
+    
+    
     NSLog(@"Data sections ....%@",sections);
+     NSLog(@"video name  sections ....%@",videofiles);
 }
 
 
@@ -792,7 +810,7 @@
         SingleVideoViewController *singleVC = [self.storyboard instantiateViewControllerWithIdentifier:@"SingleVideoViewController"];
         UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:singleVC];
         [self.navigationController presentViewController:nav animated:YES completion:nil];
-
+        
     }
     else
         NSLog(@"processSingleTap not selected...!!!");
@@ -824,7 +842,7 @@
             SingleVideoViewController *singleVC = [self.storyboard instantiateViewControllerWithIdentifier:@"SingleVideoViewController"];
             [self.navigationController presentViewController:singleVC animated:YES completion:nil];
         }
-
+        
     }else
         NSLog(@"processDoubleTap not selected...!!!");
 }
