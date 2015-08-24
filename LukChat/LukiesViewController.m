@@ -713,8 +713,10 @@
     
     [operation setUploadProgressBlock:^(NSInteger bytesWritten,NSInteger totalBytesWritten,NSInteger totalBytesExpectedToWrite)
      {
-         NSLog(@"Sent %lld of %lld bytes", (long long int)totalBytesWritten,(long long int)totalBytesExpectedToWrite);
-         progressView.progress = (float)totalBytesWritten / totalBytesExpectedToWrite;
+         dispatch_async(dispatch_get_main_queue(),^{
+             NSLog(@"Sent %lld of %lld bytes", (long long int)totalBytesWritten,(long long int)totalBytesExpectedToWrite);
+             progressView.progress = (float)totalBytesWritten / totalBytesExpectedToWrite;
+         });
      }];
     
     [operation start];

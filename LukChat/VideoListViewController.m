@@ -186,11 +186,13 @@
             NSMutableArray *videofilesExist = [[NSMutableArray alloc]init];
             
             for (int i=0; i < titleWords.count; i++) {
-                NSString *filename = [[NSUserDefaults standardUserDefaults]valueForKey:[NSString stringWithFormat:@"VIDEO_%d_URL",i]];
-                NSString *pathWithfilename = [NSString stringWithFormat:@"%@/%@", path, filename];
-                [videofiles replaceObjectAtIndex:i withObject:filename];
+                NSString *fileNameStr = [[NSUserDefaults standardUserDefaults]valueForKey:[NSString stringWithFormat:@"VIDEO_%d_URL",i]];
+                NSString *pathWithfilename = [NSString stringWithFormat:@"%@/%@", path, fileNameStr];
+                if(fileNameStr)
+                [videofiles replaceObjectAtIndex:i withObject:fileNameStr];
+                
                 if ([[NSFileManager defaultManager] fileExistsAtPath:pathWithfilename]) {
-                    [videofilesExist addObject:filename];
+                    [videofilesExist addObject:fileNameStr];
                 }
             }
             
