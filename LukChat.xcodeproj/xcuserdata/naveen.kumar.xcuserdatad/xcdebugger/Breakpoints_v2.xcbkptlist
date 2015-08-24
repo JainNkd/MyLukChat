@@ -234,12 +234,12 @@
                   moduleName = "LukChat"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/naveen.kumar/Documents/IOSProject/DemoApps/MyLukChatAug15/LukChat/SingleVideoViewController.m"
-                  timestampString = "460968997.982974"
+                  timestampString = "462093216.953459"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "181"
                   endingLineNumber = "181"
-                  offsetFromSymbolStart = "1218">
+                  offsetFromSymbolStart = "1153">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -249,12 +249,12 @@
                   moduleName = "LukChat"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/naveen.kumar/Documents/IOSProject/DemoApps/MyLukChatAug15/LukChat/SingleVideoViewController.m"
-                  timestampString = "460968997.983101"
+                  timestampString = "462093216.953567"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "181"
                   endingLineNumber = "181"
-                  offsetFromSymbolStart = "2792">
+                  offsetFromSymbolStart = "2593">
                </Location>
             </Locations>
          </BreakpointContent>
