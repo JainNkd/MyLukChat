@@ -376,6 +376,8 @@
 - (void)actionSheet:(UIActionSheet *)popup clickedButtonAtIndex:(NSInteger)buttonIndex {
     if(buttonIndex == 0)
     {
+        VideoDetail *videoObj = [createdVideos objectAtIndex:popup.tag];
+        [DatabaseMethods deleteCreatedVideosDB:[videoObj.videoID integerValue]];
         [createdVideos removeObjectAtIndex:popup.tag];
         NSIndexPath *indexPath =[NSIndexPath indexPathForRow:popup.tag inSection:0];
         [self.createTableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]

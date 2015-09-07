@@ -492,7 +492,7 @@
     // Open the database from the users filessytem
     if(sqlite3_open([databasePath UTF8String], &database) == SQLITE_OK) {
         // Setup the SQL Statement and compile it for faster access
-        NSString *quertyStr = @"SELECT video_title, merged_video_path, time FROM created_videos ORDER BY id DESC";
+        NSString *quertyStr = @"SELECT video_title, merged_video_path, time,id FROM created_videos ORDER BY id DESC";
         sqlite3_stmt *compiledStatement;
         if(sqlite3_prepare_v2(database, [quertyStr UTF8String], -1, &compiledStatement, NULL) == SQLITE_OK) {
             // Loop through the results and add them to the feeds array
@@ -503,6 +503,7 @@
                 videoDetialObj.videoTitle = [NSString stringWithFormat:@"%s",(const char*)sqlite3_column_text(compiledStatement, 0)];
                 videoDetialObj.mergedVideoURL = [NSString stringWithFormat:@"%s",(const char*)sqlite3_column_text(compiledStatement, 1)];
                 videoDetialObj.videoTime =  [NSString stringWithFormat:@"%s",(const char*)sqlite3_column_text(compiledStatement, 2)];
+                videoDetialObj.videoID = [NSString stringWithFormat:@"%lld",sqlite3_column_int64(compiledStatement, 3)];
                 
                 if (!videoDetialObj.videoTitle)
                     videoDetialObj.videoTitle = @"";
@@ -1097,5 +1098,42 @@
     
 }
 
-                             
++(void)deleteCreatedVideosDB:(NSInteger)videoID
+{
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString *databasePath=  [documentsDirectory stringByAppendingPathComponent:kDatabaseName];
+    
+    sqlite3 *database;
+    if(sqlite3_open([databasePath UTF8String], &database) == SQLITE_OK)
+    {
+        sqlite3_stmt    *statement;
+        NSString *querySQL = [NSString stringWithFormat:@"Delete from created_videos where id = %d",videoID];
+         NSLog(@"query: %@", querySQL);
+        const char *query_stmt = [querySQL UTF8String];
+        
+        // preparing a query compiles the query so it can be re-used.
+        if(sqlite3_prepare_v2(database, query_stmt, -1, &statement, NULL) == SQLITE_OK)
+        {
+            if(SQLITE_DONE != sqlite3_step(statement))
+            {
+                NSLog( @"Error while deleting single video record: '%s'", sqlite3_errmsg(database));
+            }
+            else
+            {
+                // NSLog(@"chatObj with ID: %ld inserted: ",(long)chatObj.chatId);
+            }
+            sqlite3_reset(statement);
+        }else
+        {
+            NSLog( @"Error while deleting chatObj '%s'", sqlite3_errmsg(database));
+        }
+        sqlite3_finalize(statement);
+        
+    }
+    sqlite3_close(database);
+    
+}
+
+
 @end
