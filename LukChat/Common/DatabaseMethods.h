@@ -43,4 +43,5 @@
 +(NSMutableArray *)getAllSingleVideos:(NSInteger)count;
 +(void)deleteRecordFromDB:(NSInteger)videoID;
 +(void)deleteCreatedVideosDB:(NSInteger)videoID;
++(void)deleteHistoryVideosDB:(NSInteger)videoID;
 @end

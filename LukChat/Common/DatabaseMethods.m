@@ -1135,5 +1135,42 @@
     
 }
 
++(void)deleteHistoryVideosDB:(NSInteger)videoID
+{
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString *databasePath=  [documentsDirectory stringByAppendingPathComponent:kDatabaseName];
+    
+    sqlite3 *database;
+    if(sqlite3_open([databasePath UTF8String], &database) == SQLITE_OK)
+    {
+        sqlite3_stmt    *statement;
+        NSString *querySQL = [NSString stringWithFormat:@"Delete from history_videos where video_id = %ld",(long)videoID];
+        NSLog(@"query: %@", querySQL);
+        const char *query_stmt = [querySQL UTF8String];
+        
+        // preparing a query compiles the query so it can be re-used.
+        if(sqlite3_prepare_v2(database, query_stmt, -1, &statement, NULL) == SQLITE_OK)
+        {
+            if(SQLITE_DONE != sqlite3_step(statement))
+            {
+                NSLog( @"Error while deleting single video record: '%s'", sqlite3_errmsg(database));
+            }
+            else
+            {
+                // NSLog(@"chatObj with ID: %ld inserted: ",(long)chatObj.chatId);
+            }
+            sqlite3_reset(statement);
+        }else
+        {
+            NSLog( @"Error while deleting chatObj '%s'", sqlite3_errmsg(database));
+        }
+        sqlite3_finalize(statement);
+        
+    }
+    sqlite3_close(database);
+    
+}
+
 
 @end

@@ -73,6 +73,8 @@
     
     self.sentTableViewObj.estimatedRowHeight = 130;
     self.sentTableViewObj.rowHeight = UITableViewAutomaticDimension;
+    self.sentTableViewObj.allowsMultipleSelectionDuringEditing = NO;
+
     
     NSString *countryCode = [[NSLocale currentLocale] objectForKey: NSLocaleCountryCode];
     cnCode = [CommonMethods countryPhoneCode:countryCode];
@@ -924,6 +926,46 @@
                            }];
     
 }
+
+// Override to support conditional editing of the table view.
+// This only needs to be implemented if you are going to be returning NO
+// for some items. By default, all items are editable.
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    // Return YES if you want the specified item to be editable.
+    return YES;
+}
+
+// Override to support editing the table view.
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        [self confirmationDialog:indexPath.row];
+    }
+}
+
+-(void)confirmationDialog:(NSInteger)index
+{
+    UIActionSheet *actionSheet = [[UIActionSheet alloc]initWithTitle:@"LUK \n Are you sure you want to delete this LUK." delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Delete" otherButtonTitles:nil, nil];
+    
+    actionSheet.tag = index;
+    [actionSheet showInView:[UIApplication sharedApplication].keyWindow];
+}
+
+- (void)actionSheet:(UIActionSheet *)popup clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if(buttonIndex == 0)
+    {
+        VideoDetail *videoObj = [videoDetailsArr objectAtIndex:popup.tag];
+        [DatabaseMethods deleteHistoryVideosDB:[videoObj.videoID integerValue]];
+        [videoDetailsArr removeObjectAtIndex:popup.tag];
+        NSIndexPath *indexPath =[NSIndexPath indexPathForRow:popup.tag inSection:0];
+        [self.sentTableViewObj deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
+                                    withRowAnimation:UITableViewRowAnimationFade];
+    }
+    else
+    {
+        [self.sentTableViewObj reloadData];
+    }
+}
+
 
 
 - (void)didReceiveMemoryWarning

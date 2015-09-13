@@ -18,7 +18,7 @@
 #import "UCZProgressView.h"
 #import "Facebook.h"
 
-@interface SentVideosViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,FBSessionDelegate,FBRequestDelegate>
+@interface SentVideosViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,FBSessionDelegate,FBRequestDelegate,UIActionSheetDelegate>
 {
     NSMutableArray *videoDetailsArr;
     NSString *cnCode;
