@@ -18,7 +18,10 @@
 #import "UCZProgressView.h"
 #import "Facebook.h"
 
-@interface SentVideosViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,FBSessionDelegate,FBRequestDelegate,UIActionSheetDelegate>
+#import "MGSwipeTableCell.h"
+#import "MGSwipeButton.h"
+
+@interface SentVideosViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,FBSessionDelegate,FBRequestDelegate,UIActionSheetDelegate,MGSwipeTableCellDelegate>
 {
     NSMutableArray *videoDetailsArr;
     NSString *cnCode;

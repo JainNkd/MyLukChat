@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MGSwipeTableCell.h"
 
-@interface RecievedVideoTableViewCell : UITableViewCell
+@interface RecievedVideoTableViewCell : MGSwipeTableCell
 
 @property (weak, nonatomic) IBOutlet UIButton *shareButton;
 @property (weak, nonatomic) IBOutlet UIImageView *userImageViewObj;

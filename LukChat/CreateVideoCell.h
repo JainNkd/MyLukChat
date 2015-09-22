@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MGSwipeTableCell.h"
 
-@interface CreateVideoCell : UITableViewCell
+@interface CreateVideoCell : MGSwipeTableCell
 @property (weak, nonatomic) IBOutlet UIImageView *thumbnail1;
 
 @property (weak, nonatomic) IBOutlet UIImageView *thumbnail2;

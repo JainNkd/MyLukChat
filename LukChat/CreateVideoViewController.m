@@ -93,6 +93,8 @@
     if(!cell)
         cell = [[CreateVideoCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     
+    cell.delegate = self;
+    
     if(videoObj.thumbnail1)
     {
         cell.thumbnail1.image = videoObj.thumbnail1;
@@ -355,7 +357,7 @@
 // for some items. By default, all items are editable.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     // Return YES if you want the specified item to be editable.
-    return YES;
+    return NO;
 }
 
 // Override to support editing the table view.
@@ -387,6 +389,69 @@
     {
         [self.createTableView reloadData];
     }
+}
+
+#pragma mark Swipe Delegate
+
+-(BOOL) swipeTableCell:(MGSwipeTableCell*) cell canSwipe:(MGSwipeDirection) direction;
+{
+    return YES;
+}
+
+-(NSArray*) swipeTableCell:(MGSwipeTableCell*) cell swipeButtonsForDirection:(MGSwipeDirection)direction
+             swipeSettings:(MGSwipeSettings*) swipeSettings expansionSettings:(MGSwipeExpansionSettings*) expansionSettings
+{
+    
+    swipeSettings.transition = MGSwipeTransitionBorder;
+    expansionSettings.buttonIndex = 0;
+    
+    __weak CreateVideoViewController * me = self;
+    
+    if (direction == MGSwipeDirectionLeftToRight) {
+        
+    }
+    else {
+        
+        expansionSettings.fillOnTrigger = YES;
+        expansionSettings.threshold = 1.1;
+        
+        CGFloat padding = 15;
+        
+        MGSwipeButton * trash = [MGSwipeButton buttonWithTitle:@"Delete" backgroundColor:[UIColor colorWithRed:1.0 green:59/255.0 blue:50/255.0 alpha:1.0] padding:padding callback:^BOOL(MGSwipeTableCell *sender) {
+            
+            NSIndexPath * indexPath = [me.createTableView indexPathForCell:sender];
+            [me deleteMail:indexPath];
+            return NO; //don't autohide to improve delete animation
+        }];
+        
+        
+        return @[trash];
+    }
+    
+    return nil;
+    
+}
+
+-(void) swipeTableCell:(MGSwipeTableCell*) cell didChangeSwipeState:(MGSwipeState)state gestureIsActive:(BOOL)gestureIsActive
+{
+    NSString * str;
+    switch (state) {
+        case MGSwipeStateNone: str = @"None"; break;
+        case MGSwipeStateSwippingLeftToRight: str = @"SwippingLeftToRight"; break;
+        case MGSwipeStateSwippingRightToLeft: str = @"SwippingRightToLeft"; break;
+        case MGSwipeStateExpandingLeftToRight: str = @"ExpandingLeftToRight"; break;
+        case MGSwipeStateExpandingRightToLeft: str = @"ExpandingRightToLeft"; break;
+    }
+    NSLog(@"Swipe state: %@ ::: Gesture: %@", str, gestureIsActive ? @"Active" : @"Ended");
+}
+
+-(void) deleteMail:(NSIndexPath *) indexPath
+{
+    VideoDetail *videoObj = [createdVideos objectAtIndex:indexPath.row];
+    [DatabaseMethods deleteCreatedVideosDB:[videoObj.videoID integerValue]];
+    
+    [createdVideos removeObjectAtIndex:indexPath.row];
+    [self.createTableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationLeft];
 }
 
 

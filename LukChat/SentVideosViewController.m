@@ -74,7 +74,7 @@
     self.sentTableViewObj.estimatedRowHeight = 130;
     self.sentTableViewObj.rowHeight = UITableViewAutomaticDimension;
     self.sentTableViewObj.allowsMultipleSelectionDuringEditing = NO;
-
+    
     
     NSString *countryCode = [[NSLocale currentLocale] objectForKey: NSLocaleCountryCode];
     cnCode = [CommonMethods countryPhoneCode:countryCode];
@@ -251,12 +251,14 @@
     UITableViewCell *cell;
     if(videoObj.fromContact ==  myPhoneNum){
         SentVideoTableViewCell *sentCell = [tableView dequeueReusableCellWithIdentifier:SentCellIdentifier];
+        sentCell.delegate = self;
         [self createSentCellData:videoObj cell:sentCell indexPath:indexPath];
         cell = sentCell;
     }
     else
     {
         RecievedVideoTableViewCell *receivedCell = [tableView dequeueReusableCellWithIdentifier:ReceivedCellIdentifier];
+        receivedCell.delegate = self;
         [self createReceivedCellData:videoObj cell:receivedCell indexPath:indexPath];
         cell = receivedCell;
     }
@@ -932,7 +934,7 @@
 // for some items. By default, all items are editable.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     // Return YES if you want the specified item to be editable.
-    return YES;
+    return NO;
 }
 
 // Override to support editing the table view.
@@ -958,13 +960,78 @@
         [videoDetailsArr removeObjectAtIndex:popup.tag];
         NSIndexPath *indexPath =[NSIndexPath indexPathForRow:popup.tag inSection:0];
         [self.sentTableViewObj deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
-                                    withRowAnimation:UITableViewRowAnimationFade];
+                                     withRowAnimation:UITableViewRowAnimationFade];
     }
     else
     {
         [self.sentTableViewObj reloadData];
     }
 }
+
+#pragma mark Swipe Delegate
+
+-(BOOL) swipeTableCell:(MGSwipeTableCell*) cell canSwipe:(MGSwipeDirection) direction;
+{
+    return YES;
+}
+
+-(NSArray*) swipeTableCell:(MGSwipeTableCell*) cell swipeButtonsForDirection:(MGSwipeDirection)direction
+             swipeSettings:(MGSwipeSettings*) swipeSettings expansionSettings:(MGSwipeExpansionSettings*) expansionSettings
+{
+    
+    swipeSettings.transition = MGSwipeTransitionBorder;
+    expansionSettings.buttonIndex = 0;
+    
+    __weak SentVideosViewController * me = self;
+    
+    if (direction == MGSwipeDirectionLeftToRight) {
+        
+    }
+    else {
+        
+        expansionSettings.fillOnTrigger = YES;
+        expansionSettings.threshold = 1.1;
+        
+        CGFloat padding = 15;
+        
+        MGSwipeButton * trash = [MGSwipeButton buttonWithTitle:@"Delete" backgroundColor:[UIColor colorWithRed:1.0 green:59/255.0 blue:50/255.0 alpha:1.0] padding:padding callback:^BOOL(MGSwipeTableCell *sender) {
+            
+            NSIndexPath * indexPath = [me.sentTableViewObj indexPathForCell:sender];
+            [me deleteMail:indexPath];
+            return NO; //don't autohide to improve delete animation
+        }];
+        
+        
+        return @[trash];
+    }
+    
+    return nil;
+    
+}
+
+-(void) swipeTableCell:(MGSwipeTableCell*) cell didChangeSwipeState:(MGSwipeState)state gestureIsActive:(BOOL)gestureIsActive
+{
+    NSString * str;
+    switch (state) {
+        case MGSwipeStateNone: str = @"None"; break;
+        case MGSwipeStateSwippingLeftToRight: str = @"SwippingLeftToRight"; break;
+        case MGSwipeStateSwippingRightToLeft: str = @"SwippingRightToLeft"; break;
+        case MGSwipeStateExpandingLeftToRight: str = @"ExpandingLeftToRight"; break;
+        case MGSwipeStateExpandingRightToLeft: str = @"ExpandingRightToLeft"; break;
+    }
+    NSLog(@"Swipe state: %@ ::: Gesture: %@", str, gestureIsActive ? @"Active" : @"Ended");
+}
+
+-(void) deleteMail:(NSIndexPath *) indexPath
+{
+    VideoDetail *videoObj = [videoDetailsArr objectAtIndex:indexPath.row];
+    [DatabaseMethods deleteHistoryVideosDB:[videoObj.videoID integerValue]];
+    [videoDetailsArr removeObjectAtIndex:indexPath.row];
+    [self.sentTableViewObj deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
+                                 withRowAnimation:UITableViewRowAnimationFade];
+}
+
+
 
 
 

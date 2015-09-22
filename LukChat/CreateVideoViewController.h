@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "Facebook.h"
+#import "MGSwipeTableCell.h"
+#import "MGSwipeButton.h"
 
-@interface CreateVideoViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,FBSessionDelegate,FBRequestDelegate,UIActionSheetDelegate>
+@interface CreateVideoViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,FBSessionDelegate,FBRequestDelegate,UIActionSheetDelegate,MGSwipeTableCellDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *createTableView;
 @property (weak, nonatomic) IBOutlet UIView *settingView;
 

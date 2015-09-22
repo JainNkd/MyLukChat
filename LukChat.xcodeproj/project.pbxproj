@@ -125,6 +125,8 @@
 		8727D5CF1A4885E30092BB7C /* SCSessionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8727D5C41A4885E30092BB7C /* SCSessionTableViewCell.m */; };
 		8727D5D01A4885E30092BB7C /* SCTouchDetector.m in Sources */ = {isa = PBXBuildFile; fileRef = 8727D5C61A4885E30092BB7C /* SCTouchDetector.m */; };
 		8727D5D11A4885E30092BB7C /* SCVideoPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8727D5C81A4885E30092BB7C /* SCVideoPlayerViewController.m */; };
+		8736FEA91BB1D1D2009DD594 /* MGSwipeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 8736FEA61BB1D1D2009DD594 /* MGSwipeButton.m */; };
+		8736FEAA1BB1D1D2009DD594 /* MGSwipeTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8736FEA81BB1D1D2009DD594 /* MGSwipeTableCell.m */; };
 		873CBF1A1AE97643001F20E6 /* watermark.png in Resources */ = {isa = PBXBuildFile; fileRef = 873CBF191AE97643001F20E6 /* watermark.png */; };
 		874F46C51AC71DEF001CE774 /* CreateVideoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 874F46C41AC71DEF001CE774 /* CreateVideoCell.m */; };
 		874F46C81AC71E73001CE774 /* CreateVideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 874F46C71AC71E73001CE774 /* CreateVideoViewController.m */; };
@@ -488,6 +490,10 @@
 		8727D5C61A4885E30092BB7C /* SCTouchDetector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCTouchDetector.m; sourceTree = "<group>"; };
 		8727D5C71A4885E30092BB7C /* SCVideoPlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCVideoPlayerViewController.h; sourceTree = "<group>"; };
 		8727D5C81A4885E30092BB7C /* SCVideoPlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCVideoPlayerViewController.m; sourceTree = "<group>"; };
+		8736FEA51BB1D1D2009DD594 /* MGSwipeButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGSwipeButton.h; sourceTree = "<group>"; };
+		8736FEA61BB1D1D2009DD594 /* MGSwipeButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGSwipeButton.m; sourceTree = "<group>"; };
+		8736FEA71BB1D1D2009DD594 /* MGSwipeTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGSwipeTableCell.h; sourceTree = "<group>"; };
+		8736FEA81BB1D1D2009DD594 /* MGSwipeTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGSwipeTableCell.m; sourceTree = "<group>"; };
 		873CBF191AE97643001F20E6 /* watermark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = watermark.png; path = ../watermark.png; sourceTree = "<group>"; };
 		874F46C31AC71DEF001CE774 /* CreateVideoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateVideoCell.h; sourceTree = "<group>"; };
 		874F46C41AC71DEF001CE774 /* CreateVideoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateVideoCell.m; sourceTree = "<group>"; };
@@ -1170,6 +1176,7 @@
 		8727D5631A4884460092BB7C /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				8736FEA41BB1D1D2009DD594 /* MGSwipeTableCell */,
 				8B12416B1B6B866B00C805D0 /* DraggableCollectionView */,
 				8BCBB3861B4693AE000DDEB0 /* JCNotification */,
 				8BB3376E1AA04B04008E4A82 /* FXBlurView */,
@@ -1272,6 +1279,17 @@
 				8727D5C81A4885E30092BB7C /* SCVideoPlayerViewController.m */,
 			);
 			path = Video;
+			sourceTree = "<group>";
+		};
+		8736FEA41BB1D1D2009DD594 /* MGSwipeTableCell */ = {
+			isa = PBXGroup;
+			children = (
+				8736FEA51BB1D1D2009DD594 /* MGSwipeButton.h */,
+				8736FEA61BB1D1D2009DD594 /* MGSwipeButton.m */,
+				8736FEA71BB1D1D2009DD594 /* MGSwipeTableCell.h */,
+				8736FEA81BB1D1D2009DD594 /* MGSwipeTableCell.m */,
+			);
+			path = MGSwipeTableCell;
 			sourceTree = "<group>";
 		};
 		874F46C01AC71D6E001CE774 /* CreateVideo */ = {
@@ -1846,6 +1864,7 @@
 				875BFD2E1A57310B00A83E35 /* SentVideosViewController.m in Sources */,
 				633850FC1983C9F400C3256A /* AFPropertyListRequestOperation.m in Sources */,
 				633850F51983C9F400C3256A /* ConnectionHandler.m in Sources */,
+				8736FEAA1BB1D1D2009DD594 /* MGSwipeTableCell.m in Sources */,
 				87AFE04C1A5C55E700DCA827 /* LukiesViewController.m in Sources */,
 				875BFD321A57317C00A83E35 /* User.m in Sources */,
 				6329BEEA19A8AAC400B6D8F5 /* VideoPreviewViewController.m in Sources */,
@@ -1913,6 +1932,7 @@
 				8BCBB3A81B4693AE000DDEB0 /* JCNotificationCenter.m in Sources */,
 				8BCBB39E1B4693AE000DDEB0 /* JCNotificationBanner.m in Sources */,
 				63979B06199F641C005AB2A0 /* VideoListViewController.m in Sources */,
+				8736FEA91BB1D1D2009DD594 /* MGSwipeButton.m in Sources */,
 				633850FE1983C9F400C3256A /* AFXMLRequestOperation.m in Sources */,
 				8727D5AF1A4884460092BB7C /* SCVideoPlayerView.m in Sources */,
 				8BCBB3A31B4693AE000DDEB0 /* JCNotificationBannerView.m in Sources */,
