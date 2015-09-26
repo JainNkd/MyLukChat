@@ -34,6 +34,7 @@
 #define kSentVideosURL @"http://lukchat.com/api/history/sent"
 #define kAllHistoryURL @"http://lukchat.com/api/history/all"
 #define kSearchSingleVideo @"http://lukchat.com/api/search"
+#define kDeleteVideoURL @"http://lukchat.com/api/deletevideo"
 
 #define kReceivedVideosURL @"http://lukchat.com/api/history/received"
 

@@ -140,6 +140,11 @@
 -(void)connHandlerClient:(ConnectionHandler *)client didSucceedWithResponseString:(NSString *)response forPath:(NSString *)urlPath{
     //    NSLog(@"connHandlerClient didSucceedWithResponseString : %@",response);
     NSLog(@"loadAppContactsOnTable ******************");
+    if([urlPath isEqualToString:kDeleteVideoURL])
+    {
+        NSLog(@"Video Deleted Success...");
+    }
+        
     if ([urlPath isEqualToString:kAllHistoryURL]) {
         NSLog(@"SUCCESS: All Data fetched");
         
@@ -1029,10 +1034,31 @@
     [videoDetailsArr removeObjectAtIndex:indexPath.row];
     [self.sentTableViewObj deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
                                  withRowAnimation:UITableViewRowAnimationFade];
+    [self deleteVideoFromServer:videoObj];
 }
 
 
-
+-(void)deleteVideoFromServer:(VideoDetail*)videoDetails
+{
+    NSString *type;
+    if(myPhoneNum == videoDetails.fromContact)
+        type = @"sender";
+    else
+        type = @"receiver";
+    if(videoDetails.videoID.length>0){
+    NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
+    [dict setValue:kAPIKeyValue forKey:kAPIKey];
+    [dict setValue:kAPISecretValue forKey:kAPISecret];
+    [dict setValue:[NSString stringWithFormat:@"%lld",myPhoneNum] forKey:@"phone"];
+    [dict setValue:type forKey:@"type"];
+    [dict setValue:videoDetails.videoID forKey:@"video_id"];
+    NSLog(@"delete dict....%@",dict);
+    
+    ConnectionHandler *connObj = [[ConnectionHandler alloc] init];
+    connObj.delegate = self;
+    [connObj makePOSTRequestPath:kDeleteVideoURL parameters:dict];
+    }
+}
 
 
 - (void)didReceiveMemoryWarning

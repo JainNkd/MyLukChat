@@ -118,7 +118,7 @@
                  
                      [self parseShareVideoResponse:responseString fromURL:path ];
              }
-             else if ([path isEqualToString:kReceivedVideosURL]||[path isEqualToString:kAllHistoryURL]) {
+             else if ([path isEqualToString:kReceivedVideosURL]||[path isEqualToString:kAllHistoryURL]||[path isEqualToString:kDeleteVideoURL]) {
 //                  NSLog(@"Request Successful, kReceivedVideosURL response '%@'", responseString);
                  
                      [self parseRecievedVideosResponse:responseString fromURL:path ];
