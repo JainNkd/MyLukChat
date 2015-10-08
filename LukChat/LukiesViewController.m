@@ -531,8 +531,22 @@
     if (urlStr && [[NSUserDefaults standardUserDefaults]boolForKey:kIsFromRecieved])
     {
         //        [self sentRecievedVideos];
+        if ([[NSFileManager defaultManager] fileExistsAtPath:urlStr]){
+            facebookVideoPath = urlStr;
+            if(!SharedAppDelegate.facebook.isSessionValid){
+                NSArray* permissions = [[NSArray alloc] initWithObjects:
+                                        @"publish_actions", nil];
+                [SharedAppDelegate.facebook authorize:permissions delegate:self];
+            }
+            else
+            {
+                [self fbDidLogin];
+            }
+
+        }
+        else{
         [CommonMethods showAlertWithTitle:NSLocalizedString(@"LUK",nil) message:NSLocalizedString(@"No Video available to share.",nil) cancelBtnTitle:NSLocalizedString(@"Accept",nil) otherBtnTitle:nil delegate:nil tag:0];
-        
+        }
     }
     else if (urlStr) {
         //        [self shareVideo:[NSURL fileURLWithPath:urlStr]];
@@ -959,6 +973,24 @@
     NSLog(@"Result of API call: %@", result);
     [self stopProgressLoader];
     [CommonMethods showAlertWithTitle:NSLocalizedString(@"",nil) message:NSLocalizedString(@"Video successfully posted on your Facebook wall!",nil)];
+//    
+//        [self shareVideo:[NSURL fileURLWithPath:urlStr]];
+//    }
+//    else
+//        [CommonMethods showAlertWithTitle:NSLocalizedString(@"LUK",nil) message:NSLocalizedString(@"No Video available to share.",nil) cancelBtnTitle:NSLocalizedString(@"Accept",nil) otherBtnTitle:nil delegate:nil tag:0];
+    if([[NSUserDefaults standardUserDefaults]boolForKey:kIsFromCreated])
+    {
+    
+    }
+    else if([[NSUserDefaults standardUserDefaults]boolForKey:kIsFromRecieved])
+    {
+        [[NSUserDefaults standardUserDefaults] setValue:[NSString stringWithFormat:@"1123456789"] forKey:kCurrentCHATUserPHONE];
+        [self sentRecievedVideos];
+    }
+    else{
+        
+    }
+
 }
 
 - (void)request:(FBRequest *)request didFailWithError:(NSError *)error {
