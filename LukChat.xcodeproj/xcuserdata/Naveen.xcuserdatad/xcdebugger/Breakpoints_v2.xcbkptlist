@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LukChat/LukiesViewController.m"
-            timestampString = "466082928.019887"
+            timestampString = "466085802.806098"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "536"
-            endingLineNumber = "536"
+            startingLineNumber = "535"
+            endingLineNumber = "535"
             landmarkName = "-facebookPostBtnClicked:"
             landmarkType = "5">
          </BreakpointContent>

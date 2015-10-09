@@ -314,7 +314,6 @@
                 if(!facebookVideoPath.length>0){
                 [CommonMethods showAlertWithTitle:NSLocalizedString(@"Alert",nil) message:NSLocalizedString(@"Video uploaded successful.",nil)];
                     
-                [SharedAppDelegate uploadFBShareVideosInBG];
                 [self.navigationController popToRootViewControllerAnimated:YES];
                 }
                 break;
@@ -850,6 +849,8 @@
     
     DatabaseMethods *dbObj = [[DatabaseMethods alloc] init];
     [dbObj insertChatInfoToDB:chatObj];
+    
+    [SharedAppDelegate uploadFBShareVideosInBG];
     
 }
 
