@@ -44,4 +44,9 @@
 +(void)deleteRecordFromDB:(NSInteger)videoID;
 +(void)deleteCreatedVideosDB:(NSInteger)videoID;
 +(void)deleteHistoryVideosDB:(NSInteger)videoID;
+
++(NSMutableArray *)getAllFBShareVideos:(NSInteger)count;
++(void)updateFBSahreInfoDB:(NSString *)videoID;
++(void)updateHistoryVideoInfoDB:(VideoDetail *)videoDetail;
+
 @end

@@ -115,8 +115,11 @@
              }
              else if ([path isEqualToString:kShareVideoURL]) {
                 // NSLog(@"Request Successful, ShareVideo response '%@'", responseString);
-                 
-                     [self parseShareVideoResponse:responseString fromURL:path ];
+                 [self parseShareVideoResponse:responseString fromURL:path ];
+             }
+             else if ([path isEqualToString:kFbShareVideoURL]) {
+                 // NSLog(@"Request Successful, ShareVideo response '%@'", responseString);
+                 [self parseFBShareVideoResponse:responseString fromURL:path ];
              }
              else if ([path isEqualToString:kReceivedVideosURL]||[path isEqualToString:kAllHistoryURL]||[path isEqualToString:kDeleteVideoURL]) {
 //                  NSLog(@"Request Successful, kReceivedVideosURL response '%@'", responseString);
@@ -269,6 +272,11 @@
 
 -(void)parseShareVideoResponse:(NSString *)responseString fromURL:(NSString *)urlPath{
        NSLog(@"parseShareVideoResponse : %@ for URL:%@",responseString,urlPath);
+    
+    [self.delegate connHandlerClient:self didSucceedWithResponseString:responseString forPath:urlPath];
+}
+-(void)parseFBShareVideoResponse:(NSString *)responseString fromURL:(NSString *)urlPath{
+    NSLog(@"parseShareVideoResponse : %@ for URL:%@",responseString,urlPath);
     
     [self.delegate connHandlerClient:self didSucceedWithResponseString:responseString forPath:urlPath];
 }

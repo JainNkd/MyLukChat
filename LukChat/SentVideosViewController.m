@@ -168,6 +168,10 @@
                     {
                         [DatabaseMethods insertHistoryVideoInfoInDB:videoDetailObj];
                     }
+                    else if(videoDetailObj.toContact == -1)
+                    {
+                        [DatabaseMethods updateHistoryVideoInfoDB:videoDetailObj];
+                    }
                 }
                 
                 [self reloadHistoryData];
@@ -364,6 +368,8 @@
         name = videoObj.fname;
     else if(videoObj.lname.length > 0)
         name = videoObj.lname;
+    else if(videoObj.toContact == -1)
+        name = @"Facebook";
     else
         name = [NSString stringWithFormat:@"%lld",videoObj.toContact];
     

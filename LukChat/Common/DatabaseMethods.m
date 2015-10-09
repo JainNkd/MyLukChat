@@ -522,6 +522,51 @@
 }
 
 //Fetch Single videos with count from DB
++(NSMutableArray *)getAllFBShareVideos:(NSInteger)count {
+    NSLog(@"getAllFBShareVideos");
+    // Setup the database object
+    sqlite3 *database;
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString *databasePath=  [documentsDirectory stringByAppendingPathComponent:kDatabaseName];
+    
+    NSMutableArray *sentVideosArray = [[NSMutableArray alloc] init];
+    
+    // Open the database from the users filessytem
+    if(sqlite3_open([databasePath UTF8String], &database) == SQLITE_OK) {
+        // Setup the SQL Statement and compile it for faster access
+        NSString *quertyStr = [NSString stringWithFormat:@"SELECT video_id, merged_video,from_phone,id FROM tbl_chats  where to_phone = -1 ORDER BY id DESC LIMIT %ld",(long)count];
+        NSLog(@"get single videos ...%@",quertyStr);
+        sqlite3_stmt *compiledStatement;
+        if(sqlite3_prepare_v2(database, [quertyStr UTF8String], -1, &compiledStatement, NULL) == SQLITE_OK) {
+            // Loop through the results and add them to the feeds array
+            while(sqlite3_step(compiledStatement) == SQLITE_ROW) {
+                // Read the data from the result row
+                VideoDetail *videoDetialObj = [VideoDetail new];
+                
+                videoDetialObj.videoID = [NSString stringWithFormat:@"%lld",sqlite3_column_int64(compiledStatement, 0)];
+                videoDetialObj.mergedVideoURL = [NSString stringWithFormat:@"%s",(const char*)sqlite3_column_text(compiledStatement, 1)];
+                
+                videoDetialObj.fromContact = sqlite3_column_int(compiledStatement, 2);
+                
+                if (!videoDetialObj.videoTitle)
+                    videoDetialObj.videoTitle = @"";
+                if (!videoDetialObj.videoTime)
+                    videoDetialObj.videoTime = @"";
+                
+                [sentVideosArray addObject:videoDetialObj];
+            }
+        }
+        // Release the compiled statement from memory
+        sqlite3_finalize(compiledStatement);
+    }
+    sqlite3_close(database);
+    
+    return sentVideosArray;
+}
+
+
+//Fetch Single videos with count from DB
 +(NSMutableArray *)getAllSingleVideos:(NSInteger)count {
     NSLog(@"getAllSingleVideos");
     // Setup the database object
@@ -951,6 +996,50 @@
     
 }
 
+//Update history records data
++(void)updateHistoryVideoInfoDB:(VideoDetail *)videoDetail {
+    
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString *databasePath=  [documentsDirectory stringByAppendingPathComponent:kDatabaseName];
+    
+    sqlite3 *database;
+    if(sqlite3_open([databasePath UTF8String], &database) == SQLITE_OK)
+    {
+        
+        sqlite3_stmt    *statement;
+        //        NSString *querySQL =[NSString stringWithFormat:@"UPDATE tbl_user set user_id = ?, user_dob =? WHERE user_phone = ?"];
+        NSString *querySQL =[NSString stringWithFormat:@"UPDATE history_videos set file = ?, thumbnail = ? where video_id = ?"];
+        // NSLog(@"query: %@", querySQL);
+        const char *query_stmt = [querySQL UTF8String];
+        
+        // preparing a query compiles the query so it can be re-used.
+        if(sqlite3_prepare_v2(database, query_stmt, -1, &statement, NULL) == SQLITE_OK)
+        {
+            sqlite3_bind_text(statement, 1, [videoDetail.videoURL UTF8String], -1, SQLITE_STATIC);
+            sqlite3_bind_text(statement, 2, [videoDetail.thumnailName UTF8String], -1, SQLITE_STATIC);
+            sqlite3_bind_int64(statement, 3,[videoDetail.videoID integerValue]);
+            
+            if(SQLITE_DONE != sqlite3_step(statement))
+            {
+                NSLog( @"Error while updating Account: '%s'", sqlite3_errmsg(database));
+            }
+            else
+            {
+                NSLog(@"Account with user_phone: %@ updated with ID: 123 ",videoDetail.videoURL);
+            }
+            sqlite3_reset(statement);
+        }else
+        {
+            NSLog( @"Error while updating Account '%s'", sqlite3_errmsg(database));
+        }
+        sqlite3_finalize(statement);
+        
+    }
+    sqlite3_close(database);
+}
+
+
 -(void)insertContactInfoToDB:(Contact *)contactObj {
     
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
@@ -1171,6 +1260,49 @@
     sqlite3_close(database);
     
 }
+
++(void)updateFBSahreInfoDB:(NSString *)videoID {
+    
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString *databasePath=  [documentsDirectory stringByAppendingPathComponent:kDatabaseName];
+    
+    sqlite3 *database;
+    if(sqlite3_open([databasePath UTF8String], &database) == SQLITE_OK)
+    {
+        
+        sqlite3_stmt    *statement;
+        //        NSString *querySQL =[NSString stringWithFormat:@"UPDATE tbl_user set user_id = ?, user_dob =? WHERE user_phone = ?"];
+        NSString *querySQL =[NSString stringWithFormat:@"UPDATE tbl_chats set to_phone = 123 where video_id = ?"];
+        // NSLog(@"query: %@", querySQL);
+        const char *query_stmt = [querySQL UTF8String];
+        
+        // preparing a query compiles the query so it can be re-used.
+        if(sqlite3_prepare_v2(database, query_stmt, -1, &statement, NULL) == SQLITE_OK)
+        {
+            sqlite3_bind_int64(statement, 1,[videoID integerValue]);
+            
+            if(SQLITE_DONE != sqlite3_step(statement))
+            {
+                NSLog( @"Error while updating Account: '%s'", sqlite3_errmsg(database));
+            }
+            else
+            {
+                NSLog(@"Account with user_phone: %@ updated with ID: 123 ",videoID);
+            }
+            sqlite3_reset(statement);
+        }else
+        {
+            NSLog( @"Error while updating Account '%s'", sqlite3_errmsg(database));
+        }
+        sqlite3_finalize(statement);
+        
+    }
+    sqlite3_close(database);
+}
+
+
+
 
 
 @end

@@ -31,6 +31,10 @@
 #define kVideoDownloadURL @"http://lukchat.com/app/webroot/files/"
 #define kUploadSingleVideos @"http://lukchat.com/api/share"
 
+
+#define KFbUpload @"http://lukchat.com/api/fbupload"
+#define kFbShareVideoURL @"http://lukchat.com/api/fbshare"
+
 #define kSentVideosURL @"http://lukchat.com/api/history/sent"
 #define kAllHistoryURL @"http://lukchat.com/api/history/all"
 #define kSearchSingleVideo @"http://lukchat.com/api/search"

@@ -65,7 +65,7 @@
     [self.sendTolukiesBtn setBackgroundImage:[UIImage imageNamed:@"send-lukies_pressbuttonbg.png"] forState:UIControlStateSelected];
     [self.facebookPostBtn setBackgroundImage:[UIImage imageNamed:@"facebook_post_buttonbg.png"] forState:UIControlStateNormal];
     [self.facebookPostBtn setBackgroundImage:[UIImage imageNamed:@"facebook_post_pressbuttonbg.png"] forState:UIControlStateSelected];
-
+    
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -293,7 +293,7 @@
         //Refresh Contacts List
         [self reloadAppLukies];
     }
-    if ([urlPath isEqualToString:kShareVideoURL]) {
+    if ([urlPath isEqualToString:kShareVideoURL] || [urlPath isEqualToString:kFbShareVideoURL]) {
         NSLog(@"SUCCESS: ShareVideo");
         [self stopProgressLoader];
         
@@ -310,8 +310,13 @@
             {
                 NSString *videoID = [[[usersdict valueForKey:@"video_id"] valueForKey:@"Video"] valueForKey:@"id"];
                 [self addMyVideoLog:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",kVideoDownloadURL,[usersdict objectForKey:@"filename"]]] videoId:videoID];
+                
+                if(!facebookVideoPath.length>0){
                 [CommonMethods showAlertWithTitle:NSLocalizedString(@"Alert",nil) message:NSLocalizedString(@"Video uploaded successful.",nil)];
+                    
+                [SharedAppDelegate uploadFBShareVideosInBG];
                 [self.navigationController popToRootViewControllerAnimated:YES];
+                }
                 break;
             }
             case 2:
@@ -542,10 +547,10 @@
             {
                 [self fbDidLogin];
             }
-
+            
         }
         else{
-        [CommonMethods showAlertWithTitle:NSLocalizedString(@"LUK",nil) message:NSLocalizedString(@"No Video available to share.",nil) cancelBtnTitle:NSLocalizedString(@"Accept",nil) otherBtnTitle:nil delegate:nil tag:0];
+            [CommonMethods showAlertWithTitle:NSLocalizedString(@"LUK",nil) message:NSLocalizedString(@"No Video available to share.",nil) cancelBtnTitle:NSLocalizedString(@"Accept",nil) otherBtnTitle:nil delegate:nil tag:0];
         }
     }
     else if (urlStr) {
@@ -618,14 +623,15 @@
     
     if([CommonMethods reachable])
     {
-        UCZProgressView *progressView = [[UCZProgressView alloc]initWithFrame:self.view.frame];
-        progressView.indeterminate = YES;
-        progressView.showsText = YES;
-        progressView.backgroundColor = [UIColor blackColor];
-        progressView.opaque = 0.5;
-        progressView.alpha = 0.5;
-        [self.view addSubview:progressView];
-        
+        if(!facebookVideoPath.length>0){
+            UCZProgressView *progressView = [[UCZProgressView alloc]initWithFrame:self.view.frame];
+            progressView.indeterminate = YES;
+            progressView.showsText = YES;
+            progressView.backgroundColor = [UIColor blackColor];
+            progressView.opaque = 0.5;
+            progressView.alpha = 0.5;
+            [self.view addSubview:progressView];
+        }
     }
     ConnectionHandler *connObj = [[ConnectionHandler alloc] init];
     connObj.delegate = self;
@@ -956,7 +962,7 @@
         [CommonMethods showAlertWithTitle:NSLocalizedString(@"LUK",nil) message:NSLocalizedString(@"No Video available to share.",nil) cancelBtnTitle:NSLocalizedString(@"Accept",nil)otherBtnTitle:nil delegate:nil tag:0];
         
     }
-
+    
 }
 
 
@@ -973,23 +979,67 @@
     NSLog(@"Result of API call: %@", result);
     [self stopProgressLoader];
     [CommonMethods showAlertWithTitle:NSLocalizedString(@"",nil) message:NSLocalizedString(@"Video successfully posted on your Facebook wall!",nil)];
-//    
-//        [self shareVideo:[NSURL fileURLWithPath:urlStr]];
-//    }
-//    else
-//        [CommonMethods showAlertWithTitle:NSLocalizedString(@"LUK",nil) message:NSLocalizedString(@"No Video available to share.",nil) cancelBtnTitle:NSLocalizedString(@"Accept",nil) otherBtnTitle:nil delegate:nil tag:0];
+    //
+    //        [self shareVideo:[NSURL fileURLWithPath:urlStr]];
+    //    }
+    //    else
+    //        [CommonMethods showAlertWithTitle:NSLocalizedString(@"LUK",nil) message:NSLocalizedString(@"No Video available to share.",nil) cancelBtnTitle:NSLocalizedString(@"Accept",nil) otherBtnTitle:nil delegate:nil tag:0];
     if([[NSUserDefaults standardUserDefaults]boolForKey:kIsFromCreated])
     {
-    
+        [[NSUserDefaults standardUserDefaults] setValue:[NSString stringWithFormat:@"-1"] forKey:kCurrentCHATUserPHONE];
+        [self fbShare];
     }
     else if([[NSUserDefaults standardUserDefaults]boolForKey:kIsFromRecieved])
     {
-        [[NSUserDefaults standardUserDefaults] setValue:[NSString stringWithFormat:@"1123456789"] forKey:kCurrentCHATUserPHONE];
+        [[NSUserDefaults standardUserDefaults] setValue:[NSString stringWithFormat:@"-1"] forKey:kCurrentCHATUserPHONE];
         [self sentRecievedVideos];
     }
     else{
+        [[NSUserDefaults standardUserDefaults] setValue:[NSString stringWithFormat:@"-1"] forKey:kCurrentCHATUserPHONE];
+        [self fbShare];
+    }
+    
+}
+
+-(void)fbShare
+{
+    if(![CommonMethods reachable])
+    {
+        //        [CommonMethods showAlertWithTitle:NSLocalizedString(@"No Connectivity",nil) message:NSLocalizedString(@"Please check the Internet Connnection",nil)];
+        return;
+    }
+    
+    NSString *videoTitle;
+    if([[NSUserDefaults standardUserDefaults]boolForKey:kIsFromCreated])
+    {
+        videoTitle = [[NSUserDefaults standardUserDefaults] valueForKey:kCreatedVideoShareTitle];
+    }
+    else{
+        videoTitle = [CommonMethods getVideoTitle];
+    }
+
+    videoTitle = [videoTitle stringByDecodingHTMLEntities];
+    NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
+    [dict setValue:kAPIKeyValue forKey:kAPIKey];
+    [dict setValue:kAPISecretValue forKey:kAPISecret];
+    [dict setValue:[videoTitle stringByEncodingHTMLEntities] forKey:kVideoTITLE];
+    [dict setValue:[NSString stringWithFormat:@"%lld",myPhoneNum] forKey:kShareFROM];
+    NSLog(@"share fb Video: %@",dict);
+    
+    if([CommonMethods reachable])
+    {
+        //        UCZProgressView *progressView = [[UCZProgressView alloc]initWithFrame:self.view.frame];
+        //        progressView.indeterminate = YES;
+        //        progressView.showsText = YES;
+        //        progressView.backgroundColor = [UIColor blackColor];
+        //        progressView.opaque = 0.5;
+        //        progressView.alpha = 0.5;
+        //        [self.view addSubview:progressView];
         
     }
+    ConnectionHandler *connObj = [[ConnectionHandler alloc] init];
+    connObj.delegate = self;
+    [connObj makePOSTRequestPath:kFbShareVideoURL parameters:dict];//kFbShareVideoURL
 
 }
 

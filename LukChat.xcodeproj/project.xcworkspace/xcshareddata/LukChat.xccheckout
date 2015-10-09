@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>BF138739-AADE-46FB-A7B0-888216FF439D</string>
 	<key>IDESourceControlProjectName</key>
-	<string>project</string>
+	<string>LukChat</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>6CD04F3077014F1D24BBADE5A1E632D4E6CC55DD</key>
 		<string>https://github.com/JainNkd/MyLukChat.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>LukChat.xcodeproj/project.xcworkspace</string>
+	<string>LukChat.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>6CD04F3077014F1D24BBADE5A1E632D4E6CC55DD</key>

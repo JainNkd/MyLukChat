@@ -199,12 +199,52 @@
     
     if([CommonMethods isWiFiConnected])
     [self uploadVideosInBackground];
+    
+    [self uploadFBShareVideosInBG];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     if (self.localNotificationSound) {
         AudioServicesDisposeSystemSoundID(self.localNotificationSound);
     }
+}
+
+-(void)uploadFBShareVideosInBG
+{
+    NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    
+    long long int myPhoneNum = [[[NSUserDefaults standardUserDefaults]valueForKey:kMYPhoneNumber] longLongValue];
+
+    
+    if(myPhoneNum>0){
+        NSArray *fbShareVideos = [DatabaseMethods getAllFBShareVideos:5];
+        NSLog(@"fbShareVideos....%@",fbShareVideos);
+        if(fbShareVideos.count > 0)
+        {
+            for(int i = 0; i<fbShareVideos.count ; i++){
+                VideoDetail *videoDetail = [fbShareVideos objectAtIndex:i];
+                
+                NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
+                [dict setValue:kAPIKeyValue forKey:kAPIKey];
+                [dict setValue:kAPISecretValue forKey:kAPISecret];
+                [dict setValue:[NSString stringWithFormat:@"%lld",myPhoneNum] forKey:kShareFROM];
+                [dict setValue:videoDetail.videoID forKey:@"id"];
+                NSLog(@"shareVideo: %@",dict);
+                
+                videoDetail.mergedVideoURL = [NSString stringWithFormat:@"%@/%@", path, videoDetail.mergedVideoURL];
+                if(videoDetail.mergedVideoURL.length>0)
+                {
+                    NSURL * localVideoURL = [NSURL fileURLWithPath:videoDetail.mergedVideoURL];
+                    if ([[NSFileManager defaultManager] fileExistsAtPath:videoDetail.mergedVideoURL]) {
+                        [self makeFBPOSTVideoShareAtPath:localVideoURL parameters:dict];
+                        NSLog(@"upload single video file name  : %@", videoDetail.mergedVideoURL);
+                    }
+                }
+            }
+        }
+    }
+
+    
 }
 -(void)uploadVideosInBackground
 {
@@ -363,10 +403,63 @@
         }];
 }
 
+-(void)makeFBPOSTVideoShareAtPath:(NSURL *)path parameters:(NSDictionary *)parameters {
+    ConnectionHandler *connHandler = [[ConnectionHandler alloc] init];
+    if (![connHandler hasConnectivity]) {
+//        [CommonMethods showAlertWithTitle:NSLocalizedString(@"No Connectivity",nil) message:NSLocalizedString(@"Please check the Internet Connnection",nil)];
+        return;
+    }
+    
+    NSData *videoData = [NSData dataWithContentsOfURL:path];
+    UIImage *imageObj = [self generateThumbImage:path];
+    NSData *imageData = UIImagePNGRepresentation(imageObj);
+    
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    [appDelegate.httpClient registerHTTPOperationClass:[AFJSONRequestOperation class]];
+    [appDelegate.httpClient setDefaultHeader:@"Accept" value:@"application/json"];
+    [appDelegate.httpClient setDefaultHeader:@"Accept" value:@"text/json"];
+    [appDelegate.httpClient setDefaultHeader:@"Accept" value:@"text/html"];
+    [appDelegate.httpClient setDefaultHeader:@"Content-type" value:@"application/json"];
+    [appDelegate.httpClient setParameterEncoding:AFFormURLParameterEncoding];
+    
+    NSMutableURLRequest *afRequest = [appDelegate.httpClient multipartFormRequestWithMethod:@"POST" path:KFbUpload parameters:parameters constructingBodyWithBlock:^(id <AFMultipartFormData>formData)
+                                      {
+                                          [formData appendPartWithFileData:videoData name:kShareFILE fileName:@"filename.mov" mimeType:@"video/quicktime"];
+                                          [formData appendPartWithFileData:imageData name:kShareThumbnailFILE fileName:@"thumbnail" mimeType:@"image/png"];
+                                      }];
+    
+    afRequest.timeoutInterval = 60.0;
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:afRequest];
+    [operation  setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
+        [DatabaseMethods deleteRecordFromDB:0];
+        NSString *responseString = [operation responseString];
+        // if ([path isEqualToString:kShareVideoURL]) {
+        // NSLog(@"Request Successful, ShareVideo response '%@'", responseString);
+        //        [self parseShareVideoResponse:responseString fromURL:kShareVideoURL ];
+        NSLog(@"parseShareVideoResponse : %@ for URL:%@",responseString,KFbUpload);
+        
+        [self connHandlerClient:nil didSucceedWithResponseString:responseString forPath:KFbUpload];
+        // }
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error)
+     {
+         NSLog(@"[AFHTTPRequestOperation Error]: %@", error);
+         [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
+         //delegate
+         [self connHandlerClient:nil didFailWithError:error];
+     }];
+    
+    [operation setUploadProgressBlock:^(NSInteger bytesWritten,NSInteger totalBytesWritten,NSInteger totalBytesExpectedToWrite)
+     {
+         NSLog(@"Sent %lld of %lld bytes", (long long int)totalBytesWritten,(long long int)totalBytesExpectedToWrite);
+     }];
+    [operation start];
+}
+
 //
 -(void)makePOSTVideoShareAtPath:(NSURL *)path parameters:(NSDictionary *)parameters {
-    
-    
     ConnectionHandler *connHandler = [[ConnectionHandler alloc] init];
     if (![connHandler hasConnectivity]) {
         [CommonMethods showAlertWithTitle:NSLocalizedString(@"No Connectivity",nil) message:NSLocalizedString(@"Please check the Internet Connnection",nil)];
@@ -418,15 +511,13 @@
      {
          NSLog(@"Sent %lld of %lld bytes", (long long int)totalBytesWritten,(long long int)totalBytesExpectedToWrite);
      }];
-    
     [operation start];
-    
 }
 
 -(void)connHandlerClient:(ConnectionHandler *)client didSucceedWithResponseString:(NSString *)response forPath:(NSString *)urlPath{
     NSLog(@"Single video uploaded ... : %@",response);
     
-    if ([urlPath isEqualToString:kShareVideoURL]) {
+    if ([urlPath isEqualToString:kShareVideoURL] || [urlPath isEqualToString:KFbUpload]) {
         NSLog(@"SUCCESS: ShareVideo");
         
         NSError *error;
@@ -441,10 +532,8 @@
             case 1:
             {
                 NSLog(@"video uplaod done...!!!");
-                //                NSString *videoID = [[[usersdict valueForKey:@"video_id"] valueForKey:@"Video"] valueForKey:@"id"];
-                //                [self addMyVideoLog:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",kVideoDownloadURL,[usersdict objectForKey:@"filename"]]] videoId:videoID];
-                //                [CommonMethods showAlertWithTitle:@"Alert" message:@"Video uploaded successful."];
-                //                [self.navigationController popToRootViewControllerAnimated:YES];
+                NSString *videoID = [[[usersdict valueForKey:@"video_id"] valueForKey:@"Video"] valueForKey:@"id"];
+                [DatabaseMethods updateFBSahreInfoDB:videoID];
                 break;
             }
             case 2:
