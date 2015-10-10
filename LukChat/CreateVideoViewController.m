@@ -91,7 +91,7 @@
     
     CreateVideoCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if(!cell)
-        cell = [[CreateVideoCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell = [[CreateVideoCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
     
     cell.delegate = self;
     

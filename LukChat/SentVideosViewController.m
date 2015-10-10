@@ -369,7 +369,7 @@
     else if(videoObj.lname.length > 0)
         name = videoObj.lname;
     else if(videoObj.toContact == -1)
-        name = @"Facebook";
+        name = @"posted on FACEBOOK";
     else
         name = [NSString stringWithFormat:@"%lld",videoObj.toContact];
     
