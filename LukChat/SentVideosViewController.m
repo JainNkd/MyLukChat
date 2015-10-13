@@ -256,7 +256,6 @@
     static NSString *ReceivedCellIdentifier = @"ReceivedCell";
     
     VideoDetail *videoObj = [videoDetailsArr objectAtIndex:indexPath.row];
-    
     UITableViewCell *cell;
     if(videoObj.fromContact ==  myPhoneNum){
         SentVideoTableViewCell *sentCell = [tableView dequeueReusableCellWithIdentifier:SentCellIdentifier];
@@ -325,6 +324,8 @@
 {
     NSString *phoneNumber = [NSString stringWithFormat:@"%lld",videoObj.toContact];
     VideoDetail *videoUserInfo = [userInfoDict valueForKey:phoneNumber];
+    videoObj.mergedVideoURL = [DatabaseMethods getVideoLocalURL:videoObj.videoID];
+    
     if(videoUserInfo){
         
         videoObj.fname = videoUserInfo.fname;
@@ -415,7 +416,16 @@
     __block NSString *documentsDirectory = [paths objectAtIndex:0];
     NSString *filePath = [documentsDirectory stringByAppendingPathComponent:videoObj.thumnailName];
     
-    if([[NSFileManager defaultManager] fileExistsAtPath:filePath])
+     if((videoObj.thumnailName.length == 0) && (videoObj.toContact == -1))
+    {
+        
+        if(videoObj.mergedVideoURL.length>0){
+            NSURL *url = [NSURL fileURLWithPath:[CommonMethods localFileUrl:videoObj.mergedVideoURL]];
+            UIImage *image =  [SharedAppDelegate generateThumbImage:url];
+            [cell.userImageViewObj setImage:image];
+        }
+    }
+    else if([[NSFileManager defaultManager] fileExistsAtPath:filePath])
     {
         NSData *pngData = [NSData dataWithContentsOfFile:filePath];
         UIImage *image = [UIImage imageWithData:pngData];

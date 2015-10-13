@@ -44,5 +44,6 @@
 @property(nonatomic, strong) AFHTTPClient *httpClient;
 
 -(void)uploadFBShareVideosInBG;
+-(UIImage *)generateThumbImage :(NSURL *)url;
 
 @end
