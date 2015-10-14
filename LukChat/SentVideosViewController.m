@@ -71,7 +71,7 @@
     
     userInfoDict = [[NSMutableDictionary alloc]init];
     
-    self.sentTableViewObj.estimatedRowHeight = 130;
+    self.sentTableViewObj.estimatedRowHeight = 110;
     self.sentTableViewObj.rowHeight = UITableViewAutomaticDimension;
     self.sentTableViewObj.allowsMultipleSelectionDuringEditing = NO;
     
@@ -369,8 +369,12 @@
         name = videoObj.fname;
     else if(videoObj.lname.length > 0)
         name = videoObj.lname;
-    else if(videoObj.toContact == -1)
-        name = @"posted on FACEBOOK";
+    else if(videoObj.toContact == -1){
+//        name = @"posted on FACEBOOK";
+        name = @"";
+        cell.postedOnFbLBL.hidden = NO;
+        cell.fbImage.hidden = NO;
+    }
     else
         name = [NSString stringWithFormat:@"%lld",videoObj.toContact];
     
@@ -675,7 +679,7 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    return 130;
+    return 110;
 }
 
 //-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -714,9 +718,9 @@
                 
                 UCZProgressView *progressView;
                 if(videoObj.toContact == myPhoneNum)
-                    progressView = [[UCZProgressView alloc]initWithFrame:CGRectMake(0,0,100,100)];
+                    progressView = [[UCZProgressView alloc]initWithFrame:CGRectMake(0,0,80,80)];
                 else
-                    progressView = [[UCZProgressView alloc]initWithFrame:CGRectMake(220,0,100,100)];
+                    progressView = [[UCZProgressView alloc]initWithFrame:CGRectMake(240,0,80,80)];
                 progressView.tag = indexPath.row;
                 progressView.indeterminate = YES;
                 progressView.showsText = YES;

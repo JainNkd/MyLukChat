@@ -23,4 +23,6 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *dayTimeLBL;
 
+@property (weak, nonatomic) IBOutlet UILabel *postedOnFbLBL;
+@property (weak, nonatomic) IBOutlet UIImageView *fbImage;
 @end

@@ -16,6 +16,7 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         // Initialization code
+        
     }
     return self;
 }
@@ -23,6 +24,9 @@
 - (void)awakeFromNib
 {
     // Initialization code
+    
+    self.fbImage.hidden = YES;
+    self.postedOnFbLBL.hidden = YES;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated

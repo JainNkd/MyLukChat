@@ -344,11 +344,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LukChat/SentVideosViewController.m"
-            timestampString = "466445302.263192"
+            timestampString = "466536523.817464"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "837"
-            endingLineNumber = "837"
+            startingLineNumber = "841"
+            endingLineNumber = "841"
             landmarkName = "-openSettingBtnAction:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1080,11 +1080,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LukChat/SentVideosViewController.m"
-            timestampString = "466445302.263192"
+            timestampString = "466536523.817464"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "438"
-            endingLineNumber = "438"
+            startingLineNumber = "442"
+            endingLineNumber = "442"
             landmarkName = "-createSentCellData:cell:indexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1144,11 +1144,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LukChat/SentVideosViewController.m"
-            timestampString = "466445302.263192"
+            timestampString = "466536523.817464"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "429"
-            endingLineNumber = "429"
+            startingLineNumber = "433"
+            endingLineNumber = "433"
             landmarkName = "-createSentCellData:cell:indexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1160,11 +1160,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LukChat/SentVideosViewController.m"
-            timestampString = "466445302.263192"
+            timestampString = "466536523.817464"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "438"
-            endingLineNumber = "438"
+            startingLineNumber = "442"
+            endingLineNumber = "442"
             landmarkName = "-createSentCellData:cell:indexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1176,11 +1176,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LukChat/SentVideosViewController.m"
-            timestampString = "466445302.263192"
+            timestampString = "466536523.817464"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "419"
-            endingLineNumber = "419"
+            startingLineNumber = "423"
+            endingLineNumber = "423"
             landmarkName = "-createSentCellData:cell:indexPath:"
             landmarkType = "5">
          </BreakpointContent>
