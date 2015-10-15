@@ -364,20 +364,25 @@
         
     }
     
+    cell.postedOnFbLBL.hidden = YES;
+    cell.fbImage.hidden = YES;
+    cell.userNameLBLObj.hidden = NO;
+    
     NSString *name;
-    if(videoObj.fname.length > 0)
-        name = videoObj.fname;
-    else if(videoObj.lname.length > 0)
-        name = videoObj.lname;
-    else if(videoObj.toContact == -1){
-//        name = @"posted on FACEBOOK";
+    if(videoObj.toContact == -1){
+        //        name = @"posted on FACEBOOK";
         name = @"";
         cell.postedOnFbLBL.hidden = NO;
         cell.fbImage.hidden = NO;
+        cell.userNameLBLObj.hidden = YES;
     }
-    else
+    else if(videoObj.fname.length > 0)
+        name = videoObj.fname;
+    else if(videoObj.lname.length > 0)
+        name = videoObj.lname;
+        else{
         name = [NSString stringWithFormat:@"%lld",videoObj.toContact];
-    
+    }
     
     cell.userNameLBLObj.text = name;
     NSString *title = [videoObj.videoTitle stringByDecodingHTMLEntities];
