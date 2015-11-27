@@ -19,6 +19,7 @@
 #import "UCZProgressView.h"
 #import "NSString+HTML.h"
 #import "AppDelegate.h"
+#import "FBFriendsListViewController.h"
 
 @interface LukiesViewController ()<ConnectionHandlerDelegate>
 {
@@ -511,6 +512,11 @@
 
 - (IBAction)facebookPostBtnClicked:(UIButton *)sender {
     
+//    FBFriendsListViewController *fbVC = [self.storyboard instantiateViewControllerWithIdentifier:@"FBFriendsListViewController"];
+//    
+//    [self.navigationController pushViewController:fbVC animated:YES];
+//    return;
+    
     if(![CommonMethods reachable])
     {
         [CommonMethods showAlertWithTitle:NSLocalizedString(@"No Connectivity",nil) message:NSLocalizedString(@"Please check the Internet Connnection",nil)];
@@ -539,7 +545,7 @@
             facebookVideoPath = urlStr;
             if(!SharedAppDelegate.facebook.isSessionValid){
                 NSArray* permissions = [[NSArray alloc] initWithObjects:
-                                        @"publish_actions", nil];
+                                        @"publish_actions",@"user_friends", nil];
                 [SharedAppDelegate.facebook authorize:permissions delegate:self];
             }
             else
@@ -953,10 +959,12 @@
                                        [NSString stringWithFormat:@"LUK - %@",videoTitle], @"title",
                                        videoTitle, @"description",
                                        nil];
-        [SharedAppDelegate.facebook requestWithGraphPath:@"me/videos"
+//        850892128292581   1400827856905144
+        [SharedAppDelegate.facebook requestWithGraphPath:[NSString stringWithFormat:@"1400827856905144/videos?access_token=%@",SharedAppDelegate.facebook.accessToken]
                                                andParams:params
                                            andHttpMethod:@"POST"
                                              andDelegate:self];
+//        [self postVideoToFriends:params];
     }
     else
     {
@@ -964,6 +972,64 @@
         
     }
     
+}
+
+-(void)postVideoToFriends:(NSDictionary*)prams
+{
+        //Get fb server data List Request to server
+        NSOperationQueue *backgroundQueue = [[NSOperationQueue alloc] init];
+        
+//        NSString *appSecretProof = [self signWithKey:@"dc136dab35351bc2872c90f37d5e6d3c" usingData:SharedAppDelegate.facebook.accessToken];
+        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://graph-video.facebook.com/v2.3/me/videos?access_token=%@",SharedAppDelegate.facebook.accessToken]]];
+    
+    NSError *error;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:prams
+                                                       options:NSJSONWritingPrettyPrinted
+                                                         error:&error];
+    
+        [request setHTTPMethod:@"POST"];
+    NSString* contentType = [NSString
+                             stringWithFormat:@"multipart/form-data"];
+    [request setValue:contentType forHTTPHeaderField:@"Content-Type"];
+//        [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+//        [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+        [request setHTTPBody:jsonData];
+    
+        // Create url connection and fire request
+        [NSURLConnection sendAsynchronousRequest:request
+                                           queue:backgroundQueue
+                               completionHandler:^(NSURLResponse *response, NSData *data, NSError *error){
+                                   dispatch_async(dispatch_get_main_queue(), ^{
+                                   });
+                                   
+                                   if (error)
+                                   {
+                                       NSLog(@"error%@",[error localizedDescription]);
+                                       dispatch_async(dispatch_get_main_queue()
+                                                      , ^(void) {
+                                                          [CommonMethods showAlertWithTitle:NSLocalizedString(@"Error",nil) message:[error localizedDescription] cancelBtnTitle:NSLocalizedString(@"Accept",nil) otherBtnTitle:nil delegate:nil tag:0];
+                                                      });
+                                   }
+                                   else
+                                   {
+                                       NSString *result = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+                                       NSLog(@"result....%@",result);
+                                       
+                                       NSError *jsonParsingError = nil;
+                                       id object = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonParsingError];
+                                       
+                                       if (jsonParsingError) {
+                                           NSLog(@"JSON ERROR: %@", [jsonParsingError localizedDescription]);
+                                       } else {
+                                           NSDictionary *responseDict = (NSDictionary*)object;
+                                           dispatch_async(dispatch_get_main_queue(), ^{
+                                               
+                                           });
+                                       }
+                                   }
+                               }];
+    
+
 }
 
 

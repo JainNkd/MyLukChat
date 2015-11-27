@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="13F1077" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="KRm-ul-vIt">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="KRm-ul-vIt">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -27,7 +27,7 @@
                                 </state>
                                 <connections>
                                     <action selector="tapPressedOnStartScreen:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="o5J-ix-FlB"/>
-                                    <segue destination="4Z4-ez-jN2" kind="custom" identifier="TabBarView" customClass="PushNoAnimationSegue" id="Q69-w8-5QU"/>
+                                    <segue destination="4Z4-ez-jN2" kind="custom" identifier="TabBarView" customClass="PushNoAnimationSegue" id="VH4-zP-nZh"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1138,6 +1138,109 @@
             </objects>
             <point key="canvasLocation" x="1761" y="959"/>
         </scene>
+        <!--Friends List View Controller-->
+        <scene sceneID="BDu-Xs-kFy">
+            <objects>
+                <viewController storyboardIdentifier="FBFriendsListViewController" id="UPv-ip-IO4" customClass="FBFriendsListViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="c6a-WZ-mg8"/>
+                        <viewControllerLayoutGuide type="bottom" id="EjS-lV-PlV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="1Wb-Df-Kct">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bg@postwall.png" translatesAutoresizingMaskIntoConstraints="NO" id="804-f6-Cov">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="logo-luk.png" translatesAutoresizingMaskIntoConstraints="NO" id="5cR-WP-pki">
+                                <rect key="frame" x="16" y="15" width="62" height="30"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vKt-Ef-FZC">
+                                <rect key="frame" x="0.0" y="64" width="320" height="62"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6dh-aq-5K0">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="62"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                        <state key="normal" title="post to facebook" backgroundImage="heading-bg.png">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uad-KX-Ml3">
+                                <rect key="frame" x="0.0" y="126" width="320" height="52"/>
+                                <state key="normal" title="post to your own wall" backgroundImage="sub-heading-bg.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="postToOwnWall:" destination="UPv-ip-IO4" eventType="touchUpInside" id="YRw-jm-D7b"/>
+                                </connections>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="PXC-Si-FB5">
+                                <rect key="frame" x="0.0" y="178" width="320" height="289"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="FBFriendCell" rowHeight="44" id="9gX-03-Ccg" customClass="FBFriendCell">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9gX-03-Ccg" id="Qeh-Y4-ar1">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XV8-OR-474">
+                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                                </imageView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BZK-ew-COL">
+                                                    <rect key="frame" x="10" y="2" width="38" height="38"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="njq-g5-waG">
+                                                    <rect key="frame" x="60" y="11" width="245" height="20"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="backgroundImage" destination="XV8-OR-474" id="Wl8-ns-Z4S"/>
+                                            <outlet property="name" destination="njq-g5-waG" id="8bF-bv-Naz"/>
+                                            <outlet property="profileImage" destination="BZK-ew-COL" id="H3U-63-Jyq"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="UPv-ip-IO4" id="qRn-RY-2VO"/>
+                                    <outlet property="delegate" destination="UPv-ip-IO4" id="HxT-Lm-YDz"/>
+                                </connections>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="75c-PW-aYj">
+                                <rect key="frame" x="0.0" y="467" width="320" height="52"/>
+                                <inset key="contentEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="post to your friend's wall" backgroundImage="sub-heading-bg.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="postToFriendsWall:" destination="UPv-ip-IO4" eventType="touchUpInside" id="n3d-DJ-nNy"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="ofE-83-XOz"/>
+                    <connections>
+                        <outlet property="fbFriednsTableView" destination="PXC-Si-FB5" id="0o2-R4-GRR"/>
+                        <outlet property="postToFrndFBWallBtn" destination="75c-PW-aYj" id="E2y-m3-pLJ"/>
+                        <outlet property="postToOwnFBWallBtn" destination="Uad-KX-Ml3" id="LE4-xp-q2B"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vg8-fG-Wz0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-203" y="-577"/>
+        </scene>
         <!--Single Video View Controller-->
         <scene sceneID="y0r-RR-0eN">
             <objects>
@@ -1644,6 +1747,7 @@
     <resources>
         <image name="app-store-screen-1_7.png" width="640" height="1136"/>
         <image name="bg-select-screen.png" width="320" height="568"/>
+        <image name="bg@postwall.png" width="640" height="1136"/>
         <image name="camerapage-icon-cance.png" width="23" height="23"/>
         <image name="camerapage-icon-rottat-camera.png" width="75" height="50"/>
         <image name="camerapage-icon-running-indication-white.png" width="31" height="24"/>
@@ -1652,6 +1756,7 @@
         <image name="close-icon.png" width="28" height="26"/>
         <image name="contact_bg.png" width="320" height="480"/>
         <image name="download_video.png" width="50" height="50"/>
+        <image name="heading-bg.png" width="320" height="62"/>
         <image name="history-draft-bg.png" width="320" height="568"/>
         <image name="history-draft-devider-line.png" width="320" height="1"/>
         <image name="history-draft-fbicon.png" width="17" height="16"/>
@@ -1680,6 +1785,7 @@
         <image name="signup-field-bg.png" width="640" height="124"/>
         <image name="signup-terms-checkbox-normal-view.png" width="65" height="65"/>
         <image name="start-screen-text-field.png" width="320" height="35"/>
+        <image name="sub-heading-bg.png" width="320" height="52"/>
         <image name="verfication-background.png" width="640" height="1136"/>
         <image name="verfication-field-bg.png" width="640" height="124"/>
         <image name="video_play.png" width="50" height="50"/>
@@ -1690,6 +1796,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="kz9-Bu-m6X"/>
+        <segue reference="VH4-zP-nZh"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		01024C701BE93F4300C2DA3C /* bg@postwall.png in Resources */ = {isa = PBXBuildFile; fileRef = 01024C6C1BE93F4300C2DA3C /* bg@postwall.png */; };
+		01024C711BE93F4300C2DA3C /* heading-bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 01024C6D1BE93F4300C2DA3C /* heading-bg@2x.png */; };
+		01024C721BE93F4300C2DA3C /* name-layover-bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 01024C6E1BE93F4300C2DA3C /* name-layover-bg@2x.png */; };
+		01024C731BE93F4300C2DA3C /* sub-heading-bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 01024C6F1BE93F4300C2DA3C /* sub-heading-bg@2x.png */; };
+		01024C781BE9435D00C2DA3C /* FBFriendsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01024C771BE9435D00C2DA3C /* FBFriendsListViewController.m */; };
+		015EB9AE1BEA2C65005419F5 /* FBFriendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 015EB9AD1BEA2C65005419F5 /* FBFriendCell.m */; };
 		6329BEE919A8AAC400B6D8F5 /* CustomeVideoPlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6329BEE219A8AAC400B6D8F5 /* CustomeVideoPlayViewController.m */; };
 		6329BEEA19A8AAC400B6D8F5 /* VideoPreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6329BEE419A8AAC400B6D8F5 /* VideoPreviewViewController.m */; };
 		6329BEEB19A8AAC400B6D8F5 /* CustomOrientationNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6329BEE619A8AAC400B6D8F5 /* CustomOrientationNavigationController.m */; };
@@ -300,6 +306,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		01024C6C1BE93F4300C2DA3C /* bg@postwall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg@postwall.png"; sourceTree = "<group>"; };
+		01024C6D1BE93F4300C2DA3C /* heading-bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "heading-bg@2x.png"; sourceTree = "<group>"; };
+		01024C6E1BE93F4300C2DA3C /* name-layover-bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "name-layover-bg@2x.png"; sourceTree = "<group>"; };
+		01024C6F1BE93F4300C2DA3C /* sub-heading-bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sub-heading-bg@2x.png"; sourceTree = "<group>"; };
+		01024C761BE9435D00C2DA3C /* FBFriendsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBFriendsListViewController.h; sourceTree = "<group>"; };
+		01024C771BE9435D00C2DA3C /* FBFriendsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBFriendsListViewController.m; sourceTree = "<group>"; };
+		015EB9AC1BEA2C65005419F5 /* FBFriendCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBFriendCell.h; sourceTree = "<group>"; };
+		015EB9AD1BEA2C65005419F5 /* FBFriendCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBFriendCell.m; sourceTree = "<group>"; };
 		6329BEE219A8AAC400B6D8F5 /* CustomeVideoPlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomeVideoPlayViewController.m; sourceTree = "<group>"; };
 		6329BEE319A8AAC400B6D8F5 /* CustomeVideoPlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomeVideoPlayViewController.h; sourceTree = "<group>"; };
 		6329BEE419A8AAC400B6D8F5 /* VideoPreviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoPreviewViewController.m; sourceTree = "<group>"; };
@@ -741,6 +755,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		01024C6B1BE93F4300C2DA3C /* facebookList */ = {
+			isa = PBXGroup;
+			children = (
+				01024C6C1BE93F4300C2DA3C /* bg@postwall.png */,
+				01024C6D1BE93F4300C2DA3C /* heading-bg@2x.png */,
+				01024C6E1BE93F4300C2DA3C /* name-layover-bg@2x.png */,
+				01024C6F1BE93F4300C2DA3C /* sub-heading-bg@2x.png */,
+			);
+			path = facebookList;
+			sourceTree = "<group>";
+		};
 		6329BEED19A8AB7D00B6D8F5 /* AppDelegate */ = {
 			isa = PBXGroup;
 			children = (
@@ -919,6 +944,7 @@
 		633850511983A4C900C3256A /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				01024C6B1BE93F4300C2DA3C /* facebookList */,
 				8BF359251B46A31D0056BE81 /* luk-app-icon-80.png */,
 				87A817871B41A6A400EF5F73 /* Setting */,
 				87B979311B36108000B2C54D /* iphone4-screen-1.png */,
@@ -1444,6 +1470,10 @@
 			children = (
 				87AFE04A1A5C55E700DCA827 /* LukiesViewController.h */,
 				87AFE04B1A5C55E700DCA827 /* LukiesViewController.m */,
+				01024C761BE9435D00C2DA3C /* FBFriendsListViewController.h */,
+				01024C771BE9435D00C2DA3C /* FBFriendsListViewController.m */,
+				015EB9AC1BEA2C65005419F5 /* FBFriendCell.h */,
+				015EB9AD1BEA2C65005419F5 /* FBFriendCell.m */,
 			);
 			name = Contacts;
 			sourceTree = "<group>";
@@ -1723,6 +1753,7 @@
 				63F999BC199E095A005C82F6 /* luk-iphone-final-lukes-sent-list-main-bg.png in Resources */,
 				63F999D1199E095A005C82F6 /* share-videos-pic-descripiton-shadow.png in Resources */,
 				63F999EF199E095A005C82F6 /* name-list-bg.png in Resources */,
+				01024C721BE93F4300C2DA3C /* name-layover-bg@2x.png in Resources */,
 				87BD842F1ADEE14200761A28 /* select-logo-luk@2x.png in Resources */,
 				87B979261B3603AE00B2C54D /* luk-screen-post-facebook@2x.png in Resources */,
 				8B0DB2BF1B664F14007EDB7B /* confirm-button@2x.png in Resources */,
@@ -1767,6 +1798,7 @@
 				633850771983A4C900C3256A /* InfoPlist.strings in Resources */,
 				63F999D0199E095A005C82F6 /* share-videos-pic-1.png in Resources */,
 				8727D59B1A4884460092BB7C /* SCRecorderMac-Info.plist in Resources */,
+				01024C701BE93F4300C2DA3C /* bg@postwall.png in Resources */,
 				87B9791C1B3603AE00B2C54D /* contact_bg@2x.png in Resources */,
 				63F999C7199E095A005C82F6 /* merged-videos-logo.png in Resources */,
 				8BB068ED1AC58A0C000A84C7 /* camerapage-icon-running-indication-white@2x.png in Resources */,
@@ -1797,6 +1829,7 @@
 				87B979221B3603AE00B2C54D /* facebook_post-text-with-buttonbg@2x.png in Resources */,
 				87B9791B1B3603AE00B2C54D /* contact_bg@1x.png in Resources */,
 				879DA42E1AC30E7800E26CCB /* opacity-blured-img@2x.png in Resources */,
+				01024C711BE93F4300C2DA3C /* heading-bg@2x.png in Resources */,
 				87A8178C1B41A6A400EF5F73 /* close-icon.png in Resources */,
 				63F999D7199E095A005C82F6 /* signup-terms-checkbox-normal-view.png in Resources */,
 				F016EB481A2BD04500506B75 /* CameraMode.png in Resources */,
@@ -1823,6 +1856,7 @@
 				87BD842B1ADEE14200761A28 /* pic-bg@2x.png in Resources */,
 				87B9792A1B3603AE00B2C54D /* send-lukies_pressbuttonbg@2x.png in Resources */,
 				87BD842A1ADEE14200761A28 /* bg-select-screen@2x.png in Resources */,
+				01024C731BE93F4300C2DA3C /* sub-heading-bg@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1875,6 +1909,7 @@
 				8786A4271ADAE0B700FD206B /* NSString+HTML.m in Sources */,
 				633850F61983C9F400C3256A /* AFHTTPClient.m in Sources */,
 				8727D5D01A4885E30092BB7C /* SCTouchDetector.m in Sources */,
+				01024C781BE9435D00C2DA3C /* FBFriendsListViewController.m in Sources */,
 				8B12417B1B6B866B00C805D0 /* UICollectionView+Draggable.m in Sources */,
 				8B12417A1B6B866B00C805D0 /* DraggableCollectionViewFlowLayout.m in Sources */,
 				633851061983C9F400C3256A /* SBJsonBase.m in Sources */,
@@ -1890,6 +1925,7 @@
 				633851021983C9F400C3256A /* Reachability.m in Sources */,
 				633850B11983C49000C3256A /* GetInputViewController.m in Sources */,
 				875BFD2E1A57310B00A83E35 /* SentVideosViewController.m in Sources */,
+				015EB9AE1BEA2C65005419F5 /* FBFriendCell.m in Sources */,
 				633850FC1983C9F400C3256A /* AFPropertyListRequestOperation.m in Sources */,
 				633850F51983C9F400C3256A /* ConnectionHandler.m in Sources */,
 				8736FEAA1BB1D1D2009DD594 /* MGSwipeTableCell.m in Sources */,
