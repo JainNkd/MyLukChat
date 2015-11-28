@@ -10,7 +10,13 @@
 #import "Chat.h"
 #import "Facebook.h"
 
-@interface LukiesViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,FBSessionDelegate, FBRequestDelegate>
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <FBSDKLoginKit/FBSDKLoginKit.h>
+#import <FBSDKShareKit/FBSDKShareKit.h>
+#import <AssetsLibrary/ALAsset.h>
+
+
+@interface LukiesViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,FBSessionDelegate, FBRequestDelegate,FBSDKSharingDelegate>
 {
 //    Facebook *facebook;
     NSString *cnCode,*facebookVideoPath;

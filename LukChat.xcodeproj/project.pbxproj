@@ -13,6 +13,10 @@
 		01024C731BE93F4300C2DA3C /* sub-heading-bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 01024C6F1BE93F4300C2DA3C /* sub-heading-bg@2x.png */; };
 		01024C781BE9435D00C2DA3C /* FBFriendsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01024C771BE9435D00C2DA3C /* FBFriendsListViewController.m */; };
 		015EB9AE1BEA2C65005419F5 /* FBFriendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 015EB9AD1BEA2C65005419F5 /* FBFriendCell.m */; };
+		01CE39A41C084F5000867CDF /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01CE39A01C084F5000867CDF /* Bolts.framework */; };
+		01CE39A51C084F5000867CDF /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01CE39A11C084F5000867CDF /* FBSDKCoreKit.framework */; };
+		01CE39A61C084F5000867CDF /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01CE39A21C084F5000867CDF /* FBSDKLoginKit.framework */; };
+		01CE39A71C084F5000867CDF /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01CE39A31C084F5000867CDF /* FBSDKShareKit.framework */; };
 		6329BEE919A8AAC400B6D8F5 /* CustomeVideoPlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6329BEE219A8AAC400B6D8F5 /* CustomeVideoPlayViewController.m */; };
 		6329BEEA19A8AAC400B6D8F5 /* VideoPreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6329BEE419A8AAC400B6D8F5 /* VideoPreviewViewController.m */; };
 		6329BEEB19A8AAC400B6D8F5 /* CustomOrientationNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6329BEE619A8AAC400B6D8F5 /* CustomOrientationNavigationController.m */; };
@@ -314,6 +318,10 @@
 		01024C771BE9435D00C2DA3C /* FBFriendsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBFriendsListViewController.m; sourceTree = "<group>"; };
 		015EB9AC1BEA2C65005419F5 /* FBFriendCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBFriendCell.h; sourceTree = "<group>"; };
 		015EB9AD1BEA2C65005419F5 /* FBFriendCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBFriendCell.m; sourceTree = "<group>"; };
+		01CE39A01C084F5000867CDF /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
+		01CE39A11C084F5000867CDF /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		01CE39A21C084F5000867CDF /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		01CE39A31C084F5000867CDF /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
 		6329BEE219A8AAC400B6D8F5 /* CustomeVideoPlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomeVideoPlayViewController.m; sourceTree = "<group>"; };
 		6329BEE319A8AAC400B6D8F5 /* CustomeVideoPlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomeVideoPlayViewController.h; sourceTree = "<group>"; };
 		6329BEE419A8AAC400B6D8F5 /* VideoPreviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoPreviewViewController.m; sourceTree = "<group>"; };
@@ -721,6 +729,7 @@
 				8BC142FA1AA724D8002F36B0 /* StoreKit.framework in Frameworks */,
 				8BC142F81AA724C3002F36B0 /* Security.framework in Frameworks */,
 				875F64BF1B18FDA20074E244 /* Crashlytics.framework in Frameworks */,
+				01CE39A71C084F5000867CDF /* FBSDKShareKit.framework in Frameworks */,
 				8BC142F61AA724BA002F36B0 /* QuartzCore.framework in Frameworks */,
 				8BC142F41AA724B0002F36B0 /* MobileCoreServices.framework in Frameworks */,
 				8BC142F21AA7249D002F36B0 /* CoreLocation.framework in Frameworks */,
@@ -731,9 +740,12 @@
 				8BC142EB1AA72415002F36B0 /* ParseFacebookUtils.framework in Frameworks */,
 				633851201983CD3A00C3256A /* AddressBookUI.framework in Frameworks */,
 				6338511C1983CD0A00C3256A /* libsqlite3.0.dylib in Frameworks */,
+				01CE39A51C084F5000867CDF /* FBSDKCoreKit.framework in Frameworks */,
+				01CE39A41C084F5000867CDF /* Bolts.framework in Frameworks */,
 				8BC142E91AA72415002F36B0 /* Parse.framework in Frameworks */,
 				6338511A1983CD0300C3256A /* libsqlite3.dylib in Frameworks */,
 				8BC142E81AA72415002F36B0 /* Bolts.framework in Frameworks */,
+				01CE39A61C084F5000867CDF /* FBSDKLoginKit.framework in Frameworks */,
 				6338502119839F2D00C3256A /* UIKit.framework in Frameworks */,
 				8BC142EA1AA72415002F36B0 /* ParseCrashReporting.framework in Frameworks */,
 				6338501D19839F2D00C3256A /* Foundation.framework in Frameworks */,
@@ -868,6 +880,10 @@
 			isa = PBXGroup;
 			children = (
 				8BC142FD1AA724ED002F36B0 /* libz.dylib */,
+				01CE39A01C084F5000867CDF /* Bolts.framework */,
+				01CE39A11C084F5000867CDF /* FBSDKCoreKit.framework */,
+				01CE39A21C084F5000867CDF /* FBSDKLoginKit.framework */,
+				01CE39A31C084F5000867CDF /* FBSDKShareKit.framework */,
 				875F64BC1B18FDA10074E244 /* Fabric.framework */,
 				875F64BD1B18FDA10074E244 /* Crashlytics.framework */,
 				8BC142FB1AA724E2002F36B0 /* SystemConfiguration.framework */,
@@ -2086,8 +2102,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Markus Haas (5P499J9SM4)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Markus Haas (5P499J9SM4)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: aumkii Unternehmergesellschaft haftungsbeschrankt (F9KDL972HX)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: aumkii Unternehmergesellschaft haftungsbeschrankt (F9KDL972HX)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -2105,7 +2121,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "6f5cf38a-1510-43ae-9c77-5eac2c20d088";
+				PROVISIONING_PROFILE = "275a6496-dafc-4798-a531-520c1775007c";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -2126,8 +2142,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Markus Haas (5P499J9SM4)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Markus Haas (5P499J9SM4)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: aumkii Unternehmergesellschaft haftungsbeschrankt (F9KDL972HX)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: aumkii Unternehmergesellschaft haftungsbeschrankt (F9KDL972HX)";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -2138,7 +2154,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				PROVISIONING_PROFILE = "6f5cf38a-1510-43ae-9c77-5eac2c20d088";
+				PROVISIONING_PROFILE = "275a6496-dafc-4798-a531-520c1775007c";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -2149,8 +2165,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Markus Haas (5P499J9SM4)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Markus Haas (5P499J9SM4)";
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: aumkii Unternehmergesellschaft haftungsbeschrankt (F9KDL972HX)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: aumkii Unternehmergesellschaft haftungsbeschrankt (F9KDL972HX)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/LukChat/parse-library-1.6.3",
@@ -2161,7 +2178,7 @@
 				INFOPLIST_FILE = "LukChat/LukChat-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6f5cf38a-1510-43ae-9c77-5eac2c20d088";
+				PROVISIONING_PROFILE = "275a6496-dafc-4798-a531-520c1775007c";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -2171,8 +2188,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Markus Haas (5P499J9SM4)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Markus Haas (5P499J9SM4)";
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: aumkii Unternehmergesellschaft haftungsbeschrankt (F9KDL972HX)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: aumkii Unternehmergesellschaft haftungsbeschrankt (F9KDL972HX)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/LukChat/parse-library-1.6.3",
@@ -2183,7 +2201,7 @@
 				INFOPLIST_FILE = "LukChat/LukChat-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6f5cf38a-1510-43ae-9c77-5eac2c20d088";
+				PROVISIONING_PROFILE = "275a6496-dafc-4798-a531-520c1775007c";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -2192,8 +2210,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/LukChat.app/LukChat";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Markus Haas (5P499J9SM4)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Markus Haas (5P499J9SM4)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: aumkii Unternehmergesellschaft haftungsbeschrankt (F9KDL972HX)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: aumkii Unternehmergesellschaft haftungsbeschrankt (F9KDL972HX)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -2207,7 +2225,7 @@
 				);
 				INFOPLIST_FILE = "LukChatTests/LukChatTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6f5cf38a-1510-43ae-9c77-5eac2c20d088";
+				PROVISIONING_PROFILE = "275a6496-dafc-4798-a531-520c1775007c";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -2217,8 +2235,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/LukChat.app/LukChat";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Markus Haas (5P499J9SM4)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Markus Haas (5P499J9SM4)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: aumkii Unternehmergesellschaft haftungsbeschrankt (F9KDL972HX)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: aumkii Unternehmergesellschaft haftungsbeschrankt (F9KDL972HX)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -2228,7 +2246,7 @@
 				GCC_PREFIX_HEADER = "LukChat/LukChat-Prefix.pch";
 				INFOPLIST_FILE = "LukChatTests/LukChatTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6f5cf38a-1510-43ae-9c77-5eac2c20d088";
+				PROVISIONING_PROFILE = "275a6496-dafc-4798-a531-520c1775007c";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};

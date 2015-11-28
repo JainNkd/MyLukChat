@@ -17,8 +17,9 @@
 #import "AFNetworkActivityIndicatorManager.h"
 #import <Parse/Parse.h>
 
-
-
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <FBSDKLoginKit/FBSDKLoginKit.h>
+#import <FBSDKShareKit/FBSDKShareKit.h>
 
 @implementation AppDelegate
 
@@ -59,6 +60,9 @@
     [application registerUserNotificationSettings:settings];
     [application registerForRemoteNotifications];
     
+    //Facebook set up
+    [[FBSDKApplicationDelegate sharedInstance] application:application
+                             didFinishLaunchingWithOptions:launchOptions];
     
     // Request authorization to Address Book
     ABAddressBookRef addressBookRef = ABAddressBookCreateWithOptions(NULL, NULL);
@@ -81,6 +85,17 @@
 
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
     return [self.facebook handleOpenURL:url];
+}
+
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication
+         annotation:(id)annotation
+{
+    return [[FBSDKApplicationDelegate sharedInstance] application:application
+                                                          openURL:url
+                                                sourceApplication:sourceApplication
+                                                       annotation:annotation];
 }
 
 -(void) checkAndCreateDatabase{
