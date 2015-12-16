@@ -296,11 +296,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LukChat/LukiesViewController.m"
-            timestampString = "457549889.713022"
+            timestampString = "471986308.747964"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "619"
-            endingLineNumber = "619"
+            startingLineNumber = "690"
+            endingLineNumber = "690"
             landmarkName = "-sentRecievedVideos"
             landmarkType = "5">
          </BreakpointContent>
@@ -312,12 +312,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LukChat/LukiesViewController.m"
-            timestampString = "457549889.713022"
+            timestampString = "471986308.747964"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "597"
-            endingLineNumber = "597"
-            landmarkName = "-sendToLukiesButtonPressed:"
+            startingLineNumber = "668"
+            endingLineNumber = "668"
+            landmarkName = "-sentRecievedVideos"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -328,12 +328,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LukChat/LukiesViewController.m"
-            timestampString = "457549889.713022"
+            timestampString = "471986308.747964"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "625"
-            endingLineNumber = "625"
-            landmarkName = "-sentRecievedVideos"
+            startingLineNumber = "696"
+            endingLineNumber = "696"
+            landmarkName = "-shareVideo:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -360,12 +360,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LukChat/LukiesViewController.m"
-            timestampString = "457549889.713022"
+            timestampString = "471986308.747964"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "566"
-            endingLineNumber = "566"
-            landmarkName = "-facebookPostBtnClicked:"
+            startingLineNumber = "637"
+            endingLineNumber = "637"
+            landmarkName = "-sendToLukiesButtonPressed:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -424,12 +424,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LukChat/LukiesViewController.m"
-            timestampString = "457549889.713022"
+            timestampString = "471986308.747964"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "748"
-            endingLineNumber = "748"
-            landmarkName = "-generateThumbImage:"
+            startingLineNumber = "819"
+            endingLineNumber = "819"
+            landmarkName = "-startProgressLoader"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -440,11 +440,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LukChat/LukiesViewController.m"
-            timestampString = "457549889.713022"
+            timestampString = "471986308.747964"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "612"
-            endingLineNumber = "612"
+            startingLineNumber = "683"
+            endingLineNumber = "683"
             landmarkName = "-sentRecievedVideos"
             landmarkType = "5">
          </BreakpointContent>
@@ -936,27 +936,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LukChat/LukiesViewController.m"
-            timestampString = "457549889.713022"
+            timestampString = "471986308.747964"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "813"
-            endingLineNumber = "813"
-            landmarkName = "@implementation LukiesViewController"
-            landmarkType = "3">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "LukChat/LukiesViewController.m"
-            timestampString = "457549889.713022"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "818"
-            endingLineNumber = "818"
+            startingLineNumber = "884"
+            endingLineNumber = "884"
             landmarkName = "-addMyVideoLog:videoId:"
             landmarkType = "5">
          </BreakpointContent>
@@ -968,11 +952,27 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LukChat/LukiesViewController.m"
-            timestampString = "457549889.713022"
+            timestampString = "471986308.747964"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "827"
-            endingLineNumber = "827"
+            startingLineNumber = "889"
+            endingLineNumber = "889"
+            landmarkName = "-addMyVideoLog:videoId:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LukChat/LukiesViewController.m"
+            timestampString = "471986308.747964"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "898"
+            endingLineNumber = "898"
             landmarkName = "-addMyVideoLog:videoId:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1016,13 +1016,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LukChat/LukiesViewController.m"
-            timestampString = "457549889.713022"
+            timestampString = "471986308.747964"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "774"
-            endingLineNumber = "774"
-            landmarkName = "-startProgressLoader"
-            landmarkType = "5">
+            startingLineNumber = "845"
+            endingLineNumber = "845"
+            landmarkName = "@implementation LukiesViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1032,13 +1032,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LukChat/LukiesViewController.m"
-            timestampString = "457549889.713022"
+            timestampString = "471986308.747964"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "789"
-            endingLineNumber = "789"
-            landmarkName = "@implementation LukiesViewController"
-            landmarkType = "3">
+            startingLineNumber = "860"
+            endingLineNumber = "860"
+            landmarkName = "-connHandlerClient:didFailWithError:"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1156,7 +1156,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LukChat/SentVideosViewController.m"
@@ -1172,7 +1172,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LukChat/SentVideosViewController.m"
@@ -1181,6 +1181,54 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "423"
             endingLineNumber = "423"
+            landmarkName = "-createSentCellData:cell:indexPath:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LukChat/LukiesViewController.m"
+            timestampString = "471715478.203915"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "580"
+            endingLineNumber = "580"
+            landmarkName = "-facebookPicPostAction:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LukChat/LukiesViewController.m"
+            timestampString = "471717878.850977"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "605"
+            endingLineNumber = "605"
+            landmarkName = "-facebookPicPostAction:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LukChat/SentVideosViewController.m"
+            timestampString = "471715556.057741"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "422"
+            endingLineNumber = "422"
             landmarkName = "-createSentCellData:cell:indexPath:"
             landmarkType = "5">
          </BreakpointContent>

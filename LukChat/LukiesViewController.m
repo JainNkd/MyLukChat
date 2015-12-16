@@ -313,9 +313,9 @@
                 [self addMyVideoLog:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",kVideoDownloadURL,[usersdict objectForKey:@"filename"]]] videoId:videoID];
                 
                 if(!facebookVideoPath.length>0){
-                [CommonMethods showAlertWithTitle:NSLocalizedString(@"Alert",nil) message:NSLocalizedString(@"Video uploaded successful.",nil)];
+                    [CommonMethods showAlertWithTitle:NSLocalizedString(@"Alert",nil) message:NSLocalizedString(@"Video uploaded successful.",nil)];
                     
-                [self.navigationController popToRootViewControllerAnimated:YES];
+                    [self.navigationController popToRootViewControllerAnimated:YES];
                 }
                 break;
             }
@@ -551,6 +551,77 @@
     }
     else
         [CommonMethods showAlertWithTitle:NSLocalizedString(@"LUK",nil) message:NSLocalizedString(@"No Video available to share.",nil) cancelBtnTitle:NSLocalizedString(@"Accept",nil) otherBtnTitle:nil delegate:nil tag:0];
+    
+}
+
+- (IBAction)facebookPicPostAction:(UIButton *)sender {
+    NSLog(@"shareButtonAction");
+    
+    //Share Video
+    
+    if(![CommonMethods reachable])
+    {
+        [CommonMethods showAlertWithTitle:NSLocalizedString(@"No Connectivity",nil) message:NSLocalizedString(@"Please check the Internet Connnection",nil)];
+        return;
+    }
+    
+    NSString *videoTitle;
+    if([[NSUserDefaults standardUserDefaults]boolForKey:kIsFromCreated])
+    {
+        videoTitle = [[NSUserDefaults standardUserDefaults] valueForKey:kCreatedVideoShareTitle];
+    }
+    else if([[NSUserDefaults standardUserDefaults]boolForKey:kIsFromRecieved])
+    {
+        videoTitle = [[NSUserDefaults standardUserDefaults] valueForKey:kRecievedVideoShareTitle];
+    }
+    else{
+        videoTitle = [CommonMethods getVideoTitle];
+    }
+    NSLog(@"Video Title....%@",videoTitle);
+    
+    if ([[NSUserDefaults standardUserDefaults]boolForKey:kIsFromRecieved])
+    {
+        NSString *urlStr =  [[NSUserDefaults standardUserDefaults] valueForKey:kRecievedVideoShare];
+        if (urlStr.length > 0){
+            facebookVideoPath = urlStr;
+            //post video code here
+            
+            urlStr = [NSString stringWithFormat:@"http://lukchat.com/files/%@",urlStr];
+            NSLog(@"urlStr....%@",urlStr);
+            NSString *trimmedString = [urlStr substringToIndex: [urlStr length] - 4];
+            trimmedString = [NSString stringWithFormat:@"%@.png",trimmedString];
+            NSLog(@"trimmedString...%@",trimmedString);
+            
+            FBSDKShareLinkContent *content = [[FBSDKShareLinkContent alloc]init];
+            content.contentURL = [NSURL URLWithString:urlStr];
+            content.imageURL = [NSURL URLWithString:trimmedString];
+            content.contentTitle = videoTitle;
+            content.contentDescription = @"A LUK for you.";
+//            [FBSDKShareDialog showFromViewController:self
+//                                         withContent:content
+//                                            delegate:self];
+            
+            
+            FBSDKShareDialog *dialog = [[FBSDKShareDialog alloc] init];
+            dialog.fromViewController = self;
+            dialog.delegate = self;
+            dialog.shareContent = content;
+            dialog.mode = FBSDKShareDialogModeShareSheet;
+            
+            if (![dialog canShow]) {
+                // fallback presentation when there is no FB app
+                dialog.mode = FBSDKShareDialogModeFeedBrowser;
+            }
+            [dialog show];
+        }
+        else{
+            [CommonMethods showAlertWithTitle:NSLocalizedString(@"LUK",nil) message:NSLocalizedString(@"No Video available to share.",nil) cancelBtnTitle:NSLocalizedString(@"Accept",nil) otherBtnTitle:nil delegate:nil tag:0];
+        }
+    }
+    else
+    {
+        [CommonMethods showAlertWithTitle:NSLocalizedString(@"LUK",nil) message:NSLocalizedString(@"No Video available to share.",nil) cancelBtnTitle:NSLocalizedString(@"Accept",nil) otherBtnTitle:nil delegate:nil tag:0];
+    }
     
 }
 
@@ -936,12 +1007,12 @@
                                        [NSString stringWithFormat:@"LUK - %@",videoTitle], @"title",
                                        videoTitle, @"description",
                                        nil];
-//        850892128292581   1400827856905144
+        //        850892128292581   1400827856905144
         [SharedAppDelegate.facebook requestWithGraphPath:[NSString stringWithFormat:@"1400827856905144/videos?access_token=%@",SharedAppDelegate.facebook.accessToken]
                                                andParams:params
                                            andHttpMethod:@"POST"
                                              andDelegate:self];
-//        [self postVideoToFriends:params];
+        //        [self postVideoToFriends:params];
     }
     else
     {
@@ -953,60 +1024,60 @@
 
 -(void)postVideoToFriends:(NSDictionary*)prams
 {
-        //Get fb server data List Request to server
-        NSOperationQueue *backgroundQueue = [[NSOperationQueue alloc] init];
-        
-//        NSString *appSecretProof = [self signWithKey:@"dc136dab35351bc2872c90f37d5e6d3c" usingData:SharedAppDelegate.facebook.accessToken];
-        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://graph-video.facebook.com/v2.3/me/videos?access_token=%@",SharedAppDelegate.facebook.accessToken]]];
+    //Get fb server data List Request to server
+    NSOperationQueue *backgroundQueue = [[NSOperationQueue alloc] init];
+    
+    //        NSString *appSecretProof = [self signWithKey:@"dc136dab35351bc2872c90f37d5e6d3c" usingData:SharedAppDelegate.facebook.accessToken];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://graph-video.facebook.com/v2.3/me/videos?access_token=%@",SharedAppDelegate.facebook.accessToken]]];
     
     NSError *error;
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:prams
                                                        options:NSJSONWritingPrettyPrinted
                                                          error:&error];
     
-        [request setHTTPMethod:@"POST"];
+    [request setHTTPMethod:@"POST"];
     NSString* contentType = [NSString
                              stringWithFormat:@"multipart/form-data"];
     [request setValue:contentType forHTTPHeaderField:@"Content-Type"];
-//        [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
-//        [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-        [request setHTTPBody:jsonData];
+    //        [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    //        [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [request setHTTPBody:jsonData];
     
-        // Create url connection and fire request
-        [NSURLConnection sendAsynchronousRequest:request
-                                           queue:backgroundQueue
-                               completionHandler:^(NSURLResponse *response, NSData *data, NSError *error){
-                                   dispatch_async(dispatch_get_main_queue(), ^{
-                                   });
+    // Create url connection and fire request
+    [NSURLConnection sendAsynchronousRequest:request
+                                       queue:backgroundQueue
+                           completionHandler:^(NSURLResponse *response, NSData *data, NSError *error){
+                               dispatch_async(dispatch_get_main_queue(), ^{
+                               });
+                               
+                               if (error)
+                               {
+                                   NSLog(@"error%@",[error localizedDescription]);
+                                   dispatch_async(dispatch_get_main_queue()
+                                                  , ^(void) {
+                                                      [CommonMethods showAlertWithTitle:NSLocalizedString(@"Error",nil) message:[error localizedDescription] cancelBtnTitle:NSLocalizedString(@"Accept",nil) otherBtnTitle:nil delegate:nil tag:0];
+                                                  });
+                               }
+                               else
+                               {
+                                   NSString *result = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+                                   NSLog(@"result....%@",result);
                                    
-                                   if (error)
-                                   {
-                                       NSLog(@"error%@",[error localizedDescription]);
-                                       dispatch_async(dispatch_get_main_queue()
-                                                      , ^(void) {
-                                                          [CommonMethods showAlertWithTitle:NSLocalizedString(@"Error",nil) message:[error localizedDescription] cancelBtnTitle:NSLocalizedString(@"Accept",nil) otherBtnTitle:nil delegate:nil tag:0];
-                                                      });
+                                   NSError *jsonParsingError = nil;
+                                   id object = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonParsingError];
+                                   
+                                   if (jsonParsingError) {
+                                       NSLog(@"JSON ERROR: %@", [jsonParsingError localizedDescription]);
+                                   } else {
+                                       NSDictionary *responseDict = (NSDictionary*)object;
+                                       dispatch_async(dispatch_get_main_queue(), ^{
+                                           
+                                       });
                                    }
-                                   else
-                                   {
-                                       NSString *result = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-                                       NSLog(@"result....%@",result);
-                                       
-                                       NSError *jsonParsingError = nil;
-                                       id object = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonParsingError];
-                                       
-                                       if (jsonParsingError) {
-                                           NSLog(@"JSON ERROR: %@", [jsonParsingError localizedDescription]);
-                                       } else {
-                                           NSDictionary *responseDict = (NSDictionary*)object;
-                                           dispatch_async(dispatch_get_main_queue(), ^{
-                                               
-                                           });
-                                       }
-                                   }
-                               }];
+                               }
+                           }];
     
-
+    
 }
 
 
@@ -1057,7 +1128,7 @@
     else{
         videoTitle = [CommonMethods getVideoTitle];
     }
-
+    
     videoTitle = [videoTitle stringByDecodingHTMLEntities];
     NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
     [dict setValue:kAPIKeyValue forKey:kAPIKey];
@@ -1080,7 +1151,7 @@
     ConnectionHandler *connObj = [[ConnectionHandler alloc] init];
     connObj.delegate = self;
     [connObj makePOSTRequestPath:kFbShareVideoURL parameters:dict];//kFbShareVideoURL
-
+    
 }
 
 - (void)request:(FBRequest *)request didFailWithError:(NSError *)error {
@@ -1128,7 +1199,7 @@
         [CommonMethods showAlertWithTitle:NSLocalizedString(@"LUK",nil) message:NSLocalizedString(@"No Video available to share.",nil) cancelBtnTitle:NSLocalizedString(@"Accept",nil)otherBtnTitle:nil delegate:nil tag:0];
         
     }
-
+    
 }
 
 - (void)saveToCameraRoll:(NSURL *)srcURL
@@ -1148,12 +1219,31 @@
             video.videoURL = newURL;
             FBSDKShareVideoContent *content = [[FBSDKShareVideoContent alloc] init];
             content.video = video;
+            
             [FBSDKShareDialog showFromViewController:self
                                          withContent:content
                                             delegate:self];
-            FBSDKShareDialog *shareDialog = [[FBSDKShareDialog alloc] init];
-            if([shareDialog canShow])
-                NSLog(@"YEs...");
+            
+            //            FBSDKShareLinkContent *content = [[FBSDKShareLinkContent alloc]init];
+            //            content.contentURL = [NSURL URLWithString:@"WWW.google.com"];
+            //            content.imageURL = []
+            //            content.contentTitle = @"Title";
+            //            content.contentDescription = @"Description";
+            //            [FBSDKShareDialog showFromViewController:self
+            //                                         withContent:content
+            //                                            delegate:self];
+            //
+            //
+            //            FBSDKShareDialog *dialog = [[FBSDKShareDialog alloc] init];
+            //            dialog.fromViewController = self;
+            //            dialog.shareContent = content;
+            //            dialog.mode = FBSDKShareDialogModeShareSheet; // if you don't set this before canShow call, canShow would always return YES
+            //            if (![dialog canShow]) {
+            //                // fallback presentation when there is no FB app
+            //                dialog.mode = FBSDKShareDialogModeFeedBrowser;
+            //            }
+            //            [dialog show];
+            
             
         }
     };
@@ -1170,11 +1260,11 @@
     if(error) {
         [self stopProgressLoader];
         UIAlertView *alertView = [[UIAlertView alloc]
-                              initWithTitle: @"Save failed"
-                              message: @"Failed to save video"
-                              delegate: nil
-                              cancelButtonTitle:@"OK"
-                              otherButtonTitles:nil];
+                                  initWithTitle: @"Save failed"
+                                  message: @"Failed to save video"
+                                  delegate: nil
+                                  cancelButtonTitle:@"OK"
+                                  otherButtonTitles:nil];
         [alertView show];
         
     } else {
@@ -1221,7 +1311,7 @@
         [[NSUserDefaults standardUserDefaults] setValue:[NSString stringWithFormat:@"-1"] forKey:kCurrentCHATUserPHONE];
         [self fbShare];
     }
-
+    
 }
 
 - (void)sharer:(id<FBSDKSharing>)sharer didFailWithError:(NSError *)error
@@ -1248,9 +1338,9 @@
 //        [CommonMethods showAlertWithTitle:NSLocalizedString(@"No Connectivity",nil) message:NSLocalizedString(@"Please check the Internet Connnection",nil)];
 //        return;
 //    }
-//    
+//
 //    NSString *urlStr;
-//    
+//
 //    if([[NSUserDefaults standardUserDefaults]boolForKey:kIsFromCreated])
 //    {
 //        urlStr =  [[NSUserDefaults standardUserDefaults] valueForKey:kCreatedVideoShare];
@@ -1262,7 +1352,7 @@
 //    else{
 //        urlStr =  [[NSUserDefaults standardUserDefaults] valueForKey:kMyVideoToShare];
 //    }
-//    
+//
 //    urlStr = [CommonMethods localFileUrl:urlStr];
 //    if (urlStr && [[NSUserDefaults standardUserDefaults]boolForKey:kIsFromRecieved])
 //    {
@@ -1278,7 +1368,7 @@
 //            {
 //                [self fbDidLogin];
 //            }
-//            
+//
 //        }
 //        else{
 //            [CommonMethods showAlertWithTitle:NSLocalizedString(@"LUK",nil) message:NSLocalizedString(@"No Video available to share.",nil) cancelBtnTitle:NSLocalizedString(@"Accept",nil) otherBtnTitle:nil delegate:nil tag:0];
@@ -1286,7 +1376,7 @@
 //    }
 //    else if (urlStr) {
 //        //        [self shareVideo:[NSURL fileURLWithPath:urlStr]];
-//        
+//
 //        facebookVideoPath = urlStr;
 //        if(!SharedAppDelegate.facebook.isSessionValid){
 //            NSArray* permissions = [[NSArray alloc] initWithObjects:
@@ -1300,7 +1390,7 @@
 //    }
 //    else
 //        [CommonMethods showAlertWithTitle:NSLocalizedString(@"LUK",nil) message:NSLocalizedString(@"No Video available to share.",nil) cancelBtnTitle:NSLocalizedString(@"Accept",nil) otherBtnTitle:nil delegate:nil tag:0];
-//    
+//
 //}
 
 @end

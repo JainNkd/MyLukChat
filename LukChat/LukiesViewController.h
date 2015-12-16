@@ -39,6 +39,7 @@
 
 - (IBAction)facebookPostBtnClicked:(UIButton *)sender;
 
+- (IBAction)facebookPicPostAction:(UIButton *)sender;
 
 - (IBAction)sendToLukiesButtonPressed:(UIButton *)sender;
 @end
