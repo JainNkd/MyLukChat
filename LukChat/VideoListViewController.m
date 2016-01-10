@@ -20,11 +20,25 @@
 #import "AppDelegate.h"
 #import "LukCell.h"
 
-@interface VideoListViewController ()
+#import "UCZProgressView.h"
+
+#import "Common/ConnectionHandler.h"
+
+#import "AFNetworking.h"
+#import "AFHTTPRequestOperation.h"
+#import "UIImageView+AFNetworking.h"
+#import "AFHTTPRequestOperation.h"
+#import "AFHTTPClient.h"
+
+
+
+
+@interface VideoListViewController ()<ConnectionHandlerDelegate>
 {
     NSMutableArray *sections;
     NSInteger videoCount;
 }
+@property (nonatomic, strong) NSMutableDictionary *videoDownloadsInProgress;
 @end
 
 @implementation VideoListViewController
@@ -57,6 +71,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    //    [self fetchRandomVideoFromserver:@"LUK"];
     
     //Added Sweipe Gesture to reset text box
     UISwipeGestureRecognizer *swipe = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(confirmationToResetTextBox)];
@@ -93,6 +109,7 @@
         [videofiles addObject:@"NO"];
     }
     self.titleHeaderLBL.hidden = YES;
+    self.videoDownloadsInProgress = [[NSMutableDictionary alloc]init];
 }
 
 -(void)closeSetting
@@ -189,22 +206,30 @@
                 NSString *fileNameStr = [[NSUserDefaults standardUserDefaults]valueForKey:[NSString stringWithFormat:@"VIDEO_%d_URL",i]];
                 NSString *pathWithfilename = [NSString stringWithFormat:@"%@/%@", path, fileNameStr];
                 if(fileNameStr)
-                [videofiles replaceObjectAtIndex:i withObject:fileNameStr];
+                    [videofiles replaceObjectAtIndex:i withObject:fileNameStr];
                 
                 if ([[NSFileManager defaultManager] fileExistsAtPath:pathWithfilename]) {
                     [videofilesExist addObject:fileNameStr];
                 }
             }
             
-            if(videofilesExist.count>0)
+            //            if(videofilesExist.count>0)
+            //                isRecordingStart = YES;
+            
+            //            if (!videofilesExist || [videofilesExist count] < 2) {
+            //                self.mergeButton.enabled = NO;
+            //            }
+            //            else{
+            //                self.mergeButton.enabled = YES;
+            //            }
+            if(titleWords.count>0)
                 isRecordingStart = YES;
             
-            if (!videofilesExist || [videofilesExist count] < 2) {
+            if(titleWords.count<2)
                 self.mergeButton.enabled = NO;
-            }
-            else{
+            else
                 self.mergeButton.enabled = YES;
-            }
+            
         }
         else
         {
@@ -307,9 +332,43 @@
 }
 
 - (IBAction)videoMergeButtonPressed:(UIButton *)sender {
+    int i= 0 ;
+    videoTitle = [CommonMethods getVideoTitle];
     
+    NSMutableArray *titleWords = (NSMutableArray*)[videoTitle componentsSeparatedByString:@" "];
+    if(titleWords.count>1)
+        [titleWords removeObject:@""];
+    for(NSString*title in titleWords)
+    {
+        NSLog(@"Title..%@...%d",title,i);
+        NSString *videoURL = [[NSUserDefaults standardUserDefaults]valueForKey:[NSString stringWithFormat:@"VIDEO_%d_URL",i]];
+        
+        if([videoURL isEqualToString:@"NO"])
+        {
+            i++;
+            continue;
+        }
+        else{
+            AFHTTPRequestOperation *operation = (self.videoDownloadsInProgress)[videoURL];
+            NSLog(@"videoURL....%@",videoURL);
+            if([CommonMethods fileExist:videoURL] && !operation)
+            {
+                i++;
+                continue;
+            }
+        }
+    }
+    
+    if(i==[titleWords count])
+        [self mergedVideo];
+    else
+        [self downloadVidoes];
+}
+
+-(void)mergedVideo
+{
     NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-    NSMutableArray *videofiles = [[NSMutableArray alloc] init];
+    NSMutableArray *videofilesArr = [[NSMutableArray alloc] init];
     
     videoTitle = [CommonMethods getVideoTitle];
     
@@ -323,15 +382,14 @@
         filename = [NSString stringWithFormat:@"%@/%@", path, filename];
         
         if ([[NSFileManager defaultManager] fileExistsAtPath:filename]) {
-            [videofiles addObject:filename];
+            [videofilesArr addObject:filename];
             //            NSLog(@"filename : %@", filename);
         }
     }
     
-    
-    if (!videofiles || [videofiles count] < 2) {
-        //        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"You need two recorded video clips to merge the videos." delegate:self cancelButtonTitle:nil otherButtonTitles:@"Accept", nil];
-        //        [alert show];
+    if ([videofilesArr count] < 2) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"You need two recorded video clips to merge the videos." delegate:self cancelButtonTitle:nil otherButtonTitles:@"Accept", nil];
+        [alert show];
         return;
     }
     
@@ -348,11 +406,11 @@
     AVMutableCompositionTrack *audioCompositionTrack = [composition addMutableTrackWithMediaType:AVMediaTypeAudio preferredTrackID:kCMPersistentTrackID_Invalid];
     CMTime nextVideoStartTime = kCMTimeZero;
     
-    NSLog(@"Files : %@", videofiles);
+    NSLog(@"Files : %@", videofilesArr);
     
     
-    for (int i=0; i < [videofiles count]; i++) {
-        NSURL *url = [NSURL fileURLWithPath:[videofiles objectAtIndex:i]];
+    for (int i=0; i < [videofilesArr count]; i++) {
+        NSURL *url = [NSURL fileURLWithPath:[videofilesArr objectAtIndex:i]];
         AVURLAsset *videoAsset = [[AVURLAsset alloc] initWithURL:url options:nil];
         CMTimeRange timeRange = CMTimeRangeMake(kCMTimeZero, [videoAsset duration]);
         
@@ -520,16 +578,26 @@
 
 //==========================================================================================================
 //Show look with animation
+//This method is called when 1. edit luk 2.add new luk
 -(void)animateView:(NSArray*)titleArray range:(NSRange)range
 {
+    isRecordingStart = YES;
     [sections removeAllObjects];
     [sections addObjectsFromArray:titleArray];
+    
+    
+    if(titleArray.count<2)
+        self.mergeButton.enabled = NO;
+    else
+        self.mergeButton.enabled = YES;
     
     NSLog(@"range..%lu ,%lu",(unsigned long)self.videoTitleTextField.text.length,(unsigned long)range.location);
     if(self.videoTitleTextField.text.length == range.location){
         
         NSInteger viewIndex = [titleArray count];
         NSIndexPath *newindex = [NSIndexPath indexPathForItem:viewIndex-1 inSection:0];
+        [[NSUserDefaults standardUserDefaults]setValue:@"NO" forKey:[NSString stringWithFormat:@"VIDEO_%ld_URL",(long)newindex.row]];
+        [videofiles replaceObjectAtIndex:newindex.row withObject:@"NO"];
         [self.collectionView insertItemsAtIndexPaths:[NSArray arrayWithObject:newindex]];
         
     }
@@ -558,13 +626,18 @@
 
 -(void)resetLUK:(NSArray*)array
 {
-    
+    isRecordingStart = YES;
     if(currentLUKIndex == 0)
         return;
     
     currentLUKIndex = array.count;
     [sections removeAllObjects];
     [sections addObjectsFromArray:array];
+    
+    if(array.count<2)
+        self.mergeButton.enabled = NO;
+    else
+        self.mergeButton.enabled = YES;
     [self.collectionView reloadData];
     
 }
@@ -724,7 +797,7 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"tempfile indexPath....%@",indexPath);
+    //    NSLog(@"tempfile indexPath....%@",indexPath);
     LukCell *cell = (LukCell*)[collectionView dequeueReusableCellWithReuseIdentifier:@"Cell" forIndexPath:indexPath];
     if(sections.count>indexPath.row){
         cell.label.text = [sections objectAtIndex:indexPath.item];
@@ -733,7 +806,20 @@
         NSString *filename = [[NSUserDefaults standardUserDefaults]valueForKey:[NSString stringWithFormat:@"VIDEO_%ld_URL",(long)indexPath.row]];
         
         NSString *tempfile = [NSString stringWithFormat:@"%@/%@", path, filename];
-        NSLog(@"tempfile....%@",tempfile);
+        NSLog(@"Video URL --= %@",tempfile);
+        
+        NSString *imageFilePath;
+        NSString *imageName;
+        if(filename.length>2)
+        {
+            imageFilePath = filename;
+            imageFilePath = [filename stringByReplacingOccurrencesOfString:@".mp4" withString:@".png"];
+            imageName = imageFilePath;
+            imageName = [NSString stringWithFormat:@"%@%@",kVideoDownloadURL,imageName];
+            imageFilePath = [NSString stringWithFormat:@"%@/%@", path, imageFilePath];
+            NSLog(@"imageFilePath URL --= %@",imageFilePath);
+        }
+        
         UIImage *temp = [[UIImage alloc] initWithContentsOfFile:tempfile];
         if (temp) {
             [cell.imageView setImage:temp];
@@ -748,10 +834,64 @@
                 [cell.imageView setImage:image];
             [cell.label setTextColor:[UIColor yellowColor]];
         }
+        else if(imageFilePath.length>0)
+        {
+            if([[NSFileManager defaultManager] fileExistsAtPath:imageFilePath])
+            {
+                NSData *pngData = [NSData dataWithContentsOfFile:imageFilePath];
+                UIImage *image = [UIImage imageWithData:pngData];
+                if(image)
+                    [cell.imageView setImage:image];
+                else
+                    [cell.imageView setImage:[UIImage imageNamed:@"screen4-smilemonkey-icon.png"]];
+            }
+            else
+            {
+                // using Image for thumbnails
+                if([CommonMethods reachable]){
+                    if(imageName.length>0){
+                        [cell.imageView setImageWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:imageName]] placeholderImage:[UIImage imageNamed:@"screen4-smilemonkey-icon.png"]
+                                                       success:^(NSURLRequest *request , NSHTTPURLResponse *response , UIImage *image ){
+                                                           NSLog(@"Loaded successfully.....%@",[request.URL absoluteString]);// %ld", (long)[response statusCode]);
+                                                           
+                                                           dispatch_async(dispatch_get_main_queue(), ^(void) {
+                                                               NSArray *ary = [[request.URL absoluteString] componentsSeparatedByString:@"/"];
+                                                               NSString *filename = [ary lastObject];
+                                                               
+                                                               NSString *filePath = [path stringByAppendingPathComponent:filename];
+                                                               //Add the file name
+                                                               NSData *pngData = UIImagePNGRepresentation(image);
+                                                               if(pngData && filename.length>0){
+                                                                   [pngData writeToFile:filePath atomically:YES];
+                                                                   [self.collectionView reloadData];
+                                                               }
+                                                           });
+                                                       }
+                                                       failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error){
+                                                           NSLog(@"failed loading");//'%@", error);
+                                                           //                                                      [self.sentTableViewObj reloadData];
+                                                       }
+                         ];
+                    }
+                    else
+                    {
+                        [cell.imageView setImage:[UIImage imageNamed:@"screen4-smilemonkey-icon.png"]];
+                    }
+                }
+                else
+                {
+                    [cell.imageView setImage:[UIImage imageNamed:@"screen4-smilemonkey-icon.png"]];
+                }
+            }
+        }
         else
         {
             [cell.imageView setImage:[UIImage imageNamed:@"screen4-smilemonkey-icon.png"]];
             [cell.label setTextColor:[UIColor whiteColor]];
+        }
+        if([filename isEqualToString:@"NO"])
+        {
+            [self fetchRandomVideoFromserver:cell.label.text];
         }
     }
     return cell;
@@ -794,7 +934,7 @@
     
     
     NSLog(@"Data sections ....%@",sections);
-     NSLog(@"video name  sections ....%@",videofiles);
+    NSLog(@"video name  sections ....%@",videofiles);
 }
 
 
@@ -848,6 +988,193 @@
     }else
         NSLog(@"processDoubleTap not selected...!!!");
 }
+
+
+-(void)fetchRandomVideoFromserver:(NSString*)titleWord
+{
+    NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
+    [dict setValue:kAPIKeyValue forKey:kAPIKey];
+    [dict setValue:kAPISecretValue forKey:kAPISecret];
+    [dict setValue:titleWord forKey:@"key"];
+    [dict setValue:@"random" forKey:@"order_by"];
+    [dict setValue:[NSString stringWithFormat:@"%d",0] forKey:@"start"];
+    [dict setValue:[NSString stringWithFormat:@"%d",1] forKey:@"count"];
+    
+    ConnectionHandler *connObj = [[ConnectionHandler alloc] init];
+    connObj.delegate = self;
+    [connObj makePOSTRequestPath:kSearchSingleVideo parameters:dict];
+}
+
+-(void)connHandlerClient:(ConnectionHandler *)client didSucceedWithResponseString:(NSString *)response forPath:(NSString *)urlPath{
+    NSLog(@"connHandlerClient didSucceedWithResponseString : %@",response);
+    NSLog(@"loadAppContactsOnTable ******************");
+    if ([urlPath isEqualToString:kSearchSingleVideo]) {
+        NSLog(@"SUCCESS: All Data fetched");
+        
+        NSError *error;
+        NSDictionary* responseDict = [NSJSONSerialization JSONObjectWithData: [response dataUsingEncoding:NSUTF8StringEncoding]
+                                                                     options: NSJSONReadingMutableContainers
+                                                                       error: &error];
+        
+        if(error)
+            [CommonMethods showAlertWithTitle:NSLocalizedString(@"Error",nil) message:[error localizedDescription]];
+        else
+        {
+            NSArray *singleArrData = (NSArray*)responseDict;
+            NSLog(@"log....%@",[singleArrData description]);
+            
+            [self parseSingleVideoData:singleArrData];
+        }
+    }
+}
+
+
+-(void)connHandlerClient:(ConnectionHandler *)client didFailWithError:(NSError *)error
+{
+    NSString *string = [error localizedDescription];
+    string = [string substringFromIndex:[string length]-3];
+    NSLog(@"connHandlerClient:didFailWithError = %@",string);
+}
+
+-(void)parseSingleVideoData:(NSArray*)videoData
+{
+    NSLog(@"STEP1");
+    BOOL isFound = FALSE;
+    for(NSDictionary* videosDict in videoData)
+    {
+        NSLog(@"STEP2");
+        NSDictionary *videoData = [videosDict valueForKey:@"videos"];
+        VideoDetail *videoDetail = [[VideoDetail alloc]initWithDict:videoData];
+        videoTitle = [CommonMethods getVideoTitle];
+        if(videoTitle.length>0){
+            NSMutableArray *titleWords = (NSMutableArray*)[videoTitle componentsSeparatedByString:@" "];
+            if(titleWords.count>1)
+                [titleWords removeObject:@""];
+            
+            int fileIndex = 0;
+            for(NSString *word in titleWords){
+                if ([word caseInsensitiveCompare:videoDetail.videoTitle] == NSOrderedSame)
+                {
+                    NSString *fileNameStr = [[NSUserDefaults standardUserDefaults]valueForKey:[NSString stringWithFormat:@"VIDEO_%d_URL",fileIndex]];
+                    NSLog(@"fileNameStr......%@",fileNameStr);
+                    
+                    if(fileNameStr.length == 2){
+                        NSLog(@"STEP3");
+                        [[NSUserDefaults standardUserDefaults]setValue:videoDetail.videoURL forKey:[NSString stringWithFormat:@"VIDEO_%d_URL",fileIndex]];
+                        [[NSUserDefaults standardUserDefaults]synchronize];
+                        isFound = TRUE;
+                        break;
+                    }
+                }
+                fileIndex++;
+            }
+            
+        }
+    }
+    
+    [NSThread sleepForTimeInterval:1.5];
+    if(isFound)
+        [self.collectionView reloadData];
+}
+
+//Download default vidoes
+-(void)downloadVidoes
+{
+    int i= 0 ;
+    videoTitle = [CommonMethods getVideoTitle];
+    
+    NSMutableArray *titleWords = (NSMutableArray*)[videoTitle componentsSeparatedByString:@" "];
+    if(titleWords.count>1)
+        [titleWords removeObject:@""];
+    
+    UCZProgressView *progressView;
+    for(NSString*title in titleWords)
+    {
+        NSLog(@"Title..%@...%d",title,i);
+        NSString *videoURL = [[NSUserDefaults standardUserDefaults]valueForKey:[NSString stringWithFormat:@"VIDEO_%d_URL",i]];
+        if([videoURL isEqualToString:@"NO"])
+        {
+            i++;
+            continue;
+        }
+        else{
+            AFHTTPRequestOperation *operation = (self.videoDownloadsInProgress)[videoURL];
+            NSLog(@"videoURL....%@",videoURL);
+            if([CommonMethods fileExist:videoURL] && !operation)
+            {
+                i++;
+                continue;
+            }
+            else
+            {
+                if([CommonMethods reachable])
+                {
+                    if(!progressView){
+                        progressView = [[UCZProgressView alloc]initWithFrame:self.view.bounds];
+                        progressView.tag = i;
+                        progressView.indeterminate = YES;
+                        progressView.showsText = YES;
+                        progressView.tintColor = [UIColor whiteColor];
+                        [self.view addSubview:progressView];
+                    }
+                    NSString *localURL = [CommonMethods localFileUrl:videoURL];
+                    if(!operation){
+                        NSString *urlString = [NSString stringWithFormat:@"%@%@",kVideoDownloadURL,videoURL];
+                        NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:urlString]];
+                        AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request ];
+                        
+                        operation.outputStream = [NSOutputStream outputStreamToFileAtPath:localURL append:YES];
+                        
+                        [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+                            
+                            NSLog(@"Successfully downloaded file to %@,.%@", localURL,operation.request.URL.absoluteString);
+                            
+                            NSArray *ary = [[request.URL absoluteString] componentsSeparatedByString:@"/"];
+                            NSString *filename = [ary lastObject];
+                            NSLog(@"self.videoDownloadsInProgress....%@",self.videoDownloadsInProgress);
+                            [self.videoDownloadsInProgress removeObjectForKey:filename];
+                            NSLog(@"self.videoDownloadsInProgress....%@",self.videoDownloadsInProgress);
+                            if([self.videoDownloadsInProgress allKeys].count==0)
+                            {
+                                [progressView removeFromSuperview];
+                                [self videoMergeButtonPressed:nil];
+                            }
+                            
+                        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                            NSLog(@"Error: %@", error);
+                            if([self.videoDownloadsInProgress allKeys].count==0)
+                            {
+                                [progressView removeFromSuperview];
+                            }
+                            
+                        }];
+                        
+                        [operation setDownloadProgressBlock:^(NSInteger bytesRead, NSInteger totalBytesRead, NSInteger totalBytesExpectedToRead) {
+                            
+                            // Draw the actual chart.
+                            //            dispatch_async(dispatch_get_main_queue()
+                            //                           , ^(void) {
+                            //                        progressView.progress = (float)totalBytesRead / totalBytesExpectedToRead;
+                            //                               [cell layoutSubviews];
+                            //                           });
+                            
+                        }];
+                        
+                        (self.videoDownloadsInProgress)[videoURL] = operation;
+                        NSLog(@"self.videoDownloadsInProgress....%@ video URL:%@",self.videoDownloadsInProgress,videoURL);
+                        [operation start];
+                    }
+                }
+                else{
+                    NSLog(@"No internet connectivity");
+                }
+            }
+        }
+        i++;
+    }
+}
+
+
 
 - (void)didReceiveMemoryWarning
 {
