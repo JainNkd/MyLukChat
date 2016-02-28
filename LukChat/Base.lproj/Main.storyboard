@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="13F1077" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="KRm-ul-vIt">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1509" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="KRm-ul-vIt">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -14,7 +14,7 @@
                         <viewControllerLayoutGuide type="bottom" id="tDy-8B-5xy"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="qgC-U6-GT3">
-                        <rect key="frame" x="2" y="-4" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="app-store-screen-1_7.png" translatesAutoresizingMaskIntoConstraints="NO" id="WEp-IV-sBQ">
@@ -58,7 +58,7 @@
                         <viewControllerLayoutGuide type="bottom" id="2Rd-7m-sAg"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="V4D-GX-fA5">
-                        <rect key="frame" x="-2" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" restorationIdentifier="SignUpView" image="signup-background.png" translatesAutoresizingMaskIntoConstraints="NO" id="GE9-qE-OTw">
@@ -230,7 +230,7 @@
                         <viewControllerLayoutGuide type="bottom" id="suV-j9-WDW"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="YWh-7q-dqx">
-                        <rect key="frame" x="-2" y="-4" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="luk-iphone-final-terms&amp;condition-mainbg.png" translatesAutoresizingMaskIntoConstraints="NO" id="lZC-CZ-JjW">
@@ -300,7 +300,7 @@
                         <viewControllerLayoutGuide type="bottom" id="Vnd-jN-p6E"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="AST-cK-zMA">
-                        <rect key="frame" x="0.0" y="-1" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="verfication-background.png" translatesAutoresizingMaskIntoConstraints="NO" id="uRT-cK-3EU">
@@ -373,7 +373,7 @@
                         <viewControllerLayoutGuide type="bottom" id="PXL-fz-cK3"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="rm1-uf-hGU">
-                        <rect key="frame" x="-1" y="-3" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="luk-iphone-final-textenter-mainbg.png" translatesAutoresizingMaskIntoConstraints="NO" id="Ne2-LU-kgj">
@@ -443,7 +443,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="1c9-lV-MUv" customClass="LukCell">
-                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="79" height="104"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="79" height="104"/>
@@ -458,6 +458,10 @@
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jze-Mc-B0o">
+                                                    <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                </view>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
@@ -465,6 +469,7 @@
                                         <connections>
                                             <outlet property="imageView" destination="616-m5-8zc" id="x5j-jV-8kw"/>
                                             <outlet property="label" destination="ke6-kK-NGv" id="dDI-mX-7Xo"/>
+                                            <outlet property="loadingWheelView" destination="jze-Mc-B0o" id="zFe-wK-fHl"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -564,7 +569,7 @@
                         <viewControllerLayoutGuide type="bottom" id="zz7-rz-YXu"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="hX8-9V-MiG">
-                        <rect key="frame" x="-2" y="-4" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6EQ-Za-41c">
@@ -679,7 +684,7 @@
                         <viewControllerLayoutGuide type="bottom" id="Dbm-Gw-7Ni"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="caJ-9W-8O8">
-                        <rect key="frame" x="-2" y="-4" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="luk-iphone-final-merged-videos-main-bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="9el-Ue-GVI">
@@ -766,7 +771,7 @@
                         <viewControllerLayoutGuide type="bottom" id="XpW-ke-r2X"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="X1V-CR-PPQ">
-                        <rect key="frame" x="0.0" y="-4" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="history-draft-bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="BZ2-4G-4CD">
@@ -780,9 +785,10 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ReceivedCell" rowHeight="110" id="DGQ-pQ-Dk7" userLabel="ReceivedCell" customClass="RecievedVideoTableViewCell">
-                                        <rect key="frame" x="0.0" y="-6" width="320" height="85"/>
+                                        <rect key="frame" x="0.0" y="22" width="320" height="110"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DGQ-pQ-Dk7" id="YtS-Dt-FQi">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="110"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view alpha="0.25000000000000006" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2sj-BO-xKl" userLabel="content">
@@ -867,10 +873,10 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" restorationIdentifier="Cell" selectionStyle="none" indentationWidth="10" reuseIdentifier="SentCell" rowHeight="110" id="VGM-0n-8cX" userLabel="SentCell" customClass="SentVideoTableViewCell">
-                                        <rect key="frame" x="0.0" y="22" width="320" height="52"/>
+                                        <rect key="frame" x="0.0" y="132" width="320" height="110"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VGM-0n-8cX" id="6AY-mK-HnU">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="52"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="110"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view alpha="0.25000000000000006" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iPS-3m-ah4" userLabel="content">
@@ -1056,7 +1062,7 @@
                         <viewControllerLayoutGuide type="bottom" id="UEF-mT-Uwu"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="a3c-Mm-D7j">
-                        <rect key="frame" x="4" y="-3" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="contact_bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="mIE-II-Tw7">
@@ -1068,8 +1074,10 @@
                                 <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="szS-WV-OPq">
+                                        <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="szS-WV-OPq" id="nkU-8K-Y5E">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </tableViewCellContentView>
@@ -1195,9 +1203,10 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="FBFriendCell" rowHeight="44" id="9gX-03-Ccg" customClass="FBFriendCell">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9gX-03-Ccg" id="Qeh-Y4-ar1">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XV8-OR-474">
@@ -1261,7 +1270,7 @@
                         <viewControllerLayoutGuide type="bottom" id="UGs-ln-q8y"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="lZh-GE-UhV">
-                        <rect key="frame" x="1" y="-1" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bg-select-screen.png" translatesAutoresizingMaskIntoConstraints="NO" id="PBL-ME-aFr">
@@ -1281,7 +1290,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="Cell" reuseIdentifier="Cell" id="NvQ-J7-5ie" customClass="SignleVideoCell">
-                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="106" height="106"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="106" height="106"/>
@@ -1375,7 +1384,7 @@
                         <viewControllerLayoutGuide type="bottom" id="cxs-6C-fYQ"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="47G-ww-rEL">
-                        <rect key="frame" x="1" y="2" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="luk-iphone-final-merged-videos-main-bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="4dp-3W-kqr">
@@ -1388,10 +1397,10 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ShareCell" rowHeight="331" id="yov-mb-UlA" customClass="ShareVideoTableViewCell">
-                                        <rect key="frame" x="0.0" y="1" width="320" height="181"/>
+                                        <rect key="frame" x="0.0" y="1" width="0.0" height="331"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="yov-mb-UlA" id="SYa-yh-95l">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="181"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="331"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="share-videos-1st-pic.png" translatesAutoresizingMaskIntoConstraints="NO" id="DDj-OR-lBX" userLabel="video img">
@@ -1476,7 +1485,7 @@
                         <viewControllerLayoutGuide type="bottom" id="ric-b1-NMf"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="W1f-ux-2Ko">
-                        <rect key="frame" x="-2" y="2" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="luk-iphone-final-merged-videos-main-bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="Txl-Tq-gZc">
@@ -1492,9 +1501,10 @@
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="CreateVideoCell" rowHeight="280" id="VlJ-ij-oUm" customClass="CreateVideoCell">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="22" width="320" height="280"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VlJ-ij-oUm" id="wyk-NY-4ta">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="280"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kdv-fq-2Rz" userLabel="Thumbnail1">
@@ -1801,11 +1811,6 @@
         <image name="verfication-field-bg.png" width="640" height="124"/>
         <image name="video_play.png" width="50" height="50"/>
     </resources>
-    <simulatedMetricsContainer key="defaultSimulatedMetrics">
-        <simulatedStatusBarMetrics key="statusBar"/>
-        <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4"/>
-    </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="VH4-zP-nZh"/>
     </inferredMetricsTieBreakers>

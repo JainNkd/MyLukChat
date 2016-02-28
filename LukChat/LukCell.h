@@ -7,9 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UCZProgressView.h"
+
 
 @interface LukCell : UICollectionViewCell
 @property (weak, nonatomic) IBOutlet UILabel *label;
 
+@property (nonatomic,strong) UCZProgressView *progressView;
+@property (weak, nonatomic) IBOutlet UIView *loadingWheelView;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @end

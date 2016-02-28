@@ -7,8 +7,14 @@
 //
 
 #import "LukCell.h"
+#import "UCZProgressView.h"
 
 @implementation LukCell
+
+-(void)awakeFromNib
+{
+    
+}
 - (void)setHighlighted:(BOOL)highlighted
 {
     [super setHighlighted:highlighted];

@@ -799,6 +799,24 @@
 {
     //    NSLog(@"tempfile indexPath....%@",indexPath);
     LukCell *cell = (LukCell*)[collectionView dequeueReusableCellWithReuseIdentifier:@"Cell" forIndexPath:indexPath];
+    
+
+    
+//    NSArray *subview = [cell.loadingWheelView subviews];
+//    for(UIView *view in subview)
+//    {
+//        if([view isKindOfClass:[UCZProgressView class]])
+//            [view removeFromSuperview];
+//    }
+//    if(!cell.progressView){
+        cell.progressView = [[UCZProgressView alloc]initWithFrame: cell.loadingWheelView.frame];
+        cell.progressView.indeterminate = YES;
+        cell.progressView.showsText = YES;
+        cell.progressView.backgroundColor = [UIColor blackColor];
+        cell.progressView.opaque = 0.5;
+        cell.progressView.alpha = 0.5;
+        [cell.loadingWheelView addSubview:cell.progressView];
+//    }
     if(sections.count>indexPath.row){
         cell.label.text = [sections objectAtIndex:indexPath.item];
         
@@ -810,6 +828,9 @@
         
         NSString *imageFilePath;
         NSString *imageName;
+        cell.loadingWheelView.hidden = NO;
+        cell.progressView.indeterminate = YES;
+        
         if(filename.length>2)
         {
             imageFilePath = filename;
@@ -831,19 +852,28 @@
             UIImage *image = [self generateThumbImage:tempfile];
             
             if(image)
+            {
                 [cell.imageView setImage:image];
-            [cell.label setTextColor:[UIColor yellowColor]];
+                [cell.label setTextColor:[UIColor yellowColor]];
+                cell.loadingWheelView.hidden = YES;
+            }
         }
         else if(imageFilePath.length>0)
         {
             if([[NSFileManager defaultManager] fileExistsAtPath:imageFilePath])
             {
+                cell.loadingWheelView.hidden = YES;
                 NSData *pngData = [NSData dataWithContentsOfFile:imageFilePath];
                 UIImage *image = [UIImage imageWithData:pngData];
                 if(image)
+                {
                     [cell.imageView setImage:image];
-                else
+                    [cell.label setTextColor:[UIColor yellowColor]];
+                    cell.loadingWheelView.hidden = YES;
+                }
+                else{
                     [cell.imageView setImage:[UIImage imageNamed:@"screen4-smilemonkey-icon.png"]];
+                }
             }
             else
             {
@@ -888,6 +918,7 @@
         {
             [cell.imageView setImage:[UIImage imageNamed:@"screen4-smilemonkey-icon.png"]];
             [cell.label setTextColor:[UIColor whiteColor]];
+            cell.progressView.hidden = NO;
         }
         if([filename isEqualToString:@"NO"])
         {
