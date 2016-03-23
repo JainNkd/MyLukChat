@@ -36,6 +36,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *sendTolukiesBtn;
 
 @property (weak, nonatomic) IBOutlet UIButton *facebookPostBtn;
+@property (weak, nonatomic) IBOutlet UIButton *facebookPicPostBtn;
 
 - (IBAction)facebookPostBtnClicked:(UIButton *)sender;
 

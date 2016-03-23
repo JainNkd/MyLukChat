@@ -218,7 +218,7 @@ static NSString* kSDKVersion = @"2";
 
   _sessionDelegate = delegate;
 
-  [self authorizeWithFBAppAuth:YES safariAuth:YES];
+  [self authorizeWithFBAppAuth:NO safariAuth:NO];
 }
 
 /**

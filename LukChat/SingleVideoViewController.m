@@ -84,7 +84,7 @@
     ConnectionHandler *connObj = [[ConnectionHandler alloc] init];
     connObj.delegate = self;
     [connObj makePOSTRequestPath:kSearchSingleVideo parameters:dict];
-    // Do any additional setup after loading the view.
+    
 }
 
 -(BOOL)shouldAutorotate
@@ -406,9 +406,11 @@
     [singleVideosData removeAllObjects];
     for(NSDictionary* videosDict in videoData)
     {
+        if([videosDict isKindOfClass:[NSDictionary class]]){
         NSDictionary *videoData = [videosDict valueForKey:@"videos"];
         VideoDetail *videoDetail = [[VideoDetail alloc]initWithDict:videoData];
         [singleVideosData addObject:videoDetail];
+        }
     }
     
 //    if(singleVideosData.count==0)

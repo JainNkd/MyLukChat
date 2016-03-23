@@ -60,12 +60,14 @@
     
     self.sendTolukiesBtn.enabled = NO;
     [self.sendTolukiesBtn setTitle:NSLocalizedString(@"send", nil) forState:UIControlStateNormal];
-    [self.facebookPostBtn setTitle:NSLocalizedString(@"post to facebook", nil) forState:UIControlStateNormal];
+    [self.facebookPostBtn setTitle:NSLocalizedString(@"post on facebook", nil) forState:UIControlStateNormal];
     
     [self.sendTolukiesBtn setBackgroundImage:[UIImage imageNamed:@"send-lukies_buttonbg.png"] forState:UIControlStateNormal];
     [self.sendTolukiesBtn setBackgroundImage:[UIImage imageNamed:@"send-lukies_pressbuttonbg.png"] forState:UIControlStateSelected];
     [self.facebookPostBtn setBackgroundImage:[UIImage imageNamed:@"facebook_post_buttonbg.png"] forState:UIControlStateNormal];
     [self.facebookPostBtn setBackgroundImage:[UIImage imageNamed:@"facebook_post_pressbuttonbg.png"] forState:UIControlStateSelected];
+    
+    self.facebookPicPostBtn.hidden = YES;
     
 }
 

@@ -1104,9 +1104,9 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sf9-1Z-aga" userLabel="facebook">
-                                        <rect key="frame" x="0.0" y="57" width="150" height="57"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
-                                        <state key="normal" title="post to facebook">
+                                        <rect key="frame" x="0.0" y="57" width="320" height="57"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="18"/>
+                                        <state key="normal" title="post to facebook1">
                                             <color key="titleColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -1117,7 +1117,7 @@
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TFz-ru-sWb" userLabel="facebook">
                                         <rect key="frame" x="160" y="57" width="150" height="57"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
-                                        <state key="normal" title="post pic to FB">
+                                        <state key="normal" title="post to facebook">
                                             <color key="titleColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -1149,6 +1149,7 @@
                     </view>
                     <connections>
                         <outlet property="contactTableView" destination="DQX-zG-IiK" id="Jfr-5E-3Rx"/>
+                        <outlet property="facebookPicPostBtn" destination="TFz-ru-sWb" id="khZ-Gc-all"/>
                         <outlet property="facebookPostBtn" destination="sf9-1Z-aga" id="HpK-in-zNf"/>
                         <outlet property="sendTolukiesBtn" destination="6rR-oS-VOx" id="t4p-8A-3G7"/>
                     </connections>

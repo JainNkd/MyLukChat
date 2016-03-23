@@ -20,6 +20,11 @@
 #import "AppDelegate.h"
 #import "LukCell.h"
 
+#import "UIImageView+WebCache.h"
+#import "objc/runtime.h"
+#import "UIView+WebCacheOperation.h"
+
+
 #import "UCZProgressView.h"
 
 #import "Common/ConnectionHandler.h"
@@ -222,8 +227,8 @@
             //            else{
             //                self.mergeButton.enabled = YES;
             //            }
-            if(titleWords.count>0)
-                isRecordingStart = YES;
+            //            if(titleWords.count>0)
+            //                isRecordingStart = YES;
             
             if(titleWords.count<2)
                 self.mergeButton.enabled = NO;
@@ -478,7 +483,8 @@
 
 -(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
-    NSLog(@"textField1...%@...text..%@..%lu",textField.text,string,(unsigned long)range.location);
+    NSLog(@".....%@...%d,,,,,%d",string,range.length,range.location);
+//    NSLog(@"textField1...%@...text..%@..%lu",textField.text,string,(unsigned long)range.location);
     
     NSMutableArray *array;
     NSString *textViewStr;
@@ -490,7 +496,7 @@
         if ([textViewStr1 length] > 0) {
             //            textViewStr = [textViewStr substringToIndex:[textViewStr length] - 1];
             [textViewStr1 deleteCharactersInRange:range];
-            NSLog(@"textField2...%@...text..%@..",textViewStr1,string);
+//            NSLog(@"textField2...%@...text..%@..",textViewStr1,string);
         } else {
             //no characters to delete... attempting to do so will result in a crash
         }
@@ -499,7 +505,7 @@
     {
         //        textViewStr = [NSString stringWithFormat:@"%@%@",textViewStr,string];
         [textViewStr1 insertString:string atIndex:range.location];
-        NSLog(@"textField3...%@...text..%@..",textViewStr1,string);
+//        NSLog(@"textField3...%@...text..%@..",textViewStr1,string);
     }
     
     textViewStr = textViewStr1;
@@ -581,7 +587,8 @@
 //This method is called when 1. edit luk 2.add new luk
 -(void)animateView:(NSArray*)titleArray range:(NSRange)range
 {
-    isRecordingStart = YES;
+    NSLog(@"Step121");
+    //    isRecordingStart = YES;
     [sections removeAllObjects];
     [sections addObjectsFromArray:titleArray];
     
@@ -597,6 +604,7 @@
         NSInteger viewIndex = [titleArray count];
         NSIndexPath *newindex = [NSIndexPath indexPathForItem:viewIndex-1 inSection:0];
         [[NSUserDefaults standardUserDefaults]setValue:@"NO" forKey:[NSString stringWithFormat:@"VIDEO_%ld_URL",(long)newindex.row]];
+        [[NSUserDefaults standardUserDefaults]setBool:FALSE forKey:[NSString stringWithFormat:@"VIDEO_%d_NOT",(int)newindex.row]];
         [videofiles replaceObjectAtIndex:newindex.row withObject:@"NO"];
         [self.collectionView insertItemsAtIndexPaths:[NSArray arrayWithObject:newindex]];
         
@@ -618,6 +626,8 @@
     for(int i=0 ;i<10;i++)
     {
         [[NSUserDefaults standardUserDefaults]setValue:@"NO" forKey:[NSString stringWithFormat:@"VIDEO_%d_URL",i]];
+        [[NSUserDefaults standardUserDefaults]setBool:FALSE forKey:[NSString stringWithFormat:@"VIDEO_%d_NOT",i]];
+        [[NSUserDefaults standardUserDefaults]synchronize];
         [videofiles addObject:@"NO"];
     }
     [sections removeAllObjects];
@@ -626,7 +636,9 @@
 
 -(void)resetLUK:(NSArray*)array
 {
-    isRecordingStart = YES;
+        NSLog(@"Step122");
+    //    isRecordingStart= YES;
+            NSLog(@"currentLUKIndex...%d",currentLUKIndex);
     if(currentLUKIndex == 0)
         return;
     
@@ -638,7 +650,9 @@
         self.mergeButton.enabled = NO;
     else
         self.mergeButton.enabled = YES;
+    dispatch_async(dispatch_get_main_queue(), ^{
     [self.collectionView reloadData];
+    });
     
 }
 
@@ -800,15 +814,7 @@
     //    NSLog(@"tempfile indexPath....%@",indexPath);
     LukCell *cell = (LukCell*)[collectionView dequeueReusableCellWithReuseIdentifier:@"Cell" forIndexPath:indexPath];
     
-
-    
-//    NSArray *subview = [cell.loadingWheelView subviews];
-//    for(UIView *view in subview)
-//    {
-//        if([view isKindOfClass:[UCZProgressView class]])
-//            [view removeFromSuperview];
-//    }
-//    if(!cell.progressView){
+    if(!cell.progressView){
         cell.progressView = [[UCZProgressView alloc]initWithFrame: cell.loadingWheelView.frame];
         cell.progressView.indeterminate = YES;
         cell.progressView.showsText = YES;
@@ -816,7 +822,17 @@
         cell.progressView.opaque = 0.5;
         cell.progressView.alpha = 0.5;
         [cell.loadingWheelView addSubview:cell.progressView];
-//    }
+    }
+    
+    BOOL isVideoFind = [[NSUserDefaults standardUserDefaults]boolForKey:[NSString stringWithFormat:@"VIDEO_%d_NOT",indexPath.row]];
+    
+    NSLog(@"stepppp...%d",isVideoFind);
+    
+    if(isVideoFind)
+        cell.loadingWheelView.hidden = YES;
+    else
+        cell.loadingWheelView.hidden = NO;
+    
     if(sections.count>indexPath.row){
         cell.label.text = [sections objectAtIndex:indexPath.item];
         
@@ -828,7 +844,7 @@
         
         NSString *imageFilePath;
         NSString *imageName;
-        cell.loadingWheelView.hidden = NO;
+//        cell.loadingWheelView.hidden = NO;
         cell.progressView.indeterminate = YES;
         
         if(filename.length>2)
@@ -880,28 +896,32 @@
                 // using Image for thumbnails
                 if([CommonMethods reachable]){
                     if(imageName.length>0){
-                        [cell.imageView setImageWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:imageName]] placeholderImage:[UIImage imageNamed:@"screen4-smilemonkey-icon.png"]
-                                                       success:^(NSURLRequest *request , NSHTTPURLResponse *response , UIImage *image ){
-                                                           NSLog(@"Loaded successfully.....%@",[request.URL absoluteString]);// %ld", (long)[response statusCode]);
-                                                           
-                                                           dispatch_async(dispatch_get_main_queue(), ^(void) {
-                                                               NSArray *ary = [[request.URL absoluteString] componentsSeparatedByString:@"/"];
-                                                               NSString *filename = [ary lastObject];
-                                                               
-                                                               NSString *filePath = [path stringByAppendingPathComponent:filename];
-                                                               //Add the file name
-                                                               NSData *pngData = UIImagePNGRepresentation(image);
-                                                               if(pngData && filename.length>0){
-                                                                   [pngData writeToFile:filePath atomically:YES];
-                                                                   [self.collectionView reloadData];
-                                                               }
-                                                           });
-                                                       }
-                                                       failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error){
-                                                           NSLog(@"failed loading");//'%@", error);
-                                                           //                                                      [self.sentTableViewObj reloadData];
-                                                       }
-                         ];
+                        [cell.imageView sd_setImageWithURL:[NSURL URLWithString:imageName] placeholderImage:[UIImage imageNamed:@"screen4-smilemonkey-icon.png"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+                            if(error==nil)
+                            {
+                                NSLog(@"Loaded successfully.....%@",[imageURL absoluteString]);// %ld", (long)[response statusCode]);
+                                
+                                dispatch_async(dispatch_get_main_queue(), ^(void) {
+                                    cell.progressView.hidden = YES;
+//                                    if(image){
+//                                        cell.imageView.image = image;
+//                                    }
+                                    NSArray *ary = [[imageURL absoluteString] componentsSeparatedByString:@"/"];
+                                    NSString *filename = [ary lastObject];
+                                    
+                                    NSString *filePath = [path stringByAppendingPathComponent:filename];
+                                    //Add the file name
+                                    NSData *pngData = UIImagePNGRepresentation(image);
+                                    if(pngData && filename.length>0){
+                                        [pngData writeToFile:filePath atomically:YES];
+                                        [self.collectionView reloadData];
+                                    }
+                                });
+                            }else{
+                            NSLog(@"failed loading");//'%@", error);
+                            //                                                      [self.sentTableViewObj reloadData];
+                        }
+                        }];
                     }
                     else
                     {
@@ -920,7 +940,7 @@
             [cell.label setTextColor:[UIColor whiteColor]];
             cell.progressView.hidden = NO;
         }
-        if([filename isEqualToString:@"NO"])
+        if([filename isEqualToString:@"NO"] && !isVideoFind)
         {
             [self fetchRandomVideoFromserver:cell.label.text];
         }
@@ -958,6 +978,7 @@
         [string appendString:@" "];
         NSString *videoName = [videofiles objectAtIndex:i];
         [[NSUserDefaults standardUserDefaults]setValue:videoName forKey:[NSString stringWithFormat:@"VIDEO_%d_URL",i]];
+        [[NSUserDefaults standardUserDefaults]synchronize];
         i++;
     }
     self.videoTitleTextField.text = string;
@@ -1054,7 +1075,9 @@
             NSArray *singleArrData = (NSArray*)responseDict;
             NSLog(@"log....%@",[singleArrData description]);
             
-            [self parseSingleVideoData:singleArrData];
+            dispatch_async(dispatch_get_main_queue(),^{
+                [self parseSingleVideoData:singleArrData];
+            });
         }
     }
 }
@@ -1071,43 +1094,154 @@
 {
     NSLog(@"STEP1");
     BOOL isFound = FALSE;
-    for(NSDictionary* videosDict in videoData)
+    
+    if(videoData.count>0)
     {
-        NSLog(@"STEP2");
-        NSDictionary *videoData = [videosDict valueForKey:@"videos"];
-        VideoDetail *videoDetail = [[VideoDetail alloc]initWithDict:videoData];
-        videoTitle = [CommonMethods getVideoTitle];
-        if(videoTitle.length>0){
-            NSMutableArray *titleWords = (NSMutableArray*)[videoTitle componentsSeparatedByString:@" "];
-            if(titleWords.count>1)
-                [titleWords removeObject:@""];
-            
-            int fileIndex = 0;
-            for(NSString *word in titleWords){
-                if ([word caseInsensitiveCompare:videoDetail.videoTitle] == NSOrderedSame)
-                {
-                    NSString *fileNameStr = [[NSUserDefaults standardUserDefaults]valueForKey:[NSString stringWithFormat:@"VIDEO_%d_URL",fileIndex]];
-                    NSLog(@"fileNameStr......%@",fileNameStr);
-                    
-                    if(fileNameStr.length == 2){
-                        NSLog(@"STEP3");
-                        [[NSUserDefaults standardUserDefaults]setValue:videoDetail.videoURL forKey:[NSString stringWithFormat:@"VIDEO_%d_URL",fileIndex]];
-                        [[NSUserDefaults standardUserDefaults]synchronize];
-                        isFound = TRUE;
-                        break;
+        id data = [videoData objectAtIndex:0];
+        if([data isKindOfClass:[NSString class]])
+        {
+            videoTitle = [CommonMethods getVideoTitle];
+            if(videoTitle.length>0){
+                NSMutableArray *titleWords = (NSMutableArray*)[videoTitle componentsSeparatedByString:@" "];
+                if(titleWords.count>1)
+                    [titleWords removeObject:@""];
+                
+                int fileIndex = 0;
+                for(NSString *word in titleWords){
+                    if ([word caseInsensitiveCompare:data] == NSOrderedSame)
+                    {
+                            NSLog(@"STEP31");
+                        
+                            [[NSUserDefaults standardUserDefaults]setValue:@"NO" forKey:[NSString stringWithFormat:@"VIDEO_%d_URL",fileIndex]];
+                           [[NSUserDefaults standardUserDefaults]setBool:TRUE forKey:[NSString stringWithFormat:@"VIDEO_%d_NOT",fileIndex]];
+                            [[NSUserDefaults standardUserDefaults]synchronize];
+                            isFound = true;
                     }
+                    fileIndex++;
                 }
-                fileIndex++;
+                
             }
-            
+        }
+        else{
+            for(NSDictionary* videosDict in videoData)
+            {
+                NSLog(@"STEP2");
+                NSDictionary *videoData = [videosDict valueForKey:@"videos"];
+                VideoDetail *videoDetail = [[VideoDetail alloc]initWithDict:videoData];
+                videoTitle = [CommonMethods getVideoTitle];
+                if(videoTitle.length>0){
+                    NSMutableArray *titleWords = (NSMutableArray*)[videoTitle componentsSeparatedByString:@" "];
+                    if(titleWords.count>1)
+                        [titleWords removeObject:@""];
+                    
+                    int fileIndex = 0;
+                    for(NSString *word in titleWords){
+                        if ([word caseInsensitiveCompare:videoDetail.videoTitle] == NSOrderedSame)
+                        {
+                            NSString *fileNameStr = [[NSUserDefaults standardUserDefaults]valueForKey:[NSString stringWithFormat:@"VIDEO_%d_URL",fileIndex]];
+                            [[NSUserDefaults standardUserDefaults]setBool:FALSE forKey:[NSString stringWithFormat:@"VIDEO_%d_NOT",fileIndex]];
+                            NSLog(@"fileNameStr......%@",fileNameStr);
+                            
+                            if(fileNameStr.length == 2){
+                                NSLog(@"STEP3");
+                                [[NSUserDefaults standardUserDefaults]setValue:videoDetail.videoURL forKey:[NSString stringWithFormat:@"VIDEO_%d_URL",fileIndex]];
+                                [[NSUserDefaults standardUserDefaults]synchronize];
+                                isFound = TRUE;
+                                break;
+                            }
+                        }
+                        fileIndex++;
+                    }
+                    
+                }
+            }
         }
     }
     
-    [NSThread sleepForTimeInterval:1.5];
-    if(isFound)
-        [self.collectionView reloadData];
+//    dispatch_async(dispatch_get_main_queue(),^
+//                   {
+//                       if(isFound){
+//                           NSLog(@"Step4   %d",currentLUKIndex);
+                           [self performSelector:@selector(reloadTableData) withObject:nil afterDelay:0.25f];
+//                       }
+//                   });
 }
 
+-(void)reloadTableData
+{
+    [self.collectionView reloadData];
+}
+
+-(void)reloadData
+{
+    NSString* string = @" ";
+    NSMutableArray *array;
+    NSString *textViewStr = self.videoTitleTextField.text;
+    textViewStr = [textViewStr stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    [[NSUserDefaults standardUserDefaults] setObject:textViewStr forKey:VIDEO_TITLE];
+    if(textViewStr.length>0){
+        array = (NSMutableArray*)[textViewStr componentsSeparatedByString:@" "];
+        if([array count]>1)
+            [array removeObject:@""];
+    }
+    
+    if ( [string isEqualToString:@""]) {//When detect backspace when have one character.
+        if(isRecordingStart){
+            return ;
+        }
+        else{
+            //            [self resetLUK:[array count]];
+            if(currentLUKIndex != [array count]-1)
+                [self resetLUK:array ];
+            //            currentLUKIndex = [array count];
+        }
+    }
+    else{
+        if([string isEqualToString:@" "])//When user enter one character.
+        {
+            NSLog(@"animateView textView...%@..",textViewStr);
+            if(textViewStr.length>0){
+                
+                if([array count] > 0 && [array count] < (videoCount+1)){
+                    //                    [[NSUserDefaults standardUserDefaults] setObject:textViewStr forKey:VIDEO_TITLE];
+                    if(currentLUKIndex != [array count]){
+//                        [self animateView:array range:range];
+                        currentLUKIndex = [array count];
+                    }
+                    else
+                    {
+                        if(currentLUKIndex == [array count])
+                            [self resetLUK:array];
+                    }
+                    
+                }
+                
+                if([array count] > videoCount)
+                {
+                    //            message = @"You exceed meximum word limit of 10";
+                    NSLog(@"1 You exceed meximum word limit of 10");
+                    return ;
+                }
+            }
+        }
+        else
+        {
+            if([array count] > videoCount)
+            {
+                NSLog(@"2 You exceed meximum word limit of 10");
+                return ;
+                
+            }
+            if(currentLUKIndex == [array count]-1)
+            {
+                
+            }
+            else if(currentLUKIndex <=  [array count]){
+                [self resetLUK:array];
+            }
+        }
+    }
+}
 //Download default vidoes
 -(void)downloadVidoes
 {
