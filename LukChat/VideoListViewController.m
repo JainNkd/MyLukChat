@@ -992,6 +992,7 @@
 
 -(void)processSingleTap:(UITapGestureRecognizer*)gesture
 {
+    [self.videoTitleTextField resignFirstResponder];
     isRecordingStart = YES;
     CGPoint pointInCollectionView = [gesture locationInView:self.collectionView];
     NSIndexPath *selectedIndexPath = [self.collectionView indexPathForItemAtPoint:pointInCollectionView];
@@ -1012,6 +1013,7 @@
 
 -(void)processDoubleTap:(UITapGestureRecognizer*)gesture
 {
+    [self.videoTitleTextField resignFirstResponder];
     isRecordingStart = YES;
     CGPoint pointInCollectionView = [gesture locationInView:self.collectionView];
     NSIndexPath *selectedIndexPath = [self.collectionView indexPathForItemAtPoint:pointInCollectionView];
