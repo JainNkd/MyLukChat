@@ -44,9 +44,9 @@
     //Facebook
     facebook = [[Facebook alloc] initWithAppId:@"1445458002425387"];
     
-    //Parse
-    [Parse setApplicationId:@"pGx3VxVJ0hAU6TNDrNVo2LboonA5HbmakPRUclGL"
-                  clientKey:@"QXf9V4NCjtz3FyQePhEUT7SFCXSfip8Oygyvy8ps"];
+//    //Parse
+//    [Parse setApplicationId:@"pGx3VxVJ0hAU6TNDrNVo2LboonA5HbmakPRUclGL"
+//                  clientKey:@"QXf9V4NCjtz3FyQePhEUT7SFCXSfip8Oygyvy8ps"];
     //Local notification
     [JCNotificationCenter sharedCenter].presenter = [JCNotificationBannerPresenterIOS7Style new];
     
