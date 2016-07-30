@@ -483,7 +483,7 @@
 
 -(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
-    NSLog(@".....%@...%d,,,,,%d",string,range.length,range.location);
+    NSLog(@".....%@...%lu,,,,,%lu",string,(unsigned long)range.length,(unsigned long)range.location);
 //    NSLog(@"textField1...%@...text..%@..%lu",textField.text,string,(unsigned long)range.location);
     
     NSMutableArray *array;

@@ -33,6 +33,10 @@
 		01D73DDB1C8855DB0090CE00 /* UIImageView+HighlightedWebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 01D73DC91C8855DB0090CE00 /* UIImageView+HighlightedWebCache.m */; };
 		01D73DDC1C8855DB0090CE00 /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 01D73DCB1C8855DB0090CE00 /* UIImageView+WebCache.m */; };
 		01D73DDD1C8855DB0090CE00 /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 01D73DCD1C8855DB0090CE00 /* UIView+WebCacheOperation.m */; };
+		01E3EA9D1D4A77A600FA77B0 /* MixedVideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E3EA9C1D4A77A600FA77B0 /* MixedVideoViewController.m */; };
+		01E3EAA01D4A798400FA77B0 /* MixedVideoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E3EA9F1D4A798400FA77B0 /* MixedVideoCell.m */; };
+		01E3EAA51D4A80D000FA77B0 /* MixedVideoViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = 01E3EA9B1D4A77A600FA77B0 /* MixedVideoViewController.h */; };
+		01E3EAA61D4A80D000FA77B0 /* MixedVideoCell.h in Sources */ = {isa = PBXBuildFile; fileRef = 01E3EA9E1D4A798400FA77B0 /* MixedVideoCell.h */; };
 		6329BEE919A8AAC400B6D8F5 /* CustomeVideoPlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6329BEE219A8AAC400B6D8F5 /* CustomeVideoPlayViewController.m */; };
 		6329BEEA19A8AAC400B6D8F5 /* VideoPreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6329BEE419A8AAC400B6D8F5 /* VideoPreviewViewController.m */; };
 		6329BEEB19A8AAC400B6D8F5 /* CustomOrientationNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6329BEE619A8AAC400B6D8F5 /* CustomOrientationNavigationController.m */; };
@@ -371,6 +375,10 @@
 		01D73DCB1C8855DB0090CE00 /* UIImageView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+WebCache.m"; sourceTree = "<group>"; };
 		01D73DCC1C8855DB0090CE00 /* UIView+WebCacheOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+WebCacheOperation.h"; sourceTree = "<group>"; };
 		01D73DCD1C8855DB0090CE00 /* UIView+WebCacheOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WebCacheOperation.m"; sourceTree = "<group>"; };
+		01E3EA9B1D4A77A600FA77B0 /* MixedVideoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MixedVideoViewController.h; sourceTree = "<group>"; };
+		01E3EA9C1D4A77A600FA77B0 /* MixedVideoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MixedVideoViewController.m; sourceTree = "<group>"; };
+		01E3EA9E1D4A798400FA77B0 /* MixedVideoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MixedVideoCell.h; sourceTree = "<group>"; };
+		01E3EA9F1D4A798400FA77B0 /* MixedVideoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MixedVideoCell.m; sourceTree = "<group>"; };
 		6329BEE219A8AAC400B6D8F5 /* CustomeVideoPlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomeVideoPlayViewController.m; sourceTree = "<group>"; };
 		6329BEE319A8AAC400B6D8F5 /* CustomeVideoPlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomeVideoPlayViewController.h; sourceTree = "<group>"; };
 		6329BEE419A8AAC400B6D8F5 /* VideoPreviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoPreviewViewController.m; sourceTree = "<group>"; };
@@ -867,6 +875,17 @@
 			path = SDWebImage;
 			sourceTree = "<group>";
 		};
+		01E3EA981D4A774C00FA77B0 /* FirstStartScreen */ = {
+			isa = PBXGroup;
+			children = (
+				01E3EA9B1D4A77A600FA77B0 /* MixedVideoViewController.h */,
+				01E3EA9C1D4A77A600FA77B0 /* MixedVideoViewController.m */,
+				01E3EA9E1D4A798400FA77B0 /* MixedVideoCell.h */,
+				01E3EA9F1D4A798400FA77B0 /* MixedVideoCell.m */,
+			);
+			name = FirstStartScreen;
+			sourceTree = "<group>";
+		};
 		6329BEED19A8AB7D00B6D8F5 /* AppDelegate */ = {
 			isa = PBXGroup;
 			children = (
@@ -880,6 +899,7 @@
 		6329BEEE19A8ABA300B6D8F5 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				01E3EA981D4A774C00FA77B0 /* FirstStartScreen */,
 				8B6562C21ADE968F00C54EA9 /* SingleVideo */,
 				874F46C01AC71D6E001CE774 /* CreateVideo */,
 				87AFE0471A5C55BC00DCA827 /* Contacts */,
@@ -1979,14 +1999,14 @@
 /* Begin PBXShellScriptBuildPhase section */
 		8BFB47731B3C18A2009C1F71 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 8;
+			buildActionMask = 12;
 			files = (
 			);
 			inputPaths = (
 			);
 			outputPaths = (
 			);
-			runOnlyForDeploymentPostprocessing = 1;
+			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "./Fabric.framework/run f4734fa2847f34dbe5b7e0f3cec825e7605921cd e2b12479a73bc1974ea55946e845bced30d2775d08118f575483a5e788118b8f";
 		};
@@ -1997,6 +2017,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				01E3EAA51D4A80D000FA77B0 /* MixedVideoViewController.h in Sources */,
+				01E3EAA61D4A80D000FA77B0 /* MixedVideoCell.h in Sources */,
 				8727D5CB1A4885E30092BB7C /* SCImageDisplayerViewController.m in Sources */,
 				633850FD1983C9F400C3256A /* AFURLConnectionOperation.m in Sources */,
 				633851091983C9F400C3256A /* DatabaseMethods.m in Sources */,
@@ -2028,6 +2050,7 @@
 				8727D5C91A4885E30092BB7C /* SCAudioRecordViewController.m in Sources */,
 				633850FF1983C9F400C3256A /* UIImageView+AFNetworking.m in Sources */,
 				633850AE1983C24A00C3256A /* ConfirmPinCodeViewController.m in Sources */,
+				01E3EAA01D4A798400FA77B0 /* MixedVideoCell.m in Sources */,
 				8BCBB39F1B4693AE000DDEB0 /* JCNotificationBannerPresenter.m in Sources */,
 				01D73DDC1C8855DB0090CE00 /* UIImageView+WebCache.m in Sources */,
 				633851021983C9F400C3256A /* Reachability.m in Sources */,
@@ -2095,6 +2118,7 @@
 				63985C7F199E2E7400EAD6C1 /* TermsAndConditionsViewController.m in Sources */,
 				633851081983C9F400C3256A /* SBJsonWriter.m in Sources */,
 				877E21771A99C23E009DBF71 /* UCZProgressView.m in Sources */,
+				01E3EA9D1D4A77A600FA77B0 /* MixedVideoViewController.m in Sources */,
 				8727D5A41A4884460092BB7C /* SCImageView.m in Sources */,
 				633851151983CA2B00C3256A /* AppDataManager.m in Sources */,
 				633851141983CA2B00C3256A /* CountryPicker.m in Sources */,
