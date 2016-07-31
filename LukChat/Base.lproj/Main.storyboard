@@ -465,6 +465,7 @@
                     <connections>
                         <outlet property="collectionView" destination="wpQ-75-zyf" id="o9c-NL-EE0"/>
                         <outlet property="twoMonkeyButton" destination="xG0-jh-Hdk" id="dBO-CE-VdP"/>
+                        <outlet property="videoTitleLbl" destination="5YE-F8-E6K" id="AdC-4B-iI8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Sf-9q-rtu" userLabel="First Responder" sceneMemberID="firstResponder"/>

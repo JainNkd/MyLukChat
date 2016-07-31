@@ -12,8 +12,12 @@
 @interface MixedVideoViewController : UIViewController<UICollectionViewDelegate,UICollectionViewDataSource>
 {
         NSMutableArray *randomVideosData;
+        NSMutableArray *selectedIndexPaths ,*selectedWords;
+        NSMutableString *videoTitle;
 }
 @property (weak, nonatomic) IBOutlet UIButton *twoMonkeyButton;
+
+@property (weak, nonatomic) IBOutlet UILabel *videoTitleLbl;
 
 - (IBAction)twoMonkeyButtonPressed:(UIButton *)sender;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;

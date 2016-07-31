@@ -35,8 +35,6 @@
 		01D73DDD1C8855DB0090CE00 /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 01D73DCD1C8855DB0090CE00 /* UIView+WebCacheOperation.m */; };
 		01E3EA9D1D4A77A600FA77B0 /* MixedVideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E3EA9C1D4A77A600FA77B0 /* MixedVideoViewController.m */; };
 		01E3EAA01D4A798400FA77B0 /* MixedVideoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E3EA9F1D4A798400FA77B0 /* MixedVideoCell.m */; };
-		01E3EAA51D4A80D000FA77B0 /* MixedVideoViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = 01E3EA9B1D4A77A600FA77B0 /* MixedVideoViewController.h */; };
-		01E3EAA61D4A80D000FA77B0 /* MixedVideoCell.h in Sources */ = {isa = PBXBuildFile; fileRef = 01E3EA9E1D4A798400FA77B0 /* MixedVideoCell.h */; };
 		6329BEE919A8AAC400B6D8F5 /* CustomeVideoPlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6329BEE219A8AAC400B6D8F5 /* CustomeVideoPlayViewController.m */; };
 		6329BEEA19A8AAC400B6D8F5 /* VideoPreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6329BEE419A8AAC400B6D8F5 /* VideoPreviewViewController.m */; };
 		6329BEEB19A8AAC400B6D8F5 /* CustomOrientationNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6329BEE619A8AAC400B6D8F5 /* CustomOrientationNavigationController.m */; };
@@ -262,11 +260,6 @@
 		8BB0F66C1AC161BC008453B5 /* movie-role-active@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BB0F6661AC161BC008453B5 /* movie-role-active@2x.png */; };
 		8BB0F66D1AC161BC008453B5 /* movie-role@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BB0F6671AC161BC008453B5 /* movie-role@2x.png */; };
 		8BB337711AA04B04008E4A82 /* FXBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BB337701AA04B04008E4A82 /* FXBlurView.m */; };
-		8BC142E81AA72415002F36B0 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BC142E31AA72415002F36B0 /* Bolts.framework */; };
-		8BC142E91AA72415002F36B0 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BC142E41AA72415002F36B0 /* Parse.framework */; };
-		8BC142EA1AA72415002F36B0 /* ParseCrashReporting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BC142E51AA72415002F36B0 /* ParseCrashReporting.framework */; };
-		8BC142EB1AA72415002F36B0 /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BC142E61AA72415002F36B0 /* ParseFacebookUtils.framework */; };
-		8BC142EC1AA72415002F36B0 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BC142E71AA72415002F36B0 /* ParseUI.framework */; };
 		8BC142F01AA72485002F36B0 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BC142EF1AA72485002F36B0 /* CFNetwork.framework */; };
 		8BC142F21AA7249D002F36B0 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BC142F11AA7249D002F36B0 /* CoreLocation.framework */; };
 		8BC142F41AA724B0002F36B0 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BC142F31AA724B0002F36B0 /* MobileCoreServices.framework */; };
@@ -718,11 +711,6 @@
 		8BB0F6671AC161BC008453B5 /* movie-role@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "movie-role@2x.png"; sourceTree = "<group>"; };
 		8BB3376F1AA04B04008E4A82 /* FXBlurView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXBlurView.h; sourceTree = "<group>"; };
 		8BB337701AA04B04008E4A82 /* FXBlurView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXBlurView.m; sourceTree = "<group>"; };
-		8BC142E31AA72415002F36B0 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
-		8BC142E41AA72415002F36B0 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
-		8BC142E51AA72415002F36B0 /* ParseCrashReporting.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseCrashReporting.framework; sourceTree = "<group>"; };
-		8BC142E61AA72415002F36B0 /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtils.framework; sourceTree = "<group>"; };
-		8BC142E71AA72415002F36B0 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
 		8BC142EF1AA72485002F36B0 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		8BC142F11AA7249D002F36B0 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		8BC142F31AA724B0002F36B0 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
@@ -794,19 +782,14 @@
 				8BC142F01AA72485002F36B0 /* CFNetwork.framework in Frameworks */,
 				633851221983CD4500C3256A /* MediaPlayer.framework in Frameworks */,
 				6338511F1983CD3A00C3256A /* AddressBook.framework in Frameworks */,
-				8BC142EB1AA72415002F36B0 /* ParseFacebookUtils.framework in Frameworks */,
 				633851201983CD3A00C3256A /* AddressBookUI.framework in Frameworks */,
 				6338511C1983CD0A00C3256A /* libsqlite3.0.dylib in Frameworks */,
 				01CE39A51C084F5000867CDF /* FBSDKCoreKit.framework in Frameworks */,
 				01CE39A41C084F5000867CDF /* Bolts.framework in Frameworks */,
-				8BC142E91AA72415002F36B0 /* Parse.framework in Frameworks */,
 				6338511A1983CD0300C3256A /* libsqlite3.dylib in Frameworks */,
-				8BC142E81AA72415002F36B0 /* Bolts.framework in Frameworks */,
 				01CE39A61C084F5000867CDF /* FBSDKLoginKit.framework in Frameworks */,
 				6338502119839F2D00C3256A /* UIKit.framework in Frameworks */,
-				8BC142EA1AA72415002F36B0 /* ParseCrashReporting.framework in Frameworks */,
 				6338501D19839F2D00C3256A /* Foundation.framework in Frameworks */,
-				8BC142EC1AA72415002F36B0 /* ParseUI.framework in Frameworks */,
 				875F64BE1B18FDA10074E244 /* Fabric.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1019,7 +1002,6 @@
 			isa = PBXGroup;
 			children = (
 				87A9EBED1B36ADDD00064041 /* Facebook */,
-				8BC142E21AA72415002F36B0 /* parse-library-1.6.3 */,
 				875BFD2F1A57316200A83E35 /* Domain */,
 				8727D5B61A4885E30092BB7C /* Video */,
 				8727D5631A4884460092BB7C /* Library */,
@@ -1703,18 +1685,6 @@
 			path = FXBlurView;
 			sourceTree = "<group>";
 		};
-		8BC142E21AA72415002F36B0 /* parse-library-1.6.3 */ = {
-			isa = PBXGroup;
-			children = (
-				8BC142E31AA72415002F36B0 /* Bolts.framework */,
-				8BC142E41AA72415002F36B0 /* Parse.framework */,
-				8BC142E51AA72415002F36B0 /* ParseCrashReporting.framework */,
-				8BC142E61AA72415002F36B0 /* ParseFacebookUtils.framework */,
-				8BC142E71AA72415002F36B0 /* ParseUI.framework */,
-			);
-			path = "parse-library-1.6.3";
-			sourceTree = "<group>";
-		};
 		8BCBB3861B4693AE000DDEB0 /* JCNotification */ = {
 			isa = PBXGroup;
 			children = (
@@ -2017,8 +1987,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				01E3EAA51D4A80D000FA77B0 /* MixedVideoViewController.h in Sources */,
-				01E3EAA61D4A80D000FA77B0 /* MixedVideoCell.h in Sources */,
 				8727D5CB1A4885E30092BB7C /* SCImageDisplayerViewController.m in Sources */,
 				633850FD1983C9F400C3256A /* AFURLConnectionOperation.m in Sources */,
 				633851091983C9F400C3256A /* DatabaseMethods.m in Sources */,
@@ -2232,8 +2200,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: aumkii Unternehmergesellschaft haftungsbeschrankt (F9KDL972HX)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: aumkii Unternehmergesellschaft haftungsbeschrankt (F9KDL972HX)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_BITCODE = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -2252,7 +2220,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "74a0b57b-fc9c-44c3-acfa-7a3923de9c23";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -2273,8 +2241,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: aumkii Unternehmergesellschaft haftungsbeschrankt (F9KDL972HX)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: aumkii Unternehmergesellschaft haftungsbeschrankt (F9KDL972HX)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_BITCODE = NO;
 				ENABLE_NS_ASSERTIONS = NO;
@@ -2286,7 +2254,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				PROVISIONING_PROFILE = "74a0b57b-fc9c-44c3-acfa-7a3923de9c23";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -2298,8 +2266,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: aumkii Unternehmergesellschaft haftungsbeschrankt (F9KDL972HX)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: aumkii Unternehmergesellschaft haftungsbeschrankt (F9KDL972HX)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/LukChat/parse-library-1.6.3",
@@ -2311,7 +2279,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.lukchat.luk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "74a0b57b-fc9c-44c3-acfa-7a3923de9c23";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -2322,8 +2290,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: aumkii Unternehmergesellschaft haftungsbeschrankt (F9KDL972HX)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: aumkii Unternehmergesellschaft haftungsbeschrankt (F9KDL972HX)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/LukChat/parse-library-1.6.3",
@@ -2335,7 +2303,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.lukchat.luk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "74a0b57b-fc9c-44c3-acfa-7a3923de9c23";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

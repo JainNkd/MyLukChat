@@ -15,7 +15,6 @@
 #import "Common/ConnectionHandler.h"
 #import "AFJSONRequestOperation.h"
 #import "AFNetworkActivityIndicatorManager.h"
-#import <Parse/Parse.h>
 
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
@@ -44,9 +43,6 @@
     //Facebook
     facebook = [[Facebook alloc] initWithAppId:@"1445458002425387"];
     
-//    //Parse
-//    [Parse setApplicationId:@"pGx3VxVJ0hAU6TNDrNVo2LboonA5HbmakPRUclGL"
-//                  clientKey:@"QXf9V4NCjtz3FyQePhEUT7SFCXSfip8Oygyvy8ps"];
     //Local notification
     [JCNotificationCenter sharedCenter].presenter = [JCNotificationBannerPresenterIOS7Style new];
     
@@ -305,11 +301,6 @@
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     
-    // Store the deviceToken in the current installation and save it to Parse.
-    PFInstallation *currentInstallation = [PFInstallation currentInstallation];
-    [currentInstallation setDeviceTokenFromData:deviceToken];
-    [currentInstallation saveInBackground];
-    
     NSLog(@"didRegisterForRemoteNotificationsWithDeviceToken *******");
     NSLog(@"My token is: %@", deviceToken);
     
@@ -329,10 +320,7 @@
 
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
-    
-    [PFPush handlePush:userInfo];
-    
-    
+
     //    if(application.applicationState != UIApplicationStateBackground)
     //        [CommonMethods showAlertWithTitle:@"LUK" message:@"New Video Reciceved from LUK"];
     //    NSLog(@"didReceiveRemoteNotification *************");

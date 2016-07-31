@@ -34,7 +34,12 @@
     
     self.navigationController.navigationBarHidden = YES;
     
-    randomVideosData = [[NSMutableArray alloc]init];
+    randomVideosData     = [[NSMutableArray alloc]init];
+    selectedIndexPaths   = [[NSMutableArray alloc]init];
+    selectedWords        = [[NSMutableArray alloc]init];
+    videoTitle           = [[NSMutableString alloc]init];
+    
+    [self refreshVideoData];
     
     //Selction videos from selected add gesture for this
     UITapGestureRecognizer *singleTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(processSingleTap:)];
@@ -46,7 +51,33 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
     [self fetchRandomVideoFromserver];
+}
+
+//Refresh Video Data
+-(void)refreshVideoData
+{
+    [selectedIndexPaths removeAllObjects];
+    [selectedWords removeAllObjects];
+    [videoTitle setString:@""];
+    
+//    for(int i=0; i<8; i++)
+//    {
+//        [selectedWords addObject:@"NO"];
+//    }
+}
+
+//create Video title
+-(void)createVideoTitle
+{
+    [videoTitle setString:@""];
+    for(int i=0; i<[selectedWords count]; i++)
+    {
+       VideoDetail *videoDetailObj = [selectedWords objectAtIndex:i];
+       [videoTitle appendString:[NSString stringWithFormat:@"%@ ",videoDetailObj.videoTitle]];
+    }
+    self.videoTitleLbl.text = videoTitle;
 }
 #pragma Screen Rotation Support Methods
 -(BOOL)shouldAutorotate
@@ -77,8 +108,12 @@
     static NSString *cellIdentifier = @"Cell";
     MixedVideoCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
     
-
-
+    
+    if([selectedIndexPaths containsObject:indexPath])
+        [cell setSelected:YES];
+    else
+        [cell setSelected:NO];
+    
     if(randomVideosData.count> indexPath.row){
         
         VideoDetail *videoObj = [randomVideosData objectAtIndex:indexPath.row];
@@ -149,11 +184,11 @@
 //Fetch data from server
 -(void)fetchRandomVideoFromserver
 {
-
+    
     NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
     [dict setValue:kAPIKeyValue forKey:kAPIKey];
     [dict setValue:kAPISecretValue forKey:kAPISecret];
-//    [dict setValue:titleWord forKey:@"key"];
+    //    [dict setValue:titleWord forKey:@"key"];
     [dict setValue:@"random" forKey:@"order_by"];
     [dict setValue:[NSString stringWithFormat:@"%d",0] forKey:@"start"];
     [dict setValue:[NSString stringWithFormat:@"%d",15] forKey:@"count"];
@@ -170,107 +205,128 @@
     NSIndexPath *selectedIndexPath = [self.collectionView indexPathForItemAtPoint:pointInCollectionView];
     MixedVideoCell *selectedCell = (MixedVideoCell*)[self.collectionView cellForItemAtIndexPath:selectedIndexPath];
     
-    if([selectedCell isSelected])
-    [selectedCell setSelected:NO];
-    else
-        [selectedCell setSelected:YES];
+    if(randomVideosData.count> selectedIndexPath.row){
+        VideoDetail *videoObj = [randomVideosData objectAtIndex:selectedIndexPath.row];
+        
+        if(selectedIndexPaths.count<8 || [selectedIndexPaths containsObject:selectedIndexPath]){
+            if([selectedCell isSelected]){
+                [selectedCell setSelected:NO];
+                NSInteger index = [selectedIndexPaths indexOfObject:selectedIndexPath];
+                NSLog(@"deselected index...%ld",(long)index);
+                [selectedIndexPaths removeObject:selectedIndexPath];
+                [selectedWords removeObjectAtIndex:index];
+            }
+            else{
+                [selectedCell setSelected:YES];
+                [selectedIndexPaths addObject:selectedIndexPath];
+                [selectedWords addObject:videoObj];
+            }
+            
+            [self createVideoTitle];
+        }
+        else
+        {
+            [CommonMethods showAlertWithTitle:nil message:NSLocalizedString(@"You reached max video selection limit",nil)];
+        }
+    }
+    
     //self.selectBtn.enabled = NO;
     
-//    if(randomVideosData.count> selectedIndexPath.row){
-//        if(selectedCell){
-//            VideoDetail *videoObj = [randomVideosData objectAtIndex:selectedIndexPath.row];
-//            AFHTTPRequestOperation *operation = (self.videoDownloadsInProgress)[selectedIndexPath];
-//            
-//            if([CommonMethods fileExist:videoObj.videoURL] && !operation)
-//            {
-//                //            [self playMovie:[CommonMethods localFileUrl:videoObj.videoURL]];
-//                // prepare the video asset from recorded file
-//                AVURLAsset *avAsset = [AVURLAsset URLAssetWithURL:[NSURL fileURLWithPath:[CommonMethods localFileUrl:videoObj.videoURL]] options:nil];
-//                AVPlayerItem *playerItem = [[AVPlayerItem alloc] initWithAsset:avAsset];
-//                AVPlayer *player = [AVPlayer playerWithPlayerItem:playerItem];
-//                
-//                // prepare the layer to show the video
-//                AVPlayerLayer *playerLayer = [AVPlayerLayer playerLayerWithPlayer:player];
-//                playerLayer.frame = selectedCell.thumbnail.frame;
-//                [selectedCell.layer addSublayer:playerLayer];
-//                player.actionAtItemEnd = AVPlayerActionAtItemEndNone;
-//                
-//                [player play];
-//            }
-//            else
-//            {
-//                //        [self setBlurView:cell.blurView flag:YES];
-//                if([CommonMethods reachable])
-//                {
-//                    NSString *localURL = [CommonMethods localFileUrl:videoObj.videoURL];
-//                    if(!operation){
-//                        
-//                        UCZProgressView *progressView = [[UCZProgressView alloc]initWithFrame:CGRectMake(0,0,100,100)];
-//                        progressView.tag = selectedIndexPath.row;
-//                        progressView.indeterminate = YES;
-//                        progressView.showsText = YES;
-//                        progressView.tintColor = [UIColor whiteColor];
-//                        
-//                        [selectedCell addSubview:progressView];
-//                        
-//                        
-//                        NSString *urlString = [NSString stringWithFormat:@"%@%@",kVideoDownloadURL,videoObj.videoURL];
-//                        
-//                        NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:urlString]];
-//                        AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request ];
-//                        
-//                        operation.outputStream = [NSOutputStream outputStreamToFileAtPath:localURL append:YES];
-//                        
-//                        [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-//                            NSLog(@"Successfully downloaded file to %@", localURL);
-//                            [progressView removeFromSuperview];
-//                            //                [self setBlurView:cell.blurView flag:NO];
-//                            [self.videoDownloadsInProgress removeObjectForKey:selectedIndexPath];
-//                            
-//                            MixedVideoCell *selectedCellObj = (MixedVideoCell*)[self.collectionView cellForItemAtIndexPath:selectedIndexPath];
-//                            
-//                            
-//                            //                         prepare the video asset from recorded file
-//                            AVURLAsset *avAsset = [AVURLAsset URLAssetWithURL:[NSURL fileURLWithPath:localURL] options:nil];
-//                            AVPlayerItem *playerItem = [[AVPlayerItem alloc] initWithAsset:avAsset];
-//                            AVPlayer *player = [AVPlayer playerWithPlayerItem:playerItem];
-//                            
-//                            // prepare the layer to show the video
-//                            AVPlayerLayer *playerLayer = [AVPlayerLayer playerLayerWithPlayer:player];
-//                            playerLayer.frame = selectedCellObj.thumbnail.frame;
-//                            [selectedCellObj.layer addSublayer:playerLayer];
-//                            player.actionAtItemEnd = AVPlayerActionAtItemEndNone;
-//                            
-//                            [player play];
-//                            
-//                        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-//                            NSLog(@"Error: %@", error);
-//                            //                cell.downloadIcon.hidden = NO;
-//                            //                cell.playIcon.hidden = YES;
-//                        }];
-//                        
-//                        [operation setDownloadProgressBlock:^(NSInteger bytesRead, NSInteger totalBytesRead, NSInteger totalBytesExpectedToRead) {
-//                            
-//                            // Draw the actual chart.
-//                            //            dispatch_async(dispatch_get_main_queue()
-//                            //                           , ^(void) {
-//                            progressView.progress = (float)totalBytesRead / totalBytesExpectedToRead;
-//                            //                               [cell layoutSubviews];
-//                            //                           });
-//                            
-//                        }];
-//                        
-//                        (self.videoDownloadsInProgress)[selectedIndexPath] = operation;
-//                        [operation start];
-//                    }
-//                }
-//                else{
-//                    NSLog(@"No internet connectivity");
-//                }
-//            }
-//            NSLog(@"single  .selectedCell.%ld ,selectedCell %ld",(long)selectedIndexPath.row,(long)selectedCell.tag);
-//        }
-//    }
+    //    if(randomVideosData.count> selectedIndexPath.row){
+    //        if(selectedCell){
+    //            VideoDetail *videoObj = [randomVideosData objectAtIndex:selectedIndexPath.row];
+    //            AFHTTPRequestOperation *operation = (self.videoDownloadsInProgress)[selectedIndexPath];
+    //
+    //            if([CommonMethods fileExist:videoObj.videoURL] && !operation)
+    //            {
+    //                //            [self playMovie:[CommonMethods localFileUrl:videoObj.videoURL]];
+    //                // prepare the video asset from recorded file
+    //                AVURLAsset *avAsset = [AVURLAsset URLAssetWithURL:[NSURL fileURLWithPath:[CommonMethods localFileUrl:videoObj.videoURL]] options:nil];
+    //                AVPlayerItem *playerItem = [[AVPlayerItem alloc] initWithAsset:avAsset];
+    //                AVPlayer *player = [AVPlayer playerWithPlayerItem:playerItem];
+    //
+    //                // prepare the layer to show the video
+    //                AVPlayerLayer *playerLayer = [AVPlayerLayer playerLayerWithPlayer:player];
+    //                playerLayer.frame = selectedCell.thumbnail.frame;
+    //                [selectedCell.layer addSublayer:playerLayer];
+    //                player.actionAtItemEnd = AVPlayerActionAtItemEndNone;
+    //
+    //                [player play];
+    //            }
+    //            else
+    //            {
+    //                //        [self setBlurView:cell.blurView flag:YES];
+    //                if([CommonMethods reachable])
+    //                {
+    //                    NSString *localURL = [CommonMethods localFileUrl:videoObj.videoURL];
+    //                    if(!operation){
+    //
+    //                        UCZProgressView *progressView = [[UCZProgressView alloc]initWithFrame:CGRectMake(0,0,100,100)];
+    //                        progressView.tag = selectedIndexPath.row;
+    //                        progressView.indeterminate = YES;
+    //                        progressView.showsText = YES;
+    //                        progressView.tintColor = [UIColor whiteColor];
+    //
+    //                        [selectedCell addSubview:progressView];
+    //
+    //
+    //                        NSString *urlString = [NSString stringWithFormat:@"%@%@",kVideoDownloadURL,videoObj.videoURL];
+    //
+    //                        NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:urlString]];
+    //                        AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request ];
+    //
+    //                        operation.outputStream = [NSOutputStream outputStreamToFileAtPath:localURL append:YES];
+    //
+    //                        [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+    //                            NSLog(@"Successfully downloaded file to %@", localURL);
+    //                            [progressView removeFromSuperview];
+    //                            //                [self setBlurView:cell.blurView flag:NO];
+    //                            [self.videoDownloadsInProgress removeObjectForKey:selectedIndexPath];
+    //
+    //                            MixedVideoCell *selectedCellObj = (MixedVideoCell*)[self.collectionView cellForItemAtIndexPath:selectedIndexPath];
+    //
+    //
+    //                            //                         prepare the video asset from recorded file
+    //                            AVURLAsset *avAsset = [AVURLAsset URLAssetWithURL:[NSURL fileURLWithPath:localURL] options:nil];
+    //                            AVPlayerItem *playerItem = [[AVPlayerItem alloc] initWithAsset:avAsset];
+    //                            AVPlayer *player = [AVPlayer playerWithPlayerItem:playerItem];
+    //
+    //                            // prepare the layer to show the video
+    //                            AVPlayerLayer *playerLayer = [AVPlayerLayer playerLayerWithPlayer:player];
+    //                            playerLayer.frame = selectedCellObj.thumbnail.frame;
+    //                            [selectedCellObj.layer addSublayer:playerLayer];
+    //                            player.actionAtItemEnd = AVPlayerActionAtItemEndNone;
+    //
+    //                            [player play];
+    //
+    //                        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    //                            NSLog(@"Error: %@", error);
+    //                            //                cell.downloadIcon.hidden = NO;
+    //                            //                cell.playIcon.hidden = YES;
+    //                        }];
+    //
+    //                        [operation setDownloadProgressBlock:^(NSInteger bytesRead, NSInteger totalBytesRead, NSInteger totalBytesExpectedToRead) {
+    //
+    //                            // Draw the actual chart.
+    //                            //            dispatch_async(dispatch_get_main_queue()
+    //                            //                           , ^(void) {
+    //                            progressView.progress = (float)totalBytesRead / totalBytesExpectedToRead;
+    //                            //                               [cell layoutSubviews];
+    //                            //                           });
+    //
+    //                        }];
+    //
+    //                        (self.videoDownloadsInProgress)[selectedIndexPath] = operation;
+    //                        [operation start];
+    //                    }
+    //                }
+    //                else{
+    //                    NSLog(@"No internet connectivity");
+    //                }
+    //            }
+    //            NSLog(@"single  .selectedCell.%ld ,selectedCell %ld",(long)selectedIndexPath.row,(long)selectedCell.tag);
+    //        }
+    //    }
 }
 
 
