@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UCZProgressView.h"
 
 
 @interface MixedVideoViewController : UIViewController<UICollectionViewDelegate,UICollectionViewDataSource>
@@ -19,7 +20,10 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *videoTitleLbl;
 
-- (IBAction)twoMonkeyButtonPressed:(UIButton *)sender;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+
+@property (weak, nonatomic) IBOutlet UICollectionView *VideoCollectionVIew;
+
+- (IBAction)twoMonkeyButtonPressed:(UIButton *)sender;
 
 @end

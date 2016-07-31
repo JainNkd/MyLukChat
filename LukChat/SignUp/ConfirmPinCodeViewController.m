@@ -259,15 +259,6 @@
 
 -(void)startProgressLoader
 {
-//    if (!_alert) {
-//        _alert = [[UIAlertView alloc] initWithTitle:@"" message:@"Saving data..." delegate:self cancelButtonTitle:nil otherButtonTitles:nil];
-//        UIActivityIndicatorView *progress= [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(125, 55, 30, 30)];
-//        progress.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
-//        [_alert addSubview:progress];
-//        [progress startAnimating];
-//        [_alert show];
-//    }
-    
     progressView = [[UCZProgressView alloc]initWithFrame:self.view.frame];
     progressView.indeterminate = YES;
     progressView.showsText = NO;

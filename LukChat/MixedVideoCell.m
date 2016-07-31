@@ -10,6 +10,12 @@
 
 @implementation MixedVideoCell
 
+-(void)awakeFromNib
+{
+    self.thumbnail.image = [UIImage imageNamed:@"pic-bgwith-monkey-icon.png"];
+}
+
+
 -(void)setSelected:(BOOL)selected
 {
     [super setSelected:selected];

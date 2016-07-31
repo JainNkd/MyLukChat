@@ -13,6 +13,7 @@
 		01024C731BE93F4300C2DA3C /* sub-heading-bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 01024C6F1BE93F4300C2DA3C /* sub-heading-bg@2x.png */; };
 		01024C781BE9435D00C2DA3C /* FBFriendsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01024C771BE9435D00C2DA3C /* FBFriendsListViewController.m */; };
 		015EB9AE1BEA2C65005419F5 /* FBFriendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 015EB9AD1BEA2C65005419F5 /* FBFriendCell.m */; };
+		0164C68D1D4E5A27006518AD /* VideoPlayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0164C68C1D4E5A27006518AD /* VideoPlayCell.m */; };
 		01CE39A41C084F5000867CDF /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01CE39A01C084F5000867CDF /* Bolts.framework */; };
 		01CE39A51C084F5000867CDF /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01CE39A11C084F5000867CDF /* FBSDKCoreKit.framework */; };
 		01CE39A61C084F5000867CDF /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01CE39A21C084F5000867CDF /* FBSDKLoginKit.framework */; };
@@ -331,6 +332,8 @@
 		01024C771BE9435D00C2DA3C /* FBFriendsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBFriendsListViewController.m; sourceTree = "<group>"; };
 		015EB9AC1BEA2C65005419F5 /* FBFriendCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBFriendCell.h; sourceTree = "<group>"; };
 		015EB9AD1BEA2C65005419F5 /* FBFriendCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBFriendCell.m; sourceTree = "<group>"; };
+		0164C68B1D4E5A27006518AD /* VideoPlayCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoPlayCell.h; sourceTree = "<group>"; };
+		0164C68C1D4E5A27006518AD /* VideoPlayCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoPlayCell.m; sourceTree = "<group>"; };
 		01CE39A01C084F5000867CDF /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		01CE39A11C084F5000867CDF /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		01CE39A21C084F5000867CDF /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
@@ -865,6 +868,8 @@
 				01E3EA9C1D4A77A600FA77B0 /* MixedVideoViewController.m */,
 				01E3EA9E1D4A798400FA77B0 /* MixedVideoCell.h */,
 				01E3EA9F1D4A798400FA77B0 /* MixedVideoCell.m */,
+				0164C68B1D4E5A27006518AD /* VideoPlayCell.h */,
+				0164C68C1D4E5A27006518AD /* VideoPlayCell.m */,
 			);
 			name = FirstStartScreen;
 			sourceTree = "<group>";
@@ -2038,6 +2043,7 @@
 				633851071983C9F400C3256A /* SBJsonParser.m in Sources */,
 				01D73DD31C8855DB0090CE00 /* SDWebImageDownloader.m in Sources */,
 				8727D5A61A4884460092BB7C /* SCPhotoConfiguration.m in Sources */,
+				0164C68D1D4E5A27006518AD /* VideoPlayCell.m in Sources */,
 				875BFD251A5730BE00A83E35 /* SentVideoTableViewCell.m in Sources */,
 				8727D59D1A4884460092BB7C /* SCArchivedVector.m in Sources */,
 				8727D5A51A4884460092BB7C /* SCMediaTypeConfiguration.m in Sources */,
