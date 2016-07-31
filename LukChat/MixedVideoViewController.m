@@ -210,16 +210,20 @@
         
         if(selectedIndexPaths.count<8 || [selectedIndexPaths containsObject:selectedIndexPath]){
             if([selectedCell isSelected]){
-                [selectedCell setSelected:NO];
                 NSInteger index = [selectedIndexPaths indexOfObject:selectedIndexPath];
                 NSLog(@"deselected index...%ld",(long)index);
+                if(index<8){
+                [selectedCell setSelected:NO];
                 [selectedIndexPaths removeObject:selectedIndexPath];
                 [selectedWords removeObjectAtIndex:index];
+                }
             }
             else{
+                if(videoObj){
                 [selectedCell setSelected:YES];
                 [selectedIndexPaths addObject:selectedIndexPath];
                 [selectedWords addObject:videoObj];
+                }
             }
             
             [self createVideoTitle];
