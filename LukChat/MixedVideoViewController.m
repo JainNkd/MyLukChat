@@ -79,12 +79,14 @@
     self.videoTitleLbl.text = @"";
     [self.collectionView reloadData];
     [self.VideoCollectionVIew reloadData];
+    [self.videoDownloadsInProgress removeAllObjects];
     
 }
 
 //create Video title
 -(void)createVideoTitle
 {
+    [self.videoDownloadsInProgress removeAllObjects];
     [videoTitle setString:@""];
     for(int i=0; i<[selectedWords count]; i++)
     {
@@ -205,6 +207,8 @@
     }
     else
     {
+        
+        
         static NSString *cellIdentifier = @"VideoPlayCell";
         VideoPlayCell *cell1 = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
         
@@ -267,6 +271,17 @@
             [cell1.thumbnail setImage:[UIImage imageNamed:@"pic-bgwith-monkey-icon.png"]];
         }
         
+        //Progress Indicator
+        for(UIView *view in cell1.subviews)
+        {
+            if([view isKindOfClass:[UCZProgressView class]])
+            {
+                
+                UCZProgressView *cellProgressView = (UCZProgressView*)view;
+                [cellProgressView removeFromSuperview];
+            }
+        }
+        
         //download and play videos
         if(randomVideosData.count> indexPath.row){
             if(cell1){
@@ -275,19 +290,18 @@
                 
                 if([CommonMethods fileExist:videoObj.videoURL] && !operation)
                 {
-                    //            [self playMovie:[CommonMethods localFileUrl:videoObj.videoURL]];
-                    // prepare the video asset from recorded file
-                    AVURLAsset *avAsset = [AVURLAsset URLAssetWithURL:[NSURL fileURLWithPath:[CommonMethods localFileUrl:videoObj.videoURL]] options:nil];
-                    AVPlayerItem *playerItem = [[AVPlayerItem alloc] initWithAsset:avAsset];
-                    AVPlayer *player = [AVPlayer playerWithPlayerItem:playerItem];
-                    
-                    // prepare the layer to show the video
-                    AVPlayerLayer *playerLayer = [AVPlayerLayer playerLayerWithPlayer:player];
-                    playerLayer.frame = cell1.thumbnail.frame;
-                    [cell1.layer addSublayer:playerLayer];
-                    player.actionAtItemEnd = AVPlayerActionAtItemEndNone;
-                    
-                    [player play];
+//                    // prepare the video asset from recorded file
+//                    AVURLAsset *avAsset = [AVURLAsset URLAssetWithURL:[NSURL fileURLWithPath:[CommonMethods localFileUrl:videoObj.videoURL]] options:nil];
+//                    AVPlayerItem *playerItem = [[AVPlayerItem alloc] initWithAsset:avAsset];
+//                    AVPlayer *player = [AVPlayer playerWithPlayerItem:playerItem];
+//                    
+//                    // prepare the layer to show the video
+//                    AVPlayerLayer *playerLayer = [AVPlayerLayer playerLayerWithPlayer:player];
+//                    playerLayer.frame = cell1.thumbnail.frame;
+//                    [cell1.layer addSublayer:playerLayer];
+//                    player.actionAtItemEnd = AVPlayerActionAtItemEndNone;
+//                    
+//                    [player play];
                 }
                 else
                 {
@@ -320,21 +334,21 @@
                                 //                [self setBlurView:cell.blurView flag:NO];
                                 [self.videoDownloadsInProgress removeObjectForKey:indexPath];
                                 
-                                VideoPlayCell *selectedCellObj = (VideoPlayCell*)[self.VideoCollectionVIew cellForItemAtIndexPath:indexPath];
+//                                VideoPlayCell *selectedCellObj = (VideoPlayCell*)[self.VideoCollectionVIew cellForItemAtIndexPath:indexPath];
                                 
                                 
                                 //                         prepare the video asset from recorded file
-                                AVURLAsset *avAsset = [AVURLAsset URLAssetWithURL:[NSURL fileURLWithPath:localURL] options:nil];
-                                AVPlayerItem *playerItem = [[AVPlayerItem alloc] initWithAsset:avAsset];
-                                AVPlayer *player = [AVPlayer playerWithPlayerItem:playerItem];
-                                
-                                // prepare the layer to show the video
-                                AVPlayerLayer *playerLayer = [AVPlayerLayer playerLayerWithPlayer:player];
-                                playerLayer.frame = selectedCellObj.thumbnail.frame;
-                                [selectedCellObj.layer addSublayer:playerLayer];
-                                player.actionAtItemEnd = AVPlayerActionAtItemEndNone;
-                                
-                                [player play];
+//                                AVURLAsset *avAsset = [AVURLAsset URLAssetWithURL:[NSURL fileURLWithPath:localURL] options:nil];
+//                                AVPlayerItem *playerItem = [[AVPlayerItem alloc] initWithAsset:avAsset];
+//                                AVPlayer *player = [AVPlayer playerWithPlayerItem:playerItem];
+//                                
+//                                // prepare the layer to show the video
+//                                AVPlayerLayer *playerLayer = [AVPlayerLayer playerLayerWithPlayer:player];
+//                                playerLayer.frame = selectedCellObj.thumbnail.frame;
+//                                [selectedCellObj.layer addSublayer:playerLayer];
+//                                player.actionAtItemEnd = AVPlayerActionAtItemEndNone;
+//                                
+//                                [player play];
                                 
                             } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                                 NSLog(@"Error: %@", error);
@@ -471,6 +485,7 @@
                 if(index<8){
                     [selectedCell setSelected:NO];
                     [selectedIndexPaths removeObject:selectedIndexPath];
+                    [self.videoDownloadsInProgress removeObjectForKey:[NSIndexPath indexPathForItem:index inSection:1]];
                     [selectedWords removeObjectAtIndex:index];
                 }
             }
@@ -587,6 +602,11 @@
     //            NSLog(@"single  .selectedCell.%ld ,selectedCell %ld",(long)selectedIndexPath.row,(long)selectedCell.tag);
     //        }
     //    }
+}
+
+-(void)playVideo
+{
+//    MixedVideoCell *selectedCell = (MixedVideoCell*)[self.collectionView cellForItemAtIndexPath:selectedIndexPath];
 }
 
 
