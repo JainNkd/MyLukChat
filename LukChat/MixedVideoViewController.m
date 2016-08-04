@@ -15,6 +15,7 @@
 #import "VideoListViewController.h"
 #import "VideoPlayCell.h"
 #import "AppDelegate.h"
+#import "MergeVideosViewController.h"
 
 #import "AFNetworking.h"
 #import "AFHTTPRequestOperation.h"
@@ -26,6 +27,9 @@
 @interface MixedVideoViewController ()<ConnectionHandlerDelegate>
 {
     UCZProgressView *progressView;
+    BOOL isVideoPlayStart;
+    int playVideoIndex;
+    NSString *fileName;
 }
 @property (nonatomic, strong) NSMutableDictionary *videoDownloadsInProgress;
 
@@ -63,10 +67,18 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    isVideoPlayStart = NO;
+    playVideoIndex = 0;
     [self refreshVideoData];
     [self fetchRandomVideoFromserver];
 }
 
+-(void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    [self refreshVideoData];
+}
 //Refresh Video Data
 -(void)refreshVideoData
 {
@@ -101,6 +113,9 @@
     
     self.videoTitleLbl.text = videoTitle;
     [self.VideoCollectionVIew reloadData];
+    
+    if(selectedWords.count >=2)
+    [self performSelector:@selector(startVideoPlay) withObject:nil afterDelay:0.50];
 }
 #pragma Screen Rotation Support Methods
 -(BOOL)shouldAutorotate
@@ -207,8 +222,6 @@
     }
     else
     {
-        
-        
         static NSString *cellIdentifier = @"VideoPlayCell";
         VideoPlayCell *cell1 = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
         
@@ -290,18 +303,18 @@
                 
                 if([CommonMethods fileExist:videoObj.videoURL] && !operation)
                 {
-//                    // prepare the video asset from recorded file
-//                    AVURLAsset *avAsset = [AVURLAsset URLAssetWithURL:[NSURL fileURLWithPath:[CommonMethods localFileUrl:videoObj.videoURL]] options:nil];
-//                    AVPlayerItem *playerItem = [[AVPlayerItem alloc] initWithAsset:avAsset];
-//                    AVPlayer *player = [AVPlayer playerWithPlayerItem:playerItem];
-//                    
-//                    // prepare the layer to show the video
-//                    AVPlayerLayer *playerLayer = [AVPlayerLayer playerLayerWithPlayer:player];
-//                    playerLayer.frame = cell1.thumbnail.frame;
-//                    [cell1.layer addSublayer:playerLayer];
-//                    player.actionAtItemEnd = AVPlayerActionAtItemEndNone;
-//                    
-//                    [player play];
+                    //                    // prepare the video asset from recorded file
+                    //                    AVURLAsset *avAsset = [AVURLAsset URLAssetWithURL:[NSURL fileURLWithPath:[CommonMethods localFileUrl:videoObj.videoURL]] options:nil];
+                    //                    AVPlayerItem *playerItem = [[AVPlayerItem alloc] initWithAsset:avAsset];
+                    //                    AVPlayer *player = [AVPlayer playerWithPlayerItem:playerItem];
+                    //
+                    //                    // prepare the layer to show the video
+                    //                    AVPlayerLayer *playerLayer = [AVPlayerLayer playerLayerWithPlayer:player];
+                    //                    playerLayer.frame = cell1.thumbnail.frame;
+                    //                    [cell1.layer addSublayer:playerLayer];
+                    //                    player.actionAtItemEnd = AVPlayerActionAtItemEndNone;
+                    //
+                    //                    [player play];
                 }
                 else
                 {
@@ -334,21 +347,24 @@
                                 //                [self setBlurView:cell.blurView flag:NO];
                                 [self.videoDownloadsInProgress removeObjectForKey:indexPath];
                                 
-//                                VideoPlayCell *selectedCellObj = (VideoPlayCell*)[self.VideoCollectionVIew cellForItemAtIndexPath:indexPath];
+                                isVideoPlayStart = NO;
+                                [self startVideoPlay];
+                                
+                                //                                VideoPlayCell *selectedCellObj = (VideoPlayCell*)[self.VideoCollectionVIew cellForItemAtIndexPath:indexPath];
                                 
                                 
                                 //                         prepare the video asset from recorded file
-//                                AVURLAsset *avAsset = [AVURLAsset URLAssetWithURL:[NSURL fileURLWithPath:localURL] options:nil];
-//                                AVPlayerItem *playerItem = [[AVPlayerItem alloc] initWithAsset:avAsset];
-//                                AVPlayer *player = [AVPlayer playerWithPlayerItem:playerItem];
-//                                
-//                                // prepare the layer to show the video
-//                                AVPlayerLayer *playerLayer = [AVPlayerLayer playerLayerWithPlayer:player];
-//                                playerLayer.frame = selectedCellObj.thumbnail.frame;
-//                                [selectedCellObj.layer addSublayer:playerLayer];
-//                                player.actionAtItemEnd = AVPlayerActionAtItemEndNone;
-//                                
-//                                [player play];
+                                //                                AVURLAsset *avAsset = [AVURLAsset URLAssetWithURL:[NSURL fileURLWithPath:localURL] options:nil];
+                                //                                AVPlayerItem *playerItem = [[AVPlayerItem alloc] initWithAsset:avAsset];
+                                //                                AVPlayer *player = [AVPlayer playerWithPlayerItem:playerItem];
+                                //
+                                //                                // prepare the layer to show the video
+                                //                                AVPlayerLayer *playerLayer = [AVPlayerLayer playerLayerWithPlayer:player];
+                                //                                playerLayer.frame = selectedCellObj.thumbnail.frame;
+                                //                                [selectedCellObj.layer addSublayer:playerLayer];
+                                //                                player.actionAtItemEnd = AVPlayerActionAtItemEndNone;
+                                //
+                                //                                [player play];
                                 
                             } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                                 NSLog(@"Error: %@", error);
@@ -383,8 +399,76 @@
     }
 }
 
+//Start Play vudeos
+-(void)startVideoPlay
+{
+    if(selectedWords.count >= 2 && !isVideoPlayStart)
+    {
+        isVideoPlayStart = YES;
+        NSIndexPath *selectedIndexPath = [NSIndexPath indexPathForItem:playVideoIndex inSection:0];
+        VideoPlayCell *selectedCell = (VideoPlayCell*)[self.VideoCollectionVIew cellForItemAtIndexPath:[NSIndexPath indexPathForItem:playVideoIndex inSection:0]];
+        
+        if(selectedWords.count> selectedIndexPath.row){
+            if(selectedCell){
+                VideoDetail *videoObj = [selectedWords objectAtIndex:selectedIndexPath.row];
+                AFHTTPRequestOperation *operation = (self.videoDownloadsInProgress)[selectedIndexPath];
+                
+                if([CommonMethods fileExist:videoObj.videoURL] && !operation)
+                {
+                    //            [self playMovie:[CommonMethods localFileUrl:videoObj.videoURL]];
+                    // prepare the video asset from recorded file
+                    AVURLAsset *avAsset = [AVURLAsset URLAssetWithURL:[NSURL fileURLWithPath:[CommonMethods localFileUrl:videoObj.videoURL]] options:nil];
+                    AVPlayerItem *playerItem = [[AVPlayerItem alloc] initWithAsset:avAsset];
+                    AVPlayer *player = [AVPlayer playerWithPlayerItem:playerItem];
+                    
+                    // Subscribe to the AVPlayerItem's DidPlayToEndTime notification.
+                    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(itemDidFinishPlaying:) name:AVPlayerItemDidPlayToEndTimeNotification object:playerItem];
+                    
+                    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(itemFailedToPlaying:) name:AVPlayerItemFailedToPlayToEndTimeErrorKey object:playerItem];
+                    
+//                    [selectedCell setSelected:YES];
+                    
+                    // prepare the layer to show the video
+                    AVPlayerLayer *playerLayer = [AVPlayerLayer playerLayerWithPlayer:player];
+                    playerLayer.frame = selectedCell.thumbnail.frame;
+                    [selectedCell.layer addSublayer:playerLayer];
+                    player.actionAtItemEnd = AVPlayerActionAtItemEndNone;
+                    
+                    [player play];
+                }
+                else
+                {
+                    isVideoPlayStart = NO;
+                    playVideoIndex++;
+                    if(playVideoIndex>= selectedWords.count)
+                        playVideoIndex = 0;
+                    [self startVideoPlay];
+                }
+            }
+        }
+    }
+}
 
 
+-(void)itemDidFinishPlaying:(NSNotification *) notification {
+    // Will be called when AVPlayer finishes playing playerItem
+    NSLog(@"play done//////////////////////////////");
+    isVideoPlayStart = NO;
+    playVideoIndex++;
+    if(playVideoIndex>= selectedWords.count)
+        playVideoIndex = 0;
+    [self startVideoPlay];
+}
+
+-(void)itemFailedToPlaying:(NSNotification *) notification {
+    // Will be called when AVPlayer finishes playing playerItem
+    NSLog(@"play fial //////////////////////////////");
+    isVideoPlayStart = NO;
+    playVideoIndex++;
+    if(playVideoIndex>= selectedWords.count)
+        playVideoIndex = 0;
+    [self startVideoPlay];
+}
 
 
 #pragma server related all methods
@@ -457,7 +541,204 @@
 
 //Handle transaction between viewcontroller
 - (IBAction)mergeButtonPressed:(UIButton *)sender {
+    int i= 0 ;
+    
+    for(VideoDetail *videoData in selectedWords)
+    {
+        NSLog(@"Title..%@...%d",videoData.videoTitle,i);
+        NSString *videoURL = videoData.videoURL;
+        [[NSUserDefaults standardUserDefaults]setValue:videoData.videoURL forKey:[NSString stringWithFormat:@"VIDEO_%d_URL",i]];
+        
+        if([CommonMethods fileExist:videoURL]){
+            i++;
+            continue;
+        }
+        else{
+            NSIndexPath *indexPath = [NSIndexPath indexPathForItem:i inSection:0];
+            AFHTTPRequestOperation *operation = (self.videoDownloadsInProgress)[indexPath];
+            NSLog(@"videoURL....%@",videoURL);
+            if([CommonMethods fileExist:videoURL] && !operation)
+            {
+                i++;
+                continue;
+            }
+        }
+    }
+    
+    if(i==[selectedWords count])
+        [self mergedVideo];
+    else
+        [self downloadVidoes];
 }
+
+-(void)mergedVideo
+{
+    NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    NSMutableArray *videofilesArr = [[NSMutableArray alloc] init];
+    
+    for (int i=0; i < selectedWords.count; i++) {
+        NSString *filename = [[NSUserDefaults standardUserDefaults]valueForKey:[NSString stringWithFormat:@"VIDEO_%d_URL",i]];
+        
+        filename = [NSString stringWithFormat:@"%@/%@", path, filename];
+        
+        if ([[NSFileManager defaultManager] fileExistsAtPath:filename]) {
+            [videofilesArr addObject:filename];
+            //            NSLog(@"filename : %@", filename);
+        }
+    }
+    
+    if ([videofilesArr count] < 2) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"You need two recorded video clips to merge the videos." delegate:self cancelButtonTitle:nil otherButtonTitles:@"Accept", nil];
+        [alert show];
+        return;
+    }
+    
+    NSString *docPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    NSString * timestamp = [NSString stringWithFormat:@"%f",[[NSDate date] timeIntervalSince1970] * 1000];
+    fileName = [NSString stringWithFormat:@"%@mergedvideo.mov",timestamp];
+    NSString *mergedFile = [NSString stringWithFormat:@"%@/%@", docPath,fileName];
+    if ([[NSFileManager defaultManager] fileExistsAtPath:mergedFile]) {
+        [[NSFileManager defaultManager] removeItemAtPath:mergedFile error:nil];
+    }
+    
+    AVMutableComposition *composition = [AVMutableComposition composition];
+    AVMutableCompositionTrack *videoCompositionTrack = [composition addMutableTrackWithMediaType:AVMediaTypeVideo preferredTrackID:kCMPersistentTrackID_Invalid];
+    AVMutableCompositionTrack *audioCompositionTrack = [composition addMutableTrackWithMediaType:AVMediaTypeAudio preferredTrackID:kCMPersistentTrackID_Invalid];
+    CMTime nextVideoStartTime = kCMTimeZero;
+    
+    NSLog(@"Files : %@", videofilesArr);
+    
+    
+    for (int i=0; i < [videofilesArr count]; i++) {
+        NSURL *url = [NSURL fileURLWithPath:[videofilesArr objectAtIndex:i]];
+        AVURLAsset *videoAsset = [[AVURLAsset alloc] initWithURL:url options:nil];
+        CMTimeRange timeRange = CMTimeRangeMake(kCMTimeZero, [videoAsset duration]);
+        
+        AVAssetTrack *clipVideoTrack = [[videoAsset tracksWithMediaType:AVMediaTypeVideo] objectAtIndex:0];
+        [videoCompositionTrack insertTimeRange:CMTimeRangeMake(kCMTimeZero, [videoAsset duration]) ofTrack:clipVideoTrack atTime:nextVideoStartTime error:nil];
+        
+        if ([[videoAsset tracksWithMediaType:AVMediaTypeAudio] count] > 0) {
+            AVAssetTrack *clipAudioTrack = [[videoAsset tracksWithMediaType:AVMediaTypeAudio] objectAtIndex:0];
+            [audioCompositionTrack insertTimeRange:CMTimeRangeMake(kCMTimeZero, [videoAsset duration]) ofTrack:clipAudioTrack atTime:nextVideoStartTime error:nil];
+        }
+        
+        nextVideoStartTime = CMTimeAdd(nextVideoStartTime, timeRange.duration);
+    }
+    
+    NSURL *mergedVideoURL = [NSURL fileURLWithPath:mergedFile];
+    AVAssetExportSession *assetSession = [[AVAssetExportSession alloc] initWithAsset:composition presetName:AVAssetExportPresetHighestQuality];
+    assetSession.outputURL = mergedVideoURL;
+    assetSession.outputFileType = AVFileTypeQuickTimeMovie;
+    assetSession.shouldOptimizeForNetworkUse = YES;
+    [assetSession exportAsynchronouslyWithCompletionHandler:^{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self exportDidFinish:assetSession path:mergedFile];
+        });
+    }];
+}
+
+
+-(void)exportDidFinish:(AVAssetExportSession*)assetSession path:(NSString*)outputVideoPath {
+    NSURL *outputURL = assetSession.outputURL;
+    NSLog(@"merged video file path : %@", outputVideoPath);
+    UISaveVideoAtPathToSavedPhotosAlbum(outputVideoPath,nil,nil,nil);
+    NSData *videoData = [NSData dataWithContentsOfURL:outputURL];
+    [videoData writeToFile:outputVideoPath atomically:YES];
+    
+    [[NSUserDefaults standardUserDefaults] setValue:fileName forKey:kMyVideoToShare];
+    [[NSUserDefaults standardUserDefaults] setObject:self.videoTitleLbl.text forKey:VIDEO_TITLE];
+    MergeVideosViewController *mergeVC = [self.storyboard instantiateViewControllerWithIdentifier:@"MergeVideosViewController"];
+    
+    [self.navigationController pushViewController:mergeVC animated:YES];
+}
+
+
+//Download default vidoes
+-(void)downloadVidoes
+{
+    int i= 0 ;
+    
+    UCZProgressView *progressView1;
+    for(VideoDetail *videoDetail in selectedWords)
+    {
+        NSLog(@"Title..%@...%d",videoDetail.videoTitle,i);
+        NSString *videoURL = videoDetail.videoURL;
+        
+        if([CommonMethods fileExist:videoURL]){
+            i++;
+            continue;
+        }
+        else{
+            NSIndexPath *indexPath = [NSIndexPath indexPathForItem:i inSection:0];
+            AFHTTPRequestOperation *operation = (self.videoDownloadsInProgress)[indexPath];
+            NSLog(@"videoURL....%@",videoURL);
+            if([CommonMethods fileExist:videoURL] && !operation)
+            {
+                i++;
+                continue;
+            }
+            else
+            {
+                if([CommonMethods reachable])
+                {
+                    if(!progressView1){
+                        progressView1 = [[UCZProgressView alloc]initWithFrame:self.view.bounds];
+                        progressView1.tag = i;
+                        progressView1.indeterminate = YES;
+                        progressView1.showsText = YES;
+                        progressView1.tintColor = [UIColor whiteColor];
+                        [self.view addSubview:progressView1];
+                    }
+                    NSString *localURL = [CommonMethods localFileUrl:videoURL];
+                    if(!operation){
+                        NSString *urlString = [NSString stringWithFormat:@"%@%@",kVideoDownloadURL,videoURL];
+                        NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:urlString]];
+                        AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request ];
+                        
+                        operation.outputStream = [NSOutputStream outputStreamToFileAtPath:localURL append:YES];
+                        
+                        [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+                            
+                            NSLog(@"Successfully downloaded file to %@,.%@", localURL,operation.request.URL.absoluteString);
+                            
+                            NSArray *ary = [[request.URL absoluteString] componentsSeparatedByString:@"/"];
+                            NSString *filename = [ary lastObject];
+                            NSLog(@"self.videoDownloadsInProgress....%@",self.videoDownloadsInProgress);
+                            [self.videoDownloadsInProgress removeObjectForKey:filename];
+                            NSLog(@"self.videoDownloadsInProgress....%@",self.videoDownloadsInProgress);
+                            if([self.videoDownloadsInProgress allKeys].count==0)
+                            {
+                                [progressView1 removeFromSuperview];
+                                [self mergeButtonPressed:nil];
+                            }
+                            
+                        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                            NSLog(@"Error: %@", error);
+                            if([self.videoDownloadsInProgress allKeys].count==0)
+                            {
+                                [progressView removeFromSuperview];
+                            }
+                            
+                        }];
+                        
+
+                        (self.videoDownloadsInProgress)[indexPath] = operation;
+                        NSLog(@"self.videoDownloadsInProgress....%@ video URL:%@",self.videoDownloadsInProgress,videoURL);
+                        [operation start];
+                    }
+                }
+                else{
+                    NSLog(@"No internet connectivity");
+                }
+            }
+        }
+        i++;
+    }
+}
+
+
+
+
 
 - (IBAction)twoMonkeyButtonPressed:(UIButton *)sender {
     VideoListViewController *videoListVC = [self.storyboard instantiateViewControllerWithIdentifier:@"VideoListViewController"];
@@ -485,7 +766,7 @@
                 if(index<8){
                     [selectedCell setSelected:NO];
                     [selectedIndexPaths removeObject:selectedIndexPath];
-                    [self.videoDownloadsInProgress removeObjectForKey:[NSIndexPath indexPathForItem:index inSection:1]];
+                    [self.videoDownloadsInProgress removeObjectForKey:[NSIndexPath indexPathForItem:index inSection:0]];
                     [selectedWords removeObjectAtIndex:index];
                 }
             }
@@ -602,11 +883,6 @@
     //            NSLog(@"single  .selectedCell.%ld ,selectedCell %ld",(long)selectedIndexPath.row,(long)selectedCell.tag);
     //        }
     //    }
-}
-
--(void)playVideo
-{
-//    MixedVideoCell *selectedCell = (MixedVideoCell*)[self.collectionView cellForItemAtIndexPath:selectedIndexPath];
 }
 
 
