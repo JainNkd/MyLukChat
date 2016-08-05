@@ -9,10 +9,21 @@
 #import "VideoPlayCell.h"
 
 @implementation VideoPlayCell
+@synthesize progressViewObj;
 
 -(void)awakeFromNib
 {
     self.thumbnail.image = [UIImage imageNamed:@"pic-bgwith-monkey-icon.png"];
+    
+    progressViewObj = [[UCZProgressView alloc]initWithFrame:CGRectMake(0,0,39,39)];
+//    progressViewObj.tag = indexPath.row;
+    progressViewObj.indeterminate = YES;
+    progressViewObj.showsText = YES;
+    progressViewObj.tintColor = [UIColor whiteColor];
+    progressViewObj.radius = 10;
+    
+    [self addSubview:progressViewObj];
+    
 }
 
 -(void)setSelected:(BOOL)selected

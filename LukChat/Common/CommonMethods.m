@@ -732,6 +732,7 @@
 
 +(BOOL)fileExist:(NSString*)fileName
 {
+    NSLog(@"filename...%@",fileName);
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *localURL = [[paths objectAtIndex:0] stringByAppendingPathComponent:fileName];
     
