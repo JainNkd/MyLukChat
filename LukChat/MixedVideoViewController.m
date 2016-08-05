@@ -30,6 +30,7 @@
     BOOL isVideoPlayStart;
     int playVideoIndex;
     NSString *fileName;
+    AVPlayerLayer *playerLayer;
 }
 @property (nonatomic, strong) NSMutableDictionary *videoDownloadsInProgress;
 
@@ -114,8 +115,6 @@
     self.videoTitleLbl.text = videoTitle;
     [self.VideoCollectionVIew reloadData];
     
-    if(selectedWords.count >=2)
-    [self performSelector:@selector(startVideoPlay) withObject:nil afterDelay:0.50];
 }
 #pragma Screen Rotation Support Methods
 -(BOOL)shouldAutorotate
@@ -295,6 +294,7 @@
             }
         }
         
+        
         //download and play videos
         if(randomVideosData.count> indexPath.row){
             if(cell1){
@@ -303,6 +303,12 @@
                 
                 if([CommonMethods fileExist:videoObj.videoURL] && !operation)
                 {
+                    [playerLayer removeFromSuperlayer];
+                    isVideoPlayStart = NO;
+                    playVideoIndex++;
+                    if(playVideoIndex>= selectedWords.count)
+                        playVideoIndex = 0;
+                    [self startVideoPlay];
                     //                    // prepare the video asset from recorded file
                     //                    AVURLAsset *avAsset = [AVURLAsset URLAssetWithURL:[NSURL fileURLWithPath:[CommonMethods localFileUrl:videoObj.videoURL]] options:nil];
                     //                    AVPlayerItem *playerItem = [[AVPlayerItem alloc] initWithAsset:avAsset];
@@ -346,9 +352,6 @@
                                 [progressViewObj removeFromSuperview];
                                 //                [self setBlurView:cell.blurView flag:NO];
                                 [self.videoDownloadsInProgress removeObjectForKey:indexPath];
-                                
-                                isVideoPlayStart = NO;
-                                [self startVideoPlay];
                                 
                                 //                                VideoPlayCell *selectedCellObj = (VideoPlayCell*)[self.VideoCollectionVIew cellForItemAtIndexPath:indexPath];
                                 
@@ -395,6 +398,14 @@
             }
         }
         
+        if(indexPath.row == (selectedWords.count-1))
+        {
+            [playerLayer removeFromSuperlayer];
+            isVideoPlayStart = NO;
+            playVideoIndex = 0;
+            [self startVideoPlay];
+        }
+        
         return cell1;
     }
 }
@@ -406,10 +417,10 @@
     {
         isVideoPlayStart = YES;
         NSIndexPath *selectedIndexPath = [NSIndexPath indexPathForItem:playVideoIndex inSection:0];
-        VideoPlayCell *selectedCell = (VideoPlayCell*)[self.VideoCollectionVIew cellForItemAtIndexPath:[NSIndexPath indexPathForItem:playVideoIndex inSection:0]];
+        VideoPlayCell *selectedCell = (VideoPlayCell*)[self.VideoCollectionVIew cellForItemAtIndexPath:selectedIndexPath];
         
         if(selectedWords.count> selectedIndexPath.row){
-            if(selectedCell){
+//            if(selectedCell){
                 VideoDetail *videoObj = [selectedWords objectAtIndex:selectedIndexPath.row];
                 AFHTTPRequestOperation *operation = (self.videoDownloadsInProgress)[selectedIndexPath];
                 
@@ -426,18 +437,18 @@
                     
                     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(itemFailedToPlaying:) name:AVPlayerItemFailedToPlayToEndTimeErrorKey object:playerItem];
                     
-//                    [selectedCell setSelected:YES];
+                    [selectedCell setSelected:YES];
                     
                     // prepare the layer to show the video
-                    AVPlayerLayer *playerLayer = [AVPlayerLayer playerLayerWithPlayer:player];
+                    playerLayer = [AVPlayerLayer playerLayerWithPlayer:player];
                     playerLayer.frame = selectedCell.thumbnail.frame;
                     [selectedCell.layer addSublayer:playerLayer];
                     player.actionAtItemEnd = AVPlayerActionAtItemEndNone;
-                    
                     [player play];
                 }
                 else
                 {
+                    [playerLayer removeFromSuperlayer];
                     isVideoPlayStart = NO;
                     playVideoIndex++;
                     if(playVideoIndex>= selectedWords.count)
@@ -446,13 +457,14 @@
                 }
             }
         }
-    }
+//    }
 }
 
 
 -(void)itemDidFinishPlaying:(NSNotification *) notification {
     // Will be called when AVPlayer finishes playing playerItem
-    NSLog(@"play done//////////////////////////////");
+    NSLog(@"play done////////////////////////////// \n %@",selectedWords);
+    [playerLayer removeFromSuperlayer];
     isVideoPlayStart = NO;
     playVideoIndex++;
     if(playVideoIndex>= selectedWords.count)
@@ -463,6 +475,7 @@
 -(void)itemFailedToPlaying:(NSNotification *) notification {
     // Will be called when AVPlayer finishes playing playerItem
     NSLog(@"play fial //////////////////////////////");
+    [playerLayer removeFromSuperlayer];
     isVideoPlayStart = NO;
     playVideoIndex++;
     if(playVideoIndex>= selectedWords.count)
