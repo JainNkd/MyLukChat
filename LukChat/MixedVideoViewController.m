@@ -333,15 +333,10 @@
                             operation.outputStream = [NSOutputStream outputStreamToFileAtPath:localURL append:YES];
                             
                             [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-                                NSLog(@"Successfully downloaded file to %@", localURL);
-//                                [progressViewObj removeFromSuperview];
-                                NSLog(@"Successfully downloaded file to %@,.%@", localURL,operation.request.URL.absoluteString);
                                 
                                 NSArray *ary = [[request.URL absoluteString] componentsSeparatedByString:@"/"];
                                 NSString *filename = [ary lastObject];
-                                NSLog(@"self.videoDownloadsInProgress123....%@",self.videoDownloadsInProgress);
                                 [self.videoDownloadsInProgress removeObjectForKey:filename];
-                                NSLog(@"self.videoDownloadsInProgress234....%@",self.videoDownloadsInProgress);
                                 
                                 [playerLayer removeFromSuperlayer];
                                 isVideoPlayStart = NO;
@@ -363,17 +358,30 @@
                             }];
                             
                             (self.videoDownloadsInProgress)[videoObj.videoURL] = operation;
-                            NSLog(@"self.videoDownloadsInProgress....Addded...%@.....%@.....%@",self.videoDownloadsInProgress,videoObj.videoURL,operation);
-                                  [operation start];
+                            [operation start];
                         }
                     }
                     else{
                         NSLog(@"No internet connectivity");
                     }
                 }
-                NSLog(@"single  .selectedCell.%ld ,selectedCell %ld",(long)indexPath.row,(long)cell1.tag);
+                
+                
+                operation = (self.videoDownloadsInProgress)[videoObj.videoURL];
+                if(!operation)
+                {
+                    cell1.progressViewObj.hidden = YES;
+                }
+                else
+                {
+                    cell1.progressViewObj.hidden = NO;
+                }
             }
+            
         }
+        
+        
+        
         
         if(indexPath.row == (selectedWords.count-1))
         {
@@ -414,7 +422,7 @@
                     
                     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(itemFailedToPlaying:) name:AVPlayerItemFailedToPlayToEndTimeErrorKey object:playerItem];
                     
-                    [selectedCell setSelected:YES];
+//                    [selectedCell setSelected:YES];
                     
                     // prepare the layer to show the video
                     playerLayer = [AVPlayerLayer playerLayerWithPlayer:player];
