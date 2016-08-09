@@ -24,6 +24,10 @@
 #import "AFHTTPClient.h"
 #import <MediaPlayer/MediaPlayer.h>
 
+#import "SVPullToRefresh.h"
+
+static int initialPage = 1;
+
 @interface MixedVideoViewController ()<ConnectionHandlerDelegate>
 {
     UCZProgressView *progressView;
@@ -33,10 +37,11 @@
     AVPlayerLayer *playerLayer;
 }
 @property (nonatomic, strong) NSMutableDictionary *videoDownloadsInProgress;
-
+@property (nonatomic, assign) int currentPage;
 @end
 
 @implementation MixedVideoViewController
+@synthesize currentPage = _currentPage;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -64,15 +69,53 @@
     [singleTapGesture setNumberOfTouchesRequired:1];
     
     [self.collectionView addGestureRecognizer:singleTapGesture];
+    
+     self.currentPage = initialPage;
+//    __weak MixedVideoViewController *weakSelf = self;
+    
+    // refresh new data when pull the table list
+//    [self.collectionView addPullToRefreshWithActionHandler:^{
+//        
+//        if([CommonMethods reachable]){
+//            weakSelf.currentPage = initialPage; // reset the page
+//            [randomVideosData removeAllObjects]; // remove all data
+//            [weakSelf.collectionView reloadData]; // before load new content, clear the existing table list
+//            //            [weakSelf reloadDashboardData]; // load new data
+//            [self fetchRandomVideoFromserver];
+//            [weakSelf.collectionView.pullToRefreshView stopAnimating]; // clear the animation
+//            // once refresh, allow the infinite scroll again
+//            weakSelf.collectionView.showsInfiniteScrolling = YES;
+//        }
+//        else
+//        {
+//            [weakSelf.collectionView.pullToRefreshView stopAnimating];
+//            [weakSelf.collectionView.infiniteScrollingView stopAnimating];
+//        }
+//    }];
+    
+    // load more content when scroll to the bottom most
+//    [self.collectionView addInfiniteScrollingWithActionHandler:^{
+//        if([CommonMethods reachable]){
+//            [self fetchRandomVideoFromserver];
+//        }
+//        else
+//        {
+//            [self.collectionView.pullToRefreshView stopAnimating];
+//            [self.collectionView.infiniteScrollingView stopAnimating];
+//        }
+//    }];
 }
+
 
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     
+    self.currentPage = initialPage;
     isVideoPlayStart = NO;
     playVideoIndex = 0;
     [self refreshVideoData];
+    [self startProgressLoader];
     [self fetchRandomVideoFromserver];
 }
 
@@ -473,19 +516,24 @@
 //Fetch data from server
 -(void)fetchRandomVideoFromserver
 {
-    [self startProgressLoader];
+    NSInteger skip = (_currentPage-1)*15;
+    NSInteger limit = 15;
+    
+    NSLog(@"skip.....%ld",(long)skip);
+    
     NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
     [dict setValue:kAPIKeyValue forKey:kAPIKey];
     [dict setValue:kAPISecretValue forKey:kAPISecret];
     //    [dict setValue:titleWord forKey:@"key"];
     [dict setValue:@"random" forKey:@"order_by"];
-    [dict setValue:[NSString stringWithFormat:@"%d",0] forKey:@"start"];
-    [dict setValue:[NSString stringWithFormat:@"%d",15] forKey:@"count"];
+    [dict setValue:[NSString stringWithFormat:@"%ld",(long)skip] forKey:@"start"];
+    [dict setValue:[NSString stringWithFormat:@"%ld",(long)limit] forKey:@"count"];
     
     ConnectionHandler *connObj = [[ConnectionHandler alloc] init];
     connObj.delegate = self;
     [connObj makePOSTRequestPath:kSearchSingleVideo parameters:dict];
 }
+
 
 // Server request handler
 -(void)connHandlerClient:(ConnectionHandler *)client didSucceedWithResponseString:(NSString *)response forPath:(NSString *)urlPath{
@@ -515,14 +563,41 @@
 {
     NSString *string = [error localizedDescription];
     string = [string substringFromIndex:[string length]-3];
-    NSLog(@"connHandlerClient:didFailWithError = %@",string);
+//    NSLog(@"connHandlerClient:didFailWithError = %@",string);
 }
+
 
 //Parsing Json Response
 -(void)parseSingleVideoData:(NSArray*)videoData
 {
     [self stopProgressLoader];
-    [randomVideosData removeAllObjects];
+//    [randomVideosData removeAllObjects];
+//    for(NSDictionary* videosDict in videoData)
+//    {
+//        if([videosDict isKindOfClass:[NSDictionary class]]){
+//            NSDictionary *videoData = [videosDict valueForKey:@"videos"];
+//            VideoDetail *videoDetail = [[VideoDetail alloc]initWithDict:videoData];
+//            [randomVideosData addObject:videoDetail];
+//        }
+//    }
+//    
+//    [self.collectionView reloadData];
+    
+    if ([videoData count] == 0) {
+        self.collectionView.showsInfiniteScrolling = NO; // stop the infinite scroll
+        if(randomVideosData.count == 0)
+        {
+            //            [ManamUtil showAlertWithTitle:@"" message:@"You do not have any notifications."];
+            self.collectionView.hidden = YES;
+        }
+        return;
+    }
+    
+    _currentPage++; // increase the page number
+    
+    NSInteger currentRow = [randomVideosData count]; // keep the the index of last row before add new items into the list
+    //    currentRow = 0;
+    
     for(NSDictionary* videosDict in videoData)
     {
         if([videosDict isKindOfClass:[NSDictionary class]]){
@@ -532,7 +607,27 @@
         }
     }
     
-    [self.collectionView reloadData];
+    NSInteger endingRow = [randomVideosData count];
+    
+    if(randomVideosData.count == 0)
+    {
+        //        [ManamUtil showAlertWithTitle:@"" message:@"You do not have any notifications."];
+        self.collectionView.hidden = YES;
+    }
+    else
+    {
+        self.collectionView.hidden = NO;
+        NSMutableArray *indexPaths = [NSMutableArray array];
+        for (; currentRow < endingRow; currentRow++) {
+            [indexPaths addObject:[NSIndexPath indexPathForRow:currentRow inSection:0]];
+        }
+        
+        if(randomVideosData.count>0)
+        [self.collectionView insertItemsAtIndexPaths:indexPaths];
+    }
+    
+    [self.collectionView.pullToRefreshView stopAnimating];
+    [self.collectionView.infiniteScrollingView stopAnimating];
     
 }
 

@@ -12,6 +12,8 @@
 		01024C721BE93F4300C2DA3C /* name-layover-bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 01024C6E1BE93F4300C2DA3C /* name-layover-bg@2x.png */; };
 		01024C731BE93F4300C2DA3C /* sub-heading-bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 01024C6F1BE93F4300C2DA3C /* sub-heading-bg@2x.png */; };
 		01024C781BE9435D00C2DA3C /* FBFriendsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01024C771BE9435D00C2DA3C /* FBFriendsListViewController.m */; };
+		01483FB61D59E57300F8FBB8 /* UIScrollView+SVInfiniteScrolling.m in Sources */ = {isa = PBXBuildFile; fileRef = 01483FB31D59E57300F8FBB8 /* UIScrollView+SVInfiniteScrolling.m */; };
+		01483FB71D59E57300F8FBB8 /* UIScrollView+SVPullToRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 01483FB51D59E57300F8FBB8 /* UIScrollView+SVPullToRefresh.m */; };
 		015EB9AE1BEA2C65005419F5 /* FBFriendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 015EB9AD1BEA2C65005419F5 /* FBFriendCell.m */; };
 		0164C68D1D4E5A27006518AD /* VideoPlayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0164C68C1D4E5A27006518AD /* VideoPlayCell.m */; };
 		01CE39A41C084F5000867CDF /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01CE39A01C084F5000867CDF /* Bolts.framework */; };
@@ -330,6 +332,11 @@
 		01024C6F1BE93F4300C2DA3C /* sub-heading-bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sub-heading-bg@2x.png"; sourceTree = "<group>"; };
 		01024C761BE9435D00C2DA3C /* FBFriendsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBFriendsListViewController.h; sourceTree = "<group>"; };
 		01024C771BE9435D00C2DA3C /* FBFriendsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBFriendsListViewController.m; sourceTree = "<group>"; };
+		01483FB11D59E57300F8FBB8 /* SVPullToRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVPullToRefresh.h; sourceTree = "<group>"; };
+		01483FB21D59E57300F8FBB8 /* UIScrollView+SVInfiniteScrolling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+SVInfiniteScrolling.h"; sourceTree = "<group>"; };
+		01483FB31D59E57300F8FBB8 /* UIScrollView+SVInfiniteScrolling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+SVInfiniteScrolling.m"; sourceTree = "<group>"; };
+		01483FB41D59E57300F8FBB8 /* UIScrollView+SVPullToRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+SVPullToRefresh.h"; sourceTree = "<group>"; };
+		01483FB51D59E57300F8FBB8 /* UIScrollView+SVPullToRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+SVPullToRefresh.m"; sourceTree = "<group>"; };
 		015EB9AC1BEA2C65005419F5 /* FBFriendCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBFriendCell.h; sourceTree = "<group>"; };
 		015EB9AD1BEA2C65005419F5 /* FBFriendCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBFriendCell.m; sourceTree = "<group>"; };
 		0164C68B1D4E5A27006518AD /* VideoPlayCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoPlayCell.h; sourceTree = "<group>"; };
@@ -819,6 +826,18 @@
 				01024C6F1BE93F4300C2DA3C /* sub-heading-bg@2x.png */,
 			);
 			path = facebookList;
+			sourceTree = "<group>";
+		};
+		01483FB01D59E57300F8FBB8 /* SVPullToRefresh */ = {
+			isa = PBXGroup;
+			children = (
+				01483FB11D59E57300F8FBB8 /* SVPullToRefresh.h */,
+				01483FB21D59E57300F8FBB8 /* UIScrollView+SVInfiniteScrolling.h */,
+				01483FB31D59E57300F8FBB8 /* UIScrollView+SVInfiniteScrolling.m */,
+				01483FB41D59E57300F8FBB8 /* UIScrollView+SVPullToRefresh.h */,
+				01483FB51D59E57300F8FBB8 /* UIScrollView+SVPullToRefresh.m */,
+			);
+			path = SVPullToRefresh;
 			sourceTree = "<group>";
 		};
 		01D73DAC1C8855DB0090CE00 /* SDWebImage */ = {
@@ -1335,6 +1354,7 @@
 		8727D5631A4884460092BB7C /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				01483FB01D59E57300F8FBB8 /* SVPullToRefresh */,
 				01D73DAC1C8855DB0090CE00 /* SDWebImage */,
 				8736FEA41BB1D1D2009DD594 /* MGSwipeTableCell */,
 				8B12416B1B6B866B00C805D0 /* DraggableCollectionView */,
@@ -2015,6 +2035,7 @@
 				8B12417A1B6B866B00C805D0 /* DraggableCollectionViewFlowLayout.m in Sources */,
 				633851061983C9F400C3256A /* SBJsonBase.m in Sources */,
 				8727D5CF1A4885E30092BB7C /* SCSessionTableViewCell.m in Sources */,
+				01483FB61D59E57300F8FBB8 /* UIScrollView+SVInfiniteScrolling.m in Sources */,
 				8727D5A91A4884460092BB7C /* SCRecorderFocusTargetView.m in Sources */,
 				633851041983C9F400C3256A /* NSString+SBJSON.m in Sources */,
 				01D73DD91C8855DB0090CE00 /* UIImage+MultiFormat.m in Sources */,
@@ -2047,6 +2068,7 @@
 				875BFD251A5730BE00A83E35 /* SentVideoTableViewCell.m in Sources */,
 				8727D59D1A4884460092BB7C /* SCArchivedVector.m in Sources */,
 				8727D5A51A4884460092BB7C /* SCMediaTypeConfiguration.m in Sources */,
+				01483FB71D59E57300F8FBB8 /* UIScrollView+SVPullToRefresh.m in Sources */,
 				874F46C51AC71DEF001CE774 /* CreateVideoCell.m in Sources */,
 				01D73DD81C8855DB0090CE00 /* UIImage+GIF.m in Sources */,
 				8B1241791B6B866B00C805D0 /* LSCollectionViewLayoutHelper.m in Sources */,
