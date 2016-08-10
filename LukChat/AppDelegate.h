@@ -21,6 +21,7 @@
 #import "JCNotificationBannerPresenterSmokeStyle.h"
 #import "JCNotificationBannerPresenterIOSStyle.h"
 #import "JCNotificationBannerPresenterIOS7Style.h"
+#import "TabBar/TabBarViewController.h"
 
 //#import "Facebook.h"
 
@@ -42,6 +43,7 @@
 @property (nonatomic, retain)  NSString *saving;
 @property (strong, nonatomic) UIWindow *window;
 @property(nonatomic, strong) AFHTTPClient *httpClient;
+@property(nonatomic,strong) TabBarViewController *tabbarView;
 
 -(void)uploadFBShareVideosInBG;
 -(UIImage *)generateThumbImage :(NSURL *)url;

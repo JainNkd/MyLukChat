@@ -111,7 +111,9 @@ static int initialPage = 1;
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
+//    AppDelegate *appdelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
+//    [appdelegate.tabbarView.tabBar setHidden:YES];
+
     self.settingBtn.hidden = YES;
     self.currentPage = initialPage;
     isVideoPlayStart = NO;
@@ -121,6 +123,10 @@ static int initialPage = 1;
     [self fetchRandomVideoFromserver];
 }
 
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+}
 -(void)viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];

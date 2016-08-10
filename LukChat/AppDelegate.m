@@ -21,7 +21,7 @@
 #import <FBSDKShareKit/FBSDKShareKit.h>
 
 @implementation AppDelegate
-
+@synthesize tabbarView;
 @synthesize facebook;
 @synthesize number,pinValue,saving;
 
@@ -189,9 +189,9 @@
             NSLog(@"navigation...%@",[navController class]);
             
             UIStoryboard *storyBD = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-            TabBarViewController *tabbar = [storyBD instantiateViewControllerWithIdentifier:@"TabBarViewController"];
+            self.tabbarView = [storyBD instantiateViewControllerWithIdentifier:@"TabBarViewController"];
             
-            [navController pushViewController:tabbar animated:NO];
+            [navController pushViewController:self.tabbarView animated:NO];
             
             //        [CommonMethods showAlertWithTitle:@"LUK" message:@"New Video Reciceved from LUK"];
         }
@@ -380,8 +380,8 @@
         NSLog(@"navigation...%@",[navController class]);
         
         UIStoryboard *storyBD = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        TabBarViewController *tabbar = [storyBD instantiateViewControllerWithIdentifier:@"TabBarViewController"];
-        [navController pushViewController:tabbar animated:NO];
+        self.tabbarView = [storyBD instantiateViewControllerWithIdentifier:@"TabBarViewController"];
+        [navController pushViewController:self.tabbarView animated:NO];
     }
 }
 
@@ -401,8 +401,8 @@
          NSLog(@"navigation...%@",[navController class]);
          
          UIStoryboard *storyBD = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-         TabBarViewController *tabbar = [storyBD instantiateViewControllerWithIdentifier:@"TabBarViewController"];
-         [navController pushViewController:tabbar animated:NO];
+         self.tabbarView = [storyBD instantiateViewControllerWithIdentifier:@"TabBarViewController"];
+         [navController pushViewController:self.tabbarView animated:NO];
         }];
 }
 
