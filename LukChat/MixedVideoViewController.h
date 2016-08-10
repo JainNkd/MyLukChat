@@ -37,6 +37,7 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *settingLBL;
 
+@property (weak, nonatomic) IBOutlet UIButton *settingBtn;
 
 - (IBAction)mergeButtonPressed:(UIButton *)sender;
 

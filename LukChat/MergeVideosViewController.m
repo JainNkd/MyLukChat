@@ -133,7 +133,7 @@
     [self storevideosInDB];
     
     //Update UI
-    self.videoTitleLBL.text = videoTitle;
+    self.videoTitleLBL.text = [videoTitle stringByDecodingHTMLEntities];
     
     // prepare the video asset from recorded file
     AVURLAsset *avAsset = [AVURLAsset URLAssetWithURL:[NSURL fileURLWithPath:filename] options:nil];

@@ -38,6 +38,18 @@
 		01D73DDD1C8855DB0090CE00 /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 01D73DCD1C8855DB0090CE00 /* UIView+WebCacheOperation.m */; };
 		01E3EA9D1D4A77A600FA77B0 /* MixedVideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E3EA9C1D4A77A600FA77B0 /* MixedVideoViewController.m */; };
 		01E3EAA01D4A798400FA77B0 /* MixedVideoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E3EA9F1D4A798400FA77B0 /* MixedVideoCell.m */; };
+		01F3AB481D5B3C270078521B /* bg-blue-bar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 01F3AB3C1D5B3C270078521B /* bg-blue-bar@2x.png */; };
+		01F3AB491D5B3C270078521B /* bg-blue-bar@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 01F3AB3D1D5B3C270078521B /* bg-blue-bar@3x.png */; };
+		01F3AB4A1D5B3C270078521B /* btn-bg-ping@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 01F3AB3E1D5B3C270078521B /* btn-bg-ping@2x.png */; };
+		01F3AB4B1D5B3C270078521B /* btn-bg-ping@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 01F3AB3F1D5B3C270078521B /* btn-bg-ping@3x.png */; };
+		01F3AB4C1D5B3C270078521B /* btn-send-frineds@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 01F3AB401D5B3C270078521B /* btn-send-frineds@2x.png */; };
+		01F3AB4D1D5B3C270078521B /* btn-send-frineds@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 01F3AB411D5B3C270078521B /* btn-send-frineds@3x.png */; };
+		01F3AB4E1D5B3C270078521B /* icon-blue-monkey-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 01F3AB421D5B3C270078521B /* icon-blue-monkey-icon@2x.png */; };
+		01F3AB4F1D5B3C270078521B /* icon-blue-monkey-icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 01F3AB431D5B3C270078521B /* icon-blue-monkey-icon@3x.png */; };
+		01F3AB501D5B3C270078521B /* icon-indicate@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 01F3AB441D5B3C270078521B /* icon-indicate@2x.png */; };
+		01F3AB511D5B3C270078521B /* icon-indicate@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 01F3AB451D5B3C270078521B /* icon-indicate@3x.png */; };
+		01F3AB521D5B3C270078521B /* logo-luk-Gray@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 01F3AB461D5B3C270078521B /* logo-luk-Gray@2x.png */; };
+		01F3AB531D5B3C270078521B /* logo-luk-Gray@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 01F3AB471D5B3C270078521B /* logo-luk-Gray@3x.png */; };
 		6329BEE919A8AAC400B6D8F5 /* CustomeVideoPlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6329BEE219A8AAC400B6D8F5 /* CustomeVideoPlayViewController.m */; };
 		6329BEEA19A8AAC400B6D8F5 /* VideoPreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6329BEE419A8AAC400B6D8F5 /* VideoPreviewViewController.m */; };
 		6329BEEB19A8AAC400B6D8F5 /* CustomOrientationNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6329BEE619A8AAC400B6D8F5 /* CustomOrientationNavigationController.m */; };
@@ -382,6 +394,18 @@
 		01E3EA9C1D4A77A600FA77B0 /* MixedVideoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MixedVideoViewController.m; sourceTree = "<group>"; };
 		01E3EA9E1D4A798400FA77B0 /* MixedVideoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MixedVideoCell.h; sourceTree = "<group>"; };
 		01E3EA9F1D4A798400FA77B0 /* MixedVideoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MixedVideoCell.m; sourceTree = "<group>"; };
+		01F3AB3C1D5B3C270078521B /* bg-blue-bar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg-blue-bar@2x.png"; sourceTree = "<group>"; };
+		01F3AB3D1D5B3C270078521B /* bg-blue-bar@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg-blue-bar@3x.png"; sourceTree = "<group>"; };
+		01F3AB3E1D5B3C270078521B /* btn-bg-ping@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn-bg-ping@2x.png"; sourceTree = "<group>"; };
+		01F3AB3F1D5B3C270078521B /* btn-bg-ping@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn-bg-ping@3x.png"; sourceTree = "<group>"; };
+		01F3AB401D5B3C270078521B /* btn-send-frineds@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn-send-frineds@2x.png"; sourceTree = "<group>"; };
+		01F3AB411D5B3C270078521B /* btn-send-frineds@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn-send-frineds@3x.png"; sourceTree = "<group>"; };
+		01F3AB421D5B3C270078521B /* icon-blue-monkey-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-blue-monkey-icon@2x.png"; sourceTree = "<group>"; };
+		01F3AB431D5B3C270078521B /* icon-blue-monkey-icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-blue-monkey-icon@3x.png"; sourceTree = "<group>"; };
+		01F3AB441D5B3C270078521B /* icon-indicate@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-indicate@2x.png"; sourceTree = "<group>"; };
+		01F3AB451D5B3C270078521B /* icon-indicate@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-indicate@3x.png"; sourceTree = "<group>"; };
+		01F3AB461D5B3C270078521B /* logo-luk-Gray@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo-luk-Gray@2x.png"; sourceTree = "<group>"; };
+		01F3AB471D5B3C270078521B /* logo-luk-Gray@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo-luk-Gray@3x.png"; sourceTree = "<group>"; };
 		6329BEE219A8AAC400B6D8F5 /* CustomeVideoPlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomeVideoPlayViewController.m; sourceTree = "<group>"; };
 		6329BEE319A8AAC400B6D8F5 /* CustomeVideoPlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomeVideoPlayViewController.h; sourceTree = "<group>"; };
 		6329BEE419A8AAC400B6D8F5 /* VideoPreviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoPreviewViewController.m; sourceTree = "<group>"; };
@@ -893,6 +917,25 @@
 			name = FirstStartScreen;
 			sourceTree = "<group>";
 		};
+		01F3AB3B1D5B3C270078521B /* Mixed */ = {
+			isa = PBXGroup;
+			children = (
+				01F3AB3C1D5B3C270078521B /* bg-blue-bar@2x.png */,
+				01F3AB3D1D5B3C270078521B /* bg-blue-bar@3x.png */,
+				01F3AB3E1D5B3C270078521B /* btn-bg-ping@2x.png */,
+				01F3AB3F1D5B3C270078521B /* btn-bg-ping@3x.png */,
+				01F3AB401D5B3C270078521B /* btn-send-frineds@2x.png */,
+				01F3AB411D5B3C270078521B /* btn-send-frineds@3x.png */,
+				01F3AB421D5B3C270078521B /* icon-blue-monkey-icon@2x.png */,
+				01F3AB431D5B3C270078521B /* icon-blue-monkey-icon@3x.png */,
+				01F3AB441D5B3C270078521B /* icon-indicate@2x.png */,
+				01F3AB451D5B3C270078521B /* icon-indicate@3x.png */,
+				01F3AB461D5B3C270078521B /* logo-luk-Gray@2x.png */,
+				01F3AB471D5B3C270078521B /* logo-luk-Gray@3x.png */,
+			);
+			path = Mixed;
+			sourceTree = "<group>";
+		};
 		6329BEED19A8AB7D00B6D8F5 /* AppDelegate */ = {
 			isa = PBXGroup;
 			children = (
@@ -1075,6 +1118,7 @@
 		633850511983A4C900C3256A /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				01F3AB3B1D5B3C270078521B /* Mixed */,
 				01024C6B1BE93F4300C2DA3C /* facebookList */,
 				8BF359251B46A31D0056BE81 /* luk-app-icon-80.png */,
 				87A817871B41A6A400EF5F73 /* Setting */,
@@ -1853,6 +1897,7 @@
 				879DA4261AC30CCF00E26CCB /* camerapage-icon-smiling-monkey@2x.png in Resources */,
 				63F999D4199E095A005C82F6 /* signup-country-code-bg.png in Resources */,
 				87B9791D1B3603AE00B2C54D /* facebook_post_buttonbg.png in Resources */,
+				01F3AB531D5B3C270078521B /* logo-luk-Gray@3x.png in Resources */,
 				63F999D8199E095A005C82F6 /* signup-terms-checkbox-selection.png in Resources */,
 				87B979241B3603AE00B2C54D /* facebook_post-text-with-pressbuttonbg@2x.png in Resources */,
 				87C503531BCEADD900AFF2E9 /* history-draft-bg@2x.png in Resources */,
@@ -1872,7 +1917,9 @@
 				8BB0F66B1AC161BC008453B5 /* double-monkey@2x.png in Resources */,
 				87B979251B3603AE00B2C54D /* luk-screen-post-facebook.png in Resources */,
 				63F999BC199E095A005C82F6 /* luk-iphone-final-lukes-sent-list-main-bg.png in Resources */,
+				01F3AB521D5B3C270078521B /* logo-luk-Gray@2x.png in Resources */,
 				63F999D1199E095A005C82F6 /* share-videos-pic-descripiton-shadow.png in Resources */,
+				01F3AB501D5B3C270078521B /* icon-indicate@2x.png in Resources */,
 				63F999EF199E095A005C82F6 /* name-list-bg.png in Resources */,
 				01024C721BE93F4300C2DA3C /* name-layover-bg@2x.png in Resources */,
 				87BD842F1ADEE14200761A28 /* select-logo-luk@2x.png in Resources */,
@@ -1882,13 +1929,16 @@
 				87B979281B3603AE00B2C54D /* send-lukies_buttonbg@2x.png in Resources */,
 				63F999C5199E095A005C82F6 /* luk-iphone-final-merged-videos-main-bg.png in Resources */,
 				87A93B371B43069A00056114 /* screen4-smilemonkey-icon@2x.png in Resources */,
+				01F3AB4E1D5B3C270078521B /* icon-blue-monkey-icon@2x.png in Resources */,
 				8BFD74511B67963C00BF41B4 /* screen5-btn-normal.png in Resources */,
 				63F999DD199E095A005C82F6 /* footer-ping-monkey-icon.png in Resources */,
 				8BF359261B46A31D0056BE81 /* luk-app-icon-80.png in Resources */,
 				879DA4221AC30CCF00E26CCB /* camerapage-icon-cance@2x.png in Resources */,
 				8BB0F66D1AC161BC008453B5 /* movie-role@2x.png in Resources */,
 				8BB0F66C1AC161BC008453B5 /* movie-role-active@2x.png in Resources */,
+				01F3AB4F1D5B3C270078521B /* icon-blue-monkey-icon@3x.png in Resources */,
 				87B979291B3603AE00B2C54D /* send-lukies_pressbuttonbg.png in Resources */,
+				01F3AB491D5B3C270078521B /* bg-blue-bar@3x.png in Resources */,
 				8BFD744B1B67963000BF41B4 /* screen1-btn-normal@2x.png in Resources */,
 				8BB068EE1AC58A0C000A84C7 /* purplebox-2blemonkey@2x.png in Resources */,
 				87A029D91B459E2F00226677 /* button-bg-merge-select@2x.png in Resources */,
@@ -1904,6 +1954,7 @@
 				87BD842E1ADEE14200761A28 /* select-button-with-bg@2x.png in Resources */,
 				87B9792C1B3603AE00B2C54D /* send-lukies_text-with-buttonbg@2x.png in Resources */,
 				8BFB476A1B3BC302009C1F71 /* select-namebg.png in Resources */,
+				01F3AB481D5B3C270078521B /* bg-blue-bar@2x.png in Resources */,
 				6338503519839F2D00C3256A /* Images.xcassets in Resources */,
 				87B9791E1B3603AE00B2C54D /* facebook_post_buttonbg@2x.png in Resources */,
 				8BB068EA1AC58A0C000A84C7 /* monkeywithbg@2x.png in Resources */,
@@ -1911,6 +1962,7 @@
 				6338502719839F2D00C3256A /* InfoPlist.strings in Resources */,
 				8B6879531AD53C40007004E2 /* sharedoublemonkey@2x.png in Resources */,
 				63F999C8199E095A005C82F6 /* merged-videos-pic-description-bg.png in Resources */,
+				01F3AB4A1D5B3C270078521B /* btn-bg-ping@2x.png in Resources */,
 				6329BEEC19A8AAC400B6D8F5 /* VideoShare.sqlite in Resources */,
 				8BFB47711B3BCB28009C1F71 /* logo-luk@2x.png in Resources */,
 				8BFB47701B3BCB28009C1F71 /* logo-luk.png in Resources */,
@@ -1919,6 +1971,7 @@
 				633850771983A4C900C3256A /* InfoPlist.strings in Resources */,
 				63F999D0199E095A005C82F6 /* share-videos-pic-1.png in Resources */,
 				8727D59B1A4884460092BB7C /* SCRecorderMac-Info.plist in Resources */,
+				01F3AB511D5B3C270078521B /* icon-indicate@3x.png in Resources */,
 				01024C701BE93F4300C2DA3C /* bg@postwall.png in Resources */,
 				87B9791C1B3603AE00B2C54D /* contact_bg@2x.png in Resources */,
 				63F999C7199E095A005C82F6 /* merged-videos-logo.png in Resources */,
@@ -1929,6 +1982,7 @@
 				8BFD74521B67963C00BF41B4 /* screen5-btn-selected.png in Resources */,
 				63F999E8199E095A005C82F6 /* verfication-bottom-line.png in Resources */,
 				87B9792B1B3603AE00B2C54D /* send-lukies_text-with-buttonbg.png in Resources */,
+				01F3AB4D1D5B3C270078521B /* btn-send-frineds@3x.png in Resources */,
 				63F999EC199E095A005C82F6 /* letters-between-line.png in Resources */,
 				63F999CC199E095A005C82F6 /* share-videos-1st-pic.png in Resources */,
 				87BD842C1ADEE14200761A28 /* pic-bgwith-monkey-icon@2x.png in Resources */,
@@ -1957,6 +2011,7 @@
 				879DA4271AC30CCF00E26CCB /* monkey-featherbg@2x.png in Resources */,
 				879DA4251AC30CCF00E26CCB /* camerapage-icon-save@2x.png in Resources */,
 				63F999DE199E095A005C82F6 /* luk-iphone-final-textenter-mainbg.png in Resources */,
+				01F3AB4C1D5B3C270078521B /* btn-send-frineds@2x.png in Resources */,
 				8B064A111B2EAEF500A70EEA /* button_add@2x.png in Resources */,
 				87A93B381B43069A00056114 /* start-screen-text-field.png in Resources */,
 				87A93B3F1B430FCF00056114 /* merge_bg@2x.png in Resources */,
@@ -1964,6 +2019,7 @@
 				87B9792E1B3603AE00B2C54D /* send-lukies_text-with-pressbuttonbg@2x.png in Resources */,
 				63F999D3199E095A005C82F6 /* signup-bottom-line.png in Resources */,
 				87BD842D1ADEE14200761A28 /* select-button-bg@2x.png in Resources */,
+				01F3AB4B1D5B3C270078521B /* btn-bg-ping@3x.png in Resources */,
 				87B9791F1B3603AE00B2C54D /* facebook_post_pressbuttonbg.png in Resources */,
 				87C503541BCEADD900AFF2E9 /* history-draft-devider-line@2x.png in Resources */,
 				87C503551BCEADD900AFF2E9 /* history-draft-fbicon@2x.png in Resources */,

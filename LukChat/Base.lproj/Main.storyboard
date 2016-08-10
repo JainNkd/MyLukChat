@@ -378,9 +378,8 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qxH-Jo-uvl">
                                 <rect key="frame" x="0.0" y="474" width="320" height="44"/>
-                                <color key="backgroundColor" red="0.96862745098039216" green="0.074509803921568626" blue="0.396078431372549" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                <state key="normal" title="send to friends">
+                                <state key="normal" title="send to friends" backgroundImage="btn-bg-ping.png">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -396,6 +395,9 @@
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GJO-gM-8Uf">
                                 <rect key="frame" x="0.0" y="399" width="320" height="41"/>
                                 <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bg-blue-bar.png" translatesAutoresizingMaskIntoConstraints="NO" id="yf9-L1-jOp">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="41"/>
+                                    </imageView>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" tag="1" contentMode="scaleToFill" fixedFrame="YES" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="jH1-z4-GC9">
                                         <rect key="frame" x="0.0" y="1" width="320" height="40"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -430,11 +432,7 @@
                                         </connections>
                                     </collectionView>
                                 </subviews>
-                                <color key="backgroundColor" red="0.0" green="0.65098039215686276" blue="0.97254901960784312" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="logo-luk.png" translatesAutoresizingMaskIntoConstraints="NO" id="46L-Bt-N6B">
-                                <rect key="frame" x="16" y="15" width="62" height="30"/>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MXE-Wx-cSK">
                                 <rect key="frame" x="264" y="20" width="38" height="22"/>
                                 <state key="normal" image="settings-icon.png">
@@ -446,8 +444,8 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xG0-jh-Hdk">
-                                <rect key="frame" x="217" y="20" width="33" height="23"/>
-                                <state key="normal" image="history-draft-monkeys.png"/>
+                                <rect key="frame" x="264" y="13" width="48" height="32"/>
+                                <state key="normal" image="icon-blue-monkey-icon.png"/>
                                 <connections>
                                     <action selector="twoMonkeyButtonPressed:" destination="PN8-IE-uEt" eventType="touchUpInside" id="UUW-wf-7QF"/>
                                 </connections>
@@ -550,8 +548,11 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.68627450980000004" green="0.0" blue="0.76470588240000004" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="logo-luk-Gray.png" translatesAutoresizingMaskIntoConstraints="NO" id="46L-Bt-N6B">
+                                <rect key="frame" x="10" y="17" width="57" height="24"/>
+                            </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="br5-uk-Kds"/>
                     <connections>
@@ -561,6 +562,7 @@
                         <outlet property="logoutBtn" destination="j2S-Cz-rgu" id="aR3-c9-pJ7"/>
                         <outlet property="mergeButton" destination="qxH-Jo-uvl" id="VHp-F5-Din"/>
                         <outlet property="nameLabel" destination="FoG-pD-8LE" id="d1G-ac-Em0"/>
+                        <outlet property="settingBtn" destination="MXE-Wx-cSK" id="INg-m7-kRx"/>
                         <outlet property="settingLBL" destination="j6N-pd-gIm" id="c5Z-4A-CL5"/>
                         <outlet property="settingView" destination="xD8-aW-4KP" id="y3w-hc-5PM"/>
                         <outlet property="twoMonkeyButton" destination="xG0-jh-Hdk" id="dBO-CE-VdP"/>
@@ -911,7 +913,7 @@
                                     </imageView>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="bhbhh hjhkh bvkkjskvbnk " lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SCH-3r-NLp">
                                         <rect key="frame" x="10" y="4" width="300" height="46"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="20"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="18"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -1975,8 +1977,10 @@
     </scenes>
     <resources>
         <image name="app-store-screen-1_7.png" width="640" height="1136"/>
+        <image name="bg-blue-bar.png" width="320" height="42"/>
         <image name="bg-select-screen.png" width="320" height="568"/>
         <image name="bg@postwall.png" width="640" height="1136"/>
+        <image name="btn-bg-ping.png" width="320" height="62"/>
         <image name="camerapage-icon-cance.png" width="23" height="23"/>
         <image name="camerapage-icon-rottat-camera.png" width="75" height="50"/>
         <image name="camerapage-icon-running-indication-white.png" width="31" height="24"/>
@@ -1991,6 +1995,8 @@
         <image name="history-draft-fbicon.png" width="17" height="16"/>
         <image name="history-draft-monkeybg.png" width="68" height="80"/>
         <image name="history-draft-monkeys.png" width="33" height="23"/>
+        <image name="icon-blue-monkey-icon.png" width="48" height="31"/>
+        <image name="logo-luk-Gray.png" width="57" height="28"/>
         <image name="logo-luk.png" width="62" height="30"/>
         <image name="luk-iphone-final-lukes-sent-list-pic-dummy.png" width="105" height="102"/>
         <image name="luk-iphone-final-merged-videos-main-bg.png" width="640" height="1136"/>

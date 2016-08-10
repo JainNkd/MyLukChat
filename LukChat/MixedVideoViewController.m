@@ -23,6 +23,7 @@
 #import "AFHTTPRequestOperation.h"
 #import "AFHTTPClient.h"
 #import <MediaPlayer/MediaPlayer.h>
+#import "NSString+HTML.h"
 
 #import "SVPullToRefresh.h"
 
@@ -111,6 +112,7 @@ static int initialPage = 1;
 {
     [super viewWillAppear:animated];
     
+    self.settingBtn.hidden = YES;
     self.currentPage = initialPage;
     isVideoPlayStart = NO;
     playVideoIndex = 0;
@@ -206,6 +208,7 @@ static int initialPage = 1;
             
             VideoDetail *videoObj = [randomVideosData objectAtIndex:indexPath.row];
             
+            videoObj.videoTitle = [videoObj.videoTitle stringByDecodingHTMLEntities];
             cell.title.text = videoObj.videoTitle;
             NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
             __block NSString *documentsDirectory = [paths objectAtIndex:0];
@@ -473,6 +476,9 @@ static int initialPage = 1;
                     [selectedCell.layer addSublayer:playerLayer];
                     player.actionAtItemEnd = AVPlayerActionAtItemEndNone;
                     [player play];
+                    
+                    playerLayer.borderColor = [UIColor colorWithRed:247.0/255 green:19.0/255 blue:101.0/255 alpha:1].CGColor;
+                    playerLayer.borderWidth = 2.0;
                 }
                 else
                 {
