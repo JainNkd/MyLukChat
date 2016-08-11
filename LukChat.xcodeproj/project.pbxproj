@@ -50,6 +50,8 @@
 		01F3AB511D5B3C270078521B /* icon-indicate@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 01F3AB451D5B3C270078521B /* icon-indicate@3x.png */; };
 		01F3AB521D5B3C270078521B /* logo-luk-Gray@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 01F3AB461D5B3C270078521B /* logo-luk-Gray@2x.png */; };
 		01F3AB531D5B3C270078521B /* logo-luk-Gray@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 01F3AB471D5B3C270078521B /* logo-luk-Gray@3x.png */; };
+		01F3AB581D5C833D0078521B /* icon-ping-monkey-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 01F3AB561D5C833D0078521B /* icon-ping-monkey-icon@2x.png */; };
+		01F3AB591D5C833D0078521B /* icon-ping-monkey-icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 01F3AB571D5C833D0078521B /* icon-ping-monkey-icon@3x.png */; };
 		6329BEE919A8AAC400B6D8F5 /* CustomeVideoPlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6329BEE219A8AAC400B6D8F5 /* CustomeVideoPlayViewController.m */; };
 		6329BEEA19A8AAC400B6D8F5 /* VideoPreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6329BEE419A8AAC400B6D8F5 /* VideoPreviewViewController.m */; };
 		6329BEEB19A8AAC400B6D8F5 /* CustomOrientationNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6329BEE619A8AAC400B6D8F5 /* CustomOrientationNavigationController.m */; };
@@ -406,6 +408,8 @@
 		01F3AB451D5B3C270078521B /* icon-indicate@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-indicate@3x.png"; sourceTree = "<group>"; };
 		01F3AB461D5B3C270078521B /* logo-luk-Gray@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo-luk-Gray@2x.png"; sourceTree = "<group>"; };
 		01F3AB471D5B3C270078521B /* logo-luk-Gray@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo-luk-Gray@3x.png"; sourceTree = "<group>"; };
+		01F3AB561D5C833D0078521B /* icon-ping-monkey-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-ping-monkey-icon@2x.png"; sourceTree = "<group>"; };
+		01F3AB571D5C833D0078521B /* icon-ping-monkey-icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-ping-monkey-icon@3x.png"; sourceTree = "<group>"; };
 		6329BEE219A8AAC400B6D8F5 /* CustomeVideoPlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomeVideoPlayViewController.m; sourceTree = "<group>"; };
 		6329BEE319A8AAC400B6D8F5 /* CustomeVideoPlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomeVideoPlayViewController.h; sourceTree = "<group>"; };
 		6329BEE419A8AAC400B6D8F5 /* VideoPreviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoPreviewViewController.m; sourceTree = "<group>"; };
@@ -920,6 +924,8 @@
 		01F3AB3B1D5B3C270078521B /* Mixed */ = {
 			isa = PBXGroup;
 			children = (
+				01F3AB561D5C833D0078521B /* icon-ping-monkey-icon@2x.png */,
+				01F3AB571D5C833D0078521B /* icon-ping-monkey-icon@3x.png */,
 				01F3AB3C1D5B3C270078521B /* bg-blue-bar@2x.png */,
 				01F3AB3D1D5B3C270078521B /* bg-blue-bar@3x.png */,
 				01F3AB3E1D5B3C270078521B /* btn-bg-ping@2x.png */,
@@ -1892,6 +1898,7 @@
 				8727D59A1A4884460092BB7C /* InfoPlist.strings in Resources */,
 				8BB0F6691AC161BC008453B5 /* camera@2x.png in Resources */,
 				8BC23E0C1A72486300AB29B7 /* search_icon.png in Resources */,
+				01F3AB581D5C833D0078521B /* icon-ping-monkey-icon@2x.png in Resources */,
 				87C503591BCEADD900AFF2E9 /* history-draft-textbg@2x.png in Resources */,
 				63F999D2199E095A005C82F6 /* signup-background.png in Resources */,
 				879DA4261AC30CCF00E26CCB /* camerapage-icon-smiling-monkey@2x.png in Resources */,
@@ -1908,6 +1915,7 @@
 				8BFB476B1B3BC302009C1F71 /* select-namebg@2x.png in Resources */,
 				87A93B351B43069A00056114 /* luk-iphone-final-textenter-mainbg@2x.png in Resources */,
 				87B979271B3603AE00B2C54D /* send-lukies_buttonbg.png in Resources */,
+				01F3AB591D5C833D0078521B /* icon-ping-monkey-icon@3x.png in Resources */,
 				8BFD744C1B67963000BF41B4 /* screen1-btn-selected@2x.png in Resources */,
 				87C503571BCEADD900AFF2E9 /* history-draft-monkeys@2x.png in Resources */,
 				875437491AC5B1990091AD68 /* video-send-logo@2x.png in Resources */,

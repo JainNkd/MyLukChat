@@ -529,7 +529,7 @@ static int initialPage = 1;
 -(void)fetchRandomVideoFromserver
 {
     NSInteger skip = (_currentPage-1)*15;
-    NSInteger limit = 15;
+    NSInteger limit = 30;
     
     NSLog(@"skip.....%ld",(long)skip);
     

@@ -68,5 +68,6 @@
 //Video Merge button Action
 
 - (IBAction)videoMergeButtonPressed:(UIButton *)sender;
+- (IBAction)redirectToMixPageButtonAction:(UIButton *)sender;
 
 @end

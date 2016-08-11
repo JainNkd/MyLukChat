@@ -370,6 +370,11 @@
         [self downloadVidoes];
 }
 
+- (IBAction)redirectToMixPageButtonAction:(UIButton *)sender {
+    
+    [self.navigationController popToRootViewControllerAnimated:YES];
+}
+
 -(void)mergedVideo
 {
     NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];

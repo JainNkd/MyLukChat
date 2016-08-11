@@ -451,8 +451,8 @@
                                 </connections>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" bounces="NO" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="wpQ-75-zyf">
-                                <rect key="frame" x="0.0" y="54" width="320" height="320"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <rect key="frame" x="0.0" y="54" width="320" height="345"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="1" minimumInteritemSpacing="1" id="B6D-vK-28L">
                                     <size key="itemSize" width="106" height="106"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -588,6 +588,13 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="luk-iphone-final-textenter-mainbg.png" translatesAutoresizingMaskIntoConstraints="NO" id="Ne2-LU-kgj">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mOJ-IL-yml">
+                                <rect key="frame" x="205" y="15" width="49" height="32"/>
+                                <state key="normal" image="icon-ping-monkey-icon.png"/>
+                                <connections>
+                                    <action selector="redirectToMixPageButtonAction:" destination="hzu-ak-A4P" eventType="touchUpInside" id="5MZ-Aa-qQ9"/>
+                                </connections>
+                            </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="logo-luk.png" translatesAutoresizingMaskIntoConstraints="NO" id="3FJ-UO-aHN">
                                 <rect key="frame" x="16" y="15" width="62" height="30"/>
                             </imageView>
@@ -1996,6 +2003,7 @@
         <image name="history-draft-monkeybg.png" width="68" height="80"/>
         <image name="history-draft-monkeys.png" width="33" height="23"/>
         <image name="icon-blue-monkey-icon.png" width="48" height="31"/>
+        <image name="icon-ping-monkey-icon.png" width="49" height="31"/>
         <image name="logo-luk-Gray.png" width="57" height="28"/>
         <image name="logo-luk.png" width="62" height="30"/>
         <image name="luk-iphone-final-lukes-sent-list-pic-dummy.png" width="105" height="102"/>
